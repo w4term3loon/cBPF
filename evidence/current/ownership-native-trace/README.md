@@ -26,7 +26,11 @@ The later [completion recheck](revalidation/completion.json) reconciles actual
 QEMU exit zero, kernel powerdown and shared failure-marker filtering with the
 original observations. Its [receipt](revalidation/receipt.json) explicitly
 excludes stronger native correspondence or a new ownership execution.
-`make evidence-recheck` repeats this limited check offline.
+`make evidence-recheck` now also repeats the strengthened fixed-image
+byte/operand/target correspondence checks, comparing its output with the later
+[inspection result](inspection/results.json) while requiring the original
+observations and completion fields to remain unchanged. It is an offline
+recheck, not another native execution or independent external reproduction.
 
 Original files and results are preserved. The `derivation/` records were
 generated later, with their actual timestamp. They contain complete byte-bound

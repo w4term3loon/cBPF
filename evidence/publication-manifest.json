@@ -10969,13 +10969,14 @@
       "file": "evidence/current/ownership-native-trace/README.md",
       "availability": "publication_copy",
       "publication": {
-        "bytes": 5213,
-        "sha256": "e97a00214455613189808b831a2cc73dadef74511e04a01095a1c086057166c5"
+        "bytes": 5525,
+        "sha256": "73cdf0c568e0617de17fd26aac81e24967a7a2c2d31a9fdf5de9948ed8a0bee1"
       },
       "changes": [
         "New editorial package index; not an original execution record.",
         "Updated Batch 2 status: strengthened spatial revalidation and new admission run; ownership native inspection remains pending.",
-        "Batch 3: indexed fixed ownership instruction/target checks and authored internal inspection; original records preserved."
+        "Batch 3: indexed fixed ownership instruction/target checks and authored internal inspection; original records preserved.",
+        "Editorial closure: clarified that make evidence-recheck includes strengthened fixed-image correspondence; the completion-only receipt and original execution records remain unchanged."
       ]
     },
     {

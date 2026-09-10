@@ -56,7 +56,8 @@ down with exit zero. It had no network, disk or BPF attachment.
 ## Recorded code-to-native walkthrough
 
 This walkthrough explains the **key-one valid witness** above. Source excerpts
-come from the verified inherited tree `e6c69574c16b…` plus the
+come from the verified inherited tree
+`e6c69574c16bc2b9bce06329f9ac3f4b3269e79a` plus the
 [provider patch](../../linux/spatial/array-authority.patch); the
 [source pins](../../evidence/current/spatial/source-pins.json) identify that
 baseline. The retained [guest](../../evidence/current/logical-extent/run/guest.c),
@@ -112,6 +113,29 @@ if (bpf_cheri_cap_kind(authority->regs[insn->src_reg].kind)) {
 }
 ```
 
+Exact source locators below use line numbers in that pinned tree **before
+the provider and observation overlays**, not a later build directory:
+
+- `kernel/bpf/verifier.c`, blob `b8b7c93456bc614023f4a904670b610e4d352790`:
+  `save_aux_ptr_type` records the category and accumulates roots at lines
+  17535–17547; `finalize_bpf_jit_memory_roots` scans and assigns the summary at
+  17513–17532. Successful completion sets the version/valid fields and calls
+  JIT validation at 21146–21153. Map retention and pseudo-instruction
+  conversion are at 21112–21143.
+- `arch/arm64/net/bpf_jit_comp.c`, blob `87e82badd8d06c0412197d2357a9c21dc31059bb`:
+  `bpf_jit_validate_prog` consumes the contract/profile at 2070–2109;
+  `bpf_cheri_build_authority` reconstructs kinds at 1795–2058 and compares its
+  roots with the verifier summary at 2053–2058. JIT compilation fills
+  `ctx.authority` at 4143; `build_insn` reads its per-instruction state at
+  2260 and selects/emits the capability load at 2706–2738. Map/helper binding
+  is at 1698–1728, and lookup-result capability transport at 2631–2636.
+
+These tree/path/blob locators can be inspected using the retained source
+objects in the [dependency bundle](../reproduction/native-dependencies.md).
+The spatial pin is a verified tree, not a claim that its historical commit
+was recovered. The excerpts identify inherited instrumentation and JIT
+analysis; they do not attribute those mechanisms to the new provider.
+
 The JIT analysis independently reconstructs map-value and nullable kinds,
 including refinement at the zero comparison. **No per-instruction verifier
 numeric interval or complete verifier state is exported as the runtime bound.**
@@ -124,15 +148,29 @@ an additional execution or independent proof of the analyses.
 
 Conventional array lookup already uses `array->elem_size` to locate a value.
 That inherited layout is unchanged. The new provider retains an allocation
-root at allocation time and derives the returned authority from it:
+root at allocation time and derives the returned authority from it. The
+[provider C](../../linux/spatial/array-authority.patch) appears beside the
+existing [linked construction instructions](../../evidence/current/logical-extent/review/complete-linked-disassembly.txt),
+lines 414–448. Offsets below are relative to `cbpf_array_value_cap` at
+`0xffff8000801c1e78`; the non-contiguous excerpts omit intervening checks:
 
-```c
-value = (unsigned long)array->value +
-        (u64)array->elem_size * (index & array->index_mask);
-/* cap already holds the checked retained allocation root */
-cap = cheri_address_set(cap, value);
-cap = cheri_bounds_set_exact(cap, map->value_size);
-```
+| Actual C expression or statement | Extracted linked instruction |
+|---|---|
+| `cap = authority->root;` | `+0x5c  ldr c7, [x8, #0x60]` |
+| `array->elem_size` (stride) | `+0xac  ldr w4, [x0, #0x100]` |
+| `array->index_mask` | `+0xcc  ldr w9, [x0, #0x104]` |
+| `(unsigned long)array->value` | `+0xd0  add x5, x0, #0x110` |
+| `map->value_size` (logical extent) | `+0xd4  ldr w3, [x0, #0x20]` |
+| `index & array->index_mask` | `+0xd8  and x9, x9, x2` |
+| `value = (unsigned long)array->value + (u64)array->elem_size * (index & array->index_mask);` | `+0xdc  umaddl x6, w9, w4, x5` |
+| `cap = cheri_address_set(cap, value);` | `+0xe0  scvalue c1, c7, x6` |
+| `cap = cheri_bounds_set_exact(cap, map->value_size);` | `+0xe4  scbndse c1, c1, x3` |
+
+Here `x0` addresses the map, `x2` holds the loaded key, `c7` holds the
+retained allocation root and `x6` is the selected address. The 32-bit stride
+load feeds the multiply; the separate 32-bit logical-size load supplies
+`x3` (zero-extended) to exact bounding of `c1`. These are extracted provider
+instructions, unlike the illustrative conventional forms below.
 
 For this run, values start at `0xffff000000df8310`; key 1 selects
 `v=0xffff000000df8318`. Logical extent comes from **`map->value_size`**,
@@ -141,9 +179,9 @@ base/cursor `v`, length seven, tag one, unsealed state and permissions
 `0x30001`. Unsupported construction returns no usable grant.
 
 The [linked inspection](../../evidence/current/logical-extent/review/manual-review.json)
-identifies the distinct stride and logical-size loads before address selection
-and exact bounding. Initial root assignment remains trusted; a narrow bound
-does not prove that the provider selected the correct object.
+records this size/stride correspondence and the subsequent descriptor checks
+and full-capability preservation across logging. Initial root assignment
+remains trusted; a narrow bound does not prove correct object selection.
 
 ### E–F. Transport and actual instructions
 
@@ -168,6 +206,15 @@ consistent with ordinary arm64 lowering, not extracted from a newly built
 baseline**. The changed enforcement input is the explicit capability operand.
 On Morello, address-based accesses instead use ambient DDC authority; they
 are not necessarily unchecked.
+
+The pinned conventional lowering source is Morello Linux commit
+`b96da308ef1a054c3c04c9445e5ed70259b7c397`,
+`arch/arm64/net/bpf_jit_comp.c`, blob `7d4af64e398286d2036c4cdbfbbab0f6611e12de`.
+In `build_insn`, the unsigned byte-load case uses `A64_LDRBI` at lines
+1211–1223, and the byte register-store case uses `A64_STRBI` at 1332–1338.
+Those source cases support the illustrative immediate-offset forms; the
+shown registers are aligned for comparison, not evidence of a compiled
+baseline image. This commit is also retained in the dependency bundle.
 
 ### G. Effect and the separate rejection experiment
 

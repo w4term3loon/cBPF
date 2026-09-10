@@ -40,19 +40,27 @@ the supported logical eight-byte spill. The gate consults canonical identity
 and private validity; consuming A does not erase its public aliases' tags.
 
 The [complete linked inspection](../../evidence/current/ownership-native-trace/inspection/native-review.md)
-follows failure through the gateway:
+follows failure through the gateway. Before the sentinel test, it restores
+the saved registers and stack, including the fixed epilogue sentry in `c13`
+and the call continuation in `c14`. The following offsets are relative to
+the linked gateway at `0xffff80008003e370`:
 
 ```text
-cmn x0, #1       // failure sentinel
-b.ne ...         // success skips failure selection
-mov c14, c13     // failure selects the fixed return path
-...              // saved-state restoration, omitted here
-retr c14
++0x6c  cmn x0, #1       // failure sentinel, after saved-state restoration
++0x70  b.ne +0x80       // success skips failure selection and result zeroing
++0x74  mov c14, c13     // failure selects the executive epilogue
++0x78  mov x0, xzr
++0x7c  mov x7, xzr
++0x80  mov c30, c13     // both routes restore the fixed epilogue sentry
+       ...              // clear scratch registers, not saved-state reloads
++0xdc  retr c14
 ```
 
-This is an excerpt, not a complete gateway or a new image. In both negative
-images the restricted-return stub reaches the common executive epilogue at
-word 117. That epilogue clears program-accessible registers and the sidecar;
+This is an excerpt, not a complete gateway or a new image. Success returns
+to the call continuation. In both negative images, failure instead executes
+`retr c14` directly into the common executive epilogue at word 117, bypassing
+the restricted-return stub. Normal BPF exit uses that stub's `ret c30` at
+word 116. The executive epilogue clears program-accessible registers and the sidecar;
 after native return the production wrapper consumes live B exactly once.
 The software gate rejects before an object effect; a hardware tag fault is
 neither required nor reported for this decision. Trusted executive stack
