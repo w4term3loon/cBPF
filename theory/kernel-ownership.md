@@ -143,6 +143,14 @@ experiment does not establish protected BPF callback transport, original
 helper scheduling, verifier frame ownership or protection from a malicious
 callback. The permanent provider excludes reclamation consequences.
 
+These trusted callbacks deliberately use the cBPF consume-once rule: their
+first release of live A succeeds. They are not evidence that this release is
+eligible under the upstream BPF callback policy. The
+[caller/callback counterexample](acquisition-distinguishability.md#3-live-validity-does-not-determine-release-eligibility)
+shows that identical acquisition identity and liveness require different
+decisions when the current and owning frames differ. The bounded runtime stores
+no such relationship and implements no callback-exit ownership obligation.
+
 Trusted executive stack saves are not explicitly erased by the gateway.
 The scrub claim covers program-accessible registers and the sidecar, with
 trusted-stack inaccessibility retained as a premise; it does not assert

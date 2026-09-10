@@ -32,6 +32,14 @@ when both name the same object. Entries are not reused within an invocation.
 Failure prevents the attempted effect and terminates execution; trusted
 cleanup consumes remaining live entries once. No alias escapes teardown.
 
+This alternative, like the evaluated cBPF gate, represents consume-once
+validity rather than callback release eligibility. To express the repaired
+upstream callback rule it would also need each acquisition's ownership domain,
+the current domain or an equivalent eligibility fact, plus callback-local live
+obligations checked at exit. The
+[caller/callback counterexample](../../theory/acquisition-distinguishability.md#3-live-validity-does-not-determine-release-eligibility)
+shows why the live bit alone is insufficient; no such extension is implemented.
+
 Both designs assume correct provider assignment, protected state, synchronous
 non-reentrant operation, correct effects and complete mediation. Spatial
 allocation lifetime and ownership's permanent baseline reference remain
@@ -79,6 +87,7 @@ interpreter, concurrency, cross-invocation reuse or profile-composition result.
 | Access stays inside selected `S` | Descriptor bounds/permission check at every access. | Exact grant; architectural check on the actual capability operand. | A wrong runtime offset is contained under either check. Wrong grant assignment is not; provider facts remain trusted. |
 | Scalars cannot fabricate a right | Protected shadow tags and mediated copies/spills. | Architectural tags, monotonic derivation, canonical ownership membership. | Neither prevents a trusted component issuing the wrong right. Metadata and transfer paths must remain protected. |
 | Consumed A rejects; B remains live | Per-entry live bit checked before effects. | Private-tag state checked by the software gate. | Bounds alone do not encode acquisition validity. Correct identity/state association and ordering are required. |
+| Borrowing callback cannot release live caller-owned A | Would require owner/current-context comparison or equivalent eligibility state. | Not represented by the evaluated capability gate. | Live validity and canonical identity coincide for the permitted owner request and forbidden borrower request. |
 | Ownership rejection prevents continuation | Interpreter stops; trusted cleanup follows. | Checked gateway/epilogue or trusted callback dispatcher stops. | An unchecked entry or effect defeats mediation; architecture alone does not establish the whole path. |
 
 ## Architectural value and actual evidence

@@ -201,6 +201,15 @@ supply C callback transport. Original-path mitigation, callback-policy
 equivalence, the leak arm and reclamation remain unestablished. Independent B
 tests precision; it is not required by this CVE.
 
+The [context-sensitive counterexample](../../theory/acquisition-distinguishability.md#3-live-validity-does-not-determine-release-eligibility)
+explains the non-equivalence. A live A presents the same identity and validity
+when its owning caller or a borrowing callback requests release, but upstream
+permits the former and rejects the latter. Its decision therefore needs the
+owner/current-context relationship or equivalent eligibility information.
+Callback-local leak prevention additionally needs exit obligations. This is an
+analytical application of the existing representability criterion, not another
+control or a new theorem.
+
 ### Ownership artifact identities
 
 The source checks preceding the trusted callback witness matched all eight

@@ -1,7 +1,8 @@
 # Why the runtime must distinguish owning acquisitions
 
 This argument identifies the information required to enforce the studied
-eBPF acquisition contract. The
+eBPF acquisition contract, then applies the same criterion to the distinct
+question of callback release eligibility. The
 [design synthesis](../docs/research/related-work.md#source-lineage-and-design-rationale)
 applies the same criterion to counterfactual spatial grants. The mathematical criterion is elementary;
 the contribution is its precise application and connection to the protected
@@ -92,7 +93,55 @@ lower bound. It does not diagnose a vulnerability in a complete system.
 The two requests are alternatives: rejection of A ends that execution; B is
 not subsequently used after a trap.
 
-## 3. How the existing cBPF gate supplies the distinction
+## 3. Live validity does not determine release eligibility
+
+Acquisition-sensitive validity answers whether a particular right remains
+unconsumed. It does not, by itself, answer whether the current context may
+consume that live right. Instantiate Proposition 1 again with a domain of
+otherwise-supported release requests and the
+[repaired Linux callback policy](https://github.com/torvalds/linux/commit/9d9d00ac29d0ef7ce426964de46fa6b380357d0a).
+
+Let caller frame `F0` acquire A, so `owner(A) = F0`, and keep A live. Compare
+two alternative requests without changing A, its object or its liveness:
+
+```text
+q_owner  = release(A) while current_frame = F0
+q_borrow = release(A) while current_frame = F1, a callback borrowing A from F0
+```
+
+An observation restricted to A's canonical identity and current validity is
+equal for both requests: `(A, live)`. Object identity, bounds, aggregate
+reference count and containing program invocation can also be held equal.
+Yet the required decisions differ. The owning caller may perform its ordinary
+release, while the repaired callback rule rejects the borrowing callback's
+first release of that caller-owned reference. Therefore identity plus liveness
+violates condition (1) for this policy.
+
+| Requested situation | Identity / liveness | Context relationship | Required upstream decision or obligation |
+|---|---|---|---|
+| Caller `F0` releases its A | A / live | `current = owner = F0` | Permit the ordinary release |
+| Callback `F1` releases borrowed A | A / live | `current = F1`, `owner = F0` | Reject; the first release is already ineligible |
+| Callback `F1` releases callback-local B | B / live | `current = owner = F1` | Permit; B must be discharged before callback exit |
+| Either context releases consumed A | A / consumed | Any | Reject because acquisition validity has ended |
+
+The enforcement representation must therefore expose enough protected or
+trusted context to distinguish the current ownership domain from the
+acquisition's ownership domain, or an equivalent release-eligibility fact.
+This could be verifier frame state, runtime owner/context identities, or a
+precomputed eligibility token; the argument does not select an encoding or a
+minimum amount of metadata. Callback-local leak prevention additionally needs
+the live obligations owned by the callback to be checked at callback exit.
+That exit obligation is separate from deciding one release request.
+
+The current cBPF gate consults canonical acquisition identity and liveness but
+no callback-frame ownership relationship. It consequently implements
+consume-once validity and permits the first consume of any live represented
+acquisition. This is an explicit scope difference, not evidence of a defect:
+protected BPF callbacks are outside its admitted grammar. No callback policy is
+implemented or experimentally evaluated here. This section is one application
+of Proposition 1, not a new general theorem.
+
+## 4. How the existing cBPF gate supplies the distinction
 
 The conditional [kernel/model mapping](kernel-ownership.md) already identifies
 acquisition `i` with private cell `i-1`. For cell index `j`, write `v_j` for
@@ -116,17 +165,18 @@ requests in Corollary 1, under the existing freshness and mapping premises.
 | Obligation | Existing source and evidence | Limit |
 |---|---|---|
 | Bind the requested alias to its acquisition | [`cbpf_gate_impl`](../linux/ownership/cbpf_runtime.c), canonical-view search, lines 133–140; protected ownership execution and boundary controls full-capability A/B transport | Correct protected state, membership and transport remain premises of the mapping. |
-| Consult that acquisition's current validity | Same resolver checks the private object tag before the load, lines 138–144; ownership boundary controls consumed-copy/spill checks | Rejection is observed in trusted init-only resolver calls, not invalid native BPF. |
+| Consult that acquisition's current validity | Same resolver checks the private object tag before the load, lines 138–144; ownership boundary controls consumed-copy/spill checks and the synthetic native containment trace | Rejection is observed in trusted fixtures, not verifier-admitted invalid BPF. |
 | Preserve independently live B | [`cbpf_consume`](../linux/ownership/cbpf_runtime.c), selected-cell tag clear before decrement; ownership boundary controls `ab_spill` and `ab_alternate` return 42 | The accepted native controls contain no stale A use. |
 | Ensure every supported effect uses this decision | Fixed gates and bounded native path in the [mapping](kernel-ownership.md) and [native review](../evidence/current/ownership-closure/README.md) | Decision representability alone proves no compiler/kernel refinement or whole-kernel isolation. |
 
-These observations are complementary, not one combined execution of the two
-alternative requests.
+The later synthetic native fixture combines supported B use with an alternative
+stale-A request, terminal return and cleanup. It remains a fixed trusted
+fixture rather than verifier-admitted invalid BPF.
 The existing induction establishes protocol preservation under its premises;
 the existing object-wide-consumption mutant demonstrates one failed design.
 Corollary 1 instead excludes the defined class of indistinguishable observers.
 
-## 4. Acquisition-sensitive validity
+## 5. Acquisition-sensitive validity
 
 Runtime enforcement of the studied eBPF acquisition contract requires the
 gate to distinguish a consumed right from an independently live acquisition
@@ -156,7 +206,7 @@ bounds do not encode acquisition consumption, and acquisition validity does
 not establish correct spatial assignment. The separate [spatial native witness](../docs/results/spatial-native-result.md)
 addresses native correspondence for one spatial program.
 
-## 5. Failure precision without another experiment
+## 6. Failure precision without another experiment
 
 The acquire branch checks arguments, capacity, and both exact capability
 constructions before `refcount_inc`, cell/view publication, and `acquired++`

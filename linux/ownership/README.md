@@ -16,6 +16,11 @@ acquisition-preserving alias transport and ordered consumption as the concrete
 design obligations. The [software comparison](../../docs/research/capability-comparison.md)
 shows that protected descriptors can express the same policy. CHERI protects
 the capability representation; trusted software still maintains liveness.
+The [caller/callback counterexample](../../theory/acquisition-distinguishability.md#3-live-validity-does-not-determine-release-eligibility)
+shows the boundary of that result: identity plus live validity cannot decide
+whether a borrowing callback may release a caller-owned right. This runtime
+stores no owner/current-frame relation and implements no callback-exit
+obligation.
 
 The target is runtime enforcement of the existing
 [Linux 6.7 kfunc ownership contract](https://docs.kernel.org/6.7/bpf/kfuncs.html#kf-release-flag).

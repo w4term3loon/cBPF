@@ -209,7 +209,8 @@ different outcomes. If both contexts expose only an eight-byte grant and no
 consulted metadata records logical size, a downstream bounds decision cannot
 recover that distinction. Exact logical bounds preserve it; a protected
 length descriptor could also do so. This is a counterfactual argument, not an
-executed padding access.
+experimental inference; the selective matrix separately executes the padding
+contrast.
 
 | Reusable finding | Knowledge established and discriminating evidence | Insufficient representation |
 |---|---|---|
@@ -217,6 +218,15 @@ executed padding access.
 | An object differs from an acquisition. | A and B designate one object but require independent consume decisions; B reads 42 after A is consumed. | Object-only identity invalidates both rights or permits stale A; aggregate reference counts cannot select the live right. |
 | Preserved identity needs current validity. | Copies/spills retain A's tagged canonical identity after consumption, while protected validity makes its next use reject. | Immutable identity without associated validity cannot distinguish histories in which that same identity is live or consumed. |
 | Rejection needs a defined execution boundary. | Stale rejection skips the remaining native effect and trusted cleanup consumes B exactly once. | Preventing one object effect without terminal continuation and obligation accounting leaves later effects or leaks unresolved. |
+
+Current validity is still narrower than contextual release eligibility. The
+[caller/callback counterexample](../../theory/acquisition-distinguishability.md#3-live-validity-does-not-determine-release-eligibility)
+holds one acquisition's identity and liveness fixed: its owner may release it,
+while a borrowing callback may not. Enforcing the upstream rule additionally
+requires an owner/current-context relationship or equivalent eligibility fact;
+callback-local leak prevention also requires exit obligations. cBPF implements
+neither callback rule. This sharpens the boundary of the third finding without
+adding an implementation result or new general theorem.
 
 Every row depends on trustworthy assignment, protected state where required,
 actual operand/gate use, ordered effects and terminal handling. These are

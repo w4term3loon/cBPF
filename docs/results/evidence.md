@@ -49,6 +49,7 @@ builds and offline runs of both bounded kernel profiles with the clean image.
 | Logical extent discriminator | Logical size 7, stride 8, exact capability length 7; inspected byte-six increment 41→42 and six unchanged logical bytes. | Construction discrimination and valid native correspondence; no padding access or bounds-fault observation. |
 | Selective spatial matrix | Thirty matched load/store observations: 22 permits and 8 Morello bounds faults across exact-7, stride-8 and both-slot-16 roots. | Selected synthetic native enforcement through the production provider; no verifier-admitted invalid eBPF or original-CVE execution. |
 | Acquisition distinguishability argument | Object attributes and aggregate counts cannot distinguish consumed A from live B; immutable identity also requires associated validity. | A necessary observation criterion for runtime enforcement of the existing acquisition contract. |
+| Release-eligibility counterexample | One live A has identical identity/liveness when released by its owning caller or a borrowing callback, but the upstream decisions differ. | Analytical requirement for owner/current-context information; no callback implementation, experiment or new theorem. |
 | Ownership CVE case | Conditional repeated-release argument for CVE-2022-50650; two projected model/host controls, four matches. | A named-CVE causal mapping and bounded software checks, with prior ownership boundary controls mechanism evidence; no original callback/CVE execution. |
 | Trusted callback witness | Two kernel C callback controls preserve context and capability identity; repeated release is rejected, while independent B reads 42. | Actual trusted callback transport through the existing production gate; no BPF callback, original-CVE path or hostile-callback isolation. |
 | Synthetic native ownership trace | Positive, stale-read and repeated-release fixtures traverse restricted entry, transport, production gate, epilogue and cleanup; B reads 42 before both negative rejections and refs end at 1. | Integrated production-path mechanism evidence from fixed trusted native fixtures; not normally verified stale eBPF or the original callback path. |
@@ -142,6 +143,14 @@ terminal continuation and cleanup of B. The matching verifier programs remain
 load-only; their argument-shape diagnostics are not treated as ownership-rule
 evidence. This strengthens the production-path mechanism observation without
 turning it into original-CVE or verifier-admitted stale-BPF execution.
+
+The [release-eligibility analysis](../../theory/acquisition-distinguishability.md#3-live-validity-does-not-determine-release-eligibility)
+separately shows why this consume-once result cannot implement the upstream
+callback rule by itself. Identity plus live validity answers whether A has been
+consumed; owner/current-context information is additionally required to decide
+whether a borrowing callback may consume live A. Callback-local leak checking
+adds an exit obligation. This is a counterexample over policy observations,
+not another runtime result.
 
 ## Historical ownership evidence
 

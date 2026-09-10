@@ -49,6 +49,10 @@ callbacks separately add callback/context transport. The original vulnerable
 BPF/helper path is unexecuted. The studied policy permits one valid consume,
 whereas the upstream rule forbids a callback's first release of a caller-owned
 reference and separately requires callback-local acquisitions to be discharged.
+The [context counterexample](../theory/acquisition-distinguishability.md#3-live-validity-does-not-determine-release-eligibility)
+shows that acquisition identity and liveness alone cannot express that rule:
+the decision also needs the acquisition-owner/current-context relationship or
+an equivalent eligibility fact.
 
 ## 3. Why the small examples answer the stated question
 

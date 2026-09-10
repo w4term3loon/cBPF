@@ -165,6 +165,13 @@ rejects and independent B remains readable. It does not execute the original
 BPF/helper path. AEE's demonstrated spatial coverage cannot be assumed to cover
 this ownership defect merely because both concern verifier state.
 
+The [release-eligibility counterexample](../../theory/acquisition-distinguishability.md#3-live-validity-does-not-determine-release-eligibility)
+holds a live acquisition's identity and state fixed while changing only whether
+its owning caller or a borrowing callback requests release. Different required
+decisions show that acquisition validity is insufficient for the upstream
+context policy. This is an analytical boundary, not a callback implementation
+or an additional experiment.
+
 The [software comparison](capability-comparison.md) explains how protected
 shadow tags and descriptors can enforce the same abstract policies.
 The [related-work comparison](related-work.md#defensible-positioning-and-present-evidence) locates the bounded design contribution.
