@@ -69,15 +69,11 @@ runtime defense after a verifier failure. Protected ownership execution and boun
 [protected ownership path](../../linux/ownership/README.md) and
 [kernel/model mapping](../../theory/kernel-ownership.md).
 
-The [spatial native witness result](spatial-native-result.md) adds a fresh linked and booted spatial kernel to
-spatial provider reduction's earlier object-build result. The returned capability has tag 1, sealed 0,
-base/cursor equal the selected value, length 8, and
-`LOAD | STORE | GLOBAL` permissions. The held program's complete retrieved
-native image matches its accepted certificate. Linked inspection connects
-the reduced provider to the gateway return and the two native accesses.
-RDDC remains vmalloc-wide, and the gateway retains broader authority; this
-single witness does not establish all-program mediation or independent
-hardware attestation. Spatial native witness performs no out-of-bounds access or CVE rerun.
+The canonical spatial accounts are the [initial eight-byte witness](spatial-native-result.md),
+[seven-byte code-to-native walkthrough](logical-extent.md) and
+[synthetic selective matrix](spatial-selectivity.md). They retain separate
+execution identities. Their source/native correspondence and limitations
+are explained there; this index adds no observations.
 
 ## CVE and neighboring-value evidence
 
@@ -139,8 +135,8 @@ path or establish its full ownership policy.
 The [synthetic native ownership trace](ownership-native-trace.md) adds the
 previously separate native links in one bounded execution: A/B acquisition,
 alias spill/reload, A consumption, successful B read, stale gate rejection,
-terminal continuation and cleanup of B. The matching verifier programs remain
-load-only; their argument-shape diagnostics are not treated as ownership-rule
+stopped continuation and cleanup of B. Separate existing verifier controls remain
+admission-only; their argument-shape diagnostics are not treated as ownership-rule
 evidence. This strengthens the production-path mechanism observation without
 turning it into original-CVE or verifier-admitted stale-BPF execution.
 

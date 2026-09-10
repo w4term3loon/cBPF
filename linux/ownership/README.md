@@ -33,28 +33,9 @@ production mechanisms. **The original callback/CVE path remains unexecuted.** Th
 with a permanent baseline reference; the studied property is acquisition
 use-after-release protection, not heap use-after-free prevention.
 
-Protected ownership execution connects a normal-verifier-accepted `SCHED_CLS` program to a small native
-Morello compiler and private acquisition gates. The original protected ownership execution control
-acquires A and B, copies and spills A, consumes A, reads B, consumes B, and
-returns the scalar 42. **Protected ownership execution passed on 6 September 2026:** the kernel built, and
-the first guest execution completed with two acquisitions, two releases,
-B's successful read after A consumption, and baseline reference count one.
-The [retained evidence](../../evidence/current/ownership/README.md) includes
-the 660-byte native image, ordered gate trace, and source/assembly reviews.
-
-**Ownership boundary controls passed on 6 September 2026:** its [closure receipt](../../evidence/current/ownership-closure/README.md)
-adds an alternate native A/B arrangement, NULL and terminal-failure paths,
-three trusted production-resolver checks, and three unexecuted verifier
-rejections. [The kernel/model mapping](../../theory/kernel-ownership.md)
-states their precise coverage and remaining premises.
-
-**The synthetic native ownership trace passed on 10 September 2026:** one
-positive and two negative fixed trusted fixtures use the actual restricted
-emitter, entry, gateway, production gate, epilogue and cleanup wrapper. Both
-negative fixtures read B=42 before presenting consumed A, reject at PC 17,
-skip the later program effect and clean B once. Each ends with two acquisitions,
-two total releases, one cleanup release and baseline references equal to one.
-The fixtures are explicitly not normally verified eBPF.
+The mechanism below defines the production boundary of this bounded prototype.
+Normally verified controls and fixed trusted native fixtures exercise it through
+separate routes; the evidence index follows the mechanism description.
 
 ## Boundary and representation
 
@@ -120,6 +101,17 @@ containment. This bounded native path does not prove arbitrary verifier/JIT
 fault tolerance, whole-kernel isolation, or composition with the spatial path.
 
 ## Source and reproduction
+
+| Evidence route | Canonical record and scope |
+|---|---|
+| Normally verified ownership controls | [Initial A/B execution](../../evidence/current/ownership/README.md) and [boundary controls](../../evidence/current/ownership-closure/README.md): valid transport, independent B, NULL and scalar-failure cleanup |
+| Fixed trusted native fixtures | [Integrated stale-read/repeated-release trace](../../docs/results/ownership-native-trace.md): production-gate rejection, terminal native return and exactly-once cleanup; not normally verified stale BPF |
+| Trusted executive callbacks | [Callback record](../../evidence/current/ownership-callback/README.md): context/alias transport, not protected BPF callbacks or the original CVE |
+
+The [implementation inventory](../../docs/research/implementation-scope.md)
+separates the acquisition mechanism, inherited platform, embedded controls and
+observation/build tooling, with a reproducible core-size estimate. It counts
+the synchronous invocation/cleanup wrapper as part of the runtime boundary.
 
 The base is official Morello Linux commit
 `b96da308ef1a054c3c04c9445e5ed70259b7c397`. `platform.patch` extracts only

@@ -146,7 +146,7 @@ Atomic model transitions do not prove compiled ordering or native mediation.
 The kernel correspondence instead inspects the bounded grammar, transport,
 gate and cleanup. The [synthetic native trace](../results/ownership-native-trace.md)
 now joins stale rejection to terminal return and cleanup in fixed trusted
-fixtures; it is not invalid native BPF. Trusted callback witness records two trusted
+fixtures; it is not normally verified stale BPF. Trusted callback witness records two trusted
 callback controls within persistent invocations. It supports those transports
 and effects, not every callback trace or protection from executive C that
 can modify private state. [Claim/evidence scopes](claim-evidence.md#result-quantifiers)

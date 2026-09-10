@@ -107,12 +107,9 @@ the Linux array-provider/native-access mapping and the bounded kfunc protocol.
 
 ## Defensible positioning and present evidence
 
-The two new native studies below have published original receipts. Spatial
-same-storage and linked-PC/operand checks now pass, including a new ten-control
-admission edition. Ownership adds a complete fixed-image inspection and focused
-external instruction/target checks over the retained images. These bounded
-synthetic results are available for independent assessment, but no independent
-external reproduction, general translation proof or complete mitigation follows.
+The contribution is the explicit interface binding and its discriminating
+implementation evidence, not the existence of capability bounds or reference
+tracking. The canonical result pages below retain execution and inspection details.
 
 | Concrete contribution | Closest established result | Additional design obligation and evidence limit |
 |---|---|---|
@@ -124,40 +121,21 @@ identities and descriptors that can enforce the same abstract policy under
 matched scope and premises. CHERI's representation is the studied realization,
 not a demonstrated requirement for that policy.
 
-Exact bounds trade generality for precision: the selected-value provider
-rejects unsupported profiles and inexact construction. Its correct association
-of provider, key, layout and retained allocation root remains trusted. The
-native witness connects the return in `c0`, a full-capability copy into `c7`,
-and two accesses through unchanged `c7`; broader gateway and RDDC authority
-still exist. The [historical causal comparison](../results/causal-review.md#what-the-historical-comparisons-establish)
-shows why constructing an exact candidate is insufficient when a broader
-capability is actually returned.
+Exact construction, correct assignment, full-capability transport and mediated
+effects impose concrete costs and trust obligations. The
+[implementation inventory](implementation-scope.md) separates policy-specific
+work from inherited platform/JIT mechanisms and test support. The
+[logical-extent walkthrough](../results/logical-extent.md#recorded-code-to-native-walkthrough)
+and [ownership trace](../results/ownership-native-trace.md) follow these obligations
+to the inspected native operations.
 
-Ownership instead preserves an existing acquisition identity across copies
-and a logical eight-byte spill represented by a sixteen-byte native sidecar.
-The gate compares the complete public view with its canonical acquisition and
-checks protected validity before an object effect. Consumption clears the
-private stored object capability; public aliases retain their tags and fail
-the gate's liveness check. Two private cells, fixed gates, restricted transport
-and no cell reuse during an invocation constrain this implementation. The
-sidecar is an implementation choice, not a new aliasing mechanism or global
-capability revocation.
-
-[ownership CVE case](../results/ownership-cve-case.md) adds a conditional
-CVE-derived ownership case and the integrated trusted-native production-path
-trace. It does not execute the original callback path or equate consume-once
-validity with upstream callback release eligibility. [trusted callback witness](../../evidence/current/ownership-callback/README.md)
-adds actual trusted C callback/context transport, not protected BPF callback
-execution. The spatial CVE comparison remains an archived metadata-read-stage
-result, while the new selective matrix is a current non-CVE runtime control.
-These examples establish relevance at different evidence levels;
-neither CVE label is needed to state the contribution.
-The [causal analysis](../results/causal-review.md) locates the supporting evidence.
+The [CVE causal mapping](../results/causal-review.md) supplies bounded relevance:
+an archived spatial metadata-read stage and projected repeated-consumption
+containment. Current synthetic controls do not reproduce either original
+vulnerable BPF path. Neither CVE label is needed to state the contribution.
 Composition, comparative performance/security, smaller trust and universal
-verifier-fault tolerance remain unestablished. The HIVE update is an author
-report distinct from its 2024 paper; Morello's project page supplies
-architectural context. The comparison is limited to the cited systems and versions; it is not an
-exhaustive survey.
+verifier-fault tolerance remain unestablished. This is a comparison of the
+cited systems and versions, not an exhaustive survey.
 
 ## Direct predecessor and revocable proxies
 

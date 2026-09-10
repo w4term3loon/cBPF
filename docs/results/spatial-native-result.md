@@ -20,7 +20,7 @@ The eight-byte experiment recorded here has logical size equal to stride. A
 constructor that incorrectly used stride would pass this witness. Exact
 length telemetry discriminates this grant from allocation-wide authority,
 and inspection connects the grant to actual operands. Padding exclusion is
-therefore a source-inspected requirement, not a current observed result.
+therefore not an observation in this initial eight-byte witness.
 The subsequent [logical extent discriminator](logical-extent.md) passed with
 size seven and stride eight, reusing the clean-replay kernel. It supplies
 construction discrimination and valid byte-six use, with separate receipts.

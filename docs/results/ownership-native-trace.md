@@ -31,6 +31,35 @@ stale read performs no second read, and the repeated release performs no
 second decrement. B's read of 42 before rejection rules out indiscriminate
 object-wide invalidation.
 
+## Native route behind the observations
+
+The fixed negative images preserve A at native word 67 (`str c19,[csp,#0]`)
+and reload it at word 79 (`ldr c21,[csp,#0]`), then reload A again at word 93
+for the stale request. These are full sixteen-byte capability operations for
+the supported logical eight-byte spill. The gate consults canonical identity
+and private validity; consuming A does not erase its public aliases' tags.
+
+The [complete linked inspection](../../evidence/current/ownership-native-trace/inspection/native-review.md)
+follows failure through the gateway:
+
+```text
+cmn x0, #1       // failure sentinel
+b.ne ...         // success skips failure selection
+mov c14, c13     // failure selects the fixed return path
+...              // saved-state restoration, omitted here
+retr c14
+```
+
+This is an excerpt, not a complete gateway or a new image. In both negative
+images the restricted-return stub reaches the common executive epilogue at
+word 117. That epilogue clears program-accessible registers and the sidecar;
+after native return the production wrapper consumes live B exactly once.
+The software gate rejects before an object effect; a hardware tag fault is
+neither required nor reported for this decision. Trusted executive stack
+copies are not all explicitly erased and remain outside program authority.
+
+## Assurance and revalidation
+
 Three assurance sources must be distinguished. The production emitter
 re-encodes and compares every word using its own encoder: internal consistency,
 not independent decoding. The current external checker uses fixed-profile

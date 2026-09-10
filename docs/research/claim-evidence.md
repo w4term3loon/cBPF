@@ -6,13 +6,9 @@ inspected implementation and current or historical observations. The
 source editions. The clean dependency image has a [fresh bounded native replay](../reproduction/native-replay.md).
 Independent external reproduction is not established.
 
-The September 10 spatial and ownership extension artifacts are now published.
-Spatial backing-address/operand/PC correspondence now passes focused linked
-checks and adversarial host regressions; a new run adds store-admission coverage.
-Ownership's complete fixed-image checks, focused linked terminal-path checks
-and explicit internal native inspection are also retained. The two bounded
-synthetic results are now recheckable; publication integrity alone, encoder
-self-check and internal inspection are not independent external reproduction.
+The published packages are recheckable. The tables distinguish runtime
+observations from internal inspection, focused receipt checks and conditional
+arguments; none establishes independent external reproduction.
 
 ## Findings at a glance
 
@@ -27,22 +23,11 @@ The detailed premise map below connects each finding to its supporting record.
 The [reproduction guide](../reproduction/README.md#current-sources-and-software-controls)
 identifies the sources, software controls and locally replayed environment.
 
-### Ownership evidence chain
-
-| Link | Observed evidence | Inspected or assumed boundary |
-|---|---|---|
-| Native entry | Four verifier-accepted controls and three fixed trusted trace fixtures execute | Restricted roots and fixed entry/return path; trace fixtures are not verified BPF |
-| Alias transport | Full-capability A spill/reload; B reads 42 before stale rejection | Preservation across all admitted templates remains a correspondence obligation |
-| Stale check | Tagged/canonical A with private tag zero rejects at PC 17 | Production gate; matching BPF negatives remain load-only |
-| Terminal exit | Both negative fixtures skip their PC-19 continuation | Common production failure/epilogue path |
-| Cleanup | Wrapper consumes live B once; acquired=2, released=2, cleanup=1, refs=1 | Trusted synchronous teardown, not concurrent reclamation |
-
-These rows now form one observed synthetic-native chain through the production
-mechanisms. They do not constitute normally verified stale BPF. The
-[native trace](../results/ownership-native-trace.md),
-[boundary records](../../evidence/current/ownership-closure/README.md) and
-[callback records](../../evidence/current/ownership-callback/README.md) retain
-their distinct scopes.
+The ordered ownership chain is explained once in the
+[native trace](../results/ownership-native-trace.md). Earlier
+[boundary](../../evidence/current/ownership-closure/README.md) and
+[callback](../../evidence/current/ownership-callback/README.md) controls retain
+their separate scopes; retelling or rechecking the trace adds no execution.
 
 Evidence labels: **Conditional argument** = conditional mathematical argument; **Inspection** = inspected
 source/native implementation; **Current observation** = retained cBPF observation; **Historical observation** = archived
@@ -104,7 +89,7 @@ a smaller trusted base or stronger actual-program security.
 | Allocation containment does not imply value containment. | **Conditional argument:** selected interval is a strict subset of the allocation. | [Counterexample][spatial-counterexample]: `[16,17)` is inside allocation `[0,128)` but outside value `[32,40)`. | A mathematical insufficiency result. |
 | Checked construction targets the intended value under the assignment premises. | **Trust:** intact map/provider association, layout, key semantics, allocation lifetime, non-wrapping arithmetic, and correct initial root. **Check:** plain ARRAY, zero flags, expected operations, no record, retained-root shape, and key range. | **Inspection:** [reduced patch][spatial-patch], `cbpf_map_area_alloc` and `cbpf_array_value_cap`. The root is constructed from executive DDC after ordinary allocation. | Checks constrain representation; they do not authenticate semantic assignment or establish allocator-minted provenance. Concurrent free/substitution is outside the lemma. |
 | Lookup supplies the logical value's exact bounds and scalar-data permissions. | **Check:** exact construction succeeds; base/address equal selected value, length equals `map->value_size`, and permissions equal `LOAD\|STORE\|GLOBAL`. | **Inspection:** `cbpf_array_value_cap` derives from the retained root; logical size excludes stride padding. Unsupported/inexact construction returns NULL. **Current observation:** [selective spatial enforcement](../results/spatial-selectivity.md) records the production exact-seven root beside separately derived stride-eight and both-slot-sixteen controls. | Exact-seven rejects padding, adjacent-value and crossing accesses while valid controls complete. This is a fixed trusted native fixture; complete mediation and invalid-BPF execution remain unestablished. |
-| The two inspected native value accesses use the lookup-returned authority. | **Inspection:** lookup handoff, full-capability transport, final native addressing, and absence of an alternate root for these two accesses. **Trust:** live assignment, executable-image integrity, kernel/compiler/architecture, and synchronous execution. | **Current observation / Inspection:** [spatial native witness receipt][spatial-witness-receipt] binds one normally verified 14-instruction program, all 392 retrieved native bytes, accepted certificate, linked provider/gateway review, and one execution. Native word 72 copies `c0` to `c7`; words 75/77 load/store through unchanged `c7`. Key 1 changes 41→42, with computed return and readback 42. | Observed for one inspected program. **Open obligation:** complete mediation for every admitted program remains unproved. RDDC is vmalloc-wide and the gateway retains broader DDC bounds. Logs report constructed operands, not independent hardware attestation. No out-of-bounds access or CVE was rerun. |
+| The two inspected native value accesses use the lookup-returned authority. | **Inspection:** lookup handoff, full-capability transport, final native addressing, and absence of an alternate root for these two accesses. **Trust:** live assignment, executable-image integrity, kernel/compiler/architecture, and synchronous execution. | **Current observation / Inspection:** [logical-extent receipt](../../evidence/current/logical-extent/README.md) binds one normally verified 14-instruction program, all 392 retrieved native bytes, accepted certificate, linked provider/gateway review, and one execution. The [canonical walkthrough](../results/logical-extent.md#recorded-code-to-native-walkthrough) follows words 72/75/77 and the key-1 byte effect. | Observed for one inspected program. **Open obligation:** complete mediation for every admitted program remains unproved. RDDC is vmalloc-wide and the gateway retains broader DDC bounds. Logs report constructed operands, not independent hardware attestation. This witness executes no out-of-bounds access or CVE. |
 | Exact bounds mattered for selected adjacent-value loads/stores. | **Trust:** archived experiment identities, telemetry, correct live-element assignment, checked-image integrity, and retained correspondence conditions. | **Historical observation:** [archived store][v5-exact] at `[16,24)` and [archived load][v6-exact] at `[16,20)` faulted with exact 16-byte bounds; broader controls completed. [Four-case matrix][spatial-matrix] includes valid load `[8,16)` and store `[12,16)`. | Two historical epochs, widths 8 and 4, with both console blocks now [retained](../results/earlier-findings.md#adjacent-value-controls-and-assignment-limits). Direct live operand correspondence and complete production refinement remain unestablished. |
 | Exact authority contained the evaluated CVE-2021-3490 metadata-read stage. | **Trust:** archived pinned kernel/workload, root assignment, native correspondence, and telemetry. | **Historical observation:** [exact log][provider-exact] reports bounds fault at BPF 45/native word 122 with unchanged sink; [broad][provider-broad] and [allocation-wide][provider-wide] logs record metadata in the sink; [valid exact control][provider-valid] returns 42. | The target is inside the allocation but outside the selected value. This is an archived stage-specific result, not a repair of the [verifier ALU32 defect][cve-fix] or complete CVE prevention. The wide receipt has `binding_valid=0`; the broad return record selects `authority=broad_ddc`. |
 

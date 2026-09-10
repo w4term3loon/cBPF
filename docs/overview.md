@@ -2,30 +2,47 @@
 
 cBPF asks how a capability-aware runtime can preserve the unit of authority granted by an eBPF interface through native execution. A map lookup grants **one selected logical value**, whose extent can be smaller than its storage stride. An owning acquisition grants **one separately consumable right**, whose validity can end while the object remains live.
 
-The study implements these mappings in two separate bounded Linux/Morello profiles in emulation. The normal verifier remains enabled. Construction, native transport and checks at the covered effects show how accepted executions represent the interface contract; the evaluation does not measure tolerance of verifier defects.
+The study implements these mappings in two separate bounded Linux/Morello
+profiles in emulation. Ordinary verifier safety checks remain active.
+Normally verified positive executions and separately labelled synthetic native
+controls establish different parts of the result. Neither measures tolerance
+of arbitrary verifier defects.
 
-Evidence status: both original native-extension packages are published.
-The spatial results now pass backing-address, linked-instruction, calibration
-and completion checks, with ten admission-only load/store controls in a new
-run of the unchanged kernel. Ownership's retained images now pass complete
-fixed-image byte/operand/target checks and focused linked terminal-path checks,
-with an explicit internal native inspection. Both bounded synthetic results
-are published and recheckable; independent external reproduction, general
-translation correctness and complete mediation remain unestablished.
+## The runtime solution before its evaluation
+
+| Stage | Selected-value profile | Acquisition profile |
+|---|---|---|
+| Construction | Retain allocation authority; select the live value using key and stride; derive exact bounds using `map->value_size` | Allocate an invocation-local acquisition cell and canonical public view before the provider increment |
+| Transport | Inherited capability-aware JIT/gateway preserves the full lookup return to the covered memory operand | Restricted compiler/gateway preserves full acquisition capabilities through moves and a 16-byte sidecar for the supported logical spill |
+| Enforcement | Hardware checks the full access interval against the actual capability, together with permissions and page conditions | Software gate checks exact canonical membership and private validity before reading or consuming the object right |
+| Terminal handling | Failed construction returns no usable grant. The inherited BPF exception path redirects covered faults to a zero-result epilogue | Gate failure bypasses continuation; the common epilogue scrubs program-accessible aliases; the wrapper consumes remaining live cells once |
+
+Spatial root-summary metadata assists profile admission, while a separate
+JIT analysis selects capability lowering. The provider does **not** construct
+bounds from a verifier-predicted numeric range. The
+[recorded code-to-native walkthrough](results/logical-extent.md#recorded-code-to-native-walkthrough)
+names the actual producer, fields and consumers.
+
+The [implementation inventory and size estimate](research/implementation-scope.md)
+separates inherited mechanisms, new enforcement, integration and supporting
+machinery. The spatial matrix's test-only fault recovery is outside the
+production solution. Ownership's provider is synthetic and kfunc-shaped;
+its synchronous invocation/cleanup wrapper is nevertheless part of the
+evaluated runtime boundary. No composition of the two profiles is claimed.
 
 ## 1. Array maps: which bytes does a lookup authorize?
 
 A lookup selects one logical value inside a larger allocation. Allocation-wide bounds may also admit another value, padding or metadata. The provider must therefore use storage stride to locate the value and logical size to bound its returned capability. Correct construction is useful only if the native access uses that capability.
 
-The current construction witness records a seven-byte capability for a
-seven-byte value in an eight-byte stride. A subsequent
-[selective matrix](results/spatial-selectivity.md) uses that production grant
-and matched trusted eight- and sixteen-byte controls. Across loads and stores,
-the exact grant permits valid accesses and faults on padding, the next value
-and an access that starts inside but crosses the logical boundary. This is a
-fixed trusted native fixture, not execution of invalid eBPF.
+The [key-one construction/use witness](results/logical-extent.md) records
+length seven at stride eight and one normally verified byte-six increment.
+The separate [key-zero selective matrix](results/spatial-selectivity.md)
+compares that provider policy with wider trusted controls: 22 operations
+complete and eight selected operations fault in each recorded 30-case matrix.
+This is synthetic native validation, not execution of invalid eBPF.
 
-The [spatial argument](../theory/spatial.md) gives conditional interval containment. [Logical extent](results/logical-extent.md) records the current discriminator; the [native account](results/spatial-native-result.md) supplies its earlier correspondence context.
+The [spatial argument](../theory/spatial.md) gives conditional interval containment;
+the result pages retain the observations, instruction correspondence and limits.
 
 ### Spatial CVE evidence
 
@@ -85,3 +102,8 @@ CHERI bounds, Linux ownership semantics and shared revocation state are establis
 CHERI protects encoded authority and checks its use. Software still assigns the correct object, maintains acquisition validity and ensures mediation. The profiles retain explicit provider, translation and lifetime assumptions; their composition, concurrency, heap reclamation and comparative performance are outside the findings. The [design synthesis](research/related-work.md#source-lineage-and-design-rationale) connects these choices, while the [claim map](research/claim-evidence.md) identifies their premises and evidence boundaries.
 
 The [earlier findings](results/earlier-findings.md) retain the broader prototype's experiments, formal accounts and negative results. They belong to their recorded source configurations and do not enlarge the claims of these two profiles.
+
+The current result packages are published and recheckable. Encoder self-check,
+external receipt checks and authored internal inspection provide distinct
+assurance; none proves the checker, compiler or complete runtime correct.
+Independent external reproduction remains unestablished.

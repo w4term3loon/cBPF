@@ -18,13 +18,8 @@ Spatial provider reduction extracts the defensive array-map mechanism into cBPF.
 root construction, checked value narrowing, cleanup/accounting, and the existing
 Morello lookup handoff. It imports no exploit fixture or runtime test matrix.
 
-On 6 September 2026, patch application and compilation of all three changed
-kernel objects passed in `build/spatial-check.hA1pbw`. The
-[retained receipt](../../evidence/current/spatial/manifest.json) binds the
-source, configuration, tools, and objects. Spatial provider reduction linked no Image and ran no guest.
-The later [spatial native witness](../../docs/results/spatial-native-result.md), also on 6 September 2026,
-used a fresh linked kernel and one benign native execution. These are separate
-studies and receipts.
+The [engineering inventory](../../docs/research/implementation-scope.md) distinguishes
+this provider delta from inherited compilation/transport and supporting fixtures.
 
 ## Mechanism and argument
 
@@ -55,28 +50,19 @@ The mechanism establishes no ownership composition or verifier-failure result.
 
 ## Spatial native witness
 
-The observation overlay adds 16 logging lines at two sites and changes no
-enforcement rule. A normal-verifier-accepted socket filter contains 14 BPF
-instructions and 392 native bytes. It selects key 1 in a plain two-entry
-array with seven-byte values and eight-byte stride, reads byte six, adds one, and stores through the same
-returned capability. One execution changes 41 to 42; computed return and
-ordinary readback both equal 42.
+The [canonical logical-extent walkthrough](../../docs/results/logical-extent.md)
+follows the normally verified key-one program from source and verifier state
+through the actual JIT handoff, exact seven-byte construction, full-capability
+transport and two native byte-six operands. Its valid effect is 41 → 42;
+no padding access occurs in that execution. Construction logs and inspection
+are source-backed support, not independent hardware attestation or all-program
+mediation. The observation overlay adds 16 lines without changing enforcement.
 
-The provider record identifies map 1/key 1 and a tagged, unsealed capability
-whose base/cursor equal the selected value, length is 7, and permissions are
-`LOAD | STORE | GLOBAL` (`0x30001`). Native inspection connects the gateway's
-return in `c0` to `c7`, then the load and store through unchanged `c7`.
-The held program's complete native bytes match the accepted certificate.
-The [logical extent package](../../evidence/current/logical-extent/README.md) retains source
-identities, linked review, construction records, effects, and clean exit.
-
-This is a source/native correspondence witness under trusted provider,
-compiler/kernel/image and architecture premises. RDDC remains vmalloc-wide,
-and the gateway retains broader authority. Construction logs are not
-independent hardware attestation. The length-seven observation distinguishes
-logical size from stride. Padding accesses and bounds faults are not executed.
-The earlier eight-byte witness retains its separate receipt. The result
-establishes neither general JIT mediation nor a fresh CVE mitigation result.
+Earlier [object-build feasibility](../../evidence/current/spatial/manifest.json)
+and the [eight-byte native witness](../../docs/results/spatial-native-result.md)
+retain separate records. The former linked no kernel and ran no guest.
+The synthetic selective profile below is a further, explicitly different
+experiment, not another description of the valid key-one execution.
 
 ## Selective spatial validation profile
 
@@ -95,11 +81,14 @@ Build once, run the two-case recovery calibration, then run the 30-case matrix:
 make spatial-selectivity-kernel
 export CBPF_SPATIAL_SELECTIVITY_BUILD=/absolute/path/printed/by/the/build
 make spatial-selectivity-calibration
+export CBPF_SPATIAL_SELECTIVITY_CALIBRATION=/absolute/path/printed/by/the/calibration
 make spatial-selectivity
 ```
 
-The accompanying purecap guest submits five load-only programs to the normal
-verifier: two valid accesses and three explicit out-of-value accesses. It never
+The current purecap guest submits ten admission-only programs to the normal
+verifier: five loads and five stores, with four valid accesses and six explicit
+out-of-value accesses. The original five-load record remains a separate earlier
+run. Neither guest
 uses `BPF_PROG_TEST_RUN`; an unexpectedly admitted negative is closed without
 execution. The checker requires 22 permitted native operations, eight Morello
 bounds faults, complete fixture preservation on rejected stores, unchanged
@@ -176,6 +165,8 @@ across 21 files relative to the pinned Morello base. Keeping it as a dependency
 reduces the material imported into cBPF, not the trusted implementation size.
 The new 155-line compile checker is build/provenance support, separate from
 the 194-line kernel change; generated patch formatting is not counted twice.
+The [core inventory](../../docs/research/implementation-scope.md) gives the
+comparison baselines, function boundaries and separate supporting-code counts.
 
 [Selected historical evidence](../../evidence/prior/spatial/README.md) supports
 the original adjacent-value and CVE-2021-3490 metadata-read-stage findings.
