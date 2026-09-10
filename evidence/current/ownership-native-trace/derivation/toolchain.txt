@@ -1,0 +1,35 @@
+LLVM (http://llvm.org/):
+  LLVM version 17.0.0git
+  Optimized build with assertions.
+
+
+  Registered Targets:
+    aarch64    - AArch64 (little endian)
+    aarch64_32 - AArch64 (little endian ILP32)
+    aarch64_be - AArch64 (big endian)
+    arm        - ARM
+    arm64      - ARM64 (little endian)
+    arm64_32   - ARM64 (little endian ILP32)
+    armeb      - ARM (big endian)
+    thumb      - Thumb
+    thumbeb    - Thumb (big endian)
+    x86        - 32-bit X86: Pentium-Pro and above
+    x86-64     - 64-bit X86: EM64T and AMD64
+LLVM (http://llvm.org/):
+  LLVM version 17.0.0git
+  Optimized build with assertions.
+
+  Registered Targets:
+    aarch64    - AArch64 (little endian)
+    aarch64_32 - AArch64 (little endian ILP32)
+    aarch64_be - AArch64 (big endian)
+    arm        - ARM
+    arm64      - ARM64 (little endian)
+    arm64_32   - ARM64 (little endian ILP32)
+    armeb      - ARM (big endian)
+    thumb      - Thumb
+    thumbeb    - Thumb (big endian)
+    x86        - 32-bit X86: Pentium-Pro and above
+    x86-64     - 64-bit X86: EM64T and AMD64
+93fe6e2c30f7682aadf749b81eee6e1c2d55e3952b4b1609ee08a85d52ee2526  /opt/cheri/output/morello-sdk/bin/llvm-objdump
+7fb5c03b7148acbe5d3ec9518df182583573711e9ee821aa800b6198d167ed34  /opt/cheri/output/morello-sdk/bin/llvm-mc

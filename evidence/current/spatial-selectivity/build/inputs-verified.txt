@@ -1,0 +1,6 @@
+${SPATIAL_BUILD}/receipt/array-authority.patch: OK
+${SPATIAL_BUILD}/receipt/native-observation.patch: OK
+${SPATIAL_BUILD}/receipt/selectivity-test.patch: OK
+${SPATIAL_BUILD}/receipt/build_spatial_selectivity.executed.sh: OK
+${SPATIAL_BUILD}/receipt/source-tree.manifest: OK
+${SPATIAL_BUILD}/receipt/builder-image.txt: OK

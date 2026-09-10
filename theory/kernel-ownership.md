@@ -8,8 +8,10 @@ establishes its one protected A/B execution. Ownership boundary-control
 requirements below are distinct from observations; the
 [ownership boundary controls receipt](../evidence/current/ownership-closure/README.md)
 records their execution status and source identities. The later
-[synthetic native trace](../docs/results/ownership-native-trace.md) observes the
-stale-failure conjunction through the same production mechanisms.
+[synthetic native trace](../docs/results/ownership-native-trace.md) reports the
+stale-failure conjunction through the same production mechanisms. Its original
+artifacts are published; full native-image inspection and stronger terminal-path
+checks remain pending. The mapping below does not supply that missing validation.
 
 ## State correspondence
 
@@ -111,7 +113,7 @@ terms, both negatives finish with `n=2`, `E=1`, `D=1`, `reads=1`, `rc=1` and an
 empty live set. This is one observed realization of the transition sequence,
 not a refinement proof.
 
-Three matching BPF programs remain load-only normal-verifier controls. Their
+Three separate existing BPF programs remain load-only normal-verifier controls. Their
 argument-shape rejections establish admission behavior only and authorize no
 execution. The native fixtures are therefore synthetic trusted validation,
 not stale verifier-admitted BPF, callback execution or runtime-state injection.

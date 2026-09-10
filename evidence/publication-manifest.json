@@ -1,7 +1,7 @@
 {
   "schema": "cbpf-publication-evidence-v1",
-  "date": "2026-09-07",
-  "scope": "Privacy-redacted publication copies of retained evidence, including a separately identified native dependency replay; this inventory checks identity, not semantics.",
+  "date": "2026-09-10",
+  "scope": "Privacy-redacted publication copies of retained evidence, including separately identified native dependency replay and native-extension publications; this inventory checks identity, not semantics.",
   "identity_rule": "Original hashes are historical metadata. Publication hashes identify the shareable files. Exact originals and withheld archives were preserved privately outside the repository.",
   "files": [
     {
@@ -13,13 +13,14 @@
       },
       "availability": "publication_copy",
       "publication": {
-        "bytes": 3867,
-        "sha256": "e8d857933465e9afeea1d7378207d4076ee85cdb3856dc0662f9c691768662dc"
+        "bytes": 4886,
+        "sha256": "a5642ef21d0305fb7d09d053e96f96cb16899b4aa08478f0bd73125ec39aee17"
       },
       "changes": [
         "New publication provenance note.",
         "Publication metadata normalized; experimental observations unchanged.",
-        "Administrative bindings and editorial framing omitted; experimental observations, commands and original identities retained."
+        "Administrative bindings and editorial framing omitted; experimental observations, commands and original identities retained.",
+        "Added native-extension publication index and pending-validation scope; original experimental records unchanged."
       ],
       "original_identity_scope": "Earlier editorial publication bytes; this identity does not describe an original experiment."
     },
@@ -32,11 +33,12 @@
       },
       "availability": "publication_copy",
       "publication": {
-        "bytes": 5490,
-        "sha256": "21568235340a11391d7e86bb320a4bdf6392e6d1878660566df1eda0856ee296"
+        "bytes": 5973,
+        "sha256": "e06a1ccfb3fc722915b350e05ca43f1f6c24bc1bb0afa2bc71e9a29a46c07e27"
       },
       "changes": [
-        "Publication guide wording, titles or identity instructions updated."
+        "Publication guide wording, titles or identity instructions updated.",
+        "Indexed the two native-extension packages with their pending correspondence checks."
       ]
     },
     {
@@ -8671,6 +8673,2299 @@
         }
       ],
       "original_identity_scope": "Technical summary derived from the identified historical source records; not a byte-identical original artifact."
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/build/array-authority.patch",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/spatial-selectivity/build/array-authority.patch",
+        "bytes": 12851,
+        "sha256": "ac74717a7dbd2c61760115c1b8b719e52d27d60d02957a2b73c3ff155206c4ac"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 12851,
+        "sha256": "ac74717a7dbd2c61760115c1b8b719e52d27d60d02957a2b73c3ff155206c4ac"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/build/build_spatial_selectivity.executed.sh",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/spatial-selectivity/build/build_spatial_selectivity.executed.sh",
+        "bytes": 11744,
+        "sha256": "a95830846b7ba8f45296d6d8b5a4cdccf122e781aa1c4190ca8cb13ad633899a"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 11744,
+        "sha256": "a95830846b7ba8f45296d6d8b5a4cdccf122e781aa1c4190ca8cb13ad633899a"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/build/builder-image.txt",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/spatial-selectivity/build/builder-image.txt",
+        "bytes": 75,
+        "sha256": "96cceff529da91c1cad30eff5cff067640fbe836a2314465237755f5d08c0dad"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 75,
+        "sha256": "96cceff529da91c1cad30eff5cff067640fbe836a2314465237755f5d08c0dad"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/build/compile.h",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/spatial-selectivity/build/compile.h",
+        "bytes": 271,
+        "sha256": "6c695f13ae8761132f0eac338ffb0100575d6e0f4a1f713fddeea54ded3e5e4f"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 271,
+        "sha256": "6c695f13ae8761132f0eac338ffb0100575d6e0f4a1f713fddeea54ded3e5e4f"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/build/compiler.sha256",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/spatial-selectivity/build/compiler.sha256",
+        "bytes": 213,
+        "sha256": "33cec68829bfd8ba37c4baafc8b4bb52d136d64a4ea4f2330f241e9d7c97ec2e"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 213,
+        "sha256": "33cec68829bfd8ba37c4baafc8b4bb52d136d64a4ea4f2330f241e9d7c97ec2e"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/build/compiler.txt",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/spatial-selectivity/build/compiler.txt",
+        "bytes": 222,
+        "sha256": "fa637d12c4f5cecdca7898e378a80db8be25e70585400728f3539c6741f68ff3"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 222,
+        "sha256": "fa637d12c4f5cecdca7898e378a80db8be25e70585400728f3539c6741f68ff3"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/build/inherited-defconfig.config",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/spatial-selectivity/build/inherited-defconfig.config",
+        "bytes": 132853,
+        "sha256": "09c3ac43f9f564fe519f43d92c8583ef15fc57641db4c387d6595dfffaa61e2d"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 132853,
+        "sha256": "09c3ac43f9f564fe519f43d92c8583ef15fc57641db4c387d6595dfffaa61e2d"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/build/inputs-verified.txt",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/spatial-selectivity/build/inputs-verified.txt",
+        "bytes": 627,
+        "sha256": "38c553b826980a2f2ce3672906b32acbe949448841f67c8376ca5ddf1086f717"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 321,
+        "sha256": "bf0e7df2d11374fa1d5eb50382abe51668d1e42477b618273a8f41985fd60663"
+      },
+      "changes": [
+        "Personal source/cache/run paths replaced with role markers; observations and embedded historical digests unchanged."
+      ]
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/build/inputs.sha256",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/spatial-selectivity/build/inputs.sha256",
+        "bytes": 999,
+        "sha256": "be6b150ba3583e5f9be93c141176f60057a6e892f9c73e0c9c91391441da787d"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 693,
+        "sha256": "df14b4d235e8ea816d9c336910306e1aad2e52446022fd7c671b0088f736b540"
+      },
+      "changes": [
+        "Personal source/cache/run paths replaced with role markers; observations and embedded historical digests unchanged."
+      ]
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/build/kernel-release.txt",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/spatial-selectivity/build/kernel-release.txt",
+        "bytes": 31,
+        "sha256": "b7d0c5b992bb8d559d339e4b2072e98f3ee712867e7ee1448dd417bbf9b1a3ec"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 31,
+        "sha256": "b7d0c5b992bb8d559d339e4b2072e98f3ee712867e7ee1448dd417bbf9b1a3ec"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/build/kernel.config",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/spatial-selectivity/build/kernel.config",
+        "bytes": 132906,
+        "sha256": "35c872e866663db2cad8874e311275e2ce16a4c0c3ba95fceac732cb9c910686"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 132906,
+        "sha256": "35c872e866663db2cad8874e311275e2ce16a4c0c3ba95fceac732cb9c910686"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/build/native-observation.patch",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/spatial-selectivity/build/native-observation.patch",
+        "bytes": 1473,
+        "sha256": "2f7889c53d0b4de2e47a94b8acb0d6c1ab73bca6effaccee5b4733984f449b07"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 1473,
+        "sha256": "2f7889c53d0b4de2e47a94b8acb0d6c1ab73bca6effaccee5b4733984f449b07"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/build/outputs.container.sha256",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/spatial-selectivity/build/outputs.container.sha256",
+        "bytes": 352,
+        "sha256": "bf873c2951be5090df1064548664e2366e4ab10742ef00daddc73502219f4939"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 352,
+        "sha256": "bf873c2951be5090df1064548664e2366e4ab10742ef00daddc73502219f4939"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/build/outputs.sha256",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/spatial-selectivity/build/outputs.sha256",
+        "bytes": 1291,
+        "sha256": "3d32c1cffc9b0da5868a2a4e9cc6f5a871d5853923dac805c6ee1ca00c8387e5"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 883,
+        "sha256": "79bb87eec6d46dad4b5c4bc31d915e4ebca8992d7b5daeb3a19534f29e19efd2"
+      },
+      "changes": [
+        "Personal source/cache/run paths replaced with role markers; observations and embedded historical digests unchanged."
+      ]
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/build/patch-check.log",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/spatial-selectivity/build/patch-check.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/build/patch-numstat.txt",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/spatial-selectivity/build/patch-numstat.txt",
+        "bytes": 136,
+        "sha256": "692b8e9fd2c9434dbddb06d7a9538dce93d4dab179890a6703b71ada34fed087"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 136,
+        "sha256": "692b8e9fd2c9434dbddb06d7a9538dce93d4dab179890a6703b71ada34fed087"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/build/patched-sources.sha256",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/spatial-selectivity/build/patched-sources.sha256",
+        "bytes": 1145,
+        "sha256": "9d434f3788dba526a702451623ffba3db7ece9eef6ced6b8af20de4cfe9e0707"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 788,
+        "sha256": "ea45c85489453fb04e8649f6588c8d0698428c464ecb66b70a389589827b6019"
+      },
+      "changes": [
+        "Personal source/cache/run paths replaced with role markers; observations and embedded historical digests unchanged."
+      ]
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/build/selectivity-access-disassembly.txt",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/spatial-selectivity/build/selectivity-access-disassembly.txt",
+        "bytes": 795,
+        "sha256": "c7220a126405be66e1b5aac2b90765e6ff734a7bc94c22d213a8e8e1e0d78ac8"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 795,
+        "sha256": "c7220a126405be66e1b5aac2b90765e6ff734a7bc94c22d213a8e8e1e0d78ac8"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/build/selectivity-symbols.txt",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/spatial-selectivity/build/selectivity-symbols.txt",
+        "bytes": 769,
+        "sha256": "e29e21817ea2ab6b80371a4bd9e7bd103e89840159a838dc6eb6e1f6a505d7c8"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 769,
+        "sha256": "e29e21817ea2ab6b80371a4bd9e7bd103e89840159a838dc6eb6e1f6a505d7c8"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/build/selectivity-test.numstat",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/spatial-selectivity/build/selectivity-test.numstat",
+        "bytes": 80,
+        "sha256": "79509913cac798328fbd6cceaaaefc768849190d1272b0ab91c58d720928ba78"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 80,
+        "sha256": "79509913cac798328fbd6cceaaaefc768849190d1272b0ab91c58d720928ba78"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/build/selectivity-test.patch",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/spatial-selectivity/build/selectivity-test.patch",
+        "bytes": 15420,
+        "sha256": "b605b96b977f9be988fff2522323f043e87023155f3cec935b320c1f2e0a7c65"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 15420,
+        "sha256": "b605b96b977f9be988fff2522323f043e87023155f3cec935b320c1f2e0a7c65"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/build/source-pins.json",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/spatial-selectivity/build/source-pins.json",
+        "bytes": 434,
+        "sha256": "724aa27472822cc40b5d74cb85e80f403107edb5a532a617f510235bc64e23de"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 403,
+        "sha256": "053db808416dfba95f040ff59e3b1a23c7b9eed4a33cbf3667a5427af79bff73"
+      },
+      "changes": [
+        "Personal source/cache/run paths replaced with role markers; observations and embedded historical digests unchanged."
+      ]
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/build/source-tree.manifest.gz",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/spatial-selectivity/build/source-tree.manifest",
+        "bytes": 7588913,
+        "sha256": "bcce56e1333570eae303425cf4d88257c9cb6ef47d163d993de84ea47eaca61e"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 2621992,
+        "sha256": "08119f4711178caf8d2b74680ee71a5882e588210f7b068d445d6444fb92216b"
+      },
+      "changes": [
+        "Lossless gzip (mtime=0) of the original NUL-delimited Git tree inventory; original identity applies after decompression."
+      ]
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/build/sources-verified.txt",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/spatial-selectivity/build/sources-verified.txt",
+        "bytes": 711,
+        "sha256": "049ec09318a7dbb6fe584e157283a881252e4e5ded9ce763ff0df687e30233e6"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 354,
+        "sha256": "d81e7fc6a568acc8e13be2a4823514f27792ee7de19e00500c1b32c560e8bdc8"
+      },
+      "changes": [
+        "Personal source/cache/run paths replaced with role markers; observations and embedded historical digests unchanged."
+      ]
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/build/summary.txt",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/spatial-selectivity/build/summary.txt",
+        "bytes": 251,
+        "sha256": "803c38568bbfd3dca09377d4209137bc3c167757cad6d41246f3d327576cbc5e"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 251,
+        "sha256": "803c38568bbfd3dca09377d4209137bc3c167757cad6d41246f3d327576cbc5e"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/build/test-options.txt",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/spatial-selectivity/build/test-options.txt",
+        "bytes": 463,
+        "sha256": "4b4ede8ea0a15a54df9eafdb784cf44920412cebbc2b626a23acd869f9811dbe"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 463,
+        "sha256": "4b4ede8ea0a15a54df9eafdb784cf44920412cebbc2b626a23acd869f9811dbe"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/build/verifier-before.sha256",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/spatial-selectivity/build/verifier-before.sha256",
+        "bytes": 65,
+        "sha256": "0e4753294afdd01eedf2ff7f523011a0940f2839ba8c4d0378d499f5b4f7c858"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 65,
+        "sha256": "0e4753294afdd01eedf2ff7f523011a0940f2839ba8c4d0378d499f5b4f7c858"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/calibration/boot.log",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/spatial-selectivity/calibration/boot.log",
+        "bytes": 27953,
+        "sha256": "f4ca3c08a136c88cc151a643319a36b2bd387a48fe6a96a2685794fbd8f3c848"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 27953,
+        "sha256": "f4ca3c08a136c88cc151a643319a36b2bd387a48fe6a96a2685794fbd8f3c848"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/calibration/build-directory.txt",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/spatial-selectivity/calibration/build-directory.txt",
+        "bytes": 68,
+        "sha256": "1527e3348bf205b9ef6b5f0242942cbf827082ef95902e50ee5765a8b4c2271f"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 17,
+        "sha256": "cd0815974267a8e3d537d70bedf2892afb0a4257e4de309274987b35a3b11201"
+      },
+      "changes": [
+        "Personal source/cache/run paths replaced with role markers; observations and embedded historical digests unchanged."
+      ]
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/calibration/check_spatial_selectivity.executed.py",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/spatial-selectivity/calibration/check_spatial_selectivity.executed.py",
+        "bytes": 13373,
+        "sha256": "f6e8c418556c854074c89d2f0df58381d4bfd91e9026d475e876b25e09a41f47"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 13373,
+        "sha256": "f6e8c418556c854074c89d2f0df58381d4bfd91e9026d475e876b25e09a41f47"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/calibration/compile.h",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/spatial-selectivity/calibration/compile.h",
+        "bytes": 271,
+        "sha256": "6c695f13ae8761132f0eac338ffb0100575d6e0f4a1f713fddeea54ded3e5e4f"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 271,
+        "sha256": "6c695f13ae8761132f0eac338ffb0100575d6e0f4a1f713fddeea54ded3e5e4f"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/calibration/compile.log",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/spatial-selectivity/calibration/compile.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/calibration/guest.c",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/spatial-selectivity/calibration/guest.c",
+        "bytes": 6227,
+        "sha256": "4b394e3a46874e20719acfa55ab7cb63e9ad2e6f535c53905a24f9a0a697826a"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 6227,
+        "sha256": "4b394e3a46874e20719acfa55ab7cb63e9ad2e6f535c53905a24f9a0a697826a"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/calibration/init",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/spatial-selectivity/calibration/init",
+        "bytes": 50656,
+        "sha256": "a2383964d2d3d7d59169e5f63940e4ea0bdf10b44868457f755331b38c2d397d"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 50656,
+        "sha256": "a2383964d2d3d7d59169e5f63940e4ea0bdf10b44868457f755331b38c2d397d"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/calibration/initramfs.cpio.gz",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/spatial-selectivity/calibration/initramfs.cpio.gz",
+        "bytes": 24080,
+        "sha256": "df8f112735b96c57b2fe36d84b306f8befc8bcbbb72523a3721deb0bfa797b10"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 24080,
+        "sha256": "df8f112735b96c57b2fe36d84b306f8befc8bcbbb72523a3721deb0bfa797b10"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/calibration/inputs-verified.txt",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/spatial-selectivity/calibration/inputs-verified.txt",
+        "bytes": 1730,
+        "sha256": "df8163ed936d6948ee59c05fee9a03df77331140d7e6326977c281f362dc5c86"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 1025,
+        "sha256": "950822c5ddcdd1a69eb4f955cbe200d9c4913b4930fb256d432d1e17df580e17"
+      },
+      "changes": [
+        "Personal source/cache/run paths replaced with role markers; observations and embedded historical digests unchanged."
+      ]
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/calibration/inputs.sha256",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/spatial-selectivity/calibration/inputs.sha256",
+        "bytes": 2970,
+        "sha256": "d1b4a728be118b6f031545c53c63ee45f32bd5f509c0d9b0226e40e09635ab49"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 2265,
+        "sha256": "cc93518447d831813fc9ff83732744d8c690c46bb91d2ff12af58de420fda787"
+      },
+      "changes": [
+        "Personal source/cache/run paths replaced with role markers; observations and embedded historical digests unchanged."
+      ]
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/calibration/kernel-release.txt",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/spatial-selectivity/calibration/kernel-release.txt",
+        "bytes": 31,
+        "sha256": "b7d0c5b992bb8d559d339e4b2072e98f3ee712867e7ee1448dd417bbf9b1a3ec"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 31,
+        "sha256": "b7d0c5b992bb8d559d339e4b2072e98f3ee712867e7ee1448dd417bbf9b1a3ec"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/calibration/kernel.config",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/spatial-selectivity/calibration/kernel.config",
+        "bytes": 132906,
+        "sha256": "35c872e866663db2cad8874e311275e2ce16a4c0c3ba95fceac732cb9c910686"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 132906,
+        "sha256": "35c872e866663db2cad8874e311275e2ce16a4c0c3ba95fceac732cb9c910686"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/calibration/mode.txt",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/spatial-selectivity/calibration/mode.txt",
+        "bytes": 12,
+        "sha256": "2b2f4f88cbfe5f92f780fbb0037dd2293c4aaee4d510da9d959894c5aabeb379"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 12,
+        "sha256": "2b2f4f88cbfe5f92f780fbb0037dd2293c4aaee4d510da9d959894c5aabeb379"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/calibration/qemu-command.sh",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/spatial-selectivity/calibration/qemu-command.sh",
+        "bytes": 619,
+        "sha256": "a870d889ebd6a3f8d31fce2d8bd9a4db94aaf919dd3f126b1c89e91ad5eb015e"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 485,
+        "sha256": "d6031a6738276b6419ff7de3b6327f7cb42b746f9248e184048772049580a96d"
+      },
+      "changes": [
+        "Personal source/cache/run paths replaced with role markers; observations and embedded historical digests unchanged."
+      ]
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/calibration/qemu-exit.txt",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/spatial-selectivity/calibration/qemu-exit.txt",
+        "bytes": 2,
+        "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 2,
+        "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/calibration/results.json",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/spatial-selectivity/calibration/results.json",
+        "bytes": 2453,
+        "sha256": "87b9b7c893e9391c25a6036878fd5365174ef2fb29ab01aadf240edc07d16bb7"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 2453,
+        "sha256": "87b9b7c893e9391c25a6036878fd5365174ef2fb29ab01aadf240edc07d16bb7"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/calibration/run-script.executed.sh",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/spatial-selectivity/calibration/run-script.executed.sh",
+        "bytes": 7940,
+        "sha256": "f7fd64a32d7f59c8ff8660dd4b874a2882fca9f7778378243230009e29dcabc6"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 7940,
+        "sha256": "f7fd64a32d7f59c8ff8660dd4b874a2882fca9f7778378243230009e29dcabc6"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/calibration/selectivity-access-disassembly.txt",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/spatial-selectivity/calibration/selectivity-access-disassembly.txt",
+        "bytes": 185936,
+        "sha256": "46ef695216e2481d542c6d9000e368a60761330a789da6f74c071579bed09e85"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 185936,
+        "sha256": "46ef695216e2481d542c6d9000e368a60761330a789da6f74c071579bed09e85"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/calibration/selectivity-symbols.txt",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/spatial-selectivity/calibration/selectivity-symbols.txt",
+        "bytes": 769,
+        "sha256": "e29e21817ea2ab6b80371a4bd9e7bd103e89840159a838dc6eb6e1f6a505d7c8"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 769,
+        "sha256": "e29e21817ea2ab6b80371a4bd9e7bd103e89840159a838dc6eb6e1f6a505d7c8"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/calibration/summary.txt",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/spatial-selectivity/calibration/summary.txt",
+        "bytes": 165,
+        "sha256": "a36fa98e8b4091b6daff7a45b8d23aceedaa6f2d42cb3e6457d718303131df4f"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 114,
+        "sha256": "26acb64316d7dc0cf45bb0c3a0191e0de6e384d94561b8baad6980c689b6c7c9"
+      },
+      "changes": [
+        "Personal source/cache/run paths replaced with role markers; observations and embedded historical digests unchanged."
+      ]
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/calibration/toolchain.txt",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/spatial-selectivity/calibration/toolchain.txt",
+        "bytes": 395,
+        "sha256": "0f68a9839ccf5fedf5b96aa2928960fb2ad361f875a9ddcc44ba56cec118720a"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 379,
+        "sha256": "6a62f9f5c76b3f5fc1aea19da3e5b1df2d75b0beea4a44fb01a94ad202e0307c"
+      },
+      "changes": [
+        "Personal source/cache/run paths replaced with role markers; observations and embedded historical digests unchanged."
+      ]
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/derivation/cbpf_selectivity_native_access.bin",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/spatial-selectivity/derivation/cbpf_selectivity_native_access.bin",
+        "bytes": 144,
+        "sha256": "b20089acd25480bcda36cba10225db4d6b8ca8a3702b100bd2e0131107f6de1f"
+      },
+      "original_identity_scope": "Post-run derivation; not an original execution record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 144,
+        "sha256": "b20089acd25480bcda36cba10225db4d6b8ca8a3702b100bd2e0131107f6de1f"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/derivation/commands.json",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/spatial-selectivity/derivation/commands.json",
+        "bytes": 2412,
+        "sha256": "ebf6b11f23996fb702b0bc35cc76d074c6d0a040ae5b955fb6add77d978213b4"
+      },
+      "original_identity_scope": "Post-run derivation; not an original execution record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 2208,
+        "sha256": "66d77bf58c0ac914c16471900886be8c557c40a47af82b5e4bf6ed60fb761e37"
+      },
+      "changes": [
+        "Personal source/cache/run paths replaced with role markers; observations and embedded historical digests unchanged."
+      ]
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/derivation/complete-linked-disassembly.txt",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/spatial-selectivity/derivation/complete-linked-disassembly.txt",
+        "bytes": 2484,
+        "sha256": "1d59994dc13435d2f6041ec21bafc3f747a0b3a3caaf0b209c854b723ae60e43"
+      },
+      "original_identity_scope": "Post-run derivation; not an original execution record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 2484,
+        "sha256": "1d59994dc13435d2f6041ec21bafc3f747a0b3a3caaf0b209c854b723ae60e43"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/derivation/linked-ranges.json",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/spatial-selectivity/derivation/linked-ranges.json",
+        "bytes": 850,
+        "sha256": "6dfb0366881498e91fbe4067302e5966fedac7ebb4dde65935be6dfc2655194e"
+      },
+      "original_identity_scope": "Post-run derivation; not an original execution record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 850,
+        "sha256": "6dfb0366881498e91fbe4067302e5966fedac7ebb4dde65935be6dfc2655194e"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/derivation/package_native_extension.executed.py",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/spatial-selectivity/derivation/package_native_extension.executed.py",
+        "bytes": 17058,
+        "sha256": "53da42ed4c9586985eb4ceae6ed36155b54260275bed9fbc712a13dd9fdf8311"
+      },
+      "original_identity_scope": "Post-run derivation; not an original execution record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 17058,
+        "sha256": "53da42ed4c9586985eb4ceae6ed36155b54260275bed9fbc712a13dd9fdf8311"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/derivation/receipt.json",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/spatial-selectivity/derivation/receipt.json",
+        "bytes": 2228,
+        "sha256": "637ae034b501af71e10200d75ab1c99002a424921ad987bf8198dc893afe189d"
+      },
+      "original_identity_scope": "Post-run derivation; not an original execution record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 1970,
+        "sha256": "852c8de903b3af31530819c202f04bbc79990f1c2db6b3c4c40079d72898fbf9"
+      },
+      "changes": [
+        "Personal source/cache/run paths replaced with role markers; observations and embedded historical digests unchanged."
+      ]
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/derivation/toolchain.txt",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/spatial-selectivity/derivation/toolchain.txt",
+        "bytes": 1278,
+        "sha256": "1c37bb0e6e9fcddfe958efcdf1b8f38eb6213b5ad4a0974d9488ac5c2e16abfd"
+      },
+      "original_identity_scope": "Post-run derivation; not an original execution record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 1278,
+        "sha256": "1c37bb0e6e9fcddfe958efcdf1b8f38eb6213b5ad4a0974d9488ac5c2e16abfd"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/run/boot.log",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/spatial-selectivity/run/boot.log",
+        "bytes": 43436,
+        "sha256": "5dca0836801a2d10ed5b2c9514f2731a09e85a13f85aaa92765d8fd31b168f0a"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 43436,
+        "sha256": "5dca0836801a2d10ed5b2c9514f2731a09e85a13f85aaa92765d8fd31b168f0a"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/run/build-directory.txt",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/spatial-selectivity/run/build-directory.txt",
+        "bytes": 68,
+        "sha256": "1527e3348bf205b9ef6b5f0242942cbf827082ef95902e50ee5765a8b4c2271f"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 17,
+        "sha256": "cd0815974267a8e3d537d70bedf2892afb0a4257e4de309274987b35a3b11201"
+      },
+      "changes": [
+        "Personal source/cache/run paths replaced with role markers; observations and embedded historical digests unchanged."
+      ]
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/run/check_spatial_selectivity.executed.py",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/spatial-selectivity/run/check_spatial_selectivity.executed.py",
+        "bytes": 13373,
+        "sha256": "f6e8c418556c854074c89d2f0df58381d4bfd91e9026d475e876b25e09a41f47"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 13373,
+        "sha256": "f6e8c418556c854074c89d2f0df58381d4bfd91e9026d475e876b25e09a41f47"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/run/compile.h",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/spatial-selectivity/run/compile.h",
+        "bytes": 271,
+        "sha256": "6c695f13ae8761132f0eac338ffb0100575d6e0f4a1f713fddeea54ded3e5e4f"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 271,
+        "sha256": "6c695f13ae8761132f0eac338ffb0100575d6e0f4a1f713fddeea54ded3e5e4f"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/run/compile.log",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/spatial-selectivity/run/compile.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/run/guest.c",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/spatial-selectivity/run/guest.c",
+        "bytes": 6227,
+        "sha256": "4b394e3a46874e20719acfa55ab7cb63e9ad2e6f535c53905a24f9a0a697826a"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 6227,
+        "sha256": "4b394e3a46874e20719acfa55ab7cb63e9ad2e6f535c53905a24f9a0a697826a"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/run/init",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/spatial-selectivity/run/init",
+        "bytes": 50656,
+        "sha256": "a2383964d2d3d7d59169e5f63940e4ea0bdf10b44868457f755331b38c2d397d"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 50656,
+        "sha256": "a2383964d2d3d7d59169e5f63940e4ea0bdf10b44868457f755331b38c2d397d"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/run/initramfs.cpio.gz",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/spatial-selectivity/run/initramfs.cpio.gz",
+        "bytes": 24080,
+        "sha256": "df8f112735b96c57b2fe36d84b306f8befc8bcbbb72523a3721deb0bfa797b10"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 24080,
+        "sha256": "df8f112735b96c57b2fe36d84b306f8befc8bcbbb72523a3721deb0bfa797b10"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/run/inputs-verified.txt",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/spatial-selectivity/run/inputs-verified.txt",
+        "bytes": 1695,
+        "sha256": "c3151a1e0d9eddaa93cbb6e5d600ee5e49bd74ba8c5e598de60f8504132a8bb7"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 969,
+        "sha256": "00b03bc05f9cc1d01cc7c3834ed8a70d46ad15aea4319f90b28058e31d6f3615"
+      },
+      "changes": [
+        "Personal source/cache/run paths replaced with role markers; observations and embedded historical digests unchanged."
+      ]
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/run/inputs.sha256",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/spatial-selectivity/run/inputs.sha256",
+        "bytes": 2935,
+        "sha256": "580d3c2dcf675e0b72c28a4d87e9dac5f84923638aa67c78f84abdc6c28bc473"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 2209,
+        "sha256": "5aecc40cafaa09c5d5cc9447c1a629900c54bf1c90bf458eca6b580262898dbe"
+      },
+      "changes": [
+        "Personal source/cache/run paths replaced with role markers; observations and embedded historical digests unchanged."
+      ]
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/run/kernel-release.txt",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/spatial-selectivity/run/kernel-release.txt",
+        "bytes": 31,
+        "sha256": "b7d0c5b992bb8d559d339e4b2072e98f3ee712867e7ee1448dd417bbf9b1a3ec"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 31,
+        "sha256": "b7d0c5b992bb8d559d339e4b2072e98f3ee712867e7ee1448dd417bbf9b1a3ec"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/run/kernel.config",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/spatial-selectivity/run/kernel.config",
+        "bytes": 132906,
+        "sha256": "35c872e866663db2cad8874e311275e2ce16a4c0c3ba95fceac732cb9c910686"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 132906,
+        "sha256": "35c872e866663db2cad8874e311275e2ce16a4c0c3ba95fceac732cb9c910686"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/run/mode.txt",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/spatial-selectivity/run/mode.txt",
+        "bytes": 7,
+        "sha256": "06f1d533d73bfb948bce0fb53824691ca82a02e6d68513757b7f1ee9ca07b3e8"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 7,
+        "sha256": "06f1d533d73bfb948bce0fb53824691ca82a02e6d68513757b7f1ee9ca07b3e8"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/run/qemu-command.sh",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/spatial-selectivity/run/qemu-command.sh",
+        "bytes": 582,
+        "sha256": "a9f5b31e589dddfd4a70f3c6e31b5e009315c7d11f127bb070f0fe8a44b40786"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 445,
+        "sha256": "c123135a42debf3e0683fd005fdcd08ab8f3e8acaf917a7eab046e42166be153"
+      },
+      "changes": [
+        "Personal source/cache/run paths replaced with role markers; observations and embedded historical digests unchanged."
+      ]
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/run/qemu-exit.txt",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/spatial-selectivity/run/qemu-exit.txt",
+        "bytes": 2,
+        "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 2,
+        "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/run/results.json",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/spatial-selectivity/run/results.json",
+        "bytes": 16820,
+        "sha256": "3eee2b6a1cccfb45e15b39cfa773b89c735a74fd907e7087714028f093c685bb"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 16820,
+        "sha256": "3eee2b6a1cccfb45e15b39cfa773b89c735a74fd907e7087714028f093c685bb"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/run/run-script.executed.sh",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/spatial-selectivity/run/run-script.executed.sh",
+        "bytes": 7940,
+        "sha256": "f7fd64a32d7f59c8ff8660dd4b874a2882fca9f7778378243230009e29dcabc6"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 7940,
+        "sha256": "f7fd64a32d7f59c8ff8660dd4b874a2882fca9f7778378243230009e29dcabc6"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/run/selectivity-access-disassembly.txt",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/spatial-selectivity/run/selectivity-access-disassembly.txt",
+        "bytes": 185936,
+        "sha256": "46ef695216e2481d542c6d9000e368a60761330a789da6f74c071579bed09e85"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 185936,
+        "sha256": "46ef695216e2481d542c6d9000e368a60761330a789da6f74c071579bed09e85"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/run/selectivity-symbols.txt",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/spatial-selectivity/run/selectivity-symbols.txt",
+        "bytes": 769,
+        "sha256": "e29e21817ea2ab6b80371a4bd9e7bd103e89840159a838dc6eb6e1f6a505d7c8"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 769,
+        "sha256": "e29e21817ea2ab6b80371a4bd9e7bd103e89840159a838dc6eb6e1f6a505d7c8"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/run/summary.txt",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/spatial-selectivity/run/summary.txt",
+        "bytes": 155,
+        "sha256": "d3fb7279443750bad38801d01396251bea6f4f41bbe7d0847ed14423492085ac"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 101,
+        "sha256": "3907622f7abe25276754f1262fa0925360d8b2b56442d31ee0c5ec367cbd2fd8"
+      },
+      "changes": [
+        "Personal source/cache/run paths replaced with role markers; observations and embedded historical digests unchanged."
+      ]
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/run/toolchain.txt",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/spatial-selectivity/run/toolchain.txt",
+        "bytes": 395,
+        "sha256": "0f68a9839ccf5fedf5b96aa2928960fb2ad361f875a9ddcc44ba56cec118720a"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 379,
+        "sha256": "6a62f9f5c76b3f5fc1aea19da3e5b1df2d75b0beea4a44fb01a94ad202e0307c"
+      },
+      "changes": [
+        "Personal source/cache/run paths replaced with role markers; observations and embedded historical digests unchanged."
+      ]
+    },
+    {
+      "file": "evidence/current/ownership-native-trace/build/baseline.config",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/ownership-native-trace/build/baseline.config",
+        "bytes": 87707,
+        "sha256": "ca41988a4a902f161874cfcad58221a440180f0573d2bcccff7fdeed4ed4389a"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 87707,
+        "sha256": "ca41988a4a902f161874cfcad58221a440180f0573d2bcccff7fdeed4ed4389a"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/ownership-native-trace/build/build_ownership_trace.executed.sh",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/ownership-native-trace/build/build_ownership_trace.executed.sh",
+        "bytes": 11433,
+        "sha256": "4eaffd1f35cfe9c4625b4bf4319e7582c431462b6a4d79ebf2b67974cbb87324"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 11433,
+        "sha256": "4eaffd1f35cfe9c4625b4bf4319e7582c431462b6a4d79ebf2b67974cbb87324"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/ownership-native-trace/build/builder-image.txt",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/ownership-native-trace/build/builder-image.txt",
+        "bytes": 75,
+        "sha256": "96cceff529da91c1cad30eff5cff067640fbe836a2314465237755f5d08c0dad"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 75,
+        "sha256": "96cceff529da91c1cad30eff5cff067640fbe836a2314465237755f5d08c0dad"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/ownership-native-trace/build/cbpf.h",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/ownership-native-trace/build/cbpf.h",
+        "bytes": 792,
+        "sha256": "8cf3c862d0134b34fdf87335696878e49b681e492c1ad50698cd470811430235"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 792,
+        "sha256": "8cf3c862d0134b34fdf87335696878e49b681e492c1ad50698cd470811430235"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/ownership-native-trace/build/cbpf_jit.c",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/ownership-native-trace/build/cbpf_jit.c",
+        "bytes": 12812,
+        "sha256": "a1a3c2476380325100a9b361f213bb06db9e9dd24543ae8e12a5354ddd8dd753"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 12812,
+        "sha256": "a1a3c2476380325100a9b361f213bb06db9e9dd24543ae8e12a5354ddd8dd753"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/ownership-native-trace/build/cbpf_runtime.c",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/ownership-native-trace/build/cbpf_runtime.c",
+        "bytes": 20128,
+        "sha256": "061c262f239b109cef65750c78a3dd50f13159d6cc9890f0a2cbda1aa69c91dd"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 20128,
+        "sha256": "061c262f239b109cef65750c78a3dd50f13159d6cc9890f0a2cbda1aa69c91dd"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/ownership-native-trace/build/compiler.sha256",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/ownership-native-trace/build/compiler.sha256",
+        "bytes": 434,
+        "sha256": "61b9371dbb81814d4fd26c51da378cf05a043021996d1e8f5de5f80ba335a54c"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 434,
+        "sha256": "61b9371dbb81814d4fd26c51da378cf05a043021996d1e8f5de5f80ba335a54c"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/ownership-native-trace/build/inputs-verified.txt",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/ownership-native-trace/build/inputs-verified.txt",
+        "bytes": 2530,
+        "sha256": "96218e227c157fe794c971cfc412af702f83aad1ef499254b0ca8ecb03d74f7d"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 1564,
+        "sha256": "eed167f5ee4a1ae434424863b453c0b78e3375af0869454f23f2fa1049eb9f00"
+      },
+      "changes": [
+        "Personal source/cache/run paths replaced with role markers; observations and embedded historical digests unchanged."
+      ]
+    },
+    {
+      "file": "evidence/current/ownership-native-trace/build/inputs.sha256",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/ownership-native-trace/build/inputs.sha256",
+        "bytes": 4328,
+        "sha256": "9a351c236e75a6eb3773dd50622c10457dacd08b361cc4661fb5b7f80b2d9af6"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 3362,
+        "sha256": "2af53bc195cd56fd85ac0b42fdbb5a8696bc0b82e974c9e30ff1d90b2656debd"
+      },
+      "changes": [
+        "Personal source/cache/run paths replaced with role markers; observations and embedded historical digests unchanged."
+      ]
+    },
+    {
+      "file": "evidence/current/ownership-native-trace/build/integration.numstat",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/ownership-native-trace/build/integration.numstat",
+        "bytes": 181,
+        "sha256": "8a73bb07741845e3d5ac9689f0f96c6b87bca89a15a991d2e590180986c4b968"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 181,
+        "sha256": "8a73bb07741845e3d5ac9689f0f96c6b87bca89a15a991d2e590180986c4b968"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/ownership-native-trace/build/integration.patch",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/ownership-native-trace/build/integration.patch",
+        "bytes": 4956,
+        "sha256": "8121d10f5e83488ed31739960d46cb3fe35e9f319e91acd5230c80718c5abe30"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 4956,
+        "sha256": "8121d10f5e83488ed31739960d46cb3fe35e9f319e91acd5230c80718c5abe30"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/ownership-native-trace/build/kernel-release.txt",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/ownership-native-trace/build/kernel-release.txt",
+        "bytes": 34,
+        "sha256": "ad02b2a58b8fd785abf1e650f9bf83cd410d81a88c8c6d4e98b03ed89e928190"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 34,
+        "sha256": "ad02b2a58b8fd785abf1e650f9bf83cd410d81a88c8c6d4e98b03ed89e928190"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/ownership-native-trace/build/kernel.config",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/ownership-native-trace/build/kernel.config",
+        "bytes": 87796,
+        "sha256": "ccb477a4e79eca660436048cab2ce3aa4997ab031a906c9f0a0eb6741940e0cf"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 87796,
+        "sha256": "ccb477a4e79eca660436048cab2ce3aa4997ab031a906c9f0a0eb6741940e0cf"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/ownership-native-trace/build/native-trace-linked-disassembly.txt",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/ownership-native-trace/build/native-trace-linked-disassembly.txt",
+        "bytes": 34894,
+        "sha256": "6c2dc17e318c3383b0e7efd0656de9a74709e50143ae9a9be01e72d01fe2af00"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 34894,
+        "sha256": "6c2dc17e318c3383b0e7efd0656de9a74709e50143ae9a9be01e72d01fe2af00"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/ownership-native-trace/build/native-trace-symbols.txt",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/ownership-native-trace/build/native-trace-symbols.txt",
+        "bytes": 180,
+        "sha256": "9ad8c50c2f2b056fe6f797d34210f117cea016754390f17d593518ca84b56553"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 180,
+        "sha256": "9ad8c50c2f2b056fe6f797d34210f117cea016754390f17d593518ca84b56553"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/ownership-native-trace/build/native-trace.numstat",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/ownership-native-trace/build/native-trace.numstat",
+        "bytes": 118,
+        "sha256": "0c169c1b88051d0a9ad28faf4ba5c3b554e253433162fa7dbc7f5776b236e8f3"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 118,
+        "sha256": "0c169c1b88051d0a9ad28faf4ba5c3b554e253433162fa7dbc7f5776b236e8f3"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/ownership-native-trace/build/native-trace.patch",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/ownership-native-trace/build/native-trace.patch",
+        "bytes": 13440,
+        "sha256": "a99109e2dafa5d50875770e4cc0666426ad0f3439a9a6afb5fa121f8df2c5558"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 13440,
+        "sha256": "a99109e2dafa5d50875770e4cc0666426ad0f3439a9a6afb5fa121f8df2c5558"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/ownership-native-trace/build/outputs.container.sha256",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/ownership-native-trace/build/outputs.container.sha256",
+        "bytes": 440,
+        "sha256": "9b741fa5377243a3d6e888197dc05f46c53b4d914f9a4a5b3b627b7595052987"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 440,
+        "sha256": "9b741fa5377243a3d6e888197dc05f46c53b4d914f9a4a5b3b627b7595052987"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/ownership-native-trace/build/outputs.sha256",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/ownership-native-trace/build/outputs.sha256",
+        "bytes": 798,
+        "sha256": "a0e30d41be1af2be80d5004ca57f5555960a7d9758c9a8dcadd906ee51fce093"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 538,
+        "sha256": "f68e8c64f09de12d12445b14f3cf502110526929794a1c79a34b3a58092b5479"
+      },
+      "changes": [
+        "Personal source/cache/run paths replaced with role markers; observations and embedded historical digests unchanged."
+      ]
+    },
+    {
+      "file": "evidence/current/ownership-native-trace/build/patched-sources.sha256",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/ownership-native-trace/build/patched-sources.sha256",
+        "bytes": 3564,
+        "sha256": "7900c290c3d968db179b878944c389e06a055e650634363cd82061d0b8ebc6f1"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 2472,
+        "sha256": "0bf65ae6c33488515939edea25be42ffb6bd615bbc27459f3e77864f915c9118"
+      },
+      "changes": [
+        "Personal source/cache/run paths replaced with role markers; observations and embedded historical digests unchanged."
+      ]
+    },
+    {
+      "file": "evidence/current/ownership-native-trace/build/platform.numstat",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/ownership-native-trace/build/platform.numstat",
+        "bytes": 333,
+        "sha256": "f3a6562a1617cfb9ec4dbe93eb775e79ebb9f8aef5466bc509f673f986d75fb7"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 333,
+        "sha256": "f3a6562a1617cfb9ec4dbe93eb775e79ebb9f8aef5466bc509f673f986d75fb7"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/ownership-native-trace/build/platform.patch",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/ownership-native-trace/build/platform.patch",
+        "bytes": 8059,
+        "sha256": "65c34af4d8f1db14455c297a1f71fc03138b2fc9e834a8dc4480b0687e208c44"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 8059,
+        "sha256": "65c34af4d8f1db14455c297a1f71fc03138b2fc9e834a8dc4480b0687e208c44"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/ownership-native-trace/build/source-commit.txt",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/ownership-native-trace/build/source-commit.txt",
+        "bytes": 41,
+        "sha256": "58b294dd20ae2694b9cf7d8ab015f9fefd95315fbe0cfad1ebdf3d4f5a06f274"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 41,
+        "sha256": "58b294dd20ae2694b9cf7d8ab015f9fefd95315fbe0cfad1ebdf3d4f5a06f274"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/ownership-native-trace/build/source-tree.manifest.gz",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/ownership-native-trace/build/source-tree.manifest",
+        "bytes": 7588809,
+        "sha256": "52de0ddd29c80c4ffac0a108d9bd5212dbcfbceeeaefc31a062ff004f0d7fc9f"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 2621934,
+        "sha256": "bb65c8115bc8bb7d4febb7b086654106d595ab2fd6c0a7753de649473cc6e9db"
+      },
+      "changes": [
+        "Lossless gzip (mtime=0) of the original NUL-delimited Git tree inventory; original identity applies after decompression."
+      ]
+    },
+    {
+      "file": "evidence/current/ownership-native-trace/build/source-tree.txt",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/ownership-native-trace/build/source-tree.txt",
+        "bytes": 41,
+        "sha256": "49159c654584f89b8e24fe49af39ea2f91c043e70eab2a8502756da9c262db6e"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 41,
+        "sha256": "49159c654584f89b8e24fe49af39ea2f91c043e70eab2a8502756da9c262db6e"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/ownership-native-trace/build/sources-verified.txt",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/ownership-native-trace/build/sources-verified.txt",
+        "bytes": 2262,
+        "sha256": "18e352bf04357862d92765a219ccf708594d86f4acb60394c406ccbb6dc2b5ca"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 1170,
+        "sha256": "90d8008c24fabd39b95c25c4fff4b0c58fbd97bb88ea206af121bc31a6d1924a"
+      },
+      "changes": [
+        "Personal source/cache/run paths replaced with role markers; observations and embedded historical digests unchanged."
+      ]
+    },
+    {
+      "file": "evidence/current/ownership-native-trace/build/summary.txt",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/ownership-native-trace/build/summary.txt",
+        "bytes": 215,
+        "sha256": "14a22713804a0d37d243585c09b21b8391c6eeb6cb4ad23eca2bdf2a6ce7c2ba"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 215,
+        "sha256": "14a22713804a0d37d243585c09b21b8391c6eeb6cb4ad23eca2bdf2a6ce7c2ba"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/ownership-native-trace/build/toolchain.txt",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/ownership-native-trace/build/toolchain.txt",
+        "bytes": 241,
+        "sha256": "7791c28f5757d5bd258883535690c4349f19b2f51851494f1c97cb33769f5a96"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 241,
+        "sha256": "7791c28f5757d5bd258883535690c4349f19b2f51851494f1c97cb33769f5a96"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/ownership-native-trace/build/verifier-before.sha256",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/ownership-native-trace/build/verifier-before.sha256",
+        "bytes": 65,
+        "sha256": "f9da24c4a8c587451a2d912572f56c8679b667dc71914ece1d592e3a73b9387e"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 65,
+        "sha256": "f9da24c4a8c587451a2d912572f56c8679b667dc71914ece1d592e3a73b9387e"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/ownership-native-trace/derivation/cbpf_consume.bin",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/ownership-native-trace/derivation/cbpf_consume.bin",
+        "bytes": 420,
+        "sha256": "19dba0118d88acc5e3301c708f9682343f17afbc46a82ac310b338866cfc1af9"
+      },
+      "original_identity_scope": "Post-run derivation; not an original execution record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 420,
+        "sha256": "19dba0118d88acc5e3301c708f9682343f17afbc46a82ac310b338866cfc1af9"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/ownership-native-trace/derivation/cbpf_enter.bin",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/ownership-native-trace/derivation/cbpf_enter.bin",
+        "bytes": 684,
+        "sha256": "10dd66273ca7f9d64ecd935ed00ac917692e357a1eda0e93826308b7ab78c35c"
+      },
+      "original_identity_scope": "Post-run derivation; not an original execution record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 684,
+        "sha256": "10dd66273ca7f9d64ecd935ed00ac917692e357a1eda0e93826308b7ab78c35c"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/ownership-native-trace/derivation/cbpf_fail.bin",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/ownership-native-trace/derivation/cbpf_fail.bin",
+        "bytes": 144,
+        "sha256": "41bff5d0c2edc6a2a4e9a2526fce17324ff317f2d1edea0c84ebd57a15f0372e"
+      },
+      "original_identity_scope": "Post-run derivation; not an original execution record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 144,
+        "sha256": "41bff5d0c2edc6a2a4e9a2526fce17324ff317f2d1edea0c84ebd57a15f0372e"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/ownership-native-trace/derivation/cbpf_gate_impl.bin",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/ownership-native-trace/derivation/cbpf_gate_impl.bin",
+        "bytes": 1020,
+        "sha256": "824d10d45547be940593e0894cde65f93f1413e88d53f025fd761ce25c8d81ab"
+      },
+      "original_identity_scope": "Post-run derivation; not an original execution record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 1020,
+        "sha256": "824d10d45547be940593e0894cde65f93f1413e88d53f025fd761ce25c8d81ab"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/ownership-native-trace/derivation/cbpf_gateway.bin",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/ownership-native-trace/derivation/cbpf_gateway.bin",
+        "bytes": 224,
+        "sha256": "539bc99e39e0625fdd1cd0385d50c9d51af601443ac8a36b0c400b2d40e47b0d"
+      },
+      "original_identity_scope": "Post-run derivation; not an original execution record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 224,
+        "sha256": "539bc99e39e0625fdd1cd0385d50c9d51af601443ac8a36b0c400b2d40e47b0d"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/ownership-native-trace/derivation/cbpf_ownership_trace_program.bin",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/ownership-native-trace/derivation/cbpf_ownership_trace_program.bin",
+        "bytes": 272,
+        "sha256": "404f0f0a704e2bb99460e71f221bd8a81c75b9c509b4316cd443dfb2333643f6"
+      },
+      "original_identity_scope": "Post-run derivation; not an original execution record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 272,
+        "sha256": "404f0f0a704e2bb99460e71f221bd8a81c75b9c509b4316cd443dfb2333643f6"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/ownership-native-trace/derivation/cbpf_test_invoke.bin",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/ownership-native-trace/derivation/cbpf_test_invoke.bin",
+        "bytes": 920,
+        "sha256": "2bb37255c55a64717d0884907320d483b50d18151369d39d7efba96f37f2fad8"
+      },
+      "original_identity_scope": "Post-run derivation; not an original execution record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 920,
+        "sha256": "2bb37255c55a64717d0884907320d483b50d18151369d39d7efba96f37f2fad8"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/ownership-native-trace/derivation/cbpf_trace.bin",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/ownership-native-trace/derivation/cbpf_trace.bin",
+        "bytes": 124,
+        "sha256": "cea3eb85ce71d3e350801eb293cb1af50caac8a3ecc57c97e11a3610e97c09dd"
+      },
+      "original_identity_scope": "Post-run derivation; not an original execution record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 124,
+        "sha256": "cea3eb85ce71d3e350801eb293cb1af50caac8a3ecc57c97e11a3610e97c09dd"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/ownership-native-trace/derivation/commands.json",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/ownership-native-trace/derivation/commands.json",
+        "bytes": 9236,
+        "sha256": "07e21f1e3db6a6a69bd004f7db125a7c93b7ff9adccb314a220850766c25ea3f"
+      },
+      "original_identity_scope": "Post-run derivation; not an original execution record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 8508,
+        "sha256": "991a0728567d767b20df02eb2e2ea252ad97ec84d2be4c7980dd3548a176e0f2"
+      },
+      "changes": [
+        "Personal source/cache/run paths replaced with role markers; observations and embedded historical digests unchanged."
+      ]
+    },
+    {
+      "file": "evidence/current/ownership-native-trace/derivation/complete-linked-disassembly.txt",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/ownership-native-trace/derivation/complete-linked-disassembly.txt",
+        "bytes": 54187,
+        "sha256": "0d0eed77e4b4c71a48fb07fd2aa043f33722f6e1a6f61faab353609afb78208a"
+      },
+      "original_identity_scope": "Post-run derivation; not an original execution record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 54187,
+        "sha256": "0d0eed77e4b4c71a48fb07fd2aa043f33722f6e1a6f61faab353609afb78208a"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/ownership-native-trace/derivation/linked-ranges.json",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/ownership-native-trace/derivation/linked-ranges.json",
+        "bytes": 4113,
+        "sha256": "d378dade8083a53467c9e1cb7cdc776f04238b18cdac181ab2d86ff00ea5e303"
+      },
+      "original_identity_scope": "Post-run derivation; not an original execution record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 4113,
+        "sha256": "d378dade8083a53467c9e1cb7cdc776f04238b18cdac181ab2d86ff00ea5e303"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/ownership-native-trace/derivation/native-decode.json",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/ownership-native-trace/derivation/native-decode.json",
+        "bytes": 1165,
+        "sha256": "5f135ea746a8e2994cc1758502c097748f9a0b1b37104e00e1b62c574993814f"
+      },
+      "original_identity_scope": "Post-run derivation; not an original execution record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 1165,
+        "sha256": "5f135ea746a8e2994cc1758502c097748f9a0b1b37104e00e1b62c574993814f"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/ownership-native-trace/derivation/native-positive-disassembly.txt",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/ownership-native-trace/derivation/native-positive-disassembly.txt",
+        "bytes": 16396,
+        "sha256": "1e3d723f82a1af3bf03acb509f812f83330ea0e190dba7adedb93aaeb69025e6"
+      },
+      "original_identity_scope": "Post-run derivation; not an original execution record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 16396,
+        "sha256": "1e3d723f82a1af3bf03acb509f812f83330ea0e190dba7adedb93aaeb69025e6"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/ownership-native-trace/derivation/native-repeated_release-disassembly.txt",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/ownership-native-trace/derivation/native-repeated_release-disassembly.txt",
+        "bytes": 17470,
+        "sha256": "f25916a785411f1feee8c43b618360ef1dc7abffaa25f8ecbae2a6f197059d3a"
+      },
+      "original_identity_scope": "Post-run derivation; not an original execution record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 17470,
+        "sha256": "f25916a785411f1feee8c43b618360ef1dc7abffaa25f8ecbae2a6f197059d3a"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/ownership-native-trace/derivation/native-stale_read-disassembly.txt",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/ownership-native-trace/derivation/native-stale_read-disassembly.txt",
+        "bytes": 17470,
+        "sha256": "6b63a6c475c0d8b23bc1f0c2bb3fe5c7466419cf2616655707410032317fed9f"
+      },
+      "original_identity_scope": "Post-run derivation; not an original execution record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 17470,
+        "sha256": "6b63a6c475c0d8b23bc1f0c2bb3fe5c7466419cf2616655707410032317fed9f"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/ownership-native-trace/derivation/package_native_extension.executed.py",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/ownership-native-trace/derivation/package_native_extension.executed.py",
+        "bytes": 17058,
+        "sha256": "53da42ed4c9586985eb4ceae6ed36155b54260275bed9fbc712a13dd9fdf8311"
+      },
+      "original_identity_scope": "Post-run derivation; not an original execution record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 17058,
+        "sha256": "53da42ed4c9586985eb4ceae6ed36155b54260275bed9fbc712a13dd9fdf8311"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/ownership-native-trace/derivation/receipt.json",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/ownership-native-trace/derivation/receipt.json",
+        "bytes": 2006,
+        "sha256": "11718e7567cb8df96a039a1834b491bc1e47d5d35b049275a9131026e3664df5"
+      },
+      "original_identity_scope": "Post-run derivation; not an original execution record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 1798,
+        "sha256": "d316c75772b106c30cdc04f140ed147921de0670c32c6ffc253d99cd210266b6"
+      },
+      "changes": [
+        "Personal source/cache/run paths replaced with role markers; observations and embedded historical digests unchanged."
+      ]
+    },
+    {
+      "file": "evidence/current/ownership-native-trace/derivation/toolchain.txt",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/ownership-native-trace/derivation/toolchain.txt",
+        "bytes": 1278,
+        "sha256": "1c37bb0e6e9fcddfe958efcdf1b8f38eb6213b5ad4a0974d9488ac5c2e16abfd"
+      },
+      "original_identity_scope": "Post-run derivation; not an original execution record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 1278,
+        "sha256": "1c37bb0e6e9fcddfe958efcdf1b8f38eb6213b5ad4a0974d9488ac5c2e16abfd"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/ownership-native-trace/run/boot.log",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/ownership-native-trace/run/boot.log",
+        "bytes": 78389,
+        "sha256": "b65c0dd73011830c7e7c2c823e10b0c23c9b9eba92b806528f041de571cdd20e"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 78389,
+        "sha256": "b65c0dd73011830c7e7c2c823e10b0c23c9b9eba92b806528f041de571cdd20e"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/ownership-native-trace/run/btf-selection.txt",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/ownership-native-trace/run/btf-selection.txt",
+        "bytes": 180,
+        "sha256": "a692dc1b5c642edff754ec3a5090328d5c5b680500b09e1ca58e6d98a88da41c"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 180,
+        "sha256": "a692dc1b5c642edff754ec3a5090328d5c5b680500b09e1ca58e6d98a88da41c"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/ownership-native-trace/run/build-directory.txt",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/ownership-native-trace/run/build-directory.txt",
+        "bytes": 71,
+        "sha256": "5000c6a3473171b01dc0abaf51b10fe64ebe542c7c23bf023a10d7c0ab3af6b0"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 19,
+        "sha256": "128a14caee5a7f49a2430fa032c86f9e4e6d25cfa8eab68a13115117c2e0fce0"
+      },
+      "changes": [
+        "Personal source/cache/run paths replaced with role markers; observations and embedded historical digests unchanged."
+      ]
+    },
+    {
+      "file": "evidence/current/ownership-native-trace/run/check_ownership_trace.executed.py",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/ownership-native-trace/run/check_ownership_trace.executed.py",
+        "bytes": 16789,
+        "sha256": "42c2d9c8c544b6ab5914919fff344d595c066b5f185d9f8d02d2f0378c69efd0"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 16789,
+        "sha256": "42c2d9c8c544b6ab5914919fff344d595c066b5f185d9f8d02d2f0378c69efd0"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/ownership-native-trace/run/compile.log",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/ownership-native-trace/run/compile.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/ownership-native-trace/run/guest.c",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/ownership-native-trace/run/guest.c",
+        "bytes": 4705,
+        "sha256": "5a6964a49f0c1367db4f015162679fdb1480fd663833c87440eff77a42ff2422"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 4705,
+        "sha256": "5a6964a49f0c1367db4f015162679fdb1480fd663833c87440eff77a42ff2422"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/ownership-native-trace/run/init",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/ownership-native-trace/run/init",
+        "bytes": 51648,
+        "sha256": "8e301b61c94c8f1cd3c3a43991c13b006ccd4004a382d933b715f7a3e9baf063"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 51648,
+        "sha256": "8e301b61c94c8f1cd3c3a43991c13b006ccd4004a382d933b715f7a3e9baf063"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/ownership-native-trace/run/initramfs.cpio.gz",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/ownership-native-trace/run/initramfs.cpio.gz",
+        "bytes": 24678,
+        "sha256": "304a19bc3cd2efaa6e2aa1a2e650e0e9e178f2a107f9ee6a66d9195cc737b300"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 24678,
+        "sha256": "304a19bc3cd2efaa6e2aa1a2e650e0e9e178f2a107f9ee6a66d9195cc737b300"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/ownership-native-trace/run/inputs-verified.txt",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/ownership-native-trace/run/inputs-verified.txt",
+        "bytes": 1916,
+        "sha256": "1a68315d8cb068cd431b927dc94db5395322064054350fc3851fa6f61c51d1a0"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 1096,
+        "sha256": "8a6a80a64af99270238b340fba631074c61eac2ddaf80733565989070e5cd532"
+      },
+      "changes": [
+        "Personal source/cache/run paths replaced with role markers; observations and embedded historical digests unchanged."
+      ]
+    },
+    {
+      "file": "evidence/current/ownership-native-trace/run/inputs.sha256",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/ownership-native-trace/run/inputs.sha256",
+        "bytes": 3342,
+        "sha256": "2c4e801f5c2150fbe878bfb888804aef451194750575d2e4b78d8e3e03b3a78a"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 2522,
+        "sha256": "ac3d25c747effd2ed3c4c3baa18fb09462f3564d98ceba2ead203fb407a2fba2"
+      },
+      "changes": [
+        "Personal source/cache/run paths replaced with role markers; observations and embedded historical digests unchanged."
+      ]
+    },
+    {
+      "file": "evidence/current/ownership-native-trace/run/kernel-release.txt",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/ownership-native-trace/run/kernel-release.txt",
+        "bytes": 34,
+        "sha256": "ad02b2a58b8fd785abf1e650f9bf83cd410d81a88c8c6d4e98b03ed89e928190"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 34,
+        "sha256": "ad02b2a58b8fd785abf1e650f9bf83cd410d81a88c8c6d4e98b03ed89e928190"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/ownership-native-trace/run/kernel.config",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/ownership-native-trace/run/kernel.config",
+        "bytes": 87796,
+        "sha256": "ccb477a4e79eca660436048cab2ce3aa4997ab031a906c9f0a0eb6741940e0cf"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 87796,
+        "sha256": "ccb477a4e79eca660436048cab2ce3aa4997ab031a906c9f0a0eb6741940e0cf"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/ownership-native-trace/run/native-positive.bin",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/ownership-native-trace/run/native-positive.bin",
+        "bytes": 612,
+        "sha256": "47f78cef8fc40b2a7c9775a9a8e00e47c4d89ac9ce46be848de584c07fead40b"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 612,
+        "sha256": "47f78cef8fc40b2a7c9775a9a8e00e47c4d89ac9ce46be848de584c07fead40b"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/ownership-native-trace/run/native-repeated_release.bin",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/ownership-native-trace/run/native-repeated_release.bin",
+        "bytes": 652,
+        "sha256": "7215175ce34102dcb34742d5ed3654f5f702e9f8b8bd0f797cc5904af45c0cc8"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 652,
+        "sha256": "7215175ce34102dcb34742d5ed3654f5f702e9f8b8bd0f797cc5904af45c0cc8"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/ownership-native-trace/run/native-stale_read.bin",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/ownership-native-trace/run/native-stale_read.bin",
+        "bytes": 652,
+        "sha256": "77606aef40132126b179f4e03e7349239a72f3c7be964970914bb4a3743369f7"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 652,
+        "sha256": "77606aef40132126b179f4e03e7349239a72f3c7be964970914bb4a3743369f7"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/ownership-native-trace/run/native-trace-linked-disassembly.txt",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/ownership-native-trace/run/native-trace-linked-disassembly.txt",
+        "bytes": 34894,
+        "sha256": "6c2dc17e318c3383b0e7efd0656de9a74709e50143ae9a9be01e72d01fe2af00"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 34894,
+        "sha256": "6c2dc17e318c3383b0e7efd0656de9a74709e50143ae9a9be01e72d01fe2af00"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/ownership-native-trace/run/native-trace-symbols.txt",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/ownership-native-trace/run/native-trace-symbols.txt",
+        "bytes": 180,
+        "sha256": "9ad8c50c2f2b056fe6f797d34210f117cea016754390f17d593518ca84b56553"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 180,
+        "sha256": "9ad8c50c2f2b056fe6f797d34210f117cea016754390f17d593518ca84b56553"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/ownership-native-trace/run/ownership_ids.h",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/ownership-native-trace/run/ownership_ids.h",
+        "bytes": 224,
+        "sha256": "78a9c98b03de425ed9cd5d4b8b2f399f19eeda5a439861d8df7d04a0e0086379"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 224,
+        "sha256": "78a9c98b03de425ed9cd5d4b8b2f399f19eeda5a439861d8df7d04a0e0086379"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/ownership-native-trace/run/qemu-command.sh",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/ownership-native-trace/run/qemu-command.sh",
+        "bytes": 585,
+        "sha256": "d5094b804c684432442ce9c85e9448066f00174ad24c9374b80419259f9cdbb8"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 449,
+        "sha256": "76cb8e2aea1136a974a61d0f099833c8aa335212f530e6e8d741473deef26372"
+      },
+      "changes": [
+        "Personal source/cache/run paths replaced with role markers; observations and embedded historical digests unchanged."
+      ]
+    },
+    {
+      "file": "evidence/current/ownership-native-trace/run/qemu-exit.txt",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/ownership-native-trace/run/qemu-exit.txt",
+        "bytes": 2,
+        "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 2,
+        "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/ownership-native-trace/run/results.json",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/ownership-native-trace/run/results.json",
+        "bytes": 2128,
+        "sha256": "265ccc50bfd55b2860480ed065a6549ba186a1596cd4b17cff4c7b394dcd96cf"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 2128,
+        "sha256": "265ccc50bfd55b2860480ed065a6549ba186a1596cd4b17cff4c7b394dcd96cf"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/ownership-native-trace/run/run_ownership_trace.executed.sh",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/ownership-native-trace/run/run_ownership_trace.executed.sh",
+        "bytes": 9007,
+        "sha256": "cb31328842cfbcaeb272a4f0f28740b93f769b47d671abdc98debe50e1278ea5"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 9007,
+        "sha256": "cb31328842cfbcaeb272a4f0f28740b93f769b47d671abdc98debe50e1278ea5"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/ownership-native-trace/run/summary.txt",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/ownership-native-trace/run/summary.txt",
+        "bytes": 139,
+        "sha256": "01289e62b4ba03f79b416995d6566b500230eaddfb849767434f8fb3af7e83da"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 87,
+        "sha256": "133b9196b4dff2cc9d9a05d548c89cfa42e879ddd3c08c8cc8f2eed06ac4a1d3"
+      },
+      "changes": [
+        "Personal source/cache/run paths replaced with role markers; observations and embedded historical digests unchanged."
+      ]
+    },
+    {
+      "file": "evidence/current/ownership-native-trace/run/toolchain.txt",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/ownership-native-trace/run/toolchain.txt",
+        "bytes": 438,
+        "sha256": "f736a28e42d01283bffe2feba5d02c732e66d29e2cce3f430bea0ae964c4af2c"
+      },
+      "original_identity_scope": "Original retained experiment/build record.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 422,
+        "sha256": "794bb924a665e66117ed10a38609b88529fd494b4bd0a1cd6baa96f0aa6cd07c"
+      },
+      "changes": [
+        "Personal source/cache/run paths replaced with role markers; observations and embedded historical digests unchanged."
+      ]
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/README.md",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 4182,
+        "sha256": "0c9b595168d94452a80812c780e91dcc6ed3987df2965a31b0b75881c5123a63"
+      },
+      "changes": ["New editorial package index; not an original execution record."]
+    },
+    {
+      "file": "evidence/current/ownership-native-trace/README.md",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 4328,
+        "sha256": "2e0b10c27f7abbbd8cbe2d5b1da49ab09042d445393c94ba1e92453e922096a9"
+      },
+      "changes": ["New editorial package index; not an original execution record."]
     }
   ]
 }

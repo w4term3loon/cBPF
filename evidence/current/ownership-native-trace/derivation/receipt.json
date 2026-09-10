@@ -1,0 +1,36 @@
+{
+  "schema": "cbpf-native-extension-publication-v1",
+  "derived_utc": "2026-09-10T13:38:27.071386+00:00",
+  "source_repository_commit": "4163505e002e8ce93fc7a72be737d6df351ad440",
+  "derivation_script_sha256": "53da42ed4c9586985eb4ceae6ed36155b54260275bed9fbc712a13dd9fdf8311",
+  "builder_image": "sha256:76c8ca062c30aa59b8eb072f30620a2a7e9604515aefe84d64161bf9eb644038",
+  "retained_checksum_verification": [
+    {
+      "manifest": "${OWNERSHIP_BUILD}/receipt/inputs.sha256",
+      "verified_files": 29,
+      "sha256": "9a351c236e75a6eb3773dd50622c10457dacd08b361cc4661fb5b7f80b2d9af6"
+    },
+    {
+      "manifest": "${OWNERSHIP_BUILD}/receipt/patched-sources.sha256",
+      "verified_files": 21,
+      "sha256": "7900c290c3d968db179b878944c389e06a055e650634363cd82061d0b8ebc6f1"
+    },
+    {
+      "manifest": "${OWNERSHIP_BUILD}/receipt/outputs.sha256",
+      "verified_files": 5,
+      "sha256": "a0e30d41be1af2be80d5004ca57f5555960a7d9758c9a8dcadd906ee51fce093"
+    },
+    {
+      "manifest": "${OWNERSHIP_RUN}/inputs.sha256",
+      "verified_files": 23,
+      "sha256": "2c4e801f5c2150fbe878bfb888804aef451194750575d2e4b78d8e3e03b3a78a"
+    }
+  ],
+  "kernel_image_sha256": "9c2bc95430c9c385c08ecca3cdd7d8c822c82a770086cc4194226477ca93af1c",
+  "vmlinux_sha256": "71f58059d05c456d95011cfb12b249106a23fcb19860298a1350e3c5888e16dd",
+  "new_native_execution": false,
+  "semantic_revalidation": false,
+  "native_inspection": "Pending the later correspondence batch; extraction only.",
+  "scope": "Original run files are unchanged privately; publication applies path redaction and lossless source-manifest compression.",
+  "omitted_dependencies": "Full Image/vmlinux, source Git objects and compiler/QEMU/firmware distributions remain external; identities and original commands are retained."
+}

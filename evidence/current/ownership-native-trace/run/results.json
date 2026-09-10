@@ -1,0 +1,71 @@
+{
+  "study": "synthetic native ownership containment trace",
+  "result": "PASS",
+  "cases": [
+    {
+      "bpf_instructions": 21,
+      "native_bytes": 612,
+      "native_sha256": "47f78cef8fc40b2a7c9775a9a8e00e47c4d89ac9ce46be848de584c07fead40b",
+      "restricted_exit_word": 106,
+      "executive_exit_word": 107,
+      "case": "positive",
+      "result": "PASS",
+      "retval": 42,
+      "acquired": 2,
+      "released": 2,
+      "reads": 1,
+      "cleanup": 0,
+      "refs": 1,
+      "identity_observed": false
+    },
+    {
+      "bpf_instructions": 24,
+      "native_bytes": 652,
+      "native_sha256": "77606aef40132126b179f4e03e7349239a72f3c7be964970914bb4a3743369f7",
+      "restricted_exit_word": 116,
+      "executive_exit_word": 117,
+      "case": "stale_read",
+      "result": "PASS",
+      "retval": 0,
+      "acquired": 2,
+      "released": 2,
+      "reads": 1,
+      "cleanup": 1,
+      "refs": 1,
+      "identity_observed": true
+    },
+    {
+      "bpf_instructions": 24,
+      "native_bytes": 652,
+      "native_sha256": "7215175ce34102dcb34742d5ed3654f5f702e9f8b8bd0f797cc5904af45c0cc8",
+      "restricted_exit_word": 116,
+      "executive_exit_word": 117,
+      "case": "repeated_release",
+      "result": "PASS",
+      "retval": 0,
+      "acquired": 2,
+      "released": 2,
+      "reads": 1,
+      "cleanup": 1,
+      "refs": 1,
+      "identity_observed": true
+    }
+  ],
+  "verifier_load_only": {
+    "result": "PASS",
+    "rejected": 3,
+    "executed": 0,
+    "diagnostics": {
+      "stale_copy": "argument_shape",
+      "stale_spill": "argument_shape",
+      "repeated_release": "argument_shape"
+    }
+  },
+  "qemu_exit": 0,
+  "scope": "fixed trusted native fixtures through the production provider, restricted entry, gateway, epilogue and cleanup wrapper",
+  "limits": [
+    "The three native fixtures are not normally verified eBPF.",
+    "Verifier rejection diagnostics are admission observations, not evidence for a specific ownership rule.",
+    "The trace projects repeated-release containment; it does not execute the original callback CVE path or implement callback-frame release policy."
+  ]
+}

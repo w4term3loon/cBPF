@@ -1,0 +1,3 @@
+[44149] FUNC 'cbpf_cap_acquire' type_id=44148 linkage=static
+[44152] FUNC 'cbpf_cap_read' type_id=44151 linkage=static
+[44154] FUNC 'cbpf_cap_release' type_id=44153 linkage=static

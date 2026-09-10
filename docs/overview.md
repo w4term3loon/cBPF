@@ -4,6 +4,12 @@ cBPF asks how a capability-aware runtime can preserve the unit of authority gran
 
 The study implements these mappings in two separate bounded Linux/Morello profiles in emulation. The normal verifier remains enabled. Construction, native transport and checks at the covered effects show how accepted executions represent the interface contract; the evaluation does not measure tolerance of verifier defects.
 
+Evidence status: the original selective-spatial and integrated-ownership run
+artifacts are now published with their result pages. Their reported outcomes
+below remain subject to stronger address/instruction correspondence checks
+and explicit native inspection. These two experimental gaps are not yet
+considered closed for independent assessment.
+
 ## 1. Array maps: which bytes does a lookup authorize?
 
 A lookup selects one logical value inside a larger allocation. Allocation-wide bounds may also admit another value, padding or metadata. The provider must therefore use storage stride to locate the value and logical size to bound its returned capability. Correct construction is useful only if the native access uses that capability.

@@ -1,0 +1,1 @@
+CBPF_SPATIAL_SELECTIVITY_RUN result=PASS mode=calibration qemu_exit=0 results=${SPATIAL_CALIBRATION}/results.json

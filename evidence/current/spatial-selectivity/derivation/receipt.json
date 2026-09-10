@@ -1,0 +1,41 @@
+{
+  "schema": "cbpf-native-extension-publication-v1",
+  "derived_utc": "2026-09-10T13:38:27.071386+00:00",
+  "source_repository_commit": "4163505e002e8ce93fc7a72be737d6df351ad440",
+  "derivation_script_sha256": "53da42ed4c9586985eb4ceae6ed36155b54260275bed9fbc712a13dd9fdf8311",
+  "builder_image": "sha256:76c8ca062c30aa59b8eb072f30620a2a7e9604515aefe84d64161bf9eb644038",
+  "retained_checksum_verification": [
+    {
+      "manifest": "${SPATIAL_BUILD}/receipt/inputs.sha256",
+      "verified_files": 6,
+      "sha256": "be6b150ba3583e5f9be93c141176f60057a6e892f9c73e0c9c91391441da787d"
+    },
+    {
+      "manifest": "${SPATIAL_BUILD}/receipt/patched-sources.sha256",
+      "verified_files": 7,
+      "sha256": "9d434f3788dba526a702451623ffba3db7ece9eef6ced6b8af20de4cfe9e0707"
+    },
+    {
+      "manifest": "${SPATIAL_BUILD}/receipt/outputs.sha256",
+      "verified_files": 8,
+      "sha256": "3d32c1cffc9b0da5868a2a4e9cc6f5a871d5853923dac805c6ee1ca00c8387e5"
+    },
+    {
+      "manifest": "${SPATIAL_RUN}/inputs.sha256",
+      "verified_files": 20,
+      "sha256": "580d3c2dcf675e0b72c28a4d87e9dac5f84923638aa67c78f84abdc6c28bc473"
+    },
+    {
+      "manifest": "${SPATIAL_CALIBRATION}/inputs.sha256",
+      "verified_files": 20,
+      "sha256": "d1b4a728be118b6f031545c53c63ee45f32bd5f509c0d9b0226e40e09635ab49"
+    }
+  ],
+  "kernel_image_sha256": "5ddd134ee996ba02b671ea065388be5155f729568ec65e1f61b95616ec6d0473",
+  "vmlinux_sha256": "959ef168c8a7f7967414aaddc499da1b41d1cf6c061c8c3e558ab95f4b65fc5b",
+  "new_native_execution": false,
+  "semantic_revalidation": false,
+  "native_inspection": "Pending the later correspondence batch; extraction only.",
+  "scope": "Original run files are unchanged privately; publication applies path redaction and lossless source-manifest compression.",
+  "omitted_dependencies": "Full Image/vmlinux, source Git objects and compiler/QEMU/firmware distributions remain external; identities and original commands are retained."
+}

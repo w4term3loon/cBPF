@@ -1,0 +1,1 @@
+CBPF_OWNERSHIP_TRACE_RUN result=PASS qemu_exit=0 results=${OWNERSHIP_RUN}/results.json

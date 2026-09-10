@@ -1,9 +1,18 @@
 # Selective spatial enforcement
 
-The selective spatial matrix passed on 10 September 2026. It made 30 native
+The original checker reports a passing selective spatial matrix on
+10 September 2026. The retained run made 30 native
 load/store observations over two disposable seven-byte array values stored at
 an eight-byte stride. Twenty-two accesses completed and eight produced the
 Morello bounds fault FSC `0x2a`, exactly as predicted.
+
+The [published evidence package](../../evidence/current/spatial-selectivity/README.md)
+now supplies the original logs, results, matching calibration, build identities
+and native bytes. **Correspondence revalidation remains pending.** The original
+checker does not require all case bases to equal the provider's selected address
+or bind runtime PCs and capability operands to complete linked instructions.
+Post-run disassembly extraction makes those checks possible; publication alone
+does not close these validation gaps.
 
 The production provider supplied the exact seven-byte capability. Two
 harness-only controls were derived separately from trusted retained authority:
@@ -22,9 +31,9 @@ instructions. No returned exact capability was widened.
 The same matrix passed for loads and stores. Permitted loads returned the
 fixture bytes, and permitted stores changed only their requested bytes.
 Rejected loads left their destination sentinel unchanged; rejected stores
-left all sixteen fixture bytes unchanged. Each rejected observation recorded
-the actual capability base, cursor and length, access instruction, width and
-fault PC. Resetting the fixture before every case prevents one case from
+left all sixteen fixture bytes unchanged in the original records. Each rejected
+observation reports capability base, cursor and length, instruction, width and
+fault PC; their independent correspondence checks remain pending. Resetting the fixture before every case prevents one case from
 supplying another case's expected result. The width-two case at offset six
 also shows that enforcement covers the complete memory operation, not merely
 its starting address.
@@ -52,6 +61,13 @@ fixture and acceptance criteria. The checker emits `results.json` in its
 fresh run directory.
 
 ## Validation identity
+
+The hashes below identify original artifacts, not necessarily their
+path-redacted publication copies. The
+[publication manifest](../../evidence/publication-manifest.json) records both
+identities. The original object disassembly is retained as such; the
+[complete linked helper listing](../../evidence/current/spatial-selectivity/derivation/complete-linked-disassembly.txt)
+was extracted later from the hash-matched `vmlinux`, without booting a guest.
 
 The passing local run used kernel release
 `6.7.0-cbpf-spatial-selectivity` over inherited tree

@@ -1,0 +1,5 @@
+ffff80008003c200 T cbpf_ownership_trace_program
+ffff80008003e370 T cbpf_gateway
+ffff80008003e450 T cbpf_gate_impl
+ffff80008003ebe0 T cbpf_test_invoke
+ffff80008003ef78 T cbpf_enter

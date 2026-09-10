@@ -1,0 +1,2 @@
+CBPF_OWNERSHIP_TRACE_BUILD result=PASS source_commit=b96da308ef1a054c3c04c9445e5ed70259b7c397 image=1
+CBPF_OWNERSHIP_TRACE_BUILD verifier_unchanged=1 production_provider_overlay=unchanged native_trace_test=1 boot=0

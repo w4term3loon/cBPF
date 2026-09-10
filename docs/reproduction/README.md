@@ -199,11 +199,19 @@ make spatial-selectivity-calibration
 make spatial-selectivity
 ```
 
-Calibration must first prove that the narrow recovery site handles the expected
-Morello bounds fault and rejects unrelated faults. The full run checks 30
+Run calibration first. Its two native cases demonstrate a valid byte load and
+recovery from an expected Morello bounds fault, not rejection of unrelated
+fault classes. The current launcher does not enforce a matching calibration
+receipt; that prerequisite and host-side unrelated-syndrome tests remain to
+be implemented. The full run checks 30
 exact/stride/both-slot operations and five load-only verifier controls. It
 reruns no archived CVE. The spatial and ownership kernels remain separate
 experiments.
+
+The [published spatial package](../../evidence/current/spatial-selectivity/README.md)
+binds the retained matrix to its actual build and matching calibration.
+Original results and subsequently extracted disassembly are distinguished;
+stronger spatial correspondence revalidation remains pending.
 
 ## Ownership CVE case controls
 
@@ -268,3 +276,9 @@ identities before boot. It checks positive, stale-read and repeated-release
 native fixtures, plus three load-only verifier rejections. The fixtures are
 fixed trusted native descriptions through the production path; they do not
 authorize invalid BPF execution or reproduce the original callback CVE.
+
+The [published ownership package](../../evidence/current/ownership-native-trace/README.md)
+supplies the original run and native images. Complete listings were decoded
+after that run; focused terminal-path checking and explicit inspection remain
+pending. The verifier submissions are separate existing admission controls,
+not matched counterparts of the three native fixtures.

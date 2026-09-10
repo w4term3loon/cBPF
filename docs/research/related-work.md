@@ -107,6 +107,11 @@ the Linux array-provider/native-access mapping and the bounded kfunc protocol.
 
 ## Defensible positioning and present evidence
 
+The two new native studies below have published original receipts, but their
+stronger correspondence checks and explicit native inspection are pending.
+Their numerical outcomes are reported local results, not yet completed
+experimental closure for independent assessment.
+
 | Concrete contribution | Closest established result | Additional design obligation and evidence limit |
 |---|---|---|
 | Selected semantic extent reaches and constrains native access. | CHERI already supports subobject bounds; Linux defines map-value access; AEE already supplies object-level enforcement. | Use stride to locate the value but logical size to grant authority. The [selective matrix](../results/spatial-selectivity.md) observes exact-seven rejection of padding, the next slot and a crossing access against matched stride-eight/both-slot controls. This is selected synthetic-native evidence; all-program mediation is unproved. |

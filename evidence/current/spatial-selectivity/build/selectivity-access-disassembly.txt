@@ -1,0 +1,16 @@
+
+/build/vmlinux:	file format elf64-littleaarch64
+
+Disassembly of section .text:
+
+ffff8000801c4740 <cbpf_selectivity_native_access>:
+ffff8000801c4740: f9400068     	ldr	x8, [x3]
+ffff8000801c4744: 7100083f     	cmp	w1, #0x2
+ffff8000801c4748: 36000120     	tbz	w0, #0x0, 0xffff8000801c476c <cbpf_selectivity_native_access+0x2c>
+ffff8000801c474c: 54000240     	b.eq	0xffff8000801c4794 <cbpf_selectivity_native_access+0x54>
+ffff8000801c4750: 7100043f     	cmp	w1, #0x1
+ffff8000801c4754: 540001c1     	b.ne	0xffff8000801c478c <cbpf_selectivity_native_access+0x4c>
+ffff8000801c4758: 2a1f03e0     	mov	w0, wzr
+ffff8000801c475c: c2c1d041     	mov	c1, c2
+ffff8000801c4760: e2000048     	sturb	w8, [c2, #0x0]
+ffff8000801c4764: 10ffffe9     	adr	x9, 0xffff8000801c4760 <cbpf_selectivity_native_access+0x20>

@@ -1,0 +1,106 @@
+{
+  "vmlinux_sha256": "71f58059d05c456d95011cfb12b249106a23fcb19860298a1350e3c5888e16dd",
+  "ranges": [
+    {
+      "symbol": "cbpf_ownership_trace_program",
+      "elf_symbol": "143953: ffff80008003c200   272 FUNC    GLOBAL DEFAULT    2 cbpf_ownership_trace_program",
+      "start": "0xffff80008003c200",
+      "end_exclusive": "0xffff80008003c310",
+      "extent_basis": "ELF symbol st_size",
+      "section_index": 2,
+      "elf_file_offset": 311808,
+      "file": "cbpf_ownership_trace_program.bin",
+      "bytes": 272,
+      "sha256": "404f0f0a704e2bb99460e71f221bd8a81c75b9c509b4316cd443dfb2333643f6"
+    },
+    {
+      "symbol": "cbpf_gateway",
+      "elf_symbol": "143957: ffff80008003e370     0 NOTYPE  GLOBAL DEFAULT    2 cbpf_gateway",
+      "start": "0xffff80008003e370",
+      "end_exclusive": "0xffff80008003e450",
+      "extent_basis": "Zero-sized assembly label; exclusive boundary cbpf_gate_impl",
+      "section_index": 2,
+      "elf_file_offset": 320368,
+      "file": "cbpf_gateway.bin",
+      "bytes": 224,
+      "sha256": "539bc99e39e0625fdd1cd0385d50c9d51af601443ac8a36b0c400b2d40e47b0d"
+    },
+    {
+      "symbol": "cbpf_gate_impl",
+      "elf_symbol": "143958: ffff80008003e450  1020 FUNC    GLOBAL DEFAULT    2 cbpf_gate_impl",
+      "start": "0xffff80008003e450",
+      "end_exclusive": "0xffff80008003e84c",
+      "extent_basis": "ELF symbol st_size",
+      "section_index": 2,
+      "elf_file_offset": 320592,
+      "file": "cbpf_gate_impl.bin",
+      "bytes": 1020,
+      "sha256": "824d10d45547be940593e0894cde65f93f1413e88d53f025fd761ce25c8d81ab"
+    },
+    {
+      "symbol": "cbpf_fail",
+      "elf_symbol": "5007: ffff80008003e84c   144 FUNC    LOCAL  DEFAULT    2 cbpf_fail",
+      "start": "0xffff80008003e84c",
+      "end_exclusive": "0xffff80008003e8dc",
+      "extent_basis": "ELF symbol st_size",
+      "section_index": 2,
+      "elf_file_offset": 321612,
+      "file": "cbpf_fail.bin",
+      "bytes": 144,
+      "sha256": "41bff5d0c2edc6a2a4e9a2526fce17324ff317f2d1edea0c84ebd57a15f0372e"
+    },
+    {
+      "symbol": "cbpf_trace",
+      "elf_symbol": "5004: ffff80008003e8dc   124 FUNC    LOCAL  DEFAULT    2 cbpf_trace",
+      "start": "0xffff80008003e8dc",
+      "end_exclusive": "0xffff80008003e958",
+      "extent_basis": "ELF symbol st_size",
+      "section_index": 2,
+      "elf_file_offset": 321756,
+      "file": "cbpf_trace.bin",
+      "bytes": 124,
+      "sha256": "cea3eb85ce71d3e350801eb293cb1af50caac8a3ecc57c97e11a3610e97c09dd"
+    },
+    {
+      "symbol": "cbpf_consume",
+      "elf_symbol": "5008: ffff80008003ea28   420 FUNC    LOCAL  DEFAULT    2 cbpf_consume",
+      "start": "0xffff80008003ea28",
+      "end_exclusive": "0xffff80008003ebcc",
+      "extent_basis": "ELF symbol st_size",
+      "section_index": 2,
+      "elf_file_offset": 322088,
+      "file": "cbpf_consume.bin",
+      "bytes": 420,
+      "sha256": "19dba0118d88acc5e3301c708f9682343f17afbc46a82ac310b338866cfc1af9"
+    },
+    {
+      "symbol": "cbpf_test_invoke",
+      "elf_symbol": "143960: ffff80008003ebe0   920 FUNC    GLOBAL DEFAULT    2 cbpf_test_invoke",
+      "start": "0xffff80008003ebe0",
+      "end_exclusive": "0xffff80008003ef78",
+      "extent_basis": "ELF symbol st_size",
+      "section_index": 2,
+      "elf_file_offset": 322528,
+      "file": "cbpf_test_invoke.bin",
+      "bytes": 920,
+      "sha256": "2bb37255c55a64717d0884907320d483b50d18151369d39d7efba96f37f2fad8"
+    },
+    {
+      "symbol": "cbpf_enter",
+      "elf_symbol": "143956: ffff80008003ef78   684 FUNC    GLOBAL DEFAULT    2 cbpf_enter",
+      "start": "0xffff80008003ef78",
+      "end_exclusive": "0xffff80008003f224",
+      "extent_basis": "ELF symbol st_size",
+      "section_index": 2,
+      "elf_file_offset": 323448,
+      "file": "cbpf_enter.bin",
+      "bytes": 684,
+      "sha256": "10dd66273ca7f9d64ecd935ed00ac917692e357a1eda0e93826308b7ab78c35c"
+    }
+  ],
+  "disassembly": {
+    "bytes": 54187,
+    "sha256": "0d0eed77e4b4c71a48fb07fd2aa043f33722f6e1a6f61faab353609afb78208a"
+  },
+  "scope": "Complete extraction and byte/decoder correspondence only; semantic inspection pending."
+}

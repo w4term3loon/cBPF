@@ -1,0 +1,1083 @@
+[2J[01;01H[=3h[2J[01;01HEFI stub: Booting Linux Kernel...
+EFI stub: EFI_RNG_PROTOCOL unavailable
+EFI stub: Loaded initrd from LINUX_EFI_INITRD_MEDIA_GUID device path
+EFI stub: Generating empty DTB
+EFI stub: Exiting boot services...
+[    0.000000] Booting Linux on physical CPU 0x0000000000 [0x410fd083]
+[    0.000000] Linux version 6.7.0-cbpf-ownership-native-trace (cbpf@ownership-native-trace) (clang version 17.0.0 (https://git.morello-project.org/morello/llvm-project.git 7956a8d20652883f845a41094645174eb92d1960), LLD 17.0.0) #1 SMP PREEMPT 2026-09-10 00:00:00 UTC
+[    0.000000] Userspace ABI: pure-capability (PCuABI)
+[    0.000000] KASLR disabled due to lack of seed
+[    0.000000] efi: EFI v2.7 by EDK II
+[    0.000000] efi: SMBIOS 3.0=0xbf700000 MEMATTR=0xbd5b3018 ACPI 2.0=0xbbf70018 INITRD=0xbc373f18 MEMRESERVE=0xbc373f98 
+[    0.000000] ACPI: Early table checksum verification disabled
+[    0.000000] ACPI: RSDP 0x00000000BBF70018 000024 (v02 BOCHS )
+[    0.000000] ACPI: XSDT 0x00000000BBF7FE98 000064 (v01 BOCHS  BXPC     00000001      01000013)
+[    0.000000] ACPI: FACP 0x00000000BBF7FA98 00010C (v05 BOCHS  BXPC     00000001 BXPC 00000001)
+[    0.000000] ACPI: DSDT 0x00000000BBF77518 00144C (v02 BOCHS  BXPC     00000001 BXPC 00000001)
+[    0.000000] ACPI: APIC 0x00000000BBF7FC18 0000B4 (v03 BOCHS  BXPC     00000001 BXPC 00000001)
+[    0.000000] ACPI: PPTT 0x00000000BBF7FD18 000060 (v02 BOCHS  BXPC     00000001 BXPC 00000001)
+[    0.000000] ACPI: GTDT 0x00000000BBF7D898 000060 (v02 BOCHS  BXPC     00000001 BXPC 00000001)
+[    0.000000] ACPI: MCFG 0x00000000BBF7FE18 00003C (v01 BOCHS  BXPC     00000001 BXPC 00000001)
+[    0.000000] ACPI: SPCR 0x00000000BBF7FF98 000050 (v02 BOCHS  BXPC     00000001 BXPC 00000001)
+[    0.000000] ACPI: DBG2 0x00000000BBF7E818 000057 (v00 BOCHS  BXPC     00000001 BXPC 00000001)
+[    0.000000] ACPI: IORT 0x00000000BBF7E898 000080 (v03 BOCHS  BXPC     00000001 BXPC 00000001)
+[    0.000000] ACPI: SPCR: console: pl011,mmio,0x9000000,9600
+[    0.000000] NUMA: Failed to initialise from firmware
+[    0.000000] NUMA: Faking a node at [mem 0x0000000040000000-0x00000000bfffffff]
+[    0.000000] NUMA: NODE_DATA [mem 0xbfbf6ac0-0xbfbf8fff]
+[    0.000000] Zone ranges:
+[    0.000000]   DMA      [mem 0x0000000040000000-0x00000000bfffffff]
+[    0.000000]   DMA32    empty
+[    0.000000]   Normal   empty
+[    0.000000] Movable zone start for each node
+[    0.000000] Early memory node ranges
+[    0.000000]   node   0: [mem 0x0000000040000000-0x00000000bbf7ffff]
+[    0.000000]   node   0: [mem 0x00000000bbf80000-0x00000000bbffffff]
+[    0.000000]   node   0: [mem 0x00000000bc000000-0x00000000bc01ffff]
+[    0.000000]   node   0: [mem 0x00000000bc020000-0x00000000bc36ffff]
+[    0.000000]   node   0: [mem 0x00000000bc370000-0x00000000bf64ffff]
+[    0.000000]   node   0: [mem 0x00000000bf650000-0x00000000bf6dffff]
+[    0.000000]   node   0: [mem 0x00000000bf6e0000-0x00000000bf6effff]
+[    0.000000]   node   0: [mem 0x00000000bf6f0000-0x00000000bf80ffff]
+[    0.000000]   node   0: [mem 0x00000000bf810000-0x00000000bfffffff]
+[    0.000000] Initmem setup node 0 [mem 0x0000000040000000-0x00000000bfffffff]
+[    0.000000] psci: probing for conduit method from ACPI.
+[    0.000000] psci: PSCIv1.1 detected in firmware.
+[    0.000000] psci: Using standard PSCI v0.2 function IDs
+[    0.000000] psci: Trusted OS migration not required
+[    0.000000] psci: SMC Calling Convention v1.0
+[    0.000000] percpu: Embedded 33 pages/cpu s97320 r8192 d29656 u135168
+[    0.000000] Detected PIPT I-cache on CPU0
+[    0.000000] CPU features: detected: GIC system register CPU interface
+[    0.000000] CPU features: detected: Morello Capability Architecture
+[    0.000000] CPU features: detected: Spectre-v2
+[    0.000000] CPU features: detected: Spectre-v3a
+[    0.000000] CPU features: detected: Spectre-v4
+[    0.000000] CPU features: detected: Spectre-BHB
+[    0.000000] CPU features: kernel page table isolation disabled by kernel configuration
+[    0.000000] CPU features: detected: ARM erratum 1742098
+[    0.000000] CPU features: detected: ARM errata 1165522, 1319367, or 1530923
+[    0.000000] alternatives: applying boot alternatives
+[    0.000000] Kernel command line: console=ttyAMA0 loglevel=7 rdinit=/init panic=-1 sysctl.net.core.bpf_jit_enable=1 initrd=initrd
+[    0.000000] Dentry cache hash table entries: 262144 (order: 9, 2097152 bytes, linear)
+[    0.000000] Inode-cache hash table entries: 131072 (order: 8, 1048576 bytes, linear)
+[    0.000000] Fallback order for Node 0: 0 
+[    0.000000] Built 1 zonelists, mobility grouping on.  Total pages: 516096
+[    0.000000] Policy zone: DMA
+[    0.000000] mem auto-init: stack:all(zero), heap alloc:off, heap free:off
+[    0.000000] software IO TLB: SWIOTLB bounce buffer size adjusted to 2MB
+[    0.000000] software IO TLB: area num 1.
+[    0.000000] software IO TLB: mapped [mem 0x00000000bd3b3000-0x00000000bd5b3000] (2MB)
+[    0.000000] Memory: 2031836K/2097152K available (8448K kernel code, 1412K rwdata, 6028K rodata, 832K init, 507K bss, 65316K reserved, 0K cma-reserved)
+[    0.000000] SLUB: HWalign=64, Order=0-3, MinObjects=0, CPUs=1, Nodes=1
+[    0.000000] trace event string verifier disabled
+[    0.000000] rcu: Preemptible hierarchical RCU implementation.
+[    0.000000] rcu: 	RCU event tracing is enabled.
+[    0.000000] rcu: 	RCU restricting CPUs from NR_CPUS=256 to nr_cpu_ids=1.
+[    0.000000] 	Trampoline variant of Tasks RCU enabled.
+[    0.000000] 	Tracing variant of Tasks RCU enabled.
+[    0.000000] rcu: RCU calculated value of scheduler-enlistment delay is 25 jiffies.
+[    0.000000] rcu: Adjusting geometry for rcu_fanout_leaf=16, nr_cpu_ids=1
+[    0.000000] NR_IRQS: 64, nr_irqs: 64, preallocated irqs: 0
+[    0.000000] GICv3: 224 SPIs implemented
+[    0.000000] GICv3: 0 Extended SPIs implemented
+[    0.000000] Root IRQ handler: gic_handle_irq
+[    0.000000] GICv3: GICv3 features: 16 PPIs
+[    0.000000] GICv3: CPU0: found redistributor 0 region 0:0x00000000080a0000
+[    0.000000] ITS [mem 0x08080000-0x0809ffff]
+[    0.000000] ITS@0x0000000008080000: allocated 8192 Devices @400d0000 (indirect, esz 8, psz 64K, shr 1)
+[    0.000000] ITS@0x0000000008080000: allocated 8192 Interrupt Collections @400e0000 (flat, esz 8, psz 64K, shr 1)
+[    0.000000] GICv3: using LPI property table @0x00000000400f0000
+[    0.000000] GICv3: CPU0: using allocated LPI pending table @0x0000000040100000
+[    0.000000] rcu: srcu_init: Setting srcu_struct sizes based on contention.
+[    0.000000] arch_timer: cp15 timer(s) running at 62.50MHz (virt).
+[    0.000000] clocksource: arch_sys_counter: mask: 0x1ffffffffffffff max_cycles: 0x1cd42e208c, max_idle_ns: 881590405314 ns
+[    0.000053] sched_clock: 57 bits at 63MHz, resolution 16ns, wraps every 4398046511096ns
+[    0.008163] Console: colour dummy device 80x25
+[    0.009257] ACPI: Core revision 20230628
+[    0.012573] Calibrating delay loop (skipped), value calculated using timer frequency.. 125.00 BogoMIPS (lpj=250000)
+[    0.012734] pid_max: default: 32768 minimum: 301
+[    0.014062] LSM: initializing lsm=capability,selinux,integrity
+[    0.014418] SELinux:  Initializing.
+[    0.016183] Mount-cache hash table entries: 4096 (order: 3, 32768 bytes, linear)
+[    0.016231] Mountpoint-cache hash table entries: 4096 (order: 3, 32768 bytes, linear)
+[    0.050609] RCU Tasks: Setting shift to 0 and lim to 1 rcu_task_cb_adjust=1.
+[    0.051579] RCU Tasks Trace: Setting shift to 0 and lim to 1 rcu_task_cb_adjust=1.
+[    0.052975] rcu: Hierarchical SRCU implementation.
+[    0.053014] rcu: 	Max phase no-delay instances is 1000.
+[    0.056244] Platform MSI: ITS@0x8080000 domain created
+[    0.056535] PCI/MSI: ITS@0x8080000 domain created
+[    0.056760] Remapping and enabling EFI services.
+[    0.059262] smp: Bringing up secondary CPUs ...
+[    0.060572] smp: Brought up 1 node, 1 CPU
+[    0.060610] SMP: Total of 1 processors activated.
+[    0.060721] CPU features: detected: Common not Private translations
+[    0.060733] CPU features: detected: CRC32 instructions
+[    0.060787] CPU features: detected: RCpc load-acquire (LDAPR)
+[    0.060794] CPU features: detected: LSE atomic instructions
+[    0.060804] CPU features: detected: Privileged Access Never
+[    0.075384] CPU: All CPU(s) started at EL1
+[    0.076779] alternatives: applying system-wide alternatives
+[    0.122229] devtmpfs: initialized
+[    0.137917] clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 7645041785100000 ns
+[    0.139333] futex hash table entries: 256 (order: 2, 16384 bytes, linear)
+[    0.154182] SMBIOS 3.0.0 present.
+[    0.154481] DMI: QEMU QEMU Virtual Machine, BIOS 0.0.0 02/06/2015
+[    0.168262] NET: Registered PF_NETLINK/PF_ROUTE protocol family
+[    0.172992] DMA: preallocated 256 KiB GFP_KERNEL pool for atomic allocations
+[    0.173323] DMA: preallocated 256 KiB GFP_KERNEL|GFP_DMA pool for atomic allocations
+[    0.173527] DMA: preallocated 256 KiB GFP_KERNEL|GFP_DMA32 pool for atomic allocations
+[    0.174321] audit: initializing netlink subsys (disabled)
+[    0.176351] audit: type=2000 audit(0.152:1): state=initialized audit_enabled=0 res=1
+[    0.179605] thermal_sys: Registered thermal governor 'step_wise'
+[    0.180949] cpuidle: using governor menu
+[    0.181880] hw-breakpoint: found 8 breakpoint and 8 watchpoint registers.
+[    0.182344] ASID allocator initialised with 65536 entries
+[    0.182904] Serial: AMBA PL011 UART driver
+[    0.185214] Modules: 28416 pages in range for non-PLT usage
+[    0.185239] Modules: 519936 pages in range for PLT usage
+[    0.197856] HugeTLB: registered 1.00 GiB page size, pre-allocated 0 pages
+[    0.197881] HugeTLB: 0 KiB vmemmap can be freed for a 1.00 GiB page
+[    0.197916] HugeTLB: registered 32.0 MiB page size, pre-allocated 0 pages
+[    0.197924] HugeTLB: 0 KiB vmemmap can be freed for a 32.0 MiB page
+[    0.197935] HugeTLB: registered 2.00 MiB page size, pre-allocated 0 pages
+[    0.197942] HugeTLB: 0 KiB vmemmap can be freed for a 2.00 MiB page
+[    0.197952] HugeTLB: registered 64.0 KiB page size, pre-allocated 0 pages
+[    0.197959] HugeTLB: 0 KiB vmemmap can be freed for a 64.0 KiB page
+[    0.210576] ACPI: Added _OSI(Module Device)
+[    0.210616] ACPI: Added _OSI(Processor Device)
+[    0.210629] ACPI: Added _OSI(3.0 _SCP Extensions)
+[    0.210639] ACPI: Added _OSI(Processor Aggregator Device)
+[    0.230732] ACPI: 1 ACPI AML tables successfully acquired and loaded
+[    0.243206] ACPI: Interpreter enabled
+[    0.243243] ACPI: Using GIC for interrupt routing
+[    0.243731] ACPI: MCFG table detected, 1 entries
+[    0.283936] ARMH0011:00: ttyAMA0 at MMIO 0x9000000 (irq = 12, base_baud = 0) is a SBSA
+[    0.284838] printk: legacy console [ttyAMA0] enabled
+[    0.314893] ACPI: PCI Root Bridge [PCI0] (domain 0000 [bus 00-ff])
+[    0.317209] acpi PNP0A08:00: _OSC: OS supports [ExtendedConfig ASPM ClockPM Segments MSI HPX-Type3]
+[    0.317466] acpi PNP0A08:00: PCIe port services disabled; not requesting _OSC control
+[    0.324486] acpi PNP0A08:00: ECAM area [mem 0x4010000000-0x401fffffff] reserved by PNP0C02:00
+[    0.325511] acpi PNP0A08:00: ECAM at [mem 0x4010000000-0x401fffffff] for [bus 00-ff]
+[    0.326301] ACPI: Remapped I/O 0x000000003eff0000 to [io  0x0000-0xffff window]
+[    0.328484] PCI host bridge to bus 0000:00
+[    0.328845] pci_bus 0000:00: root bus resource [mem 0x10000000-0x3efeffff window]
+[    0.328934] pci_bus 0000:00: root bus resource [io  0x0000-0xffff window]
+[    0.329002] pci_bus 0000:00: root bus resource [mem 0x8000000000-0xffffffffff window]
+[    0.329172] pci_bus 0000:00: root bus resource [bus 00-ff]
+[    0.331002] pci 0000:00:00.0: [1b36:0008] type 00 class 0x060000
+[    0.335686] pci_bus 0000:00: resource 4 [mem 0x10000000-0x3efeffff window]
+[    0.335788] pci_bus 0000:00: resource 5 [io  0x0000-0xffff window]
+[    0.335855] pci_bus 0000:00: resource 6 [mem 0x8000000000-0xffffffffff window]
+[    0.336984] ACPI: PCI: Interrupt link GSI0 configured for IRQ 35
+[    0.337175] ACPI: PCI: Interrupt link GSI1 configured for IRQ 36
+[    0.337301] ACPI: PCI: Interrupt link GSI2 configured for IRQ 37
+[    0.337421] ACPI: PCI: Interrupt link GSI3 configured for IRQ 38
+[    0.339530] iommu: Default domain type: Translated
+[    0.339621] iommu: DMA domain TLB invalidation policy: strict mode
+[    0.340496] pps_core: LinuxPPS API ver. 1 registered
+[    0.340565] pps_core: Software ver. 5.3.6 - Copyright 2005-2007 Rodolfo Giometti <giometti@linux.it>
+[    0.340720] PTP clock support registered
+[    0.341554] scmi_core: SCMI protocol bus registered
+[    0.343509] efivars: Registered efivars operations
+[    0.356125] vgaarb: loaded
+[    0.357310] clocksource: Switched to clocksource arch_sys_counter
+[    0.369761] pnp: PnP ACPI init
+[    0.372487] system 00:00: [mem 0x4010000000-0x401fffffff window] could not be reserved
+[    0.372872] pnp: PnP ACPI: found 1 devices
+[    0.394895] NET: Registered PF_INET protocol family
+[    0.396286] IP idents hash table entries: 32768 (order: 6, 262144 bytes, linear)
+[    0.402030] tcp_listen_portaddr_hash hash table entries: 1024 (order: 2, 16384 bytes, linear)
+[    0.402214] Table-perturb hash table entries: 65536 (order: 6, 262144 bytes, linear)
+[    0.402336] TCP established hash table entries: 16384 (order: 5, 131072 bytes, linear)
+[    0.402723] TCP bind hash table entries: 16384 (order: 7, 524288 bytes, linear)
+[    0.403729] TCP: Hash tables configured (established 16384 bind 16384)
+[    0.405654] UDP hash table entries: 1024 (order: 3, 32768 bytes, linear)
+[    0.406062] UDP-Lite hash table entries: 1024 (order: 3, 32768 bytes, linear)
+[    0.407161] NET: Registered PF_UNIX/PF_LOCAL protocol family
+[    0.407714] PCI: CLS 0 bytes, default 64
+[    0.412029] Unpacking initramfs...
+[    0.416416] workingset: timestamp_bits=42 max_order=19 bucket_order=0
+[    0.429229] io scheduler mq-deadline registered
+[    0.429359] io scheduler kyber registered
+[    0.429727] io scheduler bfq registered
+[    0.443353] input: Power Button as /devices/LNXSYSTM:00/LNXSYBUS:00/PNP0C0C:00/input/input0
+[    0.444291] ACPI: button: Power Button [PWRB]
+[    0.448318] Freeing initrd memory: 24K
+[    0.449078] EINJ: EINJ table not found.
+[    0.513560] loop: module loaded
+[    0.515477] mousedev: PS/2 mouse device common for all mice
+[    0.519580] rtc-efi rtc-efi.0: registered as rtc0
+[    0.520351] rtc-efi rtc-efi.0: setting system clock to 2026-09-10T12:02:56 UTC (1789041776)
+[    0.522352] pstore: Using crash dump compression: deflate
+[    0.522565] pstore: Registered efi_pstore as persistent store backend
+[    0.526100] hw perfevents: enabled with armv8_pmuv3_0 PMU driver, 5 counters available
+[    0.575139] IPVS: Registered protocols ()
+[    0.575447] IPVS: Connection hash table configured (size=4096, memory=32Kbytes)
+[    0.576799] IPVS: ipvs loaded.
+[    0.578181] NET: Registered PF_INET6 protocol family
+[    0.584276] Segment Routing with IPv6
+[    0.584548] In-situ OAM (IOAM) with IPv6
+[    0.586453] sit: IPv6, IPv4 and MPLS over IPv4 tunneling driver
+[    0.589824] NET: Registered PF_PACKET protocol family
+[    0.590419] Bridge firewalling registered
+[    0.590607] CBPF_GUARD case=stale_copy phase=begin native_bpf=0 scope=trusted_resolver
+[    0.590927] CBPF_BIND pc=0 id=1 cell=ffff0000001cf7a0 object=ffff800080f27e08 public_tag=1 public_base=0xffff0000001cf7a0 public_length=16 public_perms=0x20001
+[    0.591119] CBPF_GATE seq=1 event=acquire pc=0 id=1 acquired=1 released=0 reads=0 cleanup=0 refs=2 tagA=1 tagB=0
+[    0.591378] CBPF_GATE seq=2 event=clear pc=1 id=1 acquired=1 released=0 reads=0 cleanup=0 refs=2 tagA=0 tagB=0
+[    0.591526] CBPF_GATE seq=3 event=release pc=1 id=1 acquired=1 released=1 reads=0 cleanup=0 refs=1 tagA=0 tagB=0
+[    0.591744] CBPF_GATE seq=4 event=reject pc=2 id=0 acquired=1 released=1 reads=0 cleanup=0 refs=1 tagA=0 tagB=0
+[    0.592003] CBPF_GUARD case=stale_copy result=PASS acquired=1 released=1 reads=0 cleanup=0 refs=1 public_tag=1 canonical=1 tagA=0 failed=1 failure_return=1 native_bpf=0 scope=trusted_resolver
+[    0.592236] CBPF_GUARD case=stale_spill phase=begin native_bpf=0 scope=trusted_resolver
+[    0.592302] CBPF_BIND pc=0 id=1 cell=ffff0000001cf7a0 object=ffff800080f27e08 public_tag=1 public_base=0xffff0000001cf7a0 public_length=16 public_perms=0x20001
+[    0.592412] CBPF_GATE seq=1 event=acquire pc=0 id=1 acquired=1 released=0 reads=0 cleanup=0 refs=2 tagA=1 tagB=0
+[    0.592507] CBPF_GATE seq=2 event=clear pc=1 id=1 acquired=1 released=0 reads=0 cleanup=0 refs=2 tagA=0 tagB=0
+[    0.592588] CBPF_GATE seq=3 event=release pc=1 id=1 acquired=1 released=1 reads=0 cleanup=0 refs=1 tagA=0 tagB=0
+[    0.592680] CBPF_GATE seq=4 event=reject pc=2 id=0 acquired=1 released=1 reads=0 cleanup=0 refs=1 tagA=0 tagB=0
+[    0.592762] CBPF_GUARD case=stale_spill result=PASS acquired=1 released=1 reads=0 cleanup=0 refs=1 public_tag=1 canonical=1 tagA=0 failed=1 failure_return=1 native_bpf=0 scope=trusted_resolver
+[    0.592893] CBPF_GUARD case=duplicate_release phase=begin native_bpf=0 scope=trusted_resolver
+[    0.593044] CBPF_BIND pc=0 id=1 cell=ffff0000001cf7a0 object=ffff800080f27e08 public_tag=1 public_base=0xffff0000001cf7a0 public_length=16 public_perms=0x20001
+[    0.593159] CBPF_GATE seq=1 event=acquire pc=0 id=1 acquired=1 released=0 reads=0 cleanup=0 refs=2 tagA=1 tagB=0
+[    0.593245] CBPF_GATE seq=2 event=clear pc=1 id=1 acquired=1 released=0 reads=0 cleanup=0 refs=2 tagA=0 tagB=0
+[    0.593325] CBPF_GATE seq=3 event=release pc=1 id=1 acquired=1 released=1 reads=0 cleanup=0 refs=1 tagA=0 tagB=0
+[    0.593407] CBPF_GATE seq=4 event=reject pc=2 id=0 acquired=1 released=1 reads=0 cleanup=0 refs=1 tagA=0 tagB=0
+[    0.593492] CBPF_GUARD case=duplicate_release result=PASS acquired=1 released=1 reads=0 cleanup=0 refs=1 public_tag=1 canonical=1 tagA=0 failed=1 failure_return=1 native_bpf=0 scope=trusted_resolver
+[    0.593697] CBPF_CALLBACK case=retained_release phase=begin context=ffff0000001cf750 state=ffff0000001cf780 limit=3 native_bpf=0 scope=trusted_c_dispatch
+[    0.593857] CBPF_BIND pc=0 id=1 cell=ffff0000001cf790 object=ffff800080f27e08 public_tag=1 public_base=0xffff0000001cf790 public_length=16 public_perms=0x20001
+[    0.593967] CBPF_GATE seq=1 event=acquire pc=0 id=1 acquired=1 released=0 reads=0 cleanup=0 refs=2 tagA=1 tagB=0
+[    0.594172] CBPF_CALLBACK phase=enter iteration=0 context=ffff0000001cf750 state=ffff0000001cf780 id=1 public_tag=1 canonical=1 private_tag=1
+[    0.594288] CBPF_GATE seq=2 event=clear pc=4 id=1 acquired=1 released=0 reads=0 cleanup=0 refs=2 tagA=0 tagB=0
+[    0.594376] CBPF_GATE seq=3 event=release pc=4 id=1 acquired=1 released=1 reads=0 cleanup=0 refs=1 tagA=0 tagB=0
+[    0.594506] CBPF_CALLBACK phase=enter iteration=1 context=ffff0000001cf750 state=ffff0000001cf780 id=1 public_tag=1 canonical=1 private_tag=0
+[    0.594607] CBPF_GATE seq=4 event=reject pc=6 id=0 acquired=1 released=1 reads=0 cleanup=0 refs=1 tagA=0 tagB=0
+[    0.594859] CBPF_CALLBACK case=retained_release result=PASS calls=2 completed=1 value=0 acquired=1 released=1 reads=0 cleanup=0 refs=1 failed=1 dispatched=0 native_bpf=0 scope=trusted_c_dispatch
+[    0.595066] CBPF_CALLBACK case=independent_b phase=begin context=ffff0000001cf750 state=ffff0000001cf780 limit=2 native_bpf=0 scope=trusted_c_dispatch
+[    0.595168] CBPF_BIND pc=0 id=1 cell=ffff0000001cf790 object=ffff800080f27e08 public_tag=1 public_base=0xffff0000001cf790 public_length=16 public_perms=0x20001
+[    0.595274] CBPF_GATE seq=1 event=acquire pc=0 id=1 acquired=1 released=0 reads=0 cleanup=0 refs=2 tagA=1 tagB=0
+[    0.595363] CBPF_BIND pc=1 id=2 cell=ffff0000001cf7a0 object=ffff800080f27e08 public_tag=1 public_base=0xffff0000001cf7a0 public_length=16 public_perms=0x20001
+[    0.595472] CBPF_GATE seq=2 event=acquire pc=1 id=2 acquired=2 released=0 reads=0 cleanup=0 refs=3 tagA=1 tagB=1
+[    0.595556] CBPF_CALLBACK phase=enter iteration=0 context=ffff0000001cf750 state=ffff0000001cf780 id=1 public_tag=1 canonical=1 private_tag=1
+[    0.595651] CBPF_GATE seq=3 event=clear pc=4 id=1 acquired=2 released=0 reads=0 cleanup=0 refs=3 tagA=0 tagB=1
+[    0.595733] CBPF_GATE seq=4 event=release pc=4 id=1 acquired=2 released=1 reads=0 cleanup=0 refs=2 tagA=0 tagB=1
+[    0.595815] CBPF_CALLBACK phase=enter iteration=1 context=ffff0000001cf750 state=ffff0000001cf780 id=2 public_tag=1 canonical=1 private_tag=1
+[    0.595955] CBPF_GATE seq=5 event=read pc=6 id=2 acquired=2 released=1 reads=1 cleanup=0 refs=2 tagA=0 tagB=1
+[    0.596067] CBPF_GATE seq=6 event=clear pc=7 id=2 acquired=2 released=1 reads=1 cleanup=0 refs=2 tagA=0 tagB=0
+[    0.596146] CBPF_GATE seq=7 event=release pc=7 id=2 acquired=2 released=2 reads=1 cleanup=0 refs=1 tagA=0 tagB=0
+[    0.596265] CBPF_CALLBACK case=independent_b result=PASS calls=2 completed=2 value=42 acquired=2 released=2 reads=1 cleanup=0 refs=1 failed=0 dispatched=1 native_bpf=0 scope=trusted_c_dispatch
+[    0.596424] CBPF_OWNERSHIP_TRACE case=positive phase=begin verified_bpf=0 scope=synthetic_native_production_path
+[    0.596666] CBPF_TRACE_BPF case=positive pc=0 code=b7 dst=1 src=0 off=0 imm=0
+[    0.596756] CBPF_TRACE_BPF case=positive pc=1 code=85 dst=0 src=2 off=0 imm=1
+[    0.596817] CBPF_TRACE_BPF case=positive pc=2 code=15 dst=0 src=0 off=16 imm=0
+[    0.596877] CBPF_TRACE_BPF case=positive pc=3 code=bf dst=6 src=0 off=0 imm=0
+[    0.597005] CBPF_TRACE_BPF case=positive pc=4 code=7b dst=10 src=6 off=-8 imm=0
+[    0.597080] CBPF_TRACE_BPF case=positive pc=5 code=b7 dst=1 src=0 off=0 imm=0
+[    0.597143] CBPF_TRACE_BPF case=positive pc=6 code=85 dst=0 src=2 off=0 imm=1
+[    0.597203] CBPF_TRACE_BPF case=positive pc=7 code=15 dst=0 src=0 off=11 imm=0
+[    0.597263] CBPF_TRACE_BPF case=positive pc=8 code=bf dst=7 src=0 off=0 imm=0
+[    0.597323] CBPF_TRACE_BPF case=positive pc=9 code=79 dst=8 src=10 off=-8 imm=0
+[    0.597387] CBPF_TRACE_BPF case=positive pc=10 code=bf dst=1 src=8 off=0 imm=0
+[    0.597453] CBPF_TRACE_BPF case=positive pc=11 code=85 dst=0 src=2 off=0 imm=3
+[    0.597516] CBPF_TRACE_BPF case=positive pc=12 code=bf dst=1 src=7 off=0 imm=0
+[    0.597579] CBPF_TRACE_BPF case=positive pc=13 code=85 dst=0 src=2 off=0 imm=2
+[    0.597640] CBPF_TRACE_BPF case=positive pc=14 code=bf dst=9 src=0 off=0 imm=0
+[    0.597700] CBPF_TRACE_BPF case=positive pc=15 code=bf dst=1 src=7 off=0 imm=0
+[    0.597761] CBPF_TRACE_BPF case=positive pc=16 code=85 dst=0 src=2 off=0 imm=3
+[    0.597821] CBPF_TRACE_BPF case=positive pc=17 code=bf dst=0 src=9 off=0 imm=0
+[    0.597883] CBPF_TRACE_BPF case=positive pc=18 code=95 dst=0 src=0 off=0 imm=0
+[    0.597944] CBPF_TRACE_BPF case=positive pc=19 code=b7 dst=0 src=0 off=0 imm=0
+[    0.598004] CBPF_TRACE_BPF case=positive pc=20 code=95 dst=0 src=0 off=0 imm=0
+[    0.601301] CBPF_NATIVE accepted insns=21 words=153 entry=ffff800081271204 restricted_exit=106 executive_exit=107 template_check=pass
+[    0.601446] CBPF_NATIVE map pc=0 begin=56 end=60 code=b7 op=0
+[    0.601529] CBPF_NATIVE map pc=1 begin=60 end=65 code=85 op=1
+[    0.601584] CBPF_NATIVE map pc=2 begin=65 end=66 code=15 op=0
+[    0.601633] CBPF_NATIVE map pc=3 begin=66 end=67 code=bf op=0
+[    0.601681] CBPF_NATIVE map pc=4 begin=67 end=68 code=7b op=0
+[    0.601732] CBPF_NATIVE map pc=5 begin=68 end=72 code=b7 op=0
+[    0.601780] CBPF_NATIVE map pc=6 begin=72 end=77 code=85 op=1
+[    0.601827] CBPF_NATIVE map pc=7 begin=77 end=78 code=15 op=0
+[    0.601874] CBPF_NATIVE map pc=8 begin=78 end=79 code=bf op=0
+[    0.601920] CBPF_NATIVE map pc=9 begin=79 end=80 code=79 op=0
+[    0.601964] CBPF_NATIVE map pc=10 begin=80 end=81 code=bf op=0
+[    0.602008] CBPF_NATIVE map pc=11 begin=81 end=86 code=85 op=3
+[    0.602053] CBPF_NATIVE map pc=12 begin=86 end=87 code=bf op=0
+[    0.602098] CBPF_NATIVE map pc=13 begin=87 end=92 code=85 op=2
+[    0.602143] CBPF_NATIVE map pc=14 begin=92 end=93 code=bf op=0
+[    0.602188] CBPF_NATIVE map pc=15 begin=93 end=94 code=bf op=0
+[    0.602235] CBPF_NATIVE map pc=16 begin=94 end=99 code=85 op=3
+[    0.602279] CBPF_NATIVE map pc=17 begin=99 end=100 code=bf op=0
+[    0.602324] CBPF_NATIVE map pc=18 begin=100 end=101 code=95 op=0
+[    0.602370] CBPF_NATIVE map pc=19 begin=101 end=105 code=b7 op=0
+[    0.602415] CBPF_NATIVE map pc=20 begin=105 end=106 code=95 op=0
+[    0.602482] CBPF_NATIVE word index=0 value=910003c9
+[    0.602540] CBPF_NATIVE word index=1 value=d503201f
+[    0.602581] CBPF_NATIVE word index=2 value=a9bf7bfd
+[    0.602621] CBPF_NATIVE word index=3 value=910003fd
+[    0.602660] CBPF_NATIVE word index=4 value=a9bf53f3
+[    0.602699] CBPF_NATIVE word index=5 value=a9bf5bf5
+[    0.602740] CBPF_NATIVE word index=6 value=a9bf63f7
+[    0.602777] CBPF_NATIVE word index=7 value=a9bf6bf9
+[    0.602814] CBPF_NATIVE word index=8 value=a9bf73fb
+[    0.602850] CBPF_NATIVE word index=9 value=a9bf7fff
+[    0.602886] CBPF_NATIVE word index=10 value=d10043ff
+[    0.602923] CBPF_NATIVE word index=11 value=910003e0
+[    0.602959] CBPF_NATIVE word index=12 value=d2800201
+[    0.602996] CBPF_NATIVE word index=13 value=10000bc2
+[    0.603033] CBPF_NATIVE word index=14 value=d2801703
+[    0.603070] CBPF_NATIVE word index=15 value=91000124
+[    0.603107] CBPF_NATIVE word index=16 value=d29e0005
+[    0.603144] CBPF_NATIVE word index=17 value=f2b024c5
+[    0.603181] CBPF_NATIVE word index=18 value=f2d00005
+[    0.603218] CBPF_NATIVE word index=19 value=f2ffffe5
+[    0.603256] CBPF_NATIVE word index=20 value=d29def0a
+[    0.603294] CBPF_NATIVE word index=21 value=f2b0006a
+[    0.603331] CBPF_NATIVE word index=22 value=f2d0000a
+[    0.603368] CBPF_NATIVE word index=23 value=f2ffffea
+[    0.603405] CBPF_NATIVE word index=24 value=d63f0140
+[    0.603445] CBPF_NATIVE word index=25 value=b4000060
+[    0.603484] CBPF_NATIVE word index=26 value=d2800007
+[    0.603524] CBPF_NATIVE word index=27 value=14000050
+[    0.603564] CBPF_NATIVE word index=28 value=d2800000
+[    0.603604] CBPF_NATIVE word index=29 value=d2800001
+[    0.603643] CBPF_NATIVE word index=30 value=d2800002
+[    0.603684] CBPF_NATIVE word index=31 value=d2800003
+[    0.603723] CBPF_NATIVE word index=32 value=d2800004
+[    0.603764] CBPF_NATIVE word index=33 value=d2800005
+[    0.603804] CBPF_NATIVE word index=34 value=d2800006
+[    0.603844] CBPF_NATIVE word index=35 value=d2800007
+[    0.603883] CBPF_NATIVE word index=36 value=d2800008
+[    0.603922] CBPF_NATIVE word index=37 value=d2800009
+[    0.603962] CBPF_NATIVE word index=38 value=d280000a
+[    0.604001] CBPF_NATIVE word index=39 value=d280000b
+[    0.604040] CBPF_NATIVE word index=40 value=d280000c
+[    0.604079] CBPF_NATIVE word index=41 value=d280000d
+[    0.604118] CBPF_NATIVE word index=42 value=d280000e
+[    0.604155] CBPF_NATIVE word index=43 value=d2800010
+[    0.604191] CBPF_NATIVE word index=44 value=d2800012
+[    0.604228] CBPF_NATIVE word index=45 value=d2800013
+[    0.604266] CBPF_NATIVE word index=46 value=d2800014
+[    0.604305] CBPF_NATIVE word index=47 value=d2800015
+[    0.604339] CBPF_NATIVE word index=48 value=d2800016
+[    0.604375] CBPF_NATIVE word index=49 value=d2800017
+[    0.604408] CBPF_NATIVE word index=50 value=d2800018
+[    0.604483] CBPF_NATIVE word index=51 value=d2800019
+[    0.604525] CBPF_NATIVE word index=52 value=d280001a
+[    0.604569] CBPF_NATIVE word index=53 value=d280001b
+[    0.604612] CBPF_NATIVE word index=54 value=d280001c
+[    0.604654] CBPF_NATIVE word index=55 value=d280001d
+[    0.604696] CBPF_NATIVE word index=56 value=d2800000
+[    0.604738] CBPF_NATIVE word index=57 value=f2a00000
+[    0.604778] CBPF_NATIVE word index=58 value=f2c00000
+[    0.604821] CBPF_NATIVE word index=59 value=f2e00000
+[    0.604860] CBPF_NATIVE word index=60 value=d2800024
+[    0.604900] CBPF_NATIVE word index=61 value=d2800025
+[    0.605046] CBPF_NATIVE word index=62 value=c2c1d3cd
+[    0.605097] CBPF_NATIVE word index=63 value=c2c23222
+[    0.605140] CBPF_NATIVE word index=64 value=c2c1d007
+[    0.605180] CBPF_NATIVE word index=65 value=b4000487
+[    0.605219] CBPF_NATIVE word index=66 value=c2c1d0f3
+[    0.605258] CBPF_NATIVE word index=67 value=824003f3
+[    0.605299] CBPF_NATIVE word index=68 value=d2800000
+[    0.605340] CBPF_NATIVE word index=69 value=f2a00000
+[    0.605380] CBPF_NATIVE word index=70 value=f2c00000
+[    0.605419] CBPF_NATIVE word index=71 value=f2e00000
+[    0.605509] CBPF_NATIVE word index=72 value=d2800024
+[    0.605559] CBPF_NATIVE word index=73 value=d28000c5
+[    0.605598] CBPF_NATIVE word index=74 value=c2c1d3cd
+[    0.605638] CBPF_NATIVE word index=75 value=c2c23222
+[    0.605677] CBPF_NATIVE word index=76 value=c2c1d007
+[    0.605718] CBPF_NATIVE word index=77 value=b4000307
+[    0.605758] CBPF_NATIVE word index=78 value=c2c1d0f4
+[    0.605799] CBPF_NATIVE word index=79 value=826003f5
+[    0.605841] CBPF_NATIVE word index=80 value=c2c1d2a0
+[    0.605880] CBPF_NATIVE word index=81 value=d2800064
+[    0.605919] CBPF_NATIVE word index=82 value=d2800165
+[    0.605959] CBPF_NATIVE word index=83 value=c2c1d3cd
+[    0.605998] CBPF_NATIVE word index=84 value=c2c23222
+[    0.606038] CBPF_NATIVE word index=85 value=c2c1d007
+[    0.606078] CBPF_NATIVE word index=86 value=c2c1d280
+[    0.606114] CBPF_NATIVE word index=87 value=d2800044
+[    0.606152] CBPF_NATIVE word index=88 value=d28001a5
+[    0.606188] CBPF_NATIVE word index=89 value=c2c1d3cd
+[    0.606225] CBPF_NATIVE word index=90 value=c2c23222
+[    0.606263] CBPF_NATIVE word index=91 value=c2c1d007
+[    0.606299] CBPF_NATIVE word index=92 value=c2c1d0f6
+[    0.606338] CBPF_NATIVE word index=93 value=c2c1d280
+[    0.606376] CBPF_NATIVE word index=94 value=d2800064
+[    0.606413] CBPF_NATIVE word index=95 value=d2800205
+[    0.606453] CBPF_NATIVE word index=96 value=c2c1d3cd
+[    0.606493] CBPF_NATIVE word index=97 value=c2c23222
+[    0.606532] CBPF_NATIVE word index=98 value=c2c1d007
+[    0.606571] CBPF_NATIVE word index=99 value=c2c1d2c7
+[    0.606610] CBPF_NATIVE word index=100 value=14000006
+[    0.606651] CBPF_NATIVE word index=101 value=d2800007
+[    0.606691] CBPF_NATIVE word index=102 value=f2a00007
+[    0.606731] CBPF_NATIVE word index=103 value=f2c00007
+[    0.606769] CBPF_NATIVE word index=104 value=f2e00007
+[    0.606806] CBPF_NATIVE word index=105 value=14000001
+[    0.606845] CBPF_NATIVE word index=106 value=c2c253c0
+[    0.606883] CBPF_NATIVE word index=107 value=f90003ff
+[    0.606920] CBPF_NATIVE word index=108 value=f90007ff
+[    0.606957] CBPF_NATIVE word index=109 value=910000e7
+[    0.606995] CBPF_NATIVE word index=110 value=d2800000
+[    0.607032] CBPF_NATIVE word index=111 value=d2800001
+[    0.607069] CBPF_NATIVE word index=112 value=d2800002
+[    0.607107] CBPF_NATIVE word index=113 value=d2800003
+[    0.607144] CBPF_NATIVE word index=114 value=d2800004
+[    0.607181] CBPF_NATIVE word index=115 value=d2800005
+[    0.607221] CBPF_NATIVE word index=116 value=d2800006
+[    0.607262] CBPF_NATIVE word index=117 value=d2800008
+[    0.607302] CBPF_NATIVE word index=118 value=d2800009
+[    0.607342] CBPF_NATIVE word index=119 value=d280000a
+[    0.607384] CBPF_NATIVE word index=120 value=d280000b
+[    0.607424] CBPF_NATIVE word index=121 value=d280000c
+[    0.607468] CBPF_NATIVE word index=122 value=d280000d
+[    0.607508] CBPF_NATIVE word index=123 value=d280000e
+[    0.607548] CBPF_NATIVE word index=124 value=d280000f
+[    0.607588] CBPF_NATIVE word index=125 value=d2800010
+[    0.607628] CBPF_NATIVE word index=126 value=d2800011
+[    0.607668] CBPF_NATIVE word index=127 value=d2800012
+[    0.607708] CBPF_NATIVE word index=128 value=d2800013
+[    0.607746] CBPF_NATIVE word index=129 value=d2800014
+[    0.607783] CBPF_NATIVE word index=130 value=d2800015
+[    0.607817] CBPF_NATIVE word index=131 value=d2800016
+[    0.607851] CBPF_NATIVE word index=132 value=d2800017
+[    0.607886] CBPF_NATIVE word index=133 value=d2800018
+[    0.607920] CBPF_NATIVE word index=134 value=d2800019
+[    0.607954] CBPF_NATIVE word index=135 value=d280001a
+[    0.607988] CBPF_NATIVE word index=136 value=d280001b
+[    0.608022] CBPF_NATIVE word index=137 value=d280001c
+[    0.608055] CBPF_NATIVE word index=138 value=d280001d
+[    0.608088] CBPF_NATIVE word index=139 value=910043ff
+[    0.608122] CBPF_NATIVE word index=140 value=c24003f0
+[    0.608155] CBPF_NATIVE word index=141 value=910043ff
+[    0.608189] CBPF_NATIVE word index=142 value=a8c173fb
+[    0.608222] CBPF_NATIVE word index=143 value=a8c16bf9
+[    0.608255] CBPF_NATIVE word index=144 value=a8c163f7
+[    0.608289] CBPF_NATIVE word index=145 value=a8c15bf5
+[    0.608322] CBPF_NATIVE word index=146 value=a8c153f3
+[    0.608355] CBPF_NATIVE word index=147 value=a8c17bfd
+[    0.608390] CBPF_NATIVE word index=148 value=910000e0
+[    0.608425] CBPF_NATIVE word index=149 value=c2c0920a
+[    0.608502] CBPF_NATIVE word index=150 value=b400004a
+[    0.608546] CBPF_NATIVE word index=151 value=c2c25203
+[    0.608590] CBPF_NATIVE word index=152 value=d65f03c0
+[    0.609750] CBPF_ENTER restricted_base=0xffff800081271268 restricted_size=328 executive_base=0xffff8000812713b0 executive_size=184 stack_base=0xffff0000001cf630 stack_size=16 rddc_tag=0 gate_sealed=1
+[    0.609991] CBPF_BIND pc=1 id=1 cell=ffff0000001cf710 object=ffff800080f27e08 public_tag=1 public_base=0xffff0000001cf710 public_length=16 public_perms=0x20001
+[    0.610107] CBPF_GATE seq=1 event=acquire pc=1 id=1 acquired=1 released=0 reads=0 cleanup=0 refs=2 tagA=1 tagB=0
+[    0.610247] CBPF_BIND pc=6 id=2 cell=ffff0000001cf720 object=ffff800080f27e08 public_tag=1 public_base=0xffff0000001cf720 public_length=16 public_perms=0x20001
+[    0.610357] CBPF_GATE seq=2 event=acquire pc=6 id=2 acquired=2 released=0 reads=0 cleanup=0 refs=3 tagA=1 tagB=1
+[    0.610462] CBPF_GATE seq=3 event=clear pc=11 id=1 acquired=2 released=0 reads=0 cleanup=0 refs=3 tagA=0 tagB=1
+[    0.610548] CBPF_GATE seq=4 event=release pc=11 id=1 acquired=2 released=1 reads=0 cleanup=0 refs=2 tagA=0 tagB=1
+[    0.610637] CBPF_GATE seq=5 event=read pc=13 id=2 acquired=2 released=1 reads=1 cleanup=0 refs=2 tagA=0 tagB=1
+[    0.610727] CBPF_GATE seq=6 event=clear pc=16 id=2 acquired=2 released=1 reads=1 cleanup=0 refs=2 tagA=0 tagB=0
+[    0.610810] CBPF_GATE seq=7 event=release pc=16 id=2 acquired=2 released=2 reads=1 cleanup=0 refs=1 tagA=0 tagB=0
+[    0.611028] CBPF_GATE seq=8 event=exit pc=18446744073709551615 id=0 acquired=2 released=2 reads=1 cleanup=0 refs=1 tagA=0 tagB=0
+[    0.611188] CBPF_RESULT value=42 entered=1 failed=0 balanced=1
+[    0.611429] CBPF_OWNERSHIP_TRACE case=positive phase=end result=PASS retval=42 entered=1 failed=0 acquired=2 released=2 reads=1 cleanup=0 refs=1 tagA=0 tagB=0 identity_observed=0 public_tag=0 canonical=0 private_tag=0 rejected_operation=0 verified_bpf=0 scope=synthetic_native_production_path
+[    0.612393] CBPF_OWNERSHIP_TRACE case=stale_read phase=begin verified_bpf=0 scope=synthetic_native_production_path
+[    0.612587] CBPF_TRACE_BPF case=stale_read pc=0 code=b7 dst=1 src=0 off=0 imm=0
+[    0.612660] CBPF_TRACE_BPF case=stale_read pc=1 code=85 dst=0 src=2 off=0 imm=1
+[    0.612724] CBPF_TRACE_BPF case=stale_read pc=2 code=15 dst=0 src=0 off=19 imm=0
+[    0.612785] CBPF_TRACE_BPF case=stale_read pc=3 code=bf dst=6 src=0 off=0 imm=0
+[    0.612850] CBPF_TRACE_BPF case=stale_read pc=4 code=7b dst=10 src=6 off=-8 imm=0
+[    0.612912] CBPF_TRACE_BPF case=stale_read pc=5 code=b7 dst=1 src=0 off=0 imm=0
+[    0.613088] CBPF_TRACE_BPF case=stale_read pc=6 code=85 dst=0 src=2 off=0 imm=1
+[    0.613157] CBPF_TRACE_BPF case=stale_read pc=7 code=15 dst=0 src=0 off=14 imm=0
+[    0.613226] CBPF_TRACE_BPF case=stale_read pc=8 code=bf dst=7 src=0 off=0 imm=0
+[    0.613289] CBPF_TRACE_BPF case=stale_read pc=9 code=79 dst=8 src=10 off=-8 imm=0
+[    0.613353] CBPF_TRACE_BPF case=stale_read pc=10 code=bf dst=1 src=8 off=0 imm=0
+[    0.613417] CBPF_TRACE_BPF case=stale_read pc=11 code=85 dst=0 src=2 off=0 imm=3
+[    0.613484] CBPF_TRACE_BPF case=stale_read pc=12 code=bf dst=1 src=7 off=0 imm=0
+[    0.613545] CBPF_TRACE_BPF case=stale_read pc=13 code=85 dst=0 src=2 off=0 imm=2
+[    0.613606] CBPF_TRACE_BPF case=stale_read pc=14 code=bf dst=9 src=0 off=0 imm=0
+[    0.613665] CBPF_TRACE_BPF case=stale_read pc=15 code=79 dst=8 src=10 off=-8 imm=0
+[    0.613724] CBPF_TRACE_BPF case=stale_read pc=16 code=bf dst=1 src=8 off=0 imm=0
+[    0.613781] CBPF_TRACE_BPF case=stale_read pc=17 code=85 dst=0 src=2 off=0 imm=2
+[    0.613837] CBPF_TRACE_BPF case=stale_read pc=18 code=bf dst=1 src=7 off=0 imm=0
+[    0.613897] CBPF_TRACE_BPF case=stale_read pc=19 code=85 dst=0 src=2 off=0 imm=3
+[    0.613954] CBPF_TRACE_BPF case=stale_read pc=20 code=b7 dst=0 src=0 off=0 imm=99
+[    0.614011] CBPF_TRACE_BPF case=stale_read pc=21 code=95 dst=0 src=0 off=0 imm=0
+[    0.614068] CBPF_TRACE_BPF case=stale_read pc=22 code=b7 dst=0 src=0 off=0 imm=0
+[    0.614124] CBPF_TRACE_BPF case=stale_read pc=23 code=95 dst=0 src=0 off=0 imm=0
+[    0.614429] CBPF_NATIVE accepted insns=24 words=163 entry=ffff80008110720c restricted_exit=116 executive_exit=117 template_check=pass
+[    0.614527] CBPF_NATIVE map pc=0 begin=56 end=60 code=b7 op=0
+[    0.614577] CBPF_NATIVE map pc=1 begin=60 end=65 code=85 op=1
+[    0.614625] CBPF_NATIVE map pc=2 begin=65 end=66 code=15 op=0
+[    0.614674] CBPF_NATIVE map pc=3 begin=66 end=67 code=bf op=0
+[    0.614721] CBPF_NATIVE map pc=4 begin=67 end=68 code=7b op=0
+[    0.614768] CBPF_NATIVE map pc=5 begin=68 end=72 code=b7 op=0
+[    0.614814] CBPF_NATIVE map pc=6 begin=72 end=77 code=85 op=1
+[    0.614861] CBPF_NATIVE map pc=7 begin=77 end=78 code=15 op=0
+[    0.614908] CBPF_NATIVE map pc=8 begin=78 end=79 code=bf op=0
+[    0.614954] CBPF_NATIVE map pc=9 begin=79 end=80 code=79 op=0
+[    0.614998] CBPF_NATIVE map pc=10 begin=80 end=81 code=bf op=0
+[    0.615042] CBPF_NATIVE map pc=11 begin=81 end=86 code=85 op=3
+[    0.615086] CBPF_NATIVE map pc=12 begin=86 end=87 code=bf op=0
+[    0.615131] CBPF_NATIVE map pc=13 begin=87 end=92 code=85 op=2
+[    0.615177] CBPF_NATIVE map pc=14 begin=92 end=93 code=bf op=0
+[    0.615222] CBPF_NATIVE map pc=15 begin=93 end=94 code=79 op=0
+[    0.615266] CBPF_NATIVE map pc=16 begin=94 end=95 code=bf op=0
+[    0.615310] CBPF_NATIVE map pc=17 begin=95 end=100 code=85 op=2
+[    0.615355] CBPF_NATIVE map pc=18 begin=100 end=101 code=bf op=0
+[    0.615401] CBPF_NATIVE map pc=19 begin=101 end=106 code=85 op=3
+[    0.615450] CBPF_NATIVE map pc=20 begin=106 end=110 code=b7 op=0
+[    0.615499] CBPF_NATIVE map pc=21 begin=110 end=111 code=95 op=0
+[    0.615547] CBPF_NATIVE map pc=22 begin=111 end=115 code=b7 op=0
+[    0.615596] CBPF_NATIVE map pc=23 begin=115 end=116 code=95 op=0
+[    0.615644] CBPF_NATIVE word index=0 value=910003c9
+[    0.615687] CBPF_NATIVE word index=1 value=d503201f
+[    0.615726] CBPF_NATIVE word index=2 value=a9bf7bfd
+[    0.615763] CBPF_NATIVE word index=3 value=910003fd
+[    0.615799] CBPF_NATIVE word index=4 value=a9bf53f3
+[    0.615835] CBPF_NATIVE word index=5 value=a9bf5bf5
+[    0.615870] CBPF_NATIVE word index=6 value=a9bf63f7
+[    0.615903] CBPF_NATIVE word index=7 value=a9bf6bf9
+[    0.615936] CBPF_NATIVE word index=8 value=a9bf73fb
+[    0.615968] CBPF_NATIVE word index=9 value=a9bf7fff
+[    0.616000] CBPF_NATIVE word index=10 value=d10043ff
+[    0.616033] CBPF_NATIVE word index=11 value=910003e0
+[    0.616066] CBPF_NATIVE word index=12 value=d2800201
+[    0.616100] CBPF_NATIVE word index=13 value=10000d02
+[    0.616133] CBPF_NATIVE word index=14 value=d2801703
+[    0.616167] CBPF_NATIVE word index=15 value=91000124
+[    0.616201] CBPF_NATIVE word index=16 value=d28a0005
+[    0.616234] CBPF_NATIVE word index=17 value=f2b02205
+[    0.616267] CBPF_NATIVE word index=18 value=f2d00005
+[    0.616300] CBPF_NATIVE word index=19 value=f2ffffe5
+[    0.616337] CBPF_NATIVE word index=20 value=d29def0a
+[    0.616374] CBPF_NATIVE word index=21 value=f2b0006a
+[    0.616411] CBPF_NATIVE word index=22 value=f2d0000a
+[    0.616494] CBPF_NATIVE word index=23 value=f2ffffea
+[    0.616536] CBPF_NATIVE word index=24 value=d63f0140
+[    0.616580] CBPF_NATIVE word index=25 value=b4000060
+[    0.616624] CBPF_NATIVE word index=26 value=d2800007
+[    0.616667] CBPF_NATIVE word index=27 value=1400005a
+[    0.616712] CBPF_NATIVE word index=28 value=d2800000
+[    0.616755] CBPF_NATIVE word index=29 value=d2800001
+[    0.616799] CBPF_NATIVE word index=30 value=d2800002
+[    0.616843] CBPF_NATIVE word index=31 value=d2800003
+[    0.616889] CBPF_NATIVE word index=32 value=d2800004
+[    0.617012] CBPF_NATIVE word index=33 value=d2800005
+[    0.617062] CBPF_NATIVE word index=34 value=d2800006
+[    0.617106] CBPF_NATIVE word index=35 value=d2800007
+[    0.617149] CBPF_NATIVE word index=36 value=d2800008
+[    0.617192] CBPF_NATIVE word index=37 value=d2800009
+[    0.617237] CBPF_NATIVE word index=38 value=d280000a
+[    0.617280] CBPF_NATIVE word index=39 value=d280000b
+[    0.617322] CBPF_NATIVE word index=40 value=d280000c
+[    0.617362] CBPF_NATIVE word index=41 value=d280000d
+[    0.617401] CBPF_NATIVE word index=42 value=d280000e
+[    0.617445] CBPF_NATIVE word index=43 value=d2800010
+[    0.617488] CBPF_NATIVE word index=44 value=d2800012
+[    0.617531] CBPF_NATIVE word index=45 value=d2800013
+[    0.617574] CBPF_NATIVE word index=46 value=d2800014
+[    0.617616] CBPF_NATIVE word index=47 value=d2800015
+[    0.617659] CBPF_NATIVE word index=48 value=d2800016
+[    0.617701] CBPF_NATIVE word index=49 value=d2800017
+[    0.617745] CBPF_NATIVE word index=50 value=d2800018
+[    0.617787] CBPF_NATIVE word index=51 value=d2800019
+[    0.617829] CBPF_NATIVE word index=52 value=d280001a
+[    0.617871] CBPF_NATIVE word index=53 value=d280001b
+[    0.617957] CBPF_NATIVE word index=54 value=d280001c
+[    0.618067] CBPF_NATIVE word index=55 value=d280001d
+[    0.618120] CBPF_NATIVE word index=56 value=d2800000
+[    0.618166] CBPF_NATIVE word index=57 value=f2a00000
+[    0.618211] CBPF_NATIVE word index=58 value=f2c00000
+[    0.618253] CBPF_NATIVE word index=59 value=f2e00000
+[    0.618295] CBPF_NATIVE word index=60 value=d2800024
+[    0.618336] CBPF_NATIVE word index=61 value=d2800025
+[    0.618376] CBPF_NATIVE word index=62 value=c2c1d3cd
+[    0.618416] CBPF_NATIVE word index=63 value=c2c23222
+[    0.618459] CBPF_NATIVE word index=64 value=c2c1d007
+[    0.618500] CBPF_NATIVE word index=65 value=b40005c7
+[    0.618540] CBPF_NATIVE word index=66 value=c2c1d0f3
+[    0.618579] CBPF_NATIVE word index=67 value=824003f3
+[    0.618619] CBPF_NATIVE word index=68 value=d2800000
+[    0.618658] CBPF_NATIVE word index=69 value=f2a00000
+[    0.618697] CBPF_NATIVE word index=70 value=f2c00000
+[    0.618737] CBPF_NATIVE word index=71 value=f2e00000
+[    0.618777] CBPF_NATIVE word index=72 value=d2800024
+[    0.618816] CBPF_NATIVE word index=73 value=d28000c5
+[    0.618856] CBPF_NATIVE word index=74 value=c2c1d3cd
+[    0.618895] CBPF_NATIVE word index=75 value=c2c23222
+[    0.618935] CBPF_NATIVE word index=76 value=c2c1d007
+[    0.618974] CBPF_NATIVE word index=77 value=b4000447
+[    0.619015] CBPF_NATIVE word index=78 value=c2c1d0f4
+[    0.619054] CBPF_NATIVE word index=79 value=826003f5
+[    0.619093] CBPF_NATIVE word index=80 value=c2c1d2a0
+[    0.619132] CBPF_NATIVE word index=81 value=d2800064
+[    0.619171] CBPF_NATIVE word index=82 value=d2800165
+[    0.619210] CBPF_NATIVE word index=83 value=c2c1d3cd
+[    0.619250] CBPF_NATIVE word index=84 value=c2c23222
+[    0.619290] CBPF_NATIVE word index=85 value=c2c1d007
+[    0.619329] CBPF_NATIVE word index=86 value=c2c1d280
+[    0.619370] CBPF_NATIVE word index=87 value=d2800044
+[    0.619410] CBPF_NATIVE word index=88 value=d28001a5
+[    0.619453] CBPF_NATIVE word index=89 value=c2c1d3cd
+[    0.619495] CBPF_NATIVE word index=90 value=c2c23222
+[    0.619540] CBPF_NATIVE word index=91 value=c2c1d007
+[    0.619581] CBPF_NATIVE word index=92 value=c2c1d0f6
+[    0.619624] CBPF_NATIVE word index=93 value=826003f5
+[    0.619666] CBPF_NATIVE word index=94 value=c2c1d2a0
+[    0.619709] CBPF_NATIVE word index=95 value=d2800044
+[    0.619751] CBPF_NATIVE word index=96 value=d2800225
+[    0.619793] CBPF_NATIVE word index=97 value=c2c1d3cd
+[    0.619834] CBPF_NATIVE word index=98 value=c2c23222
+[    0.619876] CBPF_NATIVE word index=99 value=c2c1d007
+[    0.619918] CBPF_NATIVE word index=100 value=c2c1d280
+[    0.619961] CBPF_NATIVE word index=101 value=d2800064
+[    0.620004] CBPF_NATIVE word index=102 value=d2800265
+[    0.620058] CBPF_NATIVE word index=103 value=c2c1d3cd
+[    0.620098] CBPF_NATIVE word index=104 value=c2c23222
+[    0.620139] CBPF_NATIVE word index=105 value=c2c1d007
+[    0.620179] CBPF_NATIVE word index=106 value=d2800c67
+[    0.620219] CBPF_NATIVE word index=107 value=f2a00007
+[    0.620260] CBPF_NATIVE word index=108 value=f2c00007
+[    0.620300] CBPF_NATIVE word index=109 value=f2e00007
+[    0.620340] CBPF_NATIVE word index=110 value=14000006
+[    0.620380] CBPF_NATIVE word index=111 value=d2800007
+[    0.620420] CBPF_NATIVE word index=112 value=f2a00007
+[    0.620463] CBPF_NATIVE word index=113 value=f2c00007
+[    0.620503] CBPF_NATIVE word index=114 value=f2e00007
+[    0.620544] CBPF_NATIVE word index=115 value=14000001
+[    0.620584] CBPF_NATIVE word index=116 value=c2c253c0
+[    0.620624] CBPF_NATIVE word index=117 value=f90003ff
+[    0.620664] CBPF_NATIVE word index=118 value=f90007ff
+[    0.620704] CBPF_NATIVE word index=119 value=910000e7
+[    0.620744] CBPF_NATIVE word index=120 value=d2800000
+[    0.620783] CBPF_NATIVE word index=121 value=d2800001
+[    0.620823] CBPF_NATIVE word index=122 value=d2800002
+[    0.620863] CBPF_NATIVE word index=123 value=d2800003
+[    0.620903] CBPF_NATIVE word index=124 value=d2800004
+[    0.621044] CBPF_NATIVE word index=125 value=d2800005
+[    0.621094] CBPF_NATIVE word index=126 value=d2800006
+[    0.621139] CBPF_NATIVE word index=127 value=d2800008
+[    0.621181] CBPF_NATIVE word index=128 value=d2800009
+[    0.621224] CBPF_NATIVE word index=129 value=d280000a
+[    0.621267] CBPF_NATIVE word index=130 value=d280000b
+[    0.621310] CBPF_NATIVE word index=131 value=d280000c
+[    0.621355] CBPF_NATIVE word index=132 value=d280000d
+[    0.621397] CBPF_NATIVE word index=133 value=d280000e
+[    0.621441] CBPF_NATIVE word index=134 value=d280000f
+[    0.621484] CBPF_NATIVE word index=135 value=d2800010
+[    0.621526] CBPF_NATIVE word index=136 value=d2800011
+[    0.621567] CBPF_NATIVE word index=137 value=d2800012
+[    0.621607] CBPF_NATIVE word index=138 value=d2800013
+[    0.621647] CBPF_NATIVE word index=139 value=d2800014
+[    0.621686] CBPF_NATIVE word index=140 value=d2800015
+[    0.621728] CBPF_NATIVE word index=141 value=d2800016
+[    0.621768] CBPF_NATIVE word index=142 value=d2800017
+[    0.621809] CBPF_NATIVE word index=143 value=d2800018
+[    0.621851] CBPF_NATIVE word index=144 value=d2800019
+[    0.621891] CBPF_NATIVE word index=145 value=d280001a
+[    0.621931] CBPF_NATIVE word index=146 value=d280001b
+[    0.621972] CBPF_NATIVE word index=147 value=d280001c
+[    0.622012] CBPF_NATIVE word index=148 value=d280001d
+[    0.622052] CBPF_NATIVE word index=149 value=910043ff
+[    0.622091] CBPF_NATIVE word index=150 value=c24003f0
+[    0.622131] CBPF_NATIVE word index=151 value=910043ff
+[    0.622171] CBPF_NATIVE word index=152 value=a8c173fb
+[    0.622211] CBPF_NATIVE word index=153 value=a8c16bf9
+[    0.622250] CBPF_NATIVE word index=154 value=a8c163f7
+[    0.622290] CBPF_NATIVE word index=155 value=a8c15bf5
+[    0.622331] CBPF_NATIVE word index=156 value=a8c153f3
+[    0.622373] CBPF_NATIVE word index=157 value=a8c17bfd
+[    0.622413] CBPF_NATIVE word index=158 value=910000e0
+[    0.622457] CBPF_NATIVE word index=159 value=c2c0920a
+[    0.622499] CBPF_NATIVE word index=160 value=b400004a
+[    0.622539] CBPF_NATIVE word index=161 value=c2c25203
+[    0.622579] CBPF_NATIVE word index=162 value=d65f03c0
+[    0.622835] CBPF_ENTER restricted_base=0xffff800081107270 restricted_size=368 executive_base=0xffff8000811073e0 executive_size=184 stack_base=0xffff0000001cf630 stack_size=16 rddc_tag=0 gate_sealed=1
+[    0.622993] CBPF_BIND pc=1 id=1 cell=ffff0000001cf710 object=ffff800080f27e08 public_tag=1 public_base=0xffff0000001cf710 public_length=16 public_perms=0x20001
+[    0.623095] CBPF_GATE seq=1 event=acquire pc=1 id=1 acquired=1 released=0 reads=0 cleanup=0 refs=2 tagA=1 tagB=0
+[    0.623205] CBPF_BIND pc=6 id=2 cell=ffff0000001cf720 object=ffff800080f27e08 public_tag=1 public_base=0xffff0000001cf720 public_length=16 public_perms=0x20001
+[    0.623303] CBPF_GATE seq=2 event=acquire pc=6 id=2 acquired=2 released=0 reads=0 cleanup=0 refs=3 tagA=1 tagB=1
+[    0.623396] CBPF_GATE seq=3 event=clear pc=11 id=1 acquired=2 released=0 reads=0 cleanup=0 refs=3 tagA=0 tagB=1
+[    0.623482] CBPF_GATE seq=4 event=release pc=11 id=1 acquired=2 released=1 reads=0 cleanup=0 refs=2 tagA=0 tagB=1
+[    0.623571] CBPF_GATE seq=5 event=read pc=13 id=2 acquired=2 released=1 reads=1 cleanup=0 refs=2 tagA=0 tagB=1
+[    0.623693] CBPF_TRACE_IDENTITY case=stale_read pc=17 id=1 operation=2 public_tag=1 canonical=1 private_tag=0
+[    0.623808] CBPF_GATE seq=6 event=reject pc=17 id=0 acquired=2 released=1 reads=1 cleanup=0 refs=2 tagA=0 tagB=1
+[    0.623953] CBPF_GATE seq=7 event=clear pc=18446744073709551615 id=2 acquired=2 released=1 reads=1 cleanup=0 refs=2 tagA=0 tagB=0
+[    0.624092] CBPF_GATE seq=8 event=cleanup pc=18446744073709551615 id=2 acquired=2 released=2 reads=1 cleanup=1 refs=1 tagA=0 tagB=0
+[    0.624195] CBPF_GATE seq=9 event=failed pc=18446744073709551615 id=0 acquired=2 released=2 reads=1 cleanup=1 refs=1 tagA=0 tagB=0
+[    0.624291] CBPF_RESULT value=0 entered=1 failed=1 balanced=1
+[    0.624382] CBPF_OWNERSHIP_TRACE case=stale_read phase=end result=PASS retval=0 entered=1 failed=1 acquired=2 released=2 reads=1 cleanup=1 refs=1 tagA=0 tagB=0 identity_observed=1 public_tag=1 canonical=1 private_tag=0 rejected_operation=2 verified_bpf=0 scope=synthetic_native_production_path
+[    0.624787] CBPF_OWNERSHIP_TRACE case=repeated_release phase=begin verified_bpf=0 scope=synthetic_native_production_path
+[    0.624979] CBPF_TRACE_BPF case=repeated_release pc=0 code=b7 dst=1 src=0 off=0 imm=0
+[    0.625054] CBPF_TRACE_BPF case=repeated_release pc=1 code=85 dst=0 src=2 off=0 imm=1
+[    0.625120] CBPF_TRACE_BPF case=repeated_release pc=2 code=15 dst=0 src=0 off=19 imm=0
+[    0.625182] CBPF_TRACE_BPF case=repeated_release pc=3 code=bf dst=6 src=0 off=0 imm=0
+[    0.625242] CBPF_TRACE_BPF case=repeated_release pc=4 code=7b dst=10 src=6 off=-8 imm=0
+[    0.625303] CBPF_TRACE_BPF case=repeated_release pc=5 code=b7 dst=1 src=0 off=0 imm=0
+[    0.625362] CBPF_TRACE_BPF case=repeated_release pc=6 code=85 dst=0 src=2 off=0 imm=1
+[    0.625422] CBPF_TRACE_BPF case=repeated_release pc=7 code=15 dst=0 src=0 off=14 imm=0
+[    0.625515] CBPF_TRACE_BPF case=repeated_release pc=8 code=bf dst=7 src=0 off=0 imm=0
+[    0.625579] CBPF_TRACE_BPF case=repeated_release pc=9 code=79 dst=8 src=10 off=-8 imm=0
+[    0.625646] CBPF_TRACE_BPF case=repeated_release pc=10 code=bf dst=1 src=8 off=0 imm=0
+[    0.625710] CBPF_TRACE_BPF case=repeated_release pc=11 code=85 dst=0 src=2 off=0 imm=3
+[    0.625775] CBPF_TRACE_BPF case=repeated_release pc=12 code=bf dst=1 src=7 off=0 imm=0
+[    0.625840] CBPF_TRACE_BPF case=repeated_release pc=13 code=85 dst=0 src=2 off=0 imm=2
+[    0.625910] CBPF_TRACE_BPF case=repeated_release pc=14 code=bf dst=9 src=0 off=0 imm=0
+[    0.625975] CBPF_TRACE_BPF case=repeated_release pc=15 code=79 dst=8 src=10 off=-8 imm=0
+[    0.626040] CBPF_TRACE_BPF case=repeated_release pc=16 code=bf dst=1 src=8 off=0 imm=0
+[    0.626107] CBPF_TRACE_BPF case=repeated_release pc=17 code=85 dst=0 src=2 off=0 imm=3
+[    0.626172] CBPF_TRACE_BPF case=repeated_release pc=18 code=bf dst=1 src=7 off=0 imm=0
+[    0.626237] CBPF_TRACE_BPF case=repeated_release pc=19 code=85 dst=0 src=2 off=0 imm=3
+[    0.626301] CBPF_TRACE_BPF case=repeated_release pc=20 code=b7 dst=0 src=0 off=0 imm=99
+[    0.626366] CBPF_TRACE_BPF case=repeated_release pc=21 code=95 dst=0 src=0 off=0 imm=0
+[    0.626434] CBPF_TRACE_BPF case=repeated_release pc=22 code=b7 dst=0 src=0 off=0 imm=0
+[    0.626617] CBPF_TRACE_BPF case=repeated_release pc=23 code=95 dst=0 src=0 off=0 imm=0
+[    0.626956] CBPF_NATIVE accepted insns=24 words=163 entry=ffff800081109bf4 restricted_exit=116 executive_exit=117 template_check=pass
+[    0.627057] CBPF_NATIVE map pc=0 begin=56 end=60 code=b7 op=0
+[    0.627113] CBPF_NATIVE map pc=1 begin=60 end=65 code=85 op=1
+[    0.627167] CBPF_NATIVE map pc=2 begin=65 end=66 code=15 op=0
+[    0.627218] CBPF_NATIVE map pc=3 begin=66 end=67 code=bf op=0
+[    0.627268] CBPF_NATIVE map pc=4 begin=67 end=68 code=7b op=0
+[    0.627319] CBPF_NATIVE map pc=5 begin=68 end=72 code=b7 op=0
+[    0.627369] CBPF_NATIVE map pc=6 begin=72 end=77 code=85 op=1
+[    0.627420] CBPF_NATIVE map pc=7 begin=77 end=78 code=15 op=0
+[    0.627476] CBPF_NATIVE map pc=8 begin=78 end=79 code=bf op=0
+[    0.627526] CBPF_NATIVE map pc=9 begin=79 end=80 code=79 op=0
+[    0.627579] CBPF_NATIVE map pc=10 begin=80 end=81 code=bf op=0
+[    0.627632] CBPF_NATIVE map pc=11 begin=81 end=86 code=85 op=3
+[    0.627686] CBPF_NATIVE map pc=12 begin=86 end=87 code=bf op=0
+[    0.627739] CBPF_NATIVE map pc=13 begin=87 end=92 code=85 op=2
+[    0.627790] CBPF_NATIVE map pc=14 begin=92 end=93 code=bf op=0
+[    0.627842] CBPF_NATIVE map pc=15 begin=93 end=94 code=79 op=0
+[    0.627894] CBPF_NATIVE map pc=16 begin=94 end=95 code=bf op=0
+[    0.627945] CBPF_NATIVE map pc=17 begin=95 end=100 code=85 op=3
+[    0.627998] CBPF_NATIVE map pc=18 begin=100 end=101 code=bf op=0
+[    0.628050] CBPF_NATIVE map pc=19 begin=101 end=106 code=85 op=3
+[    0.628102] CBPF_NATIVE map pc=20 begin=106 end=110 code=b7 op=0
+[    0.628155] CBPF_NATIVE map pc=21 begin=110 end=111 code=95 op=0
+[    0.628208] CBPF_NATIVE map pc=22 begin=111 end=115 code=b7 op=0
+[    0.628261] CBPF_NATIVE map pc=23 begin=115 end=116 code=95 op=0
+[    0.628313] CBPF_NATIVE word index=0 value=910003c9
+[    0.628354] CBPF_NATIVE word index=1 value=d503201f
+[    0.628393] CBPF_NATIVE word index=2 value=a9bf7bfd
+[    0.628435] CBPF_NATIVE word index=3 value=910003fd
+[    0.628474] CBPF_NATIVE word index=4 value=a9bf53f3
+[    0.628513] CBPF_NATIVE word index=5 value=a9bf5bf5
+[    0.628553] CBPF_NATIVE word index=6 value=a9bf63f7
+[    0.628591] CBPF_NATIVE word index=7 value=a9bf6bf9
+[    0.628630] CBPF_NATIVE word index=8 value=a9bf73fb
+[    0.628671] CBPF_NATIVE word index=9 value=a9bf7fff
+[    0.628710] CBPF_NATIVE word index=10 value=d10043ff
+[    0.628749] CBPF_NATIVE word index=11 value=910003e0
+[    0.628789] CBPF_NATIVE word index=12 value=d2800201
+[    0.628829] CBPF_NATIVE word index=13 value=10000d02
+[    0.628868] CBPF_NATIVE word index=14 value=d2801703
+[    0.628907] CBPF_NATIVE word index=15 value=91000124
+[    0.629034] CBPF_NATIVE word index=16 value=d28e0005
+[    0.629082] CBPF_NATIVE word index=17 value=f2b02205
+[    0.629125] CBPF_NATIVE word index=18 value=f2d00005
+[    0.629168] CBPF_NATIVE word index=19 value=f2ffffe5
+[    0.629209] CBPF_NATIVE word index=20 value=d29def0a
+[    0.629249] CBPF_NATIVE word index=21 value=f2b0006a
+[    0.629289] CBPF_NATIVE word index=22 value=f2d0000a
+[    0.629329] CBPF_NATIVE word index=23 value=f2ffffea
+[    0.629369] CBPF_NATIVE word index=24 value=d63f0140
+[    0.629409] CBPF_NATIVE word index=25 value=b4000060
+[    0.629482] CBPF_NATIVE word index=26 value=d2800007
+[    0.629549] CBPF_NATIVE word index=27 value=1400005a
+[    0.629599] CBPF_NATIVE word index=28 value=d2800000
+[    0.629644] CBPF_NATIVE word index=29 value=d2800001
+[    0.629686] CBPF_NATIVE word index=30 value=d2800002
+[    0.629727] CBPF_NATIVE word index=31 value=d2800003
+[    0.629767] CBPF_NATIVE word index=32 value=d2800004
+[    0.629807] CBPF_NATIVE word index=33 value=d2800005
+[    0.629847] CBPF_NATIVE word index=34 value=d2800006
+[    0.629888] CBPF_NATIVE word index=35 value=d2800007
+[    0.629928] CBPF_NATIVE word index=36 value=d2800008
+[    0.629971] CBPF_NATIVE word index=37 value=d2800009
+[    0.630010] CBPF_NATIVE word index=38 value=d280000a
+[    0.630052] CBPF_NATIVE word index=39 value=d280000b
+[    0.630093] CBPF_NATIVE word index=40 value=d280000c
+[    0.630135] CBPF_NATIVE word index=41 value=d280000d
+[    0.630175] CBPF_NATIVE word index=42 value=d280000e
+[    0.630215] CBPF_NATIVE word index=43 value=d2800010
+[    0.630255] CBPF_NATIVE word index=44 value=d2800012
+[    0.630295] CBPF_NATIVE word index=45 value=d2800013
+[    0.630336] CBPF_NATIVE word index=46 value=d2800014
+[    0.630377] CBPF_NATIVE word index=47 value=d2800015
+[    0.630417] CBPF_NATIVE word index=48 value=d2800016
+[    0.630464] CBPF_NATIVE word index=49 value=d2800017
+[    0.630508] CBPF_NATIVE word index=50 value=d2800018
+[    0.630558] CBPF_NATIVE word index=51 value=d2800019
+[    0.630604] CBPF_NATIVE word index=52 value=d280001a
+[    0.630651] CBPF_NATIVE word index=53 value=d280001b
+[    0.630696] CBPF_NATIVE word index=54 value=d280001c
+[    0.630742] CBPF_NATIVE word index=55 value=d280001d
+[    0.630785] CBPF_NATIVE word index=56 value=d2800000
+[    0.630830] CBPF_NATIVE word index=57 value=f2a00000
+[    0.630874] CBPF_NATIVE word index=58 value=f2c00000
+[    0.630919] CBPF_NATIVE word index=59 value=f2e00000
+[    0.630963] CBPF_NATIVE word index=60 value=d2800024
+[    0.631009] CBPF_NATIVE word index=61 value=d2800025
+[    0.631057] CBPF_NATIVE word index=62 value=c2c1d3cd
+[    0.631103] CBPF_NATIVE word index=63 value=c2c23222
+[    0.631149] CBPF_NATIVE word index=64 value=c2c1d007
+[    0.631192] CBPF_NATIVE word index=65 value=b40005c7
+[    0.631235] CBPF_NATIVE word index=66 value=c2c1d0f3
+[    0.631279] CBPF_NATIVE word index=67 value=824003f3
+[    0.631326] CBPF_NATIVE word index=68 value=d2800000
+[    0.631372] CBPF_NATIVE word index=69 value=f2a00000
+[    0.631418] CBPF_NATIVE word index=70 value=f2c00000
+[    0.631472] CBPF_NATIVE word index=71 value=f2e00000
+[    0.631519] CBPF_NATIVE word index=72 value=d2800024
+[    0.631567] CBPF_NATIVE word index=73 value=d28000c5
+[    0.631612] CBPF_NATIVE word index=74 value=c2c1d3cd
+[    0.631658] CBPF_NATIVE word index=75 value=c2c23222
+[    0.631704] CBPF_NATIVE word index=76 value=c2c1d007
+[    0.631751] CBPF_NATIVE word index=77 value=b4000447
+[    0.631799] CBPF_NATIVE word index=78 value=c2c1d0f4
+[    0.631845] CBPF_NATIVE word index=79 value=826003f5
+[    0.631895] CBPF_NATIVE word index=80 value=c2c1d2a0
+[    0.631950] CBPF_NATIVE word index=81 value=d2800064
+[    0.631999] CBPF_NATIVE word index=82 value=d2800165
+[    0.632048] CBPF_NATIVE word index=83 value=c2c1d3cd
+[    0.632097] CBPF_NATIVE word index=84 value=c2c23222
+[    0.632149] CBPF_NATIVE word index=85 value=c2c1d007
+[    0.632198] CBPF_NATIVE word index=86 value=c2c1d280
+[    0.632248] CBPF_NATIVE word index=87 value=d2800044
+[    0.632299] CBPF_NATIVE word index=88 value=d28001a5
+[    0.632350] CBPF_NATIVE word index=89 value=c2c1d3cd
+[    0.632397] CBPF_NATIVE word index=90 value=c2c23222
+[    0.632533] CBPF_NATIVE word index=91 value=c2c1d007
+[    0.632586] CBPF_NATIVE word index=92 value=c2c1d0f6
+[    0.632632] CBPF_NATIVE word index=93 value=826003f5
+[    0.632677] CBPF_NATIVE word index=94 value=c2c1d2a0
+[    0.632722] CBPF_NATIVE word index=95 value=d2800064
+[    0.632767] CBPF_NATIVE word index=96 value=d2800225
+[    0.632811] CBPF_NATIVE word index=97 value=c2c1d3cd
+[    0.632855] CBPF_NATIVE word index=98 value=c2c23222
+[    0.632902] CBPF_NATIVE word index=99 value=c2c1d007
+[    0.633053] CBPF_NATIVE word index=100 value=c2c1d280
+[    0.633133] CBPF_NATIVE word index=101 value=d2800064
+[    0.633189] CBPF_NATIVE word index=102 value=d2800265
+[    0.633235] CBPF_NATIVE word index=103 value=c2c1d3cd
+[    0.633276] CBPF_NATIVE word index=104 value=c2c23222
+[    0.633317] CBPF_NATIVE word index=105 value=c2c1d007
+[    0.633357] CBPF_NATIVE word index=106 value=d2800c67
+[    0.633400] CBPF_NATIVE word index=107 value=f2a00007
+[    0.633446] CBPF_NATIVE word index=108 value=f2c00007
+[    0.633489] CBPF_NATIVE word index=109 value=f2e00007
+[    0.633536] CBPF_NATIVE word index=110 value=14000006
+[    0.633581] CBPF_NATIVE word index=111 value=d2800007
+[    0.633624] CBPF_NATIVE word index=112 value=f2a00007
+[    0.633667] CBPF_NATIVE word index=113 value=f2c00007
+[    0.633711] CBPF_NATIVE word index=114 value=f2e00007
+[    0.633754] CBPF_NATIVE word index=115 value=14000001
+[    0.633798] CBPF_NATIVE word index=116 value=c2c253c0
+[    0.633841] CBPF_NATIVE word index=117 value=f90003ff
+[    0.633885] CBPF_NATIVE word index=118 value=f90007ff
+[    0.633930] CBPF_NATIVE word index=119 value=910000e7
+[    0.633973] CBPF_NATIVE word index=120 value=d2800000
+[    0.634017] CBPF_NATIVE word index=121 value=d2800001
+[    0.634061] CBPF_NATIVE word index=122 value=d2800002
+[    0.634104] CBPF_NATIVE word index=123 value=d2800003
+[    0.634148] CBPF_NATIVE word index=124 value=d2800004
+[    0.634192] CBPF_NATIVE word index=125 value=d2800005
+[    0.634236] CBPF_NATIVE word index=126 value=d2800006
+[    0.634280] CBPF_NATIVE word index=127 value=d2800008
+[    0.634322] CBPF_NATIVE word index=128 value=d2800009
+[    0.634365] CBPF_NATIVE word index=129 value=d280000a
+[    0.634410] CBPF_NATIVE word index=130 value=d280000b
+[    0.634457] CBPF_NATIVE word index=131 value=d280000c
+[    0.634502] CBPF_NATIVE word index=132 value=d280000d
+[    0.634550] CBPF_NATIVE word index=133 value=d280000e
+[    0.634597] CBPF_NATIVE word index=134 value=d280000f
+[    0.634642] CBPF_NATIVE word index=135 value=d2800010
+[    0.634685] CBPF_NATIVE word index=136 value=d2800011
+[    0.634731] CBPF_NATIVE word index=137 value=d2800012
+[    0.634776] CBPF_NATIVE word index=138 value=d2800013
+[    0.634821] CBPF_NATIVE word index=139 value=d2800014
+[    0.634863] CBPF_NATIVE word index=140 value=d2800015
+[    0.634905] CBPF_NATIVE word index=141 value=d2800016
+[    0.634948] CBPF_NATIVE word index=142 value=d2800017
+[    0.634992] CBPF_NATIVE word index=143 value=d2800018
+[    0.635036] CBPF_NATIVE word index=144 value=d2800019
+[    0.635080] CBPF_NATIVE word index=145 value=d280001a
+[    0.635124] CBPF_NATIVE word index=146 value=d280001b
+[    0.635167] CBPF_NATIVE word index=147 value=d280001c
+[    0.635210] CBPF_NATIVE word index=148 value=d280001d
+[    0.635254] CBPF_NATIVE word index=149 value=910043ff
+[    0.635298] CBPF_NATIVE word index=150 value=c24003f0
+[    0.635342] CBPF_NATIVE word index=151 value=910043ff
+[    0.635386] CBPF_NATIVE word index=152 value=a8c173fb
+[    0.635447] CBPF_NATIVE word index=153 value=a8c16bf9
+[    0.635492] CBPF_NATIVE word index=154 value=a8c163f7
+[    0.635535] CBPF_NATIVE word index=155 value=a8c15bf5
+[    0.635577] CBPF_NATIVE word index=156 value=a8c153f3
+[    0.635620] CBPF_NATIVE word index=157 value=a8c17bfd
+[    0.635665] CBPF_NATIVE word index=158 value=910000e0
+[    0.635710] CBPF_NATIVE word index=159 value=c2c0920a
+[    0.635756] CBPF_NATIVE word index=160 value=b400004a
+[    0.635799] CBPF_NATIVE word index=161 value=c2c25203
+[    0.635843] CBPF_NATIVE word index=162 value=d65f03c0
+[    0.636082] CBPF_ENTER restricted_base=0xffff800081109c58 restricted_size=368 executive_base=0xffff800081109dc8 executive_size=184 stack_base=0xffff0000001cf630 stack_size=16 rddc_tag=0 gate_sealed=1
+[    0.636268] CBPF_BIND pc=1 id=1 cell=ffff0000001cf710 object=ffff800080f27e08 public_tag=1 public_base=0xffff0000001cf710 public_length=16 public_perms=0x20001
+[    0.636381] CBPF_GATE seq=1 event=acquire pc=1 id=1 acquired=1 released=0 reads=0 cleanup=0 refs=2 tagA=1 tagB=0
+[    0.636496] CBPF_BIND pc=6 id=2 cell=ffff0000001cf720 object=ffff800080f27e08 public_tag=1 public_base=0xffff0000001cf720 public_length=16 public_perms=0x20001
+[    0.636607] CBPF_GATE seq=2 event=acquire pc=6 id=2 acquired=2 released=0 reads=0 cleanup=0 refs=3 tagA=1 tagB=1
+[    0.636709] CBPF_GATE seq=3 event=clear pc=11 id=1 acquired=2 released=0 reads=0 cleanup=0 refs=3 tagA=0 tagB=1
+[    0.636797] CBPF_GATE seq=4 event=release pc=11 id=1 acquired=2 released=1 reads=0 cleanup=0 refs=2 tagA=0 tagB=1
+[    0.636891] CBPF_GATE seq=5 event=read pc=13 id=2 acquired=2 released=1 reads=1 cleanup=0 refs=2 tagA=0 tagB=1
+[    0.637124] CBPF_TRACE_IDENTITY case=repeated_release pc=17 id=1 operation=3 public_tag=1 canonical=1 private_tag=0
+[    0.637219] CBPF_GATE seq=6 event=reject pc=17 id=0 acquired=2 released=1 reads=1 cleanup=0 refs=2 tagA=0 tagB=1
+[    0.637365] CBPF_GATE seq=7 event=clear pc=18446744073709551615 id=2 acquired=2 released=1 reads=1 cleanup=0 refs=2 tagA=0 tagB=0
+[    0.637467] CBPF_GATE seq=8 event=cleanup pc=18446744073709551615 id=2 acquired=2 released=2 reads=1 cleanup=1 refs=1 tagA=0 tagB=0
+[    0.637565] CBPF_GATE seq=9 event=failed pc=18446744073709551615 id=0 acquired=2 released=2 reads=1 cleanup=1 refs=1 tagA=0 tagB=0
+[    0.637658] CBPF_RESULT value=0 entered=1 failed=1 balanced=1
+[    0.637713] CBPF_OWNERSHIP_TRACE case=repeated_release phase=end result=PASS retval=0 entered=1 failed=1 acquired=2 released=2 reads=1 cleanup=1 refs=1 tagA=0 tagB=0 identity_observed=1 public_tag=1 canonical=1 private_tag=0 rejected_operation=3 verified_bpf=0 scope=synthetic_native_production_path
+[    0.652767] registered taskstats version 1
+[    0.681254] clk: Disabling unused clocks
+[    0.720577] Freeing unused kernel memory: 832K
+[    0.737149] Run /init as init process
+CBPF_TRACE_VERIFY kernel=6.7.0-cbpf-ownership-native-trace normal_verifier=1 attached=0
+CBPF_TRACE_VERIFY case=stale_copy phase=begin expected=reject execution=forbidden
+CBPF_TRACE_VERIFY bpf case=stale_copy pc=0 code=b7 dst=1 src=0 off=0 imm=0
+CBPF_TRACE_VERIFY bpf case=stale_copy pc=1 code=85 dst=0 src=2 off=0 imm=44149
+CBPF_TRACE_VERIFY bpf case=stale_copy pc=2 code=15 dst=0 src=0 off=21 imm=0
+CBPF_TRACE_VERIFY bpf case=stale_copy pc=3 code=bf dst=6 src=0 off=0 imm=0
+CBPF_TRACE_VERIFY bpf case=stale_copy pc=4 code=7b dst=10 src=6 off=-8 imm=0
+CBPF_TRACE_VERIFY bpf case=stale_copy pc=5 code=b7 dst=1 src=0 off=0 imm=0
+CBPF_TRACE_VERIFY bpf case=stale_copy pc=6 code=85 dst=0 src=2 off=0 imm=44149
+CBPF_TRACE_VERIFY bpf case=stale_copy pc=7 code=15 dst=0 src=0 off=11 imm=0
+CBPF_TRACE_VERIFY bpf case=stale_copy pc=8 code=bf dst=7 src=0 off=0 imm=0
+CBPF_TRACE_VERIFY bpf case=stale_copy pc=9 code=79 dst=8 src=10 off=-8 imm=0
+CBPF_TRACE_VERIFY bpf case=stale_copy pc=10 code=bf dst=1 src=8 off=0 imm=0
+CBPF_TRACE_VERIFY bpf case=stale_copy pc=11 code=85 dst=0 src=2 off=0 imm=44154
+CBPF_TRACE_VERIFY bpf case=stale_copy pc=12 code=bf dst=1 src=6 off=0 imm=0
+CBPF_TRACE_VERIFY bpf case=stale_copy pc=13 code=85 dst=0 src=2 off=0 imm=44152
+CBPF_TRACE_VERIFY bpf case=stale_copy pc=14 code=bf dst=9 src=0 off=0 imm=0
+CBPF_TRACE_VERIFY bpf case=stale_copy pc=15 code=bf dst=1 src=7 off=0 imm=0
+CBPF_TRACE_VERIFY bpf case=stale_copy pc=16 code=85 dst=0 src=2 off=0 imm=44154
+CBPF_TRACE_VERIFY bpf case=stale_copy pc=17 code=bf dst=0 src=9 off=0 imm=0
+CBPF_TRACE_VERIFY bpf case=stale_copy pc=18 code=95 dst=0 src=0 off=0 imm=0
+CBPF_TRACE_VERIFY bpf case=stale_copy pc=19 code=79 dst=8 src=10 off=-8 imm=0
+CBPF_TRACE_VERIFY bpf case=stale_copy pc=20 code=bf dst=1 src=8 off=0 imm=0
+CBPF_TRACE_VERIFY bpf case=stale_copy pc=21 code=85 dst=0 src=2 off=0 imm=44154
+CBPF_TRACE_VERIFY bpf case=stale_copy pc=22 code=b7 dst=0 src=0 off=0 imm=7
+CBPF_TRACE_VERIFY bpf case=stale_copy pc=23 code=95 dst=0 src=0 off=0 imm=0
+CBPF_TRACE_VERIFY bpf case=stale_copy pc=24 code=b7 dst=0 src=0 off=0 imm=0
+CBPF_TRACE_VERIFY bpf case=stale_copy pc=25 code=95 dst=0 src=0 off=0 imm=0
+CBPF_TRACE_VERIFY verifier_begin case=stale_copy
+func#0 @0
+0: R1=ctx(off=0,imm=0) R10=fp0
+0: (b7) r1 = 0                        ; R1_w=0
+1: (85) call cbpf_cap_acquire#44149   ; R0_w=ptr_or_null_cbpf_cap_ref(id=2,ref_obj_id=2,off=0,imm=0) refs=2
+2: (15) if r0 == 0x0 goto pc+21       ; R0_w=ptr_cbpf_cap_ref(ref_obj_id=2,off=0,imm=0) refs=2
+3: (bf) r6 = r0                       ; R0_w=ptr_cbpf_cap_ref(ref_obj_id=2,off=0,imm=0) R6_w=ptr_cbpf_cap_ref(ref_obj_id=2,off=0,imm=0) refs=2
+4: (7b) *(u64 *)(r10 -8) = r6         ; R6_w=ptr_cbpf_cap_ref(ref_obj_id=2,off=0,imm=0) R10=fp0 fp-8_w=ptr_ refs=2
+5: (b7) r1 = 0                        ; R1_w=0 refs=2
+6: (85) call cbpf_cap_acquire#44149   ; R0=ptr_or_null_cbpf_cap_ref(id=4,ref_obj_id=4,off=0,imm=0) refs=2,4
+7: (15) if r0 == 0x0 goto pc+11       ; R0=ptr_cbpf_cap_ref(ref_obj_id=4,off=0,imm=0) refs=2,4
+8: (bf) r7 = r0                       ; R0=ptr_cbpf_cap_ref(ref_obj_id=4,off=0,imm=0) R7_w=ptr_cbpf_cap_ref(ref_obj_id=4,off=0,imm=0) refs=2,4
+9: (79) r8 = *(u64 *)(r10 -8)         ; R8_w=ptr_cbpf_cap_ref(ref_obj_id=2,off=0,imm=0) R10=fp0 fp-8=ptr_ refs=2,4
+10: (bf) r1 = r8                      ; R1_w=ptr_cbpf_cap_ref(ref_obj_id=2,off=0,imm=0) R8_w=ptr_cbpf_cap_ref(ref_obj_id=2,off=0,imm=0) refs=2,4
+11: (85) call cbpf_cap_release#44154          ; refs=4
+12: (bf) r1 = r6                      ; R1_w=scalar(id=5) R6=scalar(id=5) refs=4
+13: (85) call cbpf_cap_read#44152
+arg#0 pointer type STRUCT cbpf_cap_ref must point to scalar, or struct with scalar
+processed 14 insns (limit 1000000) max_states_per_insn 0 total_states 1 peak_states 1 mark_read 1
+CBPF_TRACE_VERIFY verifier_end case=stale_copy
+CBPF_TRACE_VERIFY case=stale_copy phase=end result=PASS loaded=0 executed=0 load_errno=22 diagnostic=argument_shape
+CBPF_TRACE_VERIFY case=stale_spill phase=begin expected=reject execution=forbidden
+CBPF_TRACE_VERIFY bpf case=stale_spill pc=0 code=b7 dst=1 src=0 off=0 imm=0
+CBPF_TRACE_VERIFY bpf case=stale_spill pc=1 code=85 dst=0 src=2 off=0 imm=44149
+CBPF_TRACE_VERIFY bpf case=stale_spill pc=2 code=15 dst=0 src=0 off=21 imm=0
+CBPF_TRACE_VERIFY bpf case=stale_spill pc=3 code=bf dst=6 src=0 off=0 imm=0
+CBPF_TRACE_VERIFY bpf case=stale_spill pc=4 code=7b dst=10 src=6 off=-8 imm=0
+CBPF_TRACE_VERIFY bpf case=stale_spill pc=5 code=b7 dst=1 src=0 off=0 imm=0
+CBPF_TRACE_VERIFY bpf case=stale_spill pc=6 code=85 dst=0 src=2 off=0 imm=44149
+CBPF_TRACE_VERIFY bpf case=stale_spill pc=7 code=15 dst=0 src=0 off=11 imm=0
+CBPF_TRACE_VERIFY bpf case=stale_spill pc=8 code=bf dst=7 src=0 off=0 imm=0
+CBPF_TRACE_VERIFY bpf case=stale_spill pc=9 code=79 dst=8 src=10 off=-8 imm=0
+CBPF_TRACE_VERIFY bpf case=stale_spill pc=10 code=bf dst=1 src=8 off=0 imm=0
+CBPF_TRACE_VERIFY bpf case=stale_spill pc=11 code=85 dst=0 src=2 off=0 imm=44154
+CBPF_TRACE_VERIFY bpf case=stale_spill pc=12 code=79 dst=1 src=10 off=-8 imm=0
+CBPF_TRACE_VERIFY bpf case=stale_spill pc=13 code=85 dst=0 src=2 off=0 imm=44152
+CBPF_TRACE_VERIFY bpf case=stale_spill pc=14 code=bf dst=9 src=0 off=0 imm=0
+CBPF_TRACE_VERIFY bpf case=stale_spill pc=15 code=bf dst=1 src=7 off=0 imm=0
+CBPF_TRACE_VERIFY bpf case=stale_spill pc=16 code=85 dst=0 src=2 off=0 imm=44154
+CBPF_TRACE_VERIFY bpf case=stale_spill pc=17 code=bf dst=0 src=9 off=0 imm=0
+CBPF_TRACE_VERIFY bpf case=stale_spill pc=18 code=95 dst=0 src=0 off=0 imm=0
+CBPF_TRACE_VERIFY bpf case=stale_spill pc=19 code=79 dst=8 src=10 off=-8 imm=0
+CBPF_TRACE_VERIFY bpf case=stale_spill pc=20 code=bf dst=1 src=8 off=0 imm=0
+CBPF_TRACE_VERIFY bpf case=stale_spill pc=21 code=85 dst=0 src=2 off=0 imm=44154
+CBPF_TRACE_VERIFY bpf case=stale_spill pc=22 code=b7 dst=0 src=0 off=0 imm=7
+CBPF_TRACE_VERIFY bpf case=stale_spill pc=23 code=95 dst=0 src=0 off=0 imm=0
+CBPF_TRACE_VERIFY bpf case=stale_spill pc=24 code=b7 dst=0 src=0 off=0 imm=0
+CBPF_TRACE_VERIFY bpf case=stale_spill pc=25 code=95 dst=0 src=0 off=0 imm=0
+CBPF_TRACE_VERIFY verifier_begin case=stale_spill
+func#0 @0
+0: R1=ctx(off=0,imm=0) R10=fp0
+0: (b7) r1 = 0                        ; R1_w=0
+1: (85) call cbpf_cap_acquire#44149   ; R0_w=ptr_or_null_cbpf_cap_ref(id=2,ref_obj_id=2,off=0,imm=0) refs=2
+2: (15) if r0 == 0x0 goto pc+21       ; R0_w=ptr_cbpf_cap_ref(ref_obj_id=2,off=0,imm=0) refs=2
+3: (bf) r6 = r0                       ; R0_w=ptr_cbpf_cap_ref(ref_obj_id=2,off=0,imm=0) R6_w=ptr_cbpf_cap_ref(ref_obj_id=2,off=0,imm=0) refs=2
+4: (7b) *(u64 *)(r10 -8) = r6         ; R6_w=ptr_cbpf_cap_ref(ref_obj_id=2,off=0,imm=0) R10=fp0 fp-8_w=ptr_ refs=2
+5: (b7) r1 = 0                        ; R1_w=0 refs=2
+6: (85) call cbpf_cap_acquire#44149   ; R0=ptr_or_null_cbpf_cap_ref(id=4,ref_obj_id=4,off=0,imm=0) refs=2,4
+7: (15) if r0 == 0x0 goto pc+11       ; R0=ptr_cbpf_cap_ref(ref_obj_id=4,off=0,imm=0) refs=2,4
+8: (bf) r7 = r0                       ; R0=ptr_cbpf_cap_ref(ref_obj_id=4,off=0,imm=0) R7_w=ptr_cbpf_cap_ref(ref_obj_id=4,off=0,imm=0) refs=2,4
+9: (79) r8 = *(u64 *)(r10 -8)         ; R8_w=ptr_cbpf_cap_ref(ref_obj_id=2,off=0,imm=0) R10=fp0 fp-8=ptr_ refs=2,4
+10: (bf) r1 = r8                      ; R1_w=ptr_cbpf_cap_ref(ref_obj_id=2,off=0,imm=0) R8_w=ptr_cbpf_cap_ref(ref_obj_id=2,off=0,imm=0) refs=2,4
+11: (85) call cbpf_cap_release#44154          ; refs=4
+12: (79) r1 = *(u64 *)(r10 -8)        ; R1_w=scalar() R10=fp0 fp-8= refs=4
+13: (85) call cbpf_cap_read#44152
+arg#0 pointer type STRUCT cbpf_cap_ref must point to scalar, or struct with scalar
+processed 14 insns (limit 1000000) max_states_per_insn 0 total_states 1 peak_states 1 mark_read 1
+CBPF_TRACE_VERIFY verifier_end case=stale_spill
+CBPF_TRACE_VERIFY case=stale_spill phase=end result=PASS loaded=0 executed=0 load_errno=22 diagnostic=argument_shape
+CBPF_TRACE_VERIFY case=repeated_release phase=begin expected=reject execution=forbidden
+CBPF_TRACE_VERIFY bpf case=repeated_release pc=0 code=b7 dst=1 src=0 off=0 imm=0
+CBPF_TRACE_VERIFY bpf case=repeated_release pc=1 code=85 dst=0 src=2 off=0 imm=44149
+CBPF_TRACE_VERIFY bpf case=repeated_release pc=2 code=15 dst=0 src=0 off=21 imm=0
+CBPF_TRACE_VERIFY bpf case=repeated_release pc=3 code=bf dst=6 src=0 off=0 imm=0
+CBPF_TRACE_VERIFY bpf case=repeated_release pc=4 code=7b dst=10 src=6 off=-8 imm=0
+CBPF_TRACE_VERIFY bpf case=repeated_release pc=5 code=b7 dst=1 src=0 off=0 imm=0
+CBPF_TRACE_VERIFY bpf case=repeated_release pc=6 code=85 dst=0 src=2 off=0 imm=44149
+CBPF_TRACE_VERIFY bpf case=repeated_release pc=7 code=15 dst=0 src=0 off=11 imm=0
+CBPF_TRACE_VERIFY bpf case=repeated_release pc=8 code=bf dst=7 src=0 off=0 imm=0
+CBPF_TRACE_VERIFY bpf case=repeated_release pc=9 code=79 dst=8 src=10 off=-8 imm=0
+CBPF_TRACE_VERIFY bpf case=repeated_release pc=10 code=bf dst=1 src=8 off=0 imm=0
+CBPF_TRACE_VERIFY bpf case=repeated_release pc=11 code=85 dst=0 src=2 off=0 imm=44154
+CBPF_TRACE_VERIFY bpf case=repeated_release pc=12 code=bf dst=1 src=6 off=0 imm=0
+CBPF_TRACE_VERIFY bpf case=repeated_release pc=13 code=85 dst=0 src=2 off=0 imm=44154
+CBPF_TRACE_VERIFY bpf case=repeated_release pc=14 code=bf dst=9 src=0 off=0 imm=0
+CBPF_TRACE_VERIFY bpf case=repeated_release pc=15 code=bf dst=1 src=7 off=0 imm=0
+CBPF_TRACE_VERIFY bpf case=repeated_release pc=16 code=85 dst=0 src=2 off=0 imm=44154
+CBPF_TRACE_VERIFY bpf case=repeated_release pc=17 code=bf dst=0 src=9 off=0 imm=0
+CBPF_TRACE_VERIFY bpf case=repeated_release pc=18 code=95 dst=0 src=0 off=0 imm=0
+CBPF_TRACE_VERIFY bpf case=repeated_release pc=19 code=79 dst=8 src=10 off=-8 imm=0
+CBPF_TRACE_VERIFY bpf case=repeated_release pc=20 code=bf dst=1 src=8 off=0 imm=0
+CBPF_TRACE_VERIFY bpf case=repeated_release pc=21 code=85 dst=0 src=2 off=0 imm=44154
+CBPF_TRACE_VERIFY bpf case=repeated_release pc=22 code=b7 dst=0 src=0 off=0 imm=7
+CBPF_TRACE_VERIFY bpf case=repeated_release pc=23 code=95 dst=0 src=0 off=0 imm=0
+CBPF_TRACE_VERIFY bpf case=repeated_release pc=24 code=b7 dst=0 src=0 off=0 imm=0
+CBPF_TRACE_VERIFY bpf case=repeated_release pc=25 code=95 dst=0 src=0 off=0 imm=0
+CBPF_TRACE_VERIFY verifier_begin case=repeated_release
+func#0 @0
+0: R1=ctx(off=0,imm=0) R10=fp0
+0: (b7) r1 = 0                        ; R1_w=0
+1: (85) call cbpf_cap_acquire#44149   ; R0_w=ptr_or_null_cbpf_cap_ref(id=2,ref_obj_id=2,off=0,imm=0) refs=2
+2: (15) if r0 == 0x0 goto pc+21       ; R0_w=ptr_cbpf_cap_ref(ref_obj_id=2,off=0,imm=0) refs=2
+3: (bf) r6 = r0                       ; R0_w=ptr_cbpf_cap_ref(ref_obj_id=2,off=0,imm=0) R6_w=ptr_cbpf_cap_ref(ref_obj_id=2,off=0,imm=0) refs=2
+4: (7b) *(u64 *)(r10 -8) = r6         ; R6_w=ptr_cbpf_cap_ref(ref_obj_id=2,off=0,imm=0) R10=fp0 fp-8_w=ptr_ refs=2
+5: (b7) r1 = 0                        ; R1_w=0 refs=2
+6: (85) call cbpf_cap_acquire#44149   ; R0=ptr_or_null_cbpf_cap_ref(id=4,ref_obj_id=4,off=0,imm=0) refs=2,4
+7: (15) if r0 == 0x0 goto pc+11       ; R0=ptr_cbpf_cap_ref(ref_obj_id=4,off=0,imm=0) refs=2,4
+8: (bf) r7 = r0                       ; R0=ptr_cbpf_cap_ref(ref_obj_id=4,off=0,imm=0) R7_w=ptr_cbpf_cap_ref(ref_obj_id=4,off=0,imm=0) refs=2,4
+9: (79) r8 = *(u64 *)(r10 -8)         ; R8_w=ptr_cbpf_cap_ref(ref_obj_id=2,off=0,imm=0) R10=fp0 fp-8=ptr_ refs=2,4
+10: (bf) r1 = r8                      ; R1_w=ptr_cbpf_cap_ref(ref_obj_id=2,off=0,imm=0) R8_w=ptr_cbpf_cap_ref(ref_obj_id=2,off=0,imm=0) refs=2,4
+11: (85) call cbpf_cap_release#44154          ; refs=4
+12: (bf) r1 = r6                      ; R1_w=scalar(id=5) R6=scalar(id=5) refs=4
+13: (85) call cbpf_cap_release#44154
+arg#0 pointer type STRUCT cbpf_cap_ref must point to scalar, or struct with scalar
+processed 14 insns (limit 1000000) max_states_per_insn 0 total_states 1 peak_states 1 mark_read 1
+CBPF_TRACE_VERIFY verifier_end case=repeated_release
+CBPF_TRACE_VERIFY case=repeated_release phase=end result=PASS loaded=0 executed=0 load_errno=22 diagnostic=argument_shape
+CBPF_TRACE_VERIFY result=PASS rejected=3 executed=0
+[    0.818126] reboot: Power down

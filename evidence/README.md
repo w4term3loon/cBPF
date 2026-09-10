@@ -29,6 +29,23 @@ commands, experimental conditions, observations and original identities remain.
 These edits do not establish a new run, semantic revalidation, independent
 reproduction or stronger security result.
 
+## September 10 native-extension publication
+
+- [Selective spatial evidence](current/spatial-selectivity/README.md): original
+  matrix and matching calibration, build/launch identities and complete helper
+  bytes/disassembly derived after the run.
+- [Integrated ownership evidence](current/ownership-native-trace/README.md):
+  original three native controls, full native images and later complete decoder
+  listings of the images and relevant linked production functions.
+
+These packages publish the original checker outcomes with their known limits.
+Stronger spatial correspondence checks and ownership native inspection remain
+pending. Publication and later extraction do not close those experimental gaps.
+Each package separates original records from timestamped `derivation/` records.
+The large NUL-delimited source-tree inventories are losslessly gzip-compressed;
+their original hashes apply to decompressed bytes. Native binaries and initramfs
+are unchanged. Full kernel/toolchain distributions remain external.
+
 Original filenames and technical provenance retain historical edition identifiers.
 Current descriptive metadata uses study names. The identifiers remaining in
 original records have these meanings:

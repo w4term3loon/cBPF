@@ -1,0 +1,36 @@
+{
+  "images": [
+    {
+      "case": "positive",
+      "entry_from_log": "0xffff800081271204",
+      "words": 153,
+      "native": {
+        "bytes": 612,
+        "sha256": "47f78cef8fc40b2a7c9775a9a8e00e47c4d89ac9ce46be848de584c07fead40b"
+      },
+      "disassembly_file": "native-positive-disassembly.txt"
+    },
+    {
+      "case": "stale_read",
+      "entry_from_log": "0xffff80008110720c",
+      "words": 163,
+      "native": {
+        "bytes": 652,
+        "sha256": "77606aef40132126b179f4e03e7349239a72f3c7be964970914bb4a3743369f7"
+      },
+      "disassembly_file": "native-stale_read-disassembly.txt"
+    },
+    {
+      "case": "repeated_release",
+      "entry_from_log": "0xffff800081109bf4",
+      "words": 163,
+      "native": {
+        "bytes": 652,
+        "sha256": "7215175ce34102dcb34742d5ed3654f5f702e9f8b8bd0f797cc5904af45c0cc8"
+      },
+      "disassembly_file": "native-repeated_release-disassembly.txt"
+    }
+  ],
+  "scope": "Complete decoder listings bound to logged bytes and retained binaries; not a control-flow review.",
+  "address_note": "Address columns use logged image entries. LLVM MC branch operands are relative displacements."
+}

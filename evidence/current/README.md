@@ -25,6 +25,8 @@ verifies the shareable bytes.
 | [`spatial-s5/`](spatial-native/README.md) | Spatial native witness: one 14-instruction/392-native-byte program, exact eight-byte authority, valid 41→42 read/add/store, return/readback 42 and clean exit. |
 | [`ownership-cve/`](ownership-cve/README.md) | Ownership CVE case: repeated-release mapping and conditional argument; two projected controls with four model/host matches. No callback or original-CVE execution. |
 | [`ownership-callback/`](ownership-callback/README.md) | Trusted callback witness: two kernel C controls, persistent capability/context transport, repeated-release rejection and independent B=42. No BPF callbacks or original-CVE execution. |
+| [`spatial-selectivity/`](spatial-selectivity/README.md) | Original 30-case spatial matrix and matching calibration, plus later complete helper extraction. Stronger backing-address/PC/operand checks remain pending. |
+| [`ownership-native-trace/`](ownership-native-trace/README.md) | Original integrated positive/stale-read/repeated-release traces and native images, plus later complete decoder listings. Focused terminal-path checks and explicit native inspection remain pending. |
 
 The architecture probe and native gate are user-mode CHERI observations. The
 ordinary `kfunc/` binding uses normal verifier tracking and kernel pointers.

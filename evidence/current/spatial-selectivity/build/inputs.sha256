@@ -1,0 +1,6 @@
+ac74717a7dbd2c61760115c1b8b719e52d27d60d02957a2b73c3ff155206c4ac  ${SPATIAL_BUILD}/receipt/array-authority.patch
+2f7889c53d0b4de2e47a94b8acb0d6c1ab73bca6effaccee5b4733984f449b07  ${SPATIAL_BUILD}/receipt/native-observation.patch
+b605b96b977f9be988fff2522323f043e87023155f3cec935b320c1f2e0a7c65  ${SPATIAL_BUILD}/receipt/selectivity-test.patch
+a95830846b7ba8f45296d6d8b5a4cdccf122e781aa1c4190ca8cb13ad633899a  ${SPATIAL_BUILD}/receipt/build_spatial_selectivity.executed.sh
+bcce56e1333570eae303425cf4d88257c9cb6ef47d163d993de84ea47eaca61e  ${SPATIAL_BUILD}/receipt/source-tree.manifest
+96cceff529da91c1cad30eff5cff067640fbe836a2314465237755f5d08c0dad  ${SPATIAL_BUILD}/receipt/builder-image.txt

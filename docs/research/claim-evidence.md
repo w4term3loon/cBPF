@@ -6,12 +6,18 @@ inspected implementation and current or historical observations. The
 source editions. The clean dependency image has a [fresh bounded native replay](../reproduction/native-replay.md).
 Independent external reproduction is not established.
 
+The September 10 spatial and ownership extension artifacts are now published.
+Their original checker outcomes below are provisional evidence of experimental
+closure: spatial address/operand correspondence and ownership native-image
+inspection require the planned stronger checks. Publication integrity and
+post-run byte extraction do not discharge those obligations.
+
 ## Findings at a glance
 
 | Feasibility question | Answer and evidence | Boundary |
 |---|---|---|
-| Can selected extent survive construction and selectively constrain native use? | Yes for the [seven-byte/eight-byte matrix](../results/spatial-selectivity.md): 30 matched operations distinguish exact, stride and both-slot authority with 22 permits and eight bounds faults. | Fixed trusted native fixture through the production provider; no negative BPF or original CVE execution. All-program mediation remains unestablished. |
-| Can acquisition identity survive aliases, preserve B and contain stale use through cleanup? | Yes for the [integrated synthetic native trace](../results/ownership-native-trace.md): positive, stale-read and repeated-release fixtures traverse the production restricted path and restore refs=1. | Synthetic kfunc-shaped provider and fixed trusted fixtures. No normally verified stale BPF or original ownership-CVE execution. |
+| Can selected extent survive construction and selectively constrain native use? | The original [seven-byte/eight-byte matrix](../results/spatial-selectivity.md) receipts report 30 operations, 22 permits and eight bounds faults. | Fixed trusted native fixture through the production provider. Same-storage and linked-PC/operand checker strengthening is pending. No negative BPF or original CVE execution; all-program mediation remains unestablished. |
+| Can acquisition identity survive aliases, preserve B and contain stale use through cleanup? | The original [integrated synthetic native trace](../results/ownership-native-trace.md) receipts report positive, stale-read and repeated-release controls ending at refs=1. | Ordered-event checks support the trace; complete image inspection and focused terminal-path checks remain pending. No normally verified stale BPF or original ownership-CVE execution. |
 | Can acquisition validity alone decide callback release eligibility? | No. The [caller/callback counterexample](../../theory/acquisition-distinguishability.md#3-live-validity-does-not-determine-release-eligibility) gives the same live A identity but different required decisions according to its current and owning contexts. | Conditional representability argument only. cBPF implements no callback-frame policy, and no new experiment or general theorem follows. |
 | What remains trusted? | Correct assignment, protected metadata, architecture, native binding, effect ordering and invocation containment. | Neither study proves the whole native implementation or their composition. Software can express the same policy; no comparative ranking follows. |
 

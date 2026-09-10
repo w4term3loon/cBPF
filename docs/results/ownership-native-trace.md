@@ -1,9 +1,16 @@
 # Synthetic native ownership containment trace
 
-The integrated ownership trace passed on 10 September 2026. Three fixed
+The original checker reports a passing integrated ownership trace on
+10 September 2026. Three fixed
 trusted native fixtures reused the production restricted entry, capability
 transport, gateway, ownership gate, epilogue and cleanup wrapper. The test
 overlay changes none of the production provider's decisions or effects.
+
+The [published evidence package](../../evidence/current/ownership-native-trace/README.md)
+contains the original logs, results and native images, plus newly extracted
+complete disassembly. **Stronger native correspondence checks and explicit
+image inspection remain pending.** Publication makes the reported observations
+available for assessment; it is not itself experimental closure.
 
 | Fixture | Ordered decisive observation | Final accounting |
 |---|---|---|
@@ -11,7 +18,8 @@ overlay changes none of the production provider's decisions or effects.
 | Stale read | Same prefix through B's successful read; at PC 17 the A alias is tagged and canonical but privately invalid; read rejects | acquired 2, released 2, reads 1, cleanup 1, refs 1 |
 | Repeated release | Same prefix; at PC 17 the same consumed A alias requests release and rejects before a second decrement | acquired 2, released 2, reads 1, cleanup 1, refs 1 |
 
-The negative fixtures contain a later explicit B release and marker at PC 19.
+The negative fixtures contain a later explicit B release at PC 19 and scalar
+return marker at PC 20.
 Neither executes. Rejection reaches the production failure return, the native
 continuation terminates, and trusted cleanup consumes still-live B exactly
 once. Thus each negative run has two acquisitions, one explicit A release,
@@ -20,17 +28,23 @@ stale read performs no second read, and the repeated release performs no
 second decrement. B's read of 42 before rejection rules out indiscriminate
 object-wide invalidation.
 
-The complete native images are checked against their fixed instruction
-descriptions, including full-capability spill/reload, sealed gateway calls,
-restricted bounds, gate sequences and the common epilogue. The positive image
-contains 612 bytes; each negative image contains 652 bytes. The checker also
-requires a clean QEMU shutdown and rejects unrelated faults, timeouts, kernel
-warnings and reference-count failures.
+The production emitter re-encodes and compares every word using its own encoder;
+this is internal consistency checking. The original external checker validates
+ordered events, image/map envelopes and selected spill/reload/gateway words,
+not the complete prologue, branch targets or epilogue. Complete byte-bound
+disassembly is now available for the pending native inspection and focused
+checks. The positive image contains 612 bytes; each negative image contains
+652 bytes. The original runner checks QEMU's exit status separately from the
+checker's shutdown and failure-marker checks; the standalone checker's
+`qemu_exit` field is not an independent exit-status check.
 
 ## Admission and claim boundary
 
-Three corresponding BPF programs are submitted only to the unchanged normal
-verifier. All three are rejected and none executes. Their observed diagnostics
+Three separate existing BPF admission controls (stale copy, stale spill and
+repeated release) are submitted only to the unchanged normal verifier. Their
+invalid requests occur at PC 13, unlike the native negatives at PC 17; there
+is no matching positive admission control. All three are rejected and none
+executes. Their observed diagnostics
 are classified as argument-shape rejection, so those outcomes establish only
 admission behavior—not a particular ownership rule. An unexpectedly accepted
 negative is closed without test execution.
@@ -53,6 +67,12 @@ acceptance checks. The checker emits `results.json` and the extracted native
 images in its fresh run directory.
 
 ## Validation identity
+
+The hashes below identify original artifacts. The
+[publication manifest](../../evidence/publication-manifest.json) separately
+identifies path-redacted publication copies. Complete native and linked
+disassembly in the package's `derivation/` directory was generated after the
+original run; it is neither a new execution nor a completed semantic review.
 
 The passing local run used kernel release
 `6.7.0-cbpf-ownership-native-trace` over Morello Linux commit
