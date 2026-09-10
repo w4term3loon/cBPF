@@ -7,9 +7,11 @@ The study implements these mappings in two separate bounded Linux/Morello profil
 Evidence status: both original native-extension packages are published.
 The spatial results now pass backing-address, linked-instruction, calibration
 and completion checks, with ten admission-only load/store controls in a new
-run of the unchanged kernel. Ownership's explicit native-image inspection and
-focused terminal-path checks remain pending; that gap is not yet closed for
-independent assessment.
+run of the unchanged kernel. Ownership's retained images now pass complete
+fixed-image byte/operand/target checks and focused linked terminal-path checks,
+with an explicit internal native inspection. Both bounded synthetic results
+are published and recheckable; independent external reproduction, general
+translation correctness and complete mediation remain unestablished.
 
 ## 1. Array maps: which bytes does a lookup authorize?
 

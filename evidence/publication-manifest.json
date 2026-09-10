@@ -13,15 +13,16 @@
       },
       "availability": "publication_copy",
       "publication": {
-        "bytes": 5381,
-        "sha256": "1ea6c80e115b134206d3998ddc296320648e38dc715ba3242f419142c479e724"
+        "bytes": 5523,
+        "sha256": "991b05ab2431b93b3e8225f89c2b74c7d151ab582906fb991e48a6298bfb3d06"
       },
       "changes": [
         "New publication provenance note.",
         "Publication metadata normalized; experimental observations unchanged.",
         "Administrative bindings and editorial framing omitted; experimental observations, commands and original identities retained.",
         "Added native-extension publication index and pending-validation scope; original experimental records unchanged.",
-        "Updated Batch 2 status: strengthened spatial revalidation and new admission run; ownership native inspection remains pending."
+        "Updated Batch 2 status: strengthened spatial revalidation and new admission run; ownership native inspection remains pending.",
+        "Batch 3: indexed fixed ownership instruction/target checks and authored internal inspection; original records preserved."
       ],
       "original_identity_scope": "Earlier editorial publication bytes; this identity does not describe an original experiment."
     },
@@ -34,13 +35,14 @@
       },
       "availability": "publication_copy",
       "publication": {
-        "bytes": 6033,
-        "sha256": "de163a9613757e687b2348816fdb1587f75a49f12a62b13b0e2031227895c2cd"
+        "bytes": 6083,
+        "sha256": "82f2a8a2470e8d17f0eefb2034f9ab02dc7c6777c1812fce03608b237e3f3bdd"
       },
       "changes": [
         "Publication guide wording, titles or identity instructions updated.",
         "Indexed the two native-extension packages with their pending correspondence checks.",
-        "Updated Batch 2 status: strengthened spatial revalidation and new admission run; ownership native inspection remains pending."
+        "Updated Batch 2 status: strengthened spatial revalidation and new admission run; ownership native inspection remains pending.",
+        "Batch 3: indexed fixed ownership instruction/target checks and authored internal inspection; original records preserved."
       ]
     },
     {
@@ -10967,12 +10969,13 @@
       "file": "evidence/current/ownership-native-trace/README.md",
       "availability": "publication_copy",
       "publication": {
-        "bytes": 4691,
-        "sha256": "365c4d145db262086e96592578c7c9935fee3344fa228d754c968386f1a8ae61"
+        "bytes": 5213,
+        "sha256": "e97a00214455613189808b831a2cc73dadef74511e04a01095a1c086057166c5"
       },
       "changes": [
         "New editorial package index; not an original execution record.",
-        "Updated Batch 2 status: strengthened spatial revalidation and new admission run; ownership native inspection remains pending."
+        "Updated Batch 2 status: strengthened spatial revalidation and new admission run; ownership native inspection remains pending.",
+        "Batch 3: indexed fixed ownership instruction/target checks and authored internal inspection; original records preserved."
       ]
     },
     {
@@ -13318,6 +13321,244 @@
       },
       "changes": [
         "New editorial index distinguishing original results, stronger revalidation and the admission-extension run."
+      ]
+    },
+    {
+      "file": "evidence/current/ownership-native-trace/inspection/check_ownership_trace.py",
+      "availability": "publication_copy",
+      "original": {
+        "file": "ownership-inspection/check_ownership_trace.py",
+        "bytes": 18535,
+        "sha256": "795a3cfe4e3bdc7f0a136fa55b189ddc22489faeeafb7668b387150dc0906397"
+      },
+      "original_identity_scope": "Post-run host inspection/revalidation artifact, not original native execution.",
+      "publication": {
+        "bytes": 18535,
+        "sha256": "795a3cfe4e3bdc7f0a136fa55b189ddc22489faeeafb7668b387150dc0906397"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/ownership-native-trace/inspection/checker-stdout.txt",
+      "availability": "publication_copy",
+      "original": {
+        "file": "ownership-inspection/checker-stdout.txt",
+        "bytes": 94,
+        "sha256": "c6d21e13f782eb843f139e2a12b6d9123cea025485845ce12052219fbf76e6e0"
+      },
+      "original_identity_scope": "Post-run host inspection/revalidation artifact, not original native execution.",
+      "publication": {
+        "bytes": 94,
+        "sha256": "c6d21e13f782eb843f139e2a12b6d9123cea025485845ce12052219fbf76e6e0"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/ownership-native-trace/inspection/decoder-replay/commands.json",
+      "availability": "publication_copy",
+      "original": {
+        "file": "ownership-inspection/decoder-replay/commands.json",
+        "bytes": 7694,
+        "sha256": "0f74b2956f11cb56147aa0b35c0c06e299cb9482b2bc0eb1e8d09a0de5e70083"
+      },
+      "original_identity_scope": "Post-run host inspection/revalidation artifact, not original native execution.",
+      "publication": {
+        "bytes": 7070,
+        "sha256": "6824339b11445a13afa4ea0ee3d3ea87b72786a44a78d9db1a6721331875cb17"
+      },
+      "changes": [
+        "Personal paths replaced by role markers."
+      ]
+    },
+    {
+      "file": "evidence/current/ownership-native-trace/inspection/decoder-replay/comparison.json",
+      "availability": "publication_copy",
+      "original": {
+        "file": "ownership-inspection/decoder-replay/comparison.json",
+        "bytes": 2514,
+        "sha256": "0f4749f9d9e10b1f49606b61c17053f893d34daaa3e66ebbd0663b52d4b510f9"
+      },
+      "original_identity_scope": "Post-run host inspection/revalidation artifact, not original native execution.",
+      "publication": {
+        "bytes": 2514,
+        "sha256": "0f4749f9d9e10b1f49606b61c17053f893d34daaa3e66ebbd0663b52d4b510f9"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/ownership-native-trace/inspection/decoder-replay/extraction.json",
+      "availability": "publication_copy",
+      "original": {
+        "file": "ownership-inspection/decoder-replay/extraction.json",
+        "bytes": 536,
+        "sha256": "f5ab892fe01af829b1c9449102e2e5587552c0a9e229365c2bcbbf8f1885ba64"
+      },
+      "original_identity_scope": "Post-run host inspection/revalidation artifact, not original native execution.",
+      "publication": {
+        "bytes": 536,
+        "sha256": "f5ab892fe01af829b1c9449102e2e5587552c0a9e229365c2bcbbf8f1885ba64"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/ownership-native-trace/inspection/native_receipt_common.py",
+      "availability": "publication_copy",
+      "original": {
+        "file": "ownership-inspection/native_receipt_common.py",
+        "bytes": 1361,
+        "sha256": "60fd3c4912b0ec83e96a6cc8b7a2fa9316cd7486bae2b64feb6a2d735cc77e8c"
+      },
+      "original_identity_scope": "Post-run host inspection/revalidation artifact, not original native execution.",
+      "publication": {
+        "bytes": 1361,
+        "sha256": "60fd3c4912b0ec83e96a6cc8b7a2fa9316cd7486bae2b64feb6a2d735cc77e8c"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/ownership-native-trace/inspection/ownership_native_checks.py",
+      "availability": "publication_copy",
+      "original": {
+        "file": "ownership-inspection/ownership_native_checks.py",
+        "bytes": 17037,
+        "sha256": "1b29b05a9aefb4997c63365f1557a3eb3f89ede41e01d0b6bc21c1643d7defa0"
+      },
+      "original_identity_scope": "Post-run host inspection/revalidation artifact, not original native execution.",
+      "publication": {
+        "bytes": 17182,
+        "sha256": "e94330e0a4e7afb73e2c1a66be9289cc00234428b14d70160fb8fb56c609892f"
+      },
+      "changes": [
+        "Finalized before commit: exact gateway extent and matching regressions/recheck; original identity denotes earlier post-run draft, not original native execution."
+      ]
+    },
+    {
+      "file": "evidence/current/ownership-native-trace/inspection/prepare_ownership_inspection.py",
+      "availability": "publication_copy",
+      "original": {
+        "file": "ownership-inspection/prepare_ownership_inspection.py",
+        "bytes": 2690,
+        "sha256": "30764d4157c6f9870dadde0937f5ef5c9d41f7ffcddb56773fbaf648fe2ee6ee"
+      },
+      "original_identity_scope": "Post-run host inspection/revalidation artifact, not original native execution.",
+      "publication": {
+        "bytes": 2690,
+        "sha256": "30764d4157c6f9870dadde0937f5ef5c9d41f7ffcddb56773fbaf648fe2ee6ee"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/ownership-native-trace/inspection/publication.executed.py",
+      "availability": "publication_copy",
+      "original": {
+        "file": "ownership-inspection/publication.executed.py",
+        "bytes": 7036,
+        "sha256": "21ccd89e5391f1627a0c6ac626b36edc5bc4c267233153a7246eba85e9df7b63"
+      },
+      "original_identity_scope": "Post-run host inspection/revalidation artifact, not original native execution.",
+      "publication": {
+        "bytes": 7036,
+        "sha256": "21ccd89e5391f1627a0c6ac626b36edc5bc4c267233153a7246eba85e9df7b63"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/ownership-native-trace/inspection/receipt.json",
+      "availability": "publication_copy",
+      "original": {
+        "file": "ownership-inspection/receipt.json",
+        "bytes": 1066,
+        "sha256": "2a1fe38b3eac0fdfb58323d434629d0b4e22be5e49958b141947303ee6e46a71"
+      },
+      "original_identity_scope": "Post-run host inspection/revalidation artifact, not original native execution.",
+      "publication": {
+        "bytes": 1880,
+        "sha256": "299c8a3cb3e53cadbfba913ebd96235b5046bf5ab3ac5d74beafc86abbd9db32"
+      },
+      "changes": [
+        "Finalized before commit: exact gateway extent and matching regressions/recheck; original identity denotes earlier post-run draft, not original native execution."
+      ]
+    },
+    {
+      "file": "evidence/current/ownership-native-trace/inspection/results.json",
+      "availability": "publication_copy",
+      "original": {
+        "file": "ownership-inspection/results.json",
+        "bytes": 18004,
+        "sha256": "80c64a380557bce187c4af23abe5e987e534c064600046113652918803f19ff8"
+      },
+      "original_identity_scope": "Post-run host inspection/revalidation artifact, not original native execution.",
+      "publication": {
+        "bytes": 18004,
+        "sha256": "346962f3a91a8c916553a4b869258aff04f46fa45b7b1e79ca3c992c9db513b1"
+      },
+      "changes": [
+        "Finalized before commit: exact gateway extent and matching regressions/recheck; original identity denotes earlier post-run draft, not original native execution."
+      ]
+    },
+    {
+      "file": "evidence/current/ownership-native-trace/inspection/run_ownership_trace.sh",
+      "availability": "publication_copy",
+      "original": {
+        "file": "ownership-inspection/run_ownership_trace.sh",
+        "bytes": 9844,
+        "sha256": "46c94fc203058a9d44fc5e3d23b2c5e213881d9c442e2f9c9495218ea4ee6080"
+      },
+      "original_identity_scope": "Post-run host inspection/revalidation artifact, not original native execution.",
+      "publication": {
+        "bytes": 9844,
+        "sha256": "46c94fc203058a9d44fc5e3d23b2c5e213881d9c442e2f9c9495218ea4ee6080"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/ownership-native-trace/inspection/test_ownership_native.py",
+      "availability": "publication_copy",
+      "original": {
+        "file": "ownership-inspection/test_ownership_native.py",
+        "bytes": 10118,
+        "sha256": "291715dae22e8053deab91e0a51584fb15bdf57096e369cae7417f88a85f7940"
+      },
+      "original_identity_scope": "Post-run host inspection/revalidation artifact, not original native execution.",
+      "publication": {
+        "bytes": 10403,
+        "sha256": "0d41c1ea1ee0aa210a0289cb92fe3c5825418842481732e5b9622aae60c3f9bd"
+      },
+      "changes": [
+        "Finalized before commit: exact gateway extent and matching regressions/recheck; original identity denotes earlier post-run draft, not original native execution."
+      ]
+    },
+    {
+      "file": "evidence/current/ownership-native-trace/inspection/README.md",
+      "availability": "publication_only",
+      "publication": {
+        "bytes": 3785,
+        "sha256": "816b1ea1187c91eeba2104c7538e4745616daf703bdc8dbecfcad8749ab04707"
+      },
+      "changes": [
+        "New authored post-run internal inspection and assurance distinction."
+      ]
+    },
+    {
+      "file": "evidence/current/ownership-native-trace/inspection/native-review.md",
+      "availability": "publication_only",
+      "publication": {
+        "bytes": 10481,
+        "sha256": "1c9612d4644644e97c37e801a4b6cd63bd884988d0115e5e9a014bc122a04edb"
+      },
+      "changes": [
+        "New authored post-run internal inspection and assurance distinction."
+      ]
+    },
+    {
+      "file": "evidence/current/ownership-native-trace/inspection/finalization.executed.py",
+      "availability": "publication_only",
+      "publication": {
+        "bytes": 2228,
+        "sha256": "aa1c29e775a1399d8ebf3403069aa07e857a8e25dbb7ece4b49efcc61c0dc05e"
+      },
+      "changes": [
+        "Exact finalization recipe for the uncommitted post-run inspection package."
       ]
     }
   ]

@@ -1,0 +1,77 @@
+{
+  "recorded_utc": "2026-09-10T14:22:09.888818+00:00",
+  "files": [
+    {
+      "file": "cbpf_consume.bin",
+      "sha256": "19dba0118d88acc5e3301c708f9682343f17afbc46a82ac310b338866cfc1af9",
+      "matches_retained": true
+    },
+    {
+      "file": "cbpf_enter.bin",
+      "sha256": "10dd66273ca7f9d64ecd935ed00ac917692e357a1eda0e93826308b7ab78c35c",
+      "matches_retained": true
+    },
+    {
+      "file": "cbpf_fail.bin",
+      "sha256": "41bff5d0c2edc6a2a4e9a2526fce17324ff317f2d1edea0c84ebd57a15f0372e",
+      "matches_retained": true
+    },
+    {
+      "file": "cbpf_gate_impl.bin",
+      "sha256": "824d10d45547be940593e0894cde65f93f1413e88d53f025fd761ce25c8d81ab",
+      "matches_retained": true
+    },
+    {
+      "file": "cbpf_gateway.bin",
+      "sha256": "539bc99e39e0625fdd1cd0385d50c9d51af601443ac8a36b0c400b2d40e47b0d",
+      "matches_retained": true
+    },
+    {
+      "file": "cbpf_ownership_trace_program.bin",
+      "sha256": "404f0f0a704e2bb99460e71f221bd8a81c75b9c509b4316cd443dfb2333643f6",
+      "matches_retained": true
+    },
+    {
+      "file": "cbpf_test_invoke.bin",
+      "sha256": "2bb37255c55a64717d0884907320d483b50d18151369d39d7efba96f37f2fad8",
+      "matches_retained": true
+    },
+    {
+      "file": "cbpf_trace.bin",
+      "sha256": "cea3eb85ce71d3e350801eb293cb1af50caac8a3ecc57c97e11a3610e97c09dd",
+      "matches_retained": true
+    },
+    {
+      "file": "complete-linked-disassembly.txt",
+      "sha256": "0d0eed77e4b4c71a48fb07fd2aa043f33722f6e1a6f61faab353609afb78208a",
+      "matches_retained": true
+    },
+    {
+      "file": "linked-ranges.json",
+      "sha256": "d378dade8083a53467c9e1cb7cdc776f04238b18cdac181ab2d86ff00ea5e303",
+      "matches_retained": true
+    },
+    {
+      "file": "native-decode.json",
+      "sha256": "5f135ea746a8e2994cc1758502c097748f9a0b1b37104e00e1b62c574993814f",
+      "matches_retained": true
+    },
+    {
+      "file": "native-positive-disassembly.txt",
+      "sha256": "1e3d723f82a1af3bf03acb509f812f83330ea0e190dba7adedb93aaeb69025e6",
+      "matches_retained": true
+    },
+    {
+      "file": "native-repeated_release-disassembly.txt",
+      "sha256": "f25916a785411f1feee8c43b618360ef1dc7abffaa25f8ecbae2a6f197059d3a",
+      "matches_retained": true
+    },
+    {
+      "file": "native-stale_read-disassembly.txt",
+      "sha256": "6b63a6c475c0d8b23bc1f0c2bb3fe5c7466419cf2616655707410032317fed9f",
+      "matches_retained": true
+    }
+  ],
+  "native_boots": 0,
+  "scope": "Offline extraction/decoder replay equality only"
+}

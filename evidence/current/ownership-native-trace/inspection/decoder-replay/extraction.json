@@ -1,0 +1,9 @@
+{
+  "recorded_utc": "2026-09-10T14:17:36.896113+00:00",
+  "vmlinux_sha256": "71f58059d05c456d95011cfb12b249106a23fcb19860298a1350e3c5888e16dd",
+  "boot_sha256": "b65c0dd73011830c7e7c2c823e10b0c23c9b9eba92b806528f041de571cdd20e",
+  "preparer_sha256": "30764d4157c6f9870dadde0937f5ef5c9d41f7ffcddb56773fbaf648fe2ee6ee",
+  "extractor_sha256": "53da42ed4c9586985eb4ceae6ed36155b54260275bed9fbc712a13dd9fdf8311",
+  "native_boots": 0,
+  "scope": "Complete post-run extraction and LLVM decoding, not semantic inspection or native execution"
+}

@@ -109,9 +109,10 @@ the Linux array-provider/native-access mapping and the bounded kfunc protocol.
 
 The two new native studies below have published original receipts. Spatial
 same-storage and linked-PC/operand checks now pass, including a new ten-control
-admission edition. Ownership's stronger native inspection remains pending;
-its reported local results are not yet completed experimental closure for
-independent assessment.
+admission edition. Ownership adds a complete fixed-image inspection and focused
+external instruction/target checks over the retained images. These bounded
+synthetic results are available for independent assessment, but no independent
+external reproduction, general translation proof or complete mitigation follows.
 
 | Concrete contribution | Closest established result | Additional design obligation and evidence limit |
 |---|---|---|

@@ -1,0 +1,37 @@
+{
+  "schema": "cbpf-fixed-ownership-inspection-v1",
+  "recorded_utc": "2026-09-10T14:22:09.888818+00:00",
+  "repository_head": "1d75784870f050329983d0c6abec4957e200fc9c",
+  "working_tree_sources": "Exact current checker/test/runner snapshots retained; not asserted to belong to HEAD.",
+  "new_native_boots": 0,
+  "kernel_rebuilds": 0,
+  "original_artifacts_changed": false,
+  "original_results_sha256": "265ccc50bfd55b2860480ed065a6549ba186a1596cd4b17cff4c7b394dcd96cf",
+  "prior_completion_sha256": "1bea9249ba42d6551dc7abeed047a9e10947531be3c4917c7b6ea3aff5df718d",
+  "authored_review_sha256": "1c9612d4644644e97c37e801a4b6cd63bd884988d0115e5e9a014bc122a04edb",
+  "checker_exit_status": 0,
+  "reviewer_scope": "AI-assisted internal source/native inspection; no independent external reviewer or reproduction.",
+  "assurance": [
+    "production encoder self-check",
+    "external fixed-profile receipt checks",
+    "authored native inspection"
+  ],
+  "limits": "No general validator, compiler proof, normally verified stale BPF or callback-policy implementation.",
+  "finalized_utc": "2026-09-10T14:24:01.908488+00:00",
+  "finalization": "Required exactly 56 gateway words, added extent regressions, and rechecked the same retained run. Original manifest identities for revised files denote earlier post-run drafts; their publication identities denote final files.",
+  "finalization_recipe": "finalization.executed.py",
+  "finalized_artifacts": {
+    "ownership_native_checks.py": {
+      "bytes": 17182,
+      "sha256": "e94330e0a4e7afb73e2c1a66be9289cc00234428b14d70160fb8fb56c609892f"
+    },
+    "results.json": {
+      "bytes": 18004,
+      "sha256": "346962f3a91a8c916553a4b869258aff04f46fa45b7b1e79ca3c992c9db513b1"
+    },
+    "test_ownership_native.py": {
+      "bytes": 10403,
+      "sha256": "0d41c1ea1ee0aa210a0289cb92fe3c5825418842481732e5b9622aae60c3f9bd"
+    }
+  }
+}

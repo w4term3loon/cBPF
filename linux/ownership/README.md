@@ -148,9 +148,13 @@ callback support or mitigation of the original CVE path.
 `native-trace.patch` is a separate default-off test overlay. It adds fixed
 trusted instruction descriptions and observations but leaves production
 provider decisions/effects unchanged. It does not relax the verifier, patch an
-accepted native image or add protected callback support. Three corresponding
-load-only BPF controls are rejected by the normal verifier and never executed;
-their argument-shape diagnostics are admission observations only.
+accepted native image or add protected callback support. Three separate existing
+stale-copy, stale-spill and repeated-release BPF admission controls are rejected
+by the normal verifier and never executed; they are not matched counterparts
+of the native fixtures, and their argument-shape diagnostics are admission
+observations only. The [native inspection](../../evidence/current/ownership-native-trace/inspection/README.md)
+separates encoder self-check from external fixed-profile instruction checks
+and authored internal review.
 
 The existing 186-line guest loader still contains four verifier-accepted
 execution controls and three load-only rejections. Trusted callback witness reuses this loader
@@ -174,8 +178,9 @@ the pinned tree before patching; generated source and receipts are preserved
 between build attempts. Dependencies and their current locations follow the
 [ordinary kfunc build](../../docs/results/kfunc-integration.md).
 
-The runner prepares a fresh initramfs with one benign loader, then uses one
-virtual CPU, no network or host filesystem, and a 60-second timeout. It binds
+The runners prepare a fresh initramfs with one benign loader, then use one
+virtual CPU and no network or host filesystem. The production runner has a
+60-second timeout; the synthetic trace runner has a 300-second limit. They bind
 the BTF IDs to the matching kernel and retains bytecode, verifier output,
 native bytes, ordered gate events, input hashes, and clean-poweroff status.
 The production targets use `build/ownership-callback-*`; the trace target uses

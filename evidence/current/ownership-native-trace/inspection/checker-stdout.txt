@@ -1,0 +1,1 @@
+CBPF ownership native trace validation PASS: native=3 verifier_rejected=3 verifier_executed=0

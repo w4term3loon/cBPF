@@ -1,4 +1,4 @@
-# Integrated ownership trace: published original evidence
+# Integrated ownership trace: published evidence
 
 This package publishes the original 10 September 2026 positive, stale-read and
 repeated-release controls. The original checker reports two acquisitions and
@@ -8,9 +8,16 @@ mechanisms, not normally verified stale BPF or the original callback CVE path.
 
 ## Status and limits
 
-Publication is complete; focused native correspondence checks and explicit
-inspection remain pending. The ordered event checks are stronger than the
-original native-byte checks. The latter verify envelopes and selected marker
+Publication, focused native correspondence checks and explicit internal
+inspection are complete for the retained three fixed images. The
+[inspection index](inspection/README.md) retains the current results, review,
+checker snapshots and regression coverage. All 479 native words and their
+operands/map intervals are checked, along with branch targets, the complete
+gateway and selected compiled terminal sequences; this is not a general
+validator or independent external review.
+
+The original ordered event checks are stronger than the original native-byte
+checks. Those preserved byte checks verify envelopes and selected marker
 instructions, not the entire prologue, branch targets or terminal epilogue.
 The emitter's complete re-encoding check uses its own encoder and is a separate
 internal-consistency assurance. See the [result page](../../../docs/results/ownership-native-trace.md).
@@ -25,7 +32,8 @@ Original files and results are preserved. The `derivation/` records were
 generated later, with their actual timestamp. They contain complete byte-bound
 decoder listings, not a completed semantic inspection or a new execution.
 LLVM MC prints branch displacements; listing address columns use the recorded
-native entry. Later target checks must resolve those displacements explicitly.
+native entry. The later checks resolve those displacements explicitly and
+are kept separate from the extraction-only receipts.
 
 ## Inspectable records
 
@@ -74,3 +82,4 @@ originals were copied and verified before publication.
 From the repository root, `make evidence` checks publication integrity only.
 The [packaging tool](../../../tools/package_native_extension.py) records the
 export procedure; its executed version is retained under `derivation/`.
+The later `inspection/` package has its own provenance and publication recipe.

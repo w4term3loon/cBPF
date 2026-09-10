@@ -1,0 +1,683 @@
+{
+  "study": "synthetic native ownership containment trace",
+  "result": "PASS",
+  "cases": [
+    {
+      "bpf_instructions": 21,
+      "native_bytes": 612,
+      "native_sha256": "47f78cef8fc40b2a7c9775a9a8e00e47c4d89ac9ce46be848de584c07fead40b",
+      "restricted_exit_word": 106,
+      "executive_exit_word": 107,
+      "case": "positive",
+      "result": "PASS",
+      "retval": 42,
+      "acquired": 2,
+      "released": 2,
+      "reads": 1,
+      "cleanup": 0,
+      "refs": 1,
+      "identity_observed": false
+    },
+    {
+      "bpf_instructions": 24,
+      "native_bytes": 652,
+      "native_sha256": "77606aef40132126b179f4e03e7349239a72f3c7be964970914bb4a3743369f7",
+      "restricted_exit_word": 116,
+      "executive_exit_word": 117,
+      "case": "stale_read",
+      "result": "PASS",
+      "retval": 0,
+      "acquired": 2,
+      "released": 2,
+      "reads": 1,
+      "cleanup": 1,
+      "refs": 1,
+      "identity_observed": true
+    },
+    {
+      "bpf_instructions": 24,
+      "native_bytes": 652,
+      "native_sha256": "7215175ce34102dcb34742d5ed3654f5f702e9f8b8bd0f797cc5904af45c0cc8",
+      "restricted_exit_word": 116,
+      "executive_exit_word": 117,
+      "case": "repeated_release",
+      "result": "PASS",
+      "retval": 0,
+      "acquired": 2,
+      "released": 2,
+      "reads": 1,
+      "cleanup": 1,
+      "refs": 1,
+      "identity_observed": true
+    }
+  ],
+  "verifier_load_only": {
+    "result": "PASS",
+    "rejected": 3,
+    "executed": 0,
+    "diagnostics": {
+      "stale_copy": "argument_shape",
+      "stale_spill": "argument_shape",
+      "repeated_release": "argument_shape"
+    }
+  },
+  "qemu_exit": 0,
+  "completion": {
+    "qemu_exit": 0,
+    "kernel_powerdown": true,
+    "failure_markers": false
+  },
+  "qemu_exit_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+  "native_inspection": {
+    "images": [
+      {
+        "case": "positive",
+        "checked_words": 153,
+        "entry": "0xffff800081271204",
+        "program_cookie": "0xffff80008126f000",
+        "cbpf_enter": "0xffff80008003ef78",
+        "restricted_return": "0xffff8000812713ac",
+        "common_epilogue": "0xffff8000812713b0",
+        "epilogue_bytes": 184,
+        "branches": [
+          {
+            "word": 25,
+            "kind": "cbz",
+            "target_word": 28
+          },
+          {
+            "word": 27,
+            "kind": "b",
+            "target_word": 107
+          },
+          {
+            "word": 65,
+            "kind": "cbz",
+            "target_word": 101
+          },
+          {
+            "word": 77,
+            "kind": "cbz",
+            "target_word": 101
+          },
+          {
+            "word": 100,
+            "kind": "b",
+            "target_word": 106
+          },
+          {
+            "word": 105,
+            "kind": "b",
+            "target_word": 106
+          }
+        ],
+        "source_map": [
+          {
+            "pc": 0,
+            "begin_word": 56,
+            "end_word_exclusive": 60
+          },
+          {
+            "pc": 1,
+            "begin_word": 60,
+            "end_word_exclusive": 65
+          },
+          {
+            "pc": 2,
+            "begin_word": 65,
+            "end_word_exclusive": 66
+          },
+          {
+            "pc": 3,
+            "begin_word": 66,
+            "end_word_exclusive": 67
+          },
+          {
+            "pc": 4,
+            "begin_word": 67,
+            "end_word_exclusive": 68
+          },
+          {
+            "pc": 5,
+            "begin_word": 68,
+            "end_word_exclusive": 72
+          },
+          {
+            "pc": 6,
+            "begin_word": 72,
+            "end_word_exclusive": 77
+          },
+          {
+            "pc": 7,
+            "begin_word": 77,
+            "end_word_exclusive": 78
+          },
+          {
+            "pc": 8,
+            "begin_word": 78,
+            "end_word_exclusive": 79
+          },
+          {
+            "pc": 9,
+            "begin_word": 79,
+            "end_word_exclusive": 80
+          },
+          {
+            "pc": 10,
+            "begin_word": 80,
+            "end_word_exclusive": 81
+          },
+          {
+            "pc": 11,
+            "begin_word": 81,
+            "end_word_exclusive": 86
+          },
+          {
+            "pc": 12,
+            "begin_word": 86,
+            "end_word_exclusive": 87
+          },
+          {
+            "pc": 13,
+            "begin_word": 87,
+            "end_word_exclusive": 92
+          },
+          {
+            "pc": 14,
+            "begin_word": 92,
+            "end_word_exclusive": 93
+          },
+          {
+            "pc": 15,
+            "begin_word": 93,
+            "end_word_exclusive": 94
+          },
+          {
+            "pc": 16,
+            "begin_word": 94,
+            "end_word_exclusive": 99
+          },
+          {
+            "pc": 17,
+            "begin_word": 99,
+            "end_word_exclusive": 100
+          },
+          {
+            "pc": 18,
+            "begin_word": 100,
+            "end_word_exclusive": 101
+          },
+          {
+            "pc": 19,
+            "begin_word": 101,
+            "end_word_exclusive": 105
+          },
+          {
+            "pc": 20,
+            "begin_word": 105,
+            "end_word_exclusive": 106
+          }
+        ],
+        "scope": "Fixed-profile byte/operand/target checks, not a compiler correctness proof"
+      },
+      {
+        "case": "stale_read",
+        "checked_words": 163,
+        "entry": "0xffff80008110720c",
+        "program_cookie": "0xffff800081105000",
+        "cbpf_enter": "0xffff80008003ef78",
+        "restricted_return": "0xffff8000811073dc",
+        "common_epilogue": "0xffff8000811073e0",
+        "epilogue_bytes": 184,
+        "branches": [
+          {
+            "word": 25,
+            "kind": "cbz",
+            "target_word": 28
+          },
+          {
+            "word": 27,
+            "kind": "b",
+            "target_word": 117
+          },
+          {
+            "word": 65,
+            "kind": "cbz",
+            "target_word": 111
+          },
+          {
+            "word": 77,
+            "kind": "cbz",
+            "target_word": 111
+          },
+          {
+            "word": 110,
+            "kind": "b",
+            "target_word": 116
+          },
+          {
+            "word": 115,
+            "kind": "b",
+            "target_word": 116
+          }
+        ],
+        "source_map": [
+          {
+            "pc": 0,
+            "begin_word": 56,
+            "end_word_exclusive": 60
+          },
+          {
+            "pc": 1,
+            "begin_word": 60,
+            "end_word_exclusive": 65
+          },
+          {
+            "pc": 2,
+            "begin_word": 65,
+            "end_word_exclusive": 66
+          },
+          {
+            "pc": 3,
+            "begin_word": 66,
+            "end_word_exclusive": 67
+          },
+          {
+            "pc": 4,
+            "begin_word": 67,
+            "end_word_exclusive": 68
+          },
+          {
+            "pc": 5,
+            "begin_word": 68,
+            "end_word_exclusive": 72
+          },
+          {
+            "pc": 6,
+            "begin_word": 72,
+            "end_word_exclusive": 77
+          },
+          {
+            "pc": 7,
+            "begin_word": 77,
+            "end_word_exclusive": 78
+          },
+          {
+            "pc": 8,
+            "begin_word": 78,
+            "end_word_exclusive": 79
+          },
+          {
+            "pc": 9,
+            "begin_word": 79,
+            "end_word_exclusive": 80
+          },
+          {
+            "pc": 10,
+            "begin_word": 80,
+            "end_word_exclusive": 81
+          },
+          {
+            "pc": 11,
+            "begin_word": 81,
+            "end_word_exclusive": 86
+          },
+          {
+            "pc": 12,
+            "begin_word": 86,
+            "end_word_exclusive": 87
+          },
+          {
+            "pc": 13,
+            "begin_word": 87,
+            "end_word_exclusive": 92
+          },
+          {
+            "pc": 14,
+            "begin_word": 92,
+            "end_word_exclusive": 93
+          },
+          {
+            "pc": 15,
+            "begin_word": 93,
+            "end_word_exclusive": 94
+          },
+          {
+            "pc": 16,
+            "begin_word": 94,
+            "end_word_exclusive": 95
+          },
+          {
+            "pc": 17,
+            "begin_word": 95,
+            "end_word_exclusive": 100
+          },
+          {
+            "pc": 18,
+            "begin_word": 100,
+            "end_word_exclusive": 101
+          },
+          {
+            "pc": 19,
+            "begin_word": 101,
+            "end_word_exclusive": 106
+          },
+          {
+            "pc": 20,
+            "begin_word": 106,
+            "end_word_exclusive": 110
+          },
+          {
+            "pc": 21,
+            "begin_word": 110,
+            "end_word_exclusive": 111
+          },
+          {
+            "pc": 22,
+            "begin_word": 111,
+            "end_word_exclusive": 115
+          },
+          {
+            "pc": 23,
+            "begin_word": 115,
+            "end_word_exclusive": 116
+          }
+        ],
+        "scope": "Fixed-profile byte/operand/target checks, not a compiler correctness proof"
+      },
+      {
+        "case": "repeated_release",
+        "checked_words": 163,
+        "entry": "0xffff800081109bf4",
+        "program_cookie": "0xffff800081107000",
+        "cbpf_enter": "0xffff80008003ef78",
+        "restricted_return": "0xffff800081109dc4",
+        "common_epilogue": "0xffff800081109dc8",
+        "epilogue_bytes": 184,
+        "branches": [
+          {
+            "word": 25,
+            "kind": "cbz",
+            "target_word": 28
+          },
+          {
+            "word": 27,
+            "kind": "b",
+            "target_word": 117
+          },
+          {
+            "word": 65,
+            "kind": "cbz",
+            "target_word": 111
+          },
+          {
+            "word": 77,
+            "kind": "cbz",
+            "target_word": 111
+          },
+          {
+            "word": 110,
+            "kind": "b",
+            "target_word": 116
+          },
+          {
+            "word": 115,
+            "kind": "b",
+            "target_word": 116
+          }
+        ],
+        "source_map": [
+          {
+            "pc": 0,
+            "begin_word": 56,
+            "end_word_exclusive": 60
+          },
+          {
+            "pc": 1,
+            "begin_word": 60,
+            "end_word_exclusive": 65
+          },
+          {
+            "pc": 2,
+            "begin_word": 65,
+            "end_word_exclusive": 66
+          },
+          {
+            "pc": 3,
+            "begin_word": 66,
+            "end_word_exclusive": 67
+          },
+          {
+            "pc": 4,
+            "begin_word": 67,
+            "end_word_exclusive": 68
+          },
+          {
+            "pc": 5,
+            "begin_word": 68,
+            "end_word_exclusive": 72
+          },
+          {
+            "pc": 6,
+            "begin_word": 72,
+            "end_word_exclusive": 77
+          },
+          {
+            "pc": 7,
+            "begin_word": 77,
+            "end_word_exclusive": 78
+          },
+          {
+            "pc": 8,
+            "begin_word": 78,
+            "end_word_exclusive": 79
+          },
+          {
+            "pc": 9,
+            "begin_word": 79,
+            "end_word_exclusive": 80
+          },
+          {
+            "pc": 10,
+            "begin_word": 80,
+            "end_word_exclusive": 81
+          },
+          {
+            "pc": 11,
+            "begin_word": 81,
+            "end_word_exclusive": 86
+          },
+          {
+            "pc": 12,
+            "begin_word": 86,
+            "end_word_exclusive": 87
+          },
+          {
+            "pc": 13,
+            "begin_word": 87,
+            "end_word_exclusive": 92
+          },
+          {
+            "pc": 14,
+            "begin_word": 92,
+            "end_word_exclusive": 93
+          },
+          {
+            "pc": 15,
+            "begin_word": 93,
+            "end_word_exclusive": 94
+          },
+          {
+            "pc": 16,
+            "begin_word": 94,
+            "end_word_exclusive": 95
+          },
+          {
+            "pc": 17,
+            "begin_word": 95,
+            "end_word_exclusive": 100
+          },
+          {
+            "pc": 18,
+            "begin_word": 100,
+            "end_word_exclusive": 101
+          },
+          {
+            "pc": 19,
+            "begin_word": 101,
+            "end_word_exclusive": 106
+          },
+          {
+            "pc": 20,
+            "begin_word": 106,
+            "end_word_exclusive": 110
+          },
+          {
+            "pc": 21,
+            "begin_word": 110,
+            "end_word_exclusive": 111
+          },
+          {
+            "pc": 22,
+            "begin_word": 111,
+            "end_word_exclusive": 115
+          },
+          {
+            "pc": 23,
+            "begin_word": 115,
+            "end_word_exclusive": 116
+          }
+        ],
+        "scope": "Fixed-profile byte/operand/target checks, not a compiler correctness proof"
+      }
+    ],
+    "linked_terminal": {
+      "result": "PASS",
+      "sequences": [
+        {
+          "symbol": "cbpf_gateway",
+          "offset": "0x0",
+          "words": 15
+        },
+        {
+          "symbol": "cbpf_gateway",
+          "offset": "0x3c",
+          "target": "0xffff80008003e450",
+          "kind": "bl"
+        },
+        {
+          "symbol": "cbpf_gateway",
+          "offset": "0x40",
+          "words": 12
+        },
+        {
+          "symbol": "cbpf_gateway",
+          "offset": "0x70",
+          "target": "0xffff80008003e3f0",
+          "kind": "b.ne"
+        },
+        {
+          "symbol": "cbpf_gateway",
+          "offset": "0x74",
+          "words": 27
+        },
+        {
+          "symbol": "cbpf_gate_impl",
+          "offset": "0x1fc",
+          "words": 4
+        },
+        {
+          "symbol": "cbpf_gate_impl",
+          "offset": "0x2f8",
+          "words": 1
+        },
+        {
+          "symbol": "cbpf_gate_impl",
+          "offset": "0x348",
+          "words": 7
+        },
+        {
+          "symbol": "cbpf_enter",
+          "offset": "0x27c",
+          "words": 12
+        },
+        {
+          "symbol": "cbpf_test_invoke",
+          "offset": "0x31c",
+          "words": 14
+        },
+        {
+          "symbol": "cbpf_test_invoke",
+          "offset": "0x354",
+          "target": "0xffff80008003ea28",
+          "kind": "bl"
+        },
+        {
+          "symbol": "cbpf_test_invoke",
+          "offset": "0x358",
+          "words": 2
+        },
+        {
+          "symbol": "cbpf_test_invoke",
+          "offset": "0x244",
+          "words": 4
+        },
+        {
+          "symbol": "cbpf_test_invoke",
+          "offset": "0x280",
+          "words": 7
+        },
+        {
+          "symbol": "cbpf_consume",
+          "offset": "0x40",
+          "words": 2
+        },
+        {
+          "symbol": "cbpf_consume",
+          "offset": "0xb8",
+          "words": 3
+        },
+        {
+          "symbol": "cbpf_consume",
+          "offset": "0xc4",
+          "words": 6
+        },
+        {
+          "symbol": "cbpf_consume",
+          "offset": "0x178",
+          "words": 4
+        }
+      ],
+      "scope": "Complete gateway and selected compiled gate/entry/cleanup sequences; other linked code inspected, not generally validated"
+    },
+    "checker_sha256": "795a3cfe4e3bdc7f0a136fa55b189ddc22489faeeafb7668b387150dc0906397",
+    "fixed_checks_sha256": "e94330e0a4e7afb73e2c1a66be9289cc00234428b14d70160fb8fb56c609892f",
+    "shared_checks_sha256": "60fd3c4912b0ec83e96a6cc8b7a2fa9316cd7486bae2b64feb6a2d735cc77e8c",
+    "input_sha256": {
+      "boot.log": "b65c0dd73011830c7e7c2c823e10b0c23c9b9eba92b806528f041de571cdd20e",
+      "inputs.sha256": "ac3d25c747effd2ed3c4c3baa18fb09462f3564d98ceba2ead203fb407a2fba2",
+      "kernel.config": "ccb477a4e79eca660436048cab2ce3aa4997ab031a906c9f0a0eb6741940e0cf",
+      "cbpf_consume.bin": "19dba0118d88acc5e3301c708f9682343f17afbc46a82ac310b338866cfc1af9",
+      "cbpf_enter.bin": "10dd66273ca7f9d64ecd935ed00ac917692e357a1eda0e93826308b7ab78c35c",
+      "cbpf_fail.bin": "41bff5d0c2edc6a2a4e9a2526fce17324ff317f2d1edea0c84ebd57a15f0372e",
+      "cbpf_gate_impl.bin": "824d10d45547be940593e0894cde65f93f1413e88d53f025fd761ce25c8d81ab",
+      "cbpf_gateway.bin": "539bc99e39e0625fdd1cd0385d50c9d51af601443ac8a36b0c400b2d40e47b0d",
+      "cbpf_ownership_trace_program.bin": "404f0f0a704e2bb99460e71f221bd8a81c75b9c509b4316cd443dfb2333643f6",
+      "cbpf_test_invoke.bin": "2bb37255c55a64717d0884907320d483b50d18151369d39d7efba96f37f2fad8",
+      "cbpf_trace.bin": "cea3eb85ce71d3e350801eb293cb1af50caac8a3ecc57c97e11a3610e97c09dd",
+      "complete-linked-disassembly.txt": "0d0eed77e4b4c71a48fb07fd2aa043f33722f6e1a6f61faab353609afb78208a",
+      "linked-ranges.json": "d378dade8083a53467c9e1cb7cdc776f04238b18cdac181ab2d86ff00ea5e303",
+      "native-positive-disassembly.txt": "1e3d723f82a1af3bf03acb509f812f83330ea0e190dba7adedb93aaeb69025e6",
+      "native-repeated_release-disassembly.txt": "f25916a785411f1feee8c43b618360ef1dc7abffaa25f8ecbae2a6f197059d3a",
+      "native-stale_read-disassembly.txt": "6b63a6c475c0d8b23bc1f0c2bb3fe5c7466419cf2616655707410032317fed9f"
+    },
+    "relocation": 0,
+    "assurance": "External fixed-image checks plus retained LLVM decoding; separate from encoder self-check and authored native inspection"
+  },
+  "scope": "fixed trusted native fixtures through the production provider, restricted entry, gateway, epilogue and cleanup wrapper",
+  "limits": [
+    "The three native fixtures are not normally verified eBPF.",
+    "Verifier rejection diagnostics are admission observations, not evidence for a specific ownership rule.",
+    "The trace projects repeated-release containment; it does not execute the original callback CVE path or implement callback-frame release policy."
+  ]
+}

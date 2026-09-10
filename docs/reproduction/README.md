@@ -298,7 +298,18 @@ fixed trusted native descriptions through the production path; they do not
 authorize invalid BPF execution or reproduce the original callback CVE.
 
 The [published ownership package](../../evidence/current/ownership-native-trace/README.md)
-supplies the original run and native images. Complete listings were decoded
-after that run; focused terminal-path checking and explicit inspection remain
-pending. The verifier submissions are separate existing admission controls,
-not matched counterparts of the three native fixtures.
+supplies the original run and native images, complete listings, an
+[authored native inspection](../../evidence/current/ownership-native-trace/inspection/native-review.md)
+and a passing stronger recheck. `make evidence-recheck` repeats the fixed-image
+and focused linked terminal checks offline; `make checker-tests` includes the
+mostly-NOP and branch/operand regressions. Neither target boots a guest.
+The verifier submissions are separate existing admission controls, not matched
+counterparts of the three native fixtures.
+
+The current runner retains complete native and linked disassembly after a
+successful guest shutdown, then validates every word of each fixed image and
+the reviewed terminal sequences. It uses the already-installed pinned decoder
+image, without downloads. Nonzero/unknown linked relocation or an unreviewed
+BTI/PAC/compiled layout fails closed. A changed image layout requires renewed
+inspection; the receipt is not a general compiler validator. Encoder self-check,
+external receipt checks and authored internal inspection remain distinct.

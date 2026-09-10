@@ -26,7 +26,7 @@ verifies the shareable bytes.
 | [`ownership-cve/`](ownership-cve/README.md) | Ownership CVE case: repeated-release mapping and conditional argument; two projected controls with four model/host matches. No callback or original-CVE execution. |
 | [`ownership-callback/`](ownership-callback/README.md) | Trusted callback witness: two kernel C controls, persistent capability/context transport, repeated-release rejection and independent B=42. No BPF callbacks or original-CVE execution. |
 | [`spatial-selectivity/`](spatial-selectivity/README.md) | Original 30-case matrix and calibration, complete linked helper and passing stronger backing-address/PC/operand checks. Original five-load and new ten-control admission runs are separate. |
-| [`ownership-native-trace/`](ownership-native-trace/README.md) | Original integrated positive/stale-read/repeated-release traces and native images, later complete decoder listings and a passing completion recheck. Focused terminal-path checks and explicit native inspection remain pending. |
+| [`ownership-native-trace/`](ownership-native-trace/README.md) | Original integrated positive/stale-read/repeated-release traces and native images; later complete decoder listings, authored internal inspection and passing fixed-image/terminal-path checks. Encoder self-check, external receipt checks and inspection are distinct assurances. |
 
 The architecture probe and native gate are user-mode CHERI observations. The
 ordinary `kfunc/` binding uses normal verifier tracking and kernel pointers.

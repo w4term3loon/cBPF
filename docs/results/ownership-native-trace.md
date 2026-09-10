@@ -1,16 +1,19 @@
 # Synthetic native ownership containment trace
 
-The original checker reports a passing integrated ownership trace on
-10 September 2026. Three fixed
+The retained integrated ownership trace from 10 September 2026 passes
+strengthened byte, operand, target and ordered-event checks. Three fixed
 trusted native fixtures reused the production restricted entry, capability
 transport, gateway, ownership gate, epilogue and cleanup wrapper. The test
 overlay changes none of the production provider's decisions or effects.
 
 The [published evidence package](../../evidence/current/ownership-native-trace/README.md)
-contains the original logs, results and native images, plus newly extracted
-complete disassembly. **Stronger native correspondence checks and explicit
-image inspection remain pending.** Publication makes the reported observations
-available for assessment; it is not itself experimental closure.
+contains the original logs, results and native images, complete disassembly,
+and a later [native inspection and recheck](../../evidence/current/ownership-native-trace/inspection/README.md).
+All 479 words across the three fixed images are checked, including framing,
+register transport, source/native intervals and branch targets. The complete
+gateway and selected compiled gate/entry/cleanup sequences also pass focused
+checks. This is internally inspected, independently inspectable evidence—not
+independent external reproduction or a general native validator.
 
 | Fixture | Ordered decisive observation | Final accounting |
 |---|---|---|
@@ -28,21 +31,27 @@ stale read performs no second read, and the repeated release performs no
 second decrement. B's read of 42 before rejection rules out indiscriminate
 object-wide invalidation.
 
-The production emitter re-encodes and compares every word using its own encoder;
-this is internal consistency checking. The original external checker validates
-ordered events, image/map envelopes and selected spill/reload/gateway words,
-not the complete prologue, branch targets or epilogue. Complete byte-bound
-disassembly is now available for the pending native inspection and focused
-checks. The positive image contains 612 bytes; each negative image contains
-652 bytes. The original runner checks QEMU's exit status separately from the
-checker's shutdown and failure-marker checks; the standalone checker's
-`qemu_exit` field is not an independent exit-status check.
+Three assurance sources must be distinguished. The production emitter
+re-encodes and compares every word using its own encoder: internal consistency,
+not independent decoding. The current external checker uses fixed-profile
+byte/operand/target checks and retained LLVM decoding, without invoking that
+encoder. The [authored inspection](../../evidence/current/ownership-native-trace/inspection/native-review.md)
+explains the complete fixed images and selected linked failure path. It is
+AI-assisted internal review, not a compiler correctness proof or external review.
+
+The original checker remains preserved with its weaker envelope/marker checks.
+The positive image contains 612 bytes; each negative contains 652 bytes.
+The new checks reject the review's mostly-NOP image, NOP epilogue, misdirected
+branches and wrong capability/register operands. Constructed host mutations
+test validation logic; they are not runtime bypass observations.
 
 The current checker now requires an explicit exit-status file, combines it
 with actual kernel powerdown and rejects the same failure markers as the
 spatial checker. The [completion recheck](../../evidence/current/ownership-native-trace/revalidation/completion.json)
-preserves the original observations without another native run. This does
-not supply the still-pending full image inspection or terminal-path checks.
+preserves the original observations without another native run. The subsequent
+[full fixed-image recheck](../../evidence/current/ownership-native-trace/inspection/results.json)
+adds instruction correspondence without changing those observations. No
+ownership kernel was rebuilt and no ownership guest was rerun.
 
 ## Admission and claim boundary
 
@@ -68,9 +77,13 @@ The [test overlay](../../linux/ownership/native-trace.patch),
 [load-only guest](../../linux/ownership/native-trace-guest.c),
 [builder](../../tools/build_ownership_trace.sh),
 [runner](../../tools/run_ownership_trace.sh) and
-[checker](../../tools/check_ownership_trace.py) define the construction and
-acceptance checks. The checker emits `results.json` and the extracted native
-images in its fresh run directory.
+[checker](../../tools/check_ownership_trace.py), with its
+[fixed instruction checks](../../tools/ownership_native_checks.py), define the
+construction and acceptance checks. The runner retains complete post-run
+disassembly before validation. The checker emits `results.json` and extracted
+native images; it requires the run inputs, configuration and complete inspection
+directory. A changed compiled layout requires renewed inspection rather than
+automatic acceptance.
 
 ## Validation identity
 
@@ -78,7 +91,10 @@ The hashes below identify original artifacts. The
 [publication manifest](../../evidence/publication-manifest.json) separately
 identifies path-redacted publication copies. Complete native and linked
 disassembly in the package's `derivation/` directory was generated after the
-original run; it is neither a new execution nor a completed semantic review.
+original run; its original receipt records extraction only. The later authored
+inspection and revalidation live separately in `inspection/`, with their own
+timestamps and source identities. A fresh offline decode reproduced the
+complete listings byte-for-byte; it was not another guest execution.
 
 The passing local run used kernel release
 `6.7.0-cbpf-ownership-native-trace` over Morello Linux commit
@@ -101,3 +117,11 @@ make ownership-trace-kernel
 export CBPF_OWNERSHIP_TRACE_BUILD=/absolute/path/printed/by/the/build
 make ownership-trace
 ```
+
+For the published records, `make evidence-recheck` and `make checker-tests`
+need no Docker, QEMU or downloads. Both are part of `make check`; `make evidence`
+separately checks publication hashes. Linked checks use the recorded zero
+relocation and reviewed non-BTI/non-PAC layout. Protected private state,
+truthful observations, architecture behavior and synchronous execution remain
+premises; all-program mediation and normally verified stale BPF remain outside
+the result.

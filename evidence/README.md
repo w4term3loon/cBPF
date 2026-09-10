@@ -42,11 +42,13 @@ reproduction or stronger security result.
 These packages preserve original checker outcomes with their known limits.
 The spatial [revalidation](current/spatial-selectivity/revalidation/README.md)
 passes stronger backing-address, linked-PC, operand, calibration and completion
-checks. Ownership's focused native correspondence checks and explicit inspection
-remain pending; its new recheck improves completion checks only. Publication
-and extraction alone do not establish experimental closure. Each package
+checks. Ownership's [later inspection](current/ownership-native-trace/inspection/README.md)
+and fixed-image/terminal checks now pass as well; the earlier completion-only
+receipt is preserved with its original limits. Publication and extraction
+alone do not establish experimental closure. Each package
 separates original records from timestamped `derivation/` and `revalidation/`
-records; the new spatial guest execution is retained separately in `matrix-v2/`.
+records; ownership's authored review and stronger recheck are in `inspection/`.
+The new spatial guest execution is retained separately in `matrix-v2/`.
 The large NUL-delimited source-tree inventories are losslessly gzip-compressed;
 their original hashes apply to decompressed bytes. Original native binaries and
 initramfs are unchanged; the new spatial guest has its own source and initramfs
