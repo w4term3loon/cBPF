@@ -1,0 +1,67 @@
+{
+  "project": "CBPF",
+  "captured_on": "2026-09-06",
+  "scope": "Trusted purecap interpretation of validated CBPF IR; no Linux kfunc/JIT or native-code isolation claim.",
+  "native_command": "make cheri-gate",
+  "native_run": "${REPOSITORY}/build/cheri-gate.5gIe8u",
+  "native_cases_matched": 494,
+  "host_model_programs_compared": 161389,
+  "files": [
+    {
+      "file": "evidence/current/gate/boot.log",
+      "bytes": 1955,
+      "sha256": "17faaa3b95f85767e5a9b45b0c3394fd5de1e69117cb673ef02c2b0e33fb89c2"
+    },
+    {
+      "file": "evidence/current/gate/elf.txt",
+      "bytes": 1304,
+      "sha256": "36be8e1b18099e24cfd0942b4c99ce0b0d356e54952a7abcc4a344dfb60cbae3"
+    },
+    {
+      "file": "evidence/current/gate/gate.s",
+      "bytes": 18978,
+      "sha256": "cadf132d37ae1244d897b139a59fec274a5ae36624ee67dc9dfc22d98884070b"
+    },
+    {
+      "file": "evidence/current/gate/host-conformance.json",
+      "bytes": 1862,
+      "sha256": "1ebe25d342a5b272a004c8b5a91495b8a52f23cc10bc6f17e7c86df768725ebb"
+    },
+    {
+      "file": "evidence/current/gate/host-demo.txt",
+      "bytes": 1640,
+      "sha256": "d4a8fd521f7388441292eed12620eadf1389948b4aac1d91f4d9b7689cdd0401"
+    },
+    {
+      "file": "evidence/current/gate/inputs.sha256",
+      "bytes": 2535,
+      "sha256": "a166cff60d9baadc0c8c5c17d37ef6454d59d9b244570e586767cd50b7062458"
+    },
+    {
+      "file": "evidence/current/gate/summary.txt",
+      "bytes": 1176,
+      "sha256": "8ef935406cd0751f5ca5557633fae65b9972b987e766931704db894130c073fa"
+    },
+    {
+      "file": "evidence/current/gate/toolchain.txt",
+      "bytes": 395,
+      "sha256": "0f68a9839ccf5fedf5b96aa2928960fb2ad361f875a9ddcc44ba56cec118720a"
+    },
+    {
+      "file": "evidence/current/gate/trace.txt",
+      "bytes": 705,
+      "sha256": "313227e03fdfac84a2508acfc440e1879068cdaf2df8e36eb3be8b9fd42c70e7"
+    }
+  ],
+  "derivations": {
+    "trace.txt": "Excerpt from boot.log with CRLF normalized to LF.",
+    "elf.txt": "readelf -h, size, and selected readelf -Ws entries for native init.",
+    "host-conformance.json": "JSON result extracted from successful make gate-conformance output.",
+    "host-demo.txt": "Program output from successful make gate; build command lines omitted."
+  },
+  "limitations": [
+    "Native invalid-use results are semantic terminal traps, not hardware signals.",
+    "Only the 494 focused cases ran in QEMU; finite-model comparison is host-only.",
+    "Input hashes identify external dependencies and ignored build outputs; fresh-machine provisioning is not automated."
+  ]
+}

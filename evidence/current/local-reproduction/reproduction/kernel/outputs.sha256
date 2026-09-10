@@ -1,0 +1,5 @@
+1a7bef2513eed6d8adb7928fbec5fe9c6ea4565925d51af008ff25eeda041242  ${REPOSITORY}/build/m4-reproduction.o5y2sbxz/snapshot/build/ownership-m3-kernel/arch/arm64/boot/Image
+548c308bfd1cabaf3804827633578cfb481ed445d5c1cb035cae49836bab6ea3  ${REPOSITORY}/build/m4-reproduction.o5y2sbxz/snapshot/build/ownership-m3-kernel/vmlinux
+2cdaa5365903c7026ab867e22ab8767d6d2b1c0b3944eeb7e862234b64fe7a6c  ${REPOSITORY}/build/m4-reproduction.o5y2sbxz/snapshot/build/ownership-m3-kernel/Module.symvers
+6f1988add3ba99cd6d2569b2bcbc705886c3de2fd27195564cf8b6a3324e4cff  ${REPOSITORY}/build/m4-reproduction.o5y2sbxz/snapshot/build/ownership-m3-kernel/.config
+74af41e84ad29a873ef72bac6dee73a0923aa879b5870decf456b857126225fe  ${REPOSITORY}/build/m4-reproduction.o5y2sbxz/snapshot/build/ownership-m3-headers/include/linux/bpf.h

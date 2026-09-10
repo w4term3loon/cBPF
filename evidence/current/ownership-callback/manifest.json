@@ -1,0 +1,219 @@
+{
+  "project": "CBPF",
+  "study": "trusted callback witness",
+  "date": "2026-09-07",
+  "status": "PASS within trusted C callback boundary",
+  "scope": "Two trusted kernel C callback controls and the unchanged ownership boundary controls; no BPF callbacks or original CVE execution",
+  "files": [
+    {
+      "file": "evidence/current/ownership-callback/README.md",
+      "bytes": 4363,
+      "sha256": "d9b3475d5f0ac0035b919f231dfcd6a6dd63bc3058466f2ccb4b441d0a22b5e8"
+    },
+    {
+      "file": "evidence/current/ownership-callback/build/builder-image.txt",
+      "bytes": 178,
+      "sha256": "64cd0c0d49fe5cf28ed75cedcc141ccd9c5698afaf760b7a5b49b82b06df120c"
+    },
+    {
+      "file": "evidence/current/ownership-callback/build/compiler.sha256",
+      "bytes": 213,
+      "sha256": "33cec68829bfd8ba37c4baafc8b4bb52d136d64a4ea4f2330f241e9d7c97ec2e"
+    },
+    {
+      "file": "evidence/current/ownership-callback/build/inputs-verified.txt",
+      "bytes": 2117,
+      "sha256": "ca5ed784fae07fe93b17d5878c08c71cdb490d80a9f9e105881afd9059bc87d8"
+    },
+    {
+      "file": "evidence/current/ownership-callback/build/inputs.sha256",
+      "bytes": 3729,
+      "sha256": "4c4afca6a2b1769cf9847406dc9ce2d98519e3a96cb57801e1080434d9a87ca7"
+    },
+    {
+      "file": "evidence/current/ownership-callback/build/kernel-release.txt",
+      "bytes": 21,
+      "sha256": "c17f24730632effa2b35e06a803d1a4a36935695a229944b9f88b173e9f61941"
+    },
+    {
+      "file": "evidence/current/ownership-callback/build/kernel.config",
+      "bytes": 87730,
+      "sha256": "6f1988add3ba99cd6d2569b2bcbc705886c3de2fd27195564cf8b6a3324e4cff"
+    },
+    {
+      "file": "evidence/current/ownership-callback/build/outputs.container.sha256",
+      "bytes": 440,
+      "sha256": "0c801b0839d8322c23903d2927502af3e03c7915b1b3ba605dd83adec27c8859"
+    },
+    {
+      "file": "evidence/current/ownership-callback/build/outputs.sha256",
+      "bytes": 679,
+      "sha256": "f50d2799f55bcf5be7eabf19d8098641fb9f6ef8ce9fbc61474a629d6a3a140a"
+    },
+    {
+      "file": "evidence/current/ownership-callback/build/patched-sources.sha256",
+      "bytes": 3081,
+      "sha256": "443d2bab207f3708a1b08e0e161fd91deead560cf48cf7468350b020d479bf8c"
+    },
+    {
+      "file": "evidence/current/ownership-callback/build/source-commit.txt",
+      "bytes": 41,
+      "sha256": "58b294dd20ae2694b9cf7d8ab015f9fefd95315fbe0cfad1ebdf3d4f5a06f274"
+    },
+    {
+      "file": "evidence/current/ownership-callback/build/source-tree.txt",
+      "bytes": 41,
+      "sha256": "49159c654584f89b8e24fe49af39ea2f91c043e70eab2a8502756da9c262db6e"
+    },
+    {
+      "file": "evidence/current/ownership-callback/build/sources-verified.txt",
+      "bytes": 1779,
+      "sha256": "407481c861a99c92e5023117f6cc987728a8cf67000c761d5d3a4be7ca34e7a1"
+    },
+    {
+      "file": "evidence/current/ownership-callback/build/summary.txt",
+      "bytes": 173,
+      "sha256": "239bd281682522da822c23d327a9375170dbadc94e92b97f129125096d063715"
+    },
+    {
+      "file": "evidence/current/ownership-callback/build/toolchain.txt",
+      "bytes": 241,
+      "sha256": "7791c28f5757d5bd258883535690c4349f19b2f51851494f1c97cb33769f5a96"
+    },
+    {
+      "file": "evidence/current/ownership-callback/build/verifier-before.sha256",
+      "bytes": 143,
+      "sha256": "c681559fc3ac3c29fb8b30ee0bb6310fc1f7fa803dfd84ea9f77874e5159ceaf"
+    },
+    {
+      "file": "evidence/current/ownership-callback/build/verifier-unchanged.txt",
+      "bytes": 81,
+      "sha256": "0c57cfccf2bb60ebf43b48617ac68ce0fe3554c45cc83aa1b9784f85330a7b2b"
+    },
+    {
+      "file": "evidence/current/ownership-callback/review/linked-review.json",
+      "bytes": 7753,
+      "sha256": "d33da95f54a34fb120b532255e260dfd3747d710aa5840c9b001a7284026155f"
+    },
+    {
+      "file": "evidence/current/ownership-callback/review/linked-symbols.json",
+      "bytes": 1102,
+      "sha256": "08101d5468fcb6e59a12437d7d358035c1e2b4c603bb6bce960b96b1548fd5fc"
+    },
+    {
+      "file": "evidence/current/ownership-callback/review/runtime-linked-disassembly.txt",
+      "bytes": 41406,
+      "sha256": "6866594eb8a9d85696bbce60aeed9a8af41b4cb7332739baa2572a11d42bc082"
+    },
+    {
+      "file": "evidence/current/ownership-callback/review/source-delta.json",
+      "bytes": 509,
+      "sha256": "0983252a898a5a966d9d6c8f087def635931f08b008cd42de4793701c06c2a72"
+    },
+    {
+      "file": "evidence/current/ownership-callback/run/boot.log",
+      "bytes": 123853,
+      "sha256": "f166d5e6061228779717eb916fa923e9858712c21324a4b6aa2a86f88e7affdd"
+    },
+    {
+      "file": "evidence/current/ownership-callback/run/btf-selection.txt",
+      "bytes": 180,
+      "sha256": "1e42f241bbaa08d73857fc11d0f0089154c484582f77d15999daa4ca94039973"
+    },
+    {
+      "file": "evidence/current/ownership-callback/run/inputs-verified.txt",
+      "bytes": 1512,
+      "sha256": "795a0e5fc9be26e7d23d93968d5678a78a5fde8b2bbb3bd97c5a121d89502750"
+    },
+    {
+      "file": "evidence/current/ownership-callback/run/inputs.sha256",
+      "bytes": 2814,
+      "sha256": "e665fb7f228cd06cb3d696e869910a95b73adaf4834065678a3bbfd2403a5ce7"
+    },
+    {
+      "file": "evidence/current/ownership-callback/run/native-ab_alternate.bin",
+      "bytes": 664,
+      "sha256": "1f6650e2fdcd76e1723c8c2fe0d42675c4615427721af729b80bdb0a03fa7b14"
+    },
+    {
+      "file": "evidence/current/ownership-callback/run/native-ab_spill.bin",
+      "bytes": 660,
+      "sha256": "117453054e65b3f4ae6b8da5dd241b1a8db28cdbd15cfae4a1527e073f576871"
+    },
+    {
+      "file": "evidence/current/ownership-callback/run/native-fail_second.bin",
+      "bytes": 660,
+      "sha256": "3fcf9225428f9edb5488cf2647b9098b5b860cc9341b967d80412a9927aeb312"
+    },
+    {
+      "file": "evidence/current/ownership-callback/run/native-null_second.bin",
+      "bytes": 660,
+      "sha256": "4aef0e035a349d66cdde5dcc8b05e56c43e65dab129b0390ba0ecaf8e00bc4c3"
+    },
+    {
+      "file": "evidence/current/ownership-callback/run/native.sha256",
+      "bytes": 590,
+      "sha256": "cdb959e3dbc1afa00024755d50f7282bb0715292492818a5178dc9ecc6b337d0"
+    },
+    {
+      "file": "evidence/current/ownership-callback/run/results.json",
+      "bytes": 3083,
+      "sha256": "df644de3b31f668eaabbb44f15d65563a362d36e8ac25f0ad37b7cb4d062f048"
+    },
+    {
+      "file": "evidence/current/ownership-callback/run/summary.txt",
+      "bytes": 17265,
+      "sha256": "d4e0c92d60f6a6ea3508bbf238da56098bd4713c797b6a007b3e3ed1b8d3ac9a"
+    },
+    {
+      "file": "evidence/current/ownership-callback/run/toolchain.txt",
+      "bytes": 438,
+      "sha256": "f736a28e42d01283bffe2feba5d02c732e66d29e2cce3f430bea0ae964c4af2c"
+    },
+    {
+      "file": "evidence/current/ownership-callback/source/build-script.executed.sh",
+      "bytes": 9770,
+      "sha256": "30fb2fcfe67b60599ff0798d5c812a5d6b405bc219dd138902254696f8d21c53"
+    },
+    {
+      "file": "evidence/current/ownership-callback/source/cbpf.h",
+      "bytes": 792,
+      "sha256": "8cf3c862d0134b34fdf87335696878e49b681e492c1ad50698cd470811430235"
+    },
+    {
+      "file": "evidence/current/ownership-callback/source/cbpf_jit.c",
+      "bytes": 12812,
+      "sha256": "a1a3c2476380325100a9b361f213bb06db9e9dd24543ae8e12a5354ddd8dd753"
+    },
+    {
+      "file": "evidence/current/ownership-callback/source/cbpf_runtime.c",
+      "bytes": 20023,
+      "sha256": "9a91d5cd91e1132a40b970138b5daf82aa76e6e852fc81bdddcea8d28c14751d"
+    },
+    {
+      "file": "evidence/current/ownership-callback/source/guest.c",
+      "bytes": 6793,
+      "sha256": "89d31fbab37ad07d56b2fbc3fc4d9b7c37d985ad1c5e1be3651632dbbb2d4477"
+    },
+    {
+      "file": "evidence/current/ownership-callback/source/integration.patch",
+      "bytes": 4956,
+      "sha256": "8121d10f5e83488ed31739960d46cb3fe35e9f319e91acd5230c80718c5abe30"
+    },
+    {
+      "file": "evidence/current/ownership-callback/source/ownership_ids.h",
+      "bytes": 211,
+      "sha256": "ed654ec815608f97db07052b8982e44d06607e462f2656d648febe26b0ff9c99"
+    },
+    {
+      "file": "evidence/current/ownership-callback/source/platform.patch",
+      "bytes": 8059,
+      "sha256": "65c34af4d8f1db14455c297a1f71fc03138b2fc9e834a8dc4480b0687e208c44"
+    },
+    {
+      "file": "evidence/current/ownership-callback/source/run-script.executed.sh",
+      "bytes": 21220,
+      "sha256": "8702c29bacd3627ac6fb2d58e532ba8476f003339b0aed66ec5ad6789aa4f024"
+    }
+  ]
+}

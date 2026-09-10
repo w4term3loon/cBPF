@@ -1,0 +1,175 @@
+{
+  "schema_version": 1,
+  "question": "Can exact capability bounds and a post-verifier scalar guard contain the same direct spatial effects under matched verifier defects and inputs?",
+  "supported_result": "Both defenses contain all four tested direct map effects. Exact capability authority requires no per-access scalar guard; the test-only scalar comparator adds 40 native bytes per checked access plus one shared 8-byte failure stub.",
+  "claim_limits": [
+    "This is a functional and native-code-size comparison, not a runtime performance result.",
+    "The scalar comparator is a narrow Morello hybrid, not portable SFI, AEE, or a production baseline.",
+    "The component inventory exposes trust obligations; it does not prove that either total TCB is smaller.",
+    "The experiment does not measure verifier state-space, latency, or maintenance complexity."
+  ],
+  "matched_conditions": {
+    "kernel_base": "b96da308ef1a054c3c04c9445e5ed70259b7c397",
+    "patch_series_last": "linux/patches/0031-harden-performance-logging-policy.patch",
+    "jit_harden": 2,
+    "vulnerable_modes": [
+      "CAPEBPF_TEST_VULNERABLE_ALU32",
+      "CAPEBPF_TEST_VULNERABLE_PRUNING",
+      "CAPEBPF_TEST_VULNERABLE_JMP32_BOUNDS",
+      "CAPEBPF_TEST_VULNERABLE_NULL_PROMOTION"
+    ],
+    "config_difference_only": [
+      "CAPEBPF_TEST_SOFTWARE_MAP_BOUNDS",
+      "CAPEBPF_TEST_BROAD_MAP_AUTHORITY"
+    ],
+    "config_identity_only": [
+      "LOCALVERSION"
+    ],
+    "harness_sha256": "6601cf925af00c44215e7b97a29dae3057e3cfacf73f88d31351a13e1d741a2d"
+  },
+  "variants": {
+    "exact": {
+      "log": "linux/benchmarks/results/morello-defense-baseline-exact-2026-08-29.txt",
+      "image_sha256": "5e9358c5d926ab5fc04000b8216f9b566e42d02475cf5459ad03996d42c31cbe",
+      "config_sha256": "32fd0b99292f82e875024b977f0525d98fd58dacded5f2a1f37e42d767356f5d",
+      "software_bounds": false,
+      "broad_authority": false,
+      "unsafe_outcome": "CHERI_BOUNDS",
+      "config_artifact": "linux/benchmarks/configs/morello-e6c69574-exact-2026-08-29.config.gz",
+      "build_receipt": "linux/benchmarks/results/morello-build-provenance-exact-2026-08-29.json"
+    },
+    "broad": {
+      "log": "linux/benchmarks/results/morello-defense-baseline-broad-2026-08-29.txt",
+      "image_sha256": "9d7d84af817e6f0eab0a2aa1d3090ebd9baedfd9751f4f55e47b33b199440995",
+      "config_sha256": "d874420f1e42f7d5cfbd21e1939a3b243986b9ae07cf1761eaf804ee47a696f6",
+      "software_bounds": false,
+      "broad_authority": true,
+      "unsafe_outcome": "EXECUTE_ALLOWED",
+      "config_artifact": "linux/benchmarks/configs/morello-e6c69574-broad-2026-08-29.config.gz",
+      "build_receipt": "linux/benchmarks/results/morello-build-provenance-broad-2026-08-29.json"
+    },
+    "software": {
+      "log": "linux/benchmarks/results/morello-defense-baseline-software-2026-08-29.txt",
+      "image_sha256": "fb40fa248392956a2fbd4cc4d0ad47a899f8225f6c65c82b587bdcd9acc6c6b2",
+      "config_sha256": "e8a6ff0d7a7b7638e36fa2a490cb8675ccd2ff52267a50b2f6819d1db67504c5",
+      "software_bounds": true,
+      "broad_authority": false,
+      "unsafe_outcome": "SOFTWARE_BOUNDS",
+      "config_artifact": "linux/benchmarks/configs/morello-e6c69574-software-2026-08-29.config.gz",
+      "build_receipt": "linux/benchmarks/results/morello-build-provenance-software-2026-08-29.json"
+    }
+  },
+  "cases": [
+    {
+      "case_id": "CVE-2021-3490-spatial",
+      "runtime_name": "cve_2021_3490",
+      "boundary": "lower",
+      "checked_accesses": 2,
+      "exact_jit_bytes": 848,
+      "broad_jit_bytes": 848,
+      "software_jit_bytes": 936,
+      "delta_bytes": 88
+    },
+    {
+      "case_id": "CVE-2020-8835-spatial",
+      "runtime_name": "cve_2020_8835",
+      "boundary": "lower",
+      "checked_accesses": 2,
+      "exact_jit_bytes": 728,
+      "broad_jit_bytes": 728,
+      "software_jit_bytes": 816,
+      "delta_bytes": 88
+    },
+    {
+      "case_id": "CVE-2023-2163-spatial",
+      "runtime_name": "cve_2023_2163",
+      "boundary": "upper",
+      "checked_accesses": 2,
+      "exact_jit_bytes": 600,
+      "broad_jit_bytes": 600,
+      "software_jit_bytes": 688,
+      "delta_bytes": 88
+    },
+    {
+      "case_id": "CVE-2022-23222-spatial",
+      "runtime_name": "cve_2022_23222",
+      "boundary": "upper",
+      "checked_accesses": 1,
+      "exact_jit_bytes": 600,
+      "broad_jit_bytes": 600,
+      "software_jit_bytes": 648,
+      "delta_bytes": 48
+    }
+  ],
+  "trusted_component_inventory": {
+    "components": {
+      "linux_loader_and_verifier": {
+        "description": "Loads BPF and supplies the deliberately historical verifier states.",
+        "evidence": "linux/patches/0008-test-only-cve-2021-3490-verifier-mode.patch::adjust_scalar_min_max_vals"
+      },
+      "capability_aware_jit": {
+        "description": "Tracks authority roots and emits capability-rooted memory operations.",
+        "evidence": "linux/patches/0002-bound-bpf-stack-capability.patch::emit_cheri_cap_memory"
+      },
+      "helper_gateway": {
+        "description": "Translates helper tokens and crosses the restricted/executive boundary.",
+        "evidence": "linux/patches/0007-bounded-map-value-helper-gateway.patch::bpf_cheri_map_lookup_gateway"
+      },
+      "gateway_capability_preservation": {
+        "description": "Preserves live full capabilities across native C helper calls.",
+        "evidence": "linux/patches/0024-preserve-capability-registers-across-helper-gateway.patch::str c19"
+      },
+      "post_jit_certificate": {
+        "description": "Rejects native images that violate the authority-aware lowering contract.",
+        "evidence": "linux/patches/0021-security-refinement-certificate.patch::validate_emitted_authority"
+      },
+      "exact_map_authority": {
+        "description": "Constructs a bounded, permission-reduced capability for one map value.",
+        "evidence": "linux/patches/0007-bounded-map-value-helper-gateway.patch::cheri_bounds_set(value_cap, map->value_size)"
+      },
+      "morello_bounds_enforcement": {
+        "description": "Checks the capability bounds at the native dereference.",
+        "evidence": "linux/patches/0004-per-invocation-bpf-stack.patch::MORELLO_FSC_CAP_BOUNDS"
+      },
+      "bounds_fault_recovery": {
+        "description": "Classifies the architectural fault for the controlled experiment.",
+        "evidence": "linux/patches/0004-per-invocation-bpf-stack.patch::ex_handler_bpf"
+      },
+      "excess_map_authority": {
+        "description": "Constructs the test capability with 8192 bytes of deliberate excess bounds.",
+        "evidence": "linux/patches/0020-test-only-software-map-bounds-baseline.patch::CAPEBPF_SOFTWARE_MAP_EXCESS"
+      },
+      "scalar_guard_emitter": {
+        "description": "Reconstructs lower and upper bounds checks before each supported access.",
+        "evidence": "linux/patches/0020-test-only-software-map-bounds-baseline.patch::emit_cheri_software_map_bounds"
+      },
+      "guard_placement_metadata": {
+        "description": "Uses JIT authority state and access width to select guard sites.",
+        "evidence": "linux/patches/0020-test-only-software-map-bounds-baseline.patch::BPF_CHERI_MAP_VALUE"
+      },
+      "guard_failure_stub": {
+        "description": "Redirects failed checks to deterministic sentinel return 77.",
+        "evidence": "linux/patches/0020-test-only-software-map-bounds-baseline.patch::build_software_bounds_failure_stub"
+      }
+    },
+    "common": [
+      "linux_loader_and_verifier",
+      "capability_aware_jit",
+      "helper_gateway",
+      "gateway_capability_preservation",
+      "post_jit_certificate"
+    ],
+    "exact_unique": [
+      "exact_map_authority",
+      "morello_bounds_enforcement",
+      "bounds_fault_recovery"
+    ],
+    "software_unique": [
+      "excess_map_authority",
+      "scalar_guard_emitter",
+      "guard_placement_metadata",
+      "guard_failure_stub"
+    ],
+    "comparison": "The variants replace different obligations rather than forming a proved TCB-size ordering: exact authority trusts correct object-capability construction and hardware checking; the scalar variant trusts per-access placement, arithmetic, metadata extraction, and failure control flow. Both still trust the common JIT and certificate in this prototype."
+  }
+}

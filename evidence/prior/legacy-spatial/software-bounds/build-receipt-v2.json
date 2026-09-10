@@ -1,0 +1,214 @@
+{
+  "schema_version": "1.0.0",
+  "artifact_kind": "capebpf_faulty_vs_software_supplement_build_receipt",
+  "artifact_version": "result-v2-successor-pair",
+  "study_id": "capebpf-faulty-vs-software-supplement-v3",
+  "status": "full_links_retained_preboot",
+  "source": {
+    "source_tree": "${TEMP_PATH}",
+    "commit": "75889c86076bc6eee1b0fbf2fbd217119cb34516",
+    "tree": "fca36d26a8cdfb327316b9970fc879bd3960a86d",
+    "parent_commit": "8c9eb79f5b5fe7e473af5f4f8753b40a55d68fbb",
+    "clean_at_validation": true,
+    "reconstruction_chain": {
+      "base": {
+        "commit": "e93ed814c733e43b2524227536042462c7daf349",
+        "tree": "862c2b67a7d8cf77d8617bec19843f21593ac849"
+      },
+      "ordered_patches": [
+        {
+          "position": 1,
+          "path": "linux/research/faulty-vs-differential/0001-bpf-add-faulty-final-vs-differential.patch",
+          "sha256": "5f6e0acdf4c9b384be6aea15946936ffd9bc657fa6910c048156e66b36a0284a",
+          "input_tree": "862c2b67a7d8cf77d8617bec19843f21593ac849",
+          "output_tree": "98cd4d5b54a95b5ff79868381350dd31c6d2fb45",
+          "corresponding_recorded_commit": "241a1953337983420f6f6672a9d0dc164bc35414"
+        },
+        {
+          "position": 2,
+          "path": "linux/research/faulty-vs-differential/0002-route-faulty-vs-to-closed-checker-profile.patch",
+          "sha256": "c13844f67e54dfe754d8257f4611bced22c051c80449a8710de2553242abc9a8",
+          "input_tree": "98cd4d5b54a95b5ff79868381350dd31c6d2fb45",
+          "output_tree": "aa52d79649a7589d3c347faedf42eb1c3c322b92",
+          "corresponding_recorded_commit": "39e735aafeb1ad994e746765fdfd597d0d32848a"
+        },
+        {
+          "position": 3,
+          "path": "linux/research/faulty-vs-software-supplement-v3/0001-bpf-validate-software-map-bounds-profile.patch",
+          "sha256": "630c3b3da0b403be5f6d91bbf569fef6a135dbcb68b6bbe73af95c7521b605a9",
+          "input_tree": "aa52d79649a7589d3c347faedf42eb1c3c322b92",
+          "output_tree": "7ff3ad81a25278519e7a3180ca2068e79a48ebc4",
+          "corresponding_recorded_commit": "8c9eb79f5b5fe7e473af5f4f8753b40a55d68fbb"
+        },
+        {
+          "position": 4,
+          "path": "linux/research/faulty-vs-software-supplement-v3/0002-bpf-correct-software-bounds-test-help.patch",
+          "sha256": "95a8f11bcebb55a97d7087781bd7acfecdc128ec377f16f9ee57de3f5012e5db",
+          "input_tree": "7ff3ad81a25278519e7a3180ca2068e79a48ebc4",
+          "output_tree": "fca36d26a8cdfb327316b9970fc879bd3960a86d",
+          "corresponding_recorded_commit": "75889c86076bc6eee1b0fbf2fbd217119cb34516"
+        }
+      ],
+      "validation": "All four patches applied cleanly in order in an isolated worktree and each staged write-tree matched the recorded output tree."
+    },
+    "selected_files": [
+      {
+        "path": "arch/arm64/net/capebpf/capebpf_checker_core.c",
+        "sha256": "e9369215952e698fec0fc9b4fa99db569575405c8180cdb8a284af152335e425"
+      },
+      {
+        "path": "arch/arm64/net/capebpf/capebpf_array_map_pipeline.c",
+        "sha256": "fb5ce519ef33f69b884e78cbce52fd5fd1e116653fa190a19de47469e827c665"
+      },
+      {
+        "path": "arch/arm64/net/bpf_jit_comp.c",
+        "sha256": "2c400a2092ada401cde6adba11a722d4494098e9ac48fbd87a1c1f442b13c47a"
+      },
+      {
+        "path": "kernel/bpf/Kconfig",
+        "sha256": "c2621bff57e70ec4e313108fc805a1a717ea23511261153b065f9f74023b50e6"
+      }
+    ]
+  },
+  "excluded_feasibility_pair": {
+    "receipt": {
+      "path": "research/faulty-vs-software-supplement-v3/feasibility-build-receipt-v1.json",
+      "sha256": "54f718c848dff673acb79014135118c20175414fe2d82cf1a781b6ca7e51eafa"
+    },
+    "source_commit": "8c9eb79f5b5fe7e473af5f4f8753b40a55d68fbb",
+    "source_tree": "7ff3ad81a25278519e7a3180ca2068e79a48ebc4",
+    "boots": 0,
+    "disposition": "feasibility-only; neither Image is result-bound or eligible as a control"
+  },
+  "roles": [
+    {
+      "role": "software_exact",
+      "source_commit": "75889c86076bc6eee1b0fbf2fbd217119cb34516",
+      "source_tree": "fca36d26a8cdfb327316b9970fc879bd3960a86d",
+      "host_build_path": "${TEMP_PATH}",
+      "seed_config": {
+        "path": "${TEMP_PATH}",
+        "sha256": "f0c495d3bb45697bdf13645608ea7fc472557ccd870e7e07d741ba0cdd0c857f"
+      },
+      "config": {
+        "path": "${TEMP_PATH}",
+        "sha256": "f0c495d3bb45697bdf13645608ea7fc472557ccd870e7e07d741ba0cdd0c857f"
+      },
+      "image": {
+        "path": "${TEMP_PATH}",
+        "sha256": "5dca016483810f163fff5b753e20adebd64126e6ac56e32b6b5539a4c793ecc2"
+      },
+      "vmlinux": {
+        "path": "${TEMP_PATH}",
+        "sha256": "7927340e8092b7ee4f7b8204c65067b18b11b776acc334f0bab6a5daf8e575bb"
+      },
+      "bpf_jit_object": {
+        "path": "${TEMP_PATH}",
+        "sha256": "6c57f789f72d2dde6240f5318024a782ac4064f01f428e35408d6e213cceadbf"
+      },
+      "build_log": {
+        "path": "${TEMP_PATH}",
+        "sha256": "ed2eeba29f714ab011e1712c9786a82ba2967318085f47ddbd840d74856924e4"
+      },
+      "localversion_override": "-capebpf-fvs-swprof-75889c8-exact",
+      "kernel_release": "6.7.0-capebpf-fvs-swprof-75889c8-exact",
+      "build_exit_status": 0,
+      "provenance": "fresh empty-directory full link from the documentation-corrected successor tree"
+    },
+    {
+      "role": "software_disabled",
+      "source_commit": "75889c86076bc6eee1b0fbf2fbd217119cb34516",
+      "source_tree": "fca36d26a8cdfb327316b9970fc879bd3960a86d",
+      "host_build_path": "${TEMP_PATH}",
+      "seed_config": {
+        "path": "${TEMP_PATH}",
+        "sha256": "242ecd2ad4af48830428cc17cb9b519744e3a160bb407186fd0a7916e28ab7fb"
+      },
+      "config": {
+        "path": "${TEMP_PATH}",
+        "sha256": "242ecd2ad4af48830428cc17cb9b519744e3a160bb407186fd0a7916e28ab7fb"
+      },
+      "image": {
+        "path": "${TEMP_PATH}",
+        "sha256": "5f912c5837043665211371dd3122fb2ea79576ce64268d6b2127215c6425b47f"
+      },
+      "vmlinux": {
+        "path": "${TEMP_PATH}",
+        "sha256": "ecdfc5e71db2424530a68f7a4aa5bd9c828577b2b878ebeb7b73ad72b8333a44"
+      },
+      "bpf_jit_object": {
+        "path": "${TEMP_PATH}",
+        "sha256": "e0854642ec27e7509398e8720e26b79fc8d678ea9e983921a2cc3796b970b0df"
+      },
+      "build_log": {
+        "path": "${TEMP_PATH}",
+        "sha256": "9980437879898735df6080d087821f4a4774c9bd67d3f048477b745916bdcd6a"
+      },
+      "localversion_override": "-capebpf-fvs-swprof-75889c8-disabled",
+      "kernel_release": "6.7.0-capebpf-fvs-swprof-75889c8-disabled",
+      "build_exit_status": 0,
+      "provenance": "fresh empty-directory full link from the documentation-corrected successor tree"
+    }
+  ],
+  "full_config_delta": {
+    "comparison_domain": "all normalized Kconfig entries",
+    "only_delta": "CONFIG_CAPEBPF_TEST_SOFTWARE_MAP_BOUNDS",
+    "software_exact": "y",
+    "software_disabled": "n",
+    "validated": true
+  },
+  "build_invocation": {
+    "container_tag": "capebpf-morello-linux-builder:local",
+    "container_image_id": "sha256:b4de3680a00e3ac68ccc56bd87131b97c1fffcd5e016c2d1a54d7e3386d9fc6e",
+    "host_source_path": "${TEMP_PATH}",
+    "source_mount": "${TEMP_PATH}",
+    "container_source_path": "/src",
+    "source_mount_mode": "read_only",
+    "host_build_root": "${TEMP_PATH}",
+    "container_build_path": "/build",
+    "roles_started_in_parallel": true,
+    "jobs_per_role": 4,
+    "identical_job_count": true,
+    "arch": "arm64",
+    "llvm_prefix": "/opt/cheri/output/morello-sdk/bin/",
+    "kbuild_build_timestamp": "2026-09-01 18:00:00 +0000",
+    "kbuild_build_user": "capebpf",
+    "kbuild_build_host": "faulty-vs-sw-profile-doc",
+    "kbuild_build_version": 1,
+    "stages": [
+      {
+        "command": "make -C /src O=/build ARCH=arm64 LLVM=/opt/cheri/output/morello-sdk/bin/ olddefconfig",
+        "exit_status": 0
+      },
+      {
+        "command_template": "make -C /src O=/build ARCH=arm64 LLVM=/opt/cheri/output/morello-sdk/bin/ LOCALVERSION=ROLE_LOCALVERSION KBUILD_BUILD_TIMESTAMP='2026-09-01 18:00:00 +0000' KBUILD_BUILD_USER=capebpf KBUILD_BUILD_HOST=faulty-vs-sw-profile-doc KBUILD_BUILD_VERSION=1 -j4 Image vmlinux headers_install",
+        "targets": [
+          "Image",
+          "vmlinux",
+          "headers_install"
+        ],
+        "exit_status_both_roles": 0
+      }
+    ]
+  },
+  "toolchain": {
+    "compiler": {
+      "path": "${TEMP_PATH}",
+      "sha256": "b7cecf83693933f5cc3c56ea75db972cdfe2545125321a66036254adf79fa30f",
+      "version": "clang version 17.0.0 (https://git.morello-project.org/morello/llvm-project.git 7956a8d20652883f845a41094645174eb92d1960)"
+    },
+    "linker": {
+      "path": "${TEMP_PATH}",
+      "sha256": "cc062041b9d912b9ef88efbf11ce39b57a15c46e606d33f45996db9905bdcf94",
+      "version": "LLD 17.0.0 (compatible with GNU linkers)"
+    },
+    "build_environment": {
+      "path": "research/faulty-vs-differential-v1/builder-environment-v1.json",
+      "sha256": "801a127d629d47ff61c778fc7c058dc2d9dc630ed415baa45d0019443ca96679"
+    }
+  },
+  "supplemental_boots": 0,
+  "supplemental_observations": 0,
+  "qemu_launched_for_result_v2": false,
+  "boundary": "Two fresh documentation-corrected full links and a one-symbol normalized config delta. This receipt contains no runtime effect, prevention, performance, or security observation."
+}

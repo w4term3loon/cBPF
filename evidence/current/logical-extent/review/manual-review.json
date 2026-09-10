@@ -1,0 +1,40 @@
+{
+  "result": "PASS_MANUAL_PRE_EXECUTION_REVIEW",
+  "recorded_utc": "2026-09-07T12:40:49.806202+00:00",
+  "execution_count_at_review": 0,
+  "preflight_sha256": "b71550d1f9fb26345b8ecc1c88b59b2ca0a1fa389b8597cab895a7bba84f1cff",
+  "vmlinux_sha256": "95483c8fe7359d60ba01a8043267f275082dffa0ce20708b58ba4083d1b3798b",
+  "jit_sha256": "f8d79016c96d74a7426fff7a80c08ccc5041fec761ba8e38b0b4f75724f00d8f",
+  "complete_linked_disassembly_sha256": "b6d8d9e164b1b7b232ed8637c1e7d046008bf3d0d3808411f72e208af239888b",
+  "boot_binding": "Reused unchanged examiner-replay kernel. Runner verified source, configuration, verifier and output identities; all 18 run-input hashes verified before execution. Guest holds FDs 3/4 at READY, no network/disk/attachment, normal verifier.",
+  "native_review": "All 98 words inspected. Only words 18,75,77 differ from prior witness: map-table address low immediate and the two byte-six load/store encodings. LDURB/STURB encodings were derived with llvm-mc before guest launch. Full c0-to-c7 transport at word 72; c7 unchanged through load 75/store 77. NULL/entry-error branches skip accesses; computed scalar copied after the store. Restricted and executive returns match prior control; no reachable PLT.",
+  "linked_review": "Nine complete numeric ranges and their previous review reused by exact vmlinux/disassembly identity. Reinspected provider size/stride selection, lookup/gateway capability transport and exception handling. w4 loads stride at map+0x100 for UMADDL addressing; w3 loads logical size at map+0x20 for SCBNDSE. Exact shape checks precede logging; the returned capability is restored from the full stack slot after logging. Allocator/entry behavior remains that of the reviewed unchanged kernel.",
+  "expected_roots": {
+    "restricted": {
+      "base": 18446603338389618016,
+      "length": 224
+    },
+    "executive": {
+      "base": 18446603338389618240,
+      "length": 56
+    },
+    "gateway_cursor": 18446603338368907264
+  },
+  "expected_selected": {
+    "value_size": 7,
+    "stride": 8,
+    "length": 7,
+    "tag": 1,
+    "sealed": 0,
+    "permissions": "0x30001",
+    "key": 1,
+    "access_offset": 6,
+    "access_bytes": 1,
+    "initial_bytes": "11223344556629",
+    "final_bytes": "1122334455662a",
+    "return": 42,
+    "unchanged_prefix": 1
+  },
+  "limits": "Local inspection and construction telemetry, not independent hardware attestation. A valid access distinguishes returned extent via telemetry; no padding access, dynamic bounds fault, original CVE execution, ownership change or whole-program mediation.",
+  "recorded_preflight_scope": "Preflight covered one normal TEST_RUN on the held descriptor. Execution and postflight outcomes are recorded separately."
+}

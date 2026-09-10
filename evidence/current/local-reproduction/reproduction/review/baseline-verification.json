@@ -1,0 +1,123 @@
+{
+  "checked_at_utc": "2026-09-06T20:16:22.292115+00:00",
+  "result": "PASS",
+  "original_kernel_outputs": [
+    {
+      "file": "${REPOSITORY}/build/ownership-m3-kernel/arch/arm64/boot/Image",
+      "bytes": 17240576,
+      "sha256": "1a7bef2513eed6d8adb7928fbec5fe9c6ea4565925d51af008ff25eeda041242",
+      "matches_original_receipt": true
+    },
+    {
+      "file": "${REPOSITORY}/build/ownership-m3-kernel/vmlinux",
+      "bytes": 185325992,
+      "sha256": "548c308bfd1cabaf3804827633578cfb481ed445d5c1cb035cae49836bab6ea3",
+      "matches_original_receipt": true
+    },
+    {
+      "file": "${REPOSITORY}/build/ownership-m3-kernel/Module.symvers",
+      "bytes": 466598,
+      "sha256": "2cdaa5365903c7026ab867e22ab8767d6d2b1c0b3944eeb7e862234b64fe7a6c",
+      "matches_original_receipt": true
+    },
+    {
+      "file": "${REPOSITORY}/build/ownership-m3-kernel/.config",
+      "bytes": 87730,
+      "sha256": "6f1988add3ba99cd6d2569b2bcbc705886c3de2fd27195564cf8b6a3324e4cff",
+      "matches_original_receipt": true
+    },
+    {
+      "file": "${REPOSITORY}/build/ownership-m3-headers/include/linux/bpf.h",
+      "bytes": 274838,
+      "sha256": "74af41e84ad29a873ef72bac6dee73a0923aa879b5870decf456b857126225fe",
+      "matches_original_receipt": true
+    }
+  ],
+  "original_native_binaries": [
+    {
+      "file": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/snapshot/evidence/current/ownership-closure/native-ab_alternate.bin",
+      "bytes": 664,
+      "sha256": "1f6650e2fdcd76e1723c8c2fe0d42675c4615427721af729b80bdb0a03fa7b14"
+    },
+    {
+      "file": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/snapshot/evidence/current/ownership-closure/native-ab_spill.bin",
+      "bytes": 660,
+      "sha256": "117453054e65b3f4ae6b8da5dd241b1a8db28cdbd15cfae4a1527e073f576871"
+    },
+    {
+      "file": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/snapshot/evidence/current/ownership-closure/native-fail_second.bin",
+      "bytes": 660,
+      "sha256": "3fcf9225428f9edb5488cf2647b9098b5b860cc9341b967d80412a9927aeb312"
+    },
+    {
+      "file": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/snapshot/evidence/current/ownership-closure/native-null_second.bin",
+      "bytes": 660,
+      "sha256": "4aef0e035a349d66cdde5dcc8b05e56c43e65dab129b0390ba0ecaf8e00bc4c3"
+    }
+  ],
+  "frozen_sources_equal_original_M3_execution_sources": [
+    {
+      "frozen_source": "tools/build_ownership_kernel.sh",
+      "original_execution_source": "evidence/current/ownership-closure/source/build_ownership_kernel.sh",
+      "bytes": 9770,
+      "sha256": "b730ab5dde4d051da80602c0a7a2315d7a9533599137cc426c4e4f3bec0936a9",
+      "byte_equal": true
+    },
+    {
+      "frozen_source": "linux/ownership/cbpf.h",
+      "original_execution_source": "evidence/current/ownership-closure/source/cbpf.h",
+      "bytes": 792,
+      "sha256": "8cf3c862d0134b34fdf87335696878e49b681e492c1ad50698cd470811430235",
+      "byte_equal": true
+    },
+    {
+      "frozen_source": "linux/ownership/cbpf_jit.c",
+      "original_execution_source": "evidence/current/ownership-closure/source/cbpf_jit.c",
+      "bytes": 12812,
+      "sha256": "a1a3c2476380325100a9b361f213bb06db9e9dd24543ae8e12a5354ddd8dd753",
+      "byte_equal": true
+    },
+    {
+      "frozen_source": "linux/ownership/cbpf_runtime.c",
+      "original_execution_source": "evidence/current/ownership-closure/source/cbpf_runtime.c",
+      "bytes": 15577,
+      "sha256": "a70dfb8b78ec3f6bd6d97afc3ad4c67a8cc63741955bd1005897942776b86296",
+      "byte_equal": true
+    },
+    {
+      "frozen_source": "linux/ownership/guest.c",
+      "original_execution_source": "evidence/current/ownership-closure/source/guest.c",
+      "bytes": 6793,
+      "sha256": "89d31fbab37ad07d56b2fbc3fc4d9b7c37d985ad1c5e1be3651632dbbb2d4477",
+      "byte_equal": true
+    },
+    {
+      "frozen_source": "linux/ownership/integration.patch",
+      "original_execution_source": "evidence/current/ownership-closure/source/integration.patch",
+      "bytes": 4956,
+      "sha256": "8121d10f5e83488ed31739960d46cb3fe35e9f319e91acd5230c80718c5abe30",
+      "byte_equal": true
+    },
+    {
+      "frozen_source": "theory/kernel-ownership.md",
+      "original_execution_source": "evidence/current/ownership-closure/source/kernel-ownership.md",
+      "bytes": 7380,
+      "sha256": "dda48c26dae8416cf2d94ff22b7089a7fd8bd33a4464075d0d7e03aef3f6b2cf",
+      "byte_equal": true
+    },
+    {
+      "frozen_source": "linux/ownership/platform.patch",
+      "original_execution_source": "evidence/current/ownership-closure/source/platform.patch",
+      "bytes": 8059,
+      "sha256": "65c34af4d8f1db14455c297a1f71fc03138b2fc9e834a8dc4480b0687e208c44",
+      "byte_equal": true
+    },
+    {
+      "frozen_source": "tools/run_ownership.sh",
+      "original_execution_source": "evidence/current/ownership-closure/source/run_ownership.sh",
+      "bytes": 18224,
+      "sha256": "3cebc14fe5c6c487a769b469d02654250984096cb52f191ff5349b377d1051af",
+      "byte_equal": true
+    }
+  ]
+}

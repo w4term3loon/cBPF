@@ -1,0 +1,604 @@
+[2J[01;01H[=3h[2J[01;01HEFI stub: Booting Linux Kernel...
+EFI stub: EFI_RNG_PROTOCOL unavailable
+EFI stub: Loaded initrd from LINUX_EFI_INITRD_MEDIA_GUID device path
+EFI stub: Generating empty DTB
+EFI stub: Exiting boot services...
+[    0.000000] Booting Linux on physical CPU 0x0000000000 [0x410fd083]
+[    0.000000] Linux version 6.7.0-capebpf-provider-exact (capebpf@provider-cve) (clang version 17.0.0 (https://git.morello-project.org/morello/llvm-project.git 7956a8d20652883f845a41094645174eb92d1960), LLD 17.0.0) #1 SMP PREEMPT 2026-09-04 00:00:00 UTC
+[    0.000000] Userspace ABI: pure-capability (PCuABI)
+[    0.000000] KASLR disabled due to lack of seed
+[    0.000000] efi: EFI v2.7 by EDK II
+[    0.000000] efi: SMBIOS 3.0=0xbf700000 MEMATTR=0xbd403018 ACPI 2.0=0xbbf70018 INITRD=0xbc373c18 MEMRESERVE=0xbc373c98 
+[    0.000000] ACPI: Early table checksum verification disabled
+[    0.000000] ACPI: RSDP 0x00000000BBF70018 000024 (v02 BOCHS )
+[    0.000000] ACPI: XSDT 0x00000000BBF7FE98 000064 (v01 BOCHS  BXPC     00000001      01000013)
+[    0.000000] ACPI: FACP 0x00000000BBF7FA98 00010C (v05 BOCHS  BXPC     00000001 BXPC 00000001)
+[    0.000000] ACPI: DSDT 0x00000000BBF77518 0014A2 (v02 BOCHS  BXPC     00000001 BXPC 00000001)
+[    0.000000] ACPI: APIC 0x00000000BBF7FC18 000198 (v03 BOCHS  BXPC     00000001 BXPC 00000001)
+[    0.000000] ACPI: PPTT 0x00000000BBF7D898 00009C (v02 BOCHS  BXPC     00000001 BXPC 00000001)
+[    0.000000] ACPI: GTDT 0x00000000BBF7E818 000060 (v02 BOCHS  BXPC     00000001 BXPC 00000001)
+[    0.000000] ACPI: MCFG 0x00000000BBF7E918 00003C (v01 BOCHS  BXPC     00000001 BXPC 00000001)
+[    0.000000] ACPI: SPCR 0x00000000BBF7FF98 000050 (v02 BOCHS  BXPC     00000001 BXPC 00000001)
+[    0.000000] ACPI: DBG2 0x00000000BBF7E418 000057 (v00 BOCHS  BXPC     00000001 BXPC 00000001)
+[    0.000000] ACPI: IORT 0x00000000BBF7E718 000080 (v03 BOCHS  BXPC     00000001 BXPC 00000001)
+[    0.000000] ACPI: SPCR: console: pl011,mmio,0x9000000,9600
+[    0.000000] NUMA: Failed to initialise from firmware
+[    0.000000] NUMA: Faking a node at [mem 0x0000000040000000-0x00000000bfffffff]
+[    0.000000] NUMA: NODE_DATA [mem 0xbfbf5ac0-0xbfbf7fff]
+[    0.000000] Zone ranges:
+[    0.000000]   DMA      [mem 0x0000000040000000-0x00000000bfffffff]
+[    0.000000]   DMA32    empty
+[    0.000000]   Normal   empty
+[    0.000000] Movable zone start for each node
+[    0.000000] Early memory node ranges
+[    0.000000]   node   0: [mem 0x0000000040000000-0x00000000bbf7ffff]
+[    0.000000]   node   0: [mem 0x00000000bbf80000-0x00000000bbffffff]
+[    0.000000]   node   0: [mem 0x00000000bc000000-0x00000000bc01ffff]
+[    0.000000]   node   0: [mem 0x00000000bc020000-0x00000000bc36ffff]
+[    0.000000]   node   0: [mem 0x00000000bc370000-0x00000000bf64ffff]
+[    0.000000]   node   0: [mem 0x00000000bf650000-0x00000000bf6dffff]
+[    0.000000]   node   0: [mem 0x00000000bf6e0000-0x00000000bf6effff]
+[    0.000000]   node   0: [mem 0x00000000bf6f0000-0x00000000bf80ffff]
+[    0.000000]   node   0: [mem 0x00000000bf810000-0x00000000bfffffff]
+[    0.000000] Initmem setup node 0 [mem 0x0000000040000000-0x00000000bfffffff]
+[    0.000000] psci: probing for conduit method from ACPI.
+[    0.000000] psci: PSCIv1.1 detected in firmware.
+[    0.000000] psci: Using standard PSCI v0.2 function IDs
+[    0.000000] psci: Trusted OS migration not required
+[    0.000000] psci: SMC Calling Convention v1.0
+[    0.000000] percpu: Embedded 34 pages/cpu s98984 r8192 d32088 u139264
+[    0.000000] pcpu-alloc: s98984 r8192 d32088 u139264 alloc=34*4096
+[    0.000000] pcpu-alloc: [0] 0 [0] 1 [0] 2 [0] 3 
+[    0.000000] Detected PIPT I-cache on CPU0
+[    0.000000] CPU features: detected: GIC system register CPU interface
+[    0.000000] CPU features: detected: Morello Capability Architecture
+[    0.000000] CPU features: detected: Spectre-v2
+[    0.000000] CPU features: detected: Spectre-v3a
+[    0.000000] CPU features: detected: Spectre-v4
+[    0.000000] CPU features: detected: Spectre-BHB
+[    0.000000] CPU features: kernel page table isolation disabled by kernel configuration
+[    0.000000] CPU features: detected: ARM erratum 1742098
+[    0.000000] CPU features: detected: ARM errata 1165522, 1319367, or 1530923
+[    0.000000] alternatives: applying boot alternatives
+[    0.000000] Kernel command line: console=ttyAMA0 loglevel=8 rdinit=/kernel-identity panic=-1 capebpf.jit-harden=0 capebpf.jit_certificate_report=1 capebpf.jit_certificate_transcript=1 capebpf.exploit_evidence=1 -- --mode=exact --case=unsafe initrd=initrd
+[    0.000000] Dentry cache hash table entries: 262144 (order: 9, 2097152 bytes, linear)
+[    0.000000] Inode-cache hash table entries: 131072 (order: 8, 1048576 bytes, linear)
+[    0.000000] Fallback order for Node 0: 0 
+[    0.000000] Built 1 zonelists, mobility grouping on.  Total pages: 516096
+[    0.000000] Policy zone: DMA
+[    0.000000] mem auto-init: stack:all(zero), heap alloc:off, heap free:off
+[    0.000000] software IO TLB: SWIOTLB bounce buffer size adjusted to 2MB
+[    0.000000] software IO TLB: area num 4.
+[    0.000000] software IO TLB: mapped [mem 0x00000000bd203000-0x00000000bd403000] (2MB)
+[    0.000000] Memory: 2029836K/2097152K available (11392K kernel code, 1894K rwdata, 3996K rodata, 960K init, 553K bss, 67316K reserved, 0K cma-reserved)
+[    0.000000] SLUB: HWalign=64, Order=0-3, MinObjects=0, CPUs=4, Nodes=1
+[    0.000000] trace event string verifier disabled
+[    0.000000] rcu: Preemptible hierarchical RCU implementation.
+[    0.000000] rcu: 	RCU event tracing is enabled.
+[    0.000000] rcu: 	RCU restricting CPUs from NR_CPUS=256 to nr_cpu_ids=4.
+[    0.000000] 	Trampoline variant of Tasks RCU enabled.
+[    0.000000] 	Tracing variant of Tasks RCU enabled.
+[    0.000000] rcu: RCU calculated value of scheduler-enlistment delay is 25 jiffies.
+[    0.000000] rcu: Adjusting geometry for rcu_fanout_leaf=16, nr_cpu_ids=4
+[    0.000000] NR_IRQS: 64, nr_irqs: 64, preallocated irqs: 0
+[    0.000000] GICv3: 224 SPIs implemented
+[    0.000000] GICv3: 0 Extended SPIs implemented
+[    0.000000] Root IRQ handler: gic_handle_irq
+[    0.000000] GICv3: GICv3 features: 16 PPIs
+[    0.000000] GICv3: CPU0: found redistributor 0 region 0:0x00000000080a0000
+[    0.000000] ITS [mem 0x08080000-0x0809ffff]
+[    0.000000] ITS@0x0000000008080000: allocated 8192 Devices @40100000 (indirect, esz 8, psz 64K, shr 1)
+[    0.000000] ITS@0x0000000008080000: allocated 8192 Interrupt Collections @40110000 (flat, esz 8, psz 64K, shr 1)
+[    0.000000] GICv3: using LPI property table @0x0000000040120000
+[    0.000000] GICv3: CPU0: using allocated LPI pending table @0x0000000040130000
+[    0.000000] rcu: srcu_init: Setting srcu_struct sizes based on contention.
+[    0.000000] arch_timer: cp15 timer(s) running at 62.50MHz (virt).
+[    0.000000] clocksource: arch_sys_counter: mask: 0x1ffffffffffffff max_cycles: 0x1cd42e208c, max_idle_ns: 881590405314 ns
+[    0.000170] sched_clock: 57 bits at 63MHz, resolution 16ns, wraps every 4398046511096ns
+[    0.025596] Console: colour dummy device 80x25
+[    0.029294] ACPI: Core revision 20230628
+[    0.039675] Calibrating delay loop (skipped), value calculated using timer frequency.. 125.00 BogoMIPS (lpj=250000)
+[    0.040107] pid_max: default: 32768 minimum: 301
+[    0.048006] LSM: initializing lsm=capability,selinux,integrity
+[    0.049811] SELinux:  Initializing.
+[    0.055356] Mount-cache hash table entries: 4096 (order: 3, 32768 bytes, linear)
+[    0.055528] Mountpoint-cache hash table entries: 4096 (order: 3, 32768 bytes, linear)
+[    0.190935] RCU Tasks: Setting shift to 2 and lim to 1 rcu_task_cb_adjust=1.
+[    0.195427] RCU Tasks Trace: Setting shift to 2 and lim to 1 rcu_task_cb_adjust=1.
+[    0.200696] rcu: Hierarchical SRCU implementation.
+[    0.200825] rcu: 	Max phase no-delay instances is 1000.
+[    0.216131] Platform MSI: ITS@0x8080000 domain created
+[    0.217024] PCI/MSI: ITS@0x8080000 domain created
+[    0.217711] Remapping and enabling EFI services.
+[    0.229646] smp: Bringing up secondary CPUs ...
+[    0.256584] Detected PIPT I-cache on CPU1
+[    0.258247] GICv3: CPU1: found redistributor 1 region 0:0x00000000080c0000
+[    0.258512] GICv3: CPU1: using allocated LPI pending table @0x0000000040140000
+[    0.259181] CPU1: Booted secondary processor 0x0000000001 [0x410fd083]
+[    0.276681] Detected PIPT I-cache on CPU2
+[    0.277215] GICv3: CPU2: found redistributor 2 region 0:0x00000000080e0000
+[    0.277454] GICv3: CPU2: using allocated LPI pending table @0x0000000040150000
+[    0.278009] CPU2: Booted secondary processor 0x0000000002 [0x410fd083]
+[    0.285436] Detected PIPT I-cache on CPU3
+[    0.285640] GICv3: CPU3: found redistributor 3 region 0:0x0000000008100000
+[    0.285857] GICv3: CPU3: using allocated LPI pending table @0x0000000040160000
+[    0.286533] CPU3: Booted secondary processor 0x0000000003 [0x410fd083]
+[    0.291402] smp: Brought up 1 node, 4 CPUs
+[    0.291553] SMP: Total of 4 processors activated.
+[    0.292190] CPU features: detected: Common not Private translations
+[    0.292240] CPU features: detected: CRC32 instructions
+[    0.292435] CPU features: detected: RCpc load-acquire (LDAPR)
+[    0.292460] CPU features: detected: LSE atomic instructions
+[    0.292492] CPU features: detected: Privileged Access Never
+[    0.352257] CPU: All CPU(s) started at EL1
+[    0.357259] alternatives: applying system-wide alternatives
+[    0.577427] devtmpfs: initialized
+[    0.662079] clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 7645041785100000 ns
+[    0.665484] futex hash table entries: 1024 (order: 4, 65536 bytes, linear)
+[    0.723624] SMBIOS 3.0.0 present.
+[    0.724811] DMI: QEMU QEMU Virtual Machine, BIOS 0.0.0 02/06/2015
+[    0.834966] NET: Registered PF_NETLINK/PF_ROUTE protocol family
+[    0.851520] DMA: preallocated 256 KiB GFP_KERNEL pool for atomic allocations
+[    0.852798] DMA: preallocated 256 KiB GFP_KERNEL|GFP_DMA pool for atomic allocations
+[    0.853108] DMA: preallocated 256 KiB GFP_KERNEL|GFP_DMA32 pool for atomic allocations
+[    0.856218] audit: initializing netlink subsys (disabled)
+[    0.869421] audit: type=2000 audit(0.596:1): state=initialized audit_enabled=0 res=1
+[    0.877585] thermal_sys: Registered thermal governor 'step_wise'
+[    0.884598] cpuidle: using governor menu
+[    0.888777] hw-breakpoint: found 8 breakpoint and 8 watchpoint registers.
+[    0.891798] ASID allocator initialised with 65536 entries
+[    0.895900] Serial: AMBA PL011 UART driver
+[    0.908386] Modules: 28032 pages in range for non-PLT usage
+[    0.908482] Modules: 519552 pages in range for PLT usage
+[    0.943874] HugeTLB: registered 1.00 GiB page size, pre-allocated 0 pages
+[    0.943955] HugeTLB: 0 KiB vmemmap can be freed for a 1.00 GiB page
+[    0.944062] HugeTLB: registered 32.0 MiB page size, pre-allocated 0 pages
+[    0.944088] HugeTLB: 0 KiB vmemmap can be freed for a 32.0 MiB page
+[    0.944121] HugeTLB: registered 2.00 MiB page size, pre-allocated 0 pages
+[    0.944143] HugeTLB: 0 KiB vmemmap can be freed for a 2.00 MiB page
+[    0.944177] HugeTLB: registered 64.0 KiB page size, pre-allocated 0 pages
+[    0.944199] HugeTLB: 0 KiB vmemmap can be freed for a 64.0 KiB page
+[    1.045726] ACPI: Added _OSI(Module Device)
+[    1.045855] ACPI: Added _OSI(Processor Device)
+[    1.045893] ACPI: Added _OSI(3.0 _SCP Extensions)
+[    1.045920] ACPI: Added _OSI(Processor Aggregator Device)
+[    1.163073] ACPI: 1 ACPI AML tables successfully acquired and loaded
+[    1.240074] ACPI: Interpreter enabled
+[    1.240241] ACPI: Using GIC for interrupt routing
+[    1.241774] ACPI: MCFG table detected, 1 entries
+[    1.496105] ARMH0011:00: ttyAMA0 at MMIO 0x9000000 (irq = 12, base_baud = 0) is a SBSA
+[    1.498789] printk: legacy console [ttyAMA0] enabled
+[    1.660827] ACPI: PCI Root Bridge [PCI0] (domain 0000 [bus 00-ff])
+[    1.667762] acpi PNP0A08:00: _OSC: OS supports [ExtendedConfig ASPM ClockPM Segments MSI HPX-Type3]
+[    1.668597] acpi PNP0A08:00: PCIe port services disabled; not requesting _OSC control
+[    1.706901] acpi PNP0A08:00: ECAM area [mem 0x4010000000-0x401fffffff] reserved by PNP0C02:00
+[    1.708665] acpi PNP0A08:00: ECAM at [mem 0x4010000000-0x401fffffff] for [bus 00-ff]
+[    1.715672] ACPI: Remapped I/O 0x000000003eff0000 to [io  0x0000-0xffff window]
+[    1.733169] PCI host bridge to bus 0000:00
+[    1.734068] pci_bus 0000:00: root bus resource [mem 0x10000000-0x3efeffff window]
+[    1.734434] pci_bus 0000:00: root bus resource [io  0x0000-0xffff window]
+[    1.735114] pci_bus 0000:00: root bus resource [mem 0x8000000000-0xffffffffff window]
+[    1.735780] pci_bus 0000:00: root bus resource [bus 00-ff]
+[    1.742750] pci 0000:00:00.0: [1b36:0008] type 00 class 0x060000
+[    1.757236] pci 0000:00:01.0: [1af4:1000] type 00 class 0x020000
+[    1.758590] pci 0000:00:01.0: reg 0x10: [io  0x0000-0x001f]
+[    1.758922] pci 0000:00:01.0: reg 0x14: [mem 0x10040000-0x10040fff]
+[    1.759296] pci 0000:00:01.0: reg 0x20: [mem 0x8000000000-0x8000003fff 64bit pref]
+[    1.759895] pci 0000:00:01.0: reg 0x30: [mem 0xfffc0000-0xffffffff pref]
+[    1.767437] pci 0000:00:01.0: BAR 6: assigned [mem 0x10000000-0x1003ffff pref]
+[    1.768387] pci 0000:00:01.0: BAR 4: assigned [mem 0x8000000000-0x8000003fff 64bit pref]
+[    1.769039] pci 0000:00:01.0: BAR 1: assigned [mem 0x10040000-0x10040fff]
+[    1.769750] pci 0000:00:01.0: BAR 0: assigned [io  0x1000-0x101f]
+[    1.771209] pci_bus 0000:00: resource 4 [mem 0x10000000-0x3efeffff window]
+[    1.771995] pci_bus 0000:00: resource 5 [io  0x0000-0xffff window]
+[    1.772370] pci_bus 0000:00: resource 6 [mem 0x8000000000-0xffffffffff window]
+[    1.776408] ACPI: PCI: Interrupt link GSI0 configured for IRQ 35
+[    1.777033] ACPI: PCI: Interrupt link GSI1 configured for IRQ 36
+[    1.777912] ACPI: PCI: Interrupt link GSI2 configured for IRQ 37
+[    1.778337] ACPI: PCI: Interrupt link GSI3 configured for IRQ 38
+[    1.786912] iommu: Default domain type: Translated
+[    1.787253] iommu: DMA domain TLB invalidation policy: strict mode
+[    1.792683] SCSI subsystem initialized
+[    1.796333] libata version 3.00 loaded.
+[    1.799606] ACPI: bus type USB registered
+[    1.800856] usbcore: registered new interface driver usbfs
+[    1.801680] usbcore: registered new interface driver hub
+[    1.804427] usbcore: registered new device driver usb
+[    1.806624] pps_core: LinuxPPS API ver. 1 registered
+[    1.806877] pps_core: Software ver. 5.3.6 - Copyright 2005-2007 Rodolfo Giometti <giometti@linux.it>
+[    1.807414] PTP clock support registered
+[    1.813692] scmi_core: SCMI protocol bus registered
+[    1.823397] efivars: Registered efivars operations
+[    1.865386] vgaarb: loaded
+[    1.870680] clocksource: Switched to clocksource arch_sys_counter
+[    1.906053] VFS: Disk quotas dquot_6.6.0
+[    1.906917] VFS: Dquot-cache hash table entries: 512 (order 0, 4096 bytes)
+[    1.920948] pnp: PnP ACPI init
+[    1.934429] system 00:00: [mem 0x4010000000-0x401fffffff window] could not be reserved
+[    1.935664] pnp: PnP ACPI: found 1 devices
+[    2.042857] NET: Registered PF_INET protocol family
+[    2.050563] IP idents hash table entries: 32768 (order: 6, 262144 bytes, linear)
+[    2.067791] tcp_listen_portaddr_hash hash table entries: 1024 (order: 2, 16384 bytes, linear)
+[    2.068420] Table-perturb hash table entries: 65536 (order: 6, 262144 bytes, linear)
+[    2.068862] TCP established hash table entries: 16384 (order: 5, 131072 bytes, linear)
+[    2.072010] TCP bind hash table entries: 16384 (order: 7, 524288 bytes, linear)
+[    2.077068] TCP: Hash tables configured (established 16384 bind 16384)
+[    2.083622] UDP hash table entries: 1024 (order: 3, 32768 bytes, linear)
+[    2.084810] UDP-Lite hash table entries: 1024 (order: 3, 32768 bytes, linear)
+[    2.088420] NET: Registered PF_UNIX/PF_LOCAL protocol family
+[    2.097833] RPC: Registered named UNIX socket transport module.
+[    2.098287] RPC: Registered udp transport module.
+[    2.098488] RPC: Registered tcp transport module.
+[    2.098669] RPC: Registered tcp-with-tls transport module.
+[    2.098861] RPC: Registered tcp NFSv4.1 backchannel transport module.
+[    2.099512] PCI: CLS 0 bytes, default 64
+[    2.123972] Unpacking initramfs...
+[    2.138333] workingset: timestamp_bits=42 max_order=19 bucket_order=0
+[    2.167684] 9p: Installing v9fs 9p2000 file system support
+[    2.219943] Freeing initrd memory: 72K
+[    2.228745] Block layer SCSI generic (bsg) driver version 0.4 loaded (major 249)
+[    2.230136] io scheduler mq-deadline registered
+[    2.230684] io scheduler kyber registered
+[    2.231680] io scheduler bfq registered
+[    2.256614] input: Power Button as /devices/LNXSYSTM:00/LNXSYBUS:00/PNP0C0C:00/input/input0
+[    2.263821] ACPI: button: Power Button [PWRB]
+[    2.275874] EINJ: EINJ table not found.
+[    2.416860] ACPI: bus type drm_connector registered
+[    2.503517] loop: module loaded
+[    2.515871] tun: Universal TUN/TAP device driver, 1.6
+[    2.522059] usbcore: registered new interface driver usb-storage
+[    2.525031] mousedev: PS/2 mouse device common for all mice
+[    2.543025] rtc-efi rtc-efi.0: registered as rtc0
+[    2.546441] rtc-efi rtc-efi.0: setting system clock to 2026-09-04T22:19:35 UTC (1788560375)
+[    2.551931] device-mapper: ioctl: 4.48.0-ioctl (2023-03-01) initialised: dm-devel@redhat.com
+[    2.558871] pstore: Using crash dump compression: deflate
+[    2.559584] pstore: Registered efi_pstore as persistent store backend
+[    2.567445] usbcore: registered new interface driver usbhid
+[    2.567771] usbhid: USB HID core driver
+[    2.580835] hw perfevents: enabled with armv8_pmuv3_0 PMU driver, 5 counters available
+[    2.588802]  cs_system_cfg: CoreSight Configuration manager initialised
+[    2.607066] IPVS: Registered protocols ()
+[    2.607747] IPVS: Connection hash table configured (size=4096, memory=32Kbytes)
+[    2.612034] IPVS: ipvs loaded.
+[    2.617242] NET: Registered PF_INET6 protocol family
+[    2.640828] Segment Routing with IPv6
+[    2.642141] In-situ OAM (IOAM) with IPv6
+[    2.645127] sit: IPv6, IPv4 and MPLS over IPv4 tunneling driver
+[    2.655523] NET: Registered PF_PACKET protocol family
+[    2.657419] Bridge firewalling registered
+[    2.661490] 9pnet: Installing 9P2000 support
+[    2.663814] bpf_jit: CAPEBPF_JIT_POLICY certificate_report=1 certificate_transcript=1 certificate_mutation=0 exploit_evidence=1
+[    2.722056] registered taskstats version 1
+[    2.811568] clk: Disabling unused clocks
+[    2.931490] Freeing unused kernel memory: 960K
+[    2.935278] Run /kernel-identity as init process
+[    2.935566]   with arguments:
+[    2.935725]     /kernel-identity
+[    2.935878]     --mode=exact
+[    2.935996]     --case=unsafe
+[    2.936112]     initrd=initrd
+[    2.936236]   with environment:
+[    2.936380]     HOME=/
+[    2.936503]     TERM=linux
+CAPEBPF_KERNEL_ID release=6.7.0-capebpf-provider-exact
+CAPEBPF_PROVENANCE guest_binding_sha256=3eebe653eb8ae4db191f39ac671ce56fdb089db20c1e8506c8d9afd1a9270e65 source_revision=4e4604875fbf4144f9ce456bc6d60f3ef55da4d0 source_tree=b0d57e3a9532e91435202be0ed8b5a17765bb354
+BPF_JIT_HARDEN=0
+FIXTURE_BEGIN schema=1 mode=exact case=unsafe
+FIXTURE_PROGRAM name=cve3490_ops instructions=48 bytes=384 fnv1a64=de1904150ca961f9 relocations=4,14 hex=b700000000000000630afcff00000000bfa200000000000007020000fcffffff18110000000000000000000000000000850000000100000055000100000000009500000000000000bf07000000000000b700000000000000630afcff00000000bfa200000000000007020000fcffffff18110000000000000000000000000000850000000100000055000100000000009500000000000000bf02000000000000bf73000000000000b4000000000000007927000000000000bf74000000000000b4050000ffffffff67050000200000005f540000000000000704000001000000b705000001000000670500002000000007050000020000005f540000000000000704000001000000b60701000100000095000000000000000f74000000000000bc440000000000005704000001000000bf48000000000000070300000010000027080000ff0f00001f830000000000001f4300000000000027040000100100001f4300000000000079360000000000007b620800000000009500000000000000
+FIXTURE_PROGRAM name=valid_array instructions=10 bytes=80 fnv1a64=8d7c5c72300ab186 relocations=4 hex=b700000000000000630afcff00000000bfa200000000000007020000fcffffff181100000000000000000000000000008500000001000000150001000000000061000000000000009500000000000000
+FIXTURE_MAPS source_fd=3 source_id=1 sink_fd=4 sink_id=2 value_size=4919 max_entries=1
+FIXTURE_SINK phase=before bytes_0_15=0000000000000000b6b6a5a5d4d4c3c3 word_at_8=0xc3c3d4d4a5a5b6b6 fnv1a64=36c487aa1ff6bccf
+[    3.255336] bpf_jit: CERT_BEGIN program=cve3490_ops bpf_len=48 native_len=142 body_start=64 body_end=124 epilogue_start=124 plt_start=139 stack_size=16 executive_return_size=56 image=0xffff8000813f7888
+[    3.256107] bpf_jit: CERT_ENVELOPE program=cve3490_ops region=prologue start=0 end=64 policy=exact_template
+[    3.256501] bpf_jit: CERT_IMAGE_WORD program=cve3490_ops region=prologue native=0 value=910003c9
+[    3.256818] bpf_jit: CERT_IMAGE_WORD program=cve3490_ops region=prologue native=1 value=d503201f
+[    3.257081] bpf_jit: CERT_IMAGE_WORD program=cve3490_ops region=prologue native=2 value=a9bf7bfd
+[    3.257559] bpf_jit: CERT_IMAGE_WORD program=cve3490_ops region=prologue native=3 value=910003fd
+[    3.257849] bpf_jit: CERT_IMAGE_WORD program=cve3490_ops region=prologue native=4 value=a9bf53f3
+[    3.258125] bpf_jit: CERT_IMAGE_WORD program=cve3490_ops region=prologue native=5 value=a9bf5bf5
+[    3.258416] bpf_jit: CERT_IMAGE_WORD program=cve3490_ops region=prologue native=6 value=a9bf63f7
+[    3.258687] bpf_jit: CERT_IMAGE_WORD program=cve3490_ops region=prologue native=7 value=a9bf6bf9
+[    3.258959] bpf_jit: CERT_IMAGE_WORD program=cve3490_ops region=prologue native=8 value=a9bf73fb
+[    3.259230] bpf_jit: CERT_IMAGE_WORD program=cve3490_ops region=prologue native=9 value=a9bf7fff
+[    3.259501] bpf_jit: CERT_IMAGE_WORD program=cve3490_ops region=prologue native=10 value=d10043ff
+[    3.259773] bpf_jit: CERT_IMAGE_WORD program=cve3490_ops region=prologue native=11 value=f90003e9
+[    3.260093] bpf_jit: CERT_IMAGE_WORD program=cve3490_ops region=prologue native=12 value=91000004
+[    3.260370] bpf_jit: CERT_IMAGE_WORD program=cve3490_ops region=prologue native=13 value=910003e0
+[    3.260644] bpf_jit: CERT_IMAGE_WORD program=cve3490_ops region=prologue native=14 value=52800201
+[    3.260917] bpf_jit: CERT_IMAGE_WORD program=cve3490_ops region=prologue native=15 value=10000dc2
+[    3.261186] bpf_jit: CERT_IMAGE_WORD program=cve3490_ops region=prologue native=16 value=52800703
+[    3.261634] bpf_jit: CERT_IMAGE_WORD program=cve3490_ops region=prologue native=17 value=52800005
+[    3.261923] bpf_jit: CERT_IMAGE_WORD program=cve3490_ops region=prologue native=18 value=928c3fe6
+[    3.262200] bpf_jit: CERT_IMAGE_WORD program=cve3490_ops region=prologue native=19 value=f2a00786
+[    3.262502] bpf_jit: CERT_IMAGE_WORD program=cve3490_ops region=prologue native=20 value=f2c00006
+[    3.262793] bpf_jit: CERT_IMAGE_WORD program=cve3490_ops region=prologue native=21 value=52800047
+[    3.263085] bpf_jit: CERT_IMAGE_WORD program=cve3490_ops region=prologue native=22 value=92902fea
+[    3.263375] bpf_jit: CERT_IMAGE_WORD program=cve3490_ops region=prologue native=23 value=f2b0006a
+[    3.263643] bpf_jit: CERT_IMAGE_WORD program=cve3490_ops region=prologue native=24 value=f2d0000a
+[    3.263919] bpf_jit: CERT_IMAGE_WORD program=cve3490_ops region=prologue native=25 value=d63f0140
+[    3.264191] bpf_jit: CERT_IMAGE_WORD program=cve3490_ops region=prologue native=26 value=b4000060
+[    3.264481] bpf_jit: CERT_IMAGE_WORD program=cve3490_ops region=prologue native=27 value=d2800007
+[    3.264770] bpf_jit: CERT_IMAGE_WORD program=cve3490_ops region=prologue native=28 value=14000061
+[    3.265059] bpf_jit: CERT_IMAGE_WORD program=cve3490_ops region=prologue native=29 value=d2800000
+[    3.265345] bpf_jit: CERT_IMAGE_WORD program=cve3490_ops region=prologue native=30 value=d2800001
+[    3.265775] bpf_jit: CERT_IMAGE_WORD program=cve3490_ops region=prologue native=31 value=d2800002
+[    3.266061] bpf_jit: CERT_IMAGE_WORD program=cve3490_ops region=prologue native=32 value=d2800003
+[    3.266345] bpf_jit: CERT_IMAGE_WORD program=cve3490_ops region=prologue native=33 value=d2800004
+[    3.266637] bpf_jit: CERT_IMAGE_WORD program=cve3490_ops region=prologue native=34 value=d2800005
+[    3.266914] bpf_jit: CERT_IMAGE_WORD program=cve3490_ops region=prologue native=35 value=d2800006
+[    3.267182] bpf_jit: CERT_IMAGE_WORD program=cve3490_ops region=prologue native=36 value=d2800007
+[    3.267459] bpf_jit: CERT_IMAGE_WORD program=cve3490_ops region=prologue native=37 value=d2800008
+[    3.267731] bpf_jit: CERT_IMAGE_WORD program=cve3490_ops region=prologue native=38 value=d2800009
+[    3.268002] bpf_jit: CERT_IMAGE_WORD program=cve3490_ops region=prologue native=39 value=d280000a
+[    3.268277] bpf_jit: CERT_IMAGE_WORD program=cve3490_ops region=prologue native=40 value=d280000b
+[    3.268551] bpf_jit: CERT_IMAGE_WORD program=cve3490_ops region=prologue native=41 value=d280000c
+[    3.268818] bpf_jit: CERT_IMAGE_WORD program=cve3490_ops region=prologue native=42 value=d280000d
+[    3.269091] bpf_jit: CERT_IMAGE_WORD program=cve3490_ops region=prologue native=43 value=d280000e
+[    3.269560] bpf_jit: CERT_IMAGE_WORD program=cve3490_ops region=prologue native=44 value=d2800013
+[    3.269848] bpf_jit: CERT_IMAGE_WORD program=cve3490_ops region=prologue native=45 value=d2800014
+[    3.270119] bpf_jit: CERT_IMAGE_WORD program=cve3490_ops region=prologue native=46 value=d2800015
+[    3.270397] bpf_jit: CERT_IMAGE_WORD program=cve3490_ops region=prologue native=47 value=d2800016
+[    3.270668] bpf_jit: CERT_IMAGE_WORD program=cve3490_ops region=prologue native=48 value=d2800017
+[    3.270940] bpf_jit: CERT_IMAGE_WORD program=cve3490_ops region=prologue native=49 value=d2800018
+[    3.271207] bpf_jit: CERT_IMAGE_WORD program=cve3490_ops region=prologue native=50 value=d2800019
+[    3.271468] bpf_jit: CERT_IMAGE_WORD program=cve3490_ops region=prologue native=51 value=d280001a
+[    3.271722] bpf_jit: CERT_IMAGE_WORD program=cve3490_ops region=prologue native=52 value=d280001b
+[    3.271979] bpf_jit: CERT_IMAGE_WORD program=cve3490_ops region=prologue native=53 value=d280001c
+[    3.272235] bpf_jit: CERT_IMAGE_WORD program=cve3490_ops region=prologue native=54 value=d280001d
+[    3.272490] bpf_jit: CERT_IMAGE_WORD program=cve3490_ops region=prologue native=55 value=c2c1d200
+[    3.272742] bpf_jit: CERT_IMAGE_WORD program=cve3490_ops region=prologue native=56 value=d2800010
+[    3.272998] bpf_jit: CERT_IMAGE_WORD program=cve3490_ops region=prologue native=57 value=c2c1d3f9
+[    3.273563] bpf_jit: CERT_IMAGE_WORD program=cve3490_ops region=prologue native=58 value=02804339
+[    3.273842] bpf_jit: CERT_IMAGE_WORD program=cve3490_ops region=prologue native=59 value=c2c83b39
+[    3.274099] bpf_jit: CERT_IMAGE_WORD program=cve3490_ops region=prologue native=60 value=02004339
+[    3.274365] bpf_jit: CERT_IMAGE_WORD program=cve3490_ops region=prologue native=61 value=d280001a
+[    3.274618] bpf_jit: CERT_IMAGE_WORD program=cve3490_ops region=prologue native=62 value=d100033b
+[    3.274873] bpf_jit: CERT_IMAGE_WORD program=cve3490_ops region=prologue native=63 value=d10043ff
+[    3.275188] bpf_jit: CERT_ENVELOPE program=cve3490_ops region=software_stub start=124 end=124 policy=exact_template
+[    3.275555] bpf_jit: CERT_ENVELOPE program=cve3490_ops region=epilogue start=124 end=139 policy=exact_template
+[    3.275920] bpf_jit: CERT_IMAGE_WORD program=cve3490_ops region=epilogue native=124 value=c2c253c0
+[    3.276231] bpf_jit: CERT_IMAGE_WORD program=cve3490_ops region=epilogue native=125 value=910043ff
+[    3.276493] bpf_jit: CERT_IMAGE_WORD program=cve3490_ops region=epilogue native=126 value=c24003f0
+[    3.276754] bpf_jit: CERT_IMAGE_WORD program=cve3490_ops region=epilogue native=127 value=910043ff
+[    3.277014] bpf_jit: CERT_IMAGE_WORD program=cve3490_ops region=epilogue native=128 value=a8c173fb
+[    3.277432] bpf_jit: CERT_IMAGE_WORD program=cve3490_ops region=epilogue native=129 value=a8c16bf9
+[    3.277705] bpf_jit: CERT_IMAGE_WORD program=cve3490_ops region=epilogue native=130 value=a8c163f7
+[    3.278007] bpf_jit: CERT_IMAGE_WORD program=cve3490_ops region=epilogue native=131 value=a8c15bf5
+[    3.278300] bpf_jit: CERT_IMAGE_WORD program=cve3490_ops region=epilogue native=132 value=a8c153f3
+[    3.278560] bpf_jit: CERT_IMAGE_WORD program=cve3490_ops region=epilogue native=133 value=a8c17bfd
+[    3.278816] bpf_jit: CERT_IMAGE_WORD program=cve3490_ops region=epilogue native=134 value=910000e0
+[    3.279072] bpf_jit: CERT_IMAGE_WORD program=cve3490_ops region=epilogue native=135 value=c2c0920a
+[    3.279333] bpf_jit: CERT_IMAGE_WORD program=cve3490_ops region=epilogue native=136 value=b400004a
+[    3.279593] bpf_jit: CERT_IMAGE_WORD program=cve3490_ops region=epilogue native=137 value=c2c25203
+[    3.279848] bpf_jit: CERT_IMAGE_WORD program=cve3490_ops region=epilogue native=138 value=d65f03c0
+[    3.280155] bpf_jit: CERT_ENVELOPE program=cve3490_ops region=plt start=139 end=142 policy=exact_template
+[    3.280516] bpf_jit: CERT_IMAGE_WORD program=cve3490_ops region=plt native=139 value=d503201f
+[    3.280818] bpf_jit: CERT_IMAGE_WORD program=cve3490_ops region=plt native=140 value=5800004a
+[    3.281072] bpf_jit: CERT_IMAGE_WORD program=cve3490_ops region=plt native=141 value=d61f0140
+[    3.281651] bpf_jit: CERT_SOURCE program=cve3490_ops bpf=0 code=b7 dst=0 src=0
+[    3.281927] bpf_jit: CERT_STATE program=cve3490_ops bpf=0 dst_kind=64 src_kind=64 helper=4
+[    3.282198] bpf_jit: CERT_RANGE program=cve3490_ops bpf=0 off=0 imm=0 start=64 end=65
+[    3.282492] bpf_jit: CERT_WORD program=cve3490_ops bpf=0 native=64 value=d2800007
+[    3.282738] bpf_jit: CERT_SOURCE program=cve3490_ops bpf=1 code=63 dst=10 src=0
+[    3.282946] bpf_jit: CERT_STATE program=cve3490_ops bpf=1 dst_kind=2 src_kind=1 helper=4
+[    3.283160] bpf_jit: CERT_RANGE program=cve3490_ops bpf=1 off=-4 imm=0 start=65 end=66
+[    3.283387] bpf_jit: CERT_WORD program=cve3490_ops bpf=1 native=65 value=e29fc327
+[    3.283576] bpf_jit: CERT_SOURCE program=cve3490_ops bpf=2 code=bf dst=2 src=10
+[    3.283763] bpf_jit: CERT_STATE program=cve3490_ops bpf=2 dst_kind=64 src_kind=2 helper=4
+[    3.284389] bpf_jit: CERT_RANGE program=cve3490_ops bpf=2 off=0 imm=0 start=66 end=67
+[    3.284611] bpf_jit: CERT_WORD program=cve3490_ops bpf=2 native=66 value=c2c1d321
+[    3.284811] bpf_jit: CERT_SOURCE program=cve3490_ops bpf=3 code=07 dst=2 src=0
+[    3.285007] bpf_jit: CERT_STATE program=cve3490_ops bpf=3 dst_kind=2 src_kind=1 helper=4
+[    3.285226] bpf_jit: CERT_RANGE program=cve3490_ops bpf=3 off=0 imm=-4 start=67 end=68
+[    3.285631] bpf_jit: CERT_WORD program=cve3490_ops bpf=3 native=67 value=02801021
+[    3.285850] bpf_jit: CERT_SOURCE program=cve3490_ops bpf=4 code=18 dst=1 src=0
+[    3.286061] bpf_jit: CERT_STATE program=cve3490_ops bpf=4 dst_kind=4 src_kind=1 helper=4
+[    3.286297] bpf_jit: CERT_RANGE program=cve3490_ops bpf=4 off=0 imm=13074432 start=68 end=69
+[    3.286552] bpf_jit: CERT_WORD program=cve3490_ops bpf=4 native=68 value=52800000
+[    3.286773] bpf_jit: CERT_SOURCE program=cve3490_ops bpf=5 code=00 dst=0 src=0
+[    3.286993] bpf_jit: CERT_STATE program=cve3490_ops bpf=5 dst_kind=0 src_kind=0 helper=4
+[    3.287235] bpf_jit: CERT_RANGE program=cve3490_ops bpf=5 off=0 imm=-65536 start=69 end=69
+[    3.287677] bpf_jit: CERT_SOURCE program=cve3490_ops bpf=6 code=85 dst=0 src=0
+[    3.287922] bpf_jit: CERT_STATE program=cve3490_ops bpf=6 dst_kind=1 src_kind=1 helper=0
+[    3.288177] bpf_jit: CERT_RANGE program=cve3490_ops bpf=6 off=0 imm=284272 start=69 end=73
+[    3.288453] bpf_jit: CERT_WORD program=cve3490_ops bpf=6 native=69 value=d2800004
+[    3.288722] bpf_jit: CERT_WORD program=cve3490_ops bpf=6 native=70 value=c2c1d3cd
+[    3.288960] bpf_jit: CERT_WORD program=cve3490_ops bpf=6 native=71 value=c2c23222
+[    3.289200] bpf_jit: CERT_WORD program=cve3490_ops bpf=6 native=72 value=c2c1d007
+[    3.289607] bpf_jit: CERT_SOURCE program=cve3490_ops bpf=7 code=55 dst=0 src=0
+[    3.289859] bpf_jit: CERT_STATE program=cve3490_ops bpf=7 dst_kind=48 src_kind=48 helper=4
+[    3.290122] bpf_jit: CERT_RANGE program=cve3490_ops bpf=7 off=1 imm=0 start=73 end=75
+[    3.290408] bpf_jit: CERT_WORD program=cve3490_ops bpf=7 native=73 value=f10000ff
+[    3.290665] bpf_jit: CERT_WORD program=cve3490_ops bpf=7 native=74 value=54000041
+[    3.290918] bpf_jit: CERT_SOURCE program=cve3490_ops bpf=8 code=95 dst=0 src=0
+[    3.291167] bpf_jit: CERT_STATE program=cve3490_ops bpf=8 dst_kind=32 src_kind=32 helper=4
+[    3.291438] bpf_jit: CERT_RANGE program=cve3490_ops bpf=8 off=0 imm=0 start=75 end=76
+[    3.291688] bpf_jit: CERT_WORD program=cve3490_ops bpf=8 native=75 value=14000031
+[    3.291929] bpf_jit: CERT_SOURCE program=cve3490_ops bpf=9 code=bf dst=7 src=0
+[    3.292159] bpf_jit: CERT_STATE program=cve3490_ops bpf=9 dst_kind=64 src_kind=16 helper=4
+[    3.292427] bpf_jit: CERT_RANGE program=cve3490_ops bpf=9 off=0 imm=0 start=76 end=77
+[    3.292663] bpf_jit: CERT_WORD program=cve3490_ops bpf=9 native=76 value=c2c1d0f4
+[    3.292886] bpf_jit: CERT_SOURCE program=cve3490_ops bpf=10 code=b7 dst=0 src=0
+[    3.293106] bpf_jit: CERT_STATE program=cve3490_ops bpf=10 dst_kind=16 src_kind=16 helper=4
+[    3.293490] bpf_jit: CERT_RANGE program=cve3490_ops bpf=10 off=0 imm=0 start=77 end=78
+[    3.293741] bpf_jit: CERT_WORD program=cve3490_ops bpf=10 native=77 value=d2800007
+[    3.293972] bpf_jit: CERT_SOURCE program=cve3490_ops bpf=11 code=63 dst=10 src=0
+[    3.294195] bpf_jit: CERT_STATE program=cve3490_ops bpf=11 dst_kind=2 src_kind=1 helper=4
+[    3.294437] bpf_jit: CERT_RANGE program=cve3490_ops bpf=11 off=-4 imm=0 start=78 end=79
+[    3.294832] bpf_jit: CERT_WORD program=cve3490_ops bpf=11 native=78 value=e29fc327
+[    3.295053] bpf_jit: CERT_SOURCE program=cve3490_ops bpf=12 code=bf dst=2 src=10
+[    3.295278] bpf_jit: CERT_STATE program=cve3490_ops bpf=12 dst_kind=64 src_kind=2 helper=4
+[    3.295511] bpf_jit: CERT_RANGE program=cve3490_ops bpf=12 off=0 imm=0 start=79 end=80
+[    3.295741] bpf_jit: CERT_WORD program=cve3490_ops bpf=12 native=79 value=c2c1d321
+[    3.295952] bpf_jit: CERT_SOURCE program=cve3490_ops bpf=13 code=07 dst=2 src=0
+[    3.296163] bpf_jit: CERT_STATE program=cve3490_ops bpf=13 dst_kind=2 src_kind=1 helper=4
+[    3.296395] bpf_jit: CERT_RANGE program=cve3490_ops bpf=13 off=0 imm=-4 start=80 end=81
+[    3.296626] bpf_jit: CERT_WORD program=cve3490_ops bpf=13 native=80 value=02801021
+[    3.296837] bpf_jit: CERT_SOURCE program=cve3490_ops bpf=14 code=18 dst=1 src=0
+[    3.297090] bpf_jit: CERT_STATE program=cve3490_ops bpf=14 dst_kind=64 src_kind=1 helper=4
+[    3.297535] bpf_jit: CERT_RANGE program=cve3490_ops bpf=14 off=0 imm=13082624 start=81 end=82
+[    3.297797] bpf_jit: CERT_WORD program=cve3490_ops bpf=14 native=81 value=52800020
+[    3.298013] bpf_jit: CERT_SOURCE program=cve3490_ops bpf=15 code=00 dst=0 src=0
+[    3.298233] bpf_jit: CERT_STATE program=cve3490_ops bpf=15 dst_kind=0 src_kind=0 helper=4
+[    3.298463] bpf_jit: CERT_RANGE program=cve3490_ops bpf=15 off=0 imm=-65536 start=82 end=82
+[    3.298705] bpf_jit: CERT_SOURCE program=cve3490_ops bpf=16 code=85 dst=0 src=0
+[    3.298915] bpf_jit: CERT_STATE program=cve3490_ops bpf=16 dst_kind=1 src_kind=1 helper=0
+[    3.299145] bpf_jit: CERT_RANGE program=cve3490_ops bpf=16 off=0 imm=284272 start=82 end=86
+[    3.299386] bpf_jit: CERT_WORD program=cve3490_ops bpf=16 native=82 value=d2800004
+[    3.299586] bpf_jit: CERT_WORD program=cve3490_ops bpf=16 native=83 value=c2c1d3cd
+[    3.299788] bpf_jit: CERT_WORD program=cve3490_ops bpf=16 native=84 value=c2c23222
+[    3.299990] bpf_jit: CERT_WORD program=cve3490_ops bpf=16 native=85 value=c2c1d007
+[    3.300191] bpf_jit: CERT_SOURCE program=cve3490_ops bpf=17 code=55 dst=0 src=0
+[    3.300384] bpf_jit: CERT_STATE program=cve3490_ops bpf=17 dst_kind=48 src_kind=48 helper=4
+[    3.300593] bpf_jit: CERT_RANGE program=cve3490_ops bpf=17 off=1 imm=0 start=86 end=88
+[    3.300799] bpf_jit: CERT_WORD program=cve3490_ops bpf=17 native=86 value=f10000ff
+[    3.300992] bpf_jit: CERT_WORD program=cve3490_ops bpf=17 native=87 value=54000041
+[    3.301188] bpf_jit: CERT_SOURCE program=cve3490_ops bpf=18 code=95 dst=0 src=0
+[    3.301556] bpf_jit: CERT_STATE program=cve3490_ops bpf=18 dst_kind=32 src_kind=32 helper=4
+[    3.301790] bpf_jit: CERT_RANGE program=cve3490_ops bpf=18 off=0 imm=0 start=88 end=89
+[    3.302009] bpf_jit: CERT_WORD program=cve3490_ops bpf=18 native=88 value=14000024
+[    3.302212] bpf_jit: CERT_SOURCE program=cve3490_ops bpf=19 code=bf dst=2 src=0
+[    3.302408] bpf_jit: CERT_STATE program=cve3490_ops bpf=19 dst_kind=64 src_kind=16 helper=4
+[    3.302619] bpf_jit: CERT_RANGE program=cve3490_ops bpf=19 off=0 imm=0 start=89 end=90
+[    3.302823] bpf_jit: CERT_WORD program=cve3490_ops bpf=19 native=89 value=c2c1d0e1
+[    3.303016] bpf_jit: CERT_SOURCE program=cve3490_ops bpf=20 code=bf dst=3 src=7
+[    3.303203] bpf_jit: CERT_STATE program=cve3490_ops bpf=20 dst_kind=64 src_kind=16 helper=4
+[    3.303424] bpf_jit: CERT_RANGE program=cve3490_ops bpf=20 off=0 imm=0 start=90 end=91
+[    3.303641] bpf_jit: CERT_WORD program=cve3490_ops bpf=20 native=90 value=c2c1d282
+[    3.303842] bpf_jit: CERT_SOURCE program=cve3490_ops bpf=21 code=b4 dst=0 src=0
+[    3.304038] bpf_jit: CERT_STATE program=cve3490_ops bpf=21 dst_kind=16 src_kind=16 helper=4
+[    3.304263] bpf_jit: CERT_RANGE program=cve3490_ops bpf=21 off=0 imm=0 start=91 end=92
+[    3.304548] bpf_jit: CERT_WORD program=cve3490_ops bpf=21 native=91 value=52800007
+[    3.304747] bpf_jit: CERT_SOURCE program=cve3490_ops bpf=22 code=79 dst=7 src=2
+[    3.304935] bpf_jit: CERT_STATE program=cve3490_ops bpf=22 dst_kind=16 src_kind=16 helper=4
+[    3.305146] bpf_jit: CERT_RANGE program=cve3490_ops bpf=22 off=0 imm=0 start=92 end=93
+[    3.305510] bpf_jit: CERT_WORD program=cve3490_ops bpf=22 native=92 value=e2c00434
+[    3.305725] bpf_jit: CERT_SOURCE program=cve3490_ops bpf=23 code=bf dst=4 src=7
+[    3.305928] bpf_jit: CERT_STATE program=cve3490_ops bpf=23 dst_kind=64 src_kind=1 helper=4
+[    3.306152] bpf_jit: CERT_RANGE program=cve3490_ops bpf=23 off=0 imm=0 start=93 end=94
+[    3.306367] bpf_jit: CERT_WORD program=cve3490_ops bpf=23 native=93 value=c2c1d283
+[    3.306559] bpf_jit: CERT_SOURCE program=cve3490_ops bpf=24 code=b4 dst=5 src=0
+[    3.306750] bpf_jit: CERT_STATE program=cve3490_ops bpf=24 dst_kind=64 src_kind=1 helper=4
+[    3.306959] bpf_jit: CERT_RANGE program=cve3490_ops bpf=24 off=0 imm=-1 start=94 end=95
+[    3.307168] bpf_jit: CERT_WORD program=cve3490_ops bpf=24 native=94 value=12800004
+[    3.307373] bpf_jit: CERT_SOURCE program=cve3490_ops bpf=25 code=67 dst=5 src=0
+[    3.307569] bpf_jit: CERT_STATE program=cve3490_ops bpf=25 dst_kind=1 src_kind=1 helper=4
+[    3.307785] bpf_jit: CERT_RANGE program=cve3490_ops bpf=25 off=0 imm=32 start=95 end=96
+[    3.308000] bpf_jit: CERT_WORD program=cve3490_ops bpf=25 native=95 value=d3607c84
+[    3.308204] bpf_jit: CERT_SOURCE program=cve3490_ops bpf=26 code=5f dst=4 src=5
+[    3.308394] bpf_jit: CERT_STATE program=cve3490_ops bpf=26 dst_kind=1 src_kind=1 helper=4
+[    3.308598] bpf_jit: CERT_RANGE program=cve3490_ops bpf=26 off=0 imm=0 start=96 end=97
+[    3.308803] bpf_jit: CERT_WORD program=cve3490_ops bpf=26 native=96 value=8a040063
+[    3.309002] bpf_jit: CERT_SOURCE program=cve3490_ops bpf=27 code=07 dst=4 src=0
+[    3.309193] bpf_jit: CERT_STATE program=cve3490_ops bpf=27 dst_kind=1 src_kind=1 helper=4
+[    3.309643] bpf_jit: CERT_RANGE program=cve3490_ops bpf=27 off=0 imm=1 start=97 end=98
+[    3.309870] bpf_jit: CERT_WORD program=cve3490_ops bpf=27 native=97 value=91000463
+[    3.310076] bpf_jit: CERT_SOURCE program=cve3490_ops bpf=28 code=b7 dst=5 src=0
+[    3.310279] bpf_jit: CERT_STATE program=cve3490_ops bpf=28 dst_kind=1 src_kind=1 helper=4
+[    3.310486] bpf_jit: CERT_RANGE program=cve3490_ops bpf=28 off=0 imm=1 start=98 end=99
+[    3.310688] bpf_jit: CERT_WORD program=cve3490_ops bpf=28 native=98 value=d2800024
+[    3.310879] bpf_jit: CERT_SOURCE program=cve3490_ops bpf=29 code=67 dst=5 src=0
+[    3.311069] bpf_jit: CERT_STATE program=cve3490_ops bpf=29 dst_kind=1 src_kind=1 helper=4
+[    3.311280] bpf_jit: CERT_RANGE program=cve3490_ops bpf=29 off=0 imm=32 start=99 end=100
+[    3.311512] bpf_jit: CERT_WORD program=cve3490_ops bpf=29 native=99 value=d3607c84
+[    3.311712] bpf_jit: CERT_SOURCE program=cve3490_ops bpf=30 code=07 dst=5 src=0
+[    3.311912] bpf_jit: CERT_STATE program=cve3490_ops bpf=30 dst_kind=1 src_kind=1 helper=4
+[    3.312131] bpf_jit: CERT_RANGE program=cve3490_ops bpf=30 off=0 imm=2 start=100 end=101
+[    3.312347] bpf_jit: CERT_WORD program=cve3490_ops bpf=30 native=100 value=91000884
+[    3.312540] bpf_jit: CERT_SOURCE program=cve3490_ops bpf=31 code=5f dst=4 src=5
+[    3.312727] bpf_jit: CERT_STATE program=cve3490_ops bpf=31 dst_kind=1 src_kind=1 helper=4
+[    3.312931] bpf_jit: CERT_RANGE program=cve3490_ops bpf=31 off=0 imm=0 start=101 end=102
+[    3.313136] bpf_jit: CERT_WORD program=cve3490_ops bpf=31 native=101 value=8a040063
+[    3.313694] bpf_jit: CERT_SOURCE program=cve3490_ops bpf=32 code=07 dst=4 src=0
+[    3.313911] bpf_jit: CERT_STATE program=cve3490_ops bpf=32 dst_kind=1 src_kind=1 helper=4
+[    3.314135] bpf_jit: CERT_RANGE program=cve3490_ops bpf=32 off=0 imm=1 start=102 end=103
+[    3.314357] bpf_jit: CERT_WORD program=cve3490_ops bpf=32 native=102 value=91000463
+[    3.314555] bpf_jit: CERT_SOURCE program=cve3490_ops bpf=33 code=b6 dst=7 src=0
+[    3.314743] bpf_jit: CERT_STATE program=cve3490_ops bpf=33 dst_kind=1 src_kind=1 helper=4
+[    3.315014] bpf_jit: CERT_RANGE program=cve3490_ops bpf=33 off=1 imm=1 start=103 end=105
+[    3.315233] bpf_jit: CERT_WORD program=cve3490_ops bpf=33 native=103 value=7100069f
+[    3.315440] bpf_jit: CERT_WORD program=cve3490_ops bpf=33 native=104 value=54000049
+[    3.315645] bpf_jit: CERT_SOURCE program=cve3490_ops bpf=34 code=95 dst=0 src=0
+[    3.315843] bpf_jit: CERT_STATE program=cve3490_ops bpf=34 dst_kind=1 src_kind=1 helper=4
+[    3.316058] bpf_jit: CERT_RANGE program=cve3490_ops bpf=34 off=0 imm=0 start=105 end=106
+[    3.316290] bpf_jit: CERT_WORD program=cve3490_ops bpf=34 native=105 value=14000013
+[    3.316988] bpf_jit: CERT_SOURCE program=cve3490_ops bpf=35 code=0f dst=4 src=7
+[    3.317263] bpf_jit: CERT_STATE program=cve3490_ops bpf=35 dst_kind=1 src_kind=1 helper=4
+[    3.317613] bpf_jit: CERT_RANGE program=cve3490_ops bpf=35 off=0 imm=0 start=106 end=107
+[    3.317851] bpf_jit: CERT_WORD program=cve3490_ops bpf=35 native=106 value=8b140063
+[    3.318069] bpf_jit: CERT_SOURCE program=cve3490_ops bpf=36 code=bc dst=4 src=4
+[    3.318289] bpf_jit: CERT_STATE program=cve3490_ops bpf=36 dst_kind=1 src_kind=1 helper=4
+[    3.318520] bpf_jit: CERT_RANGE program=cve3490_ops bpf=36 off=0 imm=0 start=107 end=108
+[    3.318751] bpf_jit: CERT_WORD program=cve3490_ops bpf=36 native=107 value=11000063
+[    3.318967] bpf_jit: CERT_SOURCE program=cve3490_ops bpf=37 code=57 dst=4 src=0
+[    3.319176] bpf_jit: CERT_STATE program=cve3490_ops bpf=37 dst_kind=1 src_kind=1 helper=4
+[    3.319419] bpf_jit: CERT_RANGE program=cve3490_ops bpf=37 off=0 imm=1 start=108 end=109
+[    3.319663] bpf_jit: CERT_WORD program=cve3490_ops bpf=37 native=108 value=92400063
+[    3.319891] bpf_jit: CERT_SOURCE program=cve3490_ops bpf=38 code=bf dst=8 src=4
+[    3.320116] bpf_jit: CERT_STATE program=cve3490_ops bpf=38 dst_kind=64 src_kind=1 helper=4
+[    3.320374] bpf_jit: CERT_RANGE program=cve3490_ops bpf=38 off=0 imm=0 start=109 end=110
+[    3.320632] bpf_jit: CERT_WORD program=cve3490_ops bpf=38 native=109 value=c2c1d075
+[    3.320872] bpf_jit: CERT_SOURCE program=cve3490_ops bpf=39 code=07 dst=3 src=0
+[    3.321105] bpf_jit: CERT_STATE program=cve3490_ops bpf=39 dst_kind=16 src_kind=1 helper=4
+[    3.321521] bpf_jit: CERT_RANGE program=cve3490_ops bpf=39 off=0 imm=4096 start=110 end=112
+[    3.321806] bpf_jit: CERT_WORD program=cve3490_ops bpf=39 native=110 value=023ffc42
+[    3.322051] bpf_jit: CERT_WORD program=cve3490_ops bpf=39 native=111 value=02000442
+[    3.322306] bpf_jit: CERT_SOURCE program=cve3490_ops bpf=40 code=27 dst=8 src=0
+[    3.322543] bpf_jit: CERT_STATE program=cve3490_ops bpf=40 dst_kind=1 src_kind=1 helper=4
+[    3.322815] bpf_jit: CERT_RANGE program=cve3490_ops bpf=40 off=0 imm=4095 start=112 end=114
+[    3.323084] bpf_jit: CERT_WORD program=cve3490_ops bpf=40 native=112 value=d281ffea
+[    3.323331] bpf_jit: CERT_WORD program=cve3490_ops bpf=40 native=113 value=9b0a7eb5
+[    3.323575] bpf_jit: CERT_SOURCE program=cve3490_ops bpf=41 code=1f dst=3 src=8
+[    3.323813] bpf_jit: CERT_STATE program=cve3490_ops bpf=41 dst_kind=16 src_kind=1 helper=4
+[    3.324075] bpf_jit: CERT_RANGE program=cve3490_ops bpf=41 off=0 imm=0 start=114 end=116
+[    3.324338] bpf_jit: CERT_WORD program=cve3490_ops bpf=41 native=114 value=cb1503ea
+[    3.324581] bpf_jit: CERT_WORD program=cve3490_ops bpf=41 native=115 value=c2aae042
+[    3.324824] bpf_jit: CERT_SOURCE program=cve3490_ops bpf=42 code=1f dst=3 src=4
+[    3.325061] bpf_jit: CERT_STATE program=cve3490_ops bpf=42 dst_kind=16 src_kind=1 helper=4
+[    3.325474] bpf_jit: CERT_RANGE program=cve3490_ops bpf=42 off=0 imm=0 start=116 end=118
+[    3.325750] bpf_jit: CERT_WORD program=cve3490_ops bpf=42 native=116 value=cb0303ea
+[    3.325994] bpf_jit: CERT_WORD program=cve3490_ops bpf=42 native=117 value=c2aae042
+[    3.326250] bpf_jit: CERT_SOURCE program=cve3490_ops bpf=43 code=27 dst=4 src=0
+[    3.326687] bpf_jit: CERT_STATE program=cve3490_ops bpf=43 dst_kind=1 src_kind=1 helper=4
+[    3.327210] bpf_jit: CERT_RANGE program=cve3490_ops bpf=43 off=0 imm=272 start=118 end=120
+[    3.327493] bpf_jit: CERT_WORD program=cve3490_ops bpf=43 native=118 value=d280220a
+[    3.327737] bpf_jit: CERT_WORD program=cve3490_ops bpf=43 native=119 value=9b0a7c63
+[    3.327982] bpf_jit: CERT_SOURCE program=cve3490_ops bpf=44 code=1f dst=3 src=4
+[    3.328222] bpf_jit: CERT_STATE program=cve3490_ops bpf=44 dst_kind=16 src_kind=1 helper=4
+[    3.328473] bpf_jit: CERT_RANGE program=cve3490_ops bpf=44 off=0 imm=0 start=120 end=122
+[    3.328717] bpf_jit: CERT_WORD program=cve3490_ops bpf=44 native=120 value=cb0303ea
+[    3.328951] bpf_jit: CERT_WORD program=cve3490_ops bpf=44 native=121 value=c2aae042
+[    3.329178] bpf_jit: CERT_SOURCE program=cve3490_ops bpf=45 code=79 dst=6 src=3
+[    3.329699] bpf_jit: CERT_STATE program=cve3490_ops bpf=45 dst_kind=64 src_kind=16 helper=4
+[    3.329980] bpf_jit: CERT_RANGE program=cve3490_ops bpf=45 off=0 imm=0 start=122 end=123
+[    3.330254] bpf_jit: CERT_WORD program=cve3490_ops bpf=45 native=122 value=e2c00453
+[    3.330499] bpf_jit: CERT_SOURCE program=cve3490_ops bpf=46 code=7b dst=2 src=6
+[    3.330734] bpf_jit: CERT_STATE program=cve3490_ops bpf=46 dst_kind=16 src_kind=1 helper=4
+[    3.330995] bpf_jit: CERT_RANGE program=cve3490_ops bpf=46 off=8 imm=0 start=123 end=124
+[    3.331260] bpf_jit: CERT_WORD program=cve3490_ops bpf=46 native=123 value=e2c08033
+[    3.331505] bpf_jit: CERT_SOURCE program=cve3490_ops bpf=47 code=95 dst=0 src=0
+[    3.331741] bpf_jit: CERT_STATE program=cve3490_ops bpf=47 dst_kind=1 src_kind=1 helper=4
+[    3.331999] bpf_jit: CERT_RANGE program=cve3490_ops bpf=47 off=0 imm=0 start=124 end=124
+[    3.332411] bpf_jit: CERT_END program=cve3490_ops covered_words=142
+[    3.337033] bpf_jit: authority certificate accepted program cve3490_ops memory=5 stack=2 context=0 map=3 ringbuf=0 copies=5 pointer_arithmetic=6 helpers=2 map_lookup=2 ringbuf_reserve=0 ringbuf_submit=0 ringbuf_discard=0
+[    3.338062] bpf_jit: CERT_DECISION program=cve3490_ops accepted=1 stage=complete covered_words=142 image_fnv1a64=6d0ee7233d32f846
+FIXTURE_LOAD name=cve3490_ops accepted=1 errno=0 flags=0x80
+FIXTURE_NATIVE name=cve3490_ops jited_len=568
+[    3.350700] bpf_jit: ROOT_ATTEST kind=caller_return destination=c16_epilogue object=kernel_pcc object_id=0x0 expected_size=18446744073709551615 tag=1 sealed=1 base=0x0 length=18446744073709551615 address=0xffff800080957128 perms=0x3ffff
+[    3.351418] bpf_jit: ROOT_ATTEST kind=context destination=c16 object=socket_context object_id=0xffff000000c04000 expected_size=0 tag=0 sealed=0 base=0x0 length=18446744073709551615 address=0x0 perms=0x3ffff
+[    3.352045] bpf_jit: ROOT_ATTEST kind=native_stack destination=rcsp_el0 object=jit_invocation_frame object_id=0xffff000000f777f0 expected_size=16 tag=1 sealed=0 base=0xffff000000f777f0 length=16 address=0xffff000000f77800 perms=0x37dfd
+[    3.352759] bpf_jit: ROOT_ATTEST kind=restricted_code destination=pcc object=jit_restricted object_id=0xffff8000813f78f0 expected_size=396 tag=1 sealed=1 base=0xffff8000813f78f0 length=396 address=0xffff8000813f78f0 perms=0x3fdfd
+[    3.353771] bpf_jit: ROOT_ATTEST kind=executive_return destination=clr object=jit_epilogue object_id=0xffff8000813f7a7c expected_size=56 tag=1 sealed=1 base=0xffff8000813f7a7c length=56 address=0xffff8000813f7a7c perms=0x3ffff
+[    3.355274] PROVIDER_RECEIPT origin=hybrid_ddc_allocation_event mode=exact binding_valid=1 provider_id=1 map_id=1 map=0xffff000000c78000 provider_ops=0xffff800080b57fb0 key=0 root_tag=1 root_base=0xffff000000c78000 root_length=5240 root_perms=0x34dfd values_base=0xffff000000c78110 values_length=4920 value_base=0xffff000000c78110 value_length=4919 cap_tag=1 cap_base=0xffff000000c78110 cap_length=4919 cap_address=0xffff000000c78110 cap_perms=0x34dfd
+[    3.356337] bpf_jit: ROOT_ATTEST kind=map_value destination=c0_helper_return object=map_value object_id=0xffff000000c78110 expected_size=4919 tag=1 sealed=0 base=0xffff000000c78110 length=4919 address=0xffff000000c78110 perms=0x34dfd
+[    3.356946] bpf_jit: EXPLOIT_CAP helper=map_lookup token=0 tag=1 map_id=1 map_type=2 selected=0xffff000000c78110 value_size=4919 authority=exact_provider sealed=0 base=0xffff000000c78110 length=4919 address=0xffff000000c78110 perms=0x34dfd
+[    3.357825] PROVIDER_RECEIPT origin=hybrid_ddc_allocation_event mode=exact binding_valid=1 provider_id=2 map_id=2 map=0xffff000000c7a000 provider_ops=0xffff800080b57fb0 key=0 root_tag=1 root_base=0xffff000000c7a000 root_length=5240 root_perms=0x34dfd values_base=0xffff000000c7a110 values_length=4920 value_base=0xffff000000c7a110 value_length=4919 cap_tag=1 cap_base=0xffff000000c7a110 cap_length=4919 cap_address=0xffff000000c7a110 cap_perms=0x34dfd
+[    3.358776] bpf_jit: ROOT_ATTEST kind=map_value destination=c0_helper_return object=map_value object_id=0xffff000000c7a110 expected_size=4919 tag=1 sealed=0 base=0xffff000000c7a110 length=4919 address=0xffff000000c7a110 perms=0x34dfd
+[    3.359379] bpf_jit: EXPLOIT_CAP helper=map_lookup token=1 tag=1 map_id=2 map_type=2 selected=0xffff000000c7a110 value_size=4919 authority=exact_provider sealed=0 base=0xffff000000c7a110 length=4919 address=0xffff000000c7a110 perms=0x34dfd
+[    3.360916] bpf_jit: EXPLOIT_FAULT esr=0x000000009600002a fsc=0x2a bounds=1 far=0xffff000000c78000 pc=0xffff8000813f7a70 insn=0xe2c00453 cap_memory=1 root=c2 root_kind=creg tag=1 sealed=0 base=0xffff000000c78110 length=4919 address=0xffff000000c78000 perms=0x34dfd
+[    3.364823] bpf_jit: contained BPF capability bounds fault count=1
+FIXTURE_EXEC name=cve3490_ops syscall_ok=1 retval=0 duration=15378416
+FIXTURE_SINK phase=after bytes_0_15=0000000000000000b6b6a5a5d4d4c3c3 word_at_8=0xc3c3d4d4a5a5b6b6 fnv1a64=36c487aa1ff6bccf
+FIXTURE_END mode=exact case=unsafe status=pass
+BPF_JIT_SMOKE_STATUS=0
+[    3.536611] reboot: Restarting system

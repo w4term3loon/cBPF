@@ -1,0 +1,12 @@
+{
+  "production_gate_and_existing_guards_unchanged": true,
+  "production_wrapper_and_assembly_unchanged": true,
+  "cbpf_jit.c_unchanged": true,
+  "cbpf.h_unchanged": true,
+  "guest.c_unchanged": true,
+  "integration.patch_unchanged": true,
+  "platform.patch_unchanged": true,
+  "runtime_net_line_addition": 114,
+  "current_runtime_sha256": "9a91d5cd91e1132a40b970138b5daf82aa76e6e852fc81bdddcea8d28c14751d",
+  "retained_m3_runtime_sha256": "a70dfb8b78ec3f6bd6d97afc3ad4c67a8cc63741955bd1005897942776b86296"
+}

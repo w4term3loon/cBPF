@@ -1,0 +1,8 @@
+{
+  "archive": "builder.docker.tar",
+  "docker_server": "29.8.0",
+  "image_id_and_oci_manifest": "sha256:b4de3680a00e3ac68ccc56bd87131b97c1fffcd5e016c2d1a54d7e3386d9fc6e",
+  "oci_config": "sha256:c94781e9984326cf9db883cd0b14c7b97cff894501cb7d437ef66bc77adb58c7",
+  "layers": 23,
+  "validation": "Fresh Docker save from pinned cached image. Index descriptor and hashed OCI manifest match the inspected image ID; config and all layer blobs match their own descriptors. Config and uncompressed layer identities also match docker inspect. The image ID here denotes the manifest, not its distinct config digest."
+}

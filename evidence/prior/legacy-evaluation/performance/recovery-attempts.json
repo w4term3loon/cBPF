@@ -1,0 +1,30 @@
+{
+  "attempts": [
+    {
+      "attempt_id": "recovery_relocated_qemu_missing_rom",
+      "disposition": "The complete SDK-style bin/share layout is used for subsequent boots; this failed console remains retained.",
+      "error_class": "QEMUDataPathError",
+      "evidence": {
+        "path": "linux/benchmarks/results/qemu-recovery-balanced-2026-08-30/recovery-boot-01.console.txt.failed",
+        "sha256": "67116e30e50ac9c28734ab60beea87415f453e4971da9e75c1d3381c68edb744"
+      },
+      "error_summary": "The relocated top-level executable could not find efi-virtio.rom and exited before the guest booted.",
+      "status": "infrastructure_failure"
+    },
+    {
+      "attempt_id": "recovery_v1_marker_oracle_capacity",
+      "disposition": "Version 2 changes only measured samples from 31 to seven, retaining five boots, three warm-ups, CPU, kernel, initramfs, and emulator identities.",
+      "error_class": "RecoveryOracleCoverageError",
+      "evidence": {
+        "path": "linux/benchmarks/results/qemu-recovery-balanced-2026-08-30-publication/recovery-boot-01.console.txt",
+        "sha256": "240facdf649c021486b53ee09378dfb677dd67d1437d6bb7870f41c090ef84a1"
+      },
+      "error_summary": "The guest recovered 31 measured calls, but only 10 independent kernel markers remained for 34 warm-up-plus-measured calls, so normalization rejected the boot.",
+      "status": "protocol_failure"
+    }
+  ],
+  "claim_class": "functional-emulation",
+  "hardware_performance_claim_allowed": false,
+  "record_type": "capebpf-qemu-recovery-attempts",
+  "schema_version": 1
+}

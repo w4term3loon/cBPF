@@ -1,0 +1,55 @@
+RUN=1
+BPF_VERIFIER_BENCH case=map_variable_reads_1 mode=strict iterations=101 median_usec=11 p95_usec=14 mean_usec=11 min_usec=11 max_usec=25 processed_insns=16 total_states=1 peak_states=1 mark_read=1 offloaded_accesses=0 offloaded_offsets=0
+BPF_VERIFIER_BENCH case=map_variable_reads_1 mode=delegated iterations=101 median_usec=10 p95_usec=12 mean_usec=10 min_usec=10 max_usec=21 processed_insns=16 total_states=1 peak_states=1 mark_read=1 offloaded_accesses=1 offloaded_offsets=1
+BPF_VERIFIER_BENCH case=map_variable_reads_8 mode=strict iterations=101 median_usec=12 p95_usec=13 mean_usec=13 min_usec=12 max_usec=69 processed_insns=23 total_states=1 peak_states=1 mark_read=1 offloaded_accesses=0 offloaded_offsets=0
+BPF_VERIFIER_BENCH case=map_variable_reads_8 mode=delegated iterations=101 median_usec=12 p95_usec=13 mean_usec=12 min_usec=11 max_usec=19 processed_insns=23 total_states=1 peak_states=1 mark_read=1 offloaded_accesses=8 offloaded_offsets=1
+BPF_VERIFIER_BENCH case=map_variable_reads_32 mode=strict iterations=101 median_usec=18 p95_usec=27 mean_usec=19 min_usec=16 max_usec=60 processed_insns=47 total_states=1 peak_states=1 mark_read=1 offloaded_accesses=0 offloaded_offsets=0
+BPF_VERIFIER_BENCH case=map_variable_reads_32 mode=delegated iterations=101 median_usec=18 p95_usec=21 mean_usec=19 min_usec=17 max_usec=72 processed_insns=47 total_states=1 peak_states=1 mark_read=1 offloaded_accesses=32 offloaded_offsets=1
+BPF_VERIFIER_BENCH case=map_variable_reads_128 mode=strict iterations=101 median_usec=40 p95_usec=47 mean_usec=41 min_usec=33 max_usec=80 processed_insns=143 total_states=1 peak_states=1 mark_read=1 offloaded_accesses=0 offloaded_offsets=0
+BPF_VERIFIER_BENCH case=map_variable_reads_128 mode=delegated iterations=101 median_usec=39 p95_usec=45 mean_usec=39 min_usec=33 max_usec=48 processed_insns=143 total_states=1 peak_states=1 mark_read=1 offloaded_accesses=128 offloaded_offsets=1
+BPF_VERIFIER_BENCH_PASS cases=4 iterations=101
+BPF_JIT_SMOKE_STATUS=0
+RUN=2
+BPF_VERIFIER_BENCH case=map_variable_reads_1 mode=strict iterations=101 median_usec=12 p95_usec=15 mean_usec=12 min_usec=11 max_usec=40 processed_insns=16 total_states=1 peak_states=1 mark_read=1 offloaded_accesses=0 offloaded_offsets=0
+BPF_VERIFIER_BENCH case=map_variable_reads_1 mode=delegated iterations=101 median_usec=12 p95_usec=21 mean_usec=13 min_usec=10 max_usec=48 processed_insns=16 total_states=1 peak_states=1 mark_read=1 offloaded_accesses=1 offloaded_offsets=1
+BPF_VERIFIER_BENCH case=map_variable_reads_8 mode=strict iterations=101 median_usec=15 p95_usec=20 mean_usec=15 min_usec=12 max_usec=61 processed_insns=23 total_states=1 peak_states=1 mark_read=1 offloaded_accesses=0 offloaded_offsets=0
+BPF_VERIFIER_BENCH case=map_variable_reads_8 mode=delegated iterations=101 median_usec=13 p95_usec=21 mean_usec=18 min_usec=11 max_usec=497 processed_insns=23 total_states=1 peak_states=1 mark_read=1 offloaded_accesses=8 offloaded_offsets=1
+BPF_VERIFIER_BENCH case=map_variable_reads_32 mode=strict iterations=101 median_usec=20 p95_usec=24 mean_usec=20 min_usec=17 max_usec=40 processed_insns=47 total_states=1 peak_states=1 mark_read=1 offloaded_accesses=0 offloaded_offsets=0
+BPF_VERIFIER_BENCH case=map_variable_reads_32 mode=delegated iterations=101 median_usec=18 p95_usec=30 mean_usec=20 min_usec=16 max_usec=111 processed_insns=47 total_states=1 peak_states=1 mark_read=1 offloaded_accesses=32 offloaded_offsets=1
+BPF_VERIFIER_BENCH case=map_variable_reads_128 mode=strict iterations=101 median_usec=40 p95_usec=54 mean_usec=42 min_usec=35 max_usec=104 processed_insns=143 total_states=1 peak_states=1 mark_read=1 offloaded_accesses=0 offloaded_offsets=0
+BPF_VERIFIER_BENCH case=map_variable_reads_128 mode=delegated iterations=101 median_usec=35 p95_usec=47 mean_usec=37 min_usec=33 max_usec=61 processed_insns=143 total_states=1 peak_states=1 mark_read=1 offloaded_accesses=128 offloaded_offsets=1
+BPF_VERIFIER_BENCH_PASS cases=4 iterations=101
+BPF_JIT_SMOKE_STATUS=0
+RUN=3
+BPF_VERIFIER_BENCH case=map_variable_reads_1 mode=strict iterations=101 median_usec=13 p95_usec=19 mean_usec=14 min_usec=11 max_usec=51 processed_insns=16 total_states=1 peak_states=1 mark_read=1 offloaded_accesses=0 offloaded_offsets=0
+BPF_VERIFIER_BENCH case=map_variable_reads_1 mode=delegated iterations=101 median_usec=14 p95_usec=20 mean_usec=14 min_usec=10 max_usec=45 processed_insns=16 total_states=1 peak_states=1 mark_read=1 offloaded_accesses=1 offloaded_offsets=1
+BPF_VERIFIER_BENCH case=map_variable_reads_8 mode=strict iterations=101 median_usec=17 p95_usec=24 mean_usec=17 min_usec=14 max_usec=39 processed_insns=23 total_states=1 peak_states=1 mark_read=1 offloaded_accesses=0 offloaded_offsets=0
+BPF_VERIFIER_BENCH case=map_variable_reads_8 mode=delegated iterations=101 median_usec=13 p95_usec=16 mean_usec=13 min_usec=12 max_usec=26 processed_insns=23 total_states=1 peak_states=1 mark_read=1 offloaded_accesses=8 offloaded_offsets=1
+BPF_VERIFIER_BENCH case=map_variable_reads_32 mode=strict iterations=101 median_usec=21 p95_usec=27 mean_usec=26 min_usec=17 max_usec=540 processed_insns=47 total_states=1 peak_states=1 mark_read=1 offloaded_accesses=0 offloaded_offsets=0
+BPF_VERIFIER_BENCH case=map_variable_reads_32 mode=delegated iterations=101 median_usec=17 p95_usec=26 mean_usec=17 min_usec=16 max_usec=32 processed_insns=47 total_states=1 peak_states=1 mark_read=1 offloaded_accesses=32 offloaded_offsets=1
+BPF_VERIFIER_BENCH case=map_variable_reads_128 mode=strict iterations=101 median_usec=37 p95_usec=46 mean_usec=38 min_usec=35 max_usec=50 processed_insns=143 total_states=1 peak_states=1 mark_read=1 offloaded_accesses=0 offloaded_offsets=0
+BPF_VERIFIER_BENCH case=map_variable_reads_128 mode=delegated iterations=101 median_usec=35 p95_usec=45 mean_usec=37 min_usec=34 max_usec=57 processed_insns=143 total_states=1 peak_states=1 mark_read=1 offloaded_accesses=128 offloaded_offsets=1
+BPF_VERIFIER_BENCH_PASS cases=4 iterations=101
+BPF_JIT_SMOKE_STATUS=0
+RUN=4
+BPF_VERIFIER_BENCH case=map_variable_reads_1 mode=strict iterations=101 median_usec=14 p95_usec=20 mean_usec=15 min_usec=12 max_usec=42 processed_insns=16 total_states=1 peak_states=1 mark_read=1 offloaded_accesses=0 offloaded_offsets=0
+BPF_VERIFIER_BENCH case=map_variable_reads_1 mode=delegated iterations=101 median_usec=10 p95_usec=11 mean_usec=10 min_usec=9 max_usec=18 processed_insns=16 total_states=1 peak_states=1 mark_read=1 offloaded_accesses=1 offloaded_offsets=1
+BPF_VERIFIER_BENCH case=map_variable_reads_8 mode=strict iterations=101 median_usec=13 p95_usec=15 mean_usec=13 min_usec=12 max_usec=34 processed_insns=23 total_states=1 peak_states=1 mark_read=1 offloaded_accesses=0 offloaded_offsets=0
+BPF_VERIFIER_BENCH case=map_variable_reads_8 mode=delegated iterations=101 median_usec=13 p95_usec=16 mean_usec=13 min_usec=11 max_usec=22 processed_insns=23 total_states=1 peak_states=1 mark_read=1 offloaded_accesses=8 offloaded_offsets=1
+BPF_VERIFIER_BENCH case=map_variable_reads_32 mode=strict iterations=101 median_usec=19 p95_usec=24 mean_usec=24 min_usec=18 max_usec=418 processed_insns=47 total_states=1 peak_states=1 mark_read=1 offloaded_accesses=0 offloaded_offsets=0
+BPF_VERIFIER_BENCH case=map_variable_reads_32 mode=delegated iterations=101 median_usec=19 p95_usec=26 mean_usec=19 min_usec=18 max_usec=29 processed_insns=47 total_states=1 peak_states=1 mark_read=1 offloaded_accesses=32 offloaded_offsets=1
+BPF_VERIFIER_BENCH case=map_variable_reads_128 mode=strict iterations=101 median_usec=41 p95_usec=49 mean_usec=41 min_usec=38 max_usec=74 processed_insns=143 total_states=1 peak_states=1 mark_read=1 offloaded_accesses=0 offloaded_offsets=0
+BPF_VERIFIER_BENCH case=map_variable_reads_128 mode=delegated iterations=101 median_usec=43 p95_usec=48 mean_usec=43 min_usec=40 max_usec=50 processed_insns=143 total_states=1 peak_states=1 mark_read=1 offloaded_accesses=128 offloaded_offsets=1
+BPF_VERIFIER_BENCH_PASS cases=4 iterations=101
+BPF_JIT_SMOKE_STATUS=0
+RUN=5
+BPF_VERIFIER_BENCH case=map_variable_reads_1 mode=strict iterations=101 median_usec=14 p95_usec=21 mean_usec=15 min_usec=12 max_usec=47 processed_insns=16 total_states=1 peak_states=1 mark_read=1 offloaded_accesses=0 offloaded_offsets=0
+BPF_VERIFIER_BENCH case=map_variable_reads_1 mode=delegated iterations=101 median_usec=10 p95_usec=18 mean_usec=11 min_usec=10 max_usec=27 processed_insns=16 total_states=1 peak_states=1 mark_read=1 offloaded_accesses=1 offloaded_offsets=1
+BPF_VERIFIER_BENCH case=map_variable_reads_8 mode=strict iterations=101 median_usec=13 p95_usec=14 mean_usec=13 min_usec=12 max_usec=27 processed_insns=23 total_states=1 peak_states=1 mark_read=1 offloaded_accesses=0 offloaded_offsets=0
+BPF_VERIFIER_BENCH case=map_variable_reads_8 mode=delegated iterations=101 median_usec=13 p95_usec=14 mean_usec=14 min_usec=12 max_usec=73 processed_insns=23 total_states=1 peak_states=1 mark_read=1 offloaded_accesses=8 offloaded_offsets=1
+BPF_VERIFIER_BENCH case=map_variable_reads_32 mode=strict iterations=101 median_usec=19 p95_usec=27 mean_usec=23 min_usec=18 max_usec=427 processed_insns=47 total_states=1 peak_states=1 mark_read=1 offloaded_accesses=0 offloaded_offsets=0
+BPF_VERIFIER_BENCH case=map_variable_reads_32 mode=delegated iterations=101 median_usec=19 p95_usec=25 mean_usec=19 min_usec=17 max_usec=29 processed_insns=47 total_states=1 peak_states=1 mark_read=1 offloaded_accesses=32 offloaded_offsets=1
+BPF_VERIFIER_BENCH case=map_variable_reads_128 mode=strict iterations=101 median_usec=42 p95_usec=51 mean_usec=43 min_usec=37 max_usec=54 processed_insns=143 total_states=1 peak_states=1 mark_read=1 offloaded_accesses=0 offloaded_offsets=0
+BPF_VERIFIER_BENCH case=map_variable_reads_128 mode=delegated iterations=101 median_usec=42 p95_usec=48 mean_usec=43 min_usec=39 max_usec=91 processed_insns=143 total_states=1 peak_states=1 mark_read=1 offloaded_accesses=128 offloaded_offsets=1
+BPF_VERIFIER_BENCH_PASS cases=4 iterations=101
+BPF_JIT_SMOKE_STATUS=0

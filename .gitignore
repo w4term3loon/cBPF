@@ -1,0 +1,7 @@
+/build/
+/tmp/
+/.runtime/
+__pycache__/
+*.pyc
+/output/native-dependencies/
+/docs/private/

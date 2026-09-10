@@ -1,0 +1,8 @@
+{
+  "same_complete_disassembly": true,
+  "same_symbol_ranges": true,
+  "prior_vmlinux_sha256": "6497b5ba02bfc4e09cd17ff293942a45504a4b1f64497740e5fc5474345a23fa",
+  "current_vmlinux_sha256": "4ac8ce919bcc976d62371e74717887d640963d37236c6a03470fd42750e55f74",
+  "current_disassembly_sha256": "5cacff5c0f48b8e87e4ac47493f90d30569cff925a80ff919aa11dc99093c8b6",
+  "scope": "Nine complete linked gate, callback, wrapper and entry ranges; not a whole-kernel identity or proof."
+}

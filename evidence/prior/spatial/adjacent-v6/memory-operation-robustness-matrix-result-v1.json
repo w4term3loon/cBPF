@@ -1,0 +1,195 @@
+{
+  "schema_version": "1.0.0",
+  "artifact_kind": "capebpf_memory_operation_robustness_matrix_result",
+  "study_id": "capebpf-faulty-vs-memory-operation-closure-v6",
+  "status": "observed_all_declared_cases_yes",
+  "recorded_date": "2026-09-02",
+  "governing_records": {
+    "prospective_definition": {
+      "path": "research/faulty-vs-differential-v6/memory-operation-robustness-matrix-v1.json",
+      "sha256": "03d012ee15ae113f44b5634be85f4e8a82d1fc5d253490129dddc2fd35fc459e"
+    },
+    "prospective_addendum": {
+      "path": "research/faulty-vs-differential-v6/preregistration-prospective-addendum-v1.json",
+      "sha256": "71069c9951a02b4883813153954629ca62fe63830f80356d564378d365c21629"
+    },
+    "preexecution_conformance_amendment": {
+      "path": "research/faulty-vs-differential-v6/implementation-conformance-amendment-v1.json",
+      "sha256": "5cdf08a39cdf6d476ba94cb02a8ddbccaea97fea0ac9849cafd4cb72cf0b3a7e"
+    },
+    "schedule": {
+      "path": "research/faulty-vs-differential-v6/schedule-v1.json",
+      "sha256": "2c914f1e6418f80f3209d4d1f86c883ddc5a74e1d01ec4406ad359e715a631de"
+    }
+  },
+  "epoch_boundary": {
+    "v5": "The out-of-bounds store row is reused only from the separately governed V5 package.",
+    "v6": "The out-of-bounds load and valid-control rows use the V6 descendant and its separately bound images.",
+    "aggregation_rule": "The two epochs are combined only as four independently validated rows of this explicit thesis stopping matrix; no byte-identical image or single-system epoch is claimed."
+  },
+  "cases": [
+    {
+      "case_id": "oob_store_dw_at_16_v5",
+      "evidence_epoch": "v5",
+      "operation": "store",
+      "access_width_bytes": 8,
+      "effective_interval": "[16,24)",
+      "evidence_state": "yes",
+      "governance": {
+        "fresh_boots": 10,
+        "blocks": 2,
+        "repetitions_per_condition": 2,
+        "modes": [
+          "fixed_calibration",
+          "faulty_baseline",
+          "faithful_aee_offset",
+          "capebpf_exact",
+          "capebpf_broad"
+        ]
+      },
+      "observed_result": {
+        "fixed_calibration": "The correct final spatial decision rejected in both rows.",
+        "faulty_baseline": "The eight-byte store completed in both rows and replaced exactly key-1 bytes 0--7 with 2435465768798a9b.",
+        "faithful_aee_offset": "The selected source-mapped offset sanitizer completed the same byte effect in both rows; this is not whole-AEE coverage.",
+        "capebpf_broad": "The eight-byte store completed with the same exact key-1 byte effect in both rows.",
+        "capebpf_exact": "A capability-bounds fault at the mapped target instruction preceded the store effect in both rows; all three monitored values remained unchanged."
+      },
+      "primary_evidence": [
+        {
+          "path": "linux/benchmarks/faulty-vs-differential/artifacts/result-v5/experiment-result-v2.json",
+          "sha256": "791ca42072c7b22616fdb20c28222dc4e5e0b43835e5cc81add2e100e9ce6ff8"
+        },
+        {
+          "path": "linux/benchmarks/faulty-vs-differential/artifacts/result-v5-package-receipt-v1.json",
+          "sha256": "c1d32127374d0505024b36ec8dcef78f65ecdb404c60f75a5d9834639af7b715"
+        }
+      ],
+      "falsifier": "A successful integrity recomputation contradicting the retained exact adjacent-key byte effect or exact target-PC bounds-fault-before-effect invalidates reuse of this row."
+    },
+    {
+      "case_id": "oob_load_w_at_16",
+      "evidence_epoch": "v6",
+      "operation": "load",
+      "access_width_bytes": 4,
+      "effective_interval": "[16,20)",
+      "evidence_state": "yes",
+      "canonical_pre_relocation_bpf_sha256": "f6c6f582d26e820a148921791fa3c167b41417add2ee88d79698f71d2895db74",
+      "governance": {
+        "fresh_boots_for_case": 8,
+        "blocks": 2,
+        "repetitions_per_condition": 2,
+        "modes": [
+          "fixed_calibration",
+          "faulty_baseline",
+          "capebpf_broad",
+          "capebpf_exact"
+        ]
+      },
+      "observed_result": {
+        "fixed_calibration": "The correct final spatial decision rejected in both rows.",
+        "faulty_baseline": "The four-byte key-1 load and dependent site-15 copy completed in both rows and returned 724183336 (0x2b2a2928).",
+        "capebpf_broad": "The same load and dependent copy completed with the same value in both rows.",
+        "capebpf_exact": "The site-14 CHERI_LDRW faulted with FSC 0x2a before the load or dependent site-15 copy completed in both rows; the fault-path return was zero."
+      },
+      "memory_oracle": "All three monitored 16-byte values were identical before and after every load row; completion was established by the value-dependent return, not by unchanged memory.",
+      "primary_evidence": [
+        {
+          "path": "linux/benchmarks/faulty-vs-differential/artifacts/result-v6/experiment-result-v1.json",
+          "sha256": "3ef12a6a40404376c13e7055fee7a2a1bfd6a8f025ca42e13434f3c39fc0e441"
+        },
+        {
+          "path": "linux/benchmarks/faulty-vs-differential/artifacts/result-v6/load-correspondence-v1.json",
+          "sha256": "7f1822d398beff66a02b9efd774d00899b91d2588011c8ff751e639c8fd637b0"
+        }
+      ],
+      "falsifier": "An otherwise eligible exact row completing the dependent token refutes exact confinement for this load. Missing baseline/broad completion makes the case non-diagnostic; a different-PC fault or absent completion witness makes it indeterminate."
+    },
+    {
+      "case_id": "valid_load_dw_at_8",
+      "evidence_epoch": "v6",
+      "operation": "load",
+      "access_width_bytes": 8,
+      "effective_interval": "[8,16)",
+      "evidence_state": "yes",
+      "canonical_pre_relocation_bpf_sha256": "93a2ce3d0a27eb11d1bdca98d66d7829d0118ab6eed6048f0782c2c480a23a8f",
+      "governance": {
+        "fresh_boots_for_case": 6,
+        "blocks": 2,
+        "repetitions_per_condition": 2,
+        "modes": [
+          "faulty_baseline",
+          "capebpf_broad",
+          "capebpf_exact"
+        ]
+      },
+      "observed_result": "All six rows loaded [base+8,base+16), completed the dependent copy, returned 454695192 (0x1b1a1918), reported no target fault, and left every monitored byte unchanged.",
+      "primary_evidence": [
+        {
+          "path": "linux/benchmarks/faulty-vs-differential/artifacts/result-v6/experiment-result-v1.json",
+          "sha256": "3ef12a6a40404376c13e7055fee7a2a1bfd6a8f025ca42e13434f3c39fc0e441"
+        }
+      ],
+      "falsifier": "Any otherwise eligible mode that rejects, faults, lacks dependent completion, returns another value, or changes monitored bytes falsifies the valid-load control."
+    },
+    {
+      "case_id": "valid_store_w_at_12",
+      "evidence_epoch": "v6",
+      "operation": "store",
+      "access_width_bytes": 4,
+      "effective_interval": "[12,16)",
+      "evidence_state": "yes",
+      "canonical_pre_relocation_bpf_sha256": "f04dfaada6e1f00b9ccb9189567f3524f59ad9bb537bb52f7f3d17dafba15991",
+      "governance": {
+        "fresh_boots_for_case": 6,
+        "blocks": 2,
+        "repetitions_per_condition": 2,
+        "modes": [
+          "faulty_baseline",
+          "capebpf_broad",
+          "capebpf_exact"
+        ]
+      },
+      "observed_result": "All six rows completed, changed exactly key-0 bytes 12--15 from 1c1d1e1f to 24354657, left every other monitored byte unchanged, returned 43, and reported no target fault.",
+      "primary_evidence": [
+        {
+          "path": "linux/benchmarks/faulty-vs-differential/artifacts/result-v6/experiment-result-v1.json",
+          "sha256": "3ef12a6a40404376c13e7055fee7a2a1bfd6a8f025ca42e13434f3c39fc0e441"
+        }
+      ],
+      "falsifier": "Any otherwise eligible mode that rejects, faults, lacks the exact declared byte effect, changes any other monitored byte, or returns another value falsifies the valid-store control."
+    }
+  ],
+  "coverage": {
+    "operations": [
+      "load",
+      "store"
+    ],
+    "access_widths_bytes": [
+      4,
+      8
+    ],
+    "effective_intervals": [
+      "[8,16)",
+      "[12,16)",
+      "[16,20)",
+      "[16,24)"
+    ],
+    "map_configurations": 1,
+    "map_configuration": "BPF_MAP_TYPE_ARRAY; key size 4; value size 16; three entries; intended key 0",
+    "object_arrangements": 1
+  },
+  "interpretation": {
+    "result": "All four prospectively declared matrix cases have evidence state yes.",
+    "maximum_use": "The matrix supplies the memory-operation cases required by the separately recorded A--H master's-thesis stopping decision.",
+    "does_not_establish": [
+      "coverage of all eBPF memory operations",
+      "more than one map configuration or object arrangement",
+      "semantic correctness of provider, element, extent, or lifetime assignment",
+      "temporal safety",
+      "complete production correspondence",
+      "whole-AEE correctness",
+      "superiority over software bounds checks",
+      "native performance advantage"
+    ]
+  }
+}

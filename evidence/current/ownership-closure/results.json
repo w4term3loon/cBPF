@@ -1,0 +1,98 @@
+{
+  "study": "ownership boundary controls",
+  "trusted_resolver_checks": [
+    "stale_copy",
+    "stale_spill",
+    "duplicate_release"
+  ],
+  "cases": [
+    {
+      "case": "ab_spill",
+      "result": "PASS",
+      "loaded": true,
+      "executed": true,
+      "retval": 42,
+      "bpf_instructions": 26,
+      "native_bytes": 660,
+      "native_sha256": "117453054e65b3f4ae6b8da5dd241b1a8db28cdbd15cfae4a1527e073f576871",
+      "acquired": 2,
+      "released": 2,
+      "reads": 1,
+      "cleanup": 0,
+      "refs": 1
+    },
+    {
+      "case": "ab_alternate",
+      "result": "PASS",
+      "loaded": true,
+      "executed": true,
+      "retval": 42,
+      "bpf_instructions": 27,
+      "native_bytes": 664,
+      "native_sha256": "1f6650e2fdcd76e1723c8c2fe0d42675c4615427721af729b80bdb0a03fa7b14",
+      "acquired": 2,
+      "released": 2,
+      "reads": 1,
+      "cleanup": 0,
+      "refs": 1
+    },
+    {
+      "case": "null_second",
+      "result": "PASS",
+      "loaded": true,
+      "executed": true,
+      "retval": 7,
+      "bpf_instructions": 26,
+      "native_bytes": 660,
+      "native_sha256": "4aef0e035a349d66cdde5dcc8b05e56c43e65dab129b0390ba0ecaf8e00bc4c3",
+      "acquired": 1,
+      "released": 1,
+      "reads": 0,
+      "cleanup": 0,
+      "refs": 1
+    },
+    {
+      "case": "fail_second",
+      "result": "PASS",
+      "loaded": true,
+      "executed": true,
+      "retval": 0,
+      "bpf_instructions": 26,
+      "native_bytes": 660,
+      "native_sha256": "3fcf9225428f9edb5488cf2647b9098b5b860cc9341b967d80412a9927aeb312",
+      "acquired": 1,
+      "released": 1,
+      "reads": 0,
+      "cleanup": 1,
+      "refs": 1
+    },
+    {
+      "case": "stale_copy",
+      "result": "PASS",
+      "loaded": false,
+      "executed": false,
+      "load_errno": 22
+    },
+    {
+      "case": "stale_spill",
+      "result": "PASS",
+      "loaded": false,
+      "executed": false,
+      "load_errno": 22
+    },
+    {
+      "case": "duplicate_release",
+      "result": "PASS",
+      "loaded": false,
+      "executed": false,
+      "load_errno": 22
+    }
+  ],
+  "qemu_exit": 0,
+  "invalid_bpf_executions": 0,
+  "limits": [
+    "Trusted stale controls do not execute invalid restricted BPF.",
+    "Scalar 2 tests pre-provider argument rejection, not exact-bounds construction failure.",
+    "Nonzero normal-return cleanup is inspected/modelled; the verifier rejects leaked ownership."
+  ]
+}

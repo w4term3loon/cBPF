@@ -1,0 +1,417 @@
+{
+  "project": "CBPF",
+  "study": "ownership boundary controls",
+  "date": "2026-09-06",
+  "status": "Recorded controls passed within the declared bounded scope; local reproduction is a separate evidence record.",
+  "scope": "Four verifier-accepted protected executions, three init-only trusted production-resolver checks, and three unexecuted verifier rejections; conditional kernel/model mapping and final native review.",
+  "source_commit": "b96da308ef1a054c3c04c9445e5ed70259b7c397",
+  "verifier_sha256": "48268a29931754296882a9ff6847eb556ba8e8564959be1c62754afdb2fb4851",
+  "build_directory": "${REPOSITORY}/build/ownership-m3-build",
+  "run_directory": "${REPOSITORY}/build/ownership-m3-run.l2BxDW",
+  "result": {
+    "kernel_build": "PASS",
+    "guest_execution": "PASS",
+    "guest_boots": 1,
+    "qemu_exit": 0,
+    "verifier_accepted_executions": 4,
+    "verifier_only_rejections": 3,
+    "trusted_resolver_checks": 3,
+    "invalid_bpf_executions": 0,
+    "exploit_or_cve_executions": 0,
+    "attached_programs": 0,
+    "ordered_gate_events": 38,
+    "normal_verifier_unchanged": true,
+    "config_baseline_preserved": true,
+    "production_enforcement_source_unchanged_from_M2": true,
+    "program_accounting": {
+      "acquired": 6,
+      "explicit_releases": 5,
+      "cleanup_releases": 1,
+      "reads": 2,
+      "final_refs_each": 1
+    },
+    "trusted_accounting": {
+      "acquired": 3,
+      "explicit_releases": 3,
+      "cleanup_releases": 0,
+      "reads": 0,
+      "final_refs_each": 1
+    },
+    "kernel_delta_from_base": {
+      "added": 1008,
+      "deleted": 24
+    },
+    "m3_net_added_lines": {
+      "runtime_init_controls": 79,
+      "guest": 62,
+      "runner": 67
+    }
+  },
+  "cases": [
+    {
+      "case": "ab_spill",
+      "result": "PASS",
+      "loaded": true,
+      "executed": true,
+      "retval": 42,
+      "bpf_instructions": 26,
+      "native_bytes": 660,
+      "native_sha256": "117453054e65b3f4ae6b8da5dd241b1a8db28cdbd15cfae4a1527e073f576871",
+      "acquired": 2,
+      "released": 2,
+      "reads": 1,
+      "cleanup": 0,
+      "refs": 1
+    },
+    {
+      "case": "ab_alternate",
+      "result": "PASS",
+      "loaded": true,
+      "executed": true,
+      "retval": 42,
+      "bpf_instructions": 27,
+      "native_bytes": 664,
+      "native_sha256": "1f6650e2fdcd76e1723c8c2fe0d42675c4615427721af729b80bdb0a03fa7b14",
+      "acquired": 2,
+      "released": 2,
+      "reads": 1,
+      "cleanup": 0,
+      "refs": 1
+    },
+    {
+      "case": "null_second",
+      "result": "PASS",
+      "loaded": true,
+      "executed": true,
+      "retval": 7,
+      "bpf_instructions": 26,
+      "native_bytes": 660,
+      "native_sha256": "4aef0e035a349d66cdde5dcc8b05e56c43e65dab129b0390ba0ecaf8e00bc4c3",
+      "acquired": 1,
+      "released": 1,
+      "reads": 0,
+      "cleanup": 0,
+      "refs": 1
+    },
+    {
+      "case": "fail_second",
+      "result": "PASS",
+      "loaded": true,
+      "executed": true,
+      "retval": 0,
+      "bpf_instructions": 26,
+      "native_bytes": 660,
+      "native_sha256": "3fcf9225428f9edb5488cf2647b9098b5b860cc9341b967d80412a9927aeb312",
+      "acquired": 1,
+      "released": 1,
+      "reads": 0,
+      "cleanup": 1,
+      "refs": 1
+    },
+    {
+      "case": "stale_copy",
+      "result": "PASS",
+      "loaded": false,
+      "executed": false,
+      "load_errno": 22
+    },
+    {
+      "case": "stale_spill",
+      "result": "PASS",
+      "loaded": false,
+      "executed": false,
+      "load_errno": 22
+    },
+    {
+      "case": "duplicate_release",
+      "result": "PASS",
+      "loaded": false,
+      "executed": false,
+      "load_errno": 22
+    }
+  ],
+  "review": {
+    "result": "PASS within bounded scope",
+    "receipt": "audit/native-review.json",
+    "external_independent_reproduction": false,
+    "baseline_native_equals_M2": true,
+    "inspector_authored_reviewed_changes": false
+  },
+  "argument": {
+    "file": "theory/kernel-ownership.md",
+    "sha256": "dda48c26dae8416cf2d94ff22b7089a7fd8bd33a4464075d0d7e03aef3f6b2cf",
+    "kind": "Conditional source/model correspondence; not formal implementation refinement.",
+    "snapshot": "evidence/current/ownership-closure/source/kernel-ownership.md"
+  },
+  "limits": [
+    "Trusted stale controls do not execute invalid restricted BPF.",
+    "Scalar 2 tests pre-provider argument rejection, not exact-bounds construction failure.",
+    "Nonzero normal-return cleanup is inspected/modelled; the verifier rejects leaked ownership.",
+    "Initial provider/DDC assignment, trusted compiler/assembly/architecture, inherited exception handling and synchronous non-reentrant invocation containment remain premises.",
+    "No general compiler proof, arbitrary verifier/JIT-failure tolerance, whole-kernel isolation, global capability erasure or spatial/ownership composition is established.",
+    "One preflight build was stopped to correct consumed-spill ordering; no guest ran from that attempt. Earlier protected ownership execution artifacts and the interrupted local reproduction start remain preserved.",
+    "Large external kernel/toolchain dependencies are hash-bound by receipts and are not copied into this selection."
+  ],
+  "files": [
+    {
+      "file": "evidence/current/ownership-closure/README.md",
+      "bytes": 5456,
+      "sha256": "44514d1c27ca83639e939f1e542c84f3d264b30ba40ab71ffd83cc5f3bb779cb"
+    },
+    {
+      "file": "evidence/current/ownership-closure/audit/boundary-notes.md",
+      "bytes": 5517,
+      "sha256": "0ede5dccae05f3209df4ac300577cdfcea8aec9b5652c73d823f5e626be8a17f"
+    },
+    {
+      "file": "evidence/current/ownership-closure/audit/guard-linked-range.txt",
+      "bytes": 17580,
+      "sha256": "5c56a70f608360102871fc3832e58742b18bd1b4ada203de338cc8392f3fa8c6"
+    },
+    {
+      "file": "evidence/current/ownership-closure/audit/guest-syntax.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "evidence/current/ownership-closure/audit/inspect-native.sh",
+      "bytes": 2977,
+      "sha256": "937b4bcaefba94faa0785d413d677d811600b11ceb1d0884e71be469bce4ee5a"
+    },
+    {
+      "file": "evidence/current/ownership-closure/audit/inspection-toolchain.txt",
+      "bytes": 751,
+      "sha256": "2b4f60afbbef0e15f3167a6df95ad7448619eb24806a9fd2087727afc3400804"
+    },
+    {
+      "file": "evidence/current/ownership-closure/audit/kernel-symbols.txt",
+      "bytes": 946,
+      "sha256": "d5fb288caa5b7db8ee5fdfddb83e3fb3fa6ef0e055a3ef070472641f77114e51"
+    },
+    {
+      "file": "evidence/current/ownership-closure/audit/native-disassembly-ab_alternate.txt",
+      "bytes": 8548,
+      "sha256": "21cb889067b5450c49ffdf4373e9ed123d1cb41764a7a322cda0fe08f2f5d8c7"
+    },
+    {
+      "file": "evidence/current/ownership-closure/audit/native-disassembly-ab_spill.txt",
+      "bytes": 8505,
+      "sha256": "1d3c3a58068443016da8fac2a753e9570cfdafc1c4860a1df0fa070f2fc7ba5e"
+    },
+    {
+      "file": "evidence/current/ownership-closure/audit/native-disassembly-fail_second.txt",
+      "bytes": 8508,
+      "sha256": "5808e58171b6fc83dc74c4292d98a4b7316a7bb9faad8e0014baa5f8adb85beb"
+    },
+    {
+      "file": "evidence/current/ownership-closure/audit/native-disassembly-null_second.txt",
+      "bytes": 8508,
+      "sha256": "19d311e05ad0029170f3172b1e40b2b14f76c88ceb77f074c53258f9e072cf2e"
+    },
+    {
+      "file": "evidence/current/ownership-closure/audit/native-review.json",
+      "bytes": 15377,
+      "sha256": "6959d36256896fb614dceda987bd9cd22db0a26295e74281b0c9dd5ecdbf0274"
+    },
+    {
+      "file": "evidence/current/ownership-closure/audit/pre-launch.json",
+      "bytes": 2090,
+      "sha256": "8698ad4d25f89cde0bfa022225be4b2c9ab1273357b53a3b93ede8be80ddea1c"
+    },
+    {
+      "file": "evidence/current/ownership-closure/audit/runtime-linked-range.txt",
+      "bytes": 49273,
+      "sha256": "9641cd7dd0c7482276d2bca00d1027c626c4f747f1de95500c4cb61c01c7dfa1"
+    },
+    {
+      "file": "evidence/current/ownership-closure/audit/runtime-object.txt",
+      "bytes": 54856,
+      "sha256": "dd5e78b856b17b7cde401eaf04038e656936597c637778f6b3004614e7b6d8d6"
+    },
+    {
+      "file": "evidence/current/ownership-closure/audit/wrapper-equality.json",
+      "bytes": 813,
+      "sha256": "f416fbf3877ae3eb7464393918dd59154cf7885bc67a675b7d809998ad6cf971"
+    },
+    {
+      "file": "evidence/current/ownership-closure/boot.log",
+      "bytes": 120791,
+      "sha256": "b0fe5332e9a52e53ac6a3f452d2f8e86bfe4a1d27a79dbc368aa1843194e1b8d"
+    },
+    {
+      "file": "evidence/current/ownership-closure/btf-contract.txt",
+      "bytes": 908,
+      "sha256": "bca2fc3116640706649ada0b1cf12478c61396eeaf9f224ab3080decf6f1ff66"
+    },
+    {
+      "file": "evidence/current/ownership-closure/btf-selection.txt",
+      "bytes": 180,
+      "sha256": "f480eccf238eea594bca65f4a87013761637ce71c1f12c6d32b879a62f9d58b2"
+    },
+    {
+      "file": "evidence/current/ownership-closure/compile.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "evidence/current/ownership-closure/inputs.sha256",
+      "bytes": 2814,
+      "sha256": "3c8758434d13ffd58ddd45299712c8e523e62ebba1c760ba4636aa2475701c97"
+    },
+    {
+      "file": "evidence/current/ownership-closure/kernel/builder-image.txt",
+      "bytes": 178,
+      "sha256": "64cd0c0d49fe5cf28ed75cedcc141ccd9c5698afaf760b7a5b49b82b06df120c"
+    },
+    {
+      "file": "evidence/current/ownership-closure/kernel/compile.log",
+      "bytes": 139476,
+      "sha256": "214cda18b771c08f455f640a0b3c1b217c93553ae31603fa41750054e40eb942"
+    },
+    {
+      "file": "evidence/current/ownership-closure/kernel/compiler.sha256",
+      "bytes": 213,
+      "sha256": "33cec68829bfd8ba37c4baafc8b4bb52d136d64a4ea4f2330f241e9d7c97ec2e"
+    },
+    {
+      "file": "evidence/current/ownership-closure/kernel/inputs.sha256",
+      "bytes": 3729,
+      "sha256": "e385be6a60fc94d9cc7d745d4bc444ebec1c75f2194ed07812374f97faefaacb"
+    },
+    {
+      "file": "evidence/current/ownership-closure/kernel/integration.numstat",
+      "bytes": 181,
+      "sha256": "8a73bb07741845e3d5ac9689f0f96c6b87bca89a15a991d2e590180986c4b968"
+    },
+    {
+      "file": "evidence/current/ownership-closure/kernel/kernel.config",
+      "bytes": 87730,
+      "sha256": "6f1988add3ba99cd6d2569b2bcbc705886c3de2fd27195564cf8b6a3324e4cff"
+    },
+    {
+      "file": "evidence/current/ownership-closure/kernel/outputs.sha256",
+      "bytes": 679,
+      "sha256": "0a277e3387437344c0a4019c96185bc8ccf979b94e7516d5e7d9c13d959244f0"
+    },
+    {
+      "file": "evidence/current/ownership-closure/kernel/patched-sources.sha256",
+      "bytes": 3081,
+      "sha256": "f5b4d963fd199540b5d227490b9bf8809b02155679349a06592fa50e66346193"
+    },
+    {
+      "file": "evidence/current/ownership-closure/kernel/platform.numstat",
+      "bytes": 333,
+      "sha256": "f3a6562a1617cfb9ec4dbe93eb775e79ebb9f8aef5466bc509f673f986d75fb7"
+    },
+    {
+      "file": "evidence/current/ownership-closure/kernel/source-commit.txt",
+      "bytes": 41,
+      "sha256": "58b294dd20ae2694b9cf7d8ab015f9fefd95315fbe0cfad1ebdf3d4f5a06f274"
+    },
+    {
+      "file": "evidence/current/ownership-closure/kernel/source-tree.txt",
+      "bytes": 41,
+      "sha256": "49159c654584f89b8e24fe49af39ea2f91c043e70eab2a8502756da9c262db6e"
+    },
+    {
+      "file": "evidence/current/ownership-closure/kernel/summary.txt",
+      "bytes": 173,
+      "sha256": "239bd281682522da822c23d327a9375170dbadc94e92b97f129125096d063715"
+    },
+    {
+      "file": "evidence/current/ownership-closure/kernel/toolchain.txt",
+      "bytes": 241,
+      "sha256": "7791c28f5757d5bd258883535690c4349f19b2f51851494f1c97cb33769f5a96"
+    },
+    {
+      "file": "evidence/current/ownership-closure/native-ab_alternate.bin",
+      "bytes": 664,
+      "sha256": "1f6650e2fdcd76e1723c8c2fe0d42675c4615427721af729b80bdb0a03fa7b14"
+    },
+    {
+      "file": "evidence/current/ownership-closure/native-ab_spill.bin",
+      "bytes": 660,
+      "sha256": "117453054e65b3f4ae6b8da5dd241b1a8db28cdbd15cfae4a1527e073f576871"
+    },
+    {
+      "file": "evidence/current/ownership-closure/native-fail_second.bin",
+      "bytes": 660,
+      "sha256": "3fcf9225428f9edb5488cf2647b9098b5b860cc9341b967d80412a9927aeb312"
+    },
+    {
+      "file": "evidence/current/ownership-closure/native-null_second.bin",
+      "bytes": 660,
+      "sha256": "4aef0e035a349d66cdde5dcc8b05e56c43e65dab129b0390ba0ecaf8e00bc4c3"
+    },
+    {
+      "file": "evidence/current/ownership-closure/native.sha256",
+      "bytes": 590,
+      "sha256": "dbd9e77f9bb1461418947ef77d29ee4389a4dc587ec4d8657b18217d5d7c3f02"
+    },
+    {
+      "file": "evidence/current/ownership-closure/ownership_ids.h",
+      "bytes": 211,
+      "sha256": "fc7a2351f33470ca47ff57012c6ae06b8a5a08bc7968f4f9647249ef12a23032"
+    },
+    {
+      "file": "evidence/current/ownership-closure/results.json",
+      "bytes": 2383,
+      "sha256": "63d3ae5462ad09f5f0a0859a1348057664767164f707cec217e9a56600065ad4"
+    },
+    {
+      "file": "evidence/current/ownership-closure/source/build_ownership_kernel.sh",
+      "bytes": 9770,
+      "sha256": "b730ab5dde4d051da80602c0a7a2315d7a9533599137cc426c4e4f3bec0936a9"
+    },
+    {
+      "file": "evidence/current/ownership-closure/source/cbpf.h",
+      "bytes": 792,
+      "sha256": "8cf3c862d0134b34fdf87335696878e49b681e492c1ad50698cd470811430235"
+    },
+    {
+      "file": "evidence/current/ownership-closure/source/cbpf_jit.c",
+      "bytes": 12812,
+      "sha256": "a1a3c2476380325100a9b361f213bb06db9e9dd24543ae8e12a5354ddd8dd753"
+    },
+    {
+      "file": "evidence/current/ownership-closure/source/cbpf_runtime.c",
+      "bytes": 15577,
+      "sha256": "a70dfb8b78ec3f6bd6d97afc3ad4c67a8cc63741955bd1005897942776b86296"
+    },
+    {
+      "file": "evidence/current/ownership-closure/source/guest.c",
+      "bytes": 6793,
+      "sha256": "89d31fbab37ad07d56b2fbc3fc4d9b7c37d985ad1c5e1be3651632dbbb2d4477"
+    },
+    {
+      "file": "evidence/current/ownership-closure/source/integration.patch",
+      "bytes": 4956,
+      "sha256": "8121d10f5e83488ed31739960d46cb3fe35e9f319e91acd5230c80718c5abe30"
+    },
+    {
+      "file": "evidence/current/ownership-closure/source/kernel-ownership.md",
+      "bytes": 7380,
+      "sha256": "dda48c26dae8416cf2d94ff22b7089a7fd8bd33a4464075d0d7e03aef3f6b2cf"
+    },
+    {
+      "file": "evidence/current/ownership-closure/source/platform.patch",
+      "bytes": 8059,
+      "sha256": "65c34af4d8f1db14455c297a1f71fc03138b2fc9e834a8dc4480b0687e208c44"
+    },
+    {
+      "file": "evidence/current/ownership-closure/source/run_ownership.sh",
+      "bytes": 18224,
+      "sha256": "3cebc14fe5c6c487a769b469d02654250984096cb52f191ff5349b377d1051af"
+    },
+    {
+      "file": "evidence/current/ownership-closure/summary.txt",
+      "bytes": 14537,
+      "sha256": "62a458e6df209a3b80fb9a8b0374f0827a82eae29bba0c799b4d7006b62a95e8"
+    },
+    {
+      "file": "evidence/current/ownership-closure/toolchain.txt",
+      "bytes": 438,
+      "sha256": "f736a28e42d01283bffe2feba5d02c732e66d29e2cce3f430bea0ae964c4af2c"
+    }
+  ]
+}

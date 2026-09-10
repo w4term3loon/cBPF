@@ -1,0 +1,39 @@
+{
+  "schema": "cbpf-historical-report-excerpt-v1",
+  "status": "historical_report_only_raw_consoles_not_located",
+  "source_report": {
+    "file": "${EARLIER_RESEARCH}/docs/2026-08-27_linux_ringbuf_enforcement_boundary.md",
+    "bytes": 9357,
+    "sha256": "a84fad0abc6045f544c0fbfd2510d4b5e43d6e7c5f3ff96aff40c1709ef9996c"
+  },
+  "question": "Whether changing the capability returned for a 16-byte ring-buffer payload from exact 16-byte authority to 32-byte authority changes one admitted direct eight-byte read starting at payload offset 16.",
+  "reported_controls": [
+    {
+      "variant": "normal_verifier_exact_16",
+      "valid_control": "return_42",
+      "outside_read": "verifier_rejection"
+    },
+    {
+      "variant": "test_admission_exact_16",
+      "valid_control": "return_42",
+      "outside_read": "reported_Morello_bounds_fault_recovered_return_0"
+    },
+    {
+      "variant": "test_admission_wide_32",
+      "valid_control": "return_42",
+      "outside_read": "reported_completion_return_42"
+    }
+  ],
+  "reported_identities": {
+    "kernel_base": "b96da308ef1a054c3c04c9445e5ed70259b7c397",
+    "source_tree": "77c1c18a738db2726a092d31c7397ad4315084dc",
+    "morello_llvm": "7956a8d20652883f845a41094645174eb92d1960"
+  },
+  "interpretation": "The historical report attributes the direct read outcome to the assigned payload bound, while distinguishing trusted helper-protocol checks from direct architectural memory checks.",
+  "evidence_boundary": "This record preserves information stated in a historical report. Standalone raw consoles for the stated direct-ringbuf matrix were not located during the evidence selection. It is not classified as a directly retained native observation, fresh experiment, semantic revalidation or independent reproduction.",
+  "scope_limits": [
+    "Synthetic direct-memory mechanism control, not CVE-2021-4204 reproduction.",
+    "Historical test admission is distinct from the normal-verifier current cBPF controls.",
+    "No helper lifetime guarantee, verifier replacement, full-CVE prevention or native hardware performance claim."
+  ]
+}

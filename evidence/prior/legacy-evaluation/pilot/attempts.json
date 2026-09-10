@@ -1,0 +1,138 @@
+{
+  "schema_version": 1,
+  "artifact_kind": "patch35_reviewer_pilot_retained_attempts_manifest",
+  "status": "preservation_index",
+  "aggregate_digest_method": "For files sorted by basename, SHA-256 over basename, NUL, file SHA-256 hex, NUL, decimal size, newline",
+  "attempts": [
+    {
+      "attempt_id": "initial-launch-v1",
+      "path": "linux/benchmarks/reviewer-pilot/artifacts/collection-v1",
+      "status": "retained_emulator_start_failure",
+      "eligible_for_final_analysis": false,
+      "failure_cause": "QEMU could not locate efi-virtio.rom; every runnable cell failed before a guest observation was emitted",
+      "expected_summary": {
+        "deployment_id": "capebpf-patch35-reviewer-pilot-e93ed814-runtime-v1",
+        "runnable_cells": 165,
+        "passed_cells": 0,
+        "retained_failures": 165,
+        "not_applicable_cells_not_run": 15,
+        "ingest_invoked": false
+      },
+      "summary": {
+        "path": "linux/benchmarks/reviewer-pilot/artifacts/collection-v1/schedule-run-summary.json",
+        "size_bytes": 138659,
+        "sha256": "fc1edd18e328689bc26b5211f89db3690e758def9f1033896902e0a56026300e"
+      },
+      "inventory": {
+        "file_count": 166,
+        "total_size_bytes": 372644,
+        "aggregate_sha256": "cd59583e09faed50d8ca8d2373daff94409ce562caa45dd5e9f85edc64145c79"
+      },
+      "failure_set": {
+        "glob": "*.failed",
+        "file_count": 165,
+        "total_size_bytes": 233985,
+        "aggregate_sha256": "bc5cfd10736e99fd7802bb8a4ded22fea823fbe4b87cd90ec0d2fbfff1d3df31"
+      }
+    },
+    {
+      "attempt_id": "full-schedule-v1",
+      "path": "linux/benchmarks/reviewer-pilot/artifacts/full-schedule-v1",
+      "status": "retained_non_assemblable_integration_failure",
+      "eligible_for_final_analysis": false,
+      "failure_cause": "17 runnable cells retained failures, so the preregistered all-cell assembly gate was not met",
+      "expected_summary": {
+        "deployment_id": "capebpf-patch35-reviewer-pilot-e93ed814-runtime-v1",
+        "runnable_cells": 165,
+        "passed_cells": 148,
+        "retained_failures": 17,
+        "not_applicable_cells_not_run": 15,
+        "ingest_invoked": false
+      },
+      "summary": {
+        "path": "linux/benchmarks/reviewer-pilot/artifacts/full-schedule-v1/schedule-run-summary.json",
+        "size_bytes": 105596,
+        "sha256": "b08a1862056858d11bdb36a5016c4391b9d59aa9a930cebdb513373a595f4d17"
+      },
+      "inventory": {
+        "file_count": 314,
+        "total_size_bytes": 12883649,
+        "aggregate_sha256": "51925a30c3bbca2ba6ece2a8543246c86e158c868e249b1483111a197f626872"
+      },
+      "failure_set": {
+        "glob": "*.failed",
+        "file_count": 17,
+        "total_size_bytes": 518818,
+        "aggregate_sha256": "5fc0584e09b968d75ca71ecbb0c76e7e5d4e1e1a6d82d06e245d724f03f3791c"
+      }
+    },
+    {
+      "attempt_id": "full-schedule-v2",
+      "path": "linux/benchmarks/reviewer-pilot/artifacts/full-schedule-v2",
+      "status": "retained_non_assemblable_integration_failure",
+      "eligible_for_final_analysis": false,
+      "failure_cause": "6 runnable cells retained failures, so the preregistered all-cell assembly gate was not met",
+      "expected_summary": {
+        "deployment_id": "capebpf-patch35-reviewer-pilot-e93ed814-runtime-v2",
+        "runnable_cells": 165,
+        "passed_cells": 159,
+        "retained_failures": 6,
+        "not_applicable_cells_not_run": 15,
+        "ingest_invoked": false
+      },
+      "summary": {
+        "path": "linux/benchmarks/reviewer-pilot/artifacts/full-schedule-v2/schedule-run-summary.json",
+        "size_bytes": 103064,
+        "sha256": "c169833762831979d8fbf9d660bbdf402e6507e71099400b0a5adc1c92e188f3"
+      },
+      "inventory": {
+        "file_count": 325,
+        "total_size_bytes": 13768985,
+        "aggregate_sha256": "981dc60aace3f6dd96bc049311c586074074949d6a715b3ff23eaf937f2d1d8c"
+      },
+      "failure_set": {
+        "glob": "*.failed",
+        "file_count": 6,
+        "total_size_bytes": 426163,
+        "aggregate_sha256": "cc6e50722c8e07d927c78e4d30bd0c395294e1ccdd21420b37c241dd16997023"
+      }
+    },
+    {
+      "attempt_id": "full-schedule-v3",
+      "path": "linux/benchmarks/reviewer-pilot/artifacts/full-schedule-v3",
+      "status": "complete_zero_failure_collection",
+      "eligible_for_final_analysis": true,
+      "failure_cause": null,
+      "expected_summary": {
+        "deployment_id": "capebpf-patch35-reviewer-pilot-e93ed814-runtime-v3",
+        "runnable_cells": 165,
+        "passed_cells": 165,
+        "retained_failures": 0,
+        "not_applicable_cells_not_run": 15,
+        "ingest_invoked": false
+      },
+      "summary": {
+        "path": "linux/benchmarks/reviewer-pilot/artifacts/full-schedule-v3/schedule-run-summary.json",
+        "size_bytes": 101684,
+        "sha256": "515b408d1900cb271e086a2af9a5d188ffd7b8564a2200a04686fde0079aec9f"
+      },
+      "inventory": {
+        "file_count": 331,
+        "total_size_bytes": 13804656,
+        "aggregate_sha256": "02b63146d5c1ba4ce6d1a081e4e254a6aa29f6b15c1e50819ece3027705b5002"
+      },
+      "failure_set": {
+        "glob": "*.failed",
+        "file_count": 0,
+        "total_size_bytes": 0,
+        "aggregate_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  ],
+  "preservation_rules": {
+    "failure_bytes_are_immutable": true,
+    "failed_attempts_may_not_be_promoted_to_observations": true,
+    "failed_attempts_may_not_replace_the_complete_v3_collection": true,
+    "manifest_is_additive_to_collection_receipt_v3": true
+  }
+}

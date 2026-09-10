@@ -1,0 +1,261 @@
+{
+  "claim_class": "functional-emulation",
+  "emulator_sha256": "b0a0b21a9ee5e4b01a1f7d40bcb1ec6289cd51eab1a0f66deafc419b1db3e219",
+  "hardware_performance_claim_allowed": false,
+  "inputs": {
+    "exact_config": {
+      "path": "linux/benchmarks/results/qemu-balanced-2026-08-30-publication/inputs/exact.config",
+      "sha256": "069341d7559bde97090184fa41442c949b27fc30ddcd86166441baee01e4343d"
+    },
+    "exact_receipt": {
+      "path": "linux/benchmarks/results/qemu-balanced-2026-08-30-publication/inputs/exact-receipt.json",
+      "sha256": "f9101f878606fe3c8a7eefd391375a0805babb1c689b515357eff6f363613449"
+    },
+    "scalar_config": {
+      "path": "linux/benchmarks/results/qemu-balanced-2026-08-30-publication/inputs/scalar.config",
+      "sha256": "ed30101af2230240f747c03651b9adc900d7acc5e5a981f14f144536f7f0a323"
+    },
+    "scalar_receipt": {
+      "path": "linux/benchmarks/results/qemu-balanced-2026-08-30-publication/inputs/scalar-receipt.json",
+      "sha256": "0f17e80cb0e301cc18129521d573382d9acd2f588e9afe925f17403b461ffb91"
+    }
+  },
+  "jobs": [
+    {
+      "artifacts": {
+        "console": {
+          "path": "linux/benchmarks/results/qemu-balanced-2026-08-30-publication/boot-01-paired-exact-strict.console.txt",
+          "sha256": "b3ff8c27277c3f8400cdecc1c8c9a9cca43b97b05db5d6653aaaf93da792b94f"
+        },
+        "exact_run": {
+          "path": "linux/benchmarks/results/qemu-balanced-2026-08-30-publication/boot-01-paired-exact-strict.exact.run.json",
+          "sha256": "e4d790fe17240932c3c5493df7e9b196e272b21c2960263f7c60973ad4864762"
+        },
+        "exact_transcript": {
+          "path": "linux/benchmarks/results/qemu-balanced-2026-08-30-publication/boot-01-paired-exact-strict.exact.transcript",
+          "sha256": "0569604dc8f84cb1e550c109d318ad650d0db17b8c1fb965f63c2a5252dcb902"
+        },
+        "strict_run": {
+          "path": "linux/benchmarks/results/qemu-balanced-2026-08-30-publication/boot-01-paired-exact-strict.strict.run.json",
+          "sha256": "43cc2bd162842ef607f3df0ca2c7614590e603e7b1b425cf58f23d00542f2ec5"
+        },
+        "strict_transcript": {
+          "path": "linux/benchmarks/results/qemu-balanced-2026-08-30-publication/boot-01-paired-exact-strict.strict.transcript",
+          "sha256": "e262f45ad890295a4ab556860a7310759d631f93dd4e6f846307817b668e832d"
+        }
+      },
+      "global_order": 1,
+      "output_stem": "boot-01-paired-exact-strict"
+    },
+    {
+      "artifacts": {
+        "console": {
+          "path": "linux/benchmarks/results/qemu-balanced-2026-08-30-publication/boot-01-scalar.console.txt",
+          "sha256": "d6c8e233c3f885495b9d011a3a7a6f7ad66bececa4919b4ca729d86874f65724"
+        },
+        "scalar_run": {
+          "path": "linux/benchmarks/results/qemu-balanced-2026-08-30-publication/boot-01-scalar.scalar.run.json",
+          "sha256": "6666e0845ac2510879bae7ad2a9c1fd681401aad563bdf375d1763e0a9509581"
+        },
+        "scalar_transcript": {
+          "path": "linux/benchmarks/results/qemu-balanced-2026-08-30-publication/boot-01-scalar.scalar.transcript",
+          "sha256": "cb411e71fed327bff79dfbf5da9b1aa173b0b578a8e5662986d148c98ef9831e"
+        }
+      },
+      "global_order": 2,
+      "output_stem": "boot-01-scalar"
+    },
+    {
+      "artifacts": {
+        "console": {
+          "path": "linux/benchmarks/results/qemu-balanced-2026-08-30-publication/boot-02-paired-exact-strict.console.txt",
+          "sha256": "e3002bd1f54c450a64032ec119b0d54bc3653b7279cd8a02eadd5469e98d184c"
+        },
+        "exact_run": {
+          "path": "linux/benchmarks/results/qemu-balanced-2026-08-30-publication/boot-02-paired-exact-strict.exact.run.json",
+          "sha256": "3f619f3a593980f23730c367701e4f8a14f0fe76520118cdb7093f4f340017ac"
+        },
+        "exact_transcript": {
+          "path": "linux/benchmarks/results/qemu-balanced-2026-08-30-publication/boot-02-paired-exact-strict.exact.transcript",
+          "sha256": "bf346001311d09d6dca54e9f86023ed80740df43bcacd193789aebc4a1662817"
+        },
+        "strict_run": {
+          "path": "linux/benchmarks/results/qemu-balanced-2026-08-30-publication/boot-02-paired-exact-strict.strict.run.json",
+          "sha256": "eaef95b5d84e02d359fb94094717e3e99caaae1a45fd70ff3cdb6f0743885219"
+        },
+        "strict_transcript": {
+          "path": "linux/benchmarks/results/qemu-balanced-2026-08-30-publication/boot-02-paired-exact-strict.strict.transcript",
+          "sha256": "ad931e927d7aec19cdbd7548475e57e4c6fd4f9d513a5d913f0de8e1759e8e78"
+        }
+      },
+      "global_order": 3,
+      "output_stem": "boot-02-paired-exact-strict"
+    },
+    {
+      "artifacts": {
+        "console": {
+          "path": "linux/benchmarks/results/qemu-balanced-2026-08-30-publication/boot-02-scalar.console.txt",
+          "sha256": "fc3711df642dd5a897800dff0627518ccd402ea6ff0dc227789ba599a0586833"
+        },
+        "scalar_run": {
+          "path": "linux/benchmarks/results/qemu-balanced-2026-08-30-publication/boot-02-scalar.scalar.run.json",
+          "sha256": "a1e00e3e0de69eb759381f4252c2f2b6fb6e1c3991d289ed4dbc615203f83b23"
+        },
+        "scalar_transcript": {
+          "path": "linux/benchmarks/results/qemu-balanced-2026-08-30-publication/boot-02-scalar.scalar.transcript",
+          "sha256": "b22c0edec57aa2d2c5ff64ea8676e4504e824ead5c458de0e974f614b1589b41"
+        }
+      },
+      "global_order": 4,
+      "output_stem": "boot-02-scalar"
+    },
+    {
+      "artifacts": {
+        "console": {
+          "path": "linux/benchmarks/results/qemu-balanced-2026-08-30-publication/boot-03-scalar.console.txt",
+          "sha256": "4f22599378cc24cf135c7ef98a26ab47261b7bb35a1fefe37bfc328691083f6d"
+        },
+        "scalar_run": {
+          "path": "linux/benchmarks/results/qemu-balanced-2026-08-30-publication/boot-03-scalar.scalar.run.json",
+          "sha256": "8d408990d2e9d3e7b1f2a6c0414edced818aa5c42154b8944bc3b9832607645f"
+        },
+        "scalar_transcript": {
+          "path": "linux/benchmarks/results/qemu-balanced-2026-08-30-publication/boot-03-scalar.scalar.transcript",
+          "sha256": "0578f3b5e1757a6a8a1e5309286ae2544fc857dd93222043751e31c1566e8ad2"
+        }
+      },
+      "global_order": 5,
+      "output_stem": "boot-03-scalar"
+    },
+    {
+      "artifacts": {
+        "console": {
+          "path": "linux/benchmarks/results/qemu-balanced-2026-08-30-publication/boot-03-paired-strict-exact.console.txt",
+          "sha256": "4c449dd3af7251b1b37eb2f0b8c8172a8b61e9efb1451fe3cde85abffae1a68c"
+        },
+        "exact_run": {
+          "path": "linux/benchmarks/results/qemu-balanced-2026-08-30-publication/boot-03-paired-strict-exact.exact.run.json",
+          "sha256": "4b0e51b0a3c76e57bbd5a550f5b3d6f4bb3047538460fe1a35c3da83ecc8ff27"
+        },
+        "exact_transcript": {
+          "path": "linux/benchmarks/results/qemu-balanced-2026-08-30-publication/boot-03-paired-strict-exact.exact.transcript",
+          "sha256": "7f7954ca4625beb51586889ddfdc62501905c73487e9478fc39c7033e217a3dc"
+        },
+        "strict_run": {
+          "path": "linux/benchmarks/results/qemu-balanced-2026-08-30-publication/boot-03-paired-strict-exact.strict.run.json",
+          "sha256": "c346bfa8c7ca3e842974f5c28c4de949d0c9c5b22f22c899ca2e0a2c3f362f40"
+        },
+        "strict_transcript": {
+          "path": "linux/benchmarks/results/qemu-balanced-2026-08-30-publication/boot-03-paired-strict-exact.strict.transcript",
+          "sha256": "ab723aa1d62cace9e43faf1196e85c9439affd21140ab228c4e999df44b34aa6"
+        }
+      },
+      "global_order": 6,
+      "output_stem": "boot-03-paired-strict-exact"
+    },
+    {
+      "artifacts": {
+        "console": {
+          "path": "linux/benchmarks/results/qemu-balanced-2026-08-30-publication/boot-04-scalar.console.txt",
+          "sha256": "9e52f419f48eedc17a87e979fdb157258bb6f0d7214ef071fb49eca12c47c141"
+        },
+        "scalar_run": {
+          "path": "linux/benchmarks/results/qemu-balanced-2026-08-30-publication/boot-04-scalar.scalar.run.json",
+          "sha256": "5309da1ad55232200df68572fa23a27bb0b17798c41b856527cd2b456407844e"
+        },
+        "scalar_transcript": {
+          "path": "linux/benchmarks/results/qemu-balanced-2026-08-30-publication/boot-04-scalar.scalar.transcript",
+          "sha256": "38cb472654785335ca2f8a3ee6e8869bc2b9e5b373597ce64183cb4fd73096c4"
+        }
+      },
+      "global_order": 7,
+      "output_stem": "boot-04-scalar"
+    },
+    {
+      "artifacts": {
+        "console": {
+          "path": "linux/benchmarks/results/qemu-balanced-2026-08-30-publication/boot-04-paired-strict-exact.console.txt",
+          "sha256": "abac6f428b20d21ac3d41ce9e7e3c52a9b6c4f737eb06f7eb07ff9e2094f6502"
+        },
+        "exact_run": {
+          "path": "linux/benchmarks/results/qemu-balanced-2026-08-30-publication/boot-04-paired-strict-exact.exact.run.json",
+          "sha256": "db6401a06d87c4d6e56531ac1345c516a5353c6251e21b259d3db2dfcf314048"
+        },
+        "exact_transcript": {
+          "path": "linux/benchmarks/results/qemu-balanced-2026-08-30-publication/boot-04-paired-strict-exact.exact.transcript",
+          "sha256": "4476426e7baea9337164ec83e80aafe3ce525cdf20e27dafe32e75b0bc951ef3"
+        },
+        "strict_run": {
+          "path": "linux/benchmarks/results/qemu-balanced-2026-08-30-publication/boot-04-paired-strict-exact.strict.run.json",
+          "sha256": "35a733558810f269f0c5c2f4da59f373f4466fca4279c0fc2388adee2cfdb38b"
+        },
+        "strict_transcript": {
+          "path": "linux/benchmarks/results/qemu-balanced-2026-08-30-publication/boot-04-paired-strict-exact.strict.transcript",
+          "sha256": "ae4d50e49e460abc15d713951d0ceb42b3d141a4b6285bea85ff96d666f826db"
+        }
+      },
+      "global_order": 8,
+      "output_stem": "boot-04-paired-strict-exact"
+    },
+    {
+      "artifacts": {
+        "console": {
+          "path": "linux/benchmarks/results/qemu-balanced-2026-08-30-publication/boot-05-paired-exact-strict.console.txt",
+          "sha256": "9d579242aed191dba65157ac24ccc9b4f7b951745f8d3f1606d303afcb57d7e3"
+        },
+        "exact_run": {
+          "path": "linux/benchmarks/results/qemu-balanced-2026-08-30-publication/boot-05-paired-exact-strict.exact.run.json",
+          "sha256": "5f4064bcc8d8af0b035e6a46f73aa1f984aa1e5e2e29375aa80063ba1ddb0adf"
+        },
+        "exact_transcript": {
+          "path": "linux/benchmarks/results/qemu-balanced-2026-08-30-publication/boot-05-paired-exact-strict.exact.transcript",
+          "sha256": "168b666107df7ce666461d908567c4e3b90549b6b60a0585da3cced6c5d0d975"
+        },
+        "strict_run": {
+          "path": "linux/benchmarks/results/qemu-balanced-2026-08-30-publication/boot-05-paired-exact-strict.strict.run.json",
+          "sha256": "ae670c9b9035edcdcb5c19bcca32918defd41c1aaf6c637e93f71c38135979ca"
+        },
+        "strict_transcript": {
+          "path": "linux/benchmarks/results/qemu-balanced-2026-08-30-publication/boot-05-paired-exact-strict.strict.transcript",
+          "sha256": "1f229ec70c53fe755bb7303bec5dfe3ecc66b6c65203a814dd07c71d52b75883"
+        }
+      },
+      "global_order": 9,
+      "output_stem": "boot-05-paired-exact-strict"
+    },
+    {
+      "artifacts": {
+        "console": {
+          "path": "linux/benchmarks/results/qemu-balanced-2026-08-30-publication/boot-05-scalar.console.txt",
+          "sha256": "d5e6b1f48a9b547497711716912191f3869cf62337f9bb83488ded7c2de5cfbb"
+        },
+        "scalar_run": {
+          "path": "linux/benchmarks/results/qemu-balanced-2026-08-30-publication/boot-05-scalar.scalar.run.json",
+          "sha256": "e3c2079e7a5428281e9b7ece5aab04b33f46a2fc65e34e2e223fde68956976b4"
+        },
+        "scalar_transcript": {
+          "path": "linux/benchmarks/results/qemu-balanced-2026-08-30-publication/boot-05-scalar.scalar.transcript",
+          "sha256": "3a5b78f4b90968167aa736b0e340fe533d6d9181c2c61b37bb85a2d77567dfbc"
+        }
+      },
+      "global_order": 10,
+      "output_stem": "boot-05-scalar"
+    }
+  ],
+  "record_type": "capebpf-qemu-performance-collection",
+  "schedule": {
+    "path": "research/qemu-performance-preregistration.json",
+    "payload_sha256": "2636fd7f40df22ed16fff85b1faffba7829b7bba9dd20ff04352a9bf5ff2bb25",
+    "sha256": "581fb35867306bd5720417618f71c9ee06cbb16ba45a82afd683a49b13873dc0"
+  },
+  "schema_version": 2,
+  "source_collection": {
+    "path": "<private-path>/qemu-performance-collection.json",
+    "sha256": "554af3188c3119f06cae601db521ad33bd707b1c2742d5ca98bde4af42cf4da8"
+  },
+  "status": "complete",
+  "study": {
+    "path": "linux/benchmarks/results/qemu-balanced-2026-08-30-publication/qemu-performance-balanced.study.json",
+    "sha256": "fe37466efa998c2109e398b1049339eaebc5c367c795f5976f53388b2a4bfaa3"
+  }
+}

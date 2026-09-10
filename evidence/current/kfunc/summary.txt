@@ -1,0 +1,59 @@
+CBPF_KFUNC kernel_release=6.7.0-cbpf-kfunc-stock
+CBPF_KFUNC scope=linux_kfunc_binding runtime_cheri=0 normal_verifier=1
+CBPF_KFUNC module_btf_id=2 acquire_id=80850 read_id=80852 release_id=80854
+CBPF_KFUNC trace pc=0 code=0xb7 dst=1 src=0 off=0 imm=0
+CBPF_KFUNC trace pc=1 code=0x85 dst=0 src=2 off=1 imm=80850
+CBPF_KFUNC trace pc=2 code=0x15 dst=0 src=0 off=19 imm=0
+CBPF_KFUNC trace pc=3 code=0xbf dst=6 src=0 off=0 imm=0
+CBPF_KFUNC trace pc=4 code=0xbf dst=8 src=6 off=0 imm=0
+CBPF_KFUNC trace pc=5 code=0xb7 dst=1 src=0 off=0 imm=0
+CBPF_KFUNC trace pc=6 code=0x85 dst=0 src=2 off=1 imm=80850
+CBPF_KFUNC trace pc=7 code=0x15 dst=0 src=0 off=10 imm=0
+CBPF_KFUNC trace pc=8 code=0xbf dst=7 src=0 off=0 imm=0
+CBPF_KFUNC trace pc=9 code=0xbf dst=1 src=8 off=0 imm=0
+CBPF_KFUNC trace pc=10 code=0x85 dst=0 src=2 off=1 imm=80854
+CBPF_KFUNC trace pc=11 code=0xbf dst=1 src=7 off=0 imm=0
+CBPF_KFUNC trace pc=12 code=0x85 dst=0 src=2 off=1 imm=80852
+CBPF_KFUNC trace pc=13 code=0xbf dst=9 src=0 off=0 imm=0
+CBPF_KFUNC trace pc=14 code=0xbf dst=1 src=7 off=0 imm=0
+CBPF_KFUNC trace pc=15 code=0x85 dst=0 src=2 off=1 imm=80854
+CBPF_KFUNC trace pc=16 code=0xbf dst=0 src=9 off=0 imm=0
+CBPF_KFUNC trace pc=17 code=0x95 dst=0 src=0 off=0 imm=0
+CBPF_KFUNC trace pc=18 code=0xbf dst=1 src=8 off=0 imm=0
+CBPF_KFUNC trace pc=19 code=0x85 dst=0 src=2 off=1 imm=80854
+CBPF_KFUNC trace pc=20 code=0xb7 dst=0 src=0 off=0 imm=7
+CBPF_KFUNC trace pc=21 code=0x95 dst=0 src=0 off=0 imm=0
+CBPF_KFUNC trace pc=22 code=0xb7 dst=0 src=0 off=0 imm=0
+CBPF_KFUNC trace pc=23 code=0x95 dst=0 src=0 off=0 imm=0
+CBPF_KFUNC case=ab_copy_a6 kind=valid executed=1 retval=42 jited_len=288 acquisitions=2 releases=2 reads=1 live=0 object_refs=1 result=PASS
+CBPF_KFUNC case=null_b_copy_a6 kind=valid executed=1 retval=7 jited_len=288 acquisitions=1 releases=1 reads=0 live=0 object_refs=1 result=PASS
+CBPF_KFUNC case=ab_spill8_a6 kind=valid executed=1 retval=42 jited_len=296 acquisitions=2 releases=2 reads=1 live=0 object_refs=1 result=PASS
+CBPF_KFUNC case=null_b_spill8_a6 kind=valid executed=1 retval=7 jited_len=296 acquisitions=1 releases=1 reads=0 live=0 object_refs=1 result=PASS
+CBPF_KFUNC case=ab_spill16_a6 kind=valid executed=1 retval=42 jited_len=296 acquisitions=2 releases=2 reads=1 live=0 object_refs=1 result=PASS
+CBPF_KFUNC case=null_b_spill16_a6 kind=valid executed=1 retval=7 jited_len=296 acquisitions=1 releases=1 reads=0 live=0 object_refs=1 result=PASS
+CBPF_KFUNC case=ab_copy_a7 kind=valid executed=1 retval=42 jited_len=288 acquisitions=2 releases=2 reads=1 live=0 object_refs=1 result=PASS
+CBPF_KFUNC case=null_b_copy_a7 kind=valid executed=1 retval=7 jited_len=288 acquisitions=1 releases=1 reads=0 live=0 object_refs=1 result=PASS
+CBPF_KFUNC case=ab_spill8_a7 kind=valid executed=1 retval=42 jited_len=296 acquisitions=2 releases=2 reads=1 live=0 object_refs=1 result=PASS
+CBPF_KFUNC case=null_b_spill8_a7 kind=valid executed=1 retval=7 jited_len=296 acquisitions=1 releases=1 reads=0 live=0 object_refs=1 result=PASS
+CBPF_KFUNC case=ab_spill16_a7 kind=valid executed=1 retval=42 jited_len=296 acquisitions=2 releases=2 reads=1 live=0 object_refs=1 result=PASS
+CBPF_KFUNC case=null_b_spill16_a7 kind=valid executed=1 retval=7 jited_len=296 acquisitions=1 releases=1 reads=0 live=0 object_refs=1 result=PASS
+CBPF_KFUNC case=first_null kind=valid executed=1 retval=0 jited_len=160 acquisitions=0 releases=0 reads=0 live=0 object_refs=1 result=PASS
+CBPF_KFUNC case=repeat_ab_spill16_a7 kind=valid executed=32 retval=42 jited_len=296 acquisitions=64 releases=64 reads=32 live=0 object_refs=1 result=PASS
+CBPF_KFUNC verifier_begin case=stale_copy
+CBPF_KFUNC verifier_end case=stale_copy
+CBPF_KFUNC case=stale_copy kind=reject executed=0 errno=22 result=PASS
+CBPF_KFUNC verifier_begin case=stale_spill
+CBPF_KFUNC verifier_end case=stale_spill
+CBPF_KFUNC case=stale_spill kind=reject executed=0 errno=22 result=PASS
+CBPF_KFUNC verifier_begin case=double_release
+CBPF_KFUNC verifier_end case=double_release
+CBPF_KFUNC case=double_release kind=reject executed=0 errno=22 result=PASS
+CBPF_KFUNC verifier_begin case=missing_null
+CBPF_KFUNC verifier_end case=missing_null
+CBPF_KFUNC case=missing_null kind=reject executed=0 errno=13 result=PASS
+CBPF_KFUNC verifier_begin case=leaked_ref
+CBPF_KFUNC verifier_end case=leaked_ref
+CBPF_KFUNC case=leaked_ref kind=reject executed=0 errno=22 result=PASS
+CBPF_KFUNC positive_cases=13 rejected_cases=5 repeated_runs=32 executed_total=45 acquisitions=82 releases=82 reads=38 live=0 object_refs=1
+CBPF_KFUNC result=PASS
+CBPF kfunc_runner=PASS qemu_exit=0

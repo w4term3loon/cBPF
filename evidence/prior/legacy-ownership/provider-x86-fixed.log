@@ -1,0 +1,147 @@
+CAPEBPF_KERNEL_ID release=5.12.0-capebpf-049c4e13714ecbca567b4d5f6d563f05d431c80e
+CAPEBPF_PROVENANCE guest_binding_sha256=dd5f28a90fc925b6d158b30abc21efdf7d0199f93664c1f48aac0201f6e6c1e2 source_revision=049c4e13714ecbca567b4d5f6d563f05d431c80e source_tree=e6aac90eb5aba34e74bdedcc37b8abc6aca64751
+BPF_JIT_HARDEN=2
+FIXTURE_BEGIN schema=1 mode=x86-fixed case=unsafe
+FIXTURE_PROGRAM name=cve3490_ops instructions=48 bytes=384 fnv1a64=de1904150ca961f9 relocations=4,14 hex=b700000000000000630afcff00000000bfa200000000000007020000fcffffff18110000000000000000000000000000850000000100000055000100000000009500000000000000bf07000000000000b700000000000000630afcff00000000bfa200000000000007020000fcffffff18110000000000000000000000000000850000000100000055000100000000009500000000000000bf02000000000000bf73000000000000b4000000000000007927000000000000bf74000000000000b4050000ffffffff67050000200000005f540000000000000704000001000000b705000001000000670500002000000007050000020000005f540000000000000704000001000000b60701000100000095000000000000000f74000000000000bc440000000000005704000001000000bf48000000000000070300000010000027080000ff0f00001f830000000000001f4300000000000027040000100100001f4300000000000079360000000000007b620800000000009500000000000000
+FIXTURE_PROGRAM name=valid_array instructions=10 bytes=80 fnv1a64=8d7c5c72300ab186 relocations=4 hex=b700000000000000630afcff00000000bfa200000000000007020000fcffffff181100000000000000000000000000008500000001000000150001000000000061000000000000009500000000000000
+FIXTURE_MAPS source_fd=3 source_id=1 sink_fd=4 sink_id=2 value_size=4919 max_entries=1
+FIXTURE_SINK phase=before bytes_0_15=0000000000000000b6b6a5a5d4d4c3c3 word_at_8=0xc3c3d4d4a5a5b6b6 fnv1a64=36c487aa1ff6bccf
+FIXTURE_LOAD name=cve3490_ops accepted=0 errno=13 flags=0x0
+FIXTURE_VERIFIER_LOG_BEGIN name=cve3490_ops
+func#0 @0
+0: R1=ctx(id=0,off=0,imm=0) R10=fp0
+0: (b7) r0 = 0
+1: R0_w=inv0 R1=ctx(id=0,off=0,imm=0) R10=fp0
+1: (63) *(u32 *)(r10 -4) = r0
+last_idx 1 first_idx 0
+regs=1 stack=0 before 0: (b7) r0 = 0
+2: R0_w=invP0 R1=ctx(id=0,off=0,imm=0) R10=fp0 fp-8=0000????
+2: (bf) r2 = r10
+3: R0_w=invP0 R1=ctx(id=0,off=0,imm=0) R2_w=fp0 R10=fp0 fp-8=0000????
+3: (07) r2 += -4
+4: R0_w=invP0 R1=ctx(id=0,off=0,imm=0) R2_w=fp-4 R10=fp0 fp-8=0000????
+4: (18) r1 = 0xff3326aec124c000
+6: R0_w=invP0 R1_w=map_ptr(id=0,off=0,ks=4,vs=4919,imm=0) R2_w=fp-4 R10=fp0 fp-8=0000????
+6: (85) call bpf_map_lookup_elem#1
+7: R0_w=map_value_or_null(id=1,off=0,ks=4,vs=4919,imm=0) R10=fp0 fp-8=mmmm????
+7: (55) if r0 != 0x0 goto pc+1
+ R0_w=inv0 R10=fp0 fp-8=mmmm????
+8: R0_w=inv0 R10=fp0 fp-8=mmmm????
+8: (95) exit
+9: R0=map_value(id=0,off=0,ks=4,vs=4919,imm=0) R10=fp0 fp-8=mmmm????
+9: (bf) r7 = r0
+10: R0=map_value(id=0,off=0,ks=4,vs=4919,imm=0) R7_w=map_value(id=0,off=0,ks=4,vs=4919,imm=0) R10=fp0 fp-8=mmmm????
+10: (b7) r0 = 0
+11: R0_w=inv0 R7_w=map_value(id=0,off=0,ks=4,vs=4919,imm=0) R10=fp0 fp-8=mmmm????
+11: (63) *(u32 *)(r10 -4) = r0
+last_idx 11 first_idx 9
+regs=1 stack=0 before 10: (b7) r0 = 0
+12: R0_w=invP0 R7_w=map_value(id=0,off=0,ks=4,vs=4919,imm=0) R10=fp0 fp-8=0000????
+12: (bf) r2 = r10
+13: R0_w=invP0 R2_w=fp0 R7_w=map_value(id=0,off=0,ks=4,vs=4919,imm=0) R10=fp0 fp-8=0000????
+13: (07) r2 += -4
+14: R0_w=invP0 R2_w=fp-4 R7_w=map_value(id=0,off=0,ks=4,vs=4919,imm=0) R10=fp0 fp-8=0000????
+14: (18) r1 = 0xff3326aec124e000
+16: R0_w=invP0 R1_w=map_ptr(id=0,off=0,ks=4,vs=4919,imm=0) R2_w=fp-4 R7_w=map_value(id=0,off=0,ks=4,vs=4919,imm=0) R10=fp0 fp-8=0000????
+16: (85) call bpf_map_lookup_elem#1
+17: R0_w=map_value_or_null(id=2,off=0,ks=4,vs=4919,imm=0) R7_w=map_value(id=0,off=0,ks=4,vs=4919,imm=0) R10=fp0 fp-8=mmmm????
+17: (55) if r0 != 0x0 goto pc+1
+ R0_w=inv0 R7_w=map_value(id=0,off=0,ks=4,vs=4919,imm=0) R10=fp0 fp-8=mmmm????
+18: R0_w=inv0 R7_w=map_value(id=0,off=0,ks=4,vs=4919,imm=0) R10=fp0 fp-8=mmmm????
+18: (95) exit
+19: R0=map_value(id=0,off=0,ks=4,vs=4919,imm=0) R7=map_value(id=0,off=0,ks=4,vs=4919,imm=0) R10=fp0 fp-8=mmmm????
+19: (bf) r2 = r0
+20: R0=map_value(id=0,off=0,ks=4,vs=4919,imm=0) R2_w=map_value(id=0,off=0,ks=4,vs=4919,imm=0) R7=map_value(id=0,off=0,ks=4,vs=4919,imm=0) R10=fp0 fp-8=mmmm????
+20: (bf) r3 = r7
+21: R0=map_value(id=0,off=0,ks=4,vs=4919,imm=0) R2_w=map_value(id=0,off=0,ks=4,vs=4919,imm=0) R3_w=map_value(id=0,off=0,ks=4,vs=4919,imm=0) R7=map_value(id=0,off=0,ks=4,vs=4919,imm=0) R10=fp0 fp-8=mmmm????
+21: (b4) w0 = 0
+22: R0_w=inv0 R2_w=map_value(id=0,off=0,ks=4,vs=4919,imm=0) R3_w=map_value(id=0,off=0,ks=4,vs=4919,imm=0) R7=map_value(id=0,off=0,ks=4,vs=4919,imm=0) R10=fp0 fp-8=mmmm????
+22: (79) r7 = *(u64 *)(r2 +0)
+ R0_w=inv0 R2_w=map_value(id=0,off=0,ks=4,vs=4919,imm=0) R3_w=map_value(id=0,off=0,ks=4,vs=4919,imm=0) R7_w=map_value(id=0,off=0,ks=4,vs=4919,imm=0) R10=fp0 fp-8=mmmm????
+23: R0_w=inv0 R2_w=map_value(id=0,off=0,ks=4,vs=4919,imm=0) R3_w=map_value(id=0,off=0,ks=4,vs=4919,imm=0) R7_w=inv(id=0) R10=fp0 fp-8=mmmm????
+23: (bf) r4 = r7
+24: R0_w=inv0 R2_w=map_value(id=0,off=0,ks=4,vs=4919,imm=0) R3_w=map_value(id=0,off=0,ks=4,vs=4919,imm=0) R4_w=inv(id=3) R7_w=inv(id=3) R10=fp0 fp-8=mmmm????
+24: (b4) w5 = -1
+25: R0_w=inv0 R2_w=map_value(id=0,off=0,ks=4,vs=4919,imm=0) R3_w=map_value(id=0,off=0,ks=4,vs=4919,imm=0) R4_w=inv(id=3) R5_w=inv4294967295 R7_w=inv(id=3) R10=fp0 fp-8=mmmm????
+25: (67) r5 <<= 32
+26: R0_w=inv0 R2_w=map_value(id=0,off=0,ks=4,vs=4919,imm=0) R3_w=map_value(id=0,off=0,ks=4,vs=4919,imm=0) R4_w=inv(id=3) R5_w=inv-4294967296 R7_w=inv(id=3) R10=fp0 fp-8=mmmm????
+26: (5f) r4 &= r5
+27: R0_w=inv0 R2_w=map_value(id=0,off=0,ks=4,vs=4919,imm=0) R3_w=map_value(id=0,off=0,ks=4,vs=4919,imm=0) R4_w=inv(id=0,smax_value=9223372032559808512,umax_value=18446744069414584320,var_off=(0x0; 0xffffffff00000000),s32_min_value=0,s32_max_value=0,u32_max_value=0) R5_w=inv-4294967296 R7_w=inv(id=3) R10=fp0 fp-8=mmmm????
+27: (07) r4 += 1
+28: R0_w=inv0 R2_w=map_value(id=0,off=0,ks=4,vs=4919,imm=0) R3_w=map_value(id=0,off=0,ks=4,vs=4919,imm=0) R4_w=inv(id=0,smin_value=-9223372036854775807,smax_value=9223372032559808513,umin_value=1,umax_value=18446744069414584321,var_off=(0x1; 0xffffffff00000000),s32_min_value=1,s32_max_value=1,u32_max_value=1) R5_w=inv-4294967296 R7_w=inv(id=3) R10=fp0 fp-8=mmmm????
+28: (b7) r5 = 1
+29: R0_w=inv0 R2_w=map_value(id=0,off=0,ks=4,vs=4919,imm=0) R3_w=map_value(id=0,off=0,ks=4,vs=4919,imm=0) R4_w=inv(id=0,smin_value=-9223372036854775807,smax_value=9223372032559808513,umin_value=1,umax_value=18446744069414584321,var_off=(0x1; 0xffffffff00000000),s32_min_value=1,s32_max_value=1,u32_max_value=1) R5_w=inv1 R7_w=inv(id=3) R10=fp0 fp-8=mmmm????
+29: (67) r5 <<= 32
+30: R0_w=inv0 R2_w=map_value(id=0,off=0,ks=4,vs=4919,imm=0) R3_w=map_value(id=0,off=0,ks=4,vs=4919,imm=0) R4_w=inv(id=0,smin_value=-9223372036854775807,smax_value=9223372032559808513,umin_value=1,umax_value=18446744069414584321,var_off=(0x1; 0xffffffff00000000),s32_min_value=1,s32_max_value=1,u32_max_value=1) R5_w=inv4294967296 R7_w=inv(id=3) R10=fp0 fp-8=mmmm????
+30: (07) r5 += 2
+31: R0_w=inv0 R2_w=map_value(id=0,off=0,ks=4,vs=4919,imm=0) R3_w=map_value(id=0,off=0,ks=4,vs=4919,imm=0) R4_w=inv(id=0,smin_value=-9223372036854775807,smax_value=9223372032559808513,umin_value=1,umax_value=18446744069414584321,var_off=(0x1; 0xffffffff00000000),s32_min_value=1,s32_max_value=1,u32_max_value=1) R5_w=inv4294967298 R7_w=inv(id=3) R10=fp0 fp-8=mmmm????
+31: (5f) r4 &= r5
+32: R0_w=inv0 R2_w=map_value(id=0,off=0,ks=4,vs=4919,imm=0) R3_w=map_value(id=0,off=0,ks=4,vs=4919,imm=0) R4_w=inv(id=0,umax_value=4294967296,var_off=(0x0; 0x100000000),s32_max_value=0,u32_max_value=0) R5_w=inv4294967298 R7_w=inv(id=3) R10=fp0 fp-8=mmmm????
+32: (07) r4 += 1
+33: R0_w=inv0 R2_w=map_value(id=0,off=0,ks=4,vs=4919,imm=0) R3_w=map_value(id=0,off=0,ks=4,vs=4919,imm=0) R4_w=inv(id=0,umin_value=1,umax_value=4294967297,var_off=(0x1; 0x100000000),s32_max_value=1,u32_max_value=1) R5_w=inv4294967298 R7_w=inv(id=3) R10=fp0 fp-8=mmmm????
+33: (b6) if w7 <= 0x1 goto pc+1
+ R0_w=inv0 R2_w=map_value(id=0,off=0,ks=4,vs=4919,imm=0) R3_w=map_value(id=0,off=0,ks=4,vs=4919,imm=0) R4_w=inv(id=0,umin_value=1,umax_value=4294967297,var_off=(0x1; 0x100000000),s32_max_value=1,u32_max_value=1) R5_w=inv4294967298 R7_w=inv(id=3,u32_min_value=2) R10=fp0 fp-8=mmmm????
+34: R0_w=inv0 R2_w=map_value(id=0,off=0,ks=4,vs=4919,imm=0) R3_w=map_value(id=0,off=0,ks=4,vs=4919,imm=0) R4_w=inv(id=0,umin_value=1,umax_value=4294967297,var_off=(0x1; 0x100000000),s32_max_value=1,u32_max_value=1) R5_w=inv4294967298 R7_w=inv(id=3,u32_min_value=2) R10=fp0 fp-8=mmmm????
+34: (95) exit
+35: R0=inv0 R2=map_value(id=0,off=0,ks=4,vs=4919,imm=0) R3=map_value(id=0,off=0,ks=4,vs=4919,imm=0) R4=inv(id=0,umin_value=1,umax_value=4294967297,var_off=(0x1; 0x100000000),s32_max_value=1,u32_max_value=1) R5=inv4294967298 R7=inv(id=3,smax_value=9223372032559808513,umax_value=18446744069414584321,var_off=(0x0; 0xffffffff00000001),s32_min_value=0,s32_max_value=1,u32_max_value=1) R10=fp0 fp-8=mmmm????
+35: (0f) r4 += r7
+36: R0=inv0 R2=map_value(id=0,off=0,ks=4,vs=4919,imm=0) R3=map_value(id=0,off=0,ks=4,vs=4919,imm=0) R4_w=inv(id=0,smax_value=9223372032559808515,umax_value=18446744069414584323,var_off=(0x0; 0xffffffff00000003),s32_min_value=1,s32_max_value=2,u32_min_value=1,u32_max_value=2) R5=inv4294967298 R7=inv(id=3,smax_value=9223372032559808513,umax_value=18446744069414584321,var_off=(0x0; 0xffffffff00000001),s32_min_value=0,s32_max_value=1,u32_max_value=1) R10=fp0 fp-8=mmmm????
+36: (bc) w4 = w4
+37: R0=inv0 R2=map_value(id=0,off=0,ks=4,vs=4919,imm=0) R3=map_value(id=0,off=0,ks=4,vs=4919,imm=0) R4_w=inv(id=0,umin_value=1,umax_value=2,var_off=(0x0; 0x3)) R5=inv4294967298 R7=inv(id=3,smax_value=9223372032559808513,umax_value=18446744069414584321,var_off=(0x0; 0xffffffff00000001),s32_min_value=0,s32_max_value=1,u32_max_value=1) R10=fp0 fp-8=mmmm????
+37: (57) r4 &= 1
+38: R0=inv0 R2=map_value(id=0,off=0,ks=4,vs=4919,imm=0) R3=map_value(id=0,off=0,ks=4,vs=4919,imm=0) R4_w=inv(id=0,umax_value=1,var_off=(0x0; 0x1)) R5=inv4294967298 R7=inv(id=3,smax_value=9223372032559808513,umax_value=18446744069414584321,var_off=(0x0; 0xffffffff00000001),s32_min_value=0,s32_max_value=1,u32_max_value=1) R10=fp0 fp-8=mmmm????
+38: (bf) r8 = r4
+39: R0=inv0 R2=map_value(id=0,off=0,ks=4,vs=4919,imm=0) R3=map_value(id=0,off=0,ks=4,vs=4919,imm=0) R4_w=inv(id=4,umax_value=1,var_off=(0x0; 0x1)) R5=inv4294967298 R7=inv(id=3,smax_value=9223372032559808513,umax_value=18446744069414584321,var_off=(0x0; 0xffffffff00000001),s32_min_value=0,s32_max_value=1,u32_max_value=1) R8_w=inv(id=4,umax_value=1,var_off=(0x0; 0x1)) R10=fp0 fp-8=mmmm????
+39: (07) r3 += 4096
+40: R0=inv0 R2=map_value(id=0,off=0,ks=4,vs=4919,imm=0) R3_w=map_value(id=0,off=4096,ks=4,vs=4919,imm=0) R4_w=inv(id=4,umax_value=1,var_off=(0x0; 0x1)) R5=inv4294967298 R7=inv(id=3,smax_value=9223372032559808513,umax_value=18446744069414584321,var_off=(0x0; 0xffffffff00000001),s32_min_value=0,s32_max_value=1,u32_max_value=1) R8_w=inv(id=4,umax_value=1,var_off=(0x0; 0x1)) R10=fp0 fp-8=mmmm????
+40: (27) r8 *= 4095
+41: R0=inv0 R2=map_value(id=0,off=0,ks=4,vs=4919,imm=0) R3_w=map_value(id=0,off=4096,ks=4,vs=4919,imm=0) R4_w=inv(id=4,umax_value=1,var_off=(0x0; 0x1)) R5=inv4294967298 R7=inv(id=3,smax_value=9223372032559808513,umax_value=18446744069414584321,var_off=(0x0; 0xffffffff00000001),s32_min_value=0,s32_max_value=1,u32_max_value=1) R8_w=inv(id=0,umax_value=4095,var_off=(0x0; 0xfff)) R10=fp0 fp-8=mmmm????
+41: (1f) r3 -= r8
+last_idx 41 first_idx 35
+regs=100 stack=0 before 40: (27) r8 *= 4095
+regs=100 stack=0 before 39: (07) r3 += 4096
+regs=100 stack=0 before 38: (bf) r8 = r4
+regs=10 stack=0 before 37: (57) r4 &= 1
+regs=10 stack=0 before 36: (bc) w4 = w4
+regs=10 stack=0 before 35: (0f) r4 += r7
+ R0_w=inv0 R2_w=map_value(id=0,off=0,ks=4,vs=4919,imm=0) R3_rw=map_value(id=0,off=0,ks=4,vs=4919,imm=0) R4_rw=invP(id=0,umin_value=1,umax_value=4294967297,var_off=(0x1; 0x100000000),s32_max_value=1,u32_max_value=1) R5_w=inv4294967298 R7_rw=invP(id=3,smax_value=9223372032559808513,umax_value=18446744069414584321,var_off=(0x0; 0xffffffff00000001),s32_min_value=0,s32_max_value=1,u32_max_value=1) R10=fp0 fp-8=mmmm????
+parent didn't have regs=90 stack=0 marks
+last_idx 33 first_idx 19
+regs=90 stack=0 before 33: (b6) if w7 <= 0x1 goto pc+1
+regs=90 stack=0 before 32: (07) r4 += 1
+regs=90 stack=0 before 31: (5f) r4 &= r5
+regs=b0 stack=0 before 30: (07) r5 += 2
+regs=b0 stack=0 before 29: (67) r5 <<= 32
+regs=b0 stack=0 before 28: (b7) r5 = 1
+regs=90 stack=0 before 27: (07) r4 += 1
+regs=90 stack=0 before 26: (5f) r4 &= r5
+regs=b0 stack=0 before 25: (67) r5 <<= 32
+regs=b0 stack=0 before 24: (b4) w5 = -1
+regs=90 stack=0 before 23: (bf) r4 = r7
+regs=80 stack=0 before 22: (79) r7 = *(u64 *)(r2 +0)
+42: R0=inv0 R2=map_value(id=0,off=0,ks=4,vs=4919,imm=0) R3_w=map_value(id=0,off=4096,ks=4,vs=4919,smin_value=-4095,smax_value=0) R4_w=inv(id=4,umax_value=1,var_off=(0x0; 0x1)) R5=inv4294967298 R7=inv(id=3,smax_value=9223372032559808513,umax_value=18446744069414584321,var_off=(0x0; 0xffffffff00000001),s32_min_value=0,s32_max_value=1,u32_max_value=1) R8_w=invP(id=0,umax_value=4095,var_off=(0x0; 0xfff)) R10=fp0 fp-8=mmmm????
+42: (1f) r3 -= r4
+last_idx 42 first_idx 35
+regs=10 stack=0 before 41: (1f) r3 -= r8
+regs=10 stack=0 before 40: (27) r8 *= 4095
+regs=10 stack=0 before 39: (07) r3 += 4096
+regs=10 stack=0 before 38: (bf) r8 = r4
+regs=10 stack=0 before 37: (57) r4 &= 1
+regs=10 stack=0 before 36: (bc) w4 = w4
+regs=10 stack=0 before 35: (0f) r4 += r7
+ R0_w=inv0 R2_w=map_value(id=0,off=0,ks=4,vs=4919,imm=0) R3_rw=map_value(id=0,off=0,ks=4,vs=4919,imm=0) R4_rw=invP(id=0,umin_value=1,umax_value=4294967297,var_off=(0x1; 0x100000000),s32_max_value=1,u32_max_value=1) R5_w=inv4294967298 R7_rw=invP(id=3,smax_value=9223372032559808513,umax_value=18446744069414584321,var_off=(0x0; 0xffffffff00000001),s32_min_value=0,s32_max_value=1,u32_max_value=1) R10=fp0 fp-8=mmmm????
+parent already had regs=90 stack=0 marks
+43: R0=inv0 R2=map_value(id=0,off=0,ks=4,vs=4919,imm=0) R3_w=map_value(id=0,off=4096,ks=4,vs=4919,smin_value=-4096,smax_value=0) R4_w=invP(id=4,umax_value=1,var_off=(0x0; 0x1)) R5=inv4294967298 R7=inv(id=3,smax_value=9223372032559808513,umax_value=18446744069414584321,var_off=(0x0; 0xffffffff00000001),s32_min_value=0,s32_max_value=1,u32_max_value=1) R8_w=invP(id=0,umax_value=4095,var_off=(0x0; 0xfff)) R10=fp0 fp-8=mmmm????
+43: (27) r4 *= 272
+44: R0=inv0 R2=map_value(id=0,off=0,ks=4,vs=4919,imm=0) R3_w=map_value(id=0,off=4096,ks=4,vs=4919,smin_value=-4096,smax_value=0) R4_w=invP(id=0,umax_value=272,var_off=(0x0; 0x110)) R5=inv4294967298 R7=inv(id=3,smax_value=9223372032559808513,umax_value=18446744069414584321,var_off=(0x0; 0xffffffff00000001),s32_min_value=0,s32_max_value=1,u32_max_value=1) R8_w=invP(id=0,umax_value=4095,var_off=(0x0; 0xfff)) R10=fp0 fp-8=mmmm????
+44: (1f) r3 -= r4
+45: R0=inv0 R2=map_value(id=0,off=0,ks=4,vs=4919,imm=0) R3_w=map_value(id=0,off=4096,ks=4,vs=4919,smin_value=-4368,smax_value=0) R4_w=invP(id=0,umax_value=272,var_off=(0x0; 0x110)) R5=inv4294967298 R7=inv(id=3,smax_value=9223372032559808513,umax_value=18446744069414584321,var_off=(0x0; 0xffffffff00000001),s32_min_value=0,s32_max_value=1,u32_max_value=1) R8_w=invP(id=0,umax_value=4095,var_off=(0x0; 0xfff)) R10=fp0 fp-8=mmmm????
+45: (79) r6 = *(u64 *)(r3 +0)
+ R0=inv0 R2=map_value(id=0,off=0,ks=4,vs=4919,imm=0) R3_w=map_value(id=0,off=4096,ks=4,vs=4919,smin_value=-4368,smax_value=0) R4_w=invP(id=0,umax_value=272,var_off=(0x0; 0x110)) R5=inv4294967298 R7=inv(id=3,smax_value=9223372032559808513,umax_value=18446744069414584321,var_off=(0x0; 0xffffffff00000001),s32_min_value=0,s32_max_value=1,u32_max_value=1) R8_w=invP(id=0,umax_value=4095,var_off=(0x0; 0xfff)) R10=fp0 fp-8=mmmm????
+R3 min value is negative, either use unsigned index or do a if (index >=0) check.
+verification time 25514 usec
+stack depth 4
+processed 44 insns (limit 1000000) max_states_per_insn 0 total_states 3 peak_states 3 mark_read 1
+FIXTURE_VERIFIER_LOG_END name=cve3490_ops
+FIXTURE_END mode=x86-fixed case=unsafe status=pass
+BPF_JIT_SMOKE_STATUS=0

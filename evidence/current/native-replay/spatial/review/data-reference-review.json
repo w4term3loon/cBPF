@@ -1,0 +1,127 @@
+{
+  "test_exploit_evidence_flag": 0,
+  "kmalloc_caches_base": "0xffff800080e9fbf0",
+  "kmalloc_slot": "0xffff800080e9fd78",
+  "kmalloc_offset_unchanged": "0x188",
+  "changed_string_operands": [
+    {
+      "instruction": "ffff800080037e24",
+      "address": "0xffff800080dd8c48",
+      "string": "caller_return"
+    },
+    {
+      "instruction": "ffff800080037e30",
+      "address": "0xffff800080e1b874",
+      "string": "c16_epilogue"
+    },
+    {
+      "instruction": "ffff800080037e38",
+      "address": "0xffff800080df60f9",
+      "string": "kernel_pcc"
+    },
+    {
+      "instruction": "ffff800080037ebc",
+      "address": "0xffff800080df0396",
+      "string": "context"
+    },
+    {
+      "instruction": "ffff800080037ec4",
+      "address": "0xffff800080e08b4a",
+      "string": "c16"
+    },
+    {
+      "instruction": "ffff800080037ecc",
+      "address": "0xffff800080e27966",
+      "string": "socket_context"
+    },
+    {
+      "instruction": "ffff800080037f40",
+      "address": "0xffff800080e08b4e",
+      "string": "\u00016bpf_jit: CBPF_SPATIAL_NATIVE_GATE target=0x%llx tag=%u sealed=%u base=0x%llx cursor=0x%llx length=%llu perms=0x%llx\n"
+    },
+    {
+      "instruction": "ffff800080037fc4",
+      "address": "0xffff800080e0f107",
+      "string": "rcsp_el0"
+    },
+    {
+      "instruction": "ffff800080037fcc",
+      "address": "0xffff800080e97d32",
+      "string": "jit_invocation_frame"
+    },
+    {
+      "instruction": "ffff800080037fd8",
+      "address": "0xffff800080e6623b",
+      "string": "native_stack"
+    },
+    {
+      "instruction": "ffff800080038088",
+      "address": "0xffff800080e53806",
+      "string": "restricted_code"
+    },
+    {
+      "instruction": "ffff800080038090",
+      "address": "0xffff800080deaa63",
+      "string": "pcc"
+    },
+    {
+      "instruction": "ffff800080038098",
+      "address": "0xffff800080e84ef9",
+      "string": "jit_restricted"
+    },
+    {
+      "instruction": "ffff8000800380fc",
+      "address": "0xffff800080e08bc5",
+      "string": "executive_return"
+    },
+    {
+      "instruction": "ffff800080038104",
+      "address": "0xffff800080e40c3a",
+      "string": "clr"
+    },
+    {
+      "instruction": "ffff800080038110",
+      "address": "0xffff800080e72538",
+      "string": "jit_epilogue"
+    },
+    {
+      "instruction": "ffff8000801c1fd0",
+      "address": "0xffff800080e6cdbc",
+      "string": "\u00016CBPF_SPATIAL_NATIVE_VALUE branch=reduced map_id=%u index=%u value_size=%u stride=%u values=0x%llx selected=0x%llx tag=%u sealed=%u base=0x%llx cursor=0x%llx length=%llu perms=0x%llx\n"
+    },
+    {
+      "instruction": "ffff800080038dfc",
+      "address": "0xffff800080df6104",
+      "string": "ex_handler_bpf"
+    },
+    {
+      "instruction": "ffff800080038e0c",
+      "address": "0xffff800080e3a3b2",
+      "string": "\u00014bpf_jit: contained BPF capability bounds fault count=%llu\n"
+    },
+    {
+      "instruction": "ffff800080038e20",
+      "address": "0xffff800080df6104",
+      "string": "ex_handler_bpf"
+    },
+    {
+      "instruction": "ffff800080038eb4",
+      "address": "0xffff800080e08bd6",
+      "string": "\u00014bpf_jit: recovered BPF data abort fsc=0x%lx\n"
+    },
+    {
+      "instruction": "ffff800080038fbc",
+      "address": "0xffff800080e53816",
+      "string": "\u00014bpf_jit: EXPLOIT_FAULT esr=0x%016lx fsc=0x%lx bounds=%u far=0x%016llx pc=0x%016llx insn=0x%08x cap_memory=1 root=c%u root_kind=%s tag=%u sealed=%u base=0x%llx length=%llu address=0x%llx perms=0x%llx\n"
+    },
+    {
+      "instruction": "ffff800080038fe4",
+      "address": "0xffff800080e2dd4e",
+      "string": "\u00014bpf_jit: EXPLOIT_FAULT esr=0x%016lx fsc=0x%lx bounds=%u far=0x%016llx pc=0x%016llx insn=0x%08x cap_memory=0\n"
+    }
+  ],
+  "remaining_root_labels": {
+    "0xffff800080e0f110": "creg",
+    "0xffff800080e1560b": "csp"
+  }
+}

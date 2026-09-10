@@ -1,0 +1,145 @@
+make[1]: Entering directory '/build'
+  GEN     Makefile
+  HOSTCC  scripts/basic/fixdep
+  HOSTCC  scripts/kconfig/conf.o
+  HOSTCC  scripts/kconfig/confdata.o
+  HOSTCC  scripts/kconfig/expr.o
+  LEX     scripts/kconfig/lexer.lex.c
+  YACC    scripts/kconfig/parser.tab.[ch]
+  HOSTCC  scripts/kconfig/lexer.lex.o
+  HOSTCC  scripts/kconfig/menu.o
+  HOSTCC  scripts/kconfig/parser.tab.o
+  HOSTCC  scripts/kconfig/preprocess.o
+  HOSTCC  scripts/kconfig/symbol.o
+  HOSTCC  scripts/kconfig/util.o
+  HOSTLD  scripts/kconfig/conf
+#
+# configuration written to .config
+#
+make[1]: Leaving directory '/build'
+make[1]: Entering directory '/build'
+  GEN     Makefile
+#
+# configuration written to .config
+#
+make[1]: Leaving directory '/build'
+make[1]: Entering directory '/build'
+  SYNC    include/config/auto.conf.cmd
+  GEN     Makefile
+  GEN     Makefile
+  WRAP    arch/arm64/include/generated/uapi/asm/kvm_para.h
+  WRAP    arch/arm64/include/generated/uapi/asm/errno.h
+  WRAP    arch/arm64/include/generated/uapi/asm/ioctl.h
+  WRAP    arch/arm64/include/generated/uapi/asm/ioctls.h
+  WRAP    arch/arm64/include/generated/uapi/asm/ipcbuf.h
+  WRAP    arch/arm64/include/generated/uapi/asm/msgbuf.h
+  WRAP    arch/arm64/include/generated/uapi/asm/resource.h
+  WRAP    arch/arm64/include/generated/uapi/asm/poll.h
+  WRAP    arch/arm64/include/generated/uapi/asm/sembuf.h
+  WRAP    arch/arm64/include/generated/uapi/asm/shmbuf.h
+  WRAP    arch/arm64/include/generated/uapi/asm/siginfo.h
+  UPD     include/generated/uapi/linux/version.h
+  WRAP    arch/arm64/include/generated/uapi/asm/socket.h
+  WRAP    arch/arm64/include/generated/uapi/asm/sockios.h
+  WRAP    arch/arm64/include/generated/uapi/asm/stat.h
+  WRAP    arch/arm64/include/generated/uapi/asm/swab.h
+  WRAP    arch/arm64/include/generated/uapi/asm/termbits.h
+  UPD     include/config/kernel.release
+  WRAP    arch/arm64/include/generated/uapi/asm/termios.h
+  WRAP    arch/arm64/include/generated/uapi/asm/types.h
+  HOSTCC  scripts/dtc/dtc.o
+  HOSTCC  scripts/dtc/flattree.o
+  UPD     include/generated/utsrelease.h
+  HOSTCC  scripts/dtc/fstree.o
+  UPD     include/generated/compile.h
+  HOSTCC  scripts/dtc/data.o
+  HOSTCC  scripts/dtc/livetree.o
+  HOSTCC  scripts/dtc/treesource.o
+  HOSTCC  scripts/dtc/srcpos.o
+  HOSTCC  scripts/dtc/checks.o
+  HOSTCC  scripts/dtc/util.o
+  WRAP    arch/arm64/include/generated/asm/early_ioremap.h
+  WRAP    arch/arm64/include/generated/asm/mcs_spinlock.h
+  WRAP    arch/arm64/include/generated/asm/qrwlock.h
+  WRAP    arch/arm64/include/generated/asm/qspinlock.h
+  WRAP    arch/arm64/include/generated/asm/parport.h
+  WRAP    arch/arm64/include/generated/asm/user.h
+  WRAP    arch/arm64/include/generated/asm/bugs.h
+  WRAP    arch/arm64/include/generated/asm/delay.h
+  WRAP    arch/arm64/include/generated/asm/div64.h
+  WRAP    arch/arm64/include/generated/asm/dma-mapping.h
+  WRAP    arch/arm64/include/generated/asm/dma.h
+  WRAP    arch/arm64/include/generated/asm/emergency-restart.h
+  WRAP    arch/arm64/include/generated/asm/hw_irq.h
+  WRAP    arch/arm64/include/generated/asm/irq_regs.h
+  WRAP    arch/arm64/include/generated/asm/kdebug.h
+  WRAP    arch/arm64/include/generated/asm/kmap_size.h
+  WRAP    arch/arm64/include/generated/asm/local.h
+  WRAP    arch/arm64/include/generated/asm/local64.h
+  WRAP    arch/arm64/include/generated/asm/mmiowb.h
+  WRAP    arch/arm64/include/generated/asm/msi.h
+  WRAP    arch/arm64/include/generated/asm/serial.h
+  WRAP    arch/arm64/include/generated/asm/softirq_stack.h
+  WRAP    arch/arm64/include/generated/asm/switch_to.h
+  WRAP    arch/arm64/include/generated/asm/trace_clock.h
+  WRAP    arch/arm64/include/generated/asm/unaligned.h
+  WRAP    arch/arm64/include/generated/asm/vga.h
+  LEX     scripts/dtc/dtc-lexer.lex.c
+  YACC    scripts/dtc/dtc-parser.tab.[ch]
+  HOSTCC  scripts/dtc/libfdt/fdt.o
+  HOSTCC  scripts/dtc/libfdt/fdt_ro.o
+  HOSTCC  scripts/dtc/libfdt/fdt_wip.o
+  HOSTCC  scripts/dtc/libfdt/fdt_sw.o
+  HOSTCC  scripts/dtc/libfdt/fdt_rw.o
+  HOSTCC  scripts/dtc/libfdt/fdt_strerror.o
+  HOSTCC  scripts/dtc/libfdt/fdt_empty_tree.o
+  HOSTCC  scripts/dtc/libfdt/fdt_addresses.o
+  HOSTCC  scripts/dtc/libfdt/fdt_overlay.o
+  HOSTCC  scripts/dtc/fdtoverlay.o
+  HOSTCC  scripts/dtc/dtc-lexer.lex.o
+  HOSTCC  scripts/dtc/dtc-parser.tab.o
+  HOSTLD  scripts/dtc/fdtoverlay
+  HOSTLD  scripts/dtc/dtc
+  HOSTCC  scripts/kallsyms
+  HOSTCC  scripts/sorttable
+  HOSTCC  scripts/selinux/genheaders/genheaders
+  HOSTCC  scripts/selinux/mdp/mdp
+  GEN     arch/arm64/include/generated/asm/cpucap-defs.h
+  GEN     arch/arm64/include/generated/asm/sysreg-defs.h
+  CC      scripts/mod/empty.o
+  HOSTCC  scripts/mod/mk_elfconfig
+  CC      scripts/mod/devicetable-offsets.s
+  UPD     scripts/mod/devicetable-offsets.h
+  MKELF   scripts/mod/elfconfig.h
+  HOSTCC  scripts/mod/modpost.o
+  HOSTCC  scripts/mod/file2alias.o
+  HOSTCC  scripts/mod/sumversion.o
+  HOSTCC  scripts/mod/symsearch.o
+  HOSTLD  scripts/mod/modpost
+  CC      kernel/bounds.s
+  CHKSHA1 /src/include/linux/atomic/atomic-arch-fallback.h
+  CHKSHA1 /src/include/linux/atomic/atomic-instrumented.h
+  UPD     include/generated/timeconst.h
+  CHKSHA1 /src/include/linux/atomic/atomic-long.h
+  UPD     include/generated/bounds.h
+  CC      arch/arm64/kernel/asm-offsets.s
+  UPD     include/generated/asm-offsets.h
+  CALL    /src/scripts/checksyscalls.sh
+  LDS     arch/arm64/kernel/vdso/vdso.lds
+  CC      arch/arm64/kernel/vdso/vgettimeofday.o
+  AS      arch/arm64/kernel/vdso/sigreturn.o
+  AS      arch/arm64/kernel/vdso/note.o
+  LD      arch/arm64/kernel/vdso/vdso.so.dbg
+  VDSOSYM include/generated/vdso-offsets.h
+  OBJCOPY arch/arm64/kernel/vdso/vdso.so
+  CC      arch/arm64/kernel/vdso/purecap/vgettimeofday.o
+  AS      arch/arm64/kernel/vdso/purecap/note.o
+  AS      arch/arm64/kernel/vdso/purecap/sigreturn.o
+  LD      arch/arm64/kernel/vdso/purecap/vdso.so.dbg
+ld.lld: warning: <internal>:(.pad.cheri.pcc) is being placed in '.pad.cheri.pcc'
+  VDSOSYM include/generated/vdso-purecap-offsets.h
+  OBJCOPY arch/arm64/kernel/vdso/purecap/vdso.so
+  CC      arch/arm64/net/bpf_jit_comp.o
+  CC      kernel/bpf/arraymap.o
+  CC      kernel/bpf/syscall.o
+make[1]: Leaving directory '/build'

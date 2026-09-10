@@ -1,0 +1,183 @@
+{
+  "schema_version": 1,
+  "claim": "For two primary-source verifier failures, the vulnerable upstream x86 parent executes the unsafe direct map access, the official fix rejects the same canonical BPF input, broad Morello authority executes it, and exact map-value authority raises a Morello capability-bounds fault at the intended JIT instruction. For CVE-2021-3490, a protected adjacent map value is changed only by the vulnerable x86 and broad-authority executions and remains byte-for-byte unchanged after fixed-verifier and exact-authority runs.",
+  "scope_limit": "The evidence establishes containment of the first direct spatial effect and, for CVE-2021-3490, the absence of that one monitored adjacent-object write. It does not establish rollback of arbitrary prior effects, prevention of the verifier defect, or reproduction of a complete privilege-escalation chain.",
+  "shared": {
+    "positive_controls": [
+      "scalar_42",
+      "stack_roundtrip",
+      "stack_boundary",
+      "indirect_stack"
+    ],
+    "capability_permissions": {
+      "observed": "0x34dfd",
+      "forbidden_mask": "0xb002",
+      "forbidden": [
+        "permit_execute",
+        "executive",
+        "permit_store_capability",
+        "permit_store_local"
+      ],
+      "source": "Morello compiler constants and BPF_MAP_VALUE_CLEAR_PERMS in patch 0007"
+    },
+    "morello_logs": {
+      "fixed": "linux/benchmarks/results/morello-exploit-evidence-fixed-2026-08-29.txt",
+      "exact": "linux/benchmarks/results/morello-exploit-evidence-exact-2026-08-29.txt",
+      "exact_unblinded": "linux/benchmarks/results/morello-exploit-evidence-exact-unblinded-2026-08-29.txt",
+      "broad": "linux/benchmarks/results/morello-exploit-evidence-broad-2026-08-29.txt"
+    },
+    "morello_configs": {
+      "fixed": "linux/benchmarks/configs/morello-e6c69574-fixed-2026-08-29.config",
+      "exact": "linux/benchmarks/configs/morello-e6c69574-exact-2026-08-29.config",
+      "broad": "linux/benchmarks/configs/morello-e6c69574-broad-2026-08-29.config"
+    },
+    "morello_build_receipts": {
+      "fixed": "linux/benchmarks/results/morello-build-provenance-fixed-2026-08-29.json",
+      "exact": "linux/benchmarks/results/morello-build-provenance-exact-2026-08-29.json",
+      "exact_unblinded": "linux/benchmarks/results/morello-build-provenance-exact-2026-08-29.json",
+      "broad": "linux/benchmarks/results/morello-build-provenance-broad-2026-08-29.json"
+    },
+    "patches": [
+      "linux/patches/0024-preserve-capability-registers-across-helper-gateway.patch",
+      "linux/patches/0025-test-only-exploit-evidence.patch",
+      "linux/patches/0026-full-native-image-certificate.patch",
+      "linux/patches/0027-gate-post-verifier-test-injections.patch",
+      "linux/patches/0028-bound-certificate-template-rebuilds.patch",
+      "linux/patches/0029-fix-sandbox-transition-call-frame.patch",
+      "linux/patches/0030-minimize-data-root-permissions.patch",
+      "linux/patches/0031-harden-performance-logging-policy.patch"
+    ]
+  },
+  "cases": [
+    {
+      "case_id": "CVE-2021-3490-spatial",
+      "runtime_name": "cve_2021_3490",
+      "fidelity_grade": "exact_public_primitive_with_observation_suffix",
+      "canonical_input": {
+        "instructions": 48,
+        "fnv1a64": "5ad264a50c99e082",
+        "relocations": [
+          4,
+          14
+        ],
+        "unsafe_bpf": 45,
+        "external_effects_before_unsafe": 0
+      },
+      "dynamic_side_effect": {
+        "object": "first_map_key_1",
+        "bytes": 4919,
+        "initial_fill_byte": "0xa5",
+        "initial_u64": "0xa5a5a5a5a5a5a5a5",
+        "write_u64": "0x0000000000001338",
+        "byte_order": "little",
+        "changed_bytes": 8,
+        "before_fnv1a64": "f34704d1e17bf6ea",
+        "after_fnv1a64": "fde31343f34e5f41",
+        "interpretation": "The public primitive leaves r3 at the key-0 map value. The observation suffix advances by the allocator's 0x1338 array-element stride and attempts one eight-byte store into the separately addressable key-1 value."
+      },
+      "object": {
+        "size": 4919,
+        "access_size": 8,
+        "fault_displacement": 4920
+      },
+      "upstream_x86": {
+        "parent_revision": "31379397dcc364a59ce764fabb131b645c43e340",
+        "fixed_revision": "049c4e13714ecbca567b4d5f6d563f05d431c80e",
+        "parent_kernel_release": "5.12.0-capebpf-31379397dcc364a59ce764fabb131b645c43e340",
+        "fixed_kernel_release": "5.12.0-capebpf-049c4e13714ecbca567b4d5f6d563f05d431c80e",
+        "parent_config": "linux/benchmarks/configs/x86-cve-2021-3490-parent.config.gz",
+        "fixed_config": "linux/benchmarks/configs/x86-cve-2021-3490-fixed.config.gz",
+        "parent_config_sha256": "e115882c2a409667928db3e569e1a5caf736ba1ea15ce55d4023af61217d7148",
+        "fixed_config_sha256": "c1a6974b308d317af1606b7f14a4bc60cf1f8997ffb043925a5a19e377cbeb03",
+        "parent_image_sha256": "d85ad2a08ef0f4f36b1d0e3a4b5af4c69224c3bf4cfc40475a6255557d6c74d3",
+        "fixed_image_sha256": "4ccff21f13450a089f6a3a71a6a8634fbd292300422f4cc06d0a86be9d8b03f3",
+        "parent_log": "linux/benchmarks/results/x86-cve-2021-3490-parent-2026-08-29.txt",
+        "fixed_log": "linux/benchmarks/results/x86-cve-2021-3490-fixed-2026-08-29.txt",
+        "parent_build_receipt": "linux/benchmarks/results/x86-cve-2021-3490-parent-build-provenance-2026-08-29.json",
+        "fixed_build_receipt": "linux/benchmarks/results/x86-cve-2021-3490-fixed-build-provenance-2026-08-29.json",
+        "fixed_errno": 13
+      },
+      "fault": {
+        "fsc": "0x2a",
+        "native_word": "0xe2c00043",
+        "root": 2,
+        "bpf_code": "0x7b",
+        "post_verifier_bpf": 45,
+        "unblinded_native_index": 121,
+        "exact_helper_records": 2
+      }
+    },
+    {
+      "case_id": "CVE-2023-2163-spatial",
+      "runtime_name": "cve_2023_2163",
+      "fidelity_grade": "exact_official_program",
+      "canonical_input": {
+        "instructions": 28,
+        "fnv1a64": "51fcf7c8876d2e53",
+        "relocations": [
+          13
+        ],
+        "unsafe_bpf": 25,
+        "external_effects_before_unsafe": 0
+      },
+      "object": {
+        "size": 48,
+        "access_size": 8,
+        "fault_displacement": 8192
+      },
+      "upstream_x86": {
+        "parent_revision": "8267fc71abb2dc47338570e56dd3473a58313fce",
+        "fixed_revision": "71b547f561247897a0a14f3082730156c0533fed",
+        "parent_kernel_release": "6.3.0-rc6-capebpf-8267fc71abb2dc47338570e56dd3473a58313fce",
+        "fixed_kernel_release": "6.3.0-rc6-capebpf-71b547f561247897a0a14f3082730156c0533fed",
+        "parent_config": "linux/benchmarks/configs/x86-cve-2023-2163-parent.config.gz",
+        "fixed_config": "linux/benchmarks/configs/x86-cve-2023-2163-fixed.config.gz",
+        "parent_config_sha256": "2695b656aca3da98837936bc7c3b8d315e263f6bcae02a417ef703b8483733b8",
+        "fixed_config_sha256": "aef761c36bebeba5b6f5582209a0460e1d3d8ec5203c98ac2583ae80f579d4ab",
+        "parent_image_sha256": "838659bfc41f742dbae49efc4700725eafbcb56acdef14cb73541e6d1c613f49",
+        "fixed_image_sha256": "e39339cd7b6aefd1726e934a4b8249e526c0977c493db36228efec3124234316",
+        "parent_log": "linux/benchmarks/results/x86-cve-2023-2163-parent-2026-08-29.txt",
+        "fixed_log": "linux/benchmarks/results/x86-cve-2023-2163-fixed-2026-08-29.txt",
+        "parent_build_receipt": "linux/benchmarks/results/x86-cve-2023-2163-parent-build-provenance-2026-08-29.json",
+        "fixed_build_receipt": "linux/benchmarks/results/x86-cve-2023-2163-fixed-build-provenance-2026-08-29.json",
+        "fixed_errno": 22
+      },
+      "fault": {
+        "fsc": "0x2a",
+        "native_word": "0xe2c004e2",
+        "root": 7,
+        "bpf_code": "0x79",
+        "post_verifier_bpf": 24,
+        "unblinded_native_index": 99,
+        "exact_helper_records": 1
+      }
+    }
+  ],
+  "build_artifact_receipt": {
+    "status": "reference_only_not_distributed",
+    "morello_exact_image_sha256": "5e9358c5d926ab5fc04000b8216f9b566e42d02475cf5459ad03996d42c31cbe",
+    "morello_exact_config_sha256": "32fd0b99292f82e875024b977f0525d98fd58dacded5f2a1f37e42d767356f5d",
+    "morello_broad_image_sha256": "9d7d84af817e6f0eab0a2aa1d3090ebd9baedfd9751f4f55e47b33b199440995",
+    "morello_broad_config_sha256": "d874420f1e42f7d5cfbd21e1939a3b243986b9ae07cf1761eaf804ee47a696f6",
+    "morello_fixed_image_sha256": "feaf739ef49020f07ea45a34f40c6fb15f1fc96f26b27e2737306dc3682db41d",
+    "morello_fixed_config_sha256": "069341d7559bde97090184fa41442c949b27fc30ddcd86166441baee01e4343d",
+    "morello_harness_sha256": "6601cf925af00c44215e7b97a29dae3057e3cfacf73f88d31351a13e1d741a2d",
+    "x86_builder_definition": "linux/x86/Dockerfile",
+    "x86_builder_definition_relation": "The Dockerfile pins the inventoried package set; the retained runtime image predates that definition and is identified separately by digest.",
+    "x86_builder_runtime_image_id": "sha256:bf724cec9532b27e7c2604c33d9816b8471634a686016285f4c040c097b3ce92",
+    "x86_compiler": "gcc (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0",
+    "x86_linker": "GNU ld (GNU Binutils for Ubuntu) 2.38",
+    "x86_qemu": "QEMU emulator version 6.2.0 (Debian 1:6.2+dfsg-2ubuntu6.31)",
+    "x86_kernel_identity_sha256": "a1646e818b3a377512eeaa84c90da7793ecf417b75e8aa67663cd30e0661b025",
+    "x86_harness_sha256": {
+      "cve_2021_3490": "a7480e1f9f913e90ada1c519576cc25b84e035761ef31f9a2d8eaa4bdc92d123",
+      "cve_2023_2163": "671e08339d664ffffed11b1704454f721cf972270384fb36d8aa930a690516f3"
+    }
+  },
+  "source_revision_binding": {
+    "corpus_cross_check": true,
+    "guest_log_self_identifies_revision": true,
+    "method": "Each x86 kernel embeds its full Git revision in CONFIG_LOCALVERSION. A minimal PID 1 wrapper records uname release before executing the unchanged test init, and the checker requires the logged release to end in the frozen parent or fix revision.",
+    "scope": "This binds each serial log to the advertised kernel build identity and retained configuration. Kernel images are digest-recorded but are not distributed in the repository."
+  }
+}

@@ -1,0 +1,10 @@
+MORELLO_IMAGE=sha256:b4de3680a00e3ac68ccc56bd87131b97c1fffcd5e016c2d1a54d7e3386d9fc6e
+clang version 17.0.0 (https://git.morello-project.org/morello/llvm-project.git 7956a8d20652883f845a41094645174eb92d1960)
+QEMU emulator version 7.0.0
+Python 3.10.12
+GNU Make 4.3
+X86_IMAGE=sha256:bf724cec9532b27e7c2604c33d9816b8471634a686016285f4c040c097b3ce92
+gcc (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0
+QEMU emulator version 6.2.0 (Debian 1:6.2+dfsg-2ubuntu6.31)
+Python 3.10.12
+GNU Make 4.3

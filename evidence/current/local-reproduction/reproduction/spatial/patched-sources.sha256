@@ -1,0 +1,6 @@
+89382abb7371f4b484f0c395d9e788024f4917ea31df38d4762154df65747ca4  ${REPOSITORY}/build/m4-reproduction.o5y2sbxz/snapshot/build/spatial-check.79YmHw/source/arch/arm64/net/bpf_jit_comp.c
+af462ba19537646ebe44263f6006417f9422b3eea9eed847719f6add669a3a67  ${REPOSITORY}/build/m4-reproduction.o5y2sbxz/snapshot/build/spatial-check.79YmHw/source/include/linux/bpf.h
+8c7b1aee26e8c88f490315daa11570a5d0d3da47a718024fc4f188f5567a4758  ${REPOSITORY}/build/m4-reproduction.o5y2sbxz/snapshot/build/spatial-check.79YmHw/source/kernel/bpf/Kconfig
+91ce6f344e00c96ca3119d611b315d8946e14fb8ce24775bca31dc24040826d7  ${REPOSITORY}/build/m4-reproduction.o5y2sbxz/snapshot/build/spatial-check.79YmHw/source/kernel/bpf/arraymap.c
+1fff822d4cd3914008e4eca8abb1ab54bfcdb296edd43aaf14da6d4cb2bc336f  ${REPOSITORY}/build/m4-reproduction.o5y2sbxz/snapshot/build/spatial-check.79YmHw/source/kernel/bpf/syscall.c
+e1b3401c312176633922671d52b1bd0ccd75f9ab1fcc266a0acb764f784d4239  ${REPOSITORY}/build/m4-reproduction.o5y2sbxz/snapshot/build/spatial-check.79YmHw/source/kernel/bpf/verifier.c

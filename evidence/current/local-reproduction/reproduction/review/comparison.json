@@ -1,0 +1,199 @@
+{
+  "result": "PASS",
+  "compared_at_utc": "2026-09-06T20:28:01.505724+00:00",
+  "scope": "Local hash/byte and outcome comparison with retained original ownership boundary controls on the same host/toolchain; not an independent architecture or external human reproduction.",
+  "kernel_outputs": [
+    {
+      "original": "${REPOSITORY}/build/ownership-m3-kernel/arch/arm64/boot/Image",
+      "reproduced": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/snapshot/build/ownership-m3-kernel/arch/arm64/boot/Image",
+      "original_bytes": 17240576,
+      "reproduced_bytes": 17240576,
+      "original_sha256": "1a7bef2513eed6d8adb7928fbec5fe9c6ea4565925d51af008ff25eeda041242",
+      "reproduced_sha256": "1a7bef2513eed6d8adb7928fbec5fe9c6ea4565925d51af008ff25eeda041242",
+      "byte_equal": true
+    },
+    {
+      "original": "${REPOSITORY}/build/ownership-m3-kernel/vmlinux",
+      "reproduced": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/snapshot/build/ownership-m3-kernel/vmlinux",
+      "original_bytes": 185325992,
+      "reproduced_bytes": 185325992,
+      "original_sha256": "548c308bfd1cabaf3804827633578cfb481ed445d5c1cb035cae49836bab6ea3",
+      "reproduced_sha256": "548c308bfd1cabaf3804827633578cfb481ed445d5c1cb035cae49836bab6ea3",
+      "byte_equal": true
+    },
+    {
+      "original": "${REPOSITORY}/build/ownership-m3-kernel/Module.symvers",
+      "reproduced": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/snapshot/build/ownership-m3-kernel/Module.symvers",
+      "original_bytes": 466598,
+      "reproduced_bytes": 466598,
+      "original_sha256": "2cdaa5365903c7026ab867e22ab8767d6d2b1c0b3944eeb7e862234b64fe7a6c",
+      "reproduced_sha256": "2cdaa5365903c7026ab867e22ab8767d6d2b1c0b3944eeb7e862234b64fe7a6c",
+      "byte_equal": true
+    },
+    {
+      "original": "${REPOSITORY}/build/ownership-m3-kernel/.config",
+      "reproduced": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/snapshot/build/ownership-m3-kernel/.config",
+      "original_bytes": 87730,
+      "reproduced_bytes": 87730,
+      "original_sha256": "6f1988add3ba99cd6d2569b2bcbc705886c3de2fd27195564cf8b6a3324e4cff",
+      "reproduced_sha256": "6f1988add3ba99cd6d2569b2bcbc705886c3de2fd27195564cf8b6a3324e4cff",
+      "byte_equal": true
+    },
+    {
+      "original": "${REPOSITORY}/build/ownership-m3-headers/include/linux/bpf.h",
+      "reproduced": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/snapshot/build/ownership-m3-headers/include/linux/bpf.h",
+      "original_bytes": 274838,
+      "reproduced_bytes": 274838,
+      "original_sha256": "74af41e84ad29a873ef72bac6dee73a0923aa879b5870decf456b857126225fe",
+      "reproduced_sha256": "74af41e84ad29a873ef72bac6dee73a0923aa879b5870decf456b857126225fe",
+      "byte_equal": true
+    }
+  ],
+  "four_native_binaries": [
+    {
+      "original": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/snapshot/evidence/current/ownership-closure/native-ab_alternate.bin",
+      "reproduced": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/snapshot/build/ownership-m3-run.4B6VVP/native-ab_alternate.bin",
+      "original_bytes": 664,
+      "reproduced_bytes": 664,
+      "original_sha256": "1f6650e2fdcd76e1723c8c2fe0d42675c4615427721af729b80bdb0a03fa7b14",
+      "reproduced_sha256": "1f6650e2fdcd76e1723c8c2fe0d42675c4615427721af729b80bdb0a03fa7b14",
+      "byte_equal": true
+    },
+    {
+      "original": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/snapshot/evidence/current/ownership-closure/native-ab_spill.bin",
+      "reproduced": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/snapshot/build/ownership-m3-run.4B6VVP/native-ab_spill.bin",
+      "original_bytes": 660,
+      "reproduced_bytes": 660,
+      "original_sha256": "117453054e65b3f4ae6b8da5dd241b1a8db28cdbd15cfae4a1527e073f576871",
+      "reproduced_sha256": "117453054e65b3f4ae6b8da5dd241b1a8db28cdbd15cfae4a1527e073f576871",
+      "byte_equal": true
+    },
+    {
+      "original": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/snapshot/evidence/current/ownership-closure/native-fail_second.bin",
+      "reproduced": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/snapshot/build/ownership-m3-run.4B6VVP/native-fail_second.bin",
+      "original_bytes": 660,
+      "reproduced_bytes": 660,
+      "original_sha256": "3fcf9225428f9edb5488cf2647b9098b5b860cc9341b967d80412a9927aeb312",
+      "reproduced_sha256": "3fcf9225428f9edb5488cf2647b9098b5b860cc9341b967d80412a9927aeb312",
+      "byte_equal": true
+    },
+    {
+      "original": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/snapshot/evidence/current/ownership-closure/native-null_second.bin",
+      "reproduced": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/snapshot/build/ownership-m3-run.4B6VVP/native-null_second.bin",
+      "original_bytes": 660,
+      "reproduced_bytes": 660,
+      "original_sha256": "4aef0e035a349d66cdde5dcc8b05e56c43e65dab129b0390ba0ecaf8e00bc4c3",
+      "reproduced_sha256": "4aef0e035a349d66cdde5dcc8b05e56c43e65dab129b0390ba0ecaf8e00bc4c3",
+      "byte_equal": true
+    }
+  ],
+  "all_five_kernel_outputs_byte_equal": true,
+  "all_four_native_binaries_byte_equal": true,
+  "structured_results_equal_original": true,
+  "decisive_ordered_log_rows_equal_original": true,
+  "decisive_rows": 64,
+  "raw_boot_log": {
+    "original_sha256": "b0fe5332e9a52e53ac6a3f452d2f8e86bfe4a1d27a79dbc368aa1843194e1b8d",
+    "reproduced_sha256": "12bfe17ca22a562a2f87bce381100419cbb8547dbf8f80b423daefafd3a05069",
+    "byte_equal": false,
+    "note": "Raw boot logs include elapsed timestamps and runtime address/layout observations. Only the explicitly listed decisive rows are compared after removing timestamps; raw logs remain separately retained."
+  },
+  "reproduced_results": {
+    "study": "ownership boundary controls",
+    "trusted_resolver_checks": [
+      "stale_copy",
+      "stale_spill",
+      "duplicate_release"
+    ],
+    "cases": [
+      {
+        "case": "ab_spill",
+        "result": "PASS",
+        "loaded": true,
+        "executed": true,
+        "retval": 42,
+        "bpf_instructions": 26,
+        "native_bytes": 660,
+        "native_sha256": "117453054e65b3f4ae6b8da5dd241b1a8db28cdbd15cfae4a1527e073f576871",
+        "acquired": 2,
+        "released": 2,
+        "reads": 1,
+        "cleanup": 0,
+        "refs": 1
+      },
+      {
+        "case": "ab_alternate",
+        "result": "PASS",
+        "loaded": true,
+        "executed": true,
+        "retval": 42,
+        "bpf_instructions": 27,
+        "native_bytes": 664,
+        "native_sha256": "1f6650e2fdcd76e1723c8c2fe0d42675c4615427721af729b80bdb0a03fa7b14",
+        "acquired": 2,
+        "released": 2,
+        "reads": 1,
+        "cleanup": 0,
+        "refs": 1
+      },
+      {
+        "case": "null_second",
+        "result": "PASS",
+        "loaded": true,
+        "executed": true,
+        "retval": 7,
+        "bpf_instructions": 26,
+        "native_bytes": 660,
+        "native_sha256": "4aef0e035a349d66cdde5dcc8b05e56c43e65dab129b0390ba0ecaf8e00bc4c3",
+        "acquired": 1,
+        "released": 1,
+        "reads": 0,
+        "cleanup": 0,
+        "refs": 1
+      },
+      {
+        "case": "fail_second",
+        "result": "PASS",
+        "loaded": true,
+        "executed": true,
+        "retval": 0,
+        "bpf_instructions": 26,
+        "native_bytes": 660,
+        "native_sha256": "3fcf9225428f9edb5488cf2647b9098b5b860cc9341b967d80412a9927aeb312",
+        "acquired": 1,
+        "released": 1,
+        "reads": 0,
+        "cleanup": 1,
+        "refs": 1
+      },
+      {
+        "case": "stale_copy",
+        "result": "PASS",
+        "loaded": false,
+        "executed": false,
+        "load_errno": 22
+      },
+      {
+        "case": "stale_spill",
+        "result": "PASS",
+        "loaded": false,
+        "executed": false,
+        "load_errno": 22
+      },
+      {
+        "case": "duplicate_release",
+        "result": "PASS",
+        "loaded": false,
+        "executed": false,
+        "load_errno": 22
+      }
+    ],
+    "qemu_exit": 0,
+    "invalid_bpf_executions": 0,
+    "limits": [
+      "Trusted stale controls do not execute invalid restricted BPF.",
+      "Scalar 2 tests pre-provider argument rejection, not exact-bounds construction failure.",
+      "Nonzero normal-return cleanup is inspected/modelled; the verifier rejects leaked ownership."
+    ]
+  }
+}

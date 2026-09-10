@@ -1,0 +1,5 @@
+05d66005b6e747ad674cb221f5ab5efbd286e78bf9a4a2f726d62089fd9056e4  ${REPOSITORY}/build/kfunc-kernel/arch/arm64/boot/Image
+fea58a16f4512f8462d5ca710ae1a326b05e161ae7cfc8cfbdaba15fc6a1de3b  ${REPOSITORY}/build/kfunc-kernel/vmlinux
+2cdaa5365903c7026ab867e22ab8767d6d2b1c0b3944eeb7e862234b64fe7a6c  ${REPOSITORY}/build/kfunc-kernel/Module.symvers
+ca41988a4a902f161874cfcad58221a440180f0573d2bcccff7fdeed4ed4389a  ${REPOSITORY}/build/kfunc-kernel/.config
+74af41e84ad29a873ef72bac6dee73a0923aa879b5870decf456b857126225fe  ${REPOSITORY}/build/kfunc-headers/include/linux/bpf.h

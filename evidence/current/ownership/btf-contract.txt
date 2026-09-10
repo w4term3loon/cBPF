@@ -1,0 +1,21 @@
+[9] INT 'int' size=4 bits_offset=0 nr_bits=32 encoding=SIGNED
+[19] PTR '(anon)' type_id=0
+[49] INT 'unsigned int' size=4 bits_offset=0 nr_bits=32 encoding=(none)
+[93] TYPEDEF 'u64' type_id=94
+[94] TYPEDEF '__u64' type_id=95
+[95] INT 'unsigned long long' size=8 bits_offset=0 nr_bits=64 encoding=(none)
+[209] TYPEDEF 'u32' type_id=210
+[210] TYPEDEF '__u32' type_id=49
+[5193] PTR '(anon)' type_id=5194
+[5194] STRUCT 'cbpf_cap_ref' size=16 vlen=2
+	'id' type_id=93 bits_offset=0
+	'reserved' type_id=19 bits_offset=64
+[44134] FUNC_PROTO '(anon)' ret_type_id=5193 vlen=1
+	'want_null' type_id=209
+[44135] FUNC 'cbpf_cap_acquire' type_id=44134 linkage=static
+[44137] FUNC_PROTO '(anon)' ret_type_id=9 vlen=1
+	'ref' type_id=5193
+[44138] FUNC 'cbpf_cap_read' type_id=44137 linkage=static
+[44139] FUNC_PROTO '(anon)' ret_type_id=0 vlen=1
+	'ref' type_id=5193
+[44140] FUNC 'cbpf_cap_release' type_id=44139 linkage=static

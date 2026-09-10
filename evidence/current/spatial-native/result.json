@@ -1,0 +1,176 @@
+{
+  "schema": "cbpf-spatial-s5-v1",
+  "result": "PASS_SINGLE_INSPECTED_PROGRAM",
+  "date": "2026-09-06",
+  "claim": "Fresh reduced-source valid-use and selected-value native-correspondence witness for this inspected program under trusted source/image/provider/architecture and synchronous-invocation assumptions.",
+  "build_directory": "build/spatial-s5-build.Z4e3mc",
+  "run_directory": "build/spatial-s5-run.ZR5f2h",
+  "verified_source_tree": "e6c69574c16bc2b9bce06329f9ac3f4b3269e79a",
+  "source_pin_kind": "tree; historical replay commit not verified",
+  "frozen_m1_patch_sha256": "ac74717a7dbd2c61760115c1b8b719e52d27d60d02957a2b73c3ff155206c4ac",
+  "kernel_delta": {
+    "observation_sites": 2,
+    "observation_lines_added": 16,
+    "enforcement_changes": 0,
+    "inherited_verifier_unchanged": true,
+    "test_modes_enabled": false,
+    "spatial_offload": false
+  },
+  "kernel_release": "6.7.0-cbpf-spatial-s5",
+  "profile": {
+    "program_type": "SOCKET_FILTER",
+    "program_flags": 0,
+    "map_type": "ARRAY",
+    "map_flags": 0,
+    "key_size": 4,
+    "value_size": 8,
+    "max_entries": 2,
+    "btf": false,
+    "key": 1,
+    "normal_verifier": true,
+    "attachment": false,
+    "test_run_repeat": 1
+  },
+  "native": {
+    "image": {
+      "prog_id": "1",
+      "map_id": "1",
+      "original_count": "14",
+      "translated_count": "14",
+      "native_entry": "0xffff8000813f7988",
+      "jited_len": "392",
+      "nr_jited_ksyms": "1",
+      "nr_jited_func_lens": "1",
+      "func_len": "392"
+    },
+    "sha256": "97d2bc5287edec817d679e8d740ea5bf51f695b3157e8683152b364afe48710d",
+    "all_certificate_bytes_match_live_fd_dump": true,
+    "accepted_stage": "complete",
+    "capability_transport": "BLRS c17; capability MOV c7,c0",
+    "selected_load_word": 75,
+    "selected_store_word": 77,
+    "selected_base_register": "c7",
+    "selected_data_register": "x0",
+    "restricted": {
+      "base": 18446603338389617136,
+      "length": 224
+    },
+    "executive": {
+      "base": 18446603338389617360,
+      "length": 56
+    },
+    "kernel_relocation": 0
+  },
+  "observed": {
+    "initial": 41,
+    "guest": {
+      "result": "PASS",
+      "stage": "complete",
+      "map_id": "1",
+      "prog_id": "1",
+      "loaded": "1",
+      "map_create_count": "1",
+      "map_update_count": "1",
+      "map_lookup_count": "2",
+      "prog_load_count": "1",
+      "test_run_count": "1",
+      "info_count": "3",
+      "retval": "42",
+      "readback": "42",
+      "errno": "0",
+      "attached": "0"
+    },
+    "provider": {
+      "branch": "reduced",
+      "map_id": "1",
+      "index": "1",
+      "value_size": "8",
+      "stride": "8",
+      "values": "0xffff000000df9310",
+      "selected": "0xffff000000df9318",
+      "tag": "1",
+      "sealed": "0",
+      "base": "0xffff000000df9318",
+      "cursor": "0xffff000000df9318",
+      "length": "8",
+      "perms": "0x30001"
+    },
+    "gateway": {
+      "target": "0xffff800080037800",
+      "tag": "1",
+      "sealed": "1",
+      "base": "0x0",
+      "cursor": "0xffff800080037800",
+      "length": "18446744073709551615",
+      "perms": "0x2cfff"
+    },
+    "qemu_exit": 0,
+    "poweroff": "clean",
+    "fault_or_kernel_warning_observed": false
+  },
+  "review": {
+    "preflight": "review/pre.json",
+    "manual": "review/manual-review.json",
+    "post": "review/post.json",
+    "checker_sha256": "cf0e402a5d6afcbf167d5ad4311d02360839146b90cc7ec3d6fa7ffb69ed3abc",
+    "original_checker_sha256": "bf32ab97541dcce49cfb1134ef168880140076a3108957ba45105b2a1037553b",
+    "manual_review_before_execution": true,
+    "inspection_method": "Internal AI-assisted source and native-code inspection; not independent external review or reproduction."
+  },
+  "attempt_history": [
+    {
+      "run": "build/spatial-s5-run.KvglJV",
+      "result": "STOPPED_BEFORE_EXECUTION",
+      "stage": "program_info_size",
+      "test_run_count": 0,
+      "reason": "Inherited bpf_jit_enable initialized to0 despite DEFAULT_ON config. Subsequent boot uses standard sysctl.net.core.bpf_jit_enable=1; no fixture/verifier/kernel change."
+    },
+    {
+      "check": "review/failed-pre.json",
+      "result": "FAIL_CLOSED_BEFORE_EXECUTION",
+      "reason": "Checker expected ORR/MOV alias0xaa1e03e9. Source A64_MOV macro emits ADD immediate0, actual0x910003c9. Corrected one expected constant plus comment; original snapshot retained. Same native bytes and held FDs subsequently passed review."
+    }
+  ],
+  "limitations": [
+    "This inspected program and its two selected-value body accesses only; no universal inherited-JIT complete mediation claim.",
+    "Inherited RDDC remains vmalloc-wide; helper gateway retains DDC bounds.",
+    "Source-backed construction observations, not independent hardware PCC or measured-boot attestation.",
+    "KASLR configured but guest reports disabled due to lack of firmware seed.",
+    "Eight-byte value and stride; no dynamic stride-padding, out-of-bounds or invalid-program execution.",
+    "No historical CVE rerun or whole-CVE mitigation conclusion; separate from ownership with no composition theorem.",
+    "Linked exception handling inspected; appended exception-table and PLT target data are outside the retrieved native span.",
+    "Same-host execution and internal inspection using the local cached toolchain; no external reproduction."
+  ],
+  "external_artifacts": [
+    {
+      "path": "build/spatial-s5-build.Z4e3mc/objects/arch/arm64/boot/Image",
+      "bytes": 18782720,
+      "sha256": "98b58f809805764598bf2117c02c030b3c65802a2a8be81bbdceb748a15bc82b",
+      "retained_locally": true
+    },
+    {
+      "path": "build/spatial-s5-build.Z4e3mc/objects/vmlinux",
+      "bytes": 218855016,
+      "sha256": "c68e7d4f813b4e7cf4875a83047419ae49623dfeeb2325b6404aadf0d9995ded",
+      "retained_locally": true
+    },
+    {
+      "path": "build/spatial-s5-build.Z4e3mc/headers/include/linux/bpf.h",
+      "bytes": 275167,
+      "sha256": "3405fb91a6f53284c2673712ae55cb068737fadb7e41483a58743842496bb022",
+      "retained_locally": true
+    },
+    {
+      "path": "build/spatial-s5-build.Z4e3mc/receipt/source-tree.manifest",
+      "bytes": 7588913,
+      "sha256": "bcce56e1333570eae303425cf4d88257c9cb6ef47d163d993de84ea47eaca61e",
+      "retained_locally": true
+    },
+    {
+      "path": "build/spatial-s5-review/ZR5f2h-pre/linked-symbol-sizes.txt",
+      "bytes": 6823320,
+      "sha256": "975d6065ea87323d9fa329b0ab91a232863bb040893070152e54b50537284601",
+      "retained_locally": true
+    }
+  ]
+}

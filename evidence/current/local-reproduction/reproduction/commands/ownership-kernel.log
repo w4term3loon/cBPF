@@ -1,0 +1,5 @@
+bash tools/build_ownership_kernel.sh
+CBPF pristine ownership source verified: b96da308ef1a054c3c04c9445e5ed70259b7c397
+CBPF_OWNERSHIP_BUILD result=PASS source_commit=b96da308ef1a054c3c04c9445e5ed70259b7c397
+CBPF_OWNERSHIP_BUILD verifier_unchanged=1 config_baseline_preserved=1 image=1 boot=0
+CBPF ownership build artifacts: ${REPOSITORY}/build/m4-reproduction.o5y2sbxz/snapshot/build/ownership-m3-build

@@ -1,0 +1,9 @@
+CBPF scope=purecap_C_architecture_probe isolation=0 kfunc=0 jit=0
+CBPF distinct_cells=1 same_object=1 valid_A=42 valid_B=42
+CBPF consumed_A=1 duplicate_effect=0 references=2 stale_tag=0 cursor_preserved=1
+CBPF surviving_B=42 direct_object=42
+CBPF stale_copy signal=11 code=10 terminal=1
+CBPF stale_spill signal=11 code=10 terminal=1
+CBPF final_references=1 effects=2 cells_allocated=2 cells_reused=0
+CBPF CHERI PROBE PASS
+CBPF runner=PASS qemu_exit=0

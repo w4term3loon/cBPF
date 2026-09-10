@@ -1,0 +1,14 @@
+{
+  "command": [
+    "make",
+    "ownership-kernel"
+  ],
+  "cwd": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/snapshot",
+  "started_utc": "2026-09-06T20:15:40.178680+00:00",
+  "log": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/reviewer/ownership-kernel.log",
+  "environment_overrides": {},
+  "recipe_environment": {},
+  "finished_utc": "2026-09-06T20:27:27.887513+00:00",
+  "elapsed_seconds": 707.709,
+  "exit_code": 0
+}

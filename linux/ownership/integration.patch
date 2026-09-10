@@ -1,0 +1,151 @@
+diff --git a/arch/arm64/net/Makefile b/arch/arm64/net/Makefile
+index 5c540efb7d9b9aeea54000a3ddba81da6499e571..ddc815eab5ed7a69e487c23bdf9e8f5234068dce 100644
+--- a/arch/arm64/net/Makefile
++++ b/arch/arm64/net/Makefile
+@@ -3,3 +3,4 @@
+ # ARM64 networking code
+ #
+ obj-$(CONFIG_BPF_JIT) += bpf_jit_comp.o
++obj-$(CONFIG_CBPF_KFUNC_GATE) += cbpf_jit.o cbpf_runtime.o
+diff --git a/arch/arm64/net/bpf_jit_comp.c b/arch/arm64/net/bpf_jit_comp.c
+index 7d4af64e398286d2036c4cdbfbbab0f6611e12de..ac8803abf0d28c21d530d0bf4e57f88bca83a009 100644
+--- a/arch/arm64/net/bpf_jit_comp.c
++++ b/arch/arm64/net/bpf_jit_comp.c
+@@ -9,6 +9,7 @@
+ 
+ #include <linux/bitfield.h>
+ #include <linux/bpf.h>
++#include <linux/cbpf.h>
+ #include <linux/filter.h>
+ #include <linux/memory.h>
+ #include <linux/printk.h>
+@@ -1530,6 +1531,12 @@ struct bpf_prog *bpf_int_jit_compile(struct bpf_prog *prog)
+ 	if (!prog->jit_requested)
+ 		return orig_prog;
+ 
++#ifdef CONFIG_CBPF_KFUNC_GATE
++	/* Matching kfuncs have no ordinary native fallback. */
++	if (cbpf_jit_match(prog))
++		return cbpf_jit_compile(prog);
++#endif
++
+ 	tmp = bpf_jit_blind_constants(prog);
+ 	/* If blinding was requested and we failed during blinding,
+ 	 * we must fall back to the interpreter.
+diff --git a/include/linux/bpf.h b/include/linux/bpf.h
+index 9471b3e02237babdaafe67c061d2c2e666039006..f8b856571d74cc9388744f046b486c866f62764b 100644
+--- a/include/linux/bpf.h
++++ b/include/linux/bpf.h
+@@ -1403,6 +1403,9 @@ struct btf_mod_pair {
+ struct bpf_kfunc_desc_tab;
+ 
+ struct bpf_prog_aux {
++#ifdef CONFIG_CBPF_KFUNC_GATE
++	bool cbpf_gate; /* Bounded native path, synchronous test-run only. */
++#endif
+ 	atomic64_t refcnt;
+ 	u32 used_map_cnt;
+ 	u32 used_btf_cnt;
+diff --git a/kernel/bpf/Kconfig b/kernel/bpf/Kconfig
+index 6a906ff930065268dbdf4e5c4ea0bb3f851bcb2f..214c6400f926e61f36f1d56d66ecf8714c5bb4e8 100644
+--- a/kernel/bpf/Kconfig
++++ b/kernel/bpf/Kconfig
+@@ -23,6 +23,17 @@ config ARCH_WANT_DEFAULT_BPF_JIT
+ 
+ menu "BPF subsystem"
+ 
++config CBPF_KFUNC_GATE
++	bool "CBPF bounded Morello acquisition gates"
++	depends on ARM64_MORELLO && CHERI_PURECAP_UABI && BPF_SYSCALL && BPF_JIT
++	depends on DEBUG_INFO_BTF && NET
++	default n
++	help
++	  A defensive proof of concept for a small, verifier-accepted SCHED_CLS
++	  subset. Acquisitions use private capability cells and checked gates
++	  within one synchronous BPF_PROG_TEST_RUN invocation. Unsupported
++	  programs fail admission; the ordinary kfunc bodies have no effects.
++
+ config BPF_SYSCALL
+ 	bool "Enable bpf() system call"
+ 	select BPF
+diff --git a/kernel/bpf/core.c b/kernel/bpf/core.c
+index fe254ae035fe4956388897af24d38809530f8fb7..4c84eaf3058f39462dc5572a2fcaa880a4c41931 100644
+--- a/kernel/bpf/core.c
++++ b/kernel/bpf/core.c
+@@ -2255,6 +2255,10 @@ bool bpf_prog_map_compatible(struct bpf_map *map,
+ 
+ 	if (fp->kprobe_override)
+ 		return false;
++#ifdef CONFIG_CBPF_KFUNC_GATE
++	if (fp->aux->cbpf_gate)
++		return false;
++#endif
+ 
+ 	/* XDP programs inserted into maps are not guaranteed to run on
+ 	 * a particular netdev (and can run outside driver context entirely
+diff --git a/kernel/bpf/syscall.c b/kernel/bpf/syscall.c
+index bc2b74a5209302ca4b6203d968fa8b4ee4a2bffc..1eeebb5baa39dc929b1756ae8f1d35b01bd7d38d 100644
+--- a/kernel/bpf/syscall.c
++++ b/kernel/bpf/syscall.c
+@@ -2311,6 +2311,10 @@ bool bpf_prog_get_ok(struct bpf_prog *prog,
+ 
+ 	if (prog->type != *attach_type)
+ 		return false;
++#ifdef CONFIG_CBPF_KFUNC_GATE
++	if (prog->aux->cbpf_gate)
++		return false;
++#endif
+ 	if (bpf_prog_is_offloaded(prog->aux) && !attach_drv)
+ 		return false;
+ 
+@@ -5201,6 +5205,13 @@ static int link_create(union bpf_attr *attr, bpfptr_t uattr)
+ 	if (IS_ERR(prog))
+ 		return PTR_ERR(prog);
+ 
++#ifdef CONFIG_CBPF_KFUNC_GATE
++	if (prog->aux->cbpf_gate) {
++		ret = -EOPNOTSUPP;
++		goto out;
++	}
++#endif
++
+ 	ret = bpf_prog_attach_check_attach_type(prog,
+ 						attr->link_create.attach_type);
+ 	if (ret)
+@@ -5338,6 +5349,13 @@ static int link_update(union bpf_attr *attr)
+ 		goto out_put_link;
+ 	}
+ 
++#ifdef CONFIG_CBPF_KFUNC_GATE
++	if (new_prog->aux->cbpf_gate) {
++		ret = -EOPNOTSUPP;
++		goto out_put_progs;
++	}
++#endif
++
+ 	if (flags & BPF_F_REPLACE) {
+ 		old_prog = bpf_prog_get(attr->link_update.old_prog_fd);
+ 		if (IS_ERR(old_prog)) {
+diff --git a/net/bpf/test_run.c b/net/bpf/test_run.c
+index 11b73c81b9d57500fbcba025357b10fd8268e689..a8b1bef7ab6e309b48527fbdc512a9821bb5901c 100644
+--- a/net/bpf/test_run.c
++++ b/net/bpf/test_run.c
+@@ -2,6 +2,7 @@
+ /* Copyright (c) 2017 Facebook
+  */
+ #include <linux/bpf.h>
++#include <linux/cbpf.h>
+ #include <linux/btf.h>
+ #include <linux/btf_ids.h>
+ #include <linux/slab.h>
+@@ -419,6 +420,10 @@ static int bpf_test_run(struct bpf_prog *prog, void *ctx, u32 repeat,
+ 		local_bh_disable();
+ 		if (xdp)
+ 			*retval = bpf_prog_run_xdp(prog, ctx);
++#ifdef CONFIG_CBPF_KFUNC_GATE
++		else if (prog->aux->cbpf_gate)
++			*retval = cbpf_test_invoke(prog, ctx);
++#endif
+ 		else
+ 			*retval = bpf_prog_run(prog, ctx);
+ 		local_bh_enable();

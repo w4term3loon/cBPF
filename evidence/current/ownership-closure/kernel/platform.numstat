@@ -1,0 +1,10 @@
+0	1	arch/arm64/include/asm/morello.h
+1	0	arch/arm64/include/asm/ptrace.h
+1	1	arch/arm64/include/asm/suspend.h
+1	0	arch/arm64/kernel/asm-offsets.c
+19	4	arch/arm64/kernel/entry-common.c
+15	0	arch/arm64/kernel/entry.S
+3	2	arch/arm64/kernel/head.S
+0	4	arch/arm64/kernel/morello.c
+2	2	arch/arm64/kernel/ptrace.c
+9	10	arch/arm64/mm/proc.S

@@ -1,0 +1,936 @@
+{
+  "schema_version": 1,
+  "record_type": "capebpf-tcb-measurement",
+  "linux_base_revision": "b96da308ef1a054c3c04c9445e5ed70259b7c397",
+  "linux_tree": "e6c69574c16bc2b9bce06329f9ac3f4b3269e79a",
+  "scope_sha256": "eb8c900d911c8040f3d0c6f4b6eff5bde9c9f79750efb167c68eaa34ce409dcf",
+  "source_blob_sha256": {
+    "arch/arm64/net/bpf_jit_comp.c": "e03717b8eb85032d19c04648b3cb4e4824cc86057d6196e9da55702b8df6c9dc",
+    "kernel/bpf/verifier.c": "e1b3401c312176633922671d52b1bd0ccd75f9ab1fcc266a0acb764f784d4239"
+  },
+  "experimental_tree_delta": {
+    "changed_files": 21,
+    "inserted_lines": 3628,
+    "deleted_lines": 166,
+    "files": [
+      {
+        "file": "arch/arm64/configs/morello_pcuabi_defconfig",
+        "inserted_lines": 2,
+        "deleted_lines": 0
+      },
+      {
+        "file": "arch/arm64/include/asm/morello.h",
+        "inserted_lines": 0,
+        "deleted_lines": 1
+      },
+      {
+        "file": "arch/arm64/include/asm/ptrace.h",
+        "inserted_lines": 1,
+        "deleted_lines": 0
+      },
+      {
+        "file": "arch/arm64/include/asm/suspend.h",
+        "inserted_lines": 1,
+        "deleted_lines": 1
+      },
+      {
+        "file": "arch/arm64/kernel/asm-offsets.c",
+        "inserted_lines": 1,
+        "deleted_lines": 0
+      },
+      {
+        "file": "arch/arm64/kernel/entry-common.c",
+        "inserted_lines": 19,
+        "deleted_lines": 4
+      },
+      {
+        "file": "arch/arm64/kernel/entry.S",
+        "inserted_lines": 15,
+        "deleted_lines": 0
+      },
+      {
+        "file": "arch/arm64/kernel/head.S",
+        "inserted_lines": 3,
+        "deleted_lines": 2
+      },
+      {
+        "file": "arch/arm64/kernel/morello.c",
+        "inserted_lines": 0,
+        "deleted_lines": 4
+      },
+      {
+        "file": "arch/arm64/kernel/ptrace.c",
+        "inserted_lines": 2,
+        "deleted_lines": 2
+      },
+      {
+        "file": "arch/arm64/mm/proc.S",
+        "inserted_lines": 9,
+        "deleted_lines": 10
+      },
+      {
+        "file": "arch/arm64/net/bpf_jit_comp.c",
+        "inserted_lines": 2727,
+        "deleted_lines": 115
+      },
+      {
+        "file": "arch/arm64/net/capebpf_morello_sensitive_opcodes.h",
+        "inserted_lines": 403,
+        "deleted_lines": 0
+      },
+      {
+        "file": "include/linux/bpf.h",
+        "inserted_lines": 13,
+        "deleted_lines": 0
+      },
+      {
+        "file": "include/linux/bpf_verifier.h",
+        "inserted_lines": 2,
+        "deleted_lines": 0
+      },
+      {
+        "file": "include/linux/filter.h",
+        "inserted_lines": 6,
+        "deleted_lines": 0
+      },
+      {
+        "file": "include/uapi/linux/bpf.h",
+        "inserted_lines": 7,
+        "deleted_lines": 0
+      },
+      {
+        "file": "kernel/bpf/Kconfig",
+        "inserted_lines": 157,
+        "deleted_lines": 0
+      },
+      {
+        "file": "kernel/bpf/core.c",
+        "inserted_lines": 30,
+        "deleted_lines": 1
+      },
+      {
+        "file": "kernel/bpf/syscall.c",
+        "inserted_lines": 17,
+        "deleted_lines": 1
+      },
+      {
+        "file": "kernel/bpf/verifier.c",
+        "inserted_lines": 213,
+        "deleted_lines": 25
+      }
+    ],
+    "interpretation": "This is the complete experimental patch-tree delta, including test-only and diagnostic code. It is not a production TCB size."
+  },
+  "declared_review_surface": {
+    "summable_regions_disjoint": true,
+    "summable_nonblank_noncomment_lines": 1472,
+    "summable_semantic_lines": 1317,
+    "groups": [
+      {
+        "group": "verifier_authority_contract",
+        "classification": "common-production",
+        "summable": true,
+        "region_count": 6,
+        "nonblank_noncomment_lines": 93,
+        "semantic_lines": 79,
+        "regions": [
+          {
+            "file": "arch/arm64/net/bpf_jit_comp.c",
+            "selector": "function",
+            "identity": "report_root_attestation",
+            "source_start_line": 536,
+            "source_end_line": 555,
+            "nonblank_noncomment_lines": 19,
+            "semantic_lines": 17,
+            "sha256": "dbae4c48ac9ee8d3a1fcccc594dae93d7664283d6b01c5c43e83173c898a6df6"
+          },
+          {
+            "file": "kernel/bpf/verifier.c",
+            "selector": "function",
+            "identity": "can_offload_map_spatial_bounds",
+            "source_start_line": 5610,
+            "source_end_line": 5625,
+            "nonblank_noncomment_lines": 14,
+            "semantic_lines": 12,
+            "sha256": "fd0ce350966799aad25921682371d2e4951d09b16017dd5517c04094750aee2a"
+          },
+          {
+            "file": "kernel/bpf/verifier.c",
+            "selector": "function",
+            "identity": "can_offload_map_bounds",
+            "source_start_line": 5627,
+            "source_end_line": 5639,
+            "nonblank_noncomment_lines": 12,
+            "semantic_lines": 10,
+            "sha256": "144a2169ca4618496daa4ae93a0f9723f240adb2ff985ff8c6202efe8bd1042b"
+          },
+          {
+            "file": "kernel/bpf/verifier.c",
+            "selector": "function",
+            "identity": "can_offload_map_offset_bounds",
+            "source_start_line": 5641,
+            "source_end_line": 5651,
+            "nonblank_noncomment_lines": 10,
+            "semantic_lines": 8,
+            "sha256": "1bb824542b9d87d01080e8647472b10ec69ca39e2efd04e23950062f046e6dd4"
+          },
+          {
+            "file": "kernel/bpf/verifier.c",
+            "selector": "function",
+            "identity": "bpf_jit_memory_root",
+            "source_start_line": 17493,
+            "source_end_line": 17511,
+            "nonblank_noncomment_lines": 19,
+            "semantic_lines": 16,
+            "sha256": "cb9a8540f8f4ec7bd771348559df674d2e5bf5257e091de465644592b28158ea"
+          },
+          {
+            "file": "kernel/bpf/verifier.c",
+            "selector": "function",
+            "identity": "finalize_bpf_jit_memory_roots",
+            "source_start_line": 17513,
+            "source_end_line": 17533,
+            "nonblank_noncomment_lines": 19,
+            "semantic_lines": 16,
+            "sha256": "ece2d242d21b98f4ad76b1de6909d747cd9003eea4ad3d98ae398d966adedd8c"
+          }
+        ]
+      },
+      {
+        "group": "jit_authority_analysis",
+        "classification": "common-production",
+        "summable": true,
+        "region_count": 8,
+        "nonblank_noncomment_lines": 408,
+        "semantic_lines": 374,
+        "regions": [
+          {
+            "file": "arch/arm64/net/bpf_jit_comp.c",
+            "selector": "function",
+            "identity": "bpf_cheri_set_scalar",
+            "source_start_line": 1669,
+            "source_end_line": 1675,
+            "nonblank_noncomment_lines": 7,
+            "semantic_lines": 5,
+            "sha256": "e0101858beff14a386c346769b922743e838550fc23bd2a343b053123ce221f2"
+          },
+          {
+            "file": "arch/arm64/net/bpf_jit_comp.c",
+            "selector": "function",
+            "identity": "bpf_cheri_merge_state",
+            "source_start_line": 1677,
+            "source_end_line": 1696,
+            "nonblank_noncomment_lines": 18,
+            "semantic_lines": 14,
+            "sha256": "c2dce7b848d8fc2686297d56fdf04d3a19bf9f8182207bbb63ee5486e02b38be"
+          },
+          {
+            "file": "arch/arm64/net/bpf_jit_comp.c",
+            "selector": "function",
+            "identity": "bpf_cheri_map_index",
+            "source_start_line": 1698,
+            "source_end_line": 1711,
+            "nonblank_noncomment_lines": 13,
+            "semantic_lines": 11,
+            "sha256": "6ea7dac6a717af765ccd9c4235cc76d25fd296951b5ab0799078cb1f5fc4521a"
+          },
+          {
+            "file": "arch/arm64/net/bpf_jit_comp.c",
+            "selector": "function",
+            "identity": "bpf_cheri_helper_call",
+            "source_start_line": 1714,
+            "source_end_line": 1737,
+            "nonblank_noncomment_lines": 22,
+            "semantic_lines": 19,
+            "sha256": "dd8da55ef20aad7906ef9de951dcb83d4cfb8f518edb5707d565e8a05ccda03f"
+          },
+          {
+            "file": "arch/arm64/net/bpf_jit_comp.c",
+            "selector": "function",
+            "identity": "bpf_cheri_cap_kind",
+            "source_start_line": 1739,
+            "source_end_line": 1743,
+            "nonblank_noncomment_lines": 5,
+            "semantic_lines": 3,
+            "sha256": "0ffbf615e3021a2e6461c06cc5bdd84862e376918b02cca17f9acf50ac510ddc"
+          },
+          {
+            "file": "arch/arm64/net/bpf_jit_comp.c",
+            "selector": "function",
+            "identity": "bpf_cheri_scalar_alu",
+            "source_start_line": 1745,
+            "source_end_line": 1793,
+            "nonblank_noncomment_lines": 48,
+            "semantic_lines": 44,
+            "sha256": "4a9e092cb5f781ba8564a4820c4341f9d8202f511105175f6d36d79910a64c56"
+          },
+          {
+            "file": "arch/arm64/net/bpf_jit_comp.c",
+            "selector": "function",
+            "identity": "bpf_cheri_build_authority",
+            "source_start_line": 1795,
+            "source_end_line": 2068,
+            "nonblank_noncomment_lines": 257,
+            "semantic_lines": 243,
+            "sha256": "3ad06d939e2ec8e5e02a4752deec4aaf270697c5048ff053b8d2d83d58e8e45b"
+          },
+          {
+            "file": "arch/arm64/net/bpf_jit_comp.c",
+            "selector": "function",
+            "identity": "bpf_jit_validate_prog",
+            "source_start_line": 2070,
+            "source_end_line": 2110,
+            "nonblank_noncomment_lines": 38,
+            "semantic_lines": 35,
+            "sha256": "b1d4e0960c58a412846bf7a6486b37292604499e6f569ca168ad2433ea68f481"
+          }
+        ]
+      },
+      {
+        "group": "capability_roots_and_helper_gateway",
+        "classification": "common-production-with-compile-time-test-branches",
+        "summable": true,
+        "region_count": 11,
+        "nonblank_noncomment_lines": 360,
+        "semantic_lines": 335,
+        "regions": [
+          {
+            "file": "arch/arm64/net/bpf_jit_comp.c",
+            "selector": "function",
+            "identity": "bpf_cheri_null_cap",
+            "source_start_line": 530,
+            "source_end_line": 533,
+            "nonblank_noncomment_lines": 4,
+            "semantic_lines": 2,
+            "sha256": "54ad72bb8700c009dfb16f6f07fd2641322a5183acdcdc324259ac4838b26416"
+          },
+          {
+            "file": "arch/arm64/net/bpf_jit_comp.c",
+            "selector": "function",
+            "identity": "bpf_cheri_map_from_token",
+            "source_start_line": 558,
+            "source_end_line": 575,
+            "nonblank_noncomment_lines": 16,
+            "semantic_lines": 14,
+            "sha256": "33b9d273cb3c0c69b916dd39ed651233b3ba86c9c1bb108818bde02f94c2a825"
+          },
+          {
+            "file": "arch/arm64/net/bpf_jit_comp.c",
+            "selector": "function",
+            "identity": "bpf_cheri_map_lookup_impl",
+            "source_start_line": 578,
+            "source_end_line": 630,
+            "nonblank_noncomment_lines": 48,
+            "semantic_lines": 45,
+            "sha256": "6e5bfe89132632531899b55792fb6a165cf3988c40be564aaec70c7f8607d210"
+          },
+          {
+            "file": "arch/arm64/net/bpf_jit_comp.c",
+            "selector": "function",
+            "identity": "bpf_cheri_ringbuf_reserve_impl",
+            "source_start_line": 633,
+            "source_end_line": 669,
+            "nonblank_noncomment_lines": 32,
+            "semantic_lines": 28,
+            "sha256": "1fef643fdf886d38b71b0ebd0ff01c5cdccaf4176c82138d20fc0c4f1a1d4466"
+          },
+          {
+            "file": "arch/arm64/net/bpf_jit_comp.c",
+            "selector": "function",
+            "identity": "bpf_cheri_ringbuf_protocol_valid",
+            "source_start_line": 672,
+            "source_end_line": 676,
+            "nonblank_noncomment_lines": 5,
+            "semantic_lines": 3,
+            "sha256": "7b5ea7a2de1df945fb99864cb9191b4cef78e11f5cce8f4b08af0ba6d20c09ca"
+          },
+          {
+            "file": "arch/arm64/net/bpf_jit_comp.c",
+            "selector": "function",
+            "identity": "bpf_cheri_reject_ringbuf_protocol",
+            "source_start_line": 678,
+            "source_end_line": 685,
+            "nonblank_noncomment_lines": 7,
+            "semantic_lines": 5,
+            "sha256": "36a48711476769cdc766bf4a823605764f9f42a7739368ef8ab1deb1daede23f"
+          },
+          {
+            "file": "arch/arm64/net/bpf_jit_comp.c",
+            "selector": "function",
+            "identity": "bpf_cheri_ringbuf_submit_impl",
+            "source_start_line": 688,
+            "source_end_line": 694,
+            "nonblank_noncomment_lines": 7,
+            "semantic_lines": 5,
+            "sha256": "132b71d3d87b43ec27828a88842553780ec7d651cc7502c71e8b54173e5a80ad"
+          },
+          {
+            "file": "arch/arm64/net/bpf_jit_comp.c",
+            "selector": "function",
+            "identity": "bpf_cheri_ringbuf_discard_impl",
+            "source_start_line": 697,
+            "source_end_line": 703,
+            "nonblank_noncomment_lines": 7,
+            "semantic_lines": 5,
+            "sha256": "338667cf1709663eb2f7a5572b7ebb1816a4a3e06e771f1f5fdd2a77e7d05a27"
+          },
+          {
+            "file": "arch/arm64/net/bpf_jit_comp.c",
+            "selector": "function",
+            "identity": "bpf_cheri_invalid_helper_impl",
+            "source_start_line": 705,
+            "source_end_line": 708,
+            "nonblank_noncomment_lines": 4,
+            "semantic_lines": 2,
+            "sha256": "d675ecf7ee6cb304d2ea5f4dc77af46cb97d3508c5c02f1541e86c9ace60dfab"
+          },
+          {
+            "file": "arch/arm64/net/bpf_jit_comp.c",
+            "selector": "between-literals",
+            "identity": "extern char bpf_cheri_helper_gateway[];",
+            "source_start_line": 710,
+            "source_end_line": 790,
+            "nonblank_noncomment_lines": 79,
+            "semantic_lines": 79,
+            "sha256": "5ecef77f85197a4b61e6e4acbdf8bd65b72f93c60dd4447e9ad4c3b6923c1da6"
+          },
+          {
+            "file": "arch/arm64/net/bpf_jit_comp.c",
+            "selector": "function",
+            "identity": "bpf_enter_sandbox",
+            "source_start_line": 791,
+            "source_end_line": 993,
+            "nonblank_noncomment_lines": 151,
+            "semantic_lines": 147,
+            "sha256": "1e1227292732b0b2de9f1970f6dc25de402cd0a94364e398f83baf6cce8996d8"
+          }
+        ]
+      },
+      {
+        "group": "capability_aware_lowering",
+        "classification": "common-production",
+        "summable": true,
+        "region_count": 6,
+        "nonblank_noncomment_lines": 60,
+        "semantic_lines": 44,
+        "regions": [
+          {
+            "file": "arch/arm64/net/bpf_jit_comp.c",
+            "selector": "function",
+            "identity": "emit_cheri_cap_mov",
+            "source_start_line": 439,
+            "source_end_line": 442,
+            "nonblank_noncomment_lines": 4,
+            "semantic_lines": 2,
+            "sha256": "f316d613c7aa3e79891ed2564c895a803a5a3b04ff19abdfff2079ed88eb7e81"
+          },
+          {
+            "file": "arch/arm64/net/bpf_jit_comp.c",
+            "selector": "function",
+            "identity": "emit_cheri_cap_addsub_imm",
+            "source_start_line": 444,
+            "source_end_line": 455,
+            "nonblank_noncomment_lines": 11,
+            "semantic_lines": 8,
+            "sha256": "baad1c2db76f4ba10cbaeb6eb76ecc2cbf30dbe5af192f2225796a77aaeb5cb3"
+          },
+          {
+            "file": "arch/arm64/net/bpf_jit_comp.c",
+            "selector": "function",
+            "identity": "emit_cheri_cap_addsub_reg",
+            "source_start_line": 457,
+            "source_end_line": 469,
+            "nonblank_noncomment_lines": 13,
+            "semantic_lines": 10,
+            "sha256": "ab96942220ec7612bc591c0486323efb42c0157d2dda38973371fbc64ce7b52d"
+          },
+          {
+            "file": "arch/arm64/net/bpf_jit_comp.c",
+            "selector": "function",
+            "identity": "emit_cheri_helper_call",
+            "source_start_line": 471,
+            "source_end_line": 477,
+            "nonblank_noncomment_lines": 7,
+            "semantic_lines": 5,
+            "sha256": "569330b713729cc3be728f2aac83d07f2abeff22dcd76f8fee3d7080ffcbd850"
+          },
+          {
+            "file": "arch/arm64/net/bpf_jit_comp.c",
+            "selector": "function",
+            "identity": "emit_cheri_cap_setbounds",
+            "source_start_line": 479,
+            "source_end_line": 491,
+            "nonblank_noncomment_lines": 12,
+            "semantic_lines": 9,
+            "sha256": "ae72502ee79af55d64d112a20db8e412794b5782baaad809f37bea900b5074b9"
+          },
+          {
+            "file": "arch/arm64/net/bpf_jit_comp.c",
+            "selector": "function",
+            "identity": "emit_cheri_cap_memory",
+            "source_start_line": 493,
+            "source_end_line": 507,
+            "nonblank_noncomment_lines": 13,
+            "semantic_lines": 10,
+            "sha256": "a5265c3fd3783b59433b38c84394cde88ebe9b30fed5750a42f6f3445ab38f3a"
+          }
+        ]
+      },
+      {
+        "group": "post_jit_native_authority_checker",
+        "classification": "common-production",
+        "summable": true,
+        "region_count": 19,
+        "nonblank_noncomment_lines": 551,
+        "semantic_lines": 485,
+        "regions": [
+          {
+            "file": "arch/arm64/net/bpf_jit_comp.c",
+            "selector": "between-literals",
+            "identity": "int validation_image_capacity;",
+            "source_start_line": 202,
+            "source_end_line": 204,
+            "nonblank_noncomment_lines": 2,
+            "semantic_lines": 2,
+            "sha256": "07daf059248e4905a247107b6b217a44b1890f116d4d2f0f324fac6dbb44c911"
+          },
+          {
+            "file": "arch/arm64/net/bpf_jit_comp.c",
+            "selector": "function",
+            "identity": "emit",
+            "source_start_line": 223,
+            "source_end_line": 235,
+            "nonblank_noncomment_lines": 12,
+            "semantic_lines": 9,
+            "sha256": "e49448504a2f19df89c68c27deabe2d959e36359d5cefbd2269737404995b2d6"
+          },
+          {
+            "file": "arch/arm64/net/bpf_jit_comp.c",
+            "selector": "function",
+            "identity": "is_cheri_bounded_memory",
+            "source_start_line": 1501,
+            "source_end_line": 1525,
+            "nonblank_noncomment_lines": 24,
+            "semantic_lines": 21,
+            "sha256": "02e0d8cf21c713db2760515b919bbb7211dac0c3e7fca7cbd7fa5d15213b0bec"
+          },
+          {
+            "file": "arch/arm64/net/bpf_jit_comp.c",
+            "selector": "function",
+            "identity": "is_cheri_cap_memory_instruction",
+            "source_start_line": 3132,
+            "source_end_line": 3150,
+            "nonblank_noncomment_lines": 19,
+            "semantic_lines": 16,
+            "sha256": "9b4ef0bac68edc8d8e51aaecfe14a1d322034d989b76ca41e89ca58909889621"
+          },
+          {
+            "file": "arch/arm64/net/bpf_jit_comp.c",
+            "selector": "function",
+            "identity": "is_a64_memory_instruction",
+            "source_start_line": 3152,
+            "source_end_line": 3155,
+            "nonblank_noncomment_lines": 4,
+            "semantic_lines": 2,
+            "sha256": "32310fc82c15e4891213bd3d884fe3306e57d5cba6741f36dba121a030c0f9fb"
+          },
+          {
+            "file": "arch/arm64/net/bpf_jit_comp.c",
+            "selector": "function",
+            "identity": "is_cheri_cap_addsub_imm_instruction",
+            "source_start_line": 3172,
+            "source_end_line": 3178,
+            "nonblank_noncomment_lines": 6,
+            "semantic_lines": 4,
+            "sha256": "2ecc2b3a999f0000debe5c605bf77179735896b441461d853ce4a067172a820a"
+          },
+          {
+            "file": "arch/arm64/net/bpf_jit_comp.c",
+            "selector": "function",
+            "identity": "is_cheri_cap_addsub_reg_instruction",
+            "source_start_line": 3180,
+            "source_end_line": 3186,
+            "nonblank_noncomment_lines": 6,
+            "semantic_lines": 4,
+            "sha256": "4cec7e9ed0f5185069dd7c0e19e4e3e551270d7a4854134e2fd7a3db8b868571"
+          },
+          {
+            "file": "arch/arm64/net/bpf_jit_comp.c",
+            "selector": "function",
+            "identity": "is_a64_direct_nonlinking_branch",
+            "source_start_line": 3188,
+            "source_end_line": 3191,
+            "nonblank_noncomment_lines": 4,
+            "semantic_lines": 2,
+            "sha256": "9a3c2d28f7a06f7834455bd965b1d06956bffc28ed8a2c3b36cabd1ac46c2288"
+          },
+          {
+            "file": "arch/arm64/net/bpf_jit_comp.c",
+            "selector": "function",
+            "identity": "is_morello_sensitive_instruction",
+            "source_start_line": 3193,
+            "source_end_line": 3203,
+            "nonblank_noncomment_lines": 10,
+            "semantic_lines": 8,
+            "sha256": "c54ea15f89fc25ff552819c15f0260b08b59489498551cfa9d4cb4fd7df4fc66"
+          },
+          {
+            "file": "arch/arm64/net/bpf_jit_comp.c",
+            "selector": "function",
+            "identity": "validate_exact_native_range",
+            "source_start_line": 3205,
+            "source_end_line": 3221,
+            "nonblank_noncomment_lines": 16,
+            "semantic_lines": 14,
+            "sha256": "e30be8c09a41f14515fee4e2e83a99f2d977e4c12526524285f9494cd6ecb2b6"
+          },
+          {
+            "file": "arch/arm64/net/bpf_jit_comp.c",
+            "selector": "function",
+            "identity": "validate_cap_addsub_imm_range",
+            "source_start_line": 3223,
+            "source_end_line": 3250,
+            "nonblank_noncomment_lines": 26,
+            "semantic_lines": 23,
+            "sha256": "2638325294eda5bd8acdb786bad24d964185741f4f938e47d887c497cd393f1b"
+          },
+          {
+            "file": "arch/arm64/net/bpf_jit_comp.c",
+            "selector": "function",
+            "identity": "validate_cheri_authority_encoding",
+            "source_start_line": 3253,
+            "source_end_line": 3350,
+            "nonblank_noncomment_lines": 90,
+            "semantic_lines": 81,
+            "sha256": "0c26b856c15a27fd7dac2ffcfddbca9580ddf4305b49503b13237ec6d28bc92c"
+          },
+          {
+            "file": "arch/arm64/net/bpf_jit_comp.c",
+            "selector": "function",
+            "identity": "expected_cheri_memory_encoding",
+            "source_start_line": 3352,
+            "source_end_line": 3421,
+            "nonblank_noncomment_lines": 68,
+            "semantic_lines": 63,
+            "sha256": "84c7ea5a72fd351c7b433801346233974e33a404e079772d08b977575fcbec76"
+          },
+          {
+            "file": "arch/arm64/net/bpf_jit_comp.c",
+            "selector": "function",
+            "identity": "validate_cheri_memory_encoding",
+            "source_start_line": 3423,
+            "source_end_line": 3511,
+            "nonblank_noncomment_lines": 81,
+            "semantic_lines": 71,
+            "sha256": "f4ef00168f63d9529610a790629bfc31940b609cb37084f32f486e56d1860ad4"
+          },
+          {
+            "file": "arch/arm64/net/bpf_jit_comp.c",
+            "selector": "function",
+            "identity": "validate_rebuilt_prologue",
+            "source_start_line": 3513,
+            "source_end_line": 3541,
+            "nonblank_noncomment_lines": 22,
+            "semantic_lines": 20,
+            "sha256": "2c881a39e6923298b3781e7a15d8985407caf90a14a8e54b8f8cd7aa17a06564"
+          },
+          {
+            "file": "arch/arm64/net/bpf_jit_comp.c",
+            "selector": "function",
+            "identity": "validate_rebuilt_epilogue",
+            "source_start_line": 3543,
+            "source_end_line": 3567,
+            "nonblank_noncomment_lines": 23,
+            "semantic_lines": 21,
+            "sha256": "be073a62ed4dcdeb394ace5fe1a0bba51db24673ff42e560e4d73f400e04eda0"
+          },
+          {
+            "file": "arch/arm64/net/bpf_jit_comp.c",
+            "selector": "function",
+            "identity": "validate_exact_plt",
+            "source_start_line": 3569,
+            "source_end_line": 3585,
+            "nonblank_noncomment_lines": 16,
+            "semantic_lines": 13,
+            "sha256": "a8a99598640b20b982ce3c83bac1ff4097a47d17643136aed35d120925af74a0"
+          },
+          {
+            "file": "arch/arm64/net/bpf_jit_comp.c",
+            "selector": "function",
+            "identity": "validate_native_envelope",
+            "source_start_line": 3587,
+            "source_end_line": 3634,
+            "nonblank_noncomment_lines": 43,
+            "semantic_lines": 39,
+            "sha256": "e319d8d3e60b0ecdeb6895e1fe74b5c036a5c0f5bd5d3499a2e3e8986176633e"
+          },
+          {
+            "file": "arch/arm64/net/bpf_jit_comp.c",
+            "selector": "function",
+            "identity": "validate_emitted_authority",
+            "source_start_line": 3636,
+            "source_end_line": 3722,
+            "nonblank_noncomment_lines": 79,
+            "semantic_lines": 72,
+            "sha256": "e567d722a6bf85e4b1cc8594739d56e3bca7bad408632bc4b8448f0e339b3471"
+          }
+        ]
+      },
+      {
+        "group": "exact_map_authority_policy",
+        "classification": "exact-variant-overlap-with-map-lookup-function",
+        "summable": false,
+        "region_count": 1,
+        "nonblank_noncomment_lines": 7,
+        "semantic_lines": 6,
+        "regions": [
+          {
+            "file": "arch/arm64/net/bpf_jit_comp.c",
+            "selector": "braced-literal",
+            "identity": "else if (!IS_ENABLED(CONFIG_CAPEBPF_TEST_BROAD_MAP_AUTHORITY)) {",
+            "source_start_line": 607,
+            "source_end_line": 613,
+            "nonblank_noncomment_lines": 7,
+            "semantic_lines": 6,
+            "sha256": "185416764582e88846402390fdf469930abff98ed9e6774b60ad36c7f8984216"
+          }
+        ]
+      },
+      {
+        "group": "scalar_map_guard_comparator",
+        "classification": "test-only-scalar-variant",
+        "summable": false,
+        "region_count": 3,
+        "nonblank_noncomment_lines": 39,
+        "semantic_lines": 34,
+        "regions": [
+          {
+            "file": "arch/arm64/net/bpf_jit_comp.c",
+            "selector": "braced-literal",
+            "identity": "if (IS_ENABLED(CONFIG_CAPEBPF_TEST_SOFTWARE_MAP_BOUNDS)) {",
+            "source_start_line": 597,
+            "source_end_line": 607,
+            "nonblank_noncomment_lines": 11,
+            "semantic_lines": 10,
+            "sha256": "844f6074eb566c863b9eed5bea55c515ae5434856570d2ce806e1926f1a7fcbe"
+          },
+          {
+            "file": "arch/arm64/net/bpf_jit_comp.c",
+            "selector": "function",
+            "identity": "emit_cheri_software_map_bounds",
+            "source_start_line": 509,
+            "source_end_line": 528,
+            "nonblank_noncomment_lines": 19,
+            "semantic_lines": 17,
+            "sha256": "26a0d67b9e7ddd7cdb422a6f661e3f503f15d9ff7db378f6efa0c1dd36243d1a"
+          },
+          {
+            "file": "arch/arm64/net/bpf_jit_comp.c",
+            "selector": "function",
+            "identity": "build_software_bounds_failure_stub",
+            "source_start_line": 3109,
+            "source_end_line": 3117,
+            "nonblank_noncomment_lines": 9,
+            "semantic_lines": 7,
+            "sha256": "f597705cf63b95d3bf8e8ac35217df80a334a1545500d136b1adfa6513d6536c"
+          }
+        ]
+      },
+      {
+        "group": "controlled_fault_oracle_and_recovery",
+        "classification": "experimental-evaluation-path",
+        "summable": false,
+        "region_count": 5,
+        "nonblank_noncomment_lines": 147,
+        "semantic_lines": 131,
+        "regions": [
+          {
+            "file": "arch/arm64/net/bpf_jit_comp.c",
+            "selector": "function",
+            "identity": "ex_handler_bpf",
+            "source_start_line": 2123,
+            "source_end_line": 2180,
+            "nonblank_noncomment_lines": 52,
+            "semantic_lines": 47,
+            "sha256": "2bc8d73de6e7cb06334dd8823588f30248a5b5560875b8673c3b5a62b61e3abd"
+          },
+          {
+            "file": "arch/arm64/net/bpf_jit_comp.c",
+            "selector": "function",
+            "identity": "inject_test_stack_offsets",
+            "source_start_line": 1548,
+            "source_end_line": 1581,
+            "nonblank_noncomment_lines": 30,
+            "semantic_lines": 26,
+            "sha256": "2e668a585f7ad44d40c2cc6305c8c58b07e072b6a34564881715a335ab83a1bb"
+          },
+          {
+            "file": "arch/arm64/net/bpf_jit_comp.c",
+            "selector": "braced-literal",
+            "identity": "if (IS_ENABLED(CONFIG_CAPEBPF_TEST_POST_VERIFIER_OFFSET_INJECTION) &&",
+            "source_start_line": 4112,
+            "source_end_line": 4121,
+            "nonblank_noncomment_lines": 10,
+            "semantic_lines": 9,
+            "sha256": "b6863c7d4524e5fb26551c0e32e45b13c5341853cfbaf68e2d1881fb8f5d3b25"
+          },
+          {
+            "file": "arch/arm64/net/bpf_jit_comp.c",
+            "selector": "function",
+            "identity": "is_test_recovery_program",
+            "source_start_line": 1583,
+            "source_end_line": 1608,
+            "nonblank_noncomment_lines": 24,
+            "semantic_lines": 22,
+            "sha256": "e80dd0f5869da67669ad0bfc5c08696c9f982f7023ce024d739b55745e8ee796"
+          },
+          {
+            "file": "arch/arm64/net/bpf_jit_comp.c",
+            "selector": "function",
+            "identity": "inject_test_recovery_load",
+            "source_start_line": 1610,
+            "source_end_line": 1644,
+            "nonblank_noncomment_lines": 31,
+            "semantic_lines": 27,
+            "sha256": "68e4c32598f9c867e8dfcd300d445a2daa5f98878ffd42f13f6a88b1e72d80f7"
+          }
+        ]
+      }
+    ]
+  },
+  "trusted_interfaces": {
+    "common": {
+      "declared_interface_count": 5,
+      "interfaces": [
+        {
+          "interface": "loader_to_verifier_offload_request",
+          "provider": "BPF_PROG_LOAD UAPI",
+          "consumer": "Linux verifier and runtime selection",
+          "trusted_invariant": "The opt-in flag cannot silently fall back to an interpreter or unsupported JIT.",
+          "classification": "production",
+          "source_anchor_matches": 3
+        },
+        {
+          "interface": "verifier_to_jit_authority_contract",
+          "provider": "verifier root and delegated-access metadata",
+          "consumer": "Morello authority analysis",
+          "trusted_invariant": "Root kinds and delegated sites correspond to the verified program.",
+          "classification": "production",
+          "source_anchor_matches": 3
+        },
+        {
+          "interface": "restricted_code_to_helper_gateway",
+          "provider": "JIT helper lowering",
+          "consumer": "sealed helper gateway",
+          "trusted_invariant": "Operation selector and live capability arguments follow the gateway ABI.",
+          "classification": "production",
+          "source_anchor_matches": 3
+        },
+        {
+          "interface": "jit_emission_to_native_checker",
+          "provider": "final native JIT image and BPF-to-native offsets",
+          "consumer": "post-JIT authority checker",
+          "trusted_invariant": "The checker receives the final executable image before publication.",
+          "classification": "production",
+          "source_anchor_matches": 2
+        },
+        {
+          "interface": "kernel_invocation_to_restricted_execution",
+          "provider": "kernel BPF runtime",
+          "consumer": "Morello restricted-mode entry",
+          "trusted_invariant": "Entry captures the JIT caller return address before C calls, receives correct code and authority roots, clears execute and executive permissions from the bounded nonempty-context root and bounded RCSP data root, and restores the JIT call-entry stack before the terminal restricted-to-executive branch.",
+          "classification": "production",
+          "source_anchor_matches": 1
+        }
+      ]
+    },
+    "exact_unique": {
+      "declared_interface_count": 3,
+      "interfaces": [
+        {
+          "interface": "map_object_to_exact_capability",
+          "provider": "map lookup implementation and map value_size",
+          "consumer": "CHERI bounds construction",
+          "trusted_invariant": "The returned capability base and length identify exactly one map value.",
+          "classification": "production",
+          "source_anchor_matches": 1
+        },
+        {
+          "interface": "authority_register_to_capability_memory_operation",
+          "provider": "authority-aware JIT lowering",
+          "consumer": "Morello load/store instruction",
+          "trusted_invariant": "The final dereference names the certified capability root and offset.",
+          "classification": "production",
+          "source_anchor_matches": 4
+        },
+        {
+          "interface": "capability_metadata_to_architectural_check",
+          "provider": "tagged bounded capability",
+          "consumer": "Morello memory pipeline",
+          "trusted_invariant": "A dereference outside the capability bounds cannot complete.",
+          "classification": "hardware",
+          "source_anchor_matches": 4
+        }
+      ]
+    },
+    "scalar_unique": {
+      "declared_interface_count": 4,
+      "interfaces": [
+        {
+          "interface": "jit_authority_metadata_to_guard_placement",
+          "provider": "JIT authority state and access width",
+          "consumer": "per-access scalar guard emitter",
+          "trusted_invariant": "Every relevant direct access is preceded by exactly one guard.",
+          "classification": "test-comparator",
+          "source_anchor_matches": 4
+        },
+        {
+          "interface": "capability_metadata_to_scalar_bounds",
+          "provider": "capability cursor, base, and length",
+          "consumer": "scalar comparisons",
+          "trusted_invariant": "Metadata extraction and arithmetic cannot wrap or omit access width.",
+          "classification": "test-comparator",
+          "source_anchor_matches": 4
+        },
+        {
+          "interface": "failed_guard_to_rejection_stub",
+          "provider": "lower- or upper-bound comparison",
+          "consumer": "shared sentinel-return control flow",
+          "trusted_invariant": "Both failure branches target the rejection stub and cannot reach the dereference.",
+          "classification": "test-comparator",
+          "source_anchor_matches": 6
+        },
+        {
+          "interface": "test_map_object_to_excess_capability",
+          "provider": "map value size plus declared excess",
+          "consumer": "scalar-guard comparator",
+          "trusted_invariant": "The backing capability is broad enough that only the software guard explains rejection.",
+          "classification": "test-comparator",
+          "source_anchor_matches": 3
+        }
+      ]
+    }
+  },
+  "matched_variant_comparison": {
+    "common_production_semantic_lines_lower_bound": 1317,
+    "exact_policy_region_semantic_lines_reported_separately": 6,
+    "scalar_test_comparator_semantic_lines_reported_separately": 34,
+    "scalar_minus_exact_reported_region_semantic_lines": 28,
+    "common_interface_count": 5,
+    "exact_unique_interface_count": 3,
+    "scalar_unique_interface_count": 4,
+    "exact_declared_interface_total": 8,
+    "scalar_declared_interface_total": 9,
+    "interpretation": "Variant-region counts are separately reported review surfaces and are not added to the common lower bound because the exact policy overlaps a common function. Interface counts enumerate declared trust boundaries; neither quantity measures security strength."
+  },
+  "comparison_limits": [
+    "The common-production total is valid only for builds in which CONFIG_CAPEBPF_TEST_POST_VERIFIER_OFFSET_INJECTION and CONFIG_CAPEBPF_TEST_RECOVERY_LOAD_INJECTION are both disabled; the separately reported injector regions are non-summable experimental code.",
+    "The common review-surface total is a declared, reproducible lower bound over named security-relevant functions; it excludes unchanged Linux, compiler, firmware, and Morello hardware.",
+    "The map-lookup function contains compile-time exact, broad, and scalar test branches. It is counted once in the common review surface; exact and scalar policy blocks are also shown separately and therefore must not be added to the common total.",
+    "The scalar path is a deliberately narrow test comparator, not a production SFI implementation and not a proxy for AEE, HIVE, MOAT, or SafeBPF.",
+    "Source-line and interface counts measure review surface, not vulnerability density, proof strength, or total TCB security.",
+    "Morello architectural enforcement has no CapeBPF source-line cost but remains a trusted hardware assumption.",
+    "The complete bpf_enter_sandbox function is counted in the common capability-root/gateway group, including bounded nonempty-context/RCSP data-root permission minimization; its source-line count does not replace object-level checking of capability permissions, the compiler-generated call frame, or the terminal transition sequence.",
+    "The complete experimental-tree delta includes test-only CVE modes, mutations, diagnostics, and generated opcode tables; it must not be cited as production TCB size."
+  ]
+}

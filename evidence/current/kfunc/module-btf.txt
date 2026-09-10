@@ -1,0 +1,3402 @@
+[80047] CONST '(anon)' type_id=80049
+[80048] UNION '(anon)' size=8 vlen=3
+	'arg' type_id=19 bits_offset=0
+	'str' type_id=1999 bits_offset=0
+	'arr' type_id=80829 bits_offset=0
+[80049] STRUCT 'kernel_param' size=40 vlen=7
+	'name' type_id=2 bits_offset=0
+	'mod' type_id=80050 bits_offset=64
+	'ops' type_id=80821 bits_offset=128
+	'perm' type_id=1998 bits_offset=192
+	'level' type_id=1483 bits_offset=208
+	'flags' type_id=69 bits_offset=216
+	'(anon)' type_id=80048 bits_offset=256
+[80050] PTR '(anon)' type_id=80051
+[80051] STRUCT 'module' size=1152 vlen=57
+	'state' type_id=115 bits_offset=0
+	'list' type_id=34 bits_offset=64
+	'name' type_id=116 bits_offset=192
+	'mkobj' type_id=80052 bits_offset=640
+	'modinfo_attrs' type_id=80804 bits_offset=1408
+	'version' type_id=2 bits_offset=1472
+	'srcversion' type_id=2 bits_offset=1536
+	'holders_dir' type_id=80054 bits_offset=1600
+	'syms' type_id=1982 bits_offset=1664
+	'crcs' type_id=1984 bits_offset=1728
+	'num_syms' type_id=49 bits_offset=1792
+	'param_lock' type_id=55 bits_offset=1856
+	'kp' type_id=80817 bits_offset=2112
+	'num_kp' type_id=49 bits_offset=2176
+	'num_gpl_syms' type_id=49 bits_offset=2208
+	'gpl_syms' type_id=1982 bits_offset=2240
+	'gpl_crcs' type_id=1984 bits_offset=2304
+	'using_gplonly_symbols' type_id=89 bits_offset=2368
+	'async_probe_requested' type_id=89 bits_offset=2376
+	'num_exentries' type_id=49 bits_offset=2400
+	'extable' type_id=2006 bits_offset=2432
+	'init' type_id=20 bits_offset=2496
+	'mem' type_id=80818 bits_offset=2560
+	'arch' type_id=2013 bits_offset=6592
+	'taints' type_id=10 bits_offset=6848
+	'num_bugs' type_id=49 bits_offset=6912
+	'bug_list' type_id=34 bits_offset=6976
+	'bug_table' type_id=2018 bits_offset=7104
+	'kallsyms' type_id=2021 bits_offset=7168
+	'core_kallsyms' type_id=2022 bits_offset=7232
+	'sect_attrs' type_id=2030 bits_offset=7488
+	'notes_attrs' type_id=2031 bits_offset=7552
+	'args' type_id=37 bits_offset=7616
+	'percpu' type_id=2033 bits_offset=7680
+	'percpu_size' type_id=49 bits_offset=7744
+	'noinstr_text_start' type_id=19 bits_offset=7808
+	'noinstr_text_size' type_id=49 bits_offset=7872
+	'num_tracepoints' type_id=49 bits_offset=7904
+	'tracepoints_ptrs' type_id=2034 bits_offset=7936
+	'num_srcu_structs' type_id=49 bits_offset=8000
+	'srcu_struct_ptrs' type_id=2037 bits_offset=8064
+	'num_bpf_raw_events' type_id=49 bits_offset=8128
+	'bpf_raw_events' type_id=2052 bits_offset=8192
+	'btf_data_size' type_id=49 bits_offset=8256
+	'btf_data' type_id=19 bits_offset=8320
+	'jump_entries' type_id=11 bits_offset=8384
+	'num_jump_entries' type_id=49 bits_offset=8448
+	'num_trace_bprintk_fmt' type_id=49 bits_offset=8480
+	'trace_bprintk_fmt_start' type_id=1264 bits_offset=8512
+	'trace_events' type_id=2054 bits_offset=8576
+	'num_trace_events' type_id=49 bits_offset=8640
+	'trace_evals' type_id=2055 bits_offset=8704
+	'num_trace_evals' type_id=49 bits_offset=8768
+	'source_list' type_id=34 bits_offset=8832
+	'target_list' type_id=34 bits_offset=8960
+	'exit' type_id=22 bits_offset=9088
+	'refcnt' type_id=7 bits_offset=9152
+[80052] STRUCT 'module_kobject' size=96 vlen=5
+	'kobj' type_id=80053 bits_offset=0
+	'mod' type_id=80050 bits_offset=512
+	'drivers_dir' type_id=80054 bits_offset=576
+	'mp' type_id=1968 bits_offset=640
+	'kobj_completion' type_id=610 bits_offset=704
+[80053] STRUCT 'kobject' size=64 vlen=12
+	'name' type_id=2 bits_offset=0
+	'entry' type_id=34 bits_offset=64
+	'parent' type_id=80054 bits_offset=192
+	'kset' type_id=80055 bits_offset=256
+	'ktype' type_id=80071 bits_offset=320
+	'sd' type_id=80255 bits_offset=384
+	'kref' type_id=500 bits_offset=448
+	'state_initialized' type_id=49 bits_offset=480 bitfield_size=1
+	'state_in_sysfs' type_id=49 bits_offset=481 bitfield_size=1
+	'state_add_uevent_sent' type_id=49 bits_offset=482 bitfield_size=1
+	'state_remove_uevent_sent' type_id=49 bits_offset=483 bitfield_size=1
+	'uevent_suppress' type_id=49 bits_offset=484 bitfield_size=1
+[80054] PTR '(anon)' type_id=80053
+[80055] PTR '(anon)' type_id=80056
+[80056] STRUCT 'kset' size=96 vlen=4
+	'list' type_id=34 bits_offset=0
+	'list_lock' type_id=122 bits_offset=128
+	'kobj' type_id=80053 bits_offset=192
+	'uevent_ops' type_id=80057 bits_offset=704
+[80057] PTR '(anon)' type_id=80058
+[80058] CONST '(anon)' type_id=80059
+[80059] STRUCT 'kset_uevent_ops' size=24 vlen=3
+	'filter' type_id=80060 bits_offset=0
+	'name' type_id=80065 bits_offset=64
+	'uevent' type_id=80068 bits_offset=128
+[80060] CONST '(anon)' type_id=80061
+[80061] PTR '(anon)' type_id=80062
+[80062] FUNC_PROTO '(anon)' ret_type_id=9 vlen=1
+	'(anon)' type_id=80063
+[80063] PTR '(anon)' type_id=80064
+[80064] CONST '(anon)' type_id=80053
+[80065] CONST '(anon)' type_id=80066
+[80066] PTR '(anon)' type_id=80067
+[80067] FUNC_PROTO '(anon)' ret_type_id=2 vlen=1
+	'(anon)' type_id=80063
+[80068] CONST '(anon)' type_id=80069
+[80069] PTR '(anon)' type_id=80070
+[80070] FUNC_PROTO '(anon)' ret_type_id=9 vlen=2
+	'(anon)' type_id=80063
+	'(anon)' type_id=139
+[80071] PTR '(anon)' type_id=80072
+[80072] CONST '(anon)' type_id=80073
+[80073] STRUCT 'kobj_type' size=48 vlen=6
+	'release' type_id=80074 bits_offset=0
+	'sysfs_ops' type_id=80076 bits_offset=64
+	'default_groups' type_id=80083 bits_offset=128
+	'child_ns_type' type_id=80798 bits_offset=192
+	'namespace' type_id=80800 bits_offset=256
+	'get_ownership' type_id=80802 bits_offset=320
+[80074] PTR '(anon)' type_id=80075
+[80075] FUNC_PROTO '(anon)' ret_type_id=0 vlen=1
+	'(anon)' type_id=80054
+[80076] PTR '(anon)' type_id=80077
+[80077] CONST '(anon)' type_id=80078
+[80078] STRUCT 'sysfs_ops' size=16 vlen=2
+	'show' type_id=80079 bits_offset=0
+	'store' type_id=80081 bits_offset=64
+[80079] PTR '(anon)' type_id=80080
+[80080] FUNC_PROTO '(anon)' ret_type_id=154 vlen=3
+	'(anon)' type_id=80054
+	'(anon)' type_id=157
+	'(anon)' type_id=37
+[80081] PTR '(anon)' type_id=80082
+[80082] FUNC_PROTO '(anon)' ret_type_id=154 vlen=4
+	'(anon)' type_id=80054
+	'(anon)' type_id=157
+	'(anon)' type_id=2
+	'(anon)' type_id=82
+[80083] PTR '(anon)' type_id=80084
+[80084] PTR '(anon)' type_id=80085
+[80085] CONST '(anon)' type_id=80086
+[80086] STRUCT 'attribute_group' size=40 vlen=5
+	'name' type_id=2 bits_offset=0
+	'is_visible' type_id=80087 bits_offset=64
+	'is_bin_visible' type_id=80089 bits_offset=128
+	'attrs' type_id=1960 bits_offset=192
+	'bin_attrs' type_id=80797 bits_offset=256
+[80087] PTR '(anon)' type_id=80088
+[80088] FUNC_PROTO '(anon)' ret_type_id=159 vlen=3
+	'(anon)' type_id=80054
+	'(anon)' type_id=157
+	'(anon)' type_id=9
+[80089] PTR '(anon)' type_id=80090
+[80090] FUNC_PROTO '(anon)' ret_type_id=159 vlen=3
+	'(anon)' type_id=80054
+	'(anon)' type_id=80091
+	'(anon)' type_id=9
+[80091] PTR '(anon)' type_id=80092
+[80092] STRUCT 'bin_attribute' size=72 vlen=8
+	'attr' type_id=158 bits_offset=0
+	'size' type_id=82 bits_offset=128
+	'private' type_id=19 bits_offset=192
+	'f_mapping' type_id=80093 bits_offset=256
+	'read' type_id=80791 bits_offset=320
+	'write' type_id=80791 bits_offset=384
+	'llseek' type_id=80793 bits_offset=448
+	'mmap' type_id=80795 bits_offset=512
+[80093] PTR '(anon)' type_id=80094
+[80094] FUNC_PROTO '(anon)' ret_type_id=80095 vlen=0
+[80095] PTR '(anon)' type_id=80096
+[80096] STRUCT 'address_space' size=192 vlen=15
+	'host' type_id=80097 bits_offset=0
+	'i_pages' type_id=302 bits_offset=64
+	'invalidate_lock' type_id=376 bits_offset=192
+	'gfp_mask' type_id=303 bits_offset=512
+	'i_mmap_writable' type_id=7 bits_offset=544
+	'i_mmap' type_id=339 bits_offset=576
+	'nrpages' type_id=10 bits_offset=704
+	'writeback_index' type_id=10 bits_offset=768
+	'a_ops' type_id=80747 bits_offset=832
+	'flags' type_id=10 bits_offset=896
+	'i_mmap_rwsem' type_id=376 bits_offset=960
+	'wb_err' type_id=1659 bits_offset=1280
+	'private_lock' type_id=122 bits_offset=1312
+	'private_list' type_id=34 bits_offset=1344
+	'private_data' type_id=19 bits_offset=1472
+[80097] PTR '(anon)' type_id=80099
+[80098] UNION '(anon)' size=8 vlen=2
+	'i_fop' type_id=80389 bits_offset=0
+	'free_inode' type_id=80145 bits_offset=0
+[80099] STRUCT 'inode' size=600 vlen=50
+	'i_mode' type_id=159 bits_offset=0
+	'i_opflags' type_id=74 bits_offset=16
+	'i_uid' type_id=182 bits_offset=32
+	'i_gid' type_id=186 bits_offset=64
+	'i_flags' type_id=49 bits_offset=96
+	'i_op' type_id=80100 bits_offset=128
+	'i_sb' type_id=80132 bits_offset=192
+	'i_mapping' type_id=80095 bits_offset=256
+	'i_security' type_id=19 bits_offset=320
+	'i_ino' type_id=10 bits_offset=384
+	'(anon)' type_id=177 bits_offset=448
+	'i_rdev' type_id=247 bits_offset=480
+	'i_size' type_id=96 bits_offset=512
+	'__i_atime' type_id=1867 bits_offset=576
+	'__i_mtime' type_id=1867 bits_offset=704
+	'__i_ctime' type_id=1867 bits_offset=832
+	'i_lock' type_id=122 bits_offset=960
+	'i_bytes' type_id=74 bits_offset=992
+	'i_blkbits' type_id=69 bits_offset=1008
+	'i_write_hint' type_id=69 bits_offset=1016
+	'i_blocks' type_id=1777 bits_offset=1024
+	'i_state' type_id=10 bits_offset=1088
+	'i_rwsem' type_id=376 bits_offset=1152
+	'dirtied_when' type_id=10 bits_offset=1472
+	'dirtied_time_when' type_id=10 bits_offset=1536
+	'i_hash' type_id=40 bits_offset=1600
+	'i_io_list' type_id=34 bits_offset=1728
+	'i_wb' type_id=80153 bits_offset=1856
+	'i_wb_frn_winner' type_id=9 bits_offset=1920
+	'i_wb_frn_avg_time' type_id=72 bits_offset=1952
+	'i_wb_frn_history' type_id=72 bits_offset=1968
+	'i_lru' type_id=34 bits_offset=1984
+	'i_sb_list' type_id=34 bits_offset=2112
+	'i_wb_list' type_id=34 bits_offset=2240
+	'(anon)' type_id=178 bits_offset=2368
+	'i_version' type_id=57 bits_offset=2496
+	'i_sequence' type_id=57 bits_offset=2560
+	'i_count' type_id=7 bits_offset=2624
+	'i_dio_count' type_id=7 bits_offset=2656
+	'i_writecount' type_id=7 bits_offset=2688
+	'i_readcount' type_id=7 bits_offset=2720
+	'(anon)' type_id=80098 bits_offset=2752
+	'i_flctx' type_id=1897 bits_offset=2816
+	'i_data' type_id=80096 bits_offset=2880
+	'i_devices' type_id=34 bits_offset=4416
+	'(anon)' type_id=180 bits_offset=4544
+	'i_generation' type_id=210 bits_offset=4608
+	'i_fsnotify_mask' type_id=210 bits_offset=4640
+	'i_fsnotify_marks' type_id=1815 bits_offset=4672
+	'i_private' type_id=19 bits_offset=4736
+[80100] PTR '(anon)' type_id=80101
+[80101] CONST '(anon)' type_id=80102
+[80102] STRUCT 'inode_operations' size=256 vlen=25
+	'lookup' type_id=80103 bits_offset=0
+	'get_link' type_id=80699 bits_offset=64
+	'permission' type_id=80701 bits_offset=128
+	'get_inode_acl' type_id=80703 bits_offset=192
+	'readlink' type_id=80705 bits_offset=256
+	'create' type_id=80707 bits_offset=320
+	'link' type_id=80709 bits_offset=384
+	'unlink' type_id=80711 bits_offset=448
+	'symlink' type_id=80713 bits_offset=512
+	'mkdir' type_id=80715 bits_offset=576
+	'rmdir' type_id=80711 bits_offset=640
+	'mknod' type_id=80717 bits_offset=704
+	'rename' type_id=80719 bits_offset=768
+	'setattr' type_id=80721 bits_offset=832
+	'getattr' type_id=80725 bits_offset=896
+	'listxattr' type_id=80727 bits_offset=960
+	'fiemap' type_id=80729 bits_offset=1024
+	'update_time' type_id=80731 bits_offset=1088
+	'atomic_open' type_id=80733 bits_offset=1152
+	'tmpfile' type_id=80735 bits_offset=1216
+	'get_acl' type_id=80737 bits_offset=1280
+	'set_acl' type_id=80739 bits_offset=1344
+	'fileattr_set' type_id=80741 bits_offset=1408
+	'fileattr_get' type_id=80743 bits_offset=1472
+	'get_offset_ctx' type_id=80745 bits_offset=1536
+[80103] PTR '(anon)' type_id=80104
+[80104] FUNC_PROTO '(anon)' ret_type_id=80105 vlen=3
+	'(anon)' type_id=80097
+	'(anon)' type_id=80105
+	'(anon)' type_id=49
+[80105] PTR '(anon)' type_id=80106
+[80106] STRUCT 'dentry' size=192 vlen=16
+	'd_flags' type_id=49 bits_offset=0
+	'd_seq' type_id=199 bits_offset=32
+	'd_hash' type_id=203 bits_offset=64
+	'd_parent' type_id=80105 bits_offset=192
+	'd_name' type_id=208 bits_offset=256
+	'd_inode' type_id=80097 bits_offset=384
+	'd_iname' type_id=213 bits_offset=448
+	'd_lockref' type_id=216 bits_offset=704
+	'd_op' type_id=80107 bits_offset=768
+	'd_sb' type_id=80132 bits_offset=832
+	'd_time' type_id=10 bits_offset=896
+	'd_fsdata' type_id=19 bits_offset=960
+	'(anon)' type_id=196 bits_offset=1024
+	'd_child' type_id=34 bits_offset=1152
+	'd_subdirs' type_id=34 bits_offset=1280
+	'd_u' type_id=197 bits_offset=1408
+[80107] PTR '(anon)' type_id=80108
+[80108] CONST '(anon)' type_id=80109
+[80109] STRUCT 'dentry_operations' size=128 vlen=13
+	'd_revalidate' type_id=80110 bits_offset=0
+	'd_weak_revalidate' type_id=80110 bits_offset=64
+	'd_hash' type_id=80112 bits_offset=128
+	'd_compare' type_id=80116 bits_offset=192
+	'd_delete' type_id=80118 bits_offset=256
+	'd_init' type_id=80120 bits_offset=320
+	'd_release' type_id=80122 bits_offset=384
+	'd_prune' type_id=80122 bits_offset=448
+	'd_iput' type_id=80124 bits_offset=512
+	'd_dname' type_id=80126 bits_offset=576
+	'd_automount' type_id=80128 bits_offset=640
+	'd_manage' type_id=80693 bits_offset=704
+	'd_real' type_id=80695 bits_offset=768
+[80110] PTR '(anon)' type_id=80111
+[80111] FUNC_PROTO '(anon)' ret_type_id=9 vlen=2
+	'(anon)' type_id=80105
+	'(anon)' type_id=49
+[80112] PTR '(anon)' type_id=80113
+[80113] FUNC_PROTO '(anon)' ret_type_id=9 vlen=2
+	'(anon)' type_id=80114
+	'(anon)' type_id=226
+[80114] PTR '(anon)' type_id=80115
+[80115] CONST '(anon)' type_id=80106
+[80116] PTR '(anon)' type_id=80117
+[80117] FUNC_PROTO '(anon)' ret_type_id=9 vlen=4
+	'(anon)' type_id=80114
+	'(anon)' type_id=49
+	'(anon)' type_id=2
+	'(anon)' type_id=229
+[80118] PTR '(anon)' type_id=80119
+[80119] FUNC_PROTO '(anon)' ret_type_id=9 vlen=1
+	'(anon)' type_id=80114
+[80120] PTR '(anon)' type_id=80121
+[80121] FUNC_PROTO '(anon)' ret_type_id=9 vlen=1
+	'(anon)' type_id=80105
+[80122] PTR '(anon)' type_id=80123
+[80123] FUNC_PROTO '(anon)' ret_type_id=0 vlen=1
+	'(anon)' type_id=80105
+[80124] PTR '(anon)' type_id=80125
+[80125] FUNC_PROTO '(anon)' ret_type_id=0 vlen=2
+	'(anon)' type_id=80105
+	'(anon)' type_id=80097
+[80126] PTR '(anon)' type_id=80127
+[80127] FUNC_PROTO '(anon)' ret_type_id=37 vlen=3
+	'(anon)' type_id=80105
+	'(anon)' type_id=37
+	'(anon)' type_id=9
+[80128] PTR '(anon)' type_id=80129
+[80129] FUNC_PROTO '(anon)' ret_type_id=80130 vlen=1
+	'(anon)' type_id=80692
+[80130] PTR '(anon)' type_id=80131
+[80131] STRUCT 'vfsmount' size=32 vlen=4
+	'mnt_root' type_id=80105 bits_offset=0
+	'mnt_sb' type_id=80132 bits_offset=64
+	'mnt_flags' type_id=9 bits_offset=128
+	'mnt_idmap' type_id=1791 bits_offset=192
+[80132] PTR '(anon)' type_id=80133
+[80133] STRUCT 'super_block' size=1344 vlen=59
+	's_list' type_id=34 bits_offset=0
+	's_dev' type_id=247 bits_offset=128
+	's_blocksize_bits' type_id=71 bits_offset=160
+	's_blocksize' type_id=10 bits_offset=192
+	's_maxbytes' type_id=96 bits_offset=256
+	's_type' type_id=80134 bits_offset=320
+	's_op' type_id=80140 bits_offset=384
+	'dq_op' type_id=80638 bits_offset=448
+	's_qcop' type_id=80657 bits_offset=512
+	's_export_op' type_id=1778 bits_offset=576
+	's_flags' type_id=10 bits_offset=640
+	's_iflags' type_id=10 bits_offset=704
+	's_magic' type_id=10 bits_offset=768
+	's_root' type_id=80105 bits_offset=832
+	's_umount' type_id=376 bits_offset=896
+	's_count' type_id=9 bits_offset=1216
+	's_active' type_id=7 bits_offset=1248
+	's_security' type_id=19 bits_offset=1280
+	's_xattr' type_id=1780 bits_offset=1344
+	's_roots' type_id=1792 bits_offset=1408
+	's_mounts' type_id=34 bits_offset=1472
+	's_bdev' type_id=80305 bits_offset=1600
+	's_bdev_handle' type_id=1793 bits_offset=1664
+	's_bdi' type_id=80155 bits_offset=1728
+	's_mtd' type_id=1795 bits_offset=1792
+	's_instances' type_id=40 bits_offset=1856
+	's_quota_types' type_id=49 bits_offset=1984
+	's_dquot' type_id=80674 bits_offset=2048
+	's_writers' type_id=80684 bits_offset=4544
+	's_fs_info' type_id=19 bits_offset=6912
+	's_time_gran' type_id=209 bits_offset=6976
+	's_time_min' type_id=527 bits_offset=7040
+	's_time_max' type_id=527 bits_offset=7104
+	's_fsnotify_mask' type_id=210 bits_offset=7168
+	's_fsnotify_marks' type_id=1815 bits_offset=7232
+	's_id' type_id=1065 bits_offset=7296
+	's_uuid' type_id=1816 bits_offset=7552
+	's_max_links' type_id=49 bits_offset=7680
+	's_vfs_rename_mutex' type_id=55 bits_offset=7744
+	's_subtype' type_id=2 bits_offset=8000
+	's_d_op' type_id=80107 bits_offset=8064
+	's_shrink' type_id=80688 bits_offset=8128
+	's_remove_count' type_id=56 bits_offset=8192
+	's_fsnotify_connectors' type_id=56 bits_offset=8256
+	's_readonly_remount' type_id=9 bits_offset=8320
+	's_wb_err' type_id=1659 bits_offset=8352
+	's_dio_done_wq' type_id=818 bits_offset=8384
+	's_pins' type_id=102 bits_offset=8448
+	's_user_ns' type_id=555 bits_offset=8512
+	's_dentry_lru' type_id=1823 bits_offset=8576
+	's_inode_lru' type_id=1823 bits_offset=8960
+	'rcu' type_id=277 bits_offset=9344
+	'destroy_work' type_id=757 bits_offset=9472
+	's_sync_lock' type_id=55 bits_offset=9728
+	's_stack_depth' type_id=9 bits_offset=9984
+	's_inode_list_lock' type_id=122 bits_offset=10240
+	's_inodes' type_id=34 bits_offset=10304
+	's_inode_wblist_lock' type_id=122 bits_offset=10432
+	's_inodes_wb' type_id=34 bits_offset=10496
+[80134] PTR '(anon)' type_id=80135
+[80135] STRUCT 'file_system_type' size=72 vlen=17
+	'name' type_id=2 bits_offset=0
+	'fs_flags' type_id=9 bits_offset=64
+	'init_fs_context' type_id=251 bits_offset=128
+	'parameters' type_id=1668 bits_offset=192
+	'mount' type_id=80136 bits_offset=256
+	'kill_sb' type_id=80138 bits_offset=320
+	'owner' type_id=80050 bits_offset=384
+	'next' type_id=80134 bits_offset=448
+	'fs_supers' type_id=102 bits_offset=512
+	's_lock_key' type_id=1682 bits_offset=576
+	's_umount_key' type_id=1682 bits_offset=576
+	's_vfs_rename_key' type_id=1682 bits_offset=576
+	's_writers_key' type_id=1683 bits_offset=576
+	'i_lock_key' type_id=1682 bits_offset=576
+	'i_mutex_key' type_id=1682 bits_offset=576
+	'invalidate_lock_key' type_id=1682 bits_offset=576
+	'i_mutex_dir_key' type_id=1682 bits_offset=576
+[80136] PTR '(anon)' type_id=80137
+[80137] FUNC_PROTO '(anon)' ret_type_id=80105 vlen=4
+	'(anon)' type_id=80134
+	'(anon)' type_id=9
+	'(anon)' type_id=2
+	'(anon)' type_id=19
+[80138] PTR '(anon)' type_id=80139
+[80139] FUNC_PROTO '(anon)' ret_type_id=0 vlen=1
+	'(anon)' type_id=80132
+[80140] PTR '(anon)' type_id=80141
+[80141] CONST '(anon)' type_id=80142
+[80142] STRUCT 'super_operations' size=184 vlen=23
+	'alloc_inode' type_id=80143 bits_offset=0
+	'destroy_inode' type_id=80145 bits_offset=64
+	'free_inode' type_id=80145 bits_offset=128
+	'dirty_inode' type_id=80147 bits_offset=192
+	'write_inode' type_id=80149 bits_offset=256
+	'drop_inode' type_id=80620 bits_offset=320
+	'evict_inode' type_id=80145 bits_offset=384
+	'put_super' type_id=80138 bits_offset=448
+	'sync_fs' type_id=80622 bits_offset=512
+	'freeze_super' type_id=80624 bits_offset=576
+	'freeze_fs' type_id=80626 bits_offset=640
+	'thaw_super' type_id=80624 bits_offset=704
+	'unfreeze_fs' type_id=80626 bits_offset=768
+	'statfs' type_id=80628 bits_offset=832
+	'remount_fs' type_id=80630 bits_offset=896
+	'umount_begin' type_id=80138 bits_offset=960
+	'show_options' type_id=80632 bits_offset=1024
+	'show_devname' type_id=80632 bits_offset=1088
+	'show_path' type_id=80632 bits_offset=1152
+	'show_stats' type_id=80632 bits_offset=1216
+	'nr_cached_objects' type_id=80634 bits_offset=1280
+	'free_cached_objects' type_id=80634 bits_offset=1344
+	'shutdown' type_id=80138 bits_offset=1408
+[80143] PTR '(anon)' type_id=80144
+[80144] FUNC_PROTO '(anon)' ret_type_id=80097 vlen=1
+	'(anon)' type_id=80132
+[80145] PTR '(anon)' type_id=80146
+[80146] FUNC_PROTO '(anon)' ret_type_id=0 vlen=1
+	'(anon)' type_id=80097
+[80147] PTR '(anon)' type_id=80148
+[80148] FUNC_PROTO '(anon)' ret_type_id=0 vlen=2
+	'(anon)' type_id=80097
+	'(anon)' type_id=9
+[80149] PTR '(anon)' type_id=80150
+[80150] FUNC_PROTO '(anon)' ret_type_id=9 vlen=2
+	'(anon)' type_id=80097
+	'(anon)' type_id=80151
+[80151] PTR '(anon)' type_id=80152
+[80152] STRUCT 'writeback_control' size=104 vlen=22
+	'nr_to_write' type_id=15 bits_offset=0
+	'pages_skipped' type_id=15 bits_offset=64
+	'range_start' type_id=96 bits_offset=128
+	'range_end' type_id=96 bits_offset=192
+	'sync_mode' type_id=1697 bits_offset=256
+	'for_kupdate' type_id=49 bits_offset=288 bitfield_size=1
+	'for_background' type_id=49 bits_offset=289 bitfield_size=1
+	'tagged_writepages' type_id=49 bits_offset=290 bitfield_size=1
+	'for_reclaim' type_id=49 bits_offset=291 bitfield_size=1
+	'range_cyclic' type_id=49 bits_offset=292 bitfield_size=1
+	'for_sync' type_id=49 bits_offset=293 bitfield_size=1
+	'unpinned_fscache_wb' type_id=49 bits_offset=294 bitfield_size=1
+	'no_cgroup_owner' type_id=49 bits_offset=295 bitfield_size=1
+	'swap_plug' type_id=1698 bits_offset=320
+	'wb' type_id=80153 bits_offset=384
+	'inode' type_id=80097 bits_offset=448
+	'wb_id' type_id=9 bits_offset=512
+	'wb_lcand_id' type_id=9 bits_offset=544
+	'wb_tcand_id' type_id=9 bits_offset=576
+	'wb_bytes' type_id=82 bits_offset=640
+	'wb_lcand_bytes' type_id=82 bits_offset=704
+	'wb_tcand_bytes' type_id=82 bits_offset=768
+[80153] PTR '(anon)' type_id=80154
+[80154] STRUCT 'bdi_writeback' size=768 vlen=35
+	'bdi' type_id=80155 bits_offset=0
+	'state' type_id=10 bits_offset=64
+	'last_old_flush' type_id=10 bits_offset=128
+	'b_dirty' type_id=34 bits_offset=192
+	'b_io' type_id=34 bits_offset=320
+	'b_more_io' type_id=34 bits_offset=448
+	'b_dirty_time' type_id=34 bits_offset=576
+	'list_lock' type_id=122 bits_offset=704
+	'writeback_inodes' type_id=7 bits_offset=736
+	'stat' type_id=381 bits_offset=768
+	'bw_time_stamp' type_id=10 bits_offset=2048
+	'dirtied_stamp' type_id=10 bits_offset=2112
+	'written_stamp' type_id=10 bits_offset=2176
+	'write_bandwidth' type_id=10 bits_offset=2240
+	'avg_write_bandwidth' type_id=10 bits_offset=2304
+	'dirty_ratelimit' type_id=10 bits_offset=2368
+	'balanced_dirty_ratelimit' type_id=10 bits_offset=2432
+	'completions' type_id=1346 bits_offset=2496
+	'dirty_exceeded' type_id=9 bits_offset=2880
+	'start_all_reason' type_id=1347 bits_offset=2912
+	'work_lock' type_id=122 bits_offset=2944
+	'work_list' type_id=34 bits_offset=3008
+	'dwork' type_id=817 bits_offset=3136
+	'bw_dwork' type_id=817 bits_offset=3840
+	'dirty_sleep' type_id=10 bits_offset=4544
+	'bdi_node' type_id=34 bits_offset=4608
+	'refcnt' type_id=453 bits_offset=4736
+	'memcg_completions' type_id=1346 bits_offset=4864
+	'memcg_css' type_id=80251 bits_offset=5248
+	'blkcg_css' type_id=80251 bits_offset=5312
+	'memcg_node' type_id=34 bits_offset=5376
+	'blkcg_node' type_id=34 bits_offset=5504
+	'b_attached' type_id=34 bits_offset=5632
+	'offline_node' type_id=34 bits_offset=5760
+	'(anon)' type_id=1344 bits_offset=5888
+[80155] PTR '(anon)' type_id=80156
+[80156] STRUCT 'backing_dev_info' size=1120 vlen=22
+	'id' type_id=93 bits_offset=0
+	'rb_node' type_id=109 bits_offset=64
+	'bdi_list' type_id=34 bits_offset=256
+	'ra_pages' type_id=10 bits_offset=384
+	'io_pages' type_id=10 bits_offset=448
+	'refcnt' type_id=500 bits_offset=512
+	'capabilities' type_id=49 bits_offset=544
+	'min_ratio' type_id=49 bits_offset=576
+	'max_ratio' type_id=49 bits_offset=608
+	'max_prop_frac' type_id=49 bits_offset=640
+	'tot_write_bandwidth' type_id=56 bits_offset=704
+	'wb' type_id=80154 bits_offset=768
+	'wb_list' type_id=34 bits_offset=6912
+	'cgwb_tree' type_id=302 bits_offset=7040
+	'cgwb_release_mutex' type_id=55 bits_offset=7168
+	'wb_switch_rwsem' type_id=376 bits_offset=7424
+	'wb_waitq' type_id=295 bits_offset=7744
+	'dev' type_id=80157 bits_offset=7936
+	'dev_name' type_id=920 bits_offset=8000
+	'owner' type_id=80157 bits_offset=8512
+	'laptop_mode_wb_timer' type_id=706 bits_offset=8576
+	'debug_dir' type_id=80105 bits_offset=8896
+[80157] PTR '(anon)' type_id=80158
+[80158] STRUCT 'device' size=744 vlen=45
+	'kobj' type_id=80053 bits_offset=0
+	'parent' type_id=80157 bits_offset=512
+	'p' type_id=1160 bits_offset=576
+	'init_name' type_id=2 bits_offset=640
+	'type' type_id=80159 bits_offset=704
+	'bus' type_id=80175 bits_offset=768
+	'driver' type_id=80180 bits_offset=832
+	'platform_data' type_id=19 bits_offset=896
+	'driver_data' type_id=19 bits_offset=960
+	'mutex' type_id=55 bits_offset=1024
+	'links' type_id=1200 bits_offset=1280
+	'power' type_id=80184 bits_offset=1728
+	'pm_domain' type_id=80189 bits_offset=4224
+	'em_pd' type_id=1220 bits_offset=4288
+	'msi' type_id=1224 bits_offset=4352
+	'dma_ops' type_id=1227 bits_offset=4480
+	'dma_mask' type_id=1229 bits_offset=4544
+	'coherent_dma_mask' type_id=93 bits_offset=4608
+	'bus_dma_limit' type_id=93 bits_offset=4672
+	'dma_range_map' type_id=1230 bits_offset=4736
+	'dma_parms' type_id=1232 bits_offset=4800
+	'dma_pools' type_id=34 bits_offset=4864
+	'dma_mem' type_id=1234 bits_offset=4992
+	'dma_io_tlb_mem' type_id=1235 bits_offset=5056
+	'archdata' type_id=1236 bits_offset=5120
+	'of_node' type_id=1237 bits_offset=5120
+	'fwnode' type_id=80195 bits_offset=5184
+	'numa_node' type_id=9 bits_offset=5248
+	'devt' type_id=247 bits_offset=5280
+	'id' type_id=209 bits_offset=5312
+	'devres_lock' type_id=122 bits_offset=5344
+	'devres_head' type_id=34 bits_offset=5376
+	'class' type_id=80240 bits_offset=5504
+	'groups' type_id=80083 bits_offset=5568
+	'release' type_id=80168 bits_offset=5632
+	'iommu_group' type_id=1315 bits_offset=5696
+	'iommu' type_id=1316 bits_offset=5760
+	'physical_location' type_id=1317 bits_offset=5824
+	'removable' type_id=1322 bits_offset=5888
+	'offline_disabled' type_id=89 bits_offset=5920 bitfield_size=1
+	'offline' type_id=89 bits_offset=5921 bitfield_size=1
+	'of_node_reused' type_id=89 bits_offset=5922 bitfield_size=1
+	'state_synced' type_id=89 bits_offset=5923 bitfield_size=1
+	'can_match' type_id=89 bits_offset=5924 bitfield_size=1
+	'dma_coherent' type_id=89 bits_offset=5925 bitfield_size=1
+[80159] PTR '(anon)' type_id=80160
+[80160] CONST '(anon)' type_id=80161
+[80161] STRUCT 'device_type' size=48 vlen=6
+	'name' type_id=2 bits_offset=0
+	'groups' type_id=80083 bits_offset=64
+	'uevent' type_id=80162 bits_offset=128
+	'devnode' type_id=80166 bits_offset=192
+	'release' type_id=80168 bits_offset=256
+	'pm' type_id=80170 bits_offset=320
+[80162] PTR '(anon)' type_id=80163
+[80163] FUNC_PROTO '(anon)' ret_type_id=9 vlen=2
+	'(anon)' type_id=80164
+	'(anon)' type_id=139
+[80164] PTR '(anon)' type_id=80165
+[80165] CONST '(anon)' type_id=80158
+[80166] PTR '(anon)' type_id=80167
+[80167] FUNC_PROTO '(anon)' ret_type_id=37 vlen=4
+	'(anon)' type_id=80164
+	'(anon)' type_id=1139
+	'(anon)' type_id=618
+	'(anon)' type_id=619
+[80168] PTR '(anon)' type_id=80169
+[80169] FUNC_PROTO '(anon)' ret_type_id=0 vlen=1
+	'(anon)' type_id=80157
+[80170] PTR '(anon)' type_id=80171
+[80171] CONST '(anon)' type_id=80172
+[80172] STRUCT 'dev_pm_ops' size=184 vlen=23
+	'prepare' type_id=80173 bits_offset=0
+	'complete' type_id=80168 bits_offset=64
+	'suspend' type_id=80173 bits_offset=128
+	'resume' type_id=80173 bits_offset=192
+	'freeze' type_id=80173 bits_offset=256
+	'thaw' type_id=80173 bits_offset=320
+	'poweroff' type_id=80173 bits_offset=384
+	'restore' type_id=80173 bits_offset=448
+	'suspend_late' type_id=80173 bits_offset=512
+	'resume_early' type_id=80173 bits_offset=576
+	'freeze_late' type_id=80173 bits_offset=640
+	'thaw_early' type_id=80173 bits_offset=704
+	'poweroff_late' type_id=80173 bits_offset=768
+	'restore_early' type_id=80173 bits_offset=832
+	'suspend_noirq' type_id=80173 bits_offset=896
+	'resume_noirq' type_id=80173 bits_offset=960
+	'freeze_noirq' type_id=80173 bits_offset=1024
+	'thaw_noirq' type_id=80173 bits_offset=1088
+	'poweroff_noirq' type_id=80173 bits_offset=1152
+	'restore_noirq' type_id=80173 bits_offset=1216
+	'runtime_suspend' type_id=80173 bits_offset=1280
+	'runtime_resume' type_id=80173 bits_offset=1344
+	'runtime_idle' type_id=80173 bits_offset=1408
+[80173] PTR '(anon)' type_id=80174
+[80174] FUNC_PROTO '(anon)' ret_type_id=9 vlen=1
+	'(anon)' type_id=80157
+[80175] PTR '(anon)' type_id=80176
+[80176] CONST '(anon)' type_id=80177
+[80177] STRUCT 'bus_type' size=168 vlen=21
+	'name' type_id=2 bits_offset=0
+	'dev_name' type_id=2 bits_offset=64
+	'bus_groups' type_id=80083 bits_offset=128
+	'dev_groups' type_id=80083 bits_offset=192
+	'drv_groups' type_id=80083 bits_offset=256
+	'match' type_id=80178 bits_offset=320
+	'uevent' type_id=80162 bits_offset=384
+	'probe' type_id=80173 bits_offset=448
+	'sync_state' type_id=80168 bits_offset=512
+	'remove' type_id=80168 bits_offset=576
+	'shutdown' type_id=80168 bits_offset=640
+	'online' type_id=80173 bits_offset=704
+	'offline' type_id=80173 bits_offset=768
+	'suspend' type_id=80182 bits_offset=832
+	'resume' type_id=80173 bits_offset=896
+	'num_vf' type_id=80173 bits_offset=960
+	'dma_configure' type_id=80173 bits_offset=1024
+	'dma_cleanup' type_id=80168 bits_offset=1088
+	'pm' type_id=80170 bits_offset=1152
+	'iommu_ops' type_id=1198 bits_offset=1216
+	'need_parent_lock' type_id=89 bits_offset=1280
+[80178] PTR '(anon)' type_id=80179
+[80179] FUNC_PROTO '(anon)' ret_type_id=9 vlen=2
+	'(anon)' type_id=80157
+	'(anon)' type_id=80180
+[80180] PTR '(anon)' type_id=80181
+[80181] STRUCT 'device_driver' size=144 vlen=19
+	'name' type_id=2 bits_offset=0
+	'bus' type_id=80175 bits_offset=64
+	'owner' type_id=80050 bits_offset=128
+	'mod_name' type_id=2 bits_offset=192
+	'suppress_bind_attrs' type_id=89 bits_offset=256
+	'probe_type' type_id=1184 bits_offset=288
+	'of_match_table' type_id=1185 bits_offset=320
+	'acpi_match_table' type_id=1189 bits_offset=384
+	'probe' type_id=80173 bits_offset=448
+	'sync_state' type_id=80168 bits_offset=512
+	'remove' type_id=80173 bits_offset=576
+	'shutdown' type_id=80168 bits_offset=640
+	'suspend' type_id=80182 bits_offset=704
+	'resume' type_id=80173 bits_offset=768
+	'groups' type_id=80083 bits_offset=832
+	'dev_groups' type_id=80083 bits_offset=896
+	'pm' type_id=80170 bits_offset=960
+	'coredump' type_id=80168 bits_offset=1024
+	'p' type_id=1197 bits_offset=1088
+[80182] PTR '(anon)' type_id=80183
+[80183] FUNC_PROTO '(anon)' ret_type_id=9 vlen=2
+	'(anon)' type_id=80157
+	'(anon)' type_id=1195
+[80184] STRUCT 'dev_pm_info' size=312 vlen=53
+	'power_state' type_id=1195 bits_offset=0
+	'can_wakeup' type_id=49 bits_offset=32 bitfield_size=1
+	'async_suspend' type_id=49 bits_offset=33 bitfield_size=1
+	'in_dpm_list' type_id=89 bits_offset=34 bitfield_size=1
+	'is_prepared' type_id=89 bits_offset=35 bitfield_size=1
+	'is_suspended' type_id=89 bits_offset=36 bitfield_size=1
+	'is_noirq_suspended' type_id=89 bits_offset=37 bitfield_size=1
+	'is_late_suspended' type_id=89 bits_offset=38 bitfield_size=1
+	'no_pm' type_id=89 bits_offset=39 bitfield_size=1
+	'early_init' type_id=89 bits_offset=40 bitfield_size=1
+	'direct_complete' type_id=89 bits_offset=41 bitfield_size=1
+	'driver_flags' type_id=209 bits_offset=64
+	'lock' type_id=122 bits_offset=96
+	'entry' type_id=34 bits_offset=128
+	'completion' type_id=460 bits_offset=256
+	'wakeup' type_id=80185 bits_offset=512
+	'wakeup_path' type_id=89 bits_offset=576 bitfield_size=1
+	'syscore' type_id=89 bits_offset=577 bitfield_size=1
+	'no_pm_callbacks' type_id=89 bits_offset=578 bitfield_size=1
+	'must_resume' type_id=49 bits_offset=579 bitfield_size=1
+	'may_skip_resume' type_id=49 bits_offset=580 bitfield_size=1
+	'suspend_timer' type_id=322 bits_offset=640
+	'timer_expires' type_id=93 bits_offset=1152
+	'work' type_id=757 bits_offset=1216
+	'wait_queue' type_id=295 bits_offset=1472
+	'wakeirq' type_id=1205 bits_offset=1664
+	'usage_count' type_id=7 bits_offset=1728
+	'child_count' type_id=7 bits_offset=1760
+	'disable_depth' type_id=49 bits_offset=1792 bitfield_size=3
+	'idle_notification' type_id=49 bits_offset=1795 bitfield_size=1
+	'request_pending' type_id=49 bits_offset=1796 bitfield_size=1
+	'deferred_resume' type_id=49 bits_offset=1797 bitfield_size=1
+	'needs_force_resume' type_id=49 bits_offset=1798 bitfield_size=1
+	'runtime_auto' type_id=49 bits_offset=1799 bitfield_size=1
+	'ignore_children' type_id=89 bits_offset=1800 bitfield_size=1
+	'no_callbacks' type_id=49 bits_offset=1801 bitfield_size=1
+	'irq_safe' type_id=49 bits_offset=1802 bitfield_size=1
+	'use_autosuspend' type_id=49 bits_offset=1803 bitfield_size=1
+	'timer_autosuspends' type_id=49 bits_offset=1804 bitfield_size=1
+	'memalloc_noio' type_id=49 bits_offset=1805 bitfield_size=1
+	'links_count' type_id=49 bits_offset=1824
+	'request' type_id=1206 bits_offset=1856
+	'runtime_status' type_id=1207 bits_offset=1888
+	'last_status' type_id=1207 bits_offset=1920
+	'runtime_error' type_id=9 bits_offset=1952
+	'autosuspend_delay' type_id=9 bits_offset=1984
+	'last_busy' type_id=93 bits_offset=2048
+	'active_time' type_id=93 bits_offset=2112
+	'suspended_time' type_id=93 bits_offset=2176
+	'accounting_timestamp' type_id=93 bits_offset=2240
+	'subsys_data' type_id=1208 bits_offset=2304
+	'set_latency_tolerance' type_id=80187 bits_offset=2368
+	'qos' type_id=1213 bits_offset=2432
+[80185] PTR '(anon)' type_id=80186
+[80186] STRUCT 'wakeup_source' size=192 vlen=20
+	'name' type_id=2 bits_offset=0
+	'id' type_id=9 bits_offset=64
+	'entry' type_id=34 bits_offset=128
+	'lock' type_id=122 bits_offset=256
+	'wakeirq' type_id=1205 bits_offset=320
+	'timer' type_id=706 bits_offset=384
+	'timer_expires' type_id=10 bits_offset=704
+	'total_time' type_id=324 bits_offset=768
+	'max_time' type_id=324 bits_offset=832
+	'last_time' type_id=324 bits_offset=896
+	'start_prevent_time' type_id=324 bits_offset=960
+	'prevent_sleep_time' type_id=324 bits_offset=1024
+	'event_count' type_id=10 bits_offset=1088
+	'active_count' type_id=10 bits_offset=1152
+	'relax_count' type_id=10 bits_offset=1216
+	'expire_count' type_id=10 bits_offset=1280
+	'wakeup_count' type_id=10 bits_offset=1344
+	'dev' type_id=80157 bits_offset=1408
+	'active' type_id=89 bits_offset=1472 bitfield_size=1
+	'autosleep_enabled' type_id=89 bits_offset=1473 bitfield_size=1
+[80187] PTR '(anon)' type_id=80188
+[80188] FUNC_PROTO '(anon)' ret_type_id=0 vlen=2
+	'(anon)' type_id=80157
+	'(anon)' type_id=13
+[80189] PTR '(anon)' type_id=80190
+[80190] STRUCT 'dev_pm_domain' size=232 vlen=7
+	'ops' type_id=80172 bits_offset=0
+	'start' type_id=80173 bits_offset=1472
+	'detach' type_id=80191 bits_offset=1536
+	'activate' type_id=80173 bits_offset=1600
+	'sync' type_id=80168 bits_offset=1664
+	'dismiss' type_id=80168 bits_offset=1728
+	'set_performance_state' type_id=80193 bits_offset=1792
+[80191] PTR '(anon)' type_id=80192
+[80192] FUNC_PROTO '(anon)' ret_type_id=0 vlen=2
+	'(anon)' type_id=80157
+	'(anon)' type_id=89
+[80193] PTR '(anon)' type_id=80194
+[80194] FUNC_PROTO '(anon)' ret_type_id=9 vlen=2
+	'(anon)' type_id=80157
+	'(anon)' type_id=49
+[80195] PTR '(anon)' type_id=80196
+[80196] STRUCT 'fwnode_handle' size=64 vlen=6
+	'secondary' type_id=80195 bits_offset=0
+	'ops' type_id=80197 bits_offset=64
+	'dev' type_id=80157 bits_offset=128
+	'suppliers' type_id=34 bits_offset=192
+	'consumers' type_id=34 bits_offset=320
+	'flags' type_id=69 bits_offset=448
+[80197] PTR '(anon)' type_id=80198
+[80198] CONST '(anon)' type_id=80199
+[80199] STRUCT 'fwnode_operations' size=176 vlen=22
+	'get' type_id=80200 bits_offset=0
+	'put' type_id=80202 bits_offset=64
+	'device_is_available' type_id=80204 bits_offset=128
+	'device_get_match_data' type_id=80208 bits_offset=192
+	'device_dma_supported' type_id=80204 bits_offset=256
+	'device_get_dma_attr' type_id=80210 bits_offset=320
+	'property_present' type_id=80212 bits_offset=384
+	'property_read_int_array' type_id=80214 bits_offset=448
+	'property_read_string_array' type_id=80216 bits_offset=512
+	'get_name' type_id=80218 bits_offset=576
+	'get_name_prefix' type_id=80218 bits_offset=640
+	'get_parent' type_id=80220 bits_offset=704
+	'get_next_child_node' type_id=80222 bits_offset=768
+	'get_named_child_node' type_id=80224 bits_offset=832
+	'get_reference_args' type_id=80226 bits_offset=896
+	'graph_get_next_endpoint' type_id=80222 bits_offset=960
+	'graph_get_remote_endpoint' type_id=80220 bits_offset=1024
+	'graph_get_port_parent' type_id=80200 bits_offset=1088
+	'graph_parse_endpoint' type_id=80230 bits_offset=1152
+	'iomap' type_id=80234 bits_offset=1216
+	'irq_get' type_id=80236 bits_offset=1280
+	'add_links' type_id=80238 bits_offset=1344
+[80200] PTR '(anon)' type_id=80201
+[80201] FUNC_PROTO '(anon)' ret_type_id=80195 vlen=1
+	'(anon)' type_id=80195
+[80202] PTR '(anon)' type_id=80203
+[80203] FUNC_PROTO '(anon)' ret_type_id=0 vlen=1
+	'(anon)' type_id=80195
+[80204] PTR '(anon)' type_id=80205
+[80205] FUNC_PROTO '(anon)' ret_type_id=89 vlen=1
+	'(anon)' type_id=80206
+[80206] PTR '(anon)' type_id=80207
+[80207] CONST '(anon)' type_id=80196
+[80208] PTR '(anon)' type_id=80209
+[80209] FUNC_PROTO '(anon)' ret_type_id=738 vlen=2
+	'(anon)' type_id=80206
+	'(anon)' type_id=80164
+[80210] PTR '(anon)' type_id=80211
+[80211] FUNC_PROTO '(anon)' ret_type_id=1257 vlen=1
+	'(anon)' type_id=80206
+[80212] PTR '(anon)' type_id=80213
+[80213] FUNC_PROTO '(anon)' ret_type_id=89 vlen=2
+	'(anon)' type_id=80206
+	'(anon)' type_id=2
+[80214] PTR '(anon)' type_id=80215
+[80215] FUNC_PROTO '(anon)' ret_type_id=9 vlen=5
+	'(anon)' type_id=80206
+	'(anon)' type_id=2
+	'(anon)' type_id=49
+	'(anon)' type_id=19
+	'(anon)' type_id=82
+[80216] PTR '(anon)' type_id=80217
+[80217] FUNC_PROTO '(anon)' ret_type_id=9 vlen=4
+	'(anon)' type_id=80206
+	'(anon)' type_id=2
+	'(anon)' type_id=1264
+	'(anon)' type_id=82
+[80218] PTR '(anon)' type_id=80219
+[80219] FUNC_PROTO '(anon)' ret_type_id=2 vlen=1
+	'(anon)' type_id=80206
+[80220] PTR '(anon)' type_id=80221
+[80221] FUNC_PROTO '(anon)' ret_type_id=80195 vlen=1
+	'(anon)' type_id=80206
+[80222] PTR '(anon)' type_id=80223
+[80223] FUNC_PROTO '(anon)' ret_type_id=80195 vlen=2
+	'(anon)' type_id=80206
+	'(anon)' type_id=80195
+[80224] PTR '(anon)' type_id=80225
+[80225] FUNC_PROTO '(anon)' ret_type_id=80195 vlen=2
+	'(anon)' type_id=80206
+	'(anon)' type_id=2
+[80226] PTR '(anon)' type_id=80227
+[80227] FUNC_PROTO '(anon)' ret_type_id=9 vlen=6
+	'(anon)' type_id=80206
+	'(anon)' type_id=2
+	'(anon)' type_id=2
+	'(anon)' type_id=49
+	'(anon)' type_id=49
+	'(anon)' type_id=80228
+[80228] PTR '(anon)' type_id=80229
+[80229] STRUCT 'fwnode_reference_args' size=80 vlen=3
+	'fwnode' type_id=80195 bits_offset=0
+	'nargs' type_id=49 bits_offset=64
+	'args' type_id=1277 bits_offset=128
+[80230] PTR '(anon)' type_id=80231
+[80231] FUNC_PROTO '(anon)' ret_type_id=9 vlen=2
+	'(anon)' type_id=80206
+	'(anon)' type_id=80232
+[80232] PTR '(anon)' type_id=80233
+[80233] STRUCT 'fwnode_endpoint' size=16 vlen=3
+	'port' type_id=49 bits_offset=0
+	'id' type_id=49 bits_offset=32
+	'local_fwnode' type_id=80206 bits_offset=64
+[80234] PTR '(anon)' type_id=80235
+[80235] FUNC_PROTO '(anon)' ret_type_id=19 vlen=2
+	'(anon)' type_id=80195
+	'(anon)' type_id=9
+[80236] PTR '(anon)' type_id=80237
+[80237] FUNC_PROTO '(anon)' ret_type_id=9 vlen=2
+	'(anon)' type_id=80206
+	'(anon)' type_id=49
+[80238] PTR '(anon)' type_id=80239
+[80239] FUNC_PROTO '(anon)' ret_type_id=9 vlen=1
+	'(anon)' type_id=80195
+[80240] PTR '(anon)' type_id=80241
+[80241] CONST '(anon)' type_id=80242
+[80242] STRUCT 'class' size=96 vlen=12
+	'name' type_id=2 bits_offset=0
+	'class_groups' type_id=80083 bits_offset=64
+	'dev_groups' type_id=80083 bits_offset=128
+	'dev_uevent' type_id=80162 bits_offset=192
+	'devnode' type_id=80243 bits_offset=256
+	'class_release' type_id=80245 bits_offset=320
+	'dev_release' type_id=80168 bits_offset=384
+	'shutdown_pre' type_id=80173 bits_offset=448
+	'ns_type' type_id=1297 bits_offset=512
+	'namespace' type_id=80247 bits_offset=576
+	'get_ownership' type_id=80249 bits_offset=640
+	'pm' type_id=80170 bits_offset=704
+[80243] PTR '(anon)' type_id=80244
+[80244] FUNC_PROTO '(anon)' ret_type_id=37 vlen=2
+	'(anon)' type_id=80164
+	'(anon)' type_id=1139
+[80245] PTR '(anon)' type_id=80246
+[80246] FUNC_PROTO '(anon)' ret_type_id=0 vlen=1
+	'(anon)' type_id=80240
+[80247] PTR '(anon)' type_id=80248
+[80248] FUNC_PROTO '(anon)' ret_type_id=738 vlen=1
+	'(anon)' type_id=80164
+[80249] PTR '(anon)' type_id=80250
+[80250] FUNC_PROTO '(anon)' ret_type_id=0 vlen=3
+	'(anon)' type_id=80164
+	'(anon)' type_id=618
+	'(anon)' type_id=619
+[80251] PTR '(anon)' type_id=80252
+[80252] STRUCT 'cgroup_subsys_state' size=200 vlen=13
+	'cgroup' type_id=80253 bits_offset=0
+	'ss' type_id=80591 bits_offset=64
+	'refcnt' type_id=453 bits_offset=128
+	'sibling' type_id=34 bits_offset=256
+	'children' type_id=34 bits_offset=384
+	'rstat_css_node' type_id=34 bits_offset=512
+	'id' type_id=9 bits_offset=640
+	'flags' type_id=49 bits_offset=672
+	'serial_nr' type_id=93 bits_offset=704
+	'online_cnt' type_id=7 bits_offset=768
+	'destroy_work' type_id=757 bits_offset=832
+	'destroy_rwork' type_id=973 bits_offset=1088
+	'parent' type_id=80251 bits_offset=1536
+[80253] PTR '(anon)' type_id=80254
+[80254] STRUCT 'cgroup' size=1448 vlen=40
+	'self' type_id=80252 bits_offset=0
+	'flags' type_id=10 bits_offset=1600
+	'level' type_id=9 bits_offset=1664
+	'max_depth' type_id=9 bits_offset=1696
+	'nr_descendants' type_id=9 bits_offset=1728
+	'nr_dying_descendants' type_id=9 bits_offset=1760
+	'max_descendants' type_id=9 bits_offset=1792
+	'nr_populated_csets' type_id=9 bits_offset=1824
+	'nr_populated_domain_children' type_id=9 bits_offset=1856
+	'nr_populated_threaded_children' type_id=9 bits_offset=1888
+	'nr_threaded_children' type_id=9 bits_offset=1920
+	'kn' type_id=80255 bits_offset=1984
+	'procs_file' type_id=80369 bits_offset=2048
+	'events_file' type_id=80369 bits_offset=2496
+	'psi_files' type_id=80474 bits_offset=2944
+	'subtree_control' type_id=72 bits_offset=2944
+	'subtree_ss_mask' type_id=72 bits_offset=2960
+	'old_subtree_control' type_id=72 bits_offset=2976
+	'old_subtree_ss_mask' type_id=72 bits_offset=2992
+	'subsys' type_id=80475 bits_offset=3008
+	'root' type_id=80478 bits_offset=3648
+	'cset_links' type_id=34 bits_offset=3712
+	'e_csets' type_id=921 bits_offset=3840
+	'dom_cgrp' type_id=80253 bits_offset=5120
+	'old_dom_cgrp' type_id=80253 bits_offset=5184
+	'rstat_cpu' type_id=80481 bits_offset=5248
+	'rstat_css_list' type_id=34 bits_offset=5312
+	'last_bstat' type_id=925 bits_offset=5440
+	'bstat' type_id=925 bits_offset=5632
+	'prev_cputime' type_id=927 bits_offset=5824
+	'pidlists' type_id=34 bits_offset=6016
+	'pidlist_mutex' type_id=55 bits_offset=6144
+	'offline_waitq' type_id=295 bits_offset=6400
+	'release_agent_work' type_id=757 bits_offset=6592
+	'psi' type_id=928 bits_offset=6848
+	'bpf' type_id=80483 bits_offset=6912
+	'congestion_count' type_id=7 bits_offset=11328
+	'freezer' type_id=935 bits_offset=11360
+	'bpf_cgrp_storage' type_id=937 bits_offset=11520
+	'ancestors' type_id=80590 bits_offset=11584
+[80255] PTR '(anon)' type_id=80257
+[80256] UNION '(anon)' size=32 vlen=3
+	'dir' type_id=867 bits_offset=0
+	'symlink' type_id=80258 bits_offset=0
+	'attr' type_id=80259 bits_offset=0
+[80257] STRUCT 'kernfs_node' size=128 vlen=13
+	'count' type_id=7 bits_offset=0
+	'active' type_id=7 bits_offset=32
+	'parent' type_id=80255 bits_offset=64
+	'name' type_id=2 bits_offset=128
+	'rb' type_id=109 bits_offset=192
+	'ns' type_id=738 bits_offset=384
+	'hash' type_id=49 bits_offset=448
+	'(anon)' type_id=80256 bits_offset=512
+	'priv' type_id=19 bits_offset=768
+	'id' type_id=93 bits_offset=832
+	'flags' type_id=74 bits_offset=896
+	'mode' type_id=159 bits_offset=912
+	'iattr' type_id=912 bits_offset=960
+[80258] STRUCT 'kernfs_elem_symlink' size=8 vlen=1
+	'target_kn' type_id=80255 bits_offset=0
+[80259] STRUCT 'kernfs_elem_attr' size=32 vlen=4
+	'ops' type_id=80260 bits_offset=0
+	'open' type_id=911 bits_offset=64
+	'size' type_id=96 bits_offset=128
+	'notify_next' type_id=80255 bits_offset=192
+[80260] PTR '(anon)' type_id=80261
+[80261] CONST '(anon)' type_id=80262
+[80262] STRUCT 'kernfs_ops' size=104 vlen=13
+	'open' type_id=80263 bits_offset=0
+	'release' type_id=80464 bits_offset=64
+	'seq_show' type_id=80456 bits_offset=128
+	'seq_start' type_id=80450 bits_offset=192
+	'seq_next' type_id=80454 bits_offset=256
+	'seq_stop' type_id=80452 bits_offset=320
+	'read' type_id=80466 bits_offset=384
+	'atomic_write_len' type_id=82 bits_offset=448
+	'prealloc' type_id=89 bits_offset=512
+	'write' type_id=80466 bits_offset=576
+	'poll' type_id=80468 bits_offset=640
+	'mmap' type_id=80470 bits_offset=704
+	'llseek' type_id=80472 bits_offset=768
+[80263] PTR '(anon)' type_id=80264
+[80264] FUNC_PROTO '(anon)' ret_type_id=9 vlen=1
+	'(anon)' type_id=80265
+[80265] PTR '(anon)' type_id=80266
+[80266] STRUCT 'kernfs_open_file' size=152 vlen=13
+	'kn' type_id=80255 bits_offset=0
+	'file' type_id=80267 bits_offset=64
+	'seq_file' type_id=80445 bits_offset=128
+	'priv' type_id=19 bits_offset=192
+	'mutex' type_id=55 bits_offset=256
+	'prealloc_mutex' type_id=55 bits_offset=512
+	'event' type_id=9 bits_offset=768
+	'list' type_id=34 bits_offset=832
+	'prealloc_buf' type_id=37 bits_offset=960
+	'atomic_write_len' type_id=82 bits_offset=1024
+	'mmapped' type_id=89 bits_offset=1088 bitfield_size=1
+	'released' type_id=89 bits_offset=1089 bitfield_size=1
+	'vm_ops' type_id=80331 bits_offset=1152
+[80267] PTR '(anon)' type_id=80268
+[80268] STRUCT 'file' size=232 vlen=20
+	'(anon)' type_id=273 bits_offset=0
+	'f_lock' type_id=122 bits_offset=128
+	'f_mode' type_id=281 bits_offset=160
+	'f_count' type_id=56 bits_offset=192
+	'f_pos_lock' type_id=55 bits_offset=256
+	'f_pos' type_id=96 bits_offset=512
+	'f_flags' type_id=49 bits_offset=576
+	'f_owner' type_id=80269 bits_offset=640
+	'f_cred' type_id=975 bits_offset=896
+	'f_ra' type_id=1550 bits_offset=960
+	'f_path' type_id=80388 bits_offset=1216
+	'f_inode' type_id=80097 bits_offset=1344
+	'f_op' type_id=80389 bits_offset=1408
+	'f_version' type_id=93 bits_offset=1472
+	'f_security' type_id=19 bits_offset=1536
+	'private_data' type_id=19 bits_offset=1600
+	'f_ep' type_id=627 bits_offset=1664
+	'f_mapping' type_id=80095 bits_offset=1728
+	'f_wb_err' type_id=1659 bits_offset=1792
+	'f_sb_err' type_id=1659 bits_offset=1824
+[80269] STRUCT 'fown_struct' size=32 vlen=6
+	'lock' type_id=283 bits_offset=0
+	'pid' type_id=80270 bits_offset=64
+	'pid_type' type_id=1549 bits_offset=128
+	'uid' type_id=182 bits_offset=160
+	'euid' type_id=182 bits_offset=192
+	'signum' type_id=9 bits_offset=224
+[80270] PTR '(anon)' type_id=80271
+[80271] STRUCT 'pid' size=96 vlen=8
+	'count' type_id=292 bits_offset=0
+	'level' type_id=49 bits_offset=32
+	'lock' type_id=122 bits_offset=64
+	'tasks' type_id=294 bits_offset=128
+	'inodes' type_id=102 bits_offset=384
+	'wait_pidfd' type_id=295 bits_offset=448
+	'rcu' type_id=277 bits_offset=640
+	'numbers' type_id=80272 bits_offset=768
+[80272] ARRAY '(anon)' type_id=80273 index_type_id=9 nr_elems=0
+[80273] STRUCT 'upid' size=16 vlen=2
+	'nr' type_id=9 bits_offset=0
+	'ns' type_id=80274 bits_offset=64
+[80274] PTR '(anon)' type_id=80275
+[80275] STRUCT 'pid_namespace' size=144 vlen=13
+	'idr' type_id=301 bits_offset=0
+	'rcu' type_id=277 bits_offset=192
+	'pid_allocated' type_id=49 bits_offset=320
+	'child_reaper' type_id=80276 bits_offset=384
+	'pid_cachep' type_id=742 bits_offset=448
+	'level' type_id=49 bits_offset=512
+	'parent' type_id=80274 bits_offset=576
+	'bacct' type_id=1548 bits_offset=640
+	'user_ns' type_id=555 bits_offset=704
+	'ucounts' type_id=582 bits_offset=768
+	'reboot' type_id=9 bits_offset=832
+	'ns' type_id=563 bits_offset=896
+	'memfd_noexec_scope' type_id=9 bits_offset=1088
+[80276] PTR '(anon)' type_id=80277
+[80277] STRUCT 'task_struct' size=3968 vlen=224
+	'thread_info' type_id=310 bits_offset=0
+	'__state' type_id=49 bits_offset=192
+	'saved_state' type_id=49 bits_offset=224
+	'stack' type_id=19 bits_offset=256
+	'usage' type_id=292 bits_offset=320
+	'flags' type_id=49 bits_offset=352
+	'ptrace' type_id=49 bits_offset=384
+	'on_cpu' type_id=9 bits_offset=416
+	'wake_entry' type_id=312 bits_offset=448
+	'wakee_flips' type_id=49 bits_offset=576
+	'wakee_flip_decay_ts' type_id=10 bits_offset=640
+	'last_wakee' type_id=80276 bits_offset=704
+	'recent_used_cpu' type_id=9 bits_offset=768
+	'wake_cpu' type_id=9 bits_offset=800
+	'on_rq' type_id=9 bits_offset=832
+	'prio' type_id=9 bits_offset=864
+	'static_prio' type_id=9 bits_offset=896
+	'normal_prio' type_id=9 bits_offset=928
+	'rt_priority' type_id=49 bits_offset=960
+	'se' type_id=313 bits_offset=1024
+	'rt' type_id=319 bits_offset=3072
+	'dl' type_id=321 bits_offset=3456
+	'sched_class' type_id=344 bits_offset=5248
+	'sched_task_group' type_id=346 bits_offset=5312
+	'uclamp_req' type_id=347 bits_offset=5376
+	'uclamp' type_id=347 bits_offset=5440
+	'stats' type_id=349 bits_offset=5632
+	'policy' type_id=49 bits_offset=5632
+	'nr_cpus_allowed' type_id=9 bits_offset=5664
+	'cpus_ptr' type_id=350 bits_offset=5696
+	'user_cpus_ptr' type_id=353 bits_offset=5760
+	'cpus_mask' type_id=352 bits_offset=5824
+	'migration_pending' type_id=19 bits_offset=6080
+	'migration_disabled' type_id=74 bits_offset=6144
+	'migration_flags' type_id=74 bits_offset=6160
+	'rcu_read_lock_nesting' type_id=9 bits_offset=6176
+	'rcu_read_unlock_special' type_id=355 bits_offset=6208
+	'rcu_node_entry' type_id=34 bits_offset=6272
+	'rcu_blocked_node' type_id=356 bits_offset=6400
+	'rcu_tasks_nvcsw' type_id=10 bits_offset=6464
+	'rcu_tasks_holdout' type_id=69 bits_offset=6528
+	'rcu_tasks_idx' type_id=69 bits_offset=6536
+	'rcu_tasks_idle_cpu' type_id=9 bits_offset=6560
+	'rcu_tasks_holdout_list' type_id=34 bits_offset=6592
+	'trc_reader_nesting' type_id=9 bits_offset=6720
+	'trc_ipi_to_cpu' type_id=9 bits_offset=6752
+	'trc_reader_special' type_id=355 bits_offset=6784
+	'trc_holdout_list' type_id=34 bits_offset=6848
+	'trc_blkd_node' type_id=34 bits_offset=6976
+	'trc_blkd_cpu' type_id=9 bits_offset=7104
+	'sched_info' type_id=357 bits_offset=7168
+	'tasks' type_id=34 bits_offset=7424
+	'pushable_tasks' type_id=358 bits_offset=7552
+	'pushable_dl_tasks' type_id=109 bits_offset=7872
+	'mm' type_id=80278 bits_offset=8064
+	'active_mm' type_id=80278 bits_offset=8128
+	'faults_disabled_mapping' type_id=80095 bits_offset=8192
+	'exit_state' type_id=9 bits_offset=8256
+	'exit_code' type_id=9 bits_offset=8288
+	'exit_signal' type_id=9 bits_offset=8320
+	'pdeath_signal' type_id=9 bits_offset=8352
+	'jobctl' type_id=10 bits_offset=8384
+	'personality' type_id=49 bits_offset=8448
+	'sched_reset_on_fork' type_id=49 bits_offset=8480 bitfield_size=1
+	'sched_contributes_to_load' type_id=49 bits_offset=8481 bitfield_size=1
+	'sched_migrated' type_id=49 bits_offset=8482 bitfield_size=1
+	'sched_remote_wakeup' type_id=49 bits_offset=8512 bitfield_size=1
+	'sched_rt_mutex' type_id=49 bits_offset=8513 bitfield_size=1
+	'in_execve' type_id=49 bits_offset=8514 bitfield_size=1
+	'in_iowait' type_id=49 bits_offset=8515 bitfield_size=1
+	'in_user_fault' type_id=49 bits_offset=8516 bitfield_size=1
+	'no_cgroup_migration' type_id=49 bits_offset=8517 bitfield_size=1
+	'frozen' type_id=49 bits_offset=8518 bitfield_size=1
+	'use_memdelay' type_id=49 bits_offset=8519 bitfield_size=1
+	'in_eventfd' type_id=49 bits_offset=8520 bitfield_size=1
+	'in_thrashing' type_id=49 bits_offset=8521 bitfield_size=1
+	'atomic_flags' type_id=10 bits_offset=8576
+	'restart_block' type_id=1014 bits_offset=8704
+	'pid' type_id=1027 bits_offset=9344
+	'tgid' type_id=1027 bits_offset=9376
+	'stack_canary' type_id=10 bits_offset=9408
+	'real_parent' type_id=80284 bits_offset=9472
+	'parent' type_id=80284 bits_offset=9536
+	'children' type_id=34 bits_offset=9600
+	'sibling' type_id=34 bits_offset=9728
+	'group_leader' type_id=80276 bits_offset=9856
+	'ptraced' type_id=34 bits_offset=9920
+	'ptrace_entry' type_id=34 bits_offset=10048
+	'thread_pid' type_id=80270 bits_offset=10176
+	'pid_links' type_id=1029 bits_offset=10240
+	'thread_node' type_id=34 bits_offset=10752
+	'vfork_done' type_id=610 bits_offset=10880
+	'set_child_tid' type_id=1030 bits_offset=11008
+	'clear_child_tid' type_id=1030 bits_offset=11136
+	'worker_private' type_id=19 bits_offset=11264
+	'utime' type_id=93 bits_offset=11328
+	'stime' type_id=93 bits_offset=11392
+	'gtime' type_id=93 bits_offset=11456
+	'prev_cputime' type_id=927 bits_offset=11520
+	'nvcsw' type_id=10 bits_offset=11712
+	'nivcsw' type_id=10 bits_offset=11776
+	'start_time' type_id=93 bits_offset=11840
+	'start_boottime' type_id=93 bits_offset=11904
+	'min_flt' type_id=10 bits_offset=11968
+	'maj_flt' type_id=10 bits_offset=12032
+	'posix_cputimers' type_id=1031 bits_offset=12096
+	'posix_cputimers_work' type_id=1034 bits_offset=12736
+	'ptracer_cred' type_id=1036 bits_offset=13184
+	'real_cred' type_id=1036 bits_offset=13248
+	'cred' type_id=1036 bits_offset=13312
+	'cached_requested_key' type_id=516 bits_offset=13376
+	'comm' type_id=1037 bits_offset=13440
+	'nameidata' type_id=1038 bits_offset=13568
+	'sysvsem' type_id=1039 bits_offset=13632
+	'sysvshm' type_id=1041 bits_offset=13696
+	'fs' type_id=974 bits_offset=13824
+	'files' type_id=1042 bits_offset=13888
+	'io_uring' type_id=1043 bits_offset=13952
+	'nsproxy' type_id=80287 bits_offset=14016
+	'signal' type_id=80294 bits_offset=14080
+	'sighand' type_id=1069 bits_offset=14144
+	'blocked' type_id=1047 bits_offset=14208
+	'real_blocked' type_id=1047 bits_offset=14272
+	'saved_sigmask' type_id=1047 bits_offset=14336
+	'pending' type_id=1046 bits_offset=14400
+	'sas_ss_sp' type_id=378 bits_offset=14592
+	'sas_ss_size' type_id=82 bits_offset=14720
+	'sas_ss_flags' type_id=49 bits_offset=14784
+	'task_works' type_id=278 bits_offset=14848
+	'audit_context' type_id=1081 bits_offset=14912
+	'loginuid' type_id=182 bits_offset=14976
+	'sessionid' type_id=49 bits_offset=15008
+	'seccomp' type_id=1082 bits_offset=15040
+	'syscall_dispatch' type_id=1084 bits_offset=15168
+	'parent_exec_id' type_id=93 bits_offset=15168
+	'self_exec_id' type_id=93 bits_offset=15232
+	'alloc_lock' type_id=122 bits_offset=15296
+	'pi_lock' type_id=62 bits_offset=15328
+	'wake_q' type_id=1085 bits_offset=15360
+	'pi_waiters' type_id=339 bits_offset=15424
+	'pi_top_task' type_id=80276 bits_offset=15552
+	'pi_blocked_on' type_id=1087 bits_offset=15616
+	'journal_info' type_id=19 bits_offset=15680
+	'bio_list' type_id=80301 bits_offset=15744
+	'plug' type_id=1380 bits_offset=15808
+	'reclaim_state' type_id=1382 bits_offset=15872
+	'io_context' type_id=1384 bits_offset=15936
+	'capture_control' type_id=1391 bits_offset=16000
+	'ptrace_message' type_id=10 bits_offset=16064
+	'last_siginfo' type_id=1392 bits_offset=16128
+	'ioac' type_id=1060 bits_offset=16192
+	'acct_rss_mem1' type_id=93 bits_offset=16640
+	'acct_vm_mem1' type_id=93 bits_offset=16704
+	'acct_timexpd' type_id=93 bits_offset=16768
+	'mems_allowed' type_id=490 bits_offset=16832
+	'mems_allowed_seq' type_id=199 bits_offset=16896
+	'cpuset_mem_spread_rotor' type_id=9 bits_offset=16928
+	'cpuset_slab_spread_rotor' type_id=9 bits_offset=16960
+	'cgroups' type_id=80365 bits_offset=17024
+	'cg_list' type_id=34 bits_offset=17088
+	'robust_list' type_id=1414 bits_offset=17280
+	'compat_robust_list' type_id=1415 bits_offset=17408
+	'pi_state_list' type_id=34 bits_offset=17536
+	'pi_state_cache' type_id=1420 bits_offset=17664
+	'futex_exit_mutex' type_id=55 bits_offset=17728
+	'futex_state' type_id=49 bits_offset=17984
+	'perf_event_ctxp' type_id=1421 bits_offset=18048
+	'perf_event_mutex' type_id=55 bits_offset=18112
+	'perf_event_list' type_id=34 bits_offset=18368
+	'mempolicy' type_id=487 bits_offset=18496
+	'il_prev' type_id=530 bits_offset=18560
+	'pref_node_fork' type_id=530 bits_offset=18576
+	'numa_scan_seq' type_id=9 bits_offset=18592
+	'numa_scan_period' type_id=49 bits_offset=18624
+	'numa_scan_period_max' type_id=49 bits_offset=18656
+	'numa_preferred_nid' type_id=9 bits_offset=18688
+	'numa_migrate_retry' type_id=10 bits_offset=18752
+	'node_stamp' type_id=93 bits_offset=18816
+	'last_task_numa_placement' type_id=93 bits_offset=18880
+	'last_sum_exec_runtime' type_id=93 bits_offset=18944
+	'numa_work' type_id=277 bits_offset=19008
+	'numa_group' type_id=1427 bits_offset=19136
+	'numa_faults' type_id=495 bits_offset=19200
+	'total_numa_faults' type_id=10 bits_offset=19264
+	'numa_faults_locality' type_id=1428 bits_offset=19328
+	'numa_pages_migrated' type_id=10 bits_offset=19520
+	'rseq' type_id=1429 bits_offset=19584
+	'rseq_len' type_id=209 bits_offset=19712
+	'rseq_sig' type_id=209 bits_offset=19744
+	'rseq_event_mask' type_id=10 bits_offset=19776
+	'mm_cid' type_id=9 bits_offset=19840
+	'last_mm_cid' type_id=9 bits_offset=19872
+	'migrate_from_cpu' type_id=9 bits_offset=19904
+	'mm_cid_active' type_id=9 bits_offset=19936
+	'cid_work' type_id=277 bits_offset=19968
+	'tlb_ubc' type_id=1431 bits_offset=20096
+	'splice_pipe' type_id=1433 bits_offset=20160
+	'task_frag' type_id=80366 bits_offset=20224
+	'delays' type_id=1435 bits_offset=20352
+	'nr_dirtied' type_id=9 bits_offset=20416
+	'nr_dirtied_pause' type_id=9 bits_offset=20448
+	'dirty_paused_when' type_id=10 bits_offset=20480
+	'timer_slack_ns' type_id=93 bits_offset=20544
+	'default_timer_slack_ns' type_id=93 bits_offset=20608
+	'trace_recursion' type_id=10 bits_offset=20672
+	'memcg_in_oom' type_id=80367 bits_offset=20736
+	'memcg_oom_gfp_mask' type_id=303 bits_offset=20800
+	'memcg_oom_order' type_id=9 bits_offset=20832
+	'memcg_nr_pages_over_high' type_id=49 bits_offset=20864
+	'active_memcg' type_id=80367 bits_offset=20928
+	'objcg' type_id=80373 bits_offset=20992
+	'throttle_disk' type_id=1096 bits_offset=21056
+	'utask' type_id=1521 bits_offset=21120
+	'kmap_ctrl' type_id=1531 bits_offset=21184
+	'rcu' type_id=277 bits_offset=21184
+	'rcu_users' type_id=292 bits_offset=21312
+	'pagefault_disabled' type_id=9 bits_offset=21344
+	'oom_reaper_list' type_id=80276 bits_offset=21376
+	'oom_reaper_timer' type_id=706 bits_offset=21440
+	'stack_refcount' type_id=292 bits_offset=21760
+	'security' type_id=19 bits_offset=21824
+	'bpf_storage' type_id=937 bits_offset=21888
+	'bpf_ctx' type_id=1532 bits_offset=21952
+	'thread' type_id=1534 bits_offset=22016
+[80278] PTR '(anon)' type_id=80280
+[80279] STRUCT '(anon)' size=1920 vlen=57
+	'(anon)' type_id=360 bits_offset=0
+	'mm_mt' type_id=364 bits_offset=512
+	'get_unmapped_area' type_id=80281 bits_offset=640
+	'mmap_base' type_id=10 bits_offset=704
+	'mmap_legacy_base' type_id=10 bits_offset=768
+	'task_size' type_id=10 bits_offset=832
+	'pgd' type_id=369 bits_offset=896
+	'membarrier_state' type_id=7 bits_offset=960
+	'mm_users' type_id=7 bits_offset=992
+	'pcpu_cid' type_id=374 bits_offset=1024
+	'mm_cid_next_scan' type_id=10 bits_offset=1088
+	'pgtables_bytes' type_id=56 bits_offset=1152
+	'map_count' type_id=9 bits_offset=1216
+	'page_table_lock' type_id=122 bits_offset=1248
+	'mmap_lock' type_id=376 bits_offset=1280
+	'mmlist' type_id=34 bits_offset=1600
+	'mm_lock_seq' type_id=9 bits_offset=1728
+	'hiwater_rss' type_id=10 bits_offset=1792
+	'hiwater_vm' type_id=10 bits_offset=1856
+	'total_vm' type_id=10 bits_offset=1920
+	'locked_vm' type_id=10 bits_offset=1984
+	'pinned_vm' type_id=57 bits_offset=2048
+	'data_vm' type_id=10 bits_offset=2112
+	'exec_vm' type_id=10 bits_offset=2176
+	'stack_vm' type_id=10 bits_offset=2240
+	'def_flags' type_id=10 bits_offset=2304
+	'write_protect_seq' type_id=201 bits_offset=2368
+	'arg_lock' type_id=122 bits_offset=2400
+	'start_code' type_id=10 bits_offset=2432
+	'end_code' type_id=10 bits_offset=2496
+	'start_data' type_id=10 bits_offset=2560
+	'end_data' type_id=10 bits_offset=2624
+	'start_brk' type_id=10 bits_offset=2688
+	'brk' type_id=10 bits_offset=2752
+	'start_stack' type_id=10 bits_offset=2816
+	'arg_start' type_id=10 bits_offset=2880
+	'arg_end' type_id=10 bits_offset=2944
+	'env_start' type_id=10 bits_offset=3008
+	'env_end' type_id=10 bits_offset=3072
+	'saved_auxv' type_id=377 bits_offset=3200
+	'rss_stat' type_id=381 bits_offset=12416
+	'binfmt' type_id=385 bits_offset=13696
+	'context' type_id=998 bits_offset=13824
+	'flags' type_id=10 bits_offset=14208
+	'ioctx_lock' type_id=122 bits_offset=14272
+	'ioctx_table' type_id=1001 bits_offset=14336
+	'owner' type_id=80284 bits_offset=14400
+	'user_ns' type_id=555 bits_offset=14464
+	'exe_file' type_id=80286 bits_offset=14528
+	'numa_next_scan' type_id=10 bits_offset=14592
+	'numa_scan_offset' type_id=10 bits_offset=14656
+	'numa_scan_seq' type_id=9 bits_offset=14720
+	'tlb_flush_pending' type_id=7 bits_offset=14752
+	'tlb_flush_batched' type_id=7 bits_offset=14784
+	'uprobes_state' type_id=1006 bits_offset=14848
+	'hugetlb_usage' type_id=56 bits_offset=14912
+	'async_put_work' type_id=757 bits_offset=14976
+[80280] STRUCT 'mm_struct' size=1920 vlen=2
+	'(anon)' type_id=80279 bits_offset=0
+	'cpu_bitmap' type_id=1008 bits_offset=15360
+[80281] PTR '(anon)' type_id=80282
+[80282] FUNC_PROTO '(anon)' ret_type_id=10 vlen=5
+	'(anon)' type_id=80267
+	'(anon)' type_id=10
+	'(anon)' type_id=10
+	'(anon)' type_id=10
+	'(anon)' type_id=10
+[80283] TYPE_TAG 'rcu' type_id=80277
+[80284] PTR '(anon)' type_id=80283
+[80285] TYPE_TAG 'rcu' type_id=80268
+[80286] PTR '(anon)' type_id=80285
+[80287] PTR '(anon)' type_id=80288
+[80288] STRUCT 'nsproxy' size=72 vlen=9
+	'count' type_id=292 bits_offset=0
+	'uts_ns' type_id=578 bits_offset=64
+	'ipc_ns' type_id=586 bits_offset=128
+	'mnt_ns' type_id=587 bits_offset=192
+	'pid_ns_for_children' type_id=80274 bits_offset=256
+	'net_ns' type_id=588 bits_offset=320
+	'time_ns' type_id=854 bits_offset=384
+	'time_ns_for_children' type_id=854 bits_offset=448
+	'cgroup_ns' type_id=80289 bits_offset=512
+[80289] PTR '(anon)' type_id=80290
+[80290] STRUCT 'cgroup_namespace' size=48 vlen=4
+	'ns' type_id=563 bits_offset=0
+	'user_ns' type_id=555 bits_offset=192
+	'ucounts' type_id=582 bits_offset=256
+	'root_cset' type_id=80291 bits_offset=320
+[80291] PTR '(anon)' type_id=80292
+[80292] STRUCT 'css_set' size=496 vlen=22
+	'subsys' type_id=80293 bits_offset=0
+	'refcount' type_id=292 bits_offset=640
+	'dom_cset' type_id=80291 bits_offset=704
+	'dfl_cgrp' type_id=80253 bits_offset=768
+	'nr_tasks' type_id=9 bits_offset=832
+	'tasks' type_id=34 bits_offset=896
+	'mg_tasks' type_id=34 bits_offset=1024
+	'dying_tasks' type_id=34 bits_offset=1152
+	'task_iters' type_id=34 bits_offset=1280
+	'e_cset_node' type_id=921 bits_offset=1408
+	'threaded_csets' type_id=34 bits_offset=2688
+	'threaded_csets_node' type_id=34 bits_offset=2816
+	'hlist' type_id=40 bits_offset=2944
+	'cgrp_links' type_id=34 bits_offset=3072
+	'mg_src_preload_node' type_id=34 bits_offset=3200
+	'mg_dst_preload_node' type_id=34 bits_offset=3328
+	'mg_node' type_id=34 bits_offset=3456
+	'mg_src_cgrp' type_id=80253 bits_offset=3584
+	'mg_dst_cgrp' type_id=80253 bits_offset=3648
+	'mg_dst_cset' type_id=80291 bits_offset=3712
+	'dead' type_id=89 bits_offset=3776
+	'callback_head' type_id=277 bits_offset=3840
+[80293] ARRAY '(anon)' type_id=80251 index_type_id=9 nr_elems=10
+[80294] PTR '(anon)' type_id=80295
+[80295] STRUCT 'signal_struct' size=1104 vlen=64
+	'sigcnt' type_id=292 bits_offset=0
+	'live' type_id=7 bits_offset=32
+	'nr_threads' type_id=9 bits_offset=64
+	'quick_threads' type_id=9 bits_offset=96
+	'thread_head' type_id=34 bits_offset=128
+	'wait_chldexit' type_id=295 bits_offset=256
+	'curr_target' type_id=80276 bits_offset=448
+	'shared_pending' type_id=1046 bits_offset=512
+	'multiprocess' type_id=102 bits_offset=704
+	'group_exit_code' type_id=9 bits_offset=768
+	'notify_count' type_id=9 bits_offset=800
+	'group_exec_task' type_id=80276 bits_offset=832
+	'group_stop_count' type_id=9 bits_offset=896
+	'flags' type_id=49 bits_offset=928
+	'core_state' type_id=80296 bits_offset=960
+	'is_child_subreaper' type_id=49 bits_offset=1024 bitfield_size=1
+	'has_child_subreaper' type_id=49 bits_offset=1025 bitfield_size=1
+	'next_posix_timer_id' type_id=49 bits_offset=1056
+	'posix_timers' type_id=34 bits_offset=1088
+	'real_timer' type_id=322 bits_offset=1216
+	'it_real_incr' type_id=324 bits_offset=1728
+	'it' type_id=1053 bits_offset=1792
+	'cputimer' type_id=1055 bits_offset=2048
+	'posix_cputimers' type_id=1031 bits_offset=2240
+	'pids' type_id=80300 bits_offset=2880
+	'tty_old_pgrp' type_id=80270 bits_offset=3136
+	'leader' type_id=9 bits_offset=3200
+	'tty' type_id=1058 bits_offset=3264
+	'autogroup' type_id=1059 bits_offset=3328
+	'stats_lock' type_id=763 bits_offset=3392
+	'utime' type_id=93 bits_offset=3456
+	'stime' type_id=93 bits_offset=3520
+	'cutime' type_id=93 bits_offset=3584
+	'cstime' type_id=93 bits_offset=3648
+	'gtime' type_id=93 bits_offset=3712
+	'cgtime' type_id=93 bits_offset=3776
+	'prev_cputime' type_id=927 bits_offset=3840
+	'nvcsw' type_id=10 bits_offset=4032
+	'nivcsw' type_id=10 bits_offset=4096
+	'cnvcsw' type_id=10 bits_offset=4160
+	'cnivcsw' type_id=10 bits_offset=4224
+	'min_flt' type_id=10 bits_offset=4288
+	'maj_flt' type_id=10 bits_offset=4352
+	'cmin_flt' type_id=10 bits_offset=4416
+	'cmaj_flt' type_id=10 bits_offset=4480
+	'inblock' type_id=10 bits_offset=4544
+	'oublock' type_id=10 bits_offset=4608
+	'cinblock' type_id=10 bits_offset=4672
+	'coublock' type_id=10 bits_offset=4736
+	'maxrss' type_id=10 bits_offset=4800
+	'cmaxrss' type_id=10 bits_offset=4864
+	'ioac' type_id=1060 bits_offset=4928
+	'sum_sched_runtime' type_id=95 bits_offset=5376
+	'rlim' type_id=1061 bits_offset=5440
+	'pacct' type_id=1062 bits_offset=7488
+	'stats' type_id=1063 bits_offset=7936
+	'audit_tty' type_id=49 bits_offset=8000
+	'tty_audit_buf' type_id=1067 bits_offset=8064
+	'oom_flag_origin' type_id=89 bits_offset=8128
+	'oom_score_adj' type_id=530 bits_offset=8144
+	'oom_score_adj_min' type_id=530 bits_offset=8160
+	'oom_mm' type_id=80278 bits_offset=8192
+	'cred_guard_mutex' type_id=55 bits_offset=8256
+	'exec_update_lock' type_id=376 bits_offset=8512
+[80296] PTR '(anon)' type_id=80297
+[80297] STRUCT 'core_state' size=56 vlen=3
+	'nr_threads' type_id=7 bits_offset=0
+	'dumper' type_id=80298 bits_offset=64
+	'startup' type_id=460 bits_offset=192
+[80298] STRUCT 'core_thread' size=16 vlen=2
+	'task' type_id=80276 bits_offset=0
+	'next' type_id=80299 bits_offset=64
+[80299] PTR '(anon)' type_id=80298
+[80300] ARRAY '(anon)' type_id=80270 index_type_id=9 nr_elems=4
+[80301] PTR '(anon)' type_id=80302
+[80302] STRUCT 'bio_list' size=16 vlen=2
+	'head' type_id=80303 bits_offset=0
+	'tail' type_id=80303 bits_offset=64
+[80303] PTR '(anon)' type_id=80304
+[80304] STRUCT 'bio' size=112 vlen=20
+	'bi_next' type_id=80303 bits_offset=0
+	'bi_bdev' type_id=80305 bits_offset=64
+	'bi_opf' type_id=1369 bits_offset=128
+	'bi_flags' type_id=74 bits_offset=160
+	'bi_ioprio' type_id=74 bits_offset=176
+	'bi_status' type_id=1370 bits_offset=192
+	'__bi_remaining' type_id=7 bits_offset=224
+	'bi_iter' type_id=1371 bits_offset=256
+	'bi_cookie' type_id=1372 bits_offset=416
+	'bi_end_io' type_id=80307 bits_offset=448
+	'bi_private' type_id=19 bits_offset=512
+	'bi_blkg' type_id=1324 bits_offset=576
+	'bi_issue' type_id=1375 bits_offset=640
+	'(anon)' type_id=1091 bits_offset=704
+	'bi_vcnt' type_id=74 bits_offset=704
+	'bi_max_vecs' type_id=74 bits_offset=720
+	'__bi_cnt' type_id=7 bits_offset=736
+	'bi_io_vec' type_id=80310 bits_offset=768
+	'bi_pool' type_id=80361 bits_offset=832
+	'bi_inline_vecs' type_id=80363 bits_offset=896
+[80305] PTR '(anon)' type_id=80306
+[80306] STRUCT 'block_device' size=944 vlen=26
+	'bd_start_sect' type_id=1095 bits_offset=0
+	'bd_nr_sectors' type_id=1095 bits_offset=64
+	'bd_disk' type_id=1096 bits_offset=128
+	'bd_queue' type_id=1149 bits_offset=192
+	'bd_stats' type_id=1357 bits_offset=256
+	'bd_stamp' type_id=10 bits_offset=320
+	'bd_read_only' type_id=89 bits_offset=384
+	'bd_partno' type_id=69 bits_offset=392
+	'bd_write_holder' type_id=89 bits_offset=400
+	'bd_has_submit_bio' type_id=89 bits_offset=408
+	'bd_dev' type_id=247 bits_offset=416
+	'bd_inode' type_id=80097 bits_offset=448
+	'bd_openers' type_id=7 bits_offset=512
+	'bd_size_lock' type_id=122 bits_offset=544
+	'bd_claiming' type_id=19 bits_offset=576
+	'bd_holder' type_id=19 bits_offset=640
+	'bd_holder_ops' type_id=1358 bits_offset=704
+	'bd_holder_lock' type_id=55 bits_offset=768
+	'bd_fsfreeze_count' type_id=9 bits_offset=1024
+	'bd_holders' type_id=9 bits_offset=1056
+	'bd_holder_dir' type_id=80054 bits_offset=1088
+	'bd_fsfreeze_mutex' type_id=55 bits_offset=1152
+	'bd_fsfreeze_sb' type_id=80132 bits_offset=1408
+	'bd_meta_info' type_id=1365 bits_offset=1472
+	'bd_ro_warned' type_id=89 bits_offset=1536
+	'bd_device' type_id=80158 bits_offset=1600
+[80307] PTR '(anon)' type_id=80308
+[80308] TYPEDEF 'bio_end_io_t' type_id=80309
+[80309] FUNC_PROTO '(anon)' ret_type_id=0 vlen=1
+	'(anon)' type_id=80303
+[80310] PTR '(anon)' type_id=80311
+[80311] STRUCT 'bio_vec' size=16 vlen=3
+	'bv_page' type_id=80312 bits_offset=0
+	'bv_len' type_id=49 bits_offset=64
+	'bv_offset' type_id=49 bits_offset=96
+[80312] PTR '(anon)' type_id=80316
+[80313] STRUCT '(anon)' size=40 vlen=4
+	'(anon)' type_id=437 bits_offset=0
+	'mapping' type_id=80095 bits_offset=128
+	'(anon)' type_id=438 bits_offset=192
+	'private' type_id=10 bits_offset=256
+[80314] STRUCT '(anon)' size=16 vlen=2
+	'pgmap' type_id=80317 bits_offset=0
+	'zone_device_data' type_id=19 bits_offset=64
+[80315] UNION '(anon)' size=40 vlen=5
+	'(anon)' type_id=80313 bits_offset=0
+	'(anon)' type_id=440 bits_offset=0
+	'(anon)' type_id=441 bits_offset=0
+	'(anon)' type_id=80314 bits_offset=0
+	'callback_head' type_id=277 bits_offset=0
+[80316] STRUCT 'page' size=64 vlen=5
+	'flags' type_id=10 bits_offset=0
+	'(anon)' type_id=80315 bits_offset=64
+	'(anon)' type_id=444 bits_offset=384
+	'_refcount' type_id=7 bits_offset=416
+	'memcg_data' type_id=10 bits_offset=448
+[80317] PTR '(anon)' type_id=80318
+[80318] STRUCT 'dev_pagemap' size=152 vlen=10
+	'altmap' type_id=451 bits_offset=0
+	'ref' type_id=453 bits_offset=384
+	'done' type_id=460 bits_offset=512
+	'type' type_id=462 bits_offset=768
+	'flags' type_id=49 bits_offset=800
+	'vmemmap_shift' type_id=10 bits_offset=832
+	'ops' type_id=80319 bits_offset=896
+	'owner' type_id=19 bits_offset=960
+	'nr_range' type_id=9 bits_offset=1024
+	'(anon)' type_id=449 bits_offset=1088
+[80319] PTR '(anon)' type_id=80320
+[80320] CONST '(anon)' type_id=80321
+[80321] STRUCT 'dev_pagemap_ops' size=24 vlen=3
+	'page_free' type_id=80322 bits_offset=0
+	'migrate_to_ram' type_id=80324 bits_offset=64
+	'memory_failure' type_id=80359 bits_offset=128
+[80322] PTR '(anon)' type_id=80323
+[80323] FUNC_PROTO '(anon)' ret_type_id=0 vlen=1
+	'(anon)' type_id=80312
+[80324] PTR '(anon)' type_id=80325
+[80325] FUNC_PROTO '(anon)' ret_type_id=419 vlen=1
+	'(anon)' type_id=80326
+[80326] PTR '(anon)' type_id=80328
+[80327] STRUCT '(anon)' size=40 vlen=5
+	'vma' type_id=80329 bits_offset=0
+	'gfp_mask' type_id=303 bits_offset=64
+	'pgoff' type_id=10 bits_offset=128
+	'address' type_id=10 bits_offset=192
+	'real_address' type_id=10 bits_offset=256
+[80328] STRUCT 'vm_fault' size=112 vlen=10
+	'(anon)' type_id=80327 bits_offset=0
+	'flags' type_id=424 bits_offset=320
+	'pmd' type_id=425 bits_offset=384
+	'pud' type_id=429 bits_offset=448
+	'(anon)' type_id=422 bits_offset=512
+	'cow_page' type_id=80312 bits_offset=576
+	'page' type_id=80312 bits_offset=640
+	'pte' type_id=472 bits_offset=704
+	'ptl' type_id=473 bits_offset=768
+	'prealloc_pte' type_id=80358 bits_offset=832
+[80329] PTR '(anon)' type_id=80330
+[80330] STRUCT 'vm_area_struct' size=200 vlen=19
+	'(anon)' type_id=393 bits_offset=0
+	'vm_mm' type_id=80278 bits_offset=128
+	'vm_page_prot' type_id=397 bits_offset=192
+	'(anon)' type_id=394 bits_offset=256
+	'vm_lock_seq' type_id=9 bits_offset=320
+	'vm_lock' type_id=402 bits_offset=384
+	'detached' type_id=89 bits_offset=448
+	'shared' type_id=395 bits_offset=512
+	'anon_vma_chain' type_id=34 bits_offset=768
+	'anon_vma' type_id=404 bits_offset=896
+	'vm_ops' type_id=80331 bits_offset=960
+	'vm_pgoff' type_id=10 bits_offset=1024
+	'vm_file' type_id=80267 bits_offset=1088
+	'vm_private_data' type_id=19 bits_offset=1152
+	'anon_name' type_id=498 bits_offset=1216
+	'vm_policy' type_id=487 bits_offset=1280
+	'numab_state' type_id=502 bits_offset=1344
+	'vm_userfaultfd_ctx' type_id=505 bits_offset=1408
+	'reserv_data' type_id=506 bits_offset=1408
+[80331] PTR '(anon)' type_id=80332
+[80332] CONST '(anon)' type_id=80333
+[80333] STRUCT 'vm_operations_struct' size=128 vlen=16
+	'open' type_id=80334 bits_offset=0
+	'close' type_id=80334 bits_offset=64
+	'may_split' type_id=80336 bits_offset=128
+	'mremap' type_id=80338 bits_offset=192
+	'mprotect' type_id=80340 bits_offset=256
+	'fault' type_id=80324 bits_offset=320
+	'huge_fault' type_id=80342 bits_offset=384
+	'map_pages' type_id=80344 bits_offset=448
+	'pagesize' type_id=80346 bits_offset=512
+	'page_mkwrite' type_id=80324 bits_offset=576
+	'pfn_mkwrite' type_id=80324 bits_offset=640
+	'access' type_id=80348 bits_offset=704
+	'name' type_id=80350 bits_offset=768
+	'set_policy' type_id=80352 bits_offset=832
+	'get_policy' type_id=80354 bits_offset=896
+	'find_special_page' type_id=80356 bits_offset=960
+[80334] PTR '(anon)' type_id=80335
+[80335] FUNC_PROTO '(anon)' ret_type_id=0 vlen=1
+	'(anon)' type_id=80329
+[80336] PTR '(anon)' type_id=80337
+[80337] FUNC_PROTO '(anon)' ret_type_id=9 vlen=2
+	'(anon)' type_id=80329
+	'(anon)' type_id=10
+[80338] PTR '(anon)' type_id=80339
+[80339] FUNC_PROTO '(anon)' ret_type_id=9 vlen=1
+	'(anon)' type_id=80329
+[80340] PTR '(anon)' type_id=80341
+[80341] FUNC_PROTO '(anon)' ret_type_id=9 vlen=4
+	'(anon)' type_id=80329
+	'(anon)' type_id=10
+	'(anon)' type_id=10
+	'(anon)' type_id=10
+[80342] PTR '(anon)' type_id=80343
+[80343] FUNC_PROTO '(anon)' ret_type_id=419 vlen=2
+	'(anon)' type_id=80326
+	'(anon)' type_id=49
+[80344] PTR '(anon)' type_id=80345
+[80345] FUNC_PROTO '(anon)' ret_type_id=419 vlen=3
+	'(anon)' type_id=80326
+	'(anon)' type_id=10
+	'(anon)' type_id=10
+[80346] PTR '(anon)' type_id=80347
+[80347] FUNC_PROTO '(anon)' ret_type_id=10 vlen=1
+	'(anon)' type_id=80329
+[80348] PTR '(anon)' type_id=80349
+[80349] FUNC_PROTO '(anon)' ret_type_id=9 vlen=5
+	'(anon)' type_id=80329
+	'(anon)' type_id=10
+	'(anon)' type_id=19
+	'(anon)' type_id=9
+	'(anon)' type_id=9
+[80350] PTR '(anon)' type_id=80351
+[80351] FUNC_PROTO '(anon)' ret_type_id=2 vlen=1
+	'(anon)' type_id=80329
+[80352] PTR '(anon)' type_id=80353
+[80353] FUNC_PROTO '(anon)' ret_type_id=9 vlen=2
+	'(anon)' type_id=80329
+	'(anon)' type_id=487
+[80354] PTR '(anon)' type_id=80355
+[80355] FUNC_PROTO '(anon)' ret_type_id=487 vlen=3
+	'(anon)' type_id=80329
+	'(anon)' type_id=10
+	'(anon)' type_id=495
+[80356] PTR '(anon)' type_id=80357
+[80357] FUNC_PROTO '(anon)' ret_type_id=80312 vlen=2
+	'(anon)' type_id=80329
+	'(anon)' type_id=10
+[80358] TYPEDEF 'pgtable_t' type_id=80312
+[80359] PTR '(anon)' type_id=80360
+[80360] FUNC_PROTO '(anon)' ret_type_id=9 vlen=4
+	'(anon)' type_id=80317
+	'(anon)' type_id=10
+	'(anon)' type_id=10
+	'(anon)' type_id=9
+[80361] PTR '(anon)' type_id=80362
+[80362] STRUCT 'bio_set' size=248 vlen=11
+	'bio_slab' type_id=742 bits_offset=0
+	'front_pad' type_id=49 bits_offset=64
+	'cache' type_id=1332 bits_offset=128
+	'bio_pool' type_id=1333 bits_offset=192
+	'bvec_pool' type_id=1333 bits_offset=768
+	'back_pad' type_id=49 bits_offset=1344
+	'rescue_lock' type_id=122 bits_offset=1376
+	'rescue_list' type_id=80302 bits_offset=1408
+	'rescue_work' type_id=757 bits_offset=1536
+	'rescue_workqueue' type_id=818 bits_offset=1792
+	'cpuhp_dead' type_id=40 bits_offset=1856
+[80363] ARRAY '(anon)' type_id=80311 index_type_id=9 nr_elems=0
+[80364] TYPE_TAG 'rcu' type_id=80292
+[80365] PTR '(anon)' type_id=80364
+[80366] STRUCT 'page_frag' size=16 vlen=3
+	'page' type_id=80312 bits_offset=0
+	'offset' type_id=210 bits_offset=64
+	'size' type_id=210 bits_offset=96
+[80367] PTR '(anon)' type_id=80368
+[80368] STRUCT 'mem_cgroup' size=2112 vlen=46
+	'css' type_id=80252 bits_offset=0
+	'id' type_id=1440 bits_offset=1600
+	'memory' type_id=1441 bits_offset=2048
+	'(anon)' type_id=1438 bits_offset=3584
+	'kmem' type_id=1441 bits_offset=5120
+	'tcpmem' type_id=1441 bits_offset=6656
+	'high_work' type_id=757 bits_offset=8192
+	'soft_limit' type_id=10 bits_offset=8448
+	'vmpressure' type_id=1444 bits_offset=8512
+	'oom_group' type_id=89 bits_offset=9472
+	'oom_lock' type_id=89 bits_offset=9480
+	'under_oom' type_id=9 bits_offset=9504
+	'swappiness' type_id=9 bits_offset=9536
+	'oom_kill_disable' type_id=9 bits_offset=9568
+	'events_file' type_id=80369 bits_offset=9600
+	'events_local_file' type_id=80369 bits_offset=10048
+	'swap_events_file' type_id=80369 bits_offset=10496
+	'thresholds_lock' type_id=55 bits_offset=10944
+	'thresholds' type_id=1445 bits_offset=11200
+	'memsw_thresholds' type_id=1445 bits_offset=11328
+	'oom_notify' type_id=34 bits_offset=11456
+	'move_charge_at_immigrate' type_id=10 bits_offset=11584
+	'move_lock' type_id=122 bits_offset=11648
+	'move_lock_flags' type_id=10 bits_offset=11712
+	'_pad1_' type_id=1442 bits_offset=11776
+	'vmstats' type_id=1451 bits_offset=11776
+	'memory_events' type_id=1452 bits_offset=11840
+	'memory_events_local' type_id=1452 bits_offset=12416
+	'socket_pressure' type_id=10 bits_offset=12992
+	'tcpmem_active' type_id=89 bits_offset=13056
+	'tcpmem_pressure' type_id=9 bits_offset=13088
+	'kmemcg_id' type_id=9 bits_offset=13120
+	'objcg' type_id=80371 bits_offset=13184
+	'orig_objcg' type_id=80373 bits_offset=13248
+	'objcg_list' type_id=34 bits_offset=13312
+	'_pad2_' type_id=1442 bits_offset=13824
+	'moving_account' type_id=7 bits_offset=13824
+	'move_lock_task' type_id=80276 bits_offset=13888
+	'vmstats_percpu' type_id=1459 bits_offset=13952
+	'cgwb_list' type_id=34 bits_offset=14016
+	'cgwb_domain' type_id=1460 bits_offset=14144
+	'cgwb_frn' type_id=1462 bits_offset=15104
+	'event_list' type_id=34 bits_offset=16384
+	'event_list_lock' type_id=122 bits_offset=16512
+	'deferred_split_queue' type_id=1465 bits_offset=16576
+	'nodeinfo' type_id=80374 bits_offset=16832
+[80369] STRUCT 'cgroup_file' size=56 vlen=3
+	'kn' type_id=80255 bits_offset=0
+	'notified_at' type_id=10 bits_offset=64
+	'notify_timer' type_id=706 bits_offset=128
+[80370] TYPE_TAG 'rcu' type_id=80372
+[80371] PTR '(anon)' type_id=80370
+[80372] STRUCT 'obj_cgroup' size=48 vlen=4
+	'refcnt' type_id=453 bits_offset=0
+	'memcg' type_id=80367 bits_offset=128
+	'nr_charged_bytes' type_id=7 bits_offset=192
+	'(anon)' type_id=1455 bits_offset=256
+[80373] PTR '(anon)' type_id=80372
+[80374] ARRAY '(anon)' type_id=80375 index_type_id=9 nr_elems=0
+[80375] PTR '(anon)' type_id=80376
+[80376] STRUCT 'mem_cgroup_per_node' size=1392 vlen=10
+	'lruvec' type_id=80377 bits_offset=0
+	'lruvec_stats_percpu' type_id=1508 bits_offset=1152
+	'lruvec_stats' type_id=1511 bits_offset=1216
+	'lru_zone_size' type_id=1512 bits_offset=9280
+	'iter' type_id=80387 bits_offset=10560
+	'shrinker_info' type_id=1515 bits_offset=10688
+	'tree_node' type_id=109 bits_offset=10752
+	'usage_in_excess' type_id=10 bits_offset=10944
+	'on_tree' type_id=89 bits_offset=11008
+	'memcg' type_id=80367 bits_offset=11072
+[80377] STRUCT 'lruvec' size=144 vlen=8
+	'lists' type_id=1470 bits_offset=0
+	'lru_lock' type_id=122 bits_offset=640
+	'anon_cost' type_id=10 bits_offset=704
+	'file_cost' type_id=10 bits_offset=768
+	'nonresident_age' type_id=56 bits_offset=832
+	'refaults' type_id=504 bits_offset=896
+	'flags' type_id=10 bits_offset=1024
+	'pgdat' type_id=80378 bits_offset=1088
+[80378] PTR '(anon)' type_id=80379
+[80379] STRUCT 'pglist_data' size=9536 vlen=38
+	'node_zones' type_id=80380 bits_offset=0
+	'node_zonelists' type_id=80382 bits_offset=51200
+	'nr_zones' type_id=9 bits_offset=67840
+	'node_start_pfn' type_id=10 bits_offset=67904
+	'node_present_pages' type_id=10 bits_offset=67968
+	'node_spanned_pages' type_id=10 bits_offset=68032
+	'node_id' type_id=9 bits_offset=68096
+	'kswapd_wait' type_id=295 bits_offset=68160
+	'pfmemalloc_wait' type_id=295 bits_offset=68352
+	'reclaim_wait' type_id=1497 bits_offset=68544
+	'nr_writeback_throttled' type_id=7 bits_offset=69312
+	'nr_reclaim_start' type_id=10 bits_offset=69376
+	'kswapd' type_id=80276 bits_offset=69440
+	'kswapd_order' type_id=9 bits_offset=69504
+	'kswapd_highest_zoneidx' type_id=1498 bits_offset=69536
+	'kswapd_failures' type_id=9 bits_offset=69568
+	'kcompactd_max_order' type_id=9 bits_offset=69600
+	'kcompactd_highest_zoneidx' type_id=1498 bits_offset=69632
+	'kcompactd_wait' type_id=295 bits_offset=69696
+	'kcompactd' type_id=80276 bits_offset=69888
+	'proactive_compact_trigger' type_id=89 bits_offset=69952
+	'totalreserve_pages' type_id=10 bits_offset=70016
+	'min_unmapped_pages' type_id=10 bits_offset=70080
+	'min_slab_pages' type_id=10 bits_offset=70144
+	'_pad1_' type_id=1442 bits_offset=70656
+	'deferred_split_queue' type_id=1465 bits_offset=70656
+	'nbp_rl_start' type_id=49 bits_offset=70912
+	'nbp_rl_nr_cand' type_id=10 bits_offset=70976
+	'nbp_threshold' type_id=49 bits_offset=71040
+	'nbp_th_start' type_id=49 bits_offset=71072
+	'nbp_th_nr_cand' type_id=10 bits_offset=71104
+	'__lruvec' type_id=80377 bits_offset=71168
+	'flags' type_id=10 bits_offset=72320
+	'_pad2_' type_id=1442 bits_offset=72704
+	'per_cpu_nodestats' type_id=1500 bits_offset=72704
+	'vm_stat' type_id=1503 bits_offset=72768
+	'memtier' type_id=1505 bits_offset=75456
+	'mf_stats' type_id=1506 bits_offset=75520
+[80380] ARRAY '(anon)' type_id=80381 index_type_id=9 nr_elems=4
+[80381] STRUCT 'zone' size=1600 vlen=37
+	'_watermark' type_id=88 bits_offset=0
+	'watermark_boost' type_id=10 bits_offset=256
+	'nr_reserved_highatomic' type_id=10 bits_offset=320
+	'lowmem_reserve' type_id=982 bits_offset=384
+	'node' type_id=9 bits_offset=640
+	'zone_pgdat' type_id=80378 bits_offset=704
+	'per_cpu_pageset' type_id=1476 bits_offset=768
+	'per_cpu_zonestats' type_id=1480 bits_offset=832
+	'pageset_high_min' type_id=9 bits_offset=896
+	'pageset_high_max' type_id=9 bits_offset=928
+	'pageset_batch' type_id=9 bits_offset=960
+	'zone_start_pfn' type_id=10 bits_offset=1024
+	'managed_pages' type_id=56 bits_offset=1088
+	'spanned_pages' type_id=10 bits_offset=1152
+	'present_pages' type_id=10 bits_offset=1216
+	'cma_pages' type_id=10 bits_offset=1280
+	'name' type_id=2 bits_offset=1344
+	'nr_isolate_pageblock' type_id=10 bits_offset=1408
+	'initialized' type_id=9 bits_offset=1472
+	'_pad1_' type_id=1442 bits_offset=1536
+	'free_area' type_id=1487 bits_offset=1536
+	'flags' type_id=10 bits_offset=10688
+	'lock' type_id=122 bits_offset=10752
+	'_pad2_' type_id=1442 bits_offset=11264
+	'percpu_drift_mark' type_id=10 bits_offset=11264
+	'compact_cached_free_pfn' type_id=10 bits_offset=11328
+	'compact_cached_migrate_pfn' type_id=504 bits_offset=11392
+	'compact_init_migrate_pfn' type_id=10 bits_offset=11520
+	'compact_init_free_pfn' type_id=10 bits_offset=11584
+	'compact_considered' type_id=49 bits_offset=11648
+	'compact_defer_shift' type_id=49 bits_offset=11680
+	'compact_order_failed' type_id=9 bits_offset=11712
+	'compact_blockskip_flush' type_id=89 bits_offset=11744
+	'contiguous' type_id=89 bits_offset=11752
+	'_pad3_' type_id=1442 bits_offset=11776
+	'vm_stat' type_id=1490 bits_offset=11776
+	'vm_numa_event' type_id=1491 bits_offset=12416
+[80382] ARRAY '(anon)' type_id=80383 index_type_id=9 nr_elems=2
+[80383] STRUCT 'zonelist' size=1040 vlen=1
+	'_zonerefs' type_id=80384 bits_offset=0
+[80384] ARRAY '(anon)' type_id=80385 index_type_id=9 nr_elems=65
+[80385] STRUCT 'zoneref' size=16 vlen=2
+	'zone' type_id=80386 bits_offset=0
+	'zone_idx' type_id=9 bits_offset=64
+[80386] PTR '(anon)' type_id=80381
+[80387] STRUCT 'mem_cgroup_reclaim_iter' size=16 vlen=2
+	'position' type_id=80367 bits_offset=0
+	'generation' type_id=49 bits_offset=64
+[80388] STRUCT 'path' size=16 vlen=2
+	'mnt' type_id=80130 bits_offset=0
+	'dentry' type_id=80105 bits_offset=64
+[80389] PTR '(anon)' type_id=80390
+[80390] CONST '(anon)' type_id=80391
+[80391] STRUCT 'file_operations' size=264 vlen=33
+	'owner' type_id=80050 bits_offset=0
+	'llseek' type_id=80392 bits_offset=64
+	'read' type_id=80394 bits_offset=128
+	'write' type_id=80396 bits_offset=192
+	'read_iter' type_id=80398 bits_offset=256
+	'write_iter' type_id=80398 bits_offset=320
+	'iopoll' type_id=80411 bits_offset=384
+	'iterate_shared' type_id=80413 bits_offset=448
+	'poll' type_id=80415 bits_offset=512
+	'unlocked_ioctl' type_id=80417 bits_offset=576
+	'compat_ioctl' type_id=80419 bits_offset=640
+	'mmap' type_id=80421 bits_offset=704
+	'mmap_supported_flags' type_id=10 bits_offset=768
+	'open' type_id=80423 bits_offset=832
+	'flush' type_id=80425 bits_offset=896
+	'release' type_id=80423 bits_offset=960
+	'fsync' type_id=80427 bits_offset=1024
+	'fasync' type_id=80429 bits_offset=1088
+	'lock' type_id=80431 bits_offset=1152
+	'get_unmapped_area' type_id=80281 bits_offset=1216
+	'check_flags' type_id=1635 bits_offset=1280
+	'flock' type_id=80431 bits_offset=1344
+	'splice_write' type_id=80433 bits_offset=1408
+	'splice_read' type_id=80435 bits_offset=1472
+	'splice_eof' type_id=80437 bits_offset=1536
+	'setlease' type_id=80439 bits_offset=1600
+	'fallocate' type_id=80441 bits_offset=1664
+	'show_fdinfo' type_id=80443 bits_offset=1728
+	'copy_file_range' type_id=80460 bits_offset=1792
+	'remap_file_range' type_id=80462 bits_offset=1856
+	'fadvise' type_id=80427 bits_offset=1920
+	'uring_cmd' type_id=1654 bits_offset=1984
+	'uring_cmd_iopoll' type_id=1657 bits_offset=2048
+[80392] PTR '(anon)' type_id=80393
+[80393] FUNC_PROTO '(anon)' ret_type_id=96 vlen=3
+	'(anon)' type_id=80267
+	'(anon)' type_id=96
+	'(anon)' type_id=9
+[80394] PTR '(anon)' type_id=80395
+[80395] FUNC_PROTO '(anon)' ret_type_id=154 vlen=4
+	'(anon)' type_id=80267
+	'(anon)' type_id=37
+	'(anon)' type_id=82
+	'(anon)' type_id=607
+[80396] PTR '(anon)' type_id=80397
+[80397] FUNC_PROTO '(anon)' ret_type_id=154 vlen=4
+	'(anon)' type_id=80267
+	'(anon)' type_id=2
+	'(anon)' type_id=82
+	'(anon)' type_id=607
+[80398] PTR '(anon)' type_id=80399
+[80399] FUNC_PROTO '(anon)' ret_type_id=154 vlen=2
+	'(anon)' type_id=80400
+	'(anon)' type_id=80404
+[80400] PTR '(anon)' type_id=80401
+[80401] STRUCT 'kiocb' size=48 vlen=7
+	'ki_filp' type_id=80267 bits_offset=0
+	'ki_pos' type_id=96 bits_offset=64
+	'ki_complete' type_id=80402 bits_offset=128
+	'private' type_id=19 bits_offset=192
+	'ki_flags' type_id=9 bits_offset=256
+	'ki_ioprio' type_id=72 bits_offset=288
+	'(anon)' type_id=1564 bits_offset=320
+[80402] PTR '(anon)' type_id=80403
+[80403] FUNC_PROTO '(anon)' ret_type_id=0 vlen=2
+	'(anon)' type_id=80400
+	'(anon)' type_id=15
+[80404] PTR '(anon)' type_id=80408
+[80405] UNION '(anon)' size=16 vlen=5
+	'__iov' type_id=1598 bits_offset=0
+	'kvec' type_id=1600 bits_offset=0
+	'bvec' type_id=80409 bits_offset=0
+	'xarray' type_id=1605 bits_offset=0
+	'ubuf' type_id=19 bits_offset=0
+[80406] STRUCT '(anon)' size=32 vlen=2
+	'(anon)' type_id=80405 bits_offset=0
+	'count' type_id=82 bits_offset=128
+[80407] UNION '(anon)' size=32 vlen=2
+	'__ubuf_iovec' type_id=1597 bits_offset=0
+	'(anon)' type_id=80406 bits_offset=0
+[80408] STRUCT 'iov_iter' size=64 vlen=7
+	'iter_type' type_id=69 bits_offset=0
+	'copy_mc' type_id=89 bits_offset=8
+	'nofault' type_id=89 bits_offset=16
+	'data_source' type_id=89 bits_offset=24
+	'iov_offset' type_id=82 bits_offset=64
+	'(anon)' type_id=80407 bits_offset=128
+	'(anon)' type_id=1595 bits_offset=384
+[80409] PTR '(anon)' type_id=80410
+[80410] CONST '(anon)' type_id=80311
+[80411] PTR '(anon)' type_id=80412
+[80412] FUNC_PROTO '(anon)' ret_type_id=9 vlen=3
+	'(anon)' type_id=80400
+	'(anon)' type_id=1105
+	'(anon)' type_id=49
+[80413] PTR '(anon)' type_id=80414
+[80414] FUNC_PROTO '(anon)' ret_type_id=9 vlen=2
+	'(anon)' type_id=80267
+	'(anon)' type_id=1610
+[80415] PTR '(anon)' type_id=80416
+[80416] FUNC_PROTO '(anon)' ret_type_id=899 vlen=2
+	'(anon)' type_id=80267
+	'(anon)' type_id=900
+[80417] PTR '(anon)' type_id=80418
+[80418] FUNC_PROTO '(anon)' ret_type_id=15 vlen=3
+	'(anon)' type_id=80267
+	'(anon)' type_id=49
+	'(anon)' type_id=378
+[80419] PTR '(anon)' type_id=80420
+[80420] FUNC_PROTO '(anon)' ret_type_id=15 vlen=3
+	'(anon)' type_id=80267
+	'(anon)' type_id=49
+	'(anon)' type_id=10
+[80421] PTR '(anon)' type_id=80422
+[80422] FUNC_PROTO '(anon)' ret_type_id=9 vlen=2
+	'(anon)' type_id=80267
+	'(anon)' type_id=80329
+[80423] PTR '(anon)' type_id=80424
+[80424] FUNC_PROTO '(anon)' ret_type_id=9 vlen=2
+	'(anon)' type_id=80097
+	'(anon)' type_id=80267
+[80425] PTR '(anon)' type_id=80426
+[80426] FUNC_PROTO '(anon)' ret_type_id=9 vlen=2
+	'(anon)' type_id=80267
+	'(anon)' type_id=1627
+[80427] PTR '(anon)' type_id=80428
+[80428] FUNC_PROTO '(anon)' ret_type_id=9 vlen=4
+	'(anon)' type_id=80267
+	'(anon)' type_id=96
+	'(anon)' type_id=96
+	'(anon)' type_id=9
+[80429] PTR '(anon)' type_id=80430
+[80430] FUNC_PROTO '(anon)' ret_type_id=9 vlen=3
+	'(anon)' type_id=9
+	'(anon)' type_id=80267
+	'(anon)' type_id=9
+[80431] PTR '(anon)' type_id=80432
+[80432] FUNC_PROTO '(anon)' ret_type_id=9 vlen=3
+	'(anon)' type_id=80267
+	'(anon)' type_id=9
+	'(anon)' type_id=1634
+[80433] PTR '(anon)' type_id=80434
+[80434] FUNC_PROTO '(anon)' ret_type_id=154 vlen=5
+	'(anon)' type_id=1433
+	'(anon)' type_id=80267
+	'(anon)' type_id=607
+	'(anon)' type_id=82
+	'(anon)' type_id=49
+[80435] PTR '(anon)' type_id=80436
+[80436] FUNC_PROTO '(anon)' ret_type_id=154 vlen=5
+	'(anon)' type_id=80267
+	'(anon)' type_id=607
+	'(anon)' type_id=1433
+	'(anon)' type_id=82
+	'(anon)' type_id=49
+[80437] PTR '(anon)' type_id=80438
+[80438] FUNC_PROTO '(anon)' ret_type_id=0 vlen=1
+	'(anon)' type_id=80267
+[80439] PTR '(anon)' type_id=80440
+[80440] FUNC_PROTO '(anon)' ret_type_id=9 vlen=4
+	'(anon)' type_id=80267
+	'(anon)' type_id=9
+	'(anon)' type_id=1645
+	'(anon)' type_id=1335
+[80441] PTR '(anon)' type_id=80442
+[80442] FUNC_PROTO '(anon)' ret_type_id=15 vlen=4
+	'(anon)' type_id=80267
+	'(anon)' type_id=9
+	'(anon)' type_id=96
+	'(anon)' type_id=96
+[80443] PTR '(anon)' type_id=80444
+[80444] FUNC_PROTO '(anon)' ret_type_id=0 vlen=2
+	'(anon)' type_id=80445
+	'(anon)' type_id=80267
+[80445] PTR '(anon)' type_id=80446
+[80446] STRUCT 'seq_file' size=120 vlen=12
+	'buf' type_id=37 bits_offset=0
+	'size' type_id=82 bits_offset=64
+	'from' type_id=82 bits_offset=128
+	'count' type_id=82 bits_offset=192
+	'pad_until' type_id=82 bits_offset=256
+	'index' type_id=96 bits_offset=320
+	'read_pos' type_id=96 bits_offset=384
+	'lock' type_id=55 bits_offset=448
+	'op' type_id=80447 bits_offset=704
+	'poll_event' type_id=9 bits_offset=768
+	'file' type_id=80458 bits_offset=832
+	'private' type_id=19 bits_offset=896
+[80447] PTR '(anon)' type_id=80448
+[80448] CONST '(anon)' type_id=80449
+[80449] STRUCT 'seq_operations' size=32 vlen=4
+	'start' type_id=80450 bits_offset=0
+	'stop' type_id=80452 bits_offset=64
+	'next' type_id=80454 bits_offset=128
+	'show' type_id=80456 bits_offset=192
+[80450] PTR '(anon)' type_id=80451
+[80451] FUNC_PROTO '(anon)' ret_type_id=19 vlen=2
+	'(anon)' type_id=80445
+	'(anon)' type_id=607
+[80452] PTR '(anon)' type_id=80453
+[80453] FUNC_PROTO '(anon)' ret_type_id=0 vlen=2
+	'(anon)' type_id=80445
+	'(anon)' type_id=19
+[80454] PTR '(anon)' type_id=80455
+[80455] FUNC_PROTO '(anon)' ret_type_id=19 vlen=3
+	'(anon)' type_id=80445
+	'(anon)' type_id=19
+	'(anon)' type_id=607
+[80456] PTR '(anon)' type_id=80457
+[80457] FUNC_PROTO '(anon)' ret_type_id=9 vlen=2
+	'(anon)' type_id=80445
+	'(anon)' type_id=19
+[80458] PTR '(anon)' type_id=80459
+[80459] CONST '(anon)' type_id=80268
+[80460] PTR '(anon)' type_id=80461
+[80461] FUNC_PROTO '(anon)' ret_type_id=154 vlen=6
+	'(anon)' type_id=80267
+	'(anon)' type_id=96
+	'(anon)' type_id=80267
+	'(anon)' type_id=96
+	'(anon)' type_id=82
+	'(anon)' type_id=49
+[80462] PTR '(anon)' type_id=80463
+[80463] FUNC_PROTO '(anon)' ret_type_id=96 vlen=6
+	'(anon)' type_id=80267
+	'(anon)' type_id=96
+	'(anon)' type_id=80267
+	'(anon)' type_id=96
+	'(anon)' type_id=96
+	'(anon)' type_id=49
+[80464] PTR '(anon)' type_id=80465
+[80465] FUNC_PROTO '(anon)' ret_type_id=0 vlen=1
+	'(anon)' type_id=80265
+[80466] PTR '(anon)' type_id=80467
+[80467] FUNC_PROTO '(anon)' ret_type_id=154 vlen=4
+	'(anon)' type_id=80265
+	'(anon)' type_id=37
+	'(anon)' type_id=82
+	'(anon)' type_id=96
+[80468] PTR '(anon)' type_id=80469
+[80469] FUNC_PROTO '(anon)' ret_type_id=899 vlen=2
+	'(anon)' type_id=80265
+	'(anon)' type_id=900
+[80470] PTR '(anon)' type_id=80471
+[80471] FUNC_PROTO '(anon)' ret_type_id=9 vlen=2
+	'(anon)' type_id=80265
+	'(anon)' type_id=80329
+[80472] PTR '(anon)' type_id=80473
+[80473] FUNC_PROTO '(anon)' ret_type_id=96 vlen=3
+	'(anon)' type_id=80265
+	'(anon)' type_id=96
+	'(anon)' type_id=9
+[80474] ARRAY '(anon)' type_id=80369 index_type_id=9 nr_elems=0
+[80475] ARRAY '(anon)' type_id=80477 index_type_id=9 nr_elems=10
+[80476] TYPE_TAG 'rcu' type_id=80252
+[80477] PTR '(anon)' type_id=80476
+[80478] PTR '(anon)' type_id=80479
+[80479] STRUCT 'cgroup_root' size=5664 vlen=10
+	'kf_root' type_id=868 bits_offset=0
+	'subsys_mask' type_id=49 bits_offset=64
+	'hierarchy_id' type_id=9 bits_offset=96
+	'cgrp' type_id=80254 bits_offset=128
+	'cgrp_ancestor_storage' type_id=80253 bits_offset=11712
+	'nr_cgrps' type_id=7 bits_offset=11776
+	'root_list' type_id=34 bits_offset=11840
+	'flags' type_id=49 bits_offset=11968
+	'release_agent_path' type_id=79 bits_offset=12000
+	'name' type_id=920 bits_offset=44768
+[80480] TYPE_TAG 'percpu' type_id=80482
+[80481] PTR '(anon)' type_id=80480
+[80482] STRUCT 'cgroup_rstat_cpu' size=112 vlen=7
+	'bsync' type_id=646 bits_offset=0
+	'bstat' type_id=925 bits_offset=0
+	'last_bstat' type_id=925 bits_offset=192
+	'subtree_bstat' type_id=925 bits_offset=384
+	'last_subtree_bstat' type_id=925 bits_offset=576
+	'updated_children' type_id=80253 bits_offset=768
+	'updated_next' type_id=80253 bits_offset=832
+[80483] STRUCT 'cgroup_bpf' size=552 vlen=7
+	'effective' type_id=80484 bits_offset=0
+	'progs' type_id=932 bits_offset=1792
+	'flags' type_id=933 bits_offset=3584
+	'storages' type_id=34 bits_offset=3840
+	'inactive' type_id=80589 bits_offset=3968
+	'refcnt' type_id=453 bits_offset=4032
+	'release_work' type_id=757 bits_offset=4160
+[80484] ARRAY '(anon)' type_id=80486 index_type_id=9 nr_elems=28
+[80485] TYPE_TAG 'rcu' type_id=80487
+[80486] PTR '(anon)' type_id=80485
+[80487] STRUCT 'bpf_prog_array' size=16 vlen=2
+	'rcu' type_id=277 bits_offset=0
+	'items' type_id=80488 bits_offset=128
+[80488] ARRAY '(anon)' type_id=80489 index_type_id=9 nr_elems=0
+[80489] STRUCT 'bpf_prog_array_item' size=24 vlen=2
+	'prog' type_id=80490 bits_offset=0
+	'(anon)' type_id=3976 bits_offset=64
+[80490] PTR '(anon)' type_id=80491
+[80491] STRUCT 'bpf_prog' size=72 vlen=26
+	'pages' type_id=72 bits_offset=0
+	'jited' type_id=72 bits_offset=16 bitfield_size=1
+	'jit_requested' type_id=72 bits_offset=17 bitfield_size=1
+	'gpl_compatible' type_id=72 bits_offset=18 bitfield_size=1
+	'cb_access' type_id=72 bits_offset=19 bitfield_size=1
+	'dst_needed' type_id=72 bits_offset=20 bitfield_size=1
+	'blinding_requested' type_id=72 bits_offset=21 bitfield_size=1
+	'blinded' type_id=72 bits_offset=22 bitfield_size=1
+	'is_func' type_id=72 bits_offset=23 bitfield_size=1
+	'kprobe_override' type_id=72 bits_offset=24 bitfield_size=1
+	'has_callchain_buf' type_id=72 bits_offset=25 bitfield_size=1
+	'enforce_expected_attach_type' type_id=72 bits_offset=26 bitfield_size=1
+	'call_get_stack' type_id=72 bits_offset=27 bitfield_size=1
+	'call_get_func_ip' type_id=72 bits_offset=28 bitfield_size=1
+	'tstamp_type_access' type_id=72 bits_offset=29 bitfield_size=1
+	'type' type_id=3960 bits_offset=32
+	'expected_attach_type' type_id=3961 bits_offset=64
+	'len' type_id=209 bits_offset=96
+	'jited_len' type_id=209 bits_offset=128
+	'tag' type_id=3982 bits_offset=160
+	'stats' type_id=3984 bits_offset=256
+	'active' type_id=2059 bits_offset=320
+	'bpf_func' type_id=3985 bits_offset=384
+	'aux' type_id=80492 bits_offset=448
+	'orig_prog' type_id=4187 bits_offset=512
+	'(anon)' type_id=3980 bits_offset=576
+[80492] PTR '(anon)' type_id=80493
+[80493] STRUCT 'bpf_prog_aux' size=1072 vlen=67
+	'refcnt' type_id=57 bits_offset=0
+	'used_map_cnt' type_id=209 bits_offset=64
+	'used_btf_cnt' type_id=209 bits_offset=96
+	'max_ctx_offset' type_id=209 bits_offset=128
+	'max_pkt_offset' type_id=209 bits_offset=160
+	'max_tp_access' type_id=209 bits_offset=192
+	'stack_depth' type_id=209 bits_offset=224
+	'id' type_id=209 bits_offset=256
+	'func_cnt' type_id=209 bits_offset=288
+	'real_func_cnt' type_id=209 bits_offset=320
+	'func_idx' type_id=209 bits_offset=352
+	'attach_btf_id' type_id=209 bits_offset=384
+	'ctx_arg_info_size' type_id=209 bits_offset=416
+	'max_rdonly_access' type_id=209 bits_offset=448
+	'max_rdwr_access' type_id=209 bits_offset=480
+	'attach_btf' type_id=3993 bits_offset=512
+	'ctx_arg_info' type_id=3994 bits_offset=576
+	'dst_mutex' type_id=55 bits_offset=640
+	'dst_prog' type_id=80490 bits_offset=896
+	'dst_trampoline' type_id=80494 bits_offset=960
+	'saved_dst_prog_type' type_id=3960 bits_offset=1024
+	'saved_dst_attach_type' type_id=3961 bits_offset=1056
+	'verifier_zext' type_id=89 bits_offset=1088
+	'dev_bound' type_id=89 bits_offset=1096
+	'offload_requested' type_id=89 bits_offset=1104
+	'attach_btf_trace' type_id=89 bits_offset=1112
+	'func_proto_unreliable' type_id=89 bits_offset=1120
+	'sleepable' type_id=89 bits_offset=1128
+	'tail_call_reachable' type_id=89 bits_offset=1136
+	'xdp_has_frags' type_id=89 bits_offset=1144
+	'exception_cb' type_id=89 bits_offset=1152
+	'exception_boundary' type_id=89 bits_offset=1160
+	'attach_func_proto' type_id=4010 bits_offset=1216
+	'attach_func_name' type_id=2 bits_offset=1280
+	'func' type_id=80496 bits_offset=1344
+	'jit_data' type_id=19 bits_offset=1408
+	'poke_tab' type_id=80497 bits_offset=1472
+	'kfunc_tab' type_id=4165 bits_offset=1536
+	'kfunc_btf_tab' type_id=4166 bits_offset=1600
+	'size_poke_tab' type_id=209 bits_offset=1664
+	'ksym' type_id=4008 bits_offset=1728
+	'ops' type_id=80578 bits_offset=6528
+	'used_maps' type_id=80583 bits_offset=6592
+	'used_maps_mutex' type_id=55 bits_offset=6656
+	'used_btfs' type_id=80584 bits_offset=6912
+	'prog' type_id=80490 bits_offset=6976
+	'user' type_id=552 bits_offset=7040
+	'load_time' type_id=93 bits_offset=7104
+	'verified_insns' type_id=209 bits_offset=7168
+	'cgroup_atype' type_id=9 bits_offset=7200
+	'cgroup_storage' type_id=80586 bits_offset=7232
+	'name' type_id=1037 bits_offset=7360
+	'bpf_exception_cb' type_id=4176 bits_offset=7488
+	'security' type_id=19 bits_offset=7552
+	'offload' type_id=80587 bits_offset=7616
+	'btf' type_id=3993 bits_offset=7680
+	'func_info' type_id=4181 bits_offset=7744
+	'func_info_aux' type_id=4183 bits_offset=7808
+	'linfo' type_id=4185 bits_offset=7872
+	'jited_linfo' type_id=1335 bits_offset=7936
+	'func_info_cnt' type_id=209 bits_offset=8000
+	'nr_linfo' type_id=209 bits_offset=8032
+	'linfo_idx' type_id=209 bits_offset=8064
+	'mod' type_id=80050 bits_offset=8128
+	'num_exentries' type_id=209 bits_offset=8192
+	'extable' type_id=2006 bits_offset=8256
+	'(anon)' type_id=3991 bits_offset=8320
+[80494] PTR '(anon)' type_id=80495
+[80495] STRUCT 'bpf_trampoline' size=184 vlen=12
+	'hlist' type_id=40 bits_offset=0
+	'fops' type_id=4000 bits_offset=128
+	'mutex' type_id=55 bits_offset=192
+	'refcnt' type_id=292 bits_offset=448
+	'flags' type_id=209 bits_offset=480
+	'key' type_id=93 bits_offset=512
+	'func' type_id=3998 bits_offset=576
+	'extension_prog' type_id=80490 bits_offset=960
+	'progs_hlist' type_id=4004 bits_offset=1024
+	'progs_cnt' type_id=766 bits_offset=1216
+	'cur_image' type_id=4005 bits_offset=1344
+	'mod' type_id=80050 bits_offset=1408
+[80496] PTR '(anon)' type_id=80490
+[80497] PTR '(anon)' type_id=80500
+[80498] STRUCT '(anon)' size=16 vlen=2
+	'map' type_id=80501 bits_offset=0
+	'key' type_id=209 bits_offset=64
+[80499] UNION '(anon)' size=16 vlen=1
+	'tail_call' type_id=80498 bits_offset=0
+[80500] STRUCT 'bpf_jit_poke_descriptor' size=56 vlen=9
+	'tailcall_target' type_id=19 bits_offset=0
+	'tailcall_bypass' type_id=19 bits_offset=64
+	'bypass_addr' type_id=19 bits_offset=128
+	'aux' type_id=19 bits_offset=192
+	'(anon)' type_id=80499 bits_offset=256
+	'tailcall_target_stable' type_id=89 bits_offset=384
+	'adj_off' type_id=69 bits_offset=392
+	'reason' type_id=72 bits_offset=400
+	'insn_idx' type_id=209 bits_offset=416
+[80501] PTR '(anon)' type_id=80502
+[80502] STRUCT 'bpf_map' size=256 vlen=27
+	'ops' type_id=80503 bits_offset=0
+	'inner_map_meta' type_id=80501 bits_offset=64
+	'security' type_id=19 bits_offset=128
+	'map_type' type_id=3965 bits_offset=192
+	'key_size' type_id=209 bits_offset=224
+	'value_size' type_id=209 bits_offset=256
+	'max_entries' type_id=209 bits_offset=288
+	'map_extra' type_id=93 bits_offset=320
+	'map_flags' type_id=209 bits_offset=384
+	'id' type_id=209 bits_offset=416
+	'record' type_id=80571 bits_offset=448
+	'numa_node' type_id=9 bits_offset=512
+	'btf_key_type_id' type_id=209 bits_offset=544
+	'btf_value_type_id' type_id=209 bits_offset=576
+	'btf_vmlinux_value_type_id' type_id=209 bits_offset=608
+	'btf' type_id=3993 bits_offset=640
+	'objcg' type_id=80373 bits_offset=704
+	'name' type_id=1037 bits_offset=768
+	'refcnt' type_id=57 bits_offset=1024
+	'usercnt' type_id=57 bits_offset=1088
+	'work' type_id=757 bits_offset=1152
+	'freeze_mutex' type_id=55 bits_offset=1408
+	'writecnt' type_id=57 bits_offset=1664
+	'owner' type_id=4020 bits_offset=1728
+	'bypass_spec_v1' type_id=89 bits_offset=1824
+	'frozen' type_id=89 bits_offset=1832
+	'elem_count' type_id=4164 bits_offset=1856
+[80503] PTR '(anon)' type_id=80504
+[80504] CONST '(anon)' type_id=80505
+[80505] STRUCT 'bpf_map_ops' size=336 vlen=42
+	'map_alloc_check' type_id=4025 bits_offset=0
+	'map_alloc' type_id=80506 bits_offset=64
+	'map_release' type_id=80508 bits_offset=128
+	'map_free' type_id=80510 bits_offset=192
+	'map_get_next_key' type_id=80512 bits_offset=256
+	'map_release_uref' type_id=80510 bits_offset=320
+	'map_lookup_elem_sys_only' type_id=80514 bits_offset=384
+	'map_lookup_batch' type_id=80516 bits_offset=448
+	'map_lookup_and_delete_elem' type_id=80518 bits_offset=512
+	'map_lookup_and_delete_batch' type_id=80516 bits_offset=576
+	'map_update_batch' type_id=80520 bits_offset=640
+	'map_delete_batch' type_id=80516 bits_offset=704
+	'map_lookup_elem' type_id=80514 bits_offset=768
+	'map_update_elem' type_id=80522 bits_offset=832
+	'map_delete_elem' type_id=80524 bits_offset=896
+	'map_push_elem' type_id=80526 bits_offset=960
+	'map_pop_elem' type_id=80524 bits_offset=1024
+	'map_peek_elem' type_id=80524 bits_offset=1088
+	'map_lookup_percpu_elem' type_id=80528 bits_offset=1152
+	'map_fd_get_ptr' type_id=80530 bits_offset=1216
+	'map_fd_put_ptr' type_id=1309 bits_offset=1280
+	'map_gen_lookup' type_id=80532 bits_offset=1344
+	'map_fd_sys_lookup_elem' type_id=4097 bits_offset=1408
+	'map_seq_show_elem' type_id=80534 bits_offset=1472
+	'map_check_btf' type_id=80536 bits_offset=1536
+	'map_poke_track' type_id=80540 bits_offset=1600
+	'map_poke_untrack' type_id=80542 bits_offset=1664
+	'map_poke_run' type_id=80544 bits_offset=1728
+	'map_direct_value_addr' type_id=80546 bits_offset=1792
+	'map_direct_value_meta' type_id=80548 bits_offset=1856
+	'map_mmap' type_id=80550 bits_offset=1920
+	'map_poll' type_id=80552 bits_offset=1984
+	'map_local_storage_charge' type_id=4121 bits_offset=2048
+	'map_local_storage_uncharge' type_id=4124 bits_offset=2112
+	'map_owner_storage_ptr' type_id=4126 bits_offset=2176
+	'map_redirect' type_id=80554 bits_offset=2240
+	'map_meta_equal' type_id=80556 bits_offset=2304
+	'map_set_for_each_callback_args' type_id=4133 bits_offset=2368
+	'map_for_each_callback' type_id=80558 bits_offset=2432
+	'map_mem_usage' type_id=80560 bits_offset=2496
+	'map_btf_id' type_id=1030 bits_offset=2560
+	'iter_seq_info' type_id=80562 bits_offset=2624
+[80506] PTR '(anon)' type_id=80507
+[80507] FUNC_PROTO '(anon)' ret_type_id=80501 vlen=1
+	'(anon)' type_id=4027
+[80508] PTR '(anon)' type_id=80509
+[80509] FUNC_PROTO '(anon)' ret_type_id=0 vlen=2
+	'(anon)' type_id=80501
+	'(anon)' type_id=80267
+[80510] PTR '(anon)' type_id=80511
+[80511] FUNC_PROTO '(anon)' ret_type_id=0 vlen=1
+	'(anon)' type_id=80501
+[80512] PTR '(anon)' type_id=80513
+[80513] FUNC_PROTO '(anon)' ret_type_id=9 vlen=3
+	'(anon)' type_id=80501
+	'(anon)' type_id=19
+	'(anon)' type_id=19
+[80514] PTR '(anon)' type_id=80515
+[80515] FUNC_PROTO '(anon)' ret_type_id=19 vlen=2
+	'(anon)' type_id=80501
+	'(anon)' type_id=19
+[80516] PTR '(anon)' type_id=80517
+[80517] FUNC_PROTO '(anon)' ret_type_id=9 vlen=3
+	'(anon)' type_id=80501
+	'(anon)' type_id=4078
+	'(anon)' type_id=4027
+[80518] PTR '(anon)' type_id=80519
+[80519] FUNC_PROTO '(anon)' ret_type_id=9 vlen=4
+	'(anon)' type_id=80501
+	'(anon)' type_id=19
+	'(anon)' type_id=19
+	'(anon)' type_id=93
+[80520] PTR '(anon)' type_id=80521
+[80521] FUNC_PROTO '(anon)' ret_type_id=9 vlen=4
+	'(anon)' type_id=80501
+	'(anon)' type_id=80267
+	'(anon)' type_id=4078
+	'(anon)' type_id=4027
+[80522] PTR '(anon)' type_id=80523
+[80523] FUNC_PROTO '(anon)' ret_type_id=15 vlen=4
+	'(anon)' type_id=80501
+	'(anon)' type_id=19
+	'(anon)' type_id=19
+	'(anon)' type_id=93
+[80524] PTR '(anon)' type_id=80525
+[80525] FUNC_PROTO '(anon)' ret_type_id=15 vlen=2
+	'(anon)' type_id=80501
+	'(anon)' type_id=19
+[80526] PTR '(anon)' type_id=80527
+[80527] FUNC_PROTO '(anon)' ret_type_id=15 vlen=3
+	'(anon)' type_id=80501
+	'(anon)' type_id=19
+	'(anon)' type_id=93
+[80528] PTR '(anon)' type_id=80529
+[80529] FUNC_PROTO '(anon)' ret_type_id=19 vlen=3
+	'(anon)' type_id=80501
+	'(anon)' type_id=19
+	'(anon)' type_id=209
+[80530] PTR '(anon)' type_id=80531
+[80531] FUNC_PROTO '(anon)' ret_type_id=19 vlen=3
+	'(anon)' type_id=80501
+	'(anon)' type_id=80267
+	'(anon)' type_id=9
+[80532] PTR '(anon)' type_id=80533
+[80533] FUNC_PROTO '(anon)' ret_type_id=9 vlen=2
+	'(anon)' type_id=80501
+	'(anon)' type_id=4096
+[80534] PTR '(anon)' type_id=80535
+[80535] FUNC_PROTO '(anon)' ret_type_id=0 vlen=3
+	'(anon)' type_id=80501
+	'(anon)' type_id=19
+	'(anon)' type_id=80445
+[80536] PTR '(anon)' type_id=80537
+[80537] FUNC_PROTO '(anon)' ret_type_id=9 vlen=4
+	'(anon)' type_id=80538
+	'(anon)' type_id=4105
+	'(anon)' type_id=4010
+	'(anon)' type_id=4010
+[80538] PTR '(anon)' type_id=80539
+[80539] CONST '(anon)' type_id=80502
+[80540] PTR '(anon)' type_id=80541
+[80541] FUNC_PROTO '(anon)' ret_type_id=9 vlen=2
+	'(anon)' type_id=80501
+	'(anon)' type_id=80492
+[80542] PTR '(anon)' type_id=80543
+[80543] FUNC_PROTO '(anon)' ret_type_id=0 vlen=2
+	'(anon)' type_id=80501
+	'(anon)' type_id=80492
+[80544] PTR '(anon)' type_id=80545
+[80545] FUNC_PROTO '(anon)' ret_type_id=0 vlen=4
+	'(anon)' type_id=80501
+	'(anon)' type_id=209
+	'(anon)' type_id=80490
+	'(anon)' type_id=80490
+[80546] PTR '(anon)' type_id=80547
+[80547] FUNC_PROTO '(anon)' ret_type_id=9 vlen=3
+	'(anon)' type_id=80538
+	'(anon)' type_id=1229
+	'(anon)' type_id=209
+[80548] PTR '(anon)' type_id=80549
+[80549] FUNC_PROTO '(anon)' ret_type_id=9 vlen=3
+	'(anon)' type_id=80538
+	'(anon)' type_id=93
+	'(anon)' type_id=793
+[80550] PTR '(anon)' type_id=80551
+[80551] FUNC_PROTO '(anon)' ret_type_id=9 vlen=2
+	'(anon)' type_id=80501
+	'(anon)' type_id=80329
+[80552] PTR '(anon)' type_id=80553
+[80553] FUNC_PROTO '(anon)' ret_type_id=899 vlen=3
+	'(anon)' type_id=80501
+	'(anon)' type_id=80267
+	'(anon)' type_id=900
+[80554] PTR '(anon)' type_id=80555
+[80555] FUNC_PROTO '(anon)' ret_type_id=15 vlen=3
+	'(anon)' type_id=80501
+	'(anon)' type_id=93
+	'(anon)' type_id=93
+[80556] PTR '(anon)' type_id=80557
+[80557] FUNC_PROTO '(anon)' ret_type_id=89 vlen=2
+	'(anon)' type_id=80538
+	'(anon)' type_id=80538
+[80558] PTR '(anon)' type_id=80559
+[80559] FUNC_PROTO '(anon)' ret_type_id=15 vlen=4
+	'(anon)' type_id=80501
+	'(anon)' type_id=4139
+	'(anon)' type_id=19
+	'(anon)' type_id=93
+[80560] PTR '(anon)' type_id=80561
+[80561] FUNC_PROTO '(anon)' ret_type_id=93 vlen=1
+	'(anon)' type_id=80538
+[80562] PTR '(anon)' type_id=80563
+[80563] CONST '(anon)' type_id=80564
+[80564] STRUCT 'bpf_iter_seq_info' size=32 vlen=4
+	'seq_ops' type_id=80447 bits_offset=0
+	'init_seq_private' type_id=80565 bits_offset=64
+	'fini_seq_private' type_id=4154 bits_offset=128
+	'seq_priv_size' type_id=209 bits_offset=192
+[80565] TYPEDEF 'bpf_iter_init_seq_priv_t' type_id=80566
+[80566] PTR '(anon)' type_id=80567
+[80567] FUNC_PROTO '(anon)' ret_type_id=9 vlen=2
+	'(anon)' type_id=19
+	'(anon)' type_id=80568
+[80568] PTR '(anon)' type_id=80570
+[80569] STRUCT '(anon)' size=16 vlen=2
+	'start' type_id=80253 bits_offset=0
+	'order' type_id=3963 bits_offset=64
+[80570] STRUCT 'bpf_iter_aux_info' size=32 vlen=3
+	'map' type_id=80501 bits_offset=0
+	'cgroup' type_id=80569 bits_offset=64
+	'task' type_id=4152 bits_offset=192
+[80571] PTR '(anon)' type_id=80572
+[80572] STRUCT 'btf_record' size=24 vlen=6
+	'cnt' type_id=209 bits_offset=0
+	'field_mask' type_id=209 bits_offset=32
+	'spin_lock_off' type_id=9 bits_offset=64
+	'timer_off' type_id=9 bits_offset=96
+	'refcount_off' type_id=9 bits_offset=128
+	'fields' type_id=80573 bits_offset=192
+[80573] ARRAY '(anon)' type_id=80575 index_type_id=9 nr_elems=0
+[80574] UNION '(anon)' size=32 vlen=2
+	'kptr' type_id=80576 bits_offset=0
+	'graph_root' type_id=80577 bits_offset=0
+[80575] STRUCT 'btf_field' size=48 vlen=4
+	'offset' type_id=209 bits_offset=0
+	'size' type_id=209 bits_offset=32
+	'type' type_id=3966 bits_offset=64
+	'(anon)' type_id=80574 bits_offset=128
+[80576] STRUCT 'btf_field_kptr' size=32 vlen=4
+	'btf' type_id=3993 bits_offset=0
+	'module' type_id=80050 bits_offset=64
+	'dtor' type_id=4161 bits_offset=128
+	'btf_id' type_id=209 bits_offset=192
+[80577] STRUCT 'btf_field_graph_root' size=24 vlen=4
+	'btf' type_id=3993 bits_offset=0
+	'value_btf_id' type_id=209 bits_offset=64
+	'node_offset' type_id=209 bits_offset=96
+	'value_rec' type_id=80571 bits_offset=128
+[80578] PTR '(anon)' type_id=80579
+[80579] CONST '(anon)' type_id=80580
+[80580] STRUCT 'bpf_prog_ops' size=8 vlen=1
+	'test_run' type_id=80581 bits_offset=0
+[80581] PTR '(anon)' type_id=80582
+[80582] FUNC_PROTO '(anon)' ret_type_id=9 vlen=3
+	'(anon)' type_id=80490
+	'(anon)' type_id=4078
+	'(anon)' type_id=4027
+[80583] PTR '(anon)' type_id=80501
+[80584] PTR '(anon)' type_id=80585
+[80585] STRUCT 'btf_mod_pair' size=16 vlen=2
+	'btf' type_id=3993 bits_offset=0
+	'module' type_id=80050 bits_offset=64
+[80586] ARRAY '(anon)' type_id=80501 index_type_id=9 nr_elems=2
+[80587] PTR '(anon)' type_id=80588
+[80588] STRUCT 'bpf_prog_offload' size=72 vlen=9
+	'prog' type_id=80490 bits_offset=0
+	'netdev' type_id=636 bits_offset=64
+	'offdev' type_id=4180 bits_offset=128
+	'dev_priv' type_id=19 bits_offset=192
+	'offloads' type_id=34 bits_offset=256
+	'dev_state' type_id=89 bits_offset=384
+	'opt_failed' type_id=89 bits_offset=392
+	'jited_image' type_id=19 bits_offset=448
+	'jited_len' type_id=209 bits_offset=512
+[80589] PTR '(anon)' type_id=80487
+[80590] ARRAY '(anon)' type_id=80253 index_type_id=9 nr_elems=0
+[80591] PTR '(anon)' type_id=80592
+[80592] STRUCT 'cgroup_subsys' size=248 vlen=31
+	'css_alloc' type_id=80593 bits_offset=0
+	'css_online' type_id=80595 bits_offset=64
+	'css_offline' type_id=80597 bits_offset=128
+	'css_released' type_id=80597 bits_offset=192
+	'css_free' type_id=80597 bits_offset=256
+	'css_reset' type_id=80597 bits_offset=320
+	'css_rstat_flush' type_id=80599 bits_offset=384
+	'css_extra_stat_show' type_id=80601 bits_offset=448
+	'css_local_stat_show' type_id=80601 bits_offset=512
+	'can_attach' type_id=951 bits_offset=576
+	'cancel_attach' type_id=954 bits_offset=640
+	'attach' type_id=954 bits_offset=704
+	'post_attach' type_id=22 bits_offset=768
+	'can_fork' type_id=80603 bits_offset=832
+	'cancel_fork' type_id=80605 bits_offset=896
+	'fork' type_id=80607 bits_offset=960
+	'exit' type_id=80607 bits_offset=1024
+	'release' type_id=80607 bits_offset=1088
+	'bind' type_id=80597 bits_offset=1152
+	'early_init' type_id=89 bits_offset=1216 bitfield_size=1
+	'implicit_on_dfl' type_id=89 bits_offset=1217 bitfield_size=1
+	'threaded' type_id=89 bits_offset=1218 bitfield_size=1
+	'id' type_id=9 bits_offset=1248
+	'name' type_id=2 bits_offset=1280
+	'legacy_name' type_id=2 bits_offset=1344
+	'root' type_id=80478 bits_offset=1408
+	'css_idr' type_id=301 bits_offset=1472
+	'cfts' type_id=34 bits_offset=1664
+	'dfl_cftypes' type_id=80609 bits_offset=1792
+	'legacy_cftypes' type_id=80609 bits_offset=1856
+	'depends_on' type_id=49 bits_offset=1920
+[80593] PTR '(anon)' type_id=80594
+[80594] FUNC_PROTO '(anon)' ret_type_id=80251 vlen=1
+	'(anon)' type_id=80251
+[80595] PTR '(anon)' type_id=80596
+[80596] FUNC_PROTO '(anon)' ret_type_id=9 vlen=1
+	'(anon)' type_id=80251
+[80597] PTR '(anon)' type_id=80598
+[80598] FUNC_PROTO '(anon)' ret_type_id=0 vlen=1
+	'(anon)' type_id=80251
+[80599] PTR '(anon)' type_id=80600
+[80600] FUNC_PROTO '(anon)' ret_type_id=0 vlen=2
+	'(anon)' type_id=80251
+	'(anon)' type_id=9
+[80601] PTR '(anon)' type_id=80602
+[80602] FUNC_PROTO '(anon)' ret_type_id=9 vlen=2
+	'(anon)' type_id=80445
+	'(anon)' type_id=80251
+[80603] PTR '(anon)' type_id=80604
+[80604] FUNC_PROTO '(anon)' ret_type_id=9 vlen=2
+	'(anon)' type_id=80276
+	'(anon)' type_id=80291
+[80605] PTR '(anon)' type_id=80606
+[80606] FUNC_PROTO '(anon)' ret_type_id=0 vlen=2
+	'(anon)' type_id=80276
+	'(anon)' type_id=80291
+[80607] PTR '(anon)' type_id=80608
+[80608] FUNC_PROTO '(anon)' ret_type_id=0 vlen=1
+	'(anon)' type_id=80276
+[80609] PTR '(anon)' type_id=80610
+[80610] STRUCT 'cftype' size=216 vlen=20
+	'name' type_id=920 bits_offset=0
+	'private' type_id=10 bits_offset=512
+	'max_write_len' type_id=82 bits_offset=576
+	'flags' type_id=49 bits_offset=640
+	'file_offset' type_id=49 bits_offset=672
+	'ss' type_id=80591 bits_offset=704
+	'node' type_id=34 bits_offset=768
+	'kf_ops' type_id=80611 bits_offset=896
+	'open' type_id=80263 bits_offset=960
+	'release' type_id=80464 bits_offset=1024
+	'read_u64' type_id=80612 bits_offset=1088
+	'read_s64' type_id=80614 bits_offset=1152
+	'seq_show' type_id=80456 bits_offset=1216
+	'seq_start' type_id=80450 bits_offset=1280
+	'seq_next' type_id=80454 bits_offset=1344
+	'seq_stop' type_id=80452 bits_offset=1408
+	'write_u64' type_id=80616 bits_offset=1472
+	'write_s64' type_id=80618 bits_offset=1536
+	'write' type_id=80466 bits_offset=1600
+	'poll' type_id=80468 bits_offset=1664
+[80611] PTR '(anon)' type_id=80262
+[80612] PTR '(anon)' type_id=80613
+[80613] FUNC_PROTO '(anon)' ret_type_id=93 vlen=2
+	'(anon)' type_id=80251
+	'(anon)' type_id=80609
+[80614] PTR '(anon)' type_id=80615
+[80615] FUNC_PROTO '(anon)' ret_type_id=59 vlen=2
+	'(anon)' type_id=80251
+	'(anon)' type_id=80609
+[80616] PTR '(anon)' type_id=80617
+[80617] FUNC_PROTO '(anon)' ret_type_id=9 vlen=3
+	'(anon)' type_id=80251
+	'(anon)' type_id=80609
+	'(anon)' type_id=93
+[80618] PTR '(anon)' type_id=80619
+[80619] FUNC_PROTO '(anon)' ret_type_id=9 vlen=3
+	'(anon)' type_id=80251
+	'(anon)' type_id=80609
+	'(anon)' type_id=59
+[80620] PTR '(anon)' type_id=80621
+[80621] FUNC_PROTO '(anon)' ret_type_id=9 vlen=1
+	'(anon)' type_id=80097
+[80622] PTR '(anon)' type_id=80623
+[80623] FUNC_PROTO '(anon)' ret_type_id=9 vlen=2
+	'(anon)' type_id=80132
+	'(anon)' type_id=9
+[80624] PTR '(anon)' type_id=80625
+[80625] FUNC_PROTO '(anon)' ret_type_id=9 vlen=2
+	'(anon)' type_id=80132
+	'(anon)' type_id=1708
+[80626] PTR '(anon)' type_id=80627
+[80627] FUNC_PROTO '(anon)' ret_type_id=9 vlen=1
+	'(anon)' type_id=80132
+[80628] PTR '(anon)' type_id=80629
+[80629] FUNC_PROTO '(anon)' ret_type_id=9 vlen=2
+	'(anon)' type_id=80105
+	'(anon)' type_id=1713
+[80630] PTR '(anon)' type_id=80631
+[80631] FUNC_PROTO '(anon)' ret_type_id=9 vlen=3
+	'(anon)' type_id=80132
+	'(anon)' type_id=1030
+	'(anon)' type_id=37
+[80632] PTR '(anon)' type_id=80633
+[80633] FUNC_PROTO '(anon)' ret_type_id=9 vlen=2
+	'(anon)' type_id=80445
+	'(anon)' type_id=80105
+[80634] PTR '(anon)' type_id=80635
+[80635] FUNC_PROTO '(anon)' ret_type_id=15 vlen=2
+	'(anon)' type_id=80132
+	'(anon)' type_id=80636
+[80636] PTR '(anon)' type_id=80637
+[80637] STRUCT 'shrink_control' size=32 vlen=5
+	'gfp_mask' type_id=303 bits_offset=0
+	'nid' type_id=9 bits_offset=32
+	'nr_to_scan' type_id=10 bits_offset=64
+	'nr_scanned' type_id=10 bits_offset=128
+	'memcg' type_id=80367 bits_offset=192
+[80638] PTR '(anon)' type_id=80639
+[80639] CONST '(anon)' type_id=80640
+[80640] STRUCT 'dquot_operations' size=88 vlen=11
+	'write_dquot' type_id=80641 bits_offset=0
+	'alloc_dquot' type_id=80645 bits_offset=64
+	'destroy_dquot' type_id=80647 bits_offset=128
+	'acquire_dquot' type_id=80641 bits_offset=192
+	'release_dquot' type_id=80641 bits_offset=256
+	'mark_dirty' type_id=80641 bits_offset=320
+	'write_info' type_id=80622 bits_offset=384
+	'get_reserved_space' type_id=80649 bits_offset=448
+	'get_projid' type_id=80651 bits_offset=512
+	'get_inode_usage' type_id=80653 bits_offset=576
+	'get_next_id' type_id=80655 bits_offset=640
+[80641] PTR '(anon)' type_id=80642
+[80642] FUNC_PROTO '(anon)' ret_type_id=9 vlen=1
+	'(anon)' type_id=80643
+[80643] PTR '(anon)' type_id=80644
+[80644] STRUCT 'dquot' size=208 vlen=12
+	'dq_hash' type_id=40 bits_offset=0
+	'dq_inuse' type_id=34 bits_offset=128
+	'dq_free' type_id=34 bits_offset=256
+	'dq_dirty' type_id=34 bits_offset=384
+	'dq_lock' type_id=55 bits_offset=512
+	'dq_dqb_lock' type_id=122 bits_offset=768
+	'dq_count' type_id=7 bits_offset=800
+	'dq_sb' type_id=80132 bits_offset=832
+	'dq_id' type_id=1730 bits_offset=896
+	'dq_off' type_id=96 bits_offset=960
+	'dq_flags' type_id=10 bits_offset=1024
+	'dq_dqb' type_id=1735 bits_offset=1088
+[80645] PTR '(anon)' type_id=80646
+[80646] FUNC_PROTO '(anon)' ret_type_id=80643 vlen=2
+	'(anon)' type_id=80132
+	'(anon)' type_id=9
+[80647] PTR '(anon)' type_id=80648
+[80648] FUNC_PROTO '(anon)' ret_type_id=0 vlen=1
+	'(anon)' type_id=80643
+[80649] PTR '(anon)' type_id=80650
+[80650] FUNC_PROTO '(anon)' ret_type_id=1743 vlen=1
+	'(anon)' type_id=80097
+[80651] PTR '(anon)' type_id=80652
+[80652] FUNC_PROTO '(anon)' ret_type_id=9 vlen=2
+	'(anon)' type_id=80097
+	'(anon)' type_id=1746
+[80653] PTR '(anon)' type_id=80654
+[80654] FUNC_PROTO '(anon)' ret_type_id=9 vlen=2
+	'(anon)' type_id=80097
+	'(anon)' type_id=1743
+[80655] PTR '(anon)' type_id=80656
+[80656] FUNC_PROTO '(anon)' ret_type_id=9 vlen=2
+	'(anon)' type_id=80132
+	'(anon)' type_id=1751
+[80657] PTR '(anon)' type_id=80658
+[80658] CONST '(anon)' type_id=80659
+[80659] STRUCT 'quotactl_ops' size=88 vlen=11
+	'quota_on' type_id=80660 bits_offset=0
+	'quota_off' type_id=80622 bits_offset=64
+	'quota_enable' type_id=80664 bits_offset=128
+	'quota_disable' type_id=80664 bits_offset=192
+	'quota_sync' type_id=80622 bits_offset=256
+	'set_info' type_id=80666 bits_offset=320
+	'get_dqblk' type_id=80668 bits_offset=384
+	'get_nextdqblk' type_id=80670 bits_offset=448
+	'set_dqblk' type_id=80668 bits_offset=512
+	'get_state' type_id=80672 bits_offset=576
+	'rm_xquota' type_id=80664 bits_offset=640
+[80660] PTR '(anon)' type_id=80661
+[80661] FUNC_PROTO '(anon)' ret_type_id=9 vlen=4
+	'(anon)' type_id=80132
+	'(anon)' type_id=9
+	'(anon)' type_id=9
+	'(anon)' type_id=80662
+[80662] PTR '(anon)' type_id=80663
+[80663] CONST '(anon)' type_id=80388
+[80664] PTR '(anon)' type_id=80665
+[80665] FUNC_PROTO '(anon)' ret_type_id=9 vlen=2
+	'(anon)' type_id=80132
+	'(anon)' type_id=49
+[80666] PTR '(anon)' type_id=80667
+[80667] FUNC_PROTO '(anon)' ret_type_id=9 vlen=3
+	'(anon)' type_id=80132
+	'(anon)' type_id=9
+	'(anon)' type_id=1763
+[80668] PTR '(anon)' type_id=80669
+[80669] FUNC_PROTO '(anon)' ret_type_id=9 vlen=3
+	'(anon)' type_id=80132
+	'(anon)' type_id=1730
+	'(anon)' type_id=1767
+[80670] PTR '(anon)' type_id=80671
+[80671] FUNC_PROTO '(anon)' ret_type_id=9 vlen=3
+	'(anon)' type_id=80132
+	'(anon)' type_id=1751
+	'(anon)' type_id=1767
+[80672] PTR '(anon)' type_id=80673
+[80673] FUNC_PROTO '(anon)' ret_type_id=9 vlen=2
+	'(anon)' type_id=80132
+	'(anon)' type_id=1773
+[80674] STRUCT 'quota_info' size=312 vlen=5
+	'flags' type_id=49 bits_offset=0
+	'dqio_sem' type_id=376 bits_offset=64
+	'files' type_id=80675 bits_offset=384
+	'info' type_id=80676 bits_offset=576
+	'ops' type_id=80683 bits_offset=2304
+[80675] ARRAY '(anon)' type_id=80097 index_type_id=9 nr_elems=3
+[80676] ARRAY '(anon)' type_id=80677 index_type_id=9 nr_elems=3
+[80677] STRUCT 'mem_dqinfo' size=72 vlen=9
+	'dqi_format' type_id=80678 bits_offset=0
+	'dqi_fmt_id' type_id=9 bits_offset=64
+	'dqi_dirty_list' type_id=34 bits_offset=128
+	'dqi_flags' type_id=10 bits_offset=256
+	'dqi_bgrace' type_id=49 bits_offset=320
+	'dqi_igrace' type_id=49 bits_offset=352
+	'dqi_max_spc_limit' type_id=1736 bits_offset=384
+	'dqi_max_ino_limit' type_id=1736 bits_offset=448
+	'dqi_priv' type_id=19 bits_offset=512
+[80678] PTR '(anon)' type_id=80679
+[80679] STRUCT 'quota_format_type' size=32 vlen=4
+	'qf_fmt_id' type_id=9 bits_offset=0
+	'qf_ops' type_id=80680 bits_offset=64
+	'qf_owner' type_id=80050 bits_offset=128
+	'qf_next' type_id=80678 bits_offset=192
+[80680] PTR '(anon)' type_id=80681
+[80681] CONST '(anon)' type_id=80682
+[80682] STRUCT 'quota_format_ops' size=64 vlen=8
+	'check_quota_file' type_id=80622 bits_offset=0
+	'read_file_info' type_id=80622 bits_offset=64
+	'write_file_info' type_id=80622 bits_offset=128
+	'free_file_info' type_id=80622 bits_offset=192
+	'read_dqblk' type_id=80641 bits_offset=256
+	'commit_dqblk' type_id=80641 bits_offset=320
+	'release_dqblk' type_id=80641 bits_offset=384
+	'get_next_id' type_id=80655 bits_offset=448
+[80683] ARRAY '(anon)' type_id=80680 index_type_id=9 nr_elems=3
+[80684] STRUCT 'sb_writers' size=296 vlen=3
+	'frozen' type_id=74 bits_offset=0
+	'freeze_holders' type_id=74 bits_offset=16
+	'rw_sem' type_id=80685 bits_offset=64
+[80685] ARRAY '(anon)' type_id=80686 index_type_id=9 nr_elems=3
+[80686] STRUCT 'percpu_rw_semaphore' size=96 vlen=5
+	'rss' type_id=1810 bits_offset=0
+	'read_count' type_id=1812 bits_offset=384
+	'writer' type_id=80687 bits_offset=448
+	'waiters' type_id=295 bits_offset=512
+	'block' type_id=7 bits_offset=704
+[80687] STRUCT 'rcuwait' size=8 vlen=1
+	'task' type_id=80284 bits_offset=0
+[80688] PTR '(anon)' type_id=80689
+[80689] STRUCT 'shrinker' size=128 vlen=12
+	'count_objects' type_id=80690 bits_offset=0
+	'scan_objects' type_id=80690 bits_offset=64
+	'batch' type_id=15 bits_offset=128
+	'seeks' type_id=9 bits_offset=192
+	'flags' type_id=49 bits_offset=224
+	'refcount' type_id=292 bits_offset=256
+	'done' type_id=460 bits_offset=320
+	'rcu' type_id=277 bits_offset=576
+	'private_data' type_id=19 bits_offset=704
+	'list' type_id=34 bits_offset=768
+	'id' type_id=9 bits_offset=896
+	'nr_deferred' type_id=1822 bits_offset=960
+[80690] PTR '(anon)' type_id=80691
+[80691] FUNC_PROTO '(anon)' ret_type_id=10 vlen=2
+	'(anon)' type_id=80688
+	'(anon)' type_id=80636
+[80692] PTR '(anon)' type_id=80388
+[80693] PTR '(anon)' type_id=80694
+[80694] FUNC_PROTO '(anon)' ret_type_id=9 vlen=2
+	'(anon)' type_id=80662
+	'(anon)' type_id=89
+[80695] PTR '(anon)' type_id=80696
+[80696] FUNC_PROTO '(anon)' ret_type_id=80105 vlen=2
+	'(anon)' type_id=80105
+	'(anon)' type_id=80697
+[80697] PTR '(anon)' type_id=80698
+[80698] CONST '(anon)' type_id=80099
+[80699] PTR '(anon)' type_id=80700
+[80700] FUNC_PROTO '(anon)' ret_type_id=2 vlen=3
+	'(anon)' type_id=80105
+	'(anon)' type_id=80097
+	'(anon)' type_id=1836
+[80701] PTR '(anon)' type_id=80702
+[80702] FUNC_PROTO '(anon)' ret_type_id=9 vlen=3
+	'(anon)' type_id=1791
+	'(anon)' type_id=80097
+	'(anon)' type_id=9
+[80703] PTR '(anon)' type_id=80704
+[80704] FUNC_PROTO '(anon)' ret_type_id=1842 vlen=3
+	'(anon)' type_id=80097
+	'(anon)' type_id=9
+	'(anon)' type_id=89
+[80705] PTR '(anon)' type_id=80706
+[80706] FUNC_PROTO '(anon)' ret_type_id=9 vlen=3
+	'(anon)' type_id=80105
+	'(anon)' type_id=37
+	'(anon)' type_id=9
+[80707] PTR '(anon)' type_id=80708
+[80708] FUNC_PROTO '(anon)' ret_type_id=9 vlen=5
+	'(anon)' type_id=1791
+	'(anon)' type_id=80097
+	'(anon)' type_id=80105
+	'(anon)' type_id=159
+	'(anon)' type_id=89
+[80709] PTR '(anon)' type_id=80710
+[80710] FUNC_PROTO '(anon)' ret_type_id=9 vlen=3
+	'(anon)' type_id=80105
+	'(anon)' type_id=80097
+	'(anon)' type_id=80105
+[80711] PTR '(anon)' type_id=80712
+[80712] FUNC_PROTO '(anon)' ret_type_id=9 vlen=2
+	'(anon)' type_id=80097
+	'(anon)' type_id=80105
+[80713] PTR '(anon)' type_id=80714
+[80714] FUNC_PROTO '(anon)' ret_type_id=9 vlen=4
+	'(anon)' type_id=1791
+	'(anon)' type_id=80097
+	'(anon)' type_id=80105
+	'(anon)' type_id=2
+[80715] PTR '(anon)' type_id=80716
+[80716] FUNC_PROTO '(anon)' ret_type_id=9 vlen=4
+	'(anon)' type_id=1791
+	'(anon)' type_id=80097
+	'(anon)' type_id=80105
+	'(anon)' type_id=159
+[80717] PTR '(anon)' type_id=80718
+[80718] FUNC_PROTO '(anon)' ret_type_id=9 vlen=5
+	'(anon)' type_id=1791
+	'(anon)' type_id=80097
+	'(anon)' type_id=80105
+	'(anon)' type_id=159
+	'(anon)' type_id=247
+[80719] PTR '(anon)' type_id=80720
+[80720] FUNC_PROTO '(anon)' ret_type_id=9 vlen=6
+	'(anon)' type_id=1791
+	'(anon)' type_id=80097
+	'(anon)' type_id=80105
+	'(anon)' type_id=80097
+	'(anon)' type_id=80105
+	'(anon)' type_id=49
+[80721] PTR '(anon)' type_id=80722
+[80722] FUNC_PROTO '(anon)' ret_type_id=9 vlen=3
+	'(anon)' type_id=1791
+	'(anon)' type_id=80105
+	'(anon)' type_id=80723
+[80723] PTR '(anon)' type_id=80724
+[80724] STRUCT 'iattr' size=80 vlen=9
+	'ia_valid' type_id=49 bits_offset=0
+	'ia_mode' type_id=159 bits_offset=32
+	'(anon)' type_id=1862 bits_offset=64
+	'(anon)' type_id=1863 bits_offset=96
+	'ia_size' type_id=96 bits_offset=128
+	'ia_atime' type_id=1867 bits_offset=192
+	'ia_mtime' type_id=1867 bits_offset=320
+	'ia_ctime' type_id=1867 bits_offset=448
+	'ia_file' type_id=80267 bits_offset=576
+[80725] PTR '(anon)' type_id=80726
+[80726] FUNC_PROTO '(anon)' ret_type_id=9 vlen=5
+	'(anon)' type_id=1791
+	'(anon)' type_id=80662
+	'(anon)' type_id=1870
+	'(anon)' type_id=209
+	'(anon)' type_id=49
+[80727] PTR '(anon)' type_id=80728
+[80728] FUNC_PROTO '(anon)' ret_type_id=154 vlen=3
+	'(anon)' type_id=80105
+	'(anon)' type_id=37
+	'(anon)' type_id=82
+[80729] PTR '(anon)' type_id=80730
+[80730] FUNC_PROTO '(anon)' ret_type_id=9 vlen=4
+	'(anon)' type_id=80097
+	'(anon)' type_id=1876
+	'(anon)' type_id=93
+	'(anon)' type_id=93
+[80731] PTR '(anon)' type_id=80732
+[80732] FUNC_PROTO '(anon)' ret_type_id=9 vlen=2
+	'(anon)' type_id=80097
+	'(anon)' type_id=9
+[80733] PTR '(anon)' type_id=80734
+[80734] FUNC_PROTO '(anon)' ret_type_id=9 vlen=5
+	'(anon)' type_id=80097
+	'(anon)' type_id=80105
+	'(anon)' type_id=80267
+	'(anon)' type_id=49
+	'(anon)' type_id=159
+[80735] PTR '(anon)' type_id=80736
+[80736] FUNC_PROTO '(anon)' ret_type_id=9 vlen=4
+	'(anon)' type_id=1791
+	'(anon)' type_id=80097
+	'(anon)' type_id=80267
+	'(anon)' type_id=159
+[80737] PTR '(anon)' type_id=80738
+[80738] FUNC_PROTO '(anon)' ret_type_id=1842 vlen=3
+	'(anon)' type_id=1791
+	'(anon)' type_id=80105
+	'(anon)' type_id=9
+[80739] PTR '(anon)' type_id=80740
+[80740] FUNC_PROTO '(anon)' ret_type_id=9 vlen=4
+	'(anon)' type_id=1791
+	'(anon)' type_id=80105
+	'(anon)' type_id=1842
+	'(anon)' type_id=9
+[80741] PTR '(anon)' type_id=80742
+[80742] FUNC_PROTO '(anon)' ret_type_id=9 vlen=3
+	'(anon)' type_id=1791
+	'(anon)' type_id=80105
+	'(anon)' type_id=1889
+[80743] PTR '(anon)' type_id=80744
+[80744] FUNC_PROTO '(anon)' ret_type_id=9 vlen=2
+	'(anon)' type_id=80105
+	'(anon)' type_id=1889
+[80745] PTR '(anon)' type_id=80746
+[80746] FUNC_PROTO '(anon)' ret_type_id=1894 vlen=1
+	'(anon)' type_id=80097
+[80747] PTR '(anon)' type_id=80748
+[80748] CONST '(anon)' type_id=80749
+[80749] STRUCT 'address_space_operations' size=160 vlen=20
+	'writepage' type_id=80750 bits_offset=0
+	'read_folio' type_id=80752 bits_offset=64
+	'writepages' type_id=80760 bits_offset=128
+	'dirty_folio' type_id=80762 bits_offset=192
+	'readahead' type_id=1911 bits_offset=256
+	'write_begin' type_id=80764 bits_offset=320
+	'write_end' type_id=80767 bits_offset=384
+	'bmap' type_id=80769 bits_offset=448
+	'invalidate_folio' type_id=80771 bits_offset=512
+	'release_folio' type_id=80773 bits_offset=576
+	'free_folio' type_id=80775 bits_offset=640
+	'direct_IO' type_id=80398 bits_offset=704
+	'migrate_folio' type_id=80777 bits_offset=768
+	'launder_folio' type_id=80779 bits_offset=832
+	'is_partially_uptodate' type_id=80781 bits_offset=896
+	'is_dirty_writeback' type_id=80783 bits_offset=960
+	'error_remove_page' type_id=80785 bits_offset=1024
+	'swap_activate' type_id=80787 bits_offset=1088
+	'swap_deactivate' type_id=80437 bits_offset=1152
+	'swap_rw' type_id=80789 bits_offset=1216
+[80750] PTR '(anon)' type_id=80751
+[80751] FUNC_PROTO '(anon)' ret_type_id=9 vlen=2
+	'(anon)' type_id=80312
+	'(anon)' type_id=80151
+[80752] PTR '(anon)' type_id=80753
+[80753] FUNC_PROTO '(anon)' ret_type_id=9 vlen=2
+	'(anon)' type_id=80267
+	'(anon)' type_id=80754
+[80754] PTR '(anon)' type_id=80759
+[80755] STRUCT '(anon)' size=64 vlen=8
+	'flags' type_id=10 bits_offset=0
+	'(anon)' type_id=1571 bits_offset=64
+	'mapping' type_id=80095 bits_offset=192
+	'index' type_id=10 bits_offset=256
+	'(anon)' type_id=1572 bits_offset=320
+	'_mapcount' type_id=7 bits_offset=384
+	'_refcount' type_id=7 bits_offset=416
+	'memcg_data' type_id=10 bits_offset=448
+[80756] UNION '(anon)' size=64 vlen=2
+	'(anon)' type_id=80755 bits_offset=0
+	'page' type_id=80316 bits_offset=0
+[80757] UNION '(anon)' size=64 vlen=2
+	'(anon)' type_id=1575 bits_offset=0
+	'__page_1' type_id=80316 bits_offset=0
+[80758] UNION '(anon)' size=64 vlen=3
+	'(anon)' type_id=1577 bits_offset=0
+	'(anon)' type_id=1578 bits_offset=0
+	'__page_2' type_id=80316 bits_offset=0
+[80759] STRUCT 'folio' size=192 vlen=3
+	'(anon)' type_id=80756 bits_offset=0
+	'(anon)' type_id=80757 bits_offset=512
+	'(anon)' type_id=80758 bits_offset=1024
+[80760] PTR '(anon)' type_id=80761
+[80761] FUNC_PROTO '(anon)' ret_type_id=9 vlen=2
+	'(anon)' type_id=80095
+	'(anon)' type_id=80151
+[80762] PTR '(anon)' type_id=80763
+[80763] FUNC_PROTO '(anon)' ret_type_id=89 vlen=2
+	'(anon)' type_id=80095
+	'(anon)' type_id=80754
+[80764] PTR '(anon)' type_id=80765
+[80765] FUNC_PROTO '(anon)' ret_type_id=9 vlen=6
+	'(anon)' type_id=80267
+	'(anon)' type_id=80095
+	'(anon)' type_id=96
+	'(anon)' type_id=49
+	'(anon)' type_id=80766
+	'(anon)' type_id=1335
+[80766] PTR '(anon)' type_id=80312
+[80767] PTR '(anon)' type_id=80768
+[80768] FUNC_PROTO '(anon)' ret_type_id=9 vlen=7
+	'(anon)' type_id=80267
+	'(anon)' type_id=80095
+	'(anon)' type_id=96
+	'(anon)' type_id=49
+	'(anon)' type_id=49
+	'(anon)' type_id=80312
+	'(anon)' type_id=19
+[80769] PTR '(anon)' type_id=80770
+[80770] FUNC_PROTO '(anon)' ret_type_id=1095 vlen=2
+	'(anon)' type_id=80095
+	'(anon)' type_id=1095
+[80771] PTR '(anon)' type_id=80772
+[80772] FUNC_PROTO '(anon)' ret_type_id=0 vlen=3
+	'(anon)' type_id=80754
+	'(anon)' type_id=82
+	'(anon)' type_id=82
+[80773] PTR '(anon)' type_id=80774
+[80774] FUNC_PROTO '(anon)' ret_type_id=89 vlen=2
+	'(anon)' type_id=80754
+	'(anon)' type_id=303
+[80775] PTR '(anon)' type_id=80776
+[80776] FUNC_PROTO '(anon)' ret_type_id=0 vlen=1
+	'(anon)' type_id=80754
+[80777] PTR '(anon)' type_id=80778
+[80778] FUNC_PROTO '(anon)' ret_type_id=9 vlen=4
+	'(anon)' type_id=80095
+	'(anon)' type_id=80754
+	'(anon)' type_id=80754
+	'(anon)' type_id=1931
+[80779] PTR '(anon)' type_id=80780
+[80780] FUNC_PROTO '(anon)' ret_type_id=9 vlen=1
+	'(anon)' type_id=80754
+[80781] PTR '(anon)' type_id=80782
+[80782] FUNC_PROTO '(anon)' ret_type_id=89 vlen=3
+	'(anon)' type_id=80754
+	'(anon)' type_id=82
+	'(anon)' type_id=82
+[80783] PTR '(anon)' type_id=80784
+[80784] FUNC_PROTO '(anon)' ret_type_id=0 vlen=3
+	'(anon)' type_id=80754
+	'(anon)' type_id=1938
+	'(anon)' type_id=1938
+[80785] PTR '(anon)' type_id=80786
+[80786] FUNC_PROTO '(anon)' ret_type_id=9 vlen=2
+	'(anon)' type_id=80095
+	'(anon)' type_id=80312
+[80787] PTR '(anon)' type_id=80788
+[80788] FUNC_PROTO '(anon)' ret_type_id=9 vlen=3
+	'(anon)' type_id=1943
+	'(anon)' type_id=80267
+	'(anon)' type_id=1148
+[80789] PTR '(anon)' type_id=80790
+[80790] FUNC_PROTO '(anon)' ret_type_id=9 vlen=2
+	'(anon)' type_id=80400
+	'(anon)' type_id=80404
+[80791] PTR '(anon)' type_id=80792
+[80792] FUNC_PROTO '(anon)' ret_type_id=154 vlen=6
+	'(anon)' type_id=80267
+	'(anon)' type_id=80054
+	'(anon)' type_id=80091
+	'(anon)' type_id=37
+	'(anon)' type_id=96
+	'(anon)' type_id=82
+[80793] PTR '(anon)' type_id=80794
+[80794] FUNC_PROTO '(anon)' ret_type_id=96 vlen=5
+	'(anon)' type_id=80267
+	'(anon)' type_id=80054
+	'(anon)' type_id=80091
+	'(anon)' type_id=96
+	'(anon)' type_id=9
+[80795] PTR '(anon)' type_id=80796
+[80796] FUNC_PROTO '(anon)' ret_type_id=9 vlen=4
+	'(anon)' type_id=80267
+	'(anon)' type_id=80054
+	'(anon)' type_id=80091
+	'(anon)' type_id=80329
+[80797] PTR '(anon)' type_id=80091
+[80798] PTR '(anon)' type_id=80799
+[80799] FUNC_PROTO '(anon)' ret_type_id=1297 vlen=1
+	'(anon)' type_id=80063
+[80800] PTR '(anon)' type_id=80801
+[80801] FUNC_PROTO '(anon)' ret_type_id=738 vlen=1
+	'(anon)' type_id=80063
+[80802] PTR '(anon)' type_id=80803
+[80803] FUNC_PROTO '(anon)' ret_type_id=0 vlen=3
+	'(anon)' type_id=80063
+	'(anon)' type_id=618
+	'(anon)' type_id=619
+[80804] PTR '(anon)' type_id=80805
+[80805] STRUCT 'module_attribute' size=56 vlen=6
+	'attr' type_id=158 bits_offset=0
+	'show' type_id=80806 bits_offset=128
+	'store' type_id=80809 bits_offset=192
+	'setup' type_id=80811 bits_offset=256
+	'test' type_id=80813 bits_offset=320
+	'free' type_id=80815 bits_offset=384
+[80806] PTR '(anon)' type_id=80807
+[80807] FUNC_PROTO '(anon)' ret_type_id=154 vlen=3
+	'(anon)' type_id=80804
+	'(anon)' type_id=80808
+	'(anon)' type_id=37
+[80808] PTR '(anon)' type_id=80052
+[80809] PTR '(anon)' type_id=80810
+[80810] FUNC_PROTO '(anon)' ret_type_id=154 vlen=4
+	'(anon)' type_id=80804
+	'(anon)' type_id=80808
+	'(anon)' type_id=2
+	'(anon)' type_id=82
+[80811] PTR '(anon)' type_id=80812
+[80812] FUNC_PROTO '(anon)' ret_type_id=0 vlen=2
+	'(anon)' type_id=80050
+	'(anon)' type_id=2
+[80813] PTR '(anon)' type_id=80814
+[80814] FUNC_PROTO '(anon)' ret_type_id=9 vlen=1
+	'(anon)' type_id=80050
+[80815] PTR '(anon)' type_id=80816
+[80816] FUNC_PROTO '(anon)' ret_type_id=0 vlen=1
+	'(anon)' type_id=80050
+[80817] PTR '(anon)' type_id=80049
+[80818] ARRAY '(anon)' type_id=80819 index_type_id=9 nr_elems=7
+[80819] STRUCT 'module_memory' size=72 vlen=3
+	'base' type_id=19 bits_offset=0
+	'size' type_id=49 bits_offset=64
+	'mtn' type_id=80820 bits_offset=128
+[80820] STRUCT 'mod_tree_node' size=56 vlen=2
+	'mod' type_id=80050 bits_offset=0
+	'node' type_id=2011 bits_offset=64
+[80821] PTR '(anon)' type_id=80822
+[80822] CONST '(anon)' type_id=80823
+[80823] STRUCT 'kernel_param_ops' size=32 vlen=4
+	'flags' type_id=49 bits_offset=0
+	'set' type_id=80824 bits_offset=64
+	'get' type_id=80827 bits_offset=128
+	'free' type_id=1309 bits_offset=192
+[80824] PTR '(anon)' type_id=80825
+[80825] FUNC_PROTO '(anon)' ret_type_id=9 vlen=2
+	'(anon)' type_id=2
+	'(anon)' type_id=80826
+[80826] PTR '(anon)' type_id=80047
+[80827] PTR '(anon)' type_id=80828
+[80828] FUNC_PROTO '(anon)' ret_type_id=9 vlen=2
+	'(anon)' type_id=37
+	'(anon)' type_id=80826
+[80829] PTR '(anon)' type_id=80830
+[80830] CONST '(anon)' type_id=80831
+[80831] STRUCT 'kparam_array' size=32 vlen=5
+	'max' type_id=49 bits_offset=0
+	'elemsize' type_id=49 bits_offset=32
+	'num' type_id=2005 bits_offset=64
+	'ops' type_id=80821 bits_offset=128
+	'elem' type_id=19 bits_offset=192
+[80832] STRUCT 'cbpf_object' size=8 vlen=2
+	'value' type_id=9 bits_offset=0
+	'refs' type_id=292 bits_offset=32
+[80833] CONST '(anon)' type_id=80834
+[80834] STRUCT 'btf_kfunc_id_set' size=24 vlen=3
+	'owner' type_id=80050 bits_offset=0
+	'set' type_id=8148 bits_offset=64
+	'filter' type_id=80835 bits_offset=128
+[80835] TYPEDEF 'btf_kfunc_filter_t' type_id=80836
+[80836] PTR '(anon)' type_id=80837
+[80837] FUNC_PROTO '(anon)' ret_type_id=9 vlen=2
+	'(anon)' type_id=80838
+	'(anon)' type_id=209
+[80838] PTR '(anon)' type_id=80839
+[80839] CONST '(anon)' type_id=80491
+[80840] PTR '(anon)' type_id=80841
+[80841] STRUCT 'cbpf_cell' size=24 vlen=2
+	'handle' type_id=80842 bits_offset=0
+	'object' type_id=80843 bits_offset=128
+[80842] STRUCT 'cbpf_ref' size=16 vlen=2
+	'id' type_id=93 bits_offset=0
+	'reserved' type_id=19 bits_offset=64
+[80843] PTR '(anon)' type_id=80832
+[80844] PTR '(anon)' type_id=80833
+[80845] PTR '(anon)' type_id=80842
+[80846] FUNC_PROTO '(anon)' ret_type_id=9 vlen=2
+	'buffer' type_id=37
+	'param' type_id=80826
+[80847] FUNC 'cbpf_counter_get' type_id=80846 linkage=static
+[80848] FUNC 'cbpf_object_refs_get' type_id=80846 linkage=static
+[80849] FUNC_PROTO '(anon)' ret_type_id=80845 vlen=1
+	'want_null' type_id=209
+[80850] FUNC 'cbpf_ref_acquire' type_id=80849 linkage=static
+[80851] FUNC_PROTO '(anon)' ret_type_id=9 vlen=1
+	'ref' type_id=80845
+[80852] FUNC 'cbpf_ref_read' type_id=80851 linkage=static
+[80853] FUNC_PROTO '(anon)' ret_type_id=0 vlen=1
+	'ref' type_id=80845
+[80854] FUNC 'cbpf_ref_release' type_id=80853 linkage=static

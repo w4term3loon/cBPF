@@ -1,0 +1,4 @@
+${REPOSITORY}/build/m4-reproduction.o5y2sbxz/snapshot/build/spatial-check.79YmHw/receipt/array-authority.patch: OK
+${REPOSITORY}/build/m4-reproduction.o5y2sbxz/snapshot/build/spatial-check.79YmHw/receipt/check_spatial.executed.sh: OK
+${REPOSITORY}/build/m4-reproduction.o5y2sbxz/snapshot/build/spatial-check.79YmHw/receipt/source-tree.manifest: OK
+${REPOSITORY}/build/m4-reproduction.o5y2sbxz/snapshot/build/spatial-check.79YmHw/receipt/builder-image.txt: OK

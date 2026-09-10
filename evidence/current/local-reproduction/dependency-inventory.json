@@ -1,0 +1,82 @@
+{
+  "project": "CBPF",
+  "created_utc": "2026-09-06T20:19:57.054160+00:00",
+  "directory": "${REPRO_DEPENDENCIES}",
+  "scope": "Pinned local dependency handoff for existing benign spatial provider and ownership-boundary recipes. No new implementation or historical exploit inputs.",
+  "source": {
+    "original": "${TEMP_SOURCE}/cheri-ebpf-closure-linux-base/.git",
+    "base_commit": "b96da308ef1a054c3c04c9445e5ed70259b7c397",
+    "base_tree": "0fc9d44a60944f77000cc125779c6207a37fa74d",
+    "spatial_tree": "e6c69574c16bc2b9bce06329f9ac3f4b3269e79a",
+    "selected_objects": 87448,
+    "restored_tree_manifests_equal": true,
+    "history": "Commit object plus complete tree/blob closure; parent history omitted. Not a full historical clone."
+  },
+  "runtime": {
+    "original_native": "${TOOLCHAIN_CACHE}",
+    "original_pahole": "${PRIOR_OWNERSHIP_EVIDENCE}/tools/pahole-runtime",
+    "restored_files": 461,
+    "restored_contents_and_symlinks_equal": true,
+    "restored_pahole_check": {
+      "version": "v1.25",
+      "environment": "Pinned builder container with read-only /opt/gate4-pahole mount, network none, cap-drop ALL, no-new-privileges",
+      "status": "PASS"
+    }
+  },
+  "builder_image": "sha256:b4de3680a00e3ac68ccc56bd87131b97c1fffcd5e016c2d1a54d7e3386d9fc6e",
+  "builder_config": "sha256:c94781e9984326cf9db883cd0b14c7b97cff894501cb7d437ef66bc77adb58c7",
+  "files": [
+    {
+      "file": "linux-source.pack",
+      "bytes": 255540386,
+      "sha256": "70d8e68b8462f11c80b96c7f557b8e28a9839546cf8069ac39a65f3dedfce844"
+    },
+    {
+      "file": "source-objects.txt",
+      "bytes": 3585368,
+      "sha256": "0e4a9b9360d3de73d0857d9bc0c42b6251f6a1efacfd4dff9521656e7356e1bc"
+    },
+    {
+      "file": "native-runtime.tar.gz",
+      "bytes": 109954219,
+      "sha256": "a89db344c80ee56f098d5741e446a6e57158d4ef74fa57a3e98bdc08deaac61d"
+    },
+    {
+      "file": "runtime-files.json",
+      "bytes": 97796,
+      "sha256": "16095a740450381a4450f65de08ae1a02a8bf487688d266af250deb0a9928d9d"
+    },
+    {
+      "file": "builder.docker.tar",
+      "bytes": 3406418432,
+      "sha256": "5c634081d0820794670865041564b1ef9fdba1f4f513626f1a8b4265ff35868c"
+    },
+    {
+      "file": "builder-inspect.json",
+      "bytes": 3612,
+      "sha256": "ba55e810d9548d7f56599ef8818da3416be9ae2078e757343bb18688778b339b"
+    },
+    {
+      "file": "builder-archive.json",
+      "bytes": 610,
+      "sha256": "6982619c33fbd7eeda46ec9894671b5937d7b4850bcc671cde7625e361088cf2"
+    },
+    {
+      "file": "host-requirements.txt",
+      "bytes": 8955,
+      "sha256": "735b5706a64b72cbfe88933b5abe06a3e85c306e81ebc9e0b7387f9b07010040"
+    },
+    {
+      "file": "README.md",
+      "bytes": 3767,
+      "sha256": "41ee71debcda43144d382d7e5d4e074b94a2b27d3588ba000fedf582fd099449"
+    }
+  ],
+  "host": {
+    "tested_distribution": "Ubuntu 24.04.4 LTS",
+    "architecture": "x86_64",
+    "requirements": "host-requirements.txt",
+    "scope": "Host shared libraries not bundled; portability is not claimed from the same-host rehearsal.",
+    "docker": "29.8.0; overlayfs/containerd image store (io.containerd.snapshotter.v1)"
+  }
+}

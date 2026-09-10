@@ -1,0 +1,406 @@
+{
+  "schema_version": "1.0.0",
+  "artifact_kind": "patch35_reviewer_pilot_preregistration",
+  "study_id": "capebpf-patch35-reviewer-pilot-v1",
+  "scope": "Separate preregistered patch-0035 causal pilot; never a partial collection or continuation of compact-fault-study v2.",
+  "prior_knowledge": {
+    "case_id": "IND-FINAL-RANGE-OVER",
+    "disclosure": "fault direction and one prior mechanism outcome were known before this pilot was preregistered"
+  },
+  "preserved_compact_v2": {
+    "study_id": "capebpf-compact-fault-basis-v2",
+    "scheduled_cells": 936,
+    "observation_count": 0,
+    "status": "not_collected",
+    "import_forbidden": true,
+    "byte_bindings": [
+      {
+        "path": "research/compact-fault-study/preregistration-v2.json",
+        "sha256": "09ce74faa0eb055781a69dc60e9194eb7964f63ceb883c3207062c8c99fc9fc8"
+      },
+      {
+        "path": "research/compact-fault-study/schedule-v2.json",
+        "sha256": "22288b4fcca3e12bb5134a40fdb970c9ff63ffb7a3fab499c48e1a2e53d0f7ea"
+      },
+      {
+        "path": "research/compact-fault-study/result-template-v2.json",
+        "sha256": "100136795dffa5bf8d5a6368e70560679fd45b9884a59b98bba4e5f62490331c"
+      }
+    ]
+  },
+  "patch35_binding": {
+    "path": "linux/patches/0035-arm64-bpf-bind-accepted-fact-gate-output-to-runtime-root.patch",
+    "sha256": "6f635e8a1981c9af4801ba828afa43606d8d063893dbdb7012fdc9167e9b6834",
+    "candidate_commit": "39cfa6630be2b855ebbaf5660427dd081338c6e5",
+    "candidate_tree": "4b4533d3c913ecd8313357fb719277d57448436e"
+  },
+  "case_families": [
+    {
+      "family_id": "delegated_verifier_obligation",
+      "case_count": 3,
+      "cases": [
+        {
+          "case_id": "IND-VAR-OFFSET-OVER",
+          "fault_id": "FACT-POINTER-VARIABLE-OFFSET-RANGE",
+          "injection_contract": "Overstate the verifier-reported variable-offset upper bound at the frozen site.",
+          "applicable_modes": [
+            "patch35_capebpf_disabled",
+            "patch35_exact_authority",
+            "patch35_broad_authority_diagnostic"
+          ],
+          "not_applicable_reason": null
+        },
+        {
+          "case_id": "IND-FINAL-RANGE-OVER",
+          "fault_id": "FACT-FINAL-RANGE-ADMISSION",
+          "injection_contract": "Overstate final verifier range admission at the frozen site.",
+          "applicable_modes": [
+            "patch35_capebpf_disabled",
+            "patch35_exact_authority",
+            "patch35_broad_authority_diagnostic"
+          ],
+          "not_applicable_reason": null
+        },
+        {
+          "case_id": "IND-CHECK-ARITH-UNDER",
+          "fault_id": "FACT-EFFECTIVE-ADDRESS-CHECK-ARITHMETIC",
+          "injection_contract": "Understate effective-address checking arithmetic at the frozen site.",
+          "applicable_modes": [
+            "patch35_capebpf_disabled",
+            "patch35_exact_authority",
+            "patch35_broad_authority_diagnostic"
+          ],
+          "not_applicable_reason": null
+        }
+      ]
+    },
+    {
+      "family_id": "reject_only_report",
+      "case_count": 4,
+      "cases": [
+        {
+          "case_id": "IND-CLASS-MISBIND",
+          "fault_id": "FACT-POINTER-OBJECT-CLASS",
+          "injection_contract": "Misbind the verifier object-class report while retaining the independent report input.",
+          "applicable_modes": [
+            "patch35_exact_authority",
+            "patch35_broad_authority_diagnostic"
+          ],
+          "not_applicable_reason": "CapeBPF-disabled mode has no fact-gate report ABI."
+        },
+        {
+          "case_id": "IND-IDENTITY-MISBIND",
+          "fault_id": "FACT-POINTER-OBJECT-IDENTITY",
+          "injection_contract": "Misbind the verifier provider-identity report while retaining the independent provider input.",
+          "applicable_modes": [
+            "patch35_exact_authority",
+            "patch35_broad_authority_diagnostic"
+          ],
+          "not_applicable_reason": "CapeBPF-disabled mode has no fact-gate report ABI."
+        },
+        {
+          "case_id": "IND-ROOT-SUMMARY-MISBIND",
+          "fault_id": "FACT-VERIFIER-ROOT-SUMMARY",
+          "injection_contract": "Misbind the verifier root-summary report while retaining the independent summary.",
+          "applicable_modes": [
+            "patch35_exact_authority",
+            "patch35_broad_authority_diagnostic"
+          ],
+          "not_applicable_reason": "CapeBPF-disabled mode has no fact-gate report ABI."
+        },
+        {
+          "case_id": "IND-ELIGIBILITY-MISBIND",
+          "fault_id": "FACT-OFFLOAD-ELIGIBILITY-MARK",
+          "injection_contract": "Misbind the verifier protected-site report while retaining the independent site digest.",
+          "applicable_modes": [
+            "patch35_exact_authority",
+            "patch35_broad_authority_diagnostic"
+          ],
+          "not_applicable_reason": "CapeBPF-disabled mode has no fact-gate report ABI."
+        }
+      ]
+    },
+    {
+      "family_id": "assignment_common_mode",
+      "case_count": 3,
+      "cases": [
+        {
+          "case_id": "ASSIGN-LOADER-PROVIDER-BINDING",
+          "fault_id": "LOADER-PROVIDER-BINDING",
+          "injection_contract": "Bind the program to provider-B while the independent intended identity remains provider-A.",
+          "applicable_modes": [
+            "patch35_capebpf_disabled",
+            "patch35_exact_authority",
+            "patch35_broad_authority_diagnostic"
+          ],
+          "not_applicable_reason": null
+        },
+        {
+          "case_id": "ASSIGN-HELPER-SELECTED-ELEMENT",
+          "fault_id": "HELPER-SELECTED-ELEMENT",
+          "injection_contract": "Return key 2 while the independent fixture selects key 0 in the same provider.",
+          "applicable_modes": [
+            "patch35_capebpf_disabled",
+            "patch35_exact_authority",
+            "patch35_broad_authority_diagnostic"
+          ],
+          "not_applicable_reason": null
+        },
+        {
+          "case_id": "ASSIGN-KERNEL-EXTENT",
+          "fault_id": "KERNEL-EXTENT",
+          "injection_contract": "Construct 32-byte authority for an independently measured 16-byte live element.",
+          "applicable_modes": [
+            "patch35_exact_authority",
+            "patch35_broad_authority_diagnostic"
+          ],
+          "not_applicable_reason": "CapeBPF-disabled mode has no capability-root extent input."
+        }
+      ]
+    }
+  ],
+  "fixture_topology": {
+    "oracle_source": "independent_of_verifier_reports_capability_fields_and_fault_dispatch",
+    "provider_count": 2,
+    "elements_per_provider": 3,
+    "value_size_bytes": 16,
+    "kernel_fixture_status": "unbound",
+    "kernel_fixture_binding": null,
+    "objects": [
+      {
+        "provider_id": "provider-A",
+        "element_key": 0,
+        "object_id": "provider-A.element-0"
+      },
+      {
+        "provider_id": "provider-A",
+        "element_key": 1,
+        "object_id": "provider-A.element-1"
+      },
+      {
+        "provider_id": "provider-A",
+        "element_key": 2,
+        "object_id": "provider-A.element-2"
+      },
+      {
+        "provider_id": "provider-B",
+        "element_key": 0,
+        "object_id": "provider-B.element-0"
+      },
+      {
+        "provider_id": "provider-B",
+        "element_key": 1,
+        "object_id": "provider-B.element-1"
+      },
+      {
+        "provider_id": "provider-B",
+        "element_key": 2,
+        "object_id": "provider-B.element-2"
+      }
+    ]
+  },
+  "injection_targets": [
+    {
+      "fault_id": "FACT-POINTER-VARIABLE-OFFSET-RANGE",
+      "site_id": "SITE-FACT-POINTER-VARIABLE-OFFSET-RANGE",
+      "target_occurrence": 1,
+      "binding_status": "unbound"
+    },
+    {
+      "fault_id": "FACT-FINAL-RANGE-ADMISSION",
+      "site_id": "SITE-FACT-FINAL-RANGE-ADMISSION",
+      "target_occurrence": 1,
+      "binding_status": "unbound"
+    },
+    {
+      "fault_id": "FACT-EFFECTIVE-ADDRESS-CHECK-ARITHMETIC",
+      "site_id": "SITE-FACT-EFFECTIVE-ADDRESS-CHECK-ARITHMETIC",
+      "target_occurrence": 1,
+      "binding_status": "unbound"
+    },
+    {
+      "fault_id": "FACT-POINTER-OBJECT-CLASS",
+      "site_id": "SITE-FACT-POINTER-OBJECT-CLASS",
+      "target_occurrence": 1,
+      "binding_status": "unbound"
+    },
+    {
+      "fault_id": "FACT-POINTER-OBJECT-IDENTITY",
+      "site_id": "SITE-FACT-POINTER-OBJECT-IDENTITY",
+      "target_occurrence": 1,
+      "binding_status": "unbound"
+    },
+    {
+      "fault_id": "FACT-VERIFIER-ROOT-SUMMARY",
+      "site_id": "SITE-FACT-VERIFIER-ROOT-SUMMARY",
+      "target_occurrence": 1,
+      "binding_status": "unbound"
+    },
+    {
+      "fault_id": "FACT-OFFLOAD-ELIGIBILITY-MARK",
+      "site_id": "SITE-FACT-OFFLOAD-ELIGIBILITY-MARK",
+      "target_occurrence": 1,
+      "binding_status": "unbound"
+    },
+    {
+      "fault_id": "LOADER-PROVIDER-BINDING",
+      "site_id": "SITE-LOADER-PROVIDER-BINDING",
+      "target_occurrence": 1,
+      "binding_status": "unbound"
+    },
+    {
+      "fault_id": "HELPER-SELECTED-ELEMENT",
+      "site_id": "SITE-HELPER-SELECTED-ELEMENT",
+      "target_occurrence": 1,
+      "binding_status": "unbound"
+    },
+    {
+      "fault_id": "KERNEL-EXTENT",
+      "site_id": "SITE-KERNEL-EXTENT",
+      "target_occurrence": 1,
+      "binding_status": "unbound"
+    }
+  ],
+  "modes": [
+    {
+      "mode_id": "patch35_capebpf_disabled",
+      "cape_enabled": false,
+      "authority_mode": "none",
+      "candidate_tree": "4b4533d3c913ecd8313357fb719277d57448436e",
+      "binding_status": "unbound",
+      "artifact_bindings": {
+        "kernel_image": null,
+        "kernel_config": null,
+        "initramfs": null,
+        "launcher": null,
+        "bytecode": null
+      }
+    },
+    {
+      "mode_id": "patch35_exact_authority",
+      "cape_enabled": true,
+      "authority_mode": "exact",
+      "candidate_tree": "4b4533d3c913ecd8313357fb719277d57448436e",
+      "binding_status": "unbound",
+      "artifact_bindings": {
+        "kernel_image": null,
+        "kernel_config": null,
+        "initramfs": null,
+        "launcher": null,
+        "bytecode": null
+      }
+    },
+    {
+      "mode_id": "patch35_broad_authority_diagnostic",
+      "cape_enabled": true,
+      "authority_mode": "broad_diagnostic",
+      "candidate_tree": "4b4533d3c913ecd8313357fb719277d57448436e",
+      "binding_status": "unbound",
+      "artifact_bindings": {
+        "kernel_image": null,
+        "kernel_config": null,
+        "initramfs": null,
+        "launcher": null,
+        "bytecode": null
+      }
+    }
+  ],
+  "schedule_contract": {
+    "randomization_seed": "capebpf-patch35-reviewer-pilot-v1-2026-08-31",
+    "randomization_method": "ascending SHA-256 of seed, dimension label, boot, mode, observation kind, and case identity",
+    "boots": 3,
+    "modes": 3,
+    "cases": 10,
+    "kinds": 2,
+    "fault_cells": 90,
+    "calibration_cells": 90,
+    "total_cells": 180,
+    "pairing": "Every fault cell has one same-boot, same-mode, same-case fault-off calibration.",
+    "boot_disagreement_policy": "unresolved_no_majority_vote"
+  },
+  "observation_contract": {
+    "required_provenance": [
+      "deployment_id",
+      "patch_sha256",
+      "candidate_commit",
+      "patch35_base_tree",
+      "overlay_patch_sha256",
+      "instrumented_tree",
+      "kernel_image_sha256",
+      "kernel_config_sha256",
+      "initramfs_sha256",
+      "launcher_sha256",
+      "bytecode_sha256",
+      "case_bytecode_sha256",
+      "case_runtime_input_sha256"
+    ],
+    "oracle_objects": 6,
+    "oracle_required_fields": [
+      "independently assigned intended provider, element key, and object identity",
+      "kernel-measured allocation base and top for all six objects",
+      "pointer-membership-derived actual provider map ID, element key, selected address, and object identity",
+      "protected-site attempted start and end address",
+      "architecturally read capability base, top, tag, and permissions",
+      "byte-exact before and after state for all six objects",
+      "completed effect ranges mechanically reconciled with byte changes"
+    ],
+    "unreached_field_policy": "Fields remain present with an explicit not_reached or not_present status and null values; successful observations may not omit or synthesize kernel evidence.",
+    "bytecode_classes": [
+      {
+        "class_id": "variable_offset_oob",
+        "case_ids": [
+          "IND-VAR-OFFSET-OVER"
+        ],
+        "program_shape": "A fixed runtime input selects variable offset 16 before an 8-byte store."
+      },
+      {
+        "class_id": "constant_oob",
+        "case_ids": [
+          "IND-FINAL-RANGE-OVER",
+          "IND-CHECK-ARITH-UNDER",
+          "ASSIGN-KERNEL-EXTENT"
+        ],
+        "program_shape": "An 8-byte store uses constant offset 16 from a 16-byte map value."
+      },
+      {
+        "class_id": "safe_identity_probe",
+        "case_ids": [
+          "IND-CLASS-MISBIND",
+          "IND-IDENTITY-MISBIND",
+          "IND-ROOT-SUMMARY-MISBIND",
+          "IND-ELIGIBILITY-MISBIND",
+          "ASSIGN-LOADER-PROVIDER-BINDING",
+          "ASSIGN-HELPER-SELECTED-ELEMENT"
+        ],
+        "program_shape": "An 8-byte store uses constant offset 0 from the selected map value."
+      }
+    ],
+    "same_pair_inputs": "Within a boot/mode/case pair, fault and calibration rows must bind identical normalized BPF instruction bytes and identical runtime-input descriptors.",
+    "calibration_paths": {
+      "oob_case_ids": [
+        "IND-VAR-OFFSET-OVER",
+        "IND-FINAL-RANGE-OVER",
+        "IND-CHECK-ARITH-UNDER",
+        "ASSIGN-KERNEL-EXTENT"
+      ],
+      "patch35_capebpf_disabled": "verifier rejection before execution",
+      "patch35_exact_authority": "offloaded verifier acceptance followed by a capability fault before effect",
+      "patch35_broad_authority_diagnostic": "offloaded verifier acceptance followed by a completed out-of-root effect; this intentional preexisting calibration violation is a width control and is never counted as a critical verifier fault",
+      "remaining_safe_cases": "accepting, completed in-root calibration"
+    },
+    "fault_fire_count": 1,
+    "calibration_fire_count": 0,
+    "classification_source": "mechanically recomputed from independently assigned intended identity, kernel-measured allocation bounds, completed ranges, and six byte-exact snapshots",
+    "common_mode_exclusion": "Allocation bounds and actual identity are derived from the six-object fixture and pointer membership, never from verifier reports, fact-gate inputs, capability bounds, or fault-dispatch metadata."
+  },
+  "reporting_constraints": {
+    "named_critical_sets_only": true,
+    "named_delegated_sets_only": true,
+    "integer_counts_only": true,
+    "percentages_forbidden": true,
+    "fact_weighting_forbidden": true,
+    "majority_vote_forbidden": true,
+    "compact_v2_import_forbidden": true,
+    "net_tcb_reduction_claim_forbidden": true
+  }
+}

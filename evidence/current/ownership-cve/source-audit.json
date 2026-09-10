@@ -1,0 +1,111 @@
+{
+  "study": "ownership CVE case",
+  "date": "2026-09-07",
+  "cve": "CVE-2022-50650",
+  "case_scope": "Causal projection of the repeated-release arm; conditional gate containment, no original CVE execution",
+  "primary_sources": [
+    {
+      "url": "https://raw.githubusercontent.com/CVEProject/cvelistV5/a0edea60322bafbed67887cf7a4d97a55df8a9fa/cves/2022/50xxx/CVE-2022-50650.json",
+      "sha256_retrieved_json": "f31a8a30f998495ec3780efca67fc9a30e3db5e2aa82e133fb20a1396c5ebdfc",
+      "cve_state": "PUBLISHED",
+      "date_published": "2025-12-09T00:00:24.598Z",
+      "cna_provider": {
+        "orgId": "416baaa9-dc9f-4396-8d5f-8c081fb06d67",
+        "shortName": "Linux",
+        "dateUpdated": "2026-08-05T08:59:14.920Z"
+      },
+      "record_commit": "a0edea60322bafbed67887cf7a4d97a55df8a9fa"
+    },
+    {
+      "url": "https://lists.openwall.net/linux-cve-announce/2025/12/09/30",
+      "message_id": "2025120937-CVE-2022-50650-fbae@gregkh",
+      "role": "Linux CNA announcement"
+    },
+    {
+      "url": "https://github.com/torvalds/linux/commit/9d9d00ac29d0ef7ce426964de46fa6b380357d0a",
+      "commit": "9d9d00ac29d0ef7ce426964de46fa6b380357d0a",
+      "title": "bpf: Fix reference state management for synchronous callbacks",
+      "parents": [
+        "5679ff2f138f77b281c468959dc5022cc524d400"
+      ],
+      "changed_files": [
+        "include/linux/bpf_verifier.h",
+        "kernel/bpf/verifier.c"
+      ],
+      "api_response_sha256": "f267c73a44c8cdaaa8129613d9d0b5548070f0387827f3b72ec256f940534b53"
+    },
+    {
+      "url": "https://lore.kernel.org/r/20220823013125.24938-1-memxor@gmail.com",
+      "role": "Original upstream patch; URL recorded in fix commit"
+    }
+  ],
+  "upstream_policy": "Callbacks cannot release caller-owned references, including the first release; their own references must be discharged before callback exit.",
+  "cbpf_policy": "A live acquisition can be consumed once; repeated mediated consumption is terminally rejected before another provider decrement.",
+  "current_kernel_source": {
+    "base_commit": "b96da308ef1a054c3c04c9445e5ed70259b7c397",
+    "verifier": {
+      "file": "build/ownership-m3-source/kernel/bpf/verifier.c",
+      "bytes": 631929,
+      "sha256": "48268a29931754296882a9ff6847eb556ba8e8564959be1c62754afdb2fb4851"
+    },
+    "matches_m3_verifier": true,
+    "callback_frame_release_guard_present": true,
+    "runtime": {
+      "file": "linux/ownership/cbpf_runtime.c",
+      "bytes": 15577,
+      "sha256": "a70dfb8b78ec3f6bd6d97afc3ad4c67a8cc63741955bd1005897942776b86296"
+    },
+    "runtime_matches_retained_m3_source": true
+  },
+  "prior_kernel_mechanism_evidence": {
+    "receipt": {
+      "file": "evidence/current/ownership-closure/manifest.json",
+      "bytes": 15063,
+      "sha256": "8952cbfd8fa77d4d27c88fc7458c9a06636d8b69d166b16d8e75ad12f5502df7"
+    },
+    "raw_log": {
+      "file": "evidence/current/ownership-closure/boot.log",
+      "bytes": 120791,
+      "sha256": "b0fe5332e9a52e53ac6a3f452d2f8e86bfe4a1d27a79dbc368aa1843194e1b8d"
+    },
+    "results": {
+      "file": "evidence/current/ownership-closure/results.json",
+      "bytes": 2383,
+      "sha256": "63d3ae5462ad09f5f0a0859a1348057664767164f707cec217e9a56600065ad4"
+    },
+    "trusted_case": "duplicate_release",
+    "event_order": [
+      "acquire",
+      "clear",
+      "release",
+      "reject"
+    ],
+    "provider_releases_at_rejection": 1,
+    "refs_at_rejection": 1,
+    "native_bpf": false,
+    "line_range": [
+      238,
+      244
+    ],
+    "separate_native_positive_controls": [
+      "ab_spill",
+      "ab_alternate"
+    ]
+  },
+  "new_execution": {
+    "python_model_controls": 2,
+    "host_c_comparisons": 4,
+    "kernel_boots": 0,
+    "bpf_programs": 0,
+    "callbacks": 0,
+    "cve_triggers": 0
+  },
+  "excluded_claims": [
+    "Original CVE reproduction or kernel callback mitigation",
+    "Equivalence to callback frame ownership policy",
+    "Repeated-acquisition/leak arm",
+    "Heap reclamation safety",
+    "A/B independence as a prerequisite for this CVE",
+    "General callback support or verifier-fault tolerance"
+  ]
+}

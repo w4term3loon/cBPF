@@ -1,0 +1,14 @@
+[
+  {
+    "path": "tools/check_spatial_native.py",
+    "before_sha256": "28d5594df71bbe4b35e87a78970455540a0c57bbbe1969fef5c923ce85774d06",
+    "after_sha256": "72c0b60f09f60c6d5d8afa4669586f81c5ff6573f4caada6067c25c2e95be631",
+    "change": "Only the container image reference; no fixture, gate, kernel source, verifier or checking rule change."
+  },
+  {
+    "path": "tools/run_kfunc.sh",
+    "before_sha256": "2c4c5741f4b954c2d6a6637110f9fda0cc459c9049140f0e8e422ef0cdc47b46",
+    "after_sha256": "09570ecd387fe8d78f8e20b4ed1631c55e381f7b62507bd174893302a5d45e46",
+    "change": "Only the container image reference; no fixture, gate, kernel source, verifier or checking rule change."
+  }
+]

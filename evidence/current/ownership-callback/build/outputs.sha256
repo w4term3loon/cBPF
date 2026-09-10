@@ -1,0 +1,5 @@
+8fd1060607323771fb19ecfdd0008eb3b52f080bd4211c556180bb211611f46f  ${REPOSITORY}/build/ownership-c1-kernel/arch/arm64/boot/Image
+6497b5ba02bfc4e09cd17ff293942a45504a4b1f64497740e5fc5474345a23fa  ${REPOSITORY}/build/ownership-c1-kernel/vmlinux
+2cdaa5365903c7026ab867e22ab8767d6d2b1c0b3944eeb7e862234b64fe7a6c  ${REPOSITORY}/build/ownership-c1-kernel/Module.symvers
+6f1988add3ba99cd6d2569b2bcbc705886c3de2fd27195564cf8b6a3324e4cff  ${REPOSITORY}/build/ownership-c1-kernel/.config
+74af41e84ad29a873ef72bac6dee73a0923aa879b5870decf456b857126225fe  ${REPOSITORY}/build/ownership-c1-headers/include/linux/bpf.h

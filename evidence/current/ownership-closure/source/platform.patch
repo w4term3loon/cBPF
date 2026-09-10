@@ -1,0 +1,242 @@
+diff --git a/arch/arm64/include/asm/morello.h b/arch/arm64/include/asm/morello.h
+index 556af690ed4d7c0fc4cca0e0efac61d7c8c317c5..c33a7193b397c5f3daff22469cadaed179efea86 100644
+--- a/arch/arm64/include/asm/morello.h
++++ b/arch/arm64/include/asm/morello.h
+@@ -19,7 +19,6 @@ struct morello_state {
+ 	uintcap_t	ctpidr;
+ 	uintcap_t	rctpidr;
+ 	uintcap_t	ddc;
+-	uintcap_t	rddc;
+ 	uintcap_t	cid;
+ 	unsigned long	cctlr;
+ };
+diff --git a/arch/arm64/include/asm/ptrace.h b/arch/arm64/include/asm/ptrace.h
+index c7fa869f9191caed80f64ad0d9ff9bef3ec67f41..1be90aebfcd5de2d1d541c9936ef5d35b2b48c40 100644
+--- a/arch/arm64/include/asm/ptrace.h
++++ b/arch/arm64/include/asm/ptrace.h
+@@ -208,6 +208,7 @@ struct pt_regs {
+ 	uintcap_t csp;
+ 	uintcap_t rcsp;
+ 	uintcap_t pcc;
++	uintcap_t rddc;
+ #endif
+ };
+ 
+diff --git a/arch/arm64/include/asm/suspend.h b/arch/arm64/include/asm/suspend.h
+index 7d49c553b8dfe4a5672b0a5b83db4124453bcb23..d7672c60aa9fce78c321f8e4c6e2f54111640465 100644
+--- a/arch/arm64/include/asm/suspend.h
++++ b/arch/arm64/include/asm/suspend.h
+@@ -5,7 +5,7 @@
+ #include <asm/morello.h>
+ 
+ #define NR_CTX_REGS 13
+-#define NR_CTX_CREGS 6
++#define NR_CTX_CREGS 5
+ #define NR_CALLEE_SAVED_REGS 12
+ 
+ /*
+diff --git a/arch/arm64/kernel/asm-offsets.c b/arch/arm64/kernel/asm-offsets.c
+index defc1f6f5d116a5f575298d39ed645f3572acc94..efa3431db4cba6c04b3ec35fbc93248cb250e99a 100644
+--- a/arch/arm64/kernel/asm-offsets.c
++++ b/arch/arm64/kernel/asm-offsets.c
+@@ -85,6 +85,7 @@ int main(void)
+   DEFINE(S_CREGS,		offsetof(struct pt_regs, cregs));
+   DEFINE(S_CSP,			offsetof(struct pt_regs, csp));
+   DEFINE(S_PCC,			offsetof(struct pt_regs, pcc));
++  DEFINE(S_RDDC,		offsetof(struct pt_regs, rddc));
+ #endif
+   DEFINE(PT_REGS_SIZE,		sizeof(struct pt_regs));
+   BLANK();
+diff --git a/arch/arm64/kernel/entry-common.c b/arch/arm64/kernel/entry-common.c
+index 63cab2184e11c7e6cc60a999c7012932c23a6ddc..bf34209fcab136f6d1d1f8c31a616c9e60f928f5 100644
+--- a/arch/arm64/kernel/entry-common.c
++++ b/arch/arm64/kernel/entry-common.c
+@@ -384,10 +384,25 @@ static inline void fp_user_discard(void)
+ 	}
+ }
+ 
+-UNHANDLED(el1t, 64, sync)
+-UNHANDLED(el1t, 64, irq)
+-UNHANDLED(el1t, 64, fiq)
+-UNHANDLED(el1t, 64, error)
++asmlinkage void noinstr el1t_64_sync_handler(struct pt_regs *regs)
++{
++	el1h_64_sync_handler(regs);
++}
++
++asmlinkage void noinstr el1t_64_irq_handler(struct pt_regs *regs)
++{
++	el1h_64_irq_handler(regs);
++}
++
++asmlinkage void noinstr el1t_64_fiq_handler(struct pt_regs *regs)
++{
++	el1h_64_fiq_handler(regs);
++}
++
++asmlinkage void noinstr el1t_64_error_handler(struct pt_regs *regs)
++{
++	el1h_64_error_handler(regs);
++}
+ 
+ static void noinstr el1_abort(struct pt_regs *regs, unsigned long esr)
+ {
+diff --git a/arch/arm64/kernel/entry.S b/arch/arm64/kernel/entry.S
+index 329f58c5d1fb7b312f145ffe001cd5e3e0b1c0a5..949c6869daa7be05427dc018cf10c619aaee0f6b 100644
+--- a/arch/arm64/kernel/entry.S
++++ b/arch/arm64/kernel/entry.S
+@@ -239,6 +239,9 @@ alternative_cb_end
+ 
+ 	mrs	c26, celr_el1
+ 	str	c26, [sp, #S_PCC]
++
++	mrs	c27, rddc_el0
++	str	c27, [sp, #S_RDDC]
+ #endif
+ 
+ 	.if	\el == 0
+@@ -309,6 +312,10 @@ alternative_else_nop_endif
+ 
+ 	scs_load_current
+ 	.else
++#ifdef CONFIG_ARM64_MORELLO
++	mrs	c22, rcsp_el0
++	str	c22, [sp, #S_CSP + 16]
++#endif
+ 	add	x21, sp, #PT_REGS_SIZE
+ 	get_current_task tsk
+ 	.endif /* \el == 0 */
+@@ -476,11 +483,19 @@ alternative_else_nop_endif
+ 	mte_set_user_gcr tsk, x0, x1
+ 
+ 	apply_ssbd 0, x0, x1
++#ifdef CONFIG_ARM64_MORELLO
++	.else
++	ldr	c25, [sp, #S_CSP + 16]
++	msr	rcsp_el0, c25
++#endif
+ 	.endif
+ 
+ 	msr	spsr_el1, x22
+ 
+ #ifdef CONFIG_ARM64_MORELLO
++	ldr	c25, [sp, #S_RDDC]
++	msr	rddc_el0, c25
++
+ 	morello_merge_c_x 26, x21		// merge PC into PCC
+ 	msr	celr_el1, c26
+ 
+diff --git a/arch/arm64/kernel/head.S b/arch/arm64/kernel/head.S
+index 59fda4ffc43fdf9efc660e9884b2530f45328d23..072a676a7bbc9ba52fa52079f5a1874b7e4ca31b 100644
+--- a/arch/arm64/kernel/head.S
++++ b/arch/arm64/kernel/head.S
+@@ -598,8 +598,9 @@ SYM_INNER_LABEL(init_el2, SYM_L_LOCAL)
+ 	bic	x1, x1, #CPTR_EL2_TC
+ 	msr	cptr_el2, x1
+ 	isb
+-	/* Disable PCC/DDC base offset and other capability-related features */
+-	msr	cctlr_el2, xzr
++	/* Seal CLR / require a sealed target for capability branches */
++	mov	x9, #CCTLR_ELx_SBL
++	msr	cctlr_el2, x9
+ 
+ 	/*
+ 	 * Capability exception entry/return is now enabled, as a result we
+diff --git a/arch/arm64/kernel/morello.c b/arch/arm64/kernel/morello.c
+index da9d8b1f25782d21971364983073479d135106d7..7003c53445f97d779735ad0ee7c077b83d89dfb2 100644
+--- a/arch/arm64/kernel/morello.c
++++ b/arch/arm64/kernel/morello.c
+@@ -172,9 +172,7 @@ void morello_thread_init_user(void)
+ 	write_cap_sysreg(0, rctpidr_el0);
+ 
+ 	write_cap_sysreg(ddc, ddc_el0);
+-	write_cap_sysreg(0, rddc_el0);
+ 	morello_state->ddc = ddc;
+-	morello_state->rddc = (uintcap_t)0;
+ 
+ 	write_cap_sysreg(0, cid_el0);
+ 	morello_state->cid = (uintcap_t)0;
+@@ -205,7 +203,6 @@ void morello_thread_save_user_state(struct task_struct *tsk)
+ 
+ 	/* (R)CTPIDR is handled by task_save_user_tls */
+ 	morello_state->ddc = read_cap_sysreg(ddc_el0);
+-	morello_state->rddc = read_cap_sysreg(rddc_el0);
+ 	morello_state->cid = read_cap_sysreg(cid_el0);
+ 	morello_state->cctlr = read_sysreg(cctlr_el0);
+ }
+@@ -216,7 +213,6 @@ void morello_thread_restore_user_state(struct task_struct *tsk)
+ 
+ 	/* (R)CTPIDR is handled by task_restore_user_tls */
+ 	write_cap_sysreg(morello_state->ddc, ddc_el0);
+-	write_cap_sysreg(morello_state->rddc, rddc_el0);
+ 	write_cap_sysreg(morello_state->cid, cid_el0);
+ 	write_sysreg(morello_state->cctlr, cctlr_el0);
+ }
+diff --git a/arch/arm64/kernel/ptrace.c b/arch/arm64/kernel/ptrace.c
+index be1faed4908e3f3818d47a940637766084ad8baa..57aa2c49f6d0df9795b4ba736d212981994d655a 100644
+--- a/arch/arm64/kernel/ptrace.c
++++ b/arch/arm64/kernel/ptrace.c
+@@ -1472,7 +1472,7 @@ static int morello_get(struct task_struct *target,
+ 	MORELLO_STATE_COPY_VAL_TAG(out, ctpidr, morello_state->ctpidr);
+ 
+ 	MORELLO_STATE_COPY_VAL_TAG(out, rcsp, regs->rcsp);
+-	MORELLO_STATE_COPY_VAL_TAG(out, rddc, morello_state->rddc);
++	MORELLO_STATE_COPY_VAL_TAG(out, rddc, regs->rddc);
+ 	MORELLO_STATE_COPY_VAL_TAG(out, rctpidr, morello_state->rctpidr);
+ 
+ 	MORELLO_STATE_COPY_VAL_TAG(out, cid, morello_state->cid);
+@@ -1514,7 +1514,7 @@ static int morello_set(struct task_struct *target,
+ 	MORELLO_STATE_BUILD_CAP(new_state, ctpidr, morello_state->ctpidr);
+ 
+ 	MORELLO_STATE_BUILD_CAP(new_state, rcsp, regs->rcsp);
+-	MORELLO_STATE_BUILD_CAP(new_state, rddc, morello_state->rddc);
++	MORELLO_STATE_BUILD_CAP(new_state, rddc, regs->rddc);
+ 	MORELLO_STATE_BUILD_CAP(new_state, rctpidr, morello_state->rctpidr);
+ 
+ 	MORELLO_STATE_BUILD_CAP(new_state, cid, morello_state->cid);
+diff --git a/arch/arm64/mm/proc.S b/arch/arm64/mm/proc.S
+index f16186d16d2a605c14e858b70f70e6f0ceb9ba7a..3ba111dab6fc2830bf55ac076965ea04d5584573 100644
+--- a/arch/arm64/mm/proc.S
++++ b/arch/arm64/mm/proc.S
+@@ -92,12 +92,11 @@ SYM_FUNC_START(cpu_do_suspend)
+ 	mrs	c9, ctpidr_el0
+ 	mrs	c10, rctpidr_el0
+ 	mrs	c11, ddc_el0
+-	mrs	c12, rddc_el0
+-	mrs	c13, cid_el0
+-	mrs	c14, cvbar_el1
++	mrs	c12, cid_el0
++	mrs	c13, cvbar_el1
+ 	stp	c9, c10, [x0, #CPU_CTX_CREGS]
+ 	stp	c11, c12, [x0, #CPU_CTX_CREGS + 32]
+-	stp	c13, c14, [x0, #CPU_CTX_CREGS + 64]
++	str	c13, [x0, #CPU_CTX_CREGS + 64]
+ #else /* CONFIG_ARM64_MORELLO */
+ 	mrs	x2, tpidr_el0
+ 	mrs	x8, vbar_el1
+@@ -170,10 +169,9 @@ SYM_FUNC_START(cpu_do_resume)
+ 	msr	rctpidr_el0, c3
+ 	ldp	c2, c3, [x0, #CPU_CTX_CREGS + 32]
+ 	msr	ddc_el0, c2
+-	msr	rddc_el0, c3
+-	ldp	c2, c3, [x0, #CPU_CTX_CREGS + 64]
+-	msr	cid_el0, c2
+-	msr	cvbar_el1, c3
++	msr	cid_el0, c3
++	ldr	c2, [x0, #CPU_CTX_CREGS + 64]
++	msr	cvbar_el1, c2
+ #else /* CONFIG_ARM64_MORELLO */
+ 	msr	tpidr_el0, x2
+ 	msr	vbar_el1, x9
+@@ -500,8 +498,9 @@ SYM_FUNC_START(__cpu_setup)
+ 	orr	x9, x9, CPACR_EL1_CEN
+ 	msr	cpacr_el1, x9
+ 	isb
+-	/* Disable PCC/DDC base offset and other capability-related features */
+-	msr	cctlr_el1, xzr
++	/* Seal CLR / require a sealed target for capability branches */
++	mov	x9, #CCTLR_ELx_SBL
++	msr	cctlr_el1, x9
+ 
+ 	/*
+ 	 * Allow controlling the Morello-defined capability tag load/store

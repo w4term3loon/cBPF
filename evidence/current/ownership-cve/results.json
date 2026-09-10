@@ -1,0 +1,274 @@
+{
+  "study": "ownership CVE case",
+  "cve": "CVE-2022-50650",
+  "status": "PASS",
+  "scope": "Duplicate-release effect projection and independent acquisition control",
+  "cases": [
+    {
+      "case": "duplicate_release_projection",
+      "status": "PASS",
+      "steps": [
+        {
+          "operation": "acquire",
+          "args": [
+            0
+          ],
+          "result": "success",
+          "explicit": [
+            0
+          ],
+          "live": [
+            true
+          ],
+          "refs": 2
+        },
+        {
+          "operation": "spill",
+          "args": [
+            0,
+            0
+          ],
+          "result": "copied",
+          "explicit": [
+            0
+          ],
+          "live": [
+            true
+          ],
+          "refs": 2
+        },
+        {
+          "operation": "reload",
+          "args": [
+            1,
+            0
+          ],
+          "result": "copied",
+          "explicit": [
+            0
+          ],
+          "live": [
+            true
+          ],
+          "refs": 2
+        },
+        {
+          "operation": "release",
+          "args": [
+            1
+          ],
+          "result": "consumed",
+          "explicit": [
+            1
+          ],
+          "live": [
+            false
+          ],
+          "refs": 1
+        },
+        {
+          "operation": "reload",
+          "args": [
+            1,
+            0
+          ],
+          "result": "copied",
+          "explicit": [
+            1
+          ],
+          "live": [
+            false
+          ],
+          "refs": 1
+        },
+        {
+          "operation": "release",
+          "args": [
+            1
+          ],
+          "result": "stale",
+          "explicit": [
+            1
+          ],
+          "live": [
+            false
+          ],
+          "refs": 1
+        }
+      ],
+      "terminal": "stale_release",
+      "reads": 0,
+      "explicit_releases": 1,
+      "cleanup_releases": 0,
+      "final_refs": 1,
+      "model_host_matches": 2
+    },
+    {
+      "case": "independent_acquisition_control",
+      "status": "PASS",
+      "steps": [
+        {
+          "operation": "acquire",
+          "args": [
+            0
+          ],
+          "result": "success",
+          "explicit": [
+            0
+          ],
+          "live": [
+            true
+          ],
+          "refs": 2
+        },
+        {
+          "operation": "acquire",
+          "args": [
+            1
+          ],
+          "result": "success",
+          "explicit": [
+            0,
+            0
+          ],
+          "live": [
+            true,
+            true
+          ],
+          "refs": 3
+        },
+        {
+          "operation": "release",
+          "args": [
+            0
+          ],
+          "result": "consumed",
+          "explicit": [
+            1,
+            0
+          ],
+          "live": [
+            false,
+            true
+          ],
+          "refs": 2
+        },
+        {
+          "operation": "read",
+          "args": [
+            1
+          ],
+          "result": "42",
+          "explicit": [
+            1,
+            0
+          ],
+          "live": [
+            false,
+            true
+          ],
+          "refs": 2
+        },
+        {
+          "operation": "release",
+          "args": [
+            1
+          ],
+          "result": "consumed",
+          "explicit": [
+            1,
+            1
+          ],
+          "live": [
+            false,
+            false
+          ],
+          "refs": 1
+        },
+        {
+          "operation": "finish",
+          "args": [],
+          "result": "return",
+          "explicit": [
+            1,
+            1
+          ],
+          "live": [
+            false,
+            false
+          ],
+          "refs": 1
+        }
+      ],
+      "terminal": "return",
+      "reads": 1,
+      "explicit_releases": 2,
+      "cleanup_releases": 0,
+      "final_refs": 1,
+      "model_host_matches": 2
+    }
+  ],
+  "model_host_comparisons": 4,
+  "sources": [
+    {
+      "file": "theory/check_ownership_cve.py",
+      "bytes": 4504,
+      "sha256": "9d31d8e918e4bce69baa377b67fddc139db8143935c321530d6810814dc4e7f7"
+    },
+    {
+      "file": "theory/check_model.py",
+      "bytes": 13345,
+      "sha256": "c973366427b63951d93de9cb41ef4f9650780ac4a1db8e8ab37120713ce5f511"
+    },
+    {
+      "file": "theory/check_conformance.py",
+      "bytes": 10390,
+      "sha256": "552c5929a53d0ea50ad981b918a7959bc04d2df8d5ef547b61cdb8270cbea246"
+    },
+    {
+      "file": "src/cbpf.c",
+      "bytes": 5209,
+      "sha256": "55ca962a74e57cc29598884723fc67a529ac7e0f3b278495c9f9fdf41e3ece7a"
+    },
+    {
+      "file": "src/cbpf.h",
+      "bytes": 2294,
+      "sha256": "8530f1c02110e1675811d15bc369a06d4507e16807f0556ae13dc5c01bb706ab"
+    },
+    {
+      "file": "src/gate.c",
+      "bytes": 9110,
+      "sha256": "e2693cbba1eb37b92ed54aa00bd00a68e616d59dfbded175e5e4aee65aecd784"
+    },
+    {
+      "file": "src/gate.h",
+      "bytes": 1509,
+      "sha256": "3efe283e382385c3c54a30d654cbe5f009d85e2214e6b39e1d87aa50e8752013"
+    },
+    {
+      "file": "tools/conformance_bridge.c",
+      "bytes": 2969,
+      "sha256": "1d34a3188ddd53d749dc633f2f542347a6fea084f20bc0554b5fae32f4f6e326"
+    }
+  ],
+  "host_libraries": [
+    {
+      "file": "build/cbpf-conformance.so",
+      "bytes": 15976,
+      "sha256": "902db616e80d85c1dec2ad63e8bfe98fb2068f648b925835c3ac1c7b0deb100c"
+    },
+    {
+      "file": "build/cbpf-gate-conformance.so",
+      "bytes": 16048,
+      "sha256": "829d2e1b434965ff11d0942639b6136772df4c093ed14824e8f30d1f7ec6a1cd"
+    }
+  ],
+  "limits": [
+    "These are current Python-model/host-C controls, not native CHERI or BPF.",
+    "No callback, vulnerable kernel, verifier bypass, or CVE trigger executes.",
+    "The projection preserves one acquisition identity in one invocation.",
+    "Upstream forbids a callback's first release of a caller-owned reference; CBPF permits the first consume and rejects the second.",
+    "The independent A/B control is not a requirement of this CVE trigger.",
+    "No claim for the separate acquisition-leak arm or heap reclamation."
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "edition": "Local reproduction source selection recorded on 6 September 2026",
+  "archive": "m4-final-20260906.tar.gz",
+  "bytes": 2654152,
+  "sha256": "45dabd54610beb15e66794778e6a085c6f8fc980a9925452a6a9f32406f273ce",
+  "original_manifest": "evidence/current/closure/manifest.json",
+  "original_manifest_sha256": "ab1d7e01aa7905f63973293110328fdef5e7f250b5501256a184f3bfa9f21e02",
+  "selected_files": 334,
+  "extra_files": [
+    "original manifest",
+    "original SHA256SUMS"
+  ],
+  "scope": "Exact archived contents; no research experiment rerun; current prose can evolve independently.",
+  "publication_availability": "Exact archive retained privately and omitted from the publication tree.",
+  "publication_identity_note": "Embedded sizes and digests describe original historical bytes; publication-manifest.json verifies shareable copies."
+}

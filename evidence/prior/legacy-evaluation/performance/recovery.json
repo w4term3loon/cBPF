@@ -1,0 +1,157 @@
+{
+  "boot_count": 5,
+  "claim_class": "functional-emulation",
+  "fault_oracle": {
+    "all_boots_cover_every_attempt": true,
+    "attempts_per_boot": 10,
+    "total_attempts": 50,
+    "total_observed_markers": 50
+  },
+  "hardware_performance_claim_ready": false,
+  "input_records": [
+    {
+      "path": "linux/benchmarks/results/qemu-recovery-balanced-2026-08-30-v2/recovery-boot-01.run.json",
+      "sha256": "9fa34c6039643d977b7665e533da45b00bf81a6d35d0bef4826bfbb3f103e038"
+    },
+    {
+      "path": "linux/benchmarks/results/qemu-recovery-balanced-2026-08-30-v2/recovery-boot-02.run.json",
+      "sha256": "ace33103d6e6ee72e9672ac98a0c35d388097dd2309e948ad16e59ee39de4600"
+    },
+    {
+      "path": "linux/benchmarks/results/qemu-recovery-balanced-2026-08-30-v2/recovery-boot-03.run.json",
+      "sha256": "63e6b607fad9ae9886592ba2953a1890c8ff572e61abcd080c0e824243bd9bd9"
+    },
+    {
+      "path": "linux/benchmarks/results/qemu-recovery-balanced-2026-08-30-v2/recovery-boot-04.run.json",
+      "sha256": "656d1034ea244f8f62d2744516dc5ecb98654553c5c00c5e766d47d8c678ee3f"
+    },
+    {
+      "path": "linux/benchmarks/results/qemu-recovery-balanced-2026-08-30-v2/recovery-boot-05.run.json",
+      "sha256": "bee363038c49396a7265d71f83c31aa3a4c9396328d19efc2a8dea8b6b54859a"
+    }
+  ],
+  "interpretation": "Instrumented QEMU recovery and immediate post-fault liveness only. The timed path includes fault logging; it is not intrinsic trap latency, rollback evidence, availability evidence, or native Morello performance.",
+  "jited_code_bytes": {
+    "fault_program": 360,
+    "safe_control": 352
+  },
+  "liveness": {
+    "all_faults_return_zero": true,
+    "all_post_fault_controls_return_42": true,
+    "measured_fault_calls": 35,
+    "post_fault_controls": 35
+  },
+  "metrics": [
+    {
+      "bootstrap_method": "exact resampling of five boot medians (5^5 combinations)",
+      "exact_bootstrap_95_percent_interval": [
+        166048,
+        293920
+      ],
+      "id": "fault_call_elapsed_ns",
+      "median_of_boot_medians": 189632,
+      "per_boot_medians": [
+        272704,
+        293920,
+        189632,
+        166048,
+        175872
+      ],
+      "unit": "nanoseconds"
+    },
+    {
+      "bootstrap_method": "exact resampling of five boot medians (5^5 combinations)",
+      "exact_bootstrap_95_percent_interval": [
+        92112,
+        197312
+      ],
+      "id": "fault_kernel_duration_ns",
+      "median_of_boot_medians": 113872,
+      "per_boot_medians": [
+        180320,
+        197312,
+        113872,
+        92112,
+        100096
+      ],
+      "unit": "nanoseconds"
+    },
+    {
+      "bootstrap_method": "exact resampling of five boot medians (5^5 combinations)",
+      "exact_bootstrap_95_percent_interval": [
+        86000,
+        122880
+      ],
+      "id": "post_fault_liveness_elapsed_ns",
+      "median_of_boot_medians": 91360,
+      "per_boot_medians": [
+        107680,
+        122880,
+        88528,
+        86000,
+        91360
+      ],
+      "unit": "nanoseconds"
+    },
+    {
+      "bootstrap_method": "exact resampling of five boot medians (5^5 combinations)",
+      "exact_bootstrap_95_percent_interval": [
+        10448,
+        12528
+      ],
+      "id": "post_fault_liveness_kernel_duration_ns",
+      "median_of_boot_medians": 12064,
+      "per_boot_medians": [
+        10448,
+        10992,
+        12064,
+        12192,
+        12528
+      ],
+      "unit": "nanoseconds"
+    },
+    {
+      "bootstrap_method": "exact resampling of five boot medians (5^5 combinations)",
+      "exact_bootstrap_95_percent_interval": [
+        102688,
+        213168
+      ],
+      "id": "preflight_elapsed_ns",
+      "median_of_boot_medians": 112656,
+      "per_boot_medians": [
+        171936,
+        213168,
+        103952,
+        102688,
+        112656
+      ],
+      "unit": "nanoseconds"
+    },
+    {
+      "bootstrap_method": "exact resampling of five boot medians (5^5 combinations)",
+      "exact_bootstrap_95_percent_interval": [
+        13296,
+        16160
+      ],
+      "id": "preflight_kernel_duration_ns",
+      "median_of_boot_medians": 14240,
+      "per_boot_medians": [
+        14816,
+        16160,
+        13824,
+        14240,
+        13296
+      ],
+      "unit": "nanoseconds"
+    }
+  ],
+  "platform": "qemu-morello",
+  "record_type": "capebpf-qemu-recovery-study",
+  "sampling": {
+    "cpu": 0,
+    "measured_samples_per_boot": 7,
+    "warmup_samples_per_boot": 3
+  },
+  "schema_version": 1,
+  "status": "developmental"
+}

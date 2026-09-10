@@ -1,0 +1,85 @@
+{
+  "study": "Logical extent discriminator",
+  "date": "2026-09-07",
+  "result": "PASS",
+  "completed_utc": "2026-09-07T12:42:57.517088+00:00",
+  "kernel_builds_this_iteration": 0,
+  "kernel_boots": 1,
+  "reused_kernel_receipts": "../native-replay/spatial/build",
+  "kernel": {
+    "vmlinux_sha256": "95483c8fe7359d60ba01a8043267f275082dffa0ce20708b58ba4083d1b3798b",
+    "Image_sha256": "bc417c613630e592811dff66cc535fda1d8a72b996644e48e922f6dd29852988",
+    "source_tree": "e6c69574c16bc2b9bce06329f9ac3f4b3269e79a",
+    "builder_image": "sha256:76c8ca062c30aa59b8eb072f30620a2a7e9604515aefe84d64161bf9eb644038"
+  },
+  "environment": "Existing Linux x86-64 host, offline QEMU 7.0.0 Morello guest, 2 GiB RAM, one vCPU; not physical hardware or external reproduction.",
+  "source_inputs": [
+    {
+      "file": "linux/spatial/native-guest.c",
+      "bytes": 11113,
+      "sha256": "7bbac542a595b9299861dec0d350b42ae325b732b48f4640587772b4d4543471"
+    },
+    {
+      "file": "tools/check_spatial_native.py",
+      "bytes": 21120,
+      "sha256": "a490948ca2de3c37c63c419794e92c0e450615f988710caa3223d718cadc593b"
+    },
+    {
+      "file": "tools/run_spatial_native.sh",
+      "bytes": 6350,
+      "sha256": "18e6bdc43cd130934e35c15c170d630ec01662bf0a04ad6e1f78e4065ea446d0"
+    },
+    {
+      "file": "tools/build_spatial_native.sh",
+      "bytes": 10066,
+      "sha256": "6fc3441fce6d18eea68db675dd04ecec874e94fb3f7c070362f29b793ee99d08"
+    },
+    {
+      "file": "linux/spatial/array-authority.patch",
+      "bytes": 12851,
+      "sha256": "ac74717a7dbd2c61760115c1b8b719e52d27d60d02957a2b73c3ff155206c4ac"
+    },
+    {
+      "file": "linux/spatial/native-observation.patch",
+      "bytes": 1473,
+      "sha256": "2f7889c53d0b4de2e47a94b8acb0d6c1ab73bca6effaccee5b4733984f449b07"
+    }
+  ],
+  "normal_verifier_unchanged": true,
+  "kernel_mechanism_changes": false,
+  "fixture": {
+    "map_type": "ARRAY",
+    "key_size": 4,
+    "key": 1,
+    "max_entries": 2,
+    "map_flags": 0,
+    "value_size": 7,
+    "stride": 8,
+    "access_offset": 6,
+    "access_bytes": 1,
+    "initial_bytes": "11223344556629",
+    "final_bytes": "1122334455662a",
+    "unchanged_prefix_bytes": 6
+  },
+  "observation": {
+    "capability_length": 7,
+    "tag": 1,
+    "sealed": 0,
+    "permissions": "0x30001",
+    "retval": 42,
+    "readback": 42,
+    "test_run_count": 1,
+    "native_bytes": 392,
+    "jit_sha256": "f8d79016c96d74a7426fff7a80c08ccc5041fec761ba8e38b0b4f75724f00d8f",
+    "pre_execution_review_recorded": true,
+    "qemu_exit": 0
+  },
+  "counterfactual_checker_check": "A separate copy of the telemetry with only provider length changed to 8 is rejected. This checks oracle sensitivity, not execution of a mutated constructor.",
+  "limits": [
+    "No access to padding or observed bounds fault.",
+    "Construction/native correspondence for one valid program; no all-program mediation or independent hardware attestation.",
+    "No original CVE trigger, ownership injection or composition.",
+    "Unchanged prefix covers the other six logical bytes only; no padding or neighbor readback claim."
+  ],
+  "publication_note": "Original review prose counted 19 input hashes; inventory contains 18 and all were verified. Publication copy corrects that count with original identity retained."
+}

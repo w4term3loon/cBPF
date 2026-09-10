@@ -1,0 +1,32 @@
+{
+  "schema_version": "1.0.0",
+  "artifact_kind": "adversarial_verifier_fact_result",
+  "study_id": "capebpf-adversarial-verifier-facts-v1",
+  "status": "not_collected",
+  "preregistration": {
+    "path": "research/adversarial-verifier-fact-preregistration-v1.json",
+    "sha256": "dde3d59f8b0277d98639d2f84907f435fe2be05c408224f6195b6ea60c4683c8"
+  },
+  "collection": null,
+  "observations": [],
+  "summary": {
+    "scheduled_fault_cells": 1470,
+    "scheduled_calibration_cells": 1470,
+    "scheduled_observation_cells": 2940,
+    "expected_applicable_fault_cells": 1030,
+    "expected_not_applicable_fault_cells": 440,
+    "collected_observation_cells": 0,
+    "schedule_complete": false,
+    "evidentially_sufficient": false,
+    "fault_outcome_counts": null,
+    "calibration_outcome_counts": null,
+    "stratified_outcome_counts": null,
+    "conventional_fact_results": null,
+    "guard_fact_results": null,
+    "security_critical_dependency_sets": null,
+    "minimal_joint_sets": null,
+    "common_mode_results": null,
+    "claim_status": "undefined_not_collected",
+    "percentages_reported": false
+  }
+}

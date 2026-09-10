@@ -1,0 +1,16 @@
+{
+  "command": [
+    "make",
+    "spatial-check"
+  ],
+  "cwd": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/snapshot",
+  "started_utc": "2026-09-06T20:28:15.786316+00:00",
+  "log": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/reviewer/spatial-check.log",
+  "environment_overrides": {
+    "CBPF_SPATIAL_SOURCE_GIT": "${REPRO_DEPENDENCIES}/linux-source.git"
+  },
+  "recipe_environment": {},
+  "finished_utc": "2026-09-06T20:29:12.127288+00:00",
+  "elapsed_seconds": 56.341,
+  "exit_code": 0
+}

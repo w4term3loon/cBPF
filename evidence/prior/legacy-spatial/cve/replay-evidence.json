@@ -1,0 +1,299 @@
+{
+  "schema_version": 2,
+  "cases": [
+    {
+      "case_id": "CVE-2021-3490-spatial",
+      "claim_kind": "architectural_spatial_containment",
+      "gates": {
+        "upstream_vulnerable_accepts": true,
+        "upstream_fix_rejects": true,
+        "same_bpf_input": true,
+        "valid_controls_pass": true,
+        "exact_authority_faults": true,
+        "broad_authority_executes": true,
+        "architectural_fault_oracle": true,
+        "raw_evidence_pinned": true,
+        "fidelity_record_validated": true
+      },
+      "fault_oracle": "Morello capability bounds fault",
+      "artifacts": [
+        "linux/benchmarks/results/x86-cve-2021-3490-parent-2026-08-29.txt",
+        "linux/benchmarks/results/x86-cve-2021-3490-fixed-2026-08-29.txt",
+        "linux/benchmarks/results/morello-exploit-evidence-fixed-2026-08-29.txt",
+        "linux/benchmarks/results/morello-exploit-evidence-exact-2026-08-29.txt",
+        "linux/benchmarks/results/morello-exploit-evidence-exact-unblinded-2026-08-29.txt",
+        "linux/benchmarks/results/morello-exploit-evidence-broad-2026-08-29.txt",
+        "research/cve-exploit-evidence.json",
+        "docs/2026-08-29_primary_cve_exploit_evidence.md",
+        "docs/2026-08-27_linux_cve_2021_3490_evaluation.md"
+      ],
+      "fidelity_grade": "exact_public_primitive_with_observation_suffix",
+      "condition_evidence": {
+        "exact_object_authority": "The exact run derives the map-value capability at the declared object size; the broad run is the counterfactual.",
+        "authority_scope_granularity": "The claimed interval is the whole array-map value. No field- or verifier-subrange confinement is inferred.",
+        "monotonic_derivation": "The authority checker admits only the declared root and the Morello theorem covers monotonic child capabilities.",
+        "jit_correspondence": "The post-JIT checker validates root, direction, width, offset, data register, and final memory operation.",
+        "direct_native_dereference": "The case witness identifies the generated load or store that performs the spatial effect.",
+        "morello_enforcement": "The exact-authority raw log records a Morello capability bounds fault at execution."
+      }
+    },
+    {
+      "case_id": "CVE-2023-2163-spatial",
+      "claim_kind": "architectural_spatial_containment",
+      "gates": {
+        "upstream_vulnerable_accepts": true,
+        "upstream_fix_rejects": true,
+        "same_bpf_input": true,
+        "valid_controls_pass": true,
+        "exact_authority_faults": true,
+        "broad_authority_executes": true,
+        "architectural_fault_oracle": true,
+        "raw_evidence_pinned": true,
+        "fidelity_record_validated": true
+      },
+      "fault_oracle": "Morello capability bounds fault",
+      "artifacts": [
+        "linux/benchmarks/results/x86-cve-2023-2163-parent-2026-08-29.txt",
+        "linux/benchmarks/results/x86-cve-2023-2163-fixed-2026-08-29.txt",
+        "linux/benchmarks/results/morello-exploit-evidence-fixed-2026-08-29.txt",
+        "linux/benchmarks/results/morello-exploit-evidence-exact-2026-08-29.txt",
+        "linux/benchmarks/results/morello-exploit-evidence-exact-unblinded-2026-08-29.txt",
+        "linux/benchmarks/results/morello-exploit-evidence-broad-2026-08-29.txt",
+        "research/cve-exploit-evidence.json",
+        "docs/2026-08-29_primary_cve_exploit_evidence.md",
+        "docs/2026-08-27_linux_cve_2023_2163_evaluation.md"
+      ],
+      "fidelity_grade": "exact_official_program",
+      "condition_evidence": {
+        "exact_object_authority": "The exact run derives the map-value capability at the declared object size; the broad run is the counterfactual.",
+        "authority_scope_granularity": "The claimed interval is the whole array-map value. No field- or verifier-subrange confinement is inferred.",
+        "monotonic_derivation": "The authority checker admits only the declared root and the Morello theorem covers monotonic child capabilities.",
+        "jit_correspondence": "The post-JIT checker validates root, direction, width, offset, data register, and final memory operation.",
+        "direct_native_dereference": "The case witness identifies the generated load or store that performs the spatial effect.",
+        "morello_enforcement": "The exact-authority raw log records a Morello capability bounds fault at execution."
+      }
+    },
+    {
+      "case_id": "CVE-2021-4204-helper",
+      "claim_kind": "trusted_gateway_protocol_rejection",
+      "gates": {
+        "upstream_vulnerable_accepts": true,
+        "upstream_fix_rejects": true,
+        "same_bpf_input": true,
+        "valid_controls_pass": true,
+        "gateway_rejects": true,
+        "protocol_oracle": true,
+        "evidence_pinned": true,
+        "fidelity_record_validated": true
+      },
+      "fault_oracle": "trusted gateway rejection counter",
+      "artifacts": [
+        "linux/benchmarks/results/x86-cve-2021-4204-parent-2026-08-27.txt",
+        "linux/benchmarks/results/x86-cve-2021-4204-fixed-2026-08-27.txt",
+        "linux/benchmarks/results/morello-cve-2021-4204-protocol-2026-08-27.txt",
+        "linux/benchmarks/results/morello-cve-2021-4204-fixed-2026-08-27.txt",
+        "docs/2026-08-27_linux_cve_2021_4204_evaluation.md",
+        "linux/patches/0011-bounded-ringbuf-helper-gateway.patch",
+        "linux/patches/0012-test-only-cve-2021-4204-verifier-mode.patch"
+      ],
+      "fidelity_grade": "exact_official_program"
+    },
+    {
+      "case_id": "CVE-2020-8835-control",
+      "claim_kind": "negative_bounds_boundary",
+      "gates": {
+        "primary_source_identified": true,
+        "negative_effect_documented": true
+      },
+      "fault_oracle": "not applicable",
+      "artifacts": [
+        "docs/2026-08-28_cve_2020_8835_held_out_assessment.md"
+      ]
+    },
+    {
+      "case_id": "CVE-2020-8835-spatial",
+      "claim_kind": "architectural_spatial_containment",
+      "gates": {
+        "upstream_vulnerable_accepts": true,
+        "upstream_fix_rejects": true,
+        "same_bpf_input": true,
+        "valid_controls_pass": true,
+        "exact_authority_faults": true,
+        "broad_authority_executes": true,
+        "architectural_fault_oracle": true,
+        "raw_evidence_pinned": true,
+        "fidelity_record_validated": true
+      },
+      "fault_oracle": "Morello capability bounds fault",
+      "artifacts": [
+        "linux/benchmarks/results/x86-cve-2020-8835-parent-2026-08-28.txt",
+        "linux/benchmarks/results/x86-cve-2020-8835-fixed-2026-08-28.txt",
+        "linux/benchmarks/results/morello-cve-2020-8835-exact-2026-08-28.txt",
+        "linux/benchmarks/results/morello-cve-2020-8835-broad-2026-08-28.txt",
+        "linux/benchmarks/results/morello-cve-2020-8835-fixed-2026-08-28.txt",
+        "docs/2026-08-28_linux_cve_2020_8835_evaluation.md"
+      ],
+      "fidelity_grade": "public_primitive_with_controlled_suffix",
+      "condition_evidence": {
+        "exact_object_authority": "The exact run derives the map-value capability at the declared object size; the broad run is the counterfactual.",
+        "authority_scope_granularity": "The claimed interval is the whole array-map value. No field- or verifier-subrange confinement is inferred.",
+        "monotonic_derivation": "The authority checker admits only the declared root and the Morello theorem covers monotonic child capabilities.",
+        "jit_correspondence": "The post-JIT checker validates root, direction, width, offset, data register, and final memory operation.",
+        "direct_native_dereference": "The case witness identifies the generated load or store that performs the spatial effect.",
+        "morello_enforcement": "The exact-authority raw log records a Morello capability bounds fault at execution."
+      }
+    },
+    {
+      "case_id": "CVE-2022-23222-spatial",
+      "claim_kind": "architectural_spatial_containment",
+      "gates": {
+        "upstream_vulnerable_accepts": true,
+        "upstream_fix_rejects": true,
+        "same_bpf_input": true,
+        "valid_controls_pass": true,
+        "exact_authority_faults": true,
+        "broad_authority_executes": true,
+        "architectural_fault_oracle": true,
+        "raw_evidence_pinned": true,
+        "fidelity_record_validated": true
+      },
+      "fault_oracle": "Morello capability bounds fault",
+      "artifacts": [
+        "linux/benchmarks/results/x86-cve-2022-23222-v5.15.14-2026-08-28.txt",
+        "linux/benchmarks/results/x86-cve-2022-23222-v5.15.15-2026-08-28.txt",
+        "linux/benchmarks/results/morello-cve-2022-23222-exact-2026-08-28.txt",
+        "linux/benchmarks/results/morello-cve-2022-23222-broad-2026-08-28.txt",
+        "linux/benchmarks/results/morello-cve-2022-23222-fixed-2026-08-28.txt",
+        "docs/2026-08-28_linux_cve_2022_23222_evaluation.md"
+      ],
+      "fidelity_grade": "adapted_public_bug_sequence",
+      "condition_evidence": {
+        "exact_object_authority": "The exact run derives the map-value capability at the declared object size; the broad run is the counterfactual.",
+        "authority_scope_granularity": "The claimed interval is the whole array-map value. No field- or verifier-subrange confinement is inferred.",
+        "monotonic_derivation": "The authority checker admits only the declared root and the Morello theorem covers monotonic child capabilities.",
+        "jit_correspondence": "The post-JIT checker validates root, direction, width, offset, data register, and final memory operation.",
+        "direct_native_dereference": "The case witness identifies the generated load or store that performs the spatial effect.",
+        "morello_enforcement": "The exact-authority raw log records a Morello capability bounds fault at execution."
+      }
+    }
+  ],
+  "contract_id": "capebpf-containment-envelope-v1",
+  "boundary_evidence": {
+    "direct_spatial": {
+      "outcome": "conditional_architectural_containment",
+      "automatic_containment": "conditional",
+      "artifacts": [
+        "research/cve-fidelity.json",
+        "research/cve-exploit-evidence.json",
+        "research/defense-baseline.json",
+        "linux/benchmarks/results/morello-defense-baseline-exact-2026-08-29.txt",
+        "linux/benchmarks/results/morello-defense-baseline-broad-2026-08-29.txt",
+        "docs/2026-08-29_matched_defense_baseline.md"
+      ]
+    },
+    "helper_mediated": {
+      "outcome": "trusted_software_required",
+      "automatic_containment": "no",
+      "artifacts": [
+        "linux/benchmarks/results/morello-cve-2021-4204-protocol-2026-08-27.txt",
+        "docs/2026-08-27_linux_ringbuf_enforcement_boundary.md"
+      ]
+    },
+    "temporal_lifetime": {
+      "outcome": "explicit_invalidation_only",
+      "automatic_containment": "no",
+      "artifacts": [
+        "docs/ringbuf_protocol_invalidation_milestone.md",
+        "formal/CapeBPF_Object_Authority.thy"
+      ]
+    },
+    "non_spatial": {
+      "outcome": "not_mitigated_by_bounds",
+      "automatic_containment": "no",
+      "artifacts": [
+        "docs/2026-08-28_cve_2020_8835_held_out_assessment.md",
+        "formal/CapeBPF_Object_Authority.thy"
+      ]
+    },
+    "jit_translation": {
+      "outcome": "certificate_required",
+      "automatic_containment": "no",
+      "artifacts": [
+        "linux/benchmarks/results/morello-jit-certificate-independent-positive-2026-08-28.txt",
+        "linux/benchmarks/results/morello-jit-certificate-independent-unblinded-2026-08-29.txt",
+        "linux/benchmarks/results/morello-jit-certificate-body-mutation-1-e6c69574-2026-08-29.txt",
+        "linux/benchmarks/results/morello-jit-certificate-body-mutation-2-e6c69574-2026-08-29.txt",
+        "linux/benchmarks/results/morello-jit-certificate-body-mutation-3-e6c69574-2026-08-29.txt",
+        "linux/benchmarks/results/morello-jit-certificate-body-mutation-4-e6c69574-2026-08-29.txt",
+        "linux/benchmarks/results/morello-jit-certificate-body-mutation-5-e6c69574-2026-08-29.txt",
+        "linux/benchmarks/results/morello-jit-certificate-body-mutation-6-e6c69574-2026-08-29.txt",
+        "linux/benchmarks/results/morello-jit-certificate-body-mutation-7-e6c69574-2026-08-29.txt",
+        "linux/benchmarks/results/morello-jit-certificate-body-mutation-8-e6c69574-2026-08-29.txt",
+        "linux/benchmarks/results/morello-jit-certificate-body-mutation-9-e6c69574-2026-08-29.txt",
+        "linux/benchmarks/results/morello-jit-certificate-body-mutation-10-e6c69574-2026-08-29.txt",
+        "linux/benchmarks/results/morello-jit-certificate-body-mutation-11-e6c69574-2026-08-29.txt",
+        "linux/benchmarks/results/morello-jit-certificate-body-mutation-12-e6c69574-2026-08-29.txt",
+        "linux/benchmarks/results/morello-jit-certificate-body-mutation-13-e6c69574-2026-08-29.txt",
+        "linux/benchmarks/results/morello-jit-certificate-body-mutation-14-e6c69574-2026-08-29.txt",
+        "linux/benchmarks/results/morello-jit-certificate-envelope-mutation-15-2026-08-29.txt",
+        "linux/benchmarks/results/morello-jit-certificate-envelope-mutation-16-2026-08-29.txt",
+        "linux/benchmarks/results/morello-jit-certificate-envelope-mutation-17-2026-08-29.txt",
+        "linux/benchmarks/results/morello-root-attestation-coverage-2026-08-29.txt",
+        "linux/patches/0021-security-refinement-certificate.patch",
+        "linux/patches/0022-test-only-independent-certificate-transcript.patch",
+        "linux/patches/0023-model-derived-sensitive-opcode-classifier.patch",
+        "linux/patches/0026-full-native-image-certificate.patch",
+        "linux/patches/0028-bound-certificate-template-rebuilds.patch",
+        "formal/jit-certificate-vectors.json",
+        "formal/morello-isa-oracle.json",
+        "formal/retained-correspondence.json",
+        "docs/2026-08-28_independent_certificate_validation.md"
+      ]
+    }
+  },
+  "software_comparison": {
+    "schema_version": 1,
+    "scope": "Test-only post-verifier scalar guards for zero-static-offset direct map accesses in the four architectural-spatial CVE cases.",
+    "authority_model": "Map-value capability has the correct base and 8192 bytes of deliberate excess authority.",
+    "guard_model": "Ten four-byte scalar instructions per checked access plus one shared two-instruction failure stub; unsafe access returns sentinel 77.",
+    "performance_claim": "Native code size and functional outcome only; QEMU durations are not performance evidence.",
+    "artifacts": [
+      "linux/benchmarks/results/morello-defense-baseline-exact-2026-08-29.txt",
+      "linux/benchmarks/results/morello-defense-baseline-broad-2026-08-29.txt",
+      "linux/benchmarks/results/morello-defense-baseline-software-2026-08-29.txt",
+      "linux/patches/0020-test-only-software-map-bounds-baseline.patch",
+      "research/defense-baseline.json",
+      "docs/2026-08-29_matched_defense_baseline.md"
+    ],
+    "cases": [
+      {
+        "case_id": "CVE-2021-3490-spatial",
+        "checked_accesses": 2,
+        "exact_capability_jit_bytes": 848,
+        "software_guard_jit_bytes": 936,
+        "delta_bytes": 88
+      },
+      {
+        "case_id": "CVE-2020-8835-spatial",
+        "checked_accesses": 2,
+        "exact_capability_jit_bytes": 728,
+        "software_guard_jit_bytes": 816,
+        "delta_bytes": 88
+      },
+      {
+        "case_id": "CVE-2023-2163-spatial",
+        "checked_accesses": 2,
+        "exact_capability_jit_bytes": 600,
+        "software_guard_jit_bytes": 688,
+        "delta_bytes": 88
+      },
+      {
+        "case_id": "CVE-2022-23222-spatial",
+        "checked_accesses": 1,
+        "exact_capability_jit_bytes": 600,
+        "software_guard_jit_bytes": 648,
+        "delta_bytes": 48
+      }
+    ]
+  }
+}

@@ -1,0 +1,563 @@
+[2J[01;01H[=3h[2J[01;01HEFI stub: Booting Linux Kernel...
+EFI stub: EFI_RNG_PROTOCOL unavailable
+EFI stub: Loaded initrd from LINUX_EFI_INITRD_MEDIA_GUID device path
+EFI stub: Generating empty DTB
+EFI stub: Exiting boot services...
+[    0.000000] Booting Linux on physical CPU 0x0000000000 [0x410fd083]
+[    0.000000] Linux version 6.7.0-cbpf-spatial-s5 (cbpf@spatial-s5) (clang version 17.0.0 (https://git.morello-project.org/morello/llvm-project.git 7956a8d20652883f845a41094645174eb92d1960), LLD 17.0.0) #1 SMP PREEMPT 2026-09-06 00:00:00 UTC
+[    0.000000] Userspace ABI: pure-capability (PCuABI)
+[    0.000000] KASLR disabled due to lack of seed
+[    0.000000] efi: EFI v2.7 by EDK II
+[    0.000000] efi: SMBIOS 3.0=0xbf700000 MEMATTR=0xbd439018 ACPI 2.0=0xbbf70018 INITRD=0xbc373f18 MEMRESERVE=0xbc373f98 
+[    0.000000] ACPI: Early table checksum verification disabled
+[    0.000000] ACPI: RSDP 0x00000000BBF70018 000024 (v02 BOCHS )
+[    0.000000] ACPI: XSDT 0x00000000BBF7FE98 000064 (v01 BOCHS  BXPC     00000001      01000013)
+[    0.000000] ACPI: FACP 0x00000000BBF7FA98 00010C (v05 BOCHS  BXPC     00000001 BXPC 00000001)
+[    0.000000] ACPI: DSDT 0x00000000BBF77518 00144C (v02 BOCHS  BXPC     00000001 BXPC 00000001)
+[    0.000000] ACPI: APIC 0x00000000BBF7FC18 0000B4 (v03 BOCHS  BXPC     00000001 BXPC 00000001)
+[    0.000000] ACPI: PPTT 0x00000000BBF7FD18 000060 (v02 BOCHS  BXPC     00000001 BXPC 00000001)
+[    0.000000] ACPI: GTDT 0x00000000BBF7D898 000060 (v02 BOCHS  BXPC     00000001 BXPC 00000001)
+[    0.000000] ACPI: MCFG 0x00000000BBF7FE18 00003C (v01 BOCHS  BXPC     00000001 BXPC 00000001)
+[    0.000000] ACPI: SPCR 0x00000000BBF7FF98 000050 (v02 BOCHS  BXPC     00000001 BXPC 00000001)
+[    0.000000] ACPI: DBG2 0x00000000BBF7E818 000057 (v00 BOCHS  BXPC     00000001 BXPC 00000001)
+[    0.000000] ACPI: IORT 0x00000000BBF7E898 000080 (v03 BOCHS  BXPC     00000001 BXPC 00000001)
+[    0.000000] ACPI: SPCR: console: pl011,mmio,0x9000000,9600
+[    0.000000] NUMA: Failed to initialise from firmware
+[    0.000000] NUMA: Faking a node at [mem 0x0000000040000000-0x00000000bfffffff]
+[    0.000000] NUMA: NODE_DATA [mem 0xbfbf5ac0-0xbfbf7fff]
+[    0.000000] Zone ranges:
+[    0.000000]   DMA      [mem 0x0000000040000000-0x00000000bfffffff]
+[    0.000000]   DMA32    empty
+[    0.000000]   Normal   empty
+[    0.000000] Movable zone start for each node
+[    0.000000] Early memory node ranges
+[    0.000000]   node   0: [mem 0x0000000040000000-0x00000000bbf7ffff]
+[    0.000000]   node   0: [mem 0x00000000bbf80000-0x00000000bbffffff]
+[    0.000000]   node   0: [mem 0x00000000bc000000-0x00000000bc01ffff]
+[    0.000000]   node   0: [mem 0x00000000bc020000-0x00000000bc36ffff]
+[    0.000000]   node   0: [mem 0x00000000bc370000-0x00000000bf64ffff]
+[    0.000000]   node   0: [mem 0x00000000bf650000-0x00000000bf6dffff]
+[    0.000000]   node   0: [mem 0x00000000bf6e0000-0x00000000bf6effff]
+[    0.000000]   node   0: [mem 0x00000000bf6f0000-0x00000000bf80ffff]
+[    0.000000]   node   0: [mem 0x00000000bf810000-0x00000000bfffffff]
+[    0.000000] Initmem setup node 0 [mem 0x0000000040000000-0x00000000bfffffff]
+[    0.000000] psci: probing for conduit method from ACPI.
+[    0.000000] psci: PSCIv1.1 detected in firmware.
+[    0.000000] psci: Using standard PSCI v0.2 function IDs
+[    0.000000] psci: Trusted OS migration not required
+[    0.000000] psci: SMC Calling Convention v1.0
+[    0.000000] percpu: Embedded 34 pages/cpu s98984 r8192 d32088 u139264
+[    0.000000] Detected PIPT I-cache on CPU0
+[    0.000000] CPU features: detected: GIC system register CPU interface
+[    0.000000] CPU features: detected: Morello Capability Architecture
+[    0.000000] CPU features: detected: Spectre-v2
+[    0.000000] CPU features: detected: Spectre-v3a
+[    0.000000] CPU features: detected: Spectre-v4
+[    0.000000] CPU features: detected: Spectre-BHB
+[    0.000000] CPU features: kernel page table isolation disabled by kernel configuration
+[    0.000000] CPU features: detected: ARM erratum 1742098
+[    0.000000] CPU features: detected: ARM errata 1165522, 1319367, or 1530923
+[    0.000000] alternatives: applying boot alternatives
+[    0.000000] Kernel command line: console=ttyAMA0 loglevel=7 rdinit=/init panic=-1 capebpf.jit_certificate_transcript=1 sysctl.net.core.bpf_jit_enable=1 initrd=initrd
+[    0.000000] Dentry cache hash table entries: 262144 (order: 9, 2097152 bytes, linear)
+[    0.000000] Inode-cache hash table entries: 131072 (order: 8, 1048576 bytes, linear)
+[    0.000000] Fallback order for Node 0: 0 
+[    0.000000] Built 1 zonelists, mobility grouping on.  Total pages: 516096
+[    0.000000] Policy zone: DMA
+[    0.000000] mem auto-init: stack:all(zero), heap alloc:off, heap free:off
+[    0.000000] software IO TLB: SWIOTLB bounce buffer size adjusted to 2MB
+[    0.000000] software IO TLB: area num 1.
+[    0.000000] software IO TLB: mapped [mem 0x00000000bd239000-0x00000000bd439000] (2MB)
+[    0.000000] Memory: 2030292K/2097152K available (11392K kernel code, 1894K rwdata, 3996K rodata, 960K init, 553K bss, 66860K reserved, 0K cma-reserved)
+[    0.000000] SLUB: HWalign=64, Order=0-3, MinObjects=0, CPUs=1, Nodes=1
+[    0.000000] trace event string verifier disabled
+[    0.000000] rcu: Preemptible hierarchical RCU implementation.
+[    0.000000] rcu: 	RCU event tracing is enabled.
+[    0.000000] rcu: 	RCU restricting CPUs from NR_CPUS=256 to nr_cpu_ids=1.
+[    0.000000] 	Trampoline variant of Tasks RCU enabled.
+[    0.000000] 	Tracing variant of Tasks RCU enabled.
+[    0.000000] rcu: RCU calculated value of scheduler-enlistment delay is 25 jiffies.
+[    0.000000] rcu: Adjusting geometry for rcu_fanout_leaf=16, nr_cpu_ids=1
+[    0.000000] NR_IRQS: 64, nr_irqs: 64, preallocated irqs: 0
+[    0.000000] GICv3: 224 SPIs implemented
+[    0.000000] GICv3: 0 Extended SPIs implemented
+[    0.000000] Root IRQ handler: gic_handle_irq
+[    0.000000] GICv3: GICv3 features: 16 PPIs
+[    0.000000] GICv3: CPU0: found redistributor 0 region 0:0x00000000080a0000
+[    0.000000] ITS [mem 0x08080000-0x0809ffff]
+[    0.000000] ITS@0x0000000008080000: allocated 8192 Devices @40100000 (indirect, esz 8, psz 64K, shr 1)
+[    0.000000] ITS@0x0000000008080000: allocated 8192 Interrupt Collections @40110000 (flat, esz 8, psz 64K, shr 1)
+[    0.000000] GICv3: using LPI property table @0x0000000040120000
+[    0.000000] GICv3: CPU0: using allocated LPI pending table @0x0000000040130000
+[    0.000000] rcu: srcu_init: Setting srcu_struct sizes based on contention.
+[    0.000000] arch_timer: cp15 timer(s) running at 62.50MHz (virt).
+[    0.000000] clocksource: arch_sys_counter: mask: 0x1ffffffffffffff max_cycles: 0x1cd42e208c, max_idle_ns: 881590405314 ns
+[    0.000055] sched_clock: 57 bits at 63MHz, resolution 16ns, wraps every 4398046511096ns
+[    0.008280] Console: colour dummy device 80x25
+[    0.009358] ACPI: Core revision 20230628
+[    0.012592] Calibrating delay loop (skipped), value calculated using timer frequency.. 125.00 BogoMIPS (lpj=250000)
+[    0.012727] pid_max: default: 32768 minimum: 301
+[    0.013953] LSM: initializing lsm=capability,selinux,integrity
+[    0.014305] SELinux:  Initializing.
+[    0.015957] Mount-cache hash table entries: 4096 (order: 3, 32768 bytes, linear)
+[    0.016005] Mountpoint-cache hash table entries: 4096 (order: 3, 32768 bytes, linear)
+[    0.050057] RCU Tasks: Setting shift to 0 and lim to 1 rcu_task_cb_adjust=1.
+[    0.050950] RCU Tasks Trace: Setting shift to 0 and lim to 1 rcu_task_cb_adjust=1.
+[    0.052388] rcu: Hierarchical SRCU implementation.
+[    0.052425] rcu: 	Max phase no-delay instances is 1000.
+[    0.055157] Platform MSI: ITS@0x8080000 domain created
+[    0.055479] PCI/MSI: ITS@0x8080000 domain created
+[    0.056331] Remapping and enabling EFI services.
+[    0.058765] smp: Bringing up secondary CPUs ...
+[    0.059416] smp: Brought up 1 node, 1 CPU
+[    0.059449] SMP: Total of 1 processors activated.
+[    0.059556] CPU features: detected: Common not Private translations
+[    0.059567] CPU features: detected: CRC32 instructions
+[    0.059624] CPU features: detected: RCpc load-acquire (LDAPR)
+[    0.059632] CPU features: detected: LSE atomic instructions
+[    0.060184] CPU features: detected: Privileged Access Never
+[    0.070651] CPU: All CPU(s) started at EL1
+[    0.072809] alternatives: applying system-wide alternatives
+[    0.112791] devtmpfs: initialized
+[    0.126685] clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 7645041785100000 ns
+[    0.127166] futex hash table entries: 256 (order: 2, 16384 bytes, linear)
+[    0.137243] SMBIOS 3.0.0 present.
+[    0.137716] DMI: QEMU QEMU Virtual Machine, BIOS 0.0.0 02/06/2015
+[    0.148754] NET: Registered PF_NETLINK/PF_ROUTE protocol family
+[    0.153093] DMA: preallocated 256 KiB GFP_KERNEL pool for atomic allocations
+[    0.153458] DMA: preallocated 256 KiB GFP_KERNEL|GFP_DMA pool for atomic allocations
+[    0.153533] DMA: preallocated 256 KiB GFP_KERNEL|GFP_DMA32 pool for atomic allocations
+[    0.153860] audit: initializing netlink subsys (disabled)
+[    0.155818] audit: type=2000 audit(0.140:1): state=initialized audit_enabled=0 res=1
+[    0.159524] thermal_sys: Registered thermal governor 'step_wise'
+[    0.160882] cpuidle: using governor menu
+[    0.161801] hw-breakpoint: found 8 breakpoint and 8 watchpoint registers.
+[    0.162308] ASID allocator initialised with 65536 entries
+[    0.162936] Serial: AMBA PL011 UART driver
+[    0.165183] Modules: 28032 pages in range for non-PLT usage
+[    0.165208] Modules: 519552 pages in range for PLT usage
+[    0.174741] HugeTLB: registered 1.00 GiB page size, pre-allocated 0 pages
+[    0.174763] HugeTLB: 0 KiB vmemmap can be freed for a 1.00 GiB page
+[    0.174797] HugeTLB: registered 32.0 MiB page size, pre-allocated 0 pages
+[    0.174806] HugeTLB: 0 KiB vmemmap can be freed for a 32.0 MiB page
+[    0.174816] HugeTLB: registered 2.00 MiB page size, pre-allocated 0 pages
+[    0.174823] HugeTLB: 0 KiB vmemmap can be freed for a 2.00 MiB page
+[    0.174834] HugeTLB: registered 64.0 KiB page size, pre-allocated 0 pages
+[    0.174841] HugeTLB: 0 KiB vmemmap can be freed for a 64.0 KiB page
+[    0.190998] ACPI: Added _OSI(Module Device)
+[    0.191029] ACPI: Added _OSI(Processor Device)
+[    0.191040] ACPI: Added _OSI(3.0 _SCP Extensions)
+[    0.191048] ACPI: Added _OSI(Processor Aggregator Device)
+[    0.218811] ACPI: 1 ACPI AML tables successfully acquired and loaded
+[    0.239067] ACPI: Interpreter enabled
+[    0.239112] ACPI: Using GIC for interrupt routing
+[    0.239996] ACPI: MCFG table detected, 1 entries
+[    0.320309] ARMH0011:00: ttyAMA0 at MMIO 0x9000000 (irq = 12, base_baud = 0) is a SBSA
+[    0.325482] printk: legacy console [ttyAMA0] enabled
+[    0.373811] ACPI: PCI Root Bridge [PCI0] (domain 0000 [bus 00-ff])
+[    0.375845] acpi PNP0A08:00: _OSC: OS supports [ExtendedConfig ASPM ClockPM Segments MSI HPX-Type3]
+[    0.376062] acpi PNP0A08:00: PCIe port services disabled; not requesting _OSC control
+[    0.382814] acpi PNP0A08:00: ECAM area [mem 0x4010000000-0x401fffffff] reserved by PNP0C02:00
+[    0.383371] acpi PNP0A08:00: ECAM at [mem 0x4010000000-0x401fffffff] for [bus 00-ff]
+[    0.384180] ACPI: Remapped I/O 0x000000003eff0000 to [io  0x0000-0xffff window]
+[    0.386322] PCI host bridge to bus 0000:00
+[    0.386829] pci_bus 0000:00: root bus resource [mem 0x10000000-0x3efeffff window]
+[    0.386919] pci_bus 0000:00: root bus resource [io  0x0000-0xffff window]
+[    0.386986] pci_bus 0000:00: root bus resource [mem 0x8000000000-0xffffffffff window]
+[    0.387160] pci_bus 0000:00: root bus resource [bus 00-ff]
+[    0.389315] pci 0000:00:00.0: [1b36:0008] type 00 class 0x060000
+[    0.394075] pci_bus 0000:00: resource 4 [mem 0x10000000-0x3efeffff window]
+[    0.394167] pci_bus 0000:00: resource 5 [io  0x0000-0xffff window]
+[    0.394229] pci_bus 0000:00: resource 6 [mem 0x8000000000-0xffffffffff window]
+[    0.395271] ACPI: PCI: Interrupt link GSI0 configured for IRQ 35
+[    0.395534] ACPI: PCI: Interrupt link GSI1 configured for IRQ 36
+[    0.395670] ACPI: PCI: Interrupt link GSI2 configured for IRQ 37
+[    0.395786] ACPI: PCI: Interrupt link GSI3 configured for IRQ 38
+[    0.397721] iommu: Default domain type: Translated
+[    0.397805] iommu: DMA domain TLB invalidation policy: strict mode
+[    0.399267] SCSI subsystem initialized
+[    0.401006] ACPI: bus type USB registered
+[    0.401405] usbcore: registered new interface driver usbfs
+[    0.401680] usbcore: registered new interface driver hub
+[    0.401900] usbcore: registered new device driver usb
+[    0.402525] pps_core: LinuxPPS API ver. 1 registered
+[    0.402587] pps_core: Software ver. 5.3.6 - Copyright 2005-2007 Rodolfo Giometti <giometti@linux.it>
+[    0.402739] PTP clock support registered
+[    0.403774] scmi_core: SCMI protocol bus registered
+[    0.405690] efivars: Registered efivars operations
+[    0.416956] vgaarb: loaded
+[    0.418517] clocksource: Switched to clocksource arch_sys_counter
+[    0.423508] VFS: Disk quotas dquot_6.6.0
+[    0.423716] VFS: Dquot-cache hash table entries: 512 (order 0, 4096 bytes)
+[    0.425886] pnp: PnP ACPI init
+[    0.432532] system 00:00: [mem 0x4010000000-0x401fffffff window] could not be reserved
+[    0.432953] pnp: PnP ACPI: found 1 devices
+[    0.457075] NET: Registered PF_INET protocol family
+[    0.458580] IP idents hash table entries: 32768 (order: 6, 262144 bytes, linear)
+[    0.463751] tcp_listen_portaddr_hash hash table entries: 1024 (order: 2, 16384 bytes, linear)
+[    0.463908] Table-perturb hash table entries: 65536 (order: 6, 262144 bytes, linear)
+[    0.464039] TCP established hash table entries: 16384 (order: 5, 131072 bytes, linear)
+[    0.464398] TCP bind hash table entries: 16384 (order: 7, 524288 bytes, linear)
+[    0.465229] TCP: Hash tables configured (established 16384 bind 16384)
+[    0.466976] UDP hash table entries: 1024 (order: 3, 32768 bytes, linear)
+[    0.467320] UDP-Lite hash table entries: 1024 (order: 3, 32768 bytes, linear)
+[    0.468404] NET: Registered PF_UNIX/PF_LOCAL protocol family
+[    0.470952] RPC: Registered named UNIX socket transport module.
+[    0.471046] RPC: Registered udp transport module.
+[    0.471096] RPC: Registered tcp transport module.
+[    0.471142] RPC: Registered tcp-with-tls transport module.
+[    0.471191] RPC: Registered tcp NFSv4.1 backchannel transport module.
+[    0.471584] PCI: CLS 0 bytes, default 64
+[    0.478932] Unpacking initramfs...
+[    0.482774] workingset: timestamp_bits=42 max_order=19 bucket_order=0
+[    0.490779] 9p: Installing v9fs 9p2000 file system support
+[    0.499161] Block layer SCSI generic (bsg) driver version 0.4 loaded (major 249)
+[    0.499343] io scheduler mq-deadline registered
+[    0.499455] io scheduler kyber registered
+[    0.499821] io scheduler bfq registered
+[    0.504137] Freeing initrd memory: 24K
+[    0.509677] input: Power Button as /devices/LNXSYSTM:00/LNXSYBUS:00/PNP0C0C:00/input/input0
+[    0.510769] ACPI: button: Power Button [PWRB]
+[    0.512863] EINJ: EINJ table not found.
+[    0.553714] ACPI: bus type drm_connector registered
+[    0.572188] loop: module loaded
+[    0.576087] tun: Universal TUN/TAP device driver, 1.6
+[    0.577637] usbcore: registered new interface driver usb-storage
+[    0.578716] mousedev: PS/2 mouse device common for all mice
+[    0.582911] rtc-efi rtc-efi.0: registered as rtc0
+[    0.583784] rtc-efi rtc-efi.0: setting system clock to 2026-09-06T21:34:42 UTC (1788730482)
+[    0.585214] device-mapper: ioctl: 4.48.0-ioctl (2023-03-01) initialised: dm-devel@redhat.com
+[    0.587213] pstore: Using crash dump compression: deflate
+[    0.587397] pstore: Registered efi_pstore as persistent store backend
+[    0.589278] usbcore: registered new interface driver usbhid
+[    0.589347] usbhid: USB HID core driver
+[    0.592382] hw perfevents: enabled with armv8_pmuv3_0 PMU driver, 5 counters available
+[    0.594646]  cs_system_cfg: CoreSight Configuration manager initialised
+[    0.598729] IPVS: Registered protocols ()
+[    0.598907] IPVS: Connection hash table configured (size=4096, memory=32Kbytes)
+[    0.600252] IPVS: ipvs loaded.
+[    0.601661] NET: Registered PF_INET6 protocol family
+[    0.608385] Segment Routing with IPv6
+[    0.608665] In-situ OAM (IOAM) with IPv6
+[    0.609450] sit: IPv6, IPv4 and MPLS over IPv4 tunneling driver
+[    0.613058] NET: Registered PF_PACKET protocol family
+[    0.613613] Bridge firewalling registered
+[    0.614968] 9pnet: Installing 9P2000 support
+[    0.615651] bpf_jit: CAPEBPF_JIT_POLICY certificate_report=0 certificate_transcript=1 certificate_mutation=0 exploit_evidence=0
+[    0.632648] registered taskstats version 1
+[    0.658505] clk: Disabling unused clocks
+[    0.696802] Freeing unused kernel memory: 960K
+[    0.710664] Run /init as init process
+CBPF_S5 kernel=6.7.0-cbpf-spatial-s5 pid=1 normal_verifier=1 attached=0
+CBPF_S5 kernel_version=#1 SMP PREEMPT 2026-09-06 00:00:00 UTC
+CBPF_S5 begin program=cbpf_s5 prog_flags=0 map_flags=0 key=1 key_size=4 value_size=8 max_entries=2
+CBPF_S5 map map_id=1 map_fd=3 key=1 initial=41 map_readback=41 map_flags=0 btf_id=0
+CBPF_S5 bpf kind=original pc=0 code=62 dst=10 src=0 off=-4 imm=1
+CBPF_S5 bpf kind=original pc=1 code=bf dst=2 src=10 off=0 imm=0
+CBPF_S5 bpf kind=original pc=2 code=07 dst=2 src=0 off=0 imm=-4
+CBPF_S5 bpf kind=original pc=3 code=18 dst=1 src=1 off=0 imm=3
+CBPF_S5 bpf kind=original pc=4 code=00 dst=0 src=0 off=0 imm=0
+CBPF_S5 bpf kind=original pc=5 code=85 dst=0 src=0 off=0 imm=1
+CBPF_S5 bpf kind=original pc=6 code=15 dst=0 src=0 off=5 imm=0
+CBPF_S5 bpf kind=original pc=7 code=79 dst=1 src=0 off=0 imm=0
+CBPF_S5 bpf kind=original pc=8 code=07 dst=1 src=0 off=0 imm=1
+CBPF_S5 bpf kind=original pc=9 code=7b dst=0 src=1 off=0 imm=0
+CBPF_S5 bpf kind=original pc=10 code=bf dst=0 src=1 off=0 imm=0
+CBPF_S5 bpf kind=original pc=11 code=95 dst=0 src=0 off=0 imm=0
+CBPF_S5 bpf kind=original pc=12 code=b7 dst=0 src=0 off=0 imm=0
+CBPF_S5 bpf kind=original pc=13 code=95 dst=0 src=0 off=0 imm=0
+[    0.771437] bpf_jit: CERT_BEGIN program=cbpf_s5 bpf_len=14 native_len=98 body_start=64 body_end=81 epilogue_start=81 plt_start=96 stack_size=16 executive_return_size=56 image=0xffff8000813f7988
+[    0.771631] bpf_jit: CERT_ENVELOPE program=cbpf_s5 region=prologue start=0 end=64 policy=exact_template
+[    0.771737] bpf_jit: CERT_IMAGE_WORD program=cbpf_s5 region=prologue native=0 value=910003c9
+[    0.771827] bpf_jit: CERT_IMAGE_WORD program=cbpf_s5 region=prologue native=1 value=d503201f
+[    0.771894] bpf_jit: CERT_IMAGE_WORD program=cbpf_s5 region=prologue native=2 value=a9bf7bfd
+[    0.771959] bpf_jit: CERT_IMAGE_WORD program=cbpf_s5 region=prologue native=3 value=910003fd
+[    0.772022] bpf_jit: CERT_IMAGE_WORD program=cbpf_s5 region=prologue native=4 value=a9bf53f3
+[    0.772084] bpf_jit: CERT_IMAGE_WORD program=cbpf_s5 region=prologue native=5 value=a9bf5bf5
+[    0.772146] bpf_jit: CERT_IMAGE_WORD program=cbpf_s5 region=prologue native=6 value=a9bf63f7
+[    0.772210] bpf_jit: CERT_IMAGE_WORD program=cbpf_s5 region=prologue native=7 value=a9bf6bf9
+[    0.772273] bpf_jit: CERT_IMAGE_WORD program=cbpf_s5 region=prologue native=8 value=a9bf73fb
+[    0.772337] bpf_jit: CERT_IMAGE_WORD program=cbpf_s5 region=prologue native=9 value=a9bf7fff
+[    0.772403] bpf_jit: CERT_IMAGE_WORD program=cbpf_s5 region=prologue native=10 value=d10043ff
+[    0.772468] bpf_jit: CERT_IMAGE_WORD program=cbpf_s5 region=prologue native=11 value=f90003e9
+[    0.772532] bpf_jit: CERT_IMAGE_WORD program=cbpf_s5 region=prologue native=12 value=91000004
+[    0.772595] bpf_jit: CERT_IMAGE_WORD program=cbpf_s5 region=prologue native=13 value=910003e0
+[    0.772706] bpf_jit: CERT_IMAGE_WORD program=cbpf_s5 region=prologue native=14 value=52800201
+[    0.772766] bpf_jit: CERT_IMAGE_WORD program=cbpf_s5 region=prologue native=15 value=10000862
+[    0.772828] bpf_jit: CERT_IMAGE_WORD program=cbpf_s5 region=prologue native=16 value=52800703
+[    0.772888] bpf_jit: CERT_IMAGE_WORD program=cbpf_s5 region=prologue native=17 value=52800005
+[    0.772947] bpf_jit: CERT_IMAGE_WORD program=cbpf_s5 region=prologue native=18 value=929c4ae6
+[    0.773006] bpf_jit: CERT_IMAGE_WORD program=cbpf_s5 region=prologue native=19 value=f2a01226
+[    0.773067] bpf_jit: CERT_IMAGE_WORD program=cbpf_s5 region=prologue native=20 value=f2c00006
+[    0.773126] bpf_jit: CERT_IMAGE_WORD program=cbpf_s5 region=prologue native=21 value=52800027
+[    0.773186] bpf_jit: CERT_IMAGE_WORD program=cbpf_s5 region=prologue native=22 value=9290576a
+[    0.773246] bpf_jit: CERT_IMAGE_WORD program=cbpf_s5 region=prologue native=23 value=f2b0006a
+[    0.773305] bpf_jit: CERT_IMAGE_WORD program=cbpf_s5 region=prologue native=24 value=f2d0000a
+[    0.773367] bpf_jit: CERT_IMAGE_WORD program=cbpf_s5 region=prologue native=25 value=d63f0140
+[    0.773479] bpf_jit: CERT_IMAGE_WORD program=cbpf_s5 region=prologue native=26 value=b4000060
+[    0.773543] bpf_jit: CERT_IMAGE_WORD program=cbpf_s5 region=prologue native=27 value=d2800007
+[    0.773611] bpf_jit: CERT_IMAGE_WORD program=cbpf_s5 region=prologue native=28 value=14000036
+[    0.773680] bpf_jit: CERT_IMAGE_WORD program=cbpf_s5 region=prologue native=29 value=d2800000
+[    0.773746] bpf_jit: CERT_IMAGE_WORD program=cbpf_s5 region=prologue native=30 value=d2800001
+[    0.773818] bpf_jit: CERT_IMAGE_WORD program=cbpf_s5 region=prologue native=31 value=d2800002
+[    0.773887] bpf_jit: CERT_IMAGE_WORD program=cbpf_s5 region=prologue native=32 value=d2800003
+[    0.773954] bpf_jit: CERT_IMAGE_WORD program=cbpf_s5 region=prologue native=33 value=d2800004
+[    0.774020] bpf_jit: CERT_IMAGE_WORD program=cbpf_s5 region=prologue native=34 value=d2800005
+[    0.774085] bpf_jit: CERT_IMAGE_WORD program=cbpf_s5 region=prologue native=35 value=d2800006
+[    0.774149] bpf_jit: CERT_IMAGE_WORD program=cbpf_s5 region=prologue native=36 value=d2800007
+[    0.774343] bpf_jit: CERT_IMAGE_WORD program=cbpf_s5 region=prologue native=37 value=d2800008
+[    0.774422] bpf_jit: CERT_IMAGE_WORD program=cbpf_s5 region=prologue native=38 value=d2800009
+[    0.774492] bpf_jit: CERT_IMAGE_WORD program=cbpf_s5 region=prologue native=39 value=d280000a
+[    0.774560] bpf_jit: CERT_IMAGE_WORD program=cbpf_s5 region=prologue native=40 value=d280000b
+[    0.774625] bpf_jit: CERT_IMAGE_WORD program=cbpf_s5 region=prologue native=41 value=d280000c
+[    0.774691] bpf_jit: CERT_IMAGE_WORD program=cbpf_s5 region=prologue native=42 value=d280000d
+[    0.774754] bpf_jit: CERT_IMAGE_WORD program=cbpf_s5 region=prologue native=43 value=d280000e
+[    0.774821] bpf_jit: CERT_IMAGE_WORD program=cbpf_s5 region=prologue native=44 value=d2800013
+[    0.774884] bpf_jit: CERT_IMAGE_WORD program=cbpf_s5 region=prologue native=45 value=d2800014
+[    0.774949] bpf_jit: CERT_IMAGE_WORD program=cbpf_s5 region=prologue native=46 value=d2800015
+[    0.775012] bpf_jit: CERT_IMAGE_WORD program=cbpf_s5 region=prologue native=47 value=d2800016
+[    0.775075] bpf_jit: CERT_IMAGE_WORD program=cbpf_s5 region=prologue native=48 value=d2800017
+[    0.775139] bpf_jit: CERT_IMAGE_WORD program=cbpf_s5 region=prologue native=49 value=d2800018
+[    0.775204] bpf_jit: CERT_IMAGE_WORD program=cbpf_s5 region=prologue native=50 value=d2800019
+[    0.775267] bpf_jit: CERT_IMAGE_WORD program=cbpf_s5 region=prologue native=51 value=d280001a
+[    0.775329] bpf_jit: CERT_IMAGE_WORD program=cbpf_s5 region=prologue native=52 value=d280001b
+[    0.775395] bpf_jit: CERT_IMAGE_WORD program=cbpf_s5 region=prologue native=53 value=d280001c
+[    0.775458] bpf_jit: CERT_IMAGE_WORD program=cbpf_s5 region=prologue native=54 value=d280001d
+[    0.775522] bpf_jit: CERT_IMAGE_WORD program=cbpf_s5 region=prologue native=55 value=c2c1d200
+[    0.775586] bpf_jit: CERT_IMAGE_WORD program=cbpf_s5 region=prologue native=56 value=d2800010
+[    0.775650] bpf_jit: CERT_IMAGE_WORD program=cbpf_s5 region=prologue native=57 value=c2c1d3f9
+[    0.775714] bpf_jit: CERT_IMAGE_WORD program=cbpf_s5 region=prologue native=58 value=02804339
+[    0.775774] bpf_jit: CERT_IMAGE_WORD program=cbpf_s5 region=prologue native=59 value=c2c83b39
+[    0.775836] bpf_jit: CERT_IMAGE_WORD program=cbpf_s5 region=prologue native=60 value=02004339
+[    0.775899] bpf_jit: CERT_IMAGE_WORD program=cbpf_s5 region=prologue native=61 value=d280001a
+[    0.775962] bpf_jit: CERT_IMAGE_WORD program=cbpf_s5 region=prologue native=62 value=d100033b
+[    0.776024] bpf_jit: CERT_IMAGE_WORD program=cbpf_s5 region=prologue native=63 value=d10043ff
+[    0.776105] bpf_jit: CERT_ENVELOPE program=cbpf_s5 region=software_stub start=81 end=81 policy=exact_template
+[    0.776202] bpf_jit: CERT_ENVELOPE program=cbpf_s5 region=epilogue start=81 end=96 policy=exact_template
+[    0.776299] bpf_jit: CERT_IMAGE_WORD program=cbpf_s5 region=epilogue native=81 value=c2c253c0
+[    0.776382] bpf_jit: CERT_IMAGE_WORD program=cbpf_s5 region=epilogue native=82 value=910043ff
+[    0.776446] bpf_jit: CERT_IMAGE_WORD program=cbpf_s5 region=epilogue native=83 value=c24003f0
+[    0.776508] bpf_jit: CERT_IMAGE_WORD program=cbpf_s5 region=epilogue native=84 value=910043ff
+[    0.776569] bpf_jit: CERT_IMAGE_WORD program=cbpf_s5 region=epilogue native=85 value=a8c173fb
+[    0.776630] bpf_jit: CERT_IMAGE_WORD program=cbpf_s5 region=epilogue native=86 value=a8c16bf9
+[    0.776691] bpf_jit: CERT_IMAGE_WORD program=cbpf_s5 region=epilogue native=87 value=a8c163f7
+[    0.776751] bpf_jit: CERT_IMAGE_WORD program=cbpf_s5 region=epilogue native=88 value=a8c15bf5
+[    0.776809] bpf_jit: CERT_IMAGE_WORD program=cbpf_s5 region=epilogue native=89 value=a8c153f3
+[    0.776869] bpf_jit: CERT_IMAGE_WORD program=cbpf_s5 region=epilogue native=90 value=a8c17bfd
+[    0.776929] bpf_jit: CERT_IMAGE_WORD program=cbpf_s5 region=epilogue native=91 value=910000e0
+[    0.776989] bpf_jit: CERT_IMAGE_WORD program=cbpf_s5 region=epilogue native=92 value=c2c0920a
+[    0.777048] bpf_jit: CERT_IMAGE_WORD program=cbpf_s5 region=epilogue native=93 value=b400004a
+[    0.777108] bpf_jit: CERT_IMAGE_WORD program=cbpf_s5 region=epilogue native=94 value=c2c25203
+[    0.777167] bpf_jit: CERT_IMAGE_WORD program=cbpf_s5 region=epilogue native=95 value=d65f03c0
+[    0.777242] bpf_jit: CERT_ENVELOPE program=cbpf_s5 region=plt start=96 end=98 policy=exact_template
+[    0.777333] bpf_jit: CERT_IMAGE_WORD program=cbpf_s5 region=plt native=96 value=5800004a
+[    0.777440] bpf_jit: CERT_IMAGE_WORD program=cbpf_s5 region=plt native=97 value=d61f0140
+[    0.777558] bpf_jit: CERT_SOURCE program=cbpf_s5 bpf=0 code=62 dst=10 src=0
+[    0.777635] bpf_jit: CERT_STATE program=cbpf_s5 bpf=0 dst_kind=2 src_kind=64 helper=4
+[    0.777710] bpf_jit: CERT_RANGE program=cbpf_s5 bpf=0 off=-4 imm=1 start=64 end=66
+[    0.777802] bpf_jit: CERT_WORD program=cbpf_s5 bpf=0 native=64 value=d280002a
+[    0.777875] bpf_jit: CERT_WORD program=cbpf_s5 bpf=0 native=65 value=e29fc32a
+[    0.777942] bpf_jit: CERT_SOURCE program=cbpf_s5 bpf=1 code=bf dst=2 src=10
+[    0.777998] bpf_jit: CERT_STATE program=cbpf_s5 bpf=1 dst_kind=64 src_kind=2 helper=4
+[    0.778055] bpf_jit: CERT_RANGE program=cbpf_s5 bpf=1 off=0 imm=0 start=66 end=67
+[    0.778112] bpf_jit: CERT_WORD program=cbpf_s5 bpf=1 native=66 value=c2c1d321
+[    0.778166] bpf_jit: CERT_SOURCE program=cbpf_s5 bpf=2 code=07 dst=2 src=0
+[    0.778321] bpf_jit: CERT_STATE program=cbpf_s5 bpf=2 dst_kind=2 src_kind=64 helper=4
+[    0.778390] bpf_jit: CERT_RANGE program=cbpf_s5 bpf=2 off=0 imm=-4 start=67 end=68
+[    0.778467] bpf_jit: CERT_WORD program=cbpf_s5 bpf=2 native=67 value=02801021
+[    0.778538] bpf_jit: CERT_SOURCE program=cbpf_s5 bpf=3 code=18 dst=1 src=0
+[    0.778591] bpf_jit: CERT_STATE program=cbpf_s5 bpf=3 dst_kind=4 src_kind=64 helper=4
+[    0.778648] bpf_jit: CERT_RANGE program=cbpf_s5 bpf=3 off=0 imm=14651904 start=68 end=69
+[    0.778708] bpf_jit: CERT_WORD program=cbpf_s5 bpf=3 native=68 value=52800000
+[    0.778761] bpf_jit: CERT_SOURCE program=cbpf_s5 bpf=4 code=00 dst=0 src=0
+[    0.778816] bpf_jit: CERT_STATE program=cbpf_s5 bpf=4 dst_kind=0 src_kind=0 helper=4
+[    0.778871] bpf_jit: CERT_RANGE program=cbpf_s5 bpf=4 off=0 imm=-65536 start=69 end=69
+[    0.778990] bpf_jit: CERT_SOURCE program=cbpf_s5 bpf=5 code=85 dst=0 src=0
+[    0.779046] bpf_jit: CERT_STATE program=cbpf_s5 bpf=5 dst_kind=64 src_kind=64 helper=0
+[    0.779106] bpf_jit: CERT_RANGE program=cbpf_s5 bpf=5 off=0 imm=283736 start=69 end=73
+[    0.779165] bpf_jit: CERT_WORD program=cbpf_s5 bpf=5 native=69 value=d2800004
+[    0.779218] bpf_jit: CERT_WORD program=cbpf_s5 bpf=5 native=70 value=c2c1d3cd
+[    0.779272] bpf_jit: CERT_WORD program=cbpf_s5 bpf=5 native=71 value=c2c23222
+[    0.779326] bpf_jit: CERT_WORD program=cbpf_s5 bpf=5 native=72 value=c2c1d007
+[    0.779384] bpf_jit: CERT_SOURCE program=cbpf_s5 bpf=6 code=15 dst=0 src=0
+[    0.779439] bpf_jit: CERT_STATE program=cbpf_s5 bpf=6 dst_kind=48 src_kind=48 helper=4
+[    0.779500] bpf_jit: CERT_RANGE program=cbpf_s5 bpf=6 off=5 imm=0 start=73 end=75
+[    0.779560] bpf_jit: CERT_WORD program=cbpf_s5 bpf=6 native=73 value=f10000ff
+[    0.779617] bpf_jit: CERT_WORD program=cbpf_s5 bpf=6 native=74 value=540000c0
+[    0.779674] bpf_jit: CERT_SOURCE program=cbpf_s5 bpf=7 code=79 dst=1 src=0
+[    0.779729] bpf_jit: CERT_STATE program=cbpf_s5 bpf=7 dst_kind=64 src_kind=16 helper=4
+[    0.779795] bpf_jit: CERT_RANGE program=cbpf_s5 bpf=7 off=0 imm=0 start=75 end=76
+[    0.779856] bpf_jit: CERT_WORD program=cbpf_s5 bpf=7 native=75 value=e2c004e0
+[    0.779912] bpf_jit: CERT_SOURCE program=cbpf_s5 bpf=8 code=07 dst=1 src=0
+[    0.779967] bpf_jit: CERT_STATE program=cbpf_s5 bpf=8 dst_kind=1 src_kind=16 helper=4
+[    0.780027] bpf_jit: CERT_RANGE program=cbpf_s5 bpf=8 off=0 imm=1 start=76 end=77
+[    0.780087] bpf_jit: CERT_WORD program=cbpf_s5 bpf=8 native=76 value=91000400
+[    0.780146] bpf_jit: CERT_SOURCE program=cbpf_s5 bpf=9 code=7b dst=0 src=1
+[    0.780202] bpf_jit: CERT_STATE program=cbpf_s5 bpf=9 dst_kind=16 src_kind=1 helper=4
+[    0.780262] bpf_jit: CERT_RANGE program=cbpf_s5 bpf=9 off=0 imm=0 start=77 end=78
+[    0.780321] bpf_jit: CERT_WORD program=cbpf_s5 bpf=9 native=77 value=e2c000e0
+[    0.780378] bpf_jit: CERT_SOURCE program=cbpf_s5 bpf=10 code=bf dst=0 src=1
+[    0.780437] bpf_jit: CERT_STATE program=cbpf_s5 bpf=10 dst_kind=16 src_kind=1 helper=4
+[    0.780496] bpf_jit: CERT_RANGE program=cbpf_s5 bpf=10 off=0 imm=0 start=78 end=79
+[    0.780557] bpf_jit: CERT_WORD program=cbpf_s5 bpf=10 native=78 value=c2c1d007
+[    0.780613] bpf_jit: CERT_SOURCE program=cbpf_s5 bpf=11 code=95 dst=0 src=0
+[    0.780669] bpf_jit: CERT_STATE program=cbpf_s5 bpf=11 dst_kind=1 src_kind=1 helper=4
+[    0.780730] bpf_jit: CERT_RANGE program=cbpf_s5 bpf=11 off=0 imm=0 start=79 end=80
+[    0.780790] bpf_jit: CERT_WORD program=cbpf_s5 bpf=11 native=79 value=14000002
+[    0.780852] bpf_jit: CERT_SOURCE program=cbpf_s5 bpf=12 code=b7 dst=0 src=0
+[    0.780910] bpf_jit: CERT_STATE program=cbpf_s5 bpf=12 dst_kind=32 src_kind=32 helper=4
+[    0.780972] bpf_jit: CERT_RANGE program=cbpf_s5 bpf=12 off=0 imm=0 start=80 end=81
+[    0.781034] bpf_jit: CERT_WORD program=cbpf_s5 bpf=12 native=80 value=d2800007
+[    0.781090] bpf_jit: CERT_SOURCE program=cbpf_s5 bpf=13 code=95 dst=0 src=0
+[    0.781147] bpf_jit: CERT_STATE program=cbpf_s5 bpf=13 dst_kind=1 src_kind=1 helper=4
+[    0.781208] bpf_jit: CERT_RANGE program=cbpf_s5 bpf=13 off=0 imm=0 start=81 end=81
+[    0.781277] bpf_jit: CERT_END program=cbpf_s5 covered_words=98
+[    0.782968] bpf_jit: CERT_DECISION program=cbpf_s5 accepted=1 stage=complete covered_words=98 image_fnv1a64=28085a155d7b7c2c
+CBPF_S5 verifier_begin
+func#0 @0
+0: R1=ctx(off=0,imm=0) R10=fp0
+0: (62) *(u32 *)(r10 -4) = 1          ; R10=fp0 fp-8=mmmm????
+1: (bf) r2 = r10                      ; R2_w=fp0 R10=fp0
+2: (07) r2 += -4                      ; R2_w=fp-4
+3: (18) r1 = 0xffff000000df9200       ; R1_w=map_ptr(off=0,ks=4,vs=8,imm=0)
+5: (85) call bpf_map_lookup_elem#1    ; R0_w=map_value_or_null(id=1,off=0,ks=4,vs=8,imm=0)
+6: (15) if r0 == 0x0 goto pc+5        ; R0_w=map_value(off=0,ks=4,vs=8,imm=0)
+7: (79) r1 = *(u64 *)(r0 +0)          ; R0_w=map_value(off=0,ks=4,vs=8,imm=0) R1_w=scalar()
+8: (07) r1 += 1                       ; R1_w=scalar()
+9: (7b) *(u64 *)(r0 +0) = r1          ; R0_w=map_value(off=0,ks=4,vs=8,imm=0) R1_w=scalar()
+10: (bf) r0 = r1                      ; R0_w=scalar(id=2) R1_w=scalar(id=2)
+11: (95) exit
+
+from 6 to 12: R0=0 R10=fp0 fp-8=mmmm????
+12: R0=0 R10=fp0 fp-8=mmmm????
+12: (b7) r0 = 0                       ; R0_w=0
+13: (95) exit
+processed 13 insns (limit 1000000) max_states_per_insn 0 total_states 1 peak_states 1 mark_read 0
+
+CBPF_S5 verifier_end
+CBPF_S5 bpf kind=translated pc=0 code=62 dst=10 src=0 off=-4 imm=1
+CBPF_S5 bpf kind=translated pc=1 code=bf dst=2 src=10 off=0 imm=0
+CBPF_S5 bpf kind=translated pc=2 code=07 dst=2 src=0 off=0 imm=-4
+CBPF_S5 bpf kind=translated pc=3 code=18 dst=1 src=1 off=0 imm=1
+CBPF_S5 bpf kind=translated pc=4 code=00 dst=0 src=0 off=0 imm=0
+CBPF_S5 bpf kind=translated pc=5 code=85 dst=0 src=0 off=0 imm=283736
+CBPF_S5 bpf kind=translated pc=6 code=15 dst=0 src=0 off=5 imm=0
+CBPF_S5 bpf kind=translated pc=7 code=79 dst=1 src=0 off=0 imm=0
+CBPF_S5 bpf kind=translated pc=8 code=07 dst=1 src=0 off=0 imm=1
+CBPF_S5 bpf kind=translated pc=9 code=7b dst=0 src=1 off=0 imm=0
+CBPF_S5 bpf kind=translated pc=10 code=bf dst=0 src=1 off=0 imm=0
+CBPF_S5 bpf kind=translated pc=11 code=95 dst=0 src=0 off=0 imm=0
+CBPF_S5 bpf kind=translated pc=12 code=b7 dst=0 src=0 off=0 imm=0
+CBPF_S5 bpf kind=translated pc=13 code=95 dst=0 src=0 off=0 imm=0
+CBPF_S5 word index=0 value=910003c9
+CBPF_S5 word index=1 value=d503201f
+CBPF_S5 word index=2 value=a9bf7bfd
+CBPF_S5 word index=3 value=910003fd
+CBPF_S5 word index=4 value=a9bf53f3
+CBPF_S5 word index=5 value=a9bf5bf5
+CBPF_S5 word index=6 value=a9bf63f7
+CBPF_S5 word index=7 value=a9bf6bf9
+CBPF_S5 word index=8 value=a9bf73fb
+CBPF_S5 word index=9 value=a9bf7fff
+CBPF_S5 word index=10 value=d10043ff
+CBPF_S5 word index=11 value=f90003e9
+CBPF_S5 word index=12 value=91000004
+CBPF_S5 word index=13 value=910003e0
+CBPF_S5 word index=14 value=52800201
+CBPF_S5 word index=15 value=10000862
+CBPF_S5 word index=16 value=52800703
+CBPF_S5 word index=17 value=52800005
+CBPF_S5 word index=18 value=929c4ae6
+CBPF_S5 word index=19 value=f2a01226
+CBPF_S5 word index=20 value=f2c00006
+CBPF_S5 word index=21 value=52800027
+CBPF_S5 word index=22 value=9290576a
+CBPF_S5 word index=23 value=f2b0006a
+CBPF_S5 word index=24 value=f2d0000a
+CBPF_S5 word index=25 value=d63f0140
+CBPF_S5 word index=26 value=b4000060
+CBPF_S5 word index=27 value=d2800007
+CBPF_S5 word index=28 value=14000036
+CBPF_S5 word index=29 value=d2800000
+CBPF_S5 word index=30 value=d2800001
+CBPF_S5 word index=31 value=d2800002
+CBPF_S5 word index=32 value=d2800003
+CBPF_S5 word index=33 value=d2800004
+CBPF_S5 word index=34 value=d2800005
+CBPF_S5 word index=35 value=d2800006
+CBPF_S5 word index=36 value=d2800007
+CBPF_S5 word index=37 value=d2800008
+CBPF_S5 word index=38 value=d2800009
+CBPF_S5 word index=39 value=d280000a
+CBPF_S5 word index=40 value=d280000b
+CBPF_S5 word index=41 value=d280000c
+CBPF_S5 word index=42 value=d280000d
+CBPF_S5 word index=43 value=d280000e
+CBPF_S5 word index=44 value=d2800013
+CBPF_S5 word index=45 value=d2800014
+CBPF_S5 word index=46 value=d2800015
+CBPF_S5 word index=47 value=d2800016
+CBPF_S5 word index=48 value=d2800017
+CBPF_S5 word index=49 value=d2800018
+CBPF_S5 word index=50 value=d2800019
+CBPF_S5 word index=51 value=d280001a
+CBPF_S5 word index=52 value=d280001b
+CBPF_S5 word index=53 value=d280001c
+CBPF_S5 word index=54 value=d280001d
+CBPF_S5 word index=55 value=c2c1d200
+CBPF_S5 word index=56 value=d2800010
+CBPF_S5 word index=57 value=c2c1d3f9
+CBPF_S5 word index=58 value=02804339
+CBPF_S5 word index=59 value=c2c83b39
+CBPF_S5 word index=60 value=02004339
+CBPF_S5 word index=61 value=d280001a
+CBPF_S5 word index=62 value=d100033b
+CBPF_S5 word index=63 value=d10043ff
+CBPF_S5 word index=64 value=d280002a
+CBPF_S5 word index=65 value=e29fc32a
+CBPF_S5 word index=66 value=c2c1d321
+CBPF_S5 word index=67 value=02801021
+CBPF_S5 word index=68 value=52800000
+CBPF_S5 word index=69 value=d2800004
+CBPF_S5 word index=70 value=c2c1d3cd
+CBPF_S5 word index=71 value=c2c23222
+CBPF_S5 word index=72 value=c2c1d007
+CBPF_S5 word index=73 value=f10000ff
+CBPF_S5 word index=74 value=540000c0
+CBPF_S5 word index=75 value=e2c004e0
+CBPF_S5 word index=76 value=91000400
+CBPF_S5 word index=77 value=e2c000e0
+CBPF_S5 word index=78 value=c2c1d007
+CBPF_S5 word index=79 value=14000002
+CBPF_S5 word index=80 value=d2800007
+CBPF_S5 word index=81 value=c2c253c0
+CBPF_S5 word index=82 value=910043ff
+CBPF_S5 word index=83 value=c24003f0
+CBPF_S5 word index=84 value=910043ff
+CBPF_S5 word index=85 value=a8c173fb
+CBPF_S5 word index=86 value=a8c16bf9
+CBPF_S5 word index=87 value=a8c163f7
+CBPF_S5 word index=88 value=a8c15bf5
+CBPF_S5 word index=89 value=a8c153f3
+CBPF_S5 word index=90 value=a8c17bfd
+CBPF_S5 word index=91 value=910000e0
+CBPF_S5 word index=92 value=c2c0920a
+CBPF_S5 word index=93 value=b400004a
+CBPF_S5 word index=94 value=c2c25203
+CBPF_S5 word index=95 value=d65f03c0
+CBPF_S5 word index=96 value=5800004a
+CBPF_S5 word index=97 value=d61f0140
+CBPF_S5 image prog_id=1 map_id=1 original_count=14 translated_count=14 native_entry=0xffff8000813f7988 jited_len=392 nr_jited_ksyms=1 nr_jited_func_lens=1 func_len=392
+CBPF_S5_READY map_id=1 prog_id=1 held_map_fd=3 held_prog_fd=4 executed=0
+CBPF_S5_EXECUTE
+CBPF_S5 authorization=accepted test_run_count=0
+[  513.725477] bpf_jit: ROOT_ATTEST kind=caller_return destination=c16_epilogue object=kernel_pcc object_id=0x0 expected_size=18446744073709551615 tag=1 sealed=1 base=0x0 length=18446744073709551615 address=0xffff8000809567a8 perms=0x3ffff
+[  513.725718] bpf_jit: ROOT_ATTEST kind=context destination=c16 object=socket_context object_id=0xffff000000173000 expected_size=0 tag=0 sealed=0 base=0x0 length=18446744073709551615 address=0x0 perms=0x3ffff
+[  513.725891] bpf_jit: CBPF_S5_GATE target=0xffff800080037800 tag=1 sealed=1 base=0x0 cursor=0xffff800080037800 length=18446744073709551615 perms=0x2cfff
+[  513.726058] bpf_jit: ROOT_ATTEST kind=native_stack destination=rcsp_el0 object=jit_invocation_frame object_id=0xffff0000001b77f0 expected_size=16 tag=1 sealed=0 base=0xffff0000001b77f0 length=16 address=0xffff0000001b7800 perms=0x37dfd
+[  513.726393] bpf_jit: ROOT_ATTEST kind=restricted_code destination=pcc object=jit_restricted object_id=0xffff8000813f79f0 expected_size=224 tag=1 sealed=1 base=0xffff8000813f79f0 length=224 address=0xffff8000813f79f0 perms=0x3fdfd
+[  513.726589] bpf_jit: ROOT_ATTEST kind=executive_return destination=clr object=jit_epilogue object_id=0xffff8000813f7ad0 expected_size=56 tag=1 sealed=1 base=0xffff8000813f7ad0 length=56 address=0xffff8000813f7ad0 perms=0x3ffff
+[  513.727051] CBPF_S5_VALUE branch=reduced map_id=1 index=1 value_size=8 stride=8 values=0xffff000000df9310 selected=0xffff000000df9318 tag=1 sealed=0 base=0xffff000000df9318 cursor=0xffff000000df9318 length=8 perms=0x30001
+CBPF_S5 result=PASS stage=complete map_id=1 prog_id=1 loaded=1 map_create_count=1 map_update_count=1 map_lookup_count=2 prog_load_count=1 test_run_count=1 info_count=3 retval=42 readback=42 errno=0 attached=0
+CBPF_S5 poweroff=begin result=PASS
+[  513.734486] reboot: Power down

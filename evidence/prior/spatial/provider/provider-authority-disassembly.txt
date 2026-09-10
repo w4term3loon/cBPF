@@ -1,0 +1,707 @@
+PROVIDER-AUTHORITY STATIC DISASSEMBLY AUDIT
+Generated: 2026-09-05
+Scope: governed Morello exact allocation/provider/lookup objects, plus the
+governed Morello broad lookup object. This is a static audit of relocatable
+compiler output; it is not a boot or runtime observation.
+
+SOURCE AND BUILD BINDING
+
+Source revision:
+  4e4604875fbf4144f9ce456bc6d60f3ef55da4d0
+Staged source tree:
+  b0d57e3a9532e91435202be0ed8b5a17765bb354
+Clean replay parent tree:
+  e6c69574c16bc2b9bce06329f9ac3f4b3269e79a
+
+Governed inputs (SHA-256):
+  exact kernel/bpf/syscall.o
+    5f6d364e353b51dd923fc1b7509a2377e94d5b3f3c58dabff4385b660dc9fd16
+  exact kernel/bpf/arraymap.o
+    a6d9cf57a94aeba5203101376c48cb2ca02be818fc6d547e6805c0d3a33aa05c
+  exact arch/arm64/net/bpf_jit_comp.o
+    17b6d03d310b93c920d129f41cdc8ecb88fdea7a6f21520cae65d0ff1a162b96
+  broad arch/arm64/net/bpf_jit_comp.o
+    6782e33a1716ce09f68f718e1b454a91c5830ed9be9e09209a65d61b46bb7cbc
+  exact .config
+    e81651fc9ce4fbdef84489be0972352c44c51a303b10c03934d7e798588ce62a
+  broad .config
+    5edca7af8a729b764b9536e62d14b3822584ca68e2747cf33bd8874ba216a565
+  exact build receipt
+    2eeeb22f66a2cedf954ed6d434c26272fc1801d78c0816b46d8f47551217c88c
+  builder archive
+    1db1b1256689805177ab1c94706c4fb609b5d64c7039b04e2c69ddae7af085e7
+
+Disassembler container:
+  capebpf-morello-linux-builder@
+  sha256:b4de3680a00e3ac68ccc56bd87131b97c1fffcd5e016c2d1a54d7e3386d9fc6e
+Tools:
+  LLVM (http://llvm.org/):
+    LLVM version 17.0.0git
+    Optimized build with assertions.
+  
+  
+  llvm-nm, compatible with GNU nm
+  LLVM (http://llvm.org/):
+    LLVM version 17.0.0git
+    Optimized build with assertions.
+  
+
+SYMBOL SIZES
+
+Sizes below are emitted by llvm-nm --print-size --size-sort --radix=x.
+The hexadecimal sizes are:
+  bpf_map_area_alloc_with_cap: 0x140 = 320 bytes
+  bpf_array_provider_value_cap: 0x228 = 552 bytes
+  exact bpf_cheri_map_lookup_impl: 0x1d4 = 468 bytes
+  broad bpf_cheri_map_lookup_impl: 0x1dc = 476 bytes
+
+OBJECT /build/exact/kernel/bpf/syscall.o
+0000000000000160 0000000000000140 T bpf_map_area_alloc_with_cap
+OBJECT /build/exact/kernel/bpf/arraymap.o
+                                  U bpf_map_area_alloc_with_cap
+0000000000000000 0000000000000228 T bpf_array_provider_value_cap
+OBJECT /build/exact/arch/arm64/net/bpf_jit_comp.o
+                                  U bpf_array_provider_value_cap
+0000000000000114 00000000000001d4 T bpf_cheri_map_lookup_impl
+OBJECT /build/broad/arch/arm64/net/bpf_jit_comp.o
+                                  U bpf_array_provider_value_cap
+0000000000000114 00000000000001dc T bpf_cheri_map_lookup_impl
+
+STATIC PATH FINDINGS
+
+1. Allocation-event authority origin is DDC.
+
+The exact bpf_map_area_alloc_with_cap has one explicit DDC read at 0x224,
+after __kmalloc_node or __vmalloc_node_range has returned the allocation
+address in x0. The immediately following instructions derive and constrain
+the retained root:
+
+  0x224  MRS     c1, DDC
+  0x22c  SCVALUE c1, c1, x0
+  0x230  SCBNDS  c1, c1, x20
+  0x234  CLRPERM c1, c1, x8
+  0x298  STR     c1, [x19]
+
+The intervening 0x238--0x274 checks require a tagged, unsealed capability
+whose base and address equal the allocation address, whose length equals the
+allocation size, and whose forbidden permission mask is clear. Failure frees
+the allocation. Thus the provider retains an allocation-bounded capability,
+but its provenance origin is explicitly the hybrid executive DDC at the
+allocation event; it is not a capability returned by the allocator ABI.
+
+2. Exact successful lookup derives monotonically from the retained root.
+
+In bpf_array_provider_value_cap, 0x54 loads c6 from the provider record.
+The code checks the retained root's tag, seal state, base, address, recorded
+allocation length, layout metadata, and permissions. After computing the
+selected element address, it performs:
+
+  0x0e0  SCVALUE c1, c6, x12
+  0x118  SCBNDS  c1, c1, x8
+  0x11c  CLRPERM c13, c1, x13
+
+It then validates the resulting tag, seal state, exact selected-object base
+and address, map->value_size length, and forbidden permissions before
+returning it. No MRS DDC instruction exists anywhere in this provider
+function.
+
+The exact bpf_cheri_map_lookup_impl passes widened=0 and broad_delivery=0
+at 0x1b0--0x1b4, receives c0 from bpf_array_provider_value_cap, checks its
+tag, and clears the final permission mask at 0x1e4 into c12. The only MRS DDC
+in the exact lookup function is the error block at 0x25c. Every displayed
+successful control-flow path after the provider returns branches around that
+block to 0x264. Therefore the returned exact lookup capability is derived
+from the retained provider root with SCVALUE/SCBNDS and is not reminted by an
+explicit DDC read on the audited successful construction path.
+
+This is an instruction-path statement for the displayed objects. It does not
+assert global absence of DDC use by unrelated kernel code or by external
+validation/logging callees, and it does not erase the allocation-event DDC
+premise above.
+
+3. Exact error-path DDC is immediately tag-cleared.
+
+All exact lookup failures converge at 0x25c:
+
+  0x25c  MRS    c0, DDC
+  0x260  CLRTAG c12, c0
+
+There is no intervening instruction, branch, call, load, or store. The
+epilogue moves the untagged c12 into returned c0 at 0x268. Consequently this
+DDC read constructs the null/error return; it does not deliver tagged DDC
+authority to BPF on that path.
+
+4. Broad successful lookup remints from DDC.
+
+The broad bpf_cheri_map_lookup_impl still obtains and tag-checks the provider
+result. It then discards that capability as the architectural authority root,
+preserving only its integer address in x21, and executes:
+
+  0x1dc  MRS     c1, DDC
+  0x1e4  SCVALUE c0, c1, x21
+  0x1ec  CLRPERM c12, c0, x9
+
+There is no object-granular SCBNDS after this broad DDC remint. The broad
+success return is therefore rooted in DDC, unlike the exact success return.
+The broad function's separate failure block at 0x264 also reads DDC and
+immediately clears its tag at 0x268.
+
+AUDIT LIMITS
+
+The listings are full .text disassemblies of the four named symbol instances
+from the governed relocatable objects, including relocations and
+compiler-created local labels. Each address interval exactly matches its
+llvm-nm symbol size. They bind what the compiler emitted for these functions.
+Final-link placement and runtime branch observations require separately
+bound final-image or boot evidence. This audit does not upgrade the
+allocation-event DDC-derived root into allocator-propagated provenance.
+
+FULL DISASSEMBLY
+
+=== exact syscall.o: bpf_map_area_alloc_with_cap [0x160,0x2a0) ===
+
+/build/exact/kernel/bpf/syscall.o:	file format elf64-littleaarch64
+
+Disassembly of section .text:
+
+0000000000000160 <bpf_map_area_alloc_with_cap>:
+     160: d10143ff     	sub	sp, sp, #0x50
+     164: a9017bfd     	stp	x29, x30, [sp, #0x10]
+     168: f90013f7     	str	x23, [sp, #0x20]
+     16c: a90357f6     	stp	x22, x21, [sp, #0x30]
+     170: a9044ff4     	stp	x20, x19, [sp, #0x40]
+     174: 910043fd     	add	x29, sp, #0x10
+     178: b4000822     	cbz	x2, 0x27c <bpf_map_area_alloc_with_cap+0x11c>
+     17c: aa1e03f6     	mov	x22, x30
+     180: aa0203f3     	mov	x19, x2
+     184: 2a0103f5     	mov	w21, w1
+     188: aa0003f4     	mov	x20, x0
+     18c: 52842017     	mov	w23, #0x2100            // =8448
+     190: c200005f     	str	czr, [x2, #0x0]
+     194: 14000003     	b	0x1a0 <bpf_map_area_alloc_with_cap+0x40>
+
+0000000000000198 <$x.6>:
+     198: 52842017     	mov	w23, #0x2100            // =8448
+     19c: 72a00817     	movk	w23, #0x40, lsl #16
+     1a0: b100069f     	cmn	x20, #0x1
+     1a4: 540006c0     	b.eq	0x27c <bpf_map_area_alloc_with_cap+0x11c>
+     1a8: f140229f     	cmp	x20, #0x8, lsl #12      // =0x8000
+     1ac: 54000108     	b.hi	0x1cc <bpf_map_area_alloc_with_cap+0x6c>
+     1b0: 52819808     	mov	w8, #0xcc0              // =3264
+     1b4: aa1403e0     	mov	x0, x20
+     1b8: 72a00228     	movk	w8, #0x11, lsl #16
+     1bc: 2a1503e2     	mov	w2, w21
+     1c0: 2a0802e1     	orr	w1, w23, w8
+     1c4: 94000000     	bl	0x1c4 <bpf_map_area_alloc_with_cap+0x64>
+		00000000000001c4:  R_AARCH64_CALL26	__kmalloc_node
+     1c8: b50002e0     	cbnz	x0, 0x224 <bpf_map_area_alloc_with_cap+0xc4>
+     1cc: 90000008     	adrp	x8, 0x0 <bpf_check_uarg_tail_zero>
+		00000000000001cc:  R_AARCH64_ADR_PREL_PG_HI21	arm64_use_ng_mappings
+     1d0: d280e06a     	mov	x10, #0x703             // =1795
+     1d4: 52899809     	mov	w9, #0x4cc0             // =19648
+     1d8: f2e60d0a     	movk	x10, #0x3068, lsl #48
+     1dc: aa1603fe     	mov	x30, x22
+     1e0: 2a0902e4     	orr	w4, w23, w9
+     1e4: 39400108     	ldrb	w8, [x8]
+		00000000000001e4:  R_AARCH64_LDST8_ABS_LO12_NC	arm64_use_ng_mappings
+     1e8: b2750149     	orr	x9, x10, #0x800
+     1ec: b25143e2     	mov	x2, #-0x800000000000    // =-140737488355328
+     1f0: b2648fe3     	mov	x3, #-0x10000000        // =-268435456
+     1f4: aa1403e0     	mov	x0, x20
+     1f8: 52800021     	mov	w1, #0x1                // =1
+     1fc: 7100011f     	cmp	w8, #0x0
+     200: f2b00002     	movk	x2, #0x8000, lsl #16
+     204: 9a890145     	csel	x5, x10, x9, eq
+     208: f2df7fe3     	movk	x3, #0xfbff, lsl #32
+     20c: aa1f03e6     	mov	x6, xzr
+     210: 2a1503e7     	mov	w7, w21
+     214: d50320ff     	xpaclri
+     218: f90003fe     	str	x30, [sp]
+     21c: 94000000     	bl	0x21c <bpf_map_area_alloc_with_cap+0xbc>
+		000000000000021c:  R_AARCH64_CALL26	__vmalloc_node_range
+     220: b4000300     	cbz	x0, 0x280 <bpf_map_area_alloc_with_cap+0x120>
+     224: c29b4121     	mrs	c1, DDC
+     228: 52964048     	mov	w8, #0xb202             // =45570
+     22c: c2c04021     	scvalue	c1, c1, x0
+     230: c2d40021     	scbnds	c1, c1, x20
+     234: c2c8a021     	clrperm	c1, c1, x8
+     238: c2c09028     	gctag	x8, c1
+     23c: b40001e8     	cbz	x8, 0x278 <bpf_map_area_alloc_with_cap+0x118>
+     240: c2c0b028     	gcseal	x8, c1
+     244: b50001a8     	cbnz	x8, 0x278 <bpf_map_area_alloc_with_cap+0x118>
+     248: c2c01028     	gcbase	x8, c1
+     24c: eb00011f     	cmp	x8, x0
+     250: 54000141     	b.ne	0x278 <bpf_map_area_alloc_with_cap+0x118>
+     254: eb00003f     	cmp	x1, x0
+     258: 54000101     	b.ne	0x278 <bpf_map_area_alloc_with_cap+0x118>
+     25c: c2c03028     	gclen	x8, c1
+     260: eb14011f     	cmp	x8, x20
+     264: 540000a1     	b.ne	0x278 <bpf_map_area_alloc_with_cap+0x118>
+     268: c2c0d028     	gcperm	x8, c1
+     26c: 52964049     	mov	w9, #0xb202             // =45570
+     270: ea09011f     	tst	x8, x9
+     274: 54000120     	b.eq	0x298 <bpf_map_area_alloc_with_cap+0x138>
+     278: 94000000     	bl	0x278 <bpf_map_area_alloc_with_cap+0x118>
+		0000000000000278:  R_AARCH64_CALL26	kvfree
+     27c: aa1f03e0     	mov	x0, xzr
+     280: a9444ff4     	ldp	x20, x19, [sp, #0x40]
+     284: a94357f6     	ldp	x22, x21, [sp, #0x30]
+     288: a9417bfd     	ldp	x29, x30, [sp, #0x10]
+     28c: f94013f7     	ldr	x23, [sp, #0x20]
+     290: 910143ff     	add	sp, sp, #0x50
+     294: d65f03c0     	ret
+     298: c2000261     	str	c1, [x19, #0x0]
+     29c: 17fffff9     	b	0x280 <bpf_map_area_alloc_with_cap+0x120>
+
+=== exact arraymap.o: bpf_array_provider_value_cap [0x0,0x228) ===
+
+/build/exact/kernel/bpf/arraymap.o:	file format elf64-littleaarch64
+
+Disassembly of section .text:
+
+0000000000000000 <bpf_array_provider_value_cap>:
+       0: b40001a1     	cbz	x1, 0x34 <bpf_array_provider_value_cap+0x34>
+       4: b9401808     	ldr	w8, [x0, #0x18]
+       8: 7100091f     	cmp	w8, #0x2
+       c: 54000141     	b.ne	0x34 <bpf_array_provider_value_cap+0x34>
+      10: f9400008     	ldr	x8, [x0]
+      14: 90000009     	adrp	x9, 0x0 <bpf_array_provider_value_cap>
+		0000000000000014:  R_AARCH64_ADR_PREL_PG_HI21	array_map_ops
+      18: 91000129     	add	x9, x9, #0x0
+		0000000000000018:  R_AARCH64_ADD_ABS_LO12_NC	array_map_ops
+      1c: eb09011f     	cmp	x8, x9
+      20: 540000a1     	b.ne	0x34 <bpf_array_provider_value_cap+0x34>
+      24: b9403008     	ldr	w8, [x0, #0x30]
+      28: 35000068     	cbnz	w8, 0x34 <bpf_array_provider_value_cap+0x34>
+      2c: f9401c08     	ldr	x8, [x0, #0x38]
+      30: b4000068     	cbz	x8, 0x3c <bpf_array_provider_value_cap+0x3c>
+      34: aa1f03e0     	mov	x0, xzr
+      38: d65f03c0     	ret
+      3c: f940840a     	ldr	x10, [x0, #0x108]
+      40: b4ffffaa     	cbz	x10, 0x34 <bpf_array_provider_value_cap+0x34>
+      44: d10283ff     	sub	sp, sp, #0xa0
+      48: a9087bfd     	stp	x29, x30, [sp, #0x80]
+      4c: f9004bf3     	str	x19, [sp, #0x90]
+      50: 910203fd     	add	x29, sp, #0x80
+      54: c2401946     	ldr	c6, [x10, #0x60]
+      58: c2c090c8     	gctag	x8, c6
+      5c: b4000508     	cbz	x8, 0xfc <bpf_array_provider_value_cap+0xfc>
+      60: c2c0b0c8     	gcseal	x8, c6
+      64: b50004c8     	cbnz	x8, 0xfc <bpf_array_provider_value_cap+0xfc>
+      68: c2c010c5     	gcbase	x5, c6
+      6c: eb0000bf     	cmp	x5, x0
+      70: 54000461     	b.ne	0xfc <bpf_array_provider_value_cap+0xfc>
+      74: eb0500df     	cmp	x6, x5
+      78: 54000421     	b.ne	0xfc <bpf_array_provider_value_cap+0xfc>
+      7c: f9403d48     	ldr	x8, [x10, #0x78]
+      80: c2c030c9     	gclen	x9, c6
+      84: eb08013f     	cmp	x9, x8
+      88: 540003a1     	b.ne	0xfc <bpf_array_provider_value_cap+0xfc>
+      8c: f9404148     	ldr	x8, [x10, #0x80]
+      90: f104411f     	cmp	x8, #0x110
+      94: 54000341     	b.ne	0xfc <bpf_array_provider_value_cap+0xfc>
+      98: b940240b     	ldr	w11, [x0, #0x24]
+      9c: b9410008     	ldr	w8, [x0, #0x100]
+      a0: f9404549     	ldr	x9, [x10, #0x88]
+      a4: 9bab7d0c     	umull	x12, w8, w11
+      a8: eb0c013f     	cmp	x9, x12
+      ac: 54000281     	b.ne	0xfc <bpf_array_provider_value_cap+0xfc>
+      b0: c2c0d0cc     	gcperm	x12, c6
+      b4: 5296404d     	mov	w13, #0xb202            // =45570
+      b8: ea0d019f     	tst	x12, x13
+      bc: 54000201     	b.ne	0xfc <bpf_array_provider_value_cap+0xfc>
+      c0: b9400027     	ldr	w7, [x1]
+      c4: 6b0b00ff     	cmp	w7, w11
+      c8: 540001a2     	b.hs	0xfc <bpf_array_provider_value_cap+0xfc>
+      cc: b941040b     	ldr	w11, [x0, #0x104]
+      d0: c2401946     	ldr	c6, [x10, #0x60]
+      d4: 8a07016c     	and	x12, x11, x7
+      d8: 9104400b     	add	x11, x0, #0x110
+      dc: 9ba82d8c     	umaddl	x12, w12, w8, x11
+      e0: c2cc40c1     	scvalue	c1, c6, x12
+      e4: 36000162     	tbz	w2, #0x0, 0x110 <bpf_array_provider_value_cap+0x110>
+      e8: 5296404d     	mov	w13, #0xb202            // =45570
+      ec: 2a1f03e8     	mov	w8, wzr
+      f0: c2cda02d     	clrperm	c13, c1, x13
+      f4: a21f03ad     	stur	c13, [x29, #-0x10]
+      f8: 1400001f     	b	0x174 <bpf_array_provider_value_cap+0x174>
+      fc: aa1f03e0     	mov	x0, xzr
+     100: a9487bfd     	ldp	x29, x30, [sp, #0x80]
+     104: f9404bf3     	ldr	x19, [sp, #0x90]
+     108: 910283ff     	add	sp, sp, #0xa0
+     10c: d65f03c0     	ret
+     110: b9402008     	ldr	w8, [x0, #0x20]
+     114: 5296404d     	mov	w13, #0xb202            // =45570
+     118: c2c80021     	scbnds	c1, c1, x8
+     11c: c2cda02d     	clrperm	c13, c1, x13
+     120: c2c091ae     	gctag	x14, c13
+     124: b400024e     	cbz	x14, 0x16c <bpf_array_provider_value_cap+0x16c>
+     128: c2c0b1ae     	gcseal	x14, c13
+     12c: b500020e     	cbnz	x14, 0x16c <bpf_array_provider_value_cap+0x16c>
+     130: c2c011ae     	gcbase	x14, c13
+     134: eb0c01df     	cmp	x14, x12
+     138: 540001a1     	b.ne	0x16c <bpf_array_provider_value_cap+0x16c>
+     13c: eb0c01bf     	cmp	x13, x12
+     140: 54000161     	b.ne	0x16c <bpf_array_provider_value_cap+0x16c>
+     144: c2c031ae     	gclen	x14, c13
+     148: eb0801df     	cmp	x14, x8
+     14c: 54000101     	b.ne	0x16c <bpf_array_provider_value_cap+0x16c>
+     150: c2c0d1a8     	gcperm	x8, c13
+     154: 5296404e     	mov	w14, #0xb202            // =45570
+     158: ea0e011f     	tst	x8, x14
+     15c: 1a9f17e8     	cset	w8, eq
+     160: c2df0da1     	csel	c1, c13, czr, eq
+     164: a21f03a1     	stur	c1, [x29, #-0x10]
+     168: 14000003     	b	0x174 <bpf_array_provider_value_cap+0x174>
+     16c: a21f03bf     	stur	czr, [x29, #-0x10]
+     170: 2a1f03e8     	mov	w8, wzr
+     174: 37000064     	tbnz	w4, #0x0, 0x180 <bpf_array_provider_value_cap+0x180>
+     178: a25f03a0     	ldur	c0, [x29, #-0x10]
+     17c: 17ffffe1     	b	0x100 <bpf_array_provider_value_cap+0x100>
+     180: 9000000e     	adrp	x14, 0x0 <bpf_array_provider_value_cap>
+		0000000000000180:  R_AARCH64_ADR_PREL_PG_HI21	.rodata.str1.1+0x185
+     184: 910001ce     	add	x14, x14, #0x0
+		0000000000000184:  R_AARCH64_ADD_ABS_LO12_NC	.rodata.str1.1+0x185
+     188: 9000000f     	adrp	x15, 0x0 <bpf_array_provider_value_cap>
+		0000000000000188:  R_AARCH64_ADR_PREL_PG_HI21	.rodata.str1.1+0x175
+     18c: 910001ef     	add	x15, x15, #0x0
+		000000000000018c:  R_AARCH64_ADD_ABS_LO12_NC	.rodata.str1.1+0x175
+     190: 7200007f     	tst	w3, #0x1
+     194: 90000010     	adrp	x16, 0x0 <bpf_array_provider_value_cap>
+		0000000000000194:  R_AARCH64_ADR_PREL_PG_HI21	.rodata.str1.1+0x168
+     198: 91000210     	add	x16, x16, #0x0
+		0000000000000198:  R_AARCH64_ADD_ABS_LO12_NC	.rodata.str1.1+0x168
+     19c: 9a8e11ee     	csel	x14, x15, x14, ne
+     1a0: 7200005f     	tst	w2, #0x1
+     1a4: f9403943     	ldr	x3, [x10, #0x70]
+     1a8: c2c090ca     	gctag	x10, c6
+     1ac: 9a8e1201     	csel	x1, x16, x14, ne
+     1b0: f100015f     	cmp	x10, #0x0
+     1b4: c2c091b0     	gctag	x16, c13
+     1b8: b9403404     	ldr	w4, [x0, #0x34]
+     1bc: c2c0d0ca     	gcperm	x10, c6
+     1c0: 1a9f07ee     	cset	w14, ne
+     1c4: b940200f     	ldr	w15, [x0, #0x20]
+     1c8: f100021f     	cmp	x16, #0x0
+     1cc: c2c0d1b0     	gcperm	x16, c13
+     1d0: c2c011a0     	gcbase	x0, c13
+     1d4: c2c031a2     	gclen	x2, c13
+     1d8: 92407d4a     	and	x10, x10, #0xffffffff
+     1dc: 1a9f07f1     	cset	w17, ne
+     1e0: 92407e10     	and	x16, x16, #0xffffffff
+     1e4: c2c010d2     	gcbase	x18, c6
+     1e8: c2c030d3     	gclen	x19, c6
+     1ec: a9048be0     	stp	x0, x2, [sp, #0x48]
+     1f0: 90000000     	adrp	x0, 0x0 <bpf_array_provider_value_cap>
+		00000000000001f0:  R_AARCH64_ADR_PREL_PG_HI21	.rodata.str1.1
+     1f4: 91000000     	add	x0, x0, #0x0
+		00000000000001f4:  R_AARCH64_ADD_ABS_LO12_NC	.rodata.str1.1
+     1f8: 90000006     	adrp	x6, 0x0 <bpf_array_provider_value_cap>
+		00000000000001f8:  R_AARCH64_ADR_PREL_PG_HI21	array_map_ops
+     1fc: 910000c6     	add	x6, x6, #0x0
+		00000000000001fc:  R_AARCH64_ADD_ABS_LO12_NC	array_map_ops
+     200: 2a0803e2     	mov	w2, w8
+     204: a905c3ed     	stp	x13, x16, [sp, #0x58]
+     208: b90043f1     	str	w17, [sp, #0x40]
+     20c: b9003bef     	str	w15, [sp, #0x38]
+     210: a902b3e9     	stp	x9, x12, [sp, #0x28]
+     214: a901afea     	stp	x10, x11, [sp, #0x18]
+     218: a900cff2     	stp	x18, x19, [sp, #0x8]
+     21c: b90003ee     	str	w14, [sp]
+     220: 94000000     	bl	0x220 <bpf_array_provider_value_cap+0x220>
+		0000000000000220:  R_AARCH64_CALL26	_printk
+     224: 17ffffd5     	b	0x178 <bpf_array_provider_value_cap+0x178>
+
+=== exact bpf_jit_comp.o: bpf_cheri_map_lookup_impl [0x114,0x2e8) ===
+
+/build/exact/arch/arm64/net/bpf_jit_comp.o:	file format elf64-littleaarch64
+
+Disassembly of section .text:
+
+0000000000000114 <bpf_cheri_map_lookup_impl>:
+     114: d10203ff     	sub	sp, sp, #0x80
+     118: a9057bfd     	stp	x29, x30, [sp, #0x50]
+     11c: a90657f6     	stp	x22, x21, [sp, #0x60]
+     120: a9074ff4     	stp	x20, x19, [sp, #0x70]
+     124: 910143fd     	add	x29, sp, #0x50
+     128: c2c1d043     	mov	c3, c2
+     12c: c2c09048     	gctag	x8, c2
+     130: b4000968     	cbz	x8, 0x25c <bpf_cheri_map_lookup_impl+0x148>
+     134: c2c0b068     	gcseal	x8, c3
+     138: b5000928     	cbnz	x8, 0x25c <bpf_cheri_map_lookup_impl+0x148>
+     13c: aa0003f3     	mov	x19, x0
+     140: c2c03068     	gclen	x8, c3
+     144: eb480c1f     	cmp	x0, x8, lsr #3
+     148: 540008a2     	b.hs	0x25c <bpf_cheri_map_lookup_impl+0x148>
+     14c: c2c1d022     	mov	c2, c1
+     150: d37df268     	lsl	x8, x19, #3
+     154: 91002101     	add	x1, x8, #0x8
+     158: a21f03a2     	stur	c2, [x29, #-0x10]
+     15c: 52a00042     	mov	w2, #0x20000            // =131072
+     160: c2c1d060     	mov	c0, c3
+     164: a21e03a3     	stur	c3, [x29, #-0x20]
+     168: 94000000     	bl	0x168 <bpf_cheri_map_lookup_impl+0x54>
+		0000000000000168:  R_AARCH64_CALL26	cheri_check_cap
+     16c: a25e03a1     	ldur	c1, [x29, #-0x20]
+     170: a25f03a2     	ldur	c2, [x29, #-0x10]
+     174: 36000740     	tbz	w0, #0x0, 0x25c <bpf_cheri_map_lookup_impl+0x148>
+     178: f8737834     	ldr	x20, [x1, x19, lsl #3]
+     17c: b4000714     	cbz	x20, 0x25c <bpf_cheri_map_lookup_impl+0x148>
+     180: f9400288     	ldr	x8, [x20]
+     184: b40006c8     	cbz	x8, 0x25c <bpf_cheri_map_lookup_impl+0x148>
+     188: f9403108     	ldr	x8, [x8, #0x60]
+     18c: b4000688     	cbz	x8, 0x25c <bpf_cheri_map_lookup_impl+0x148>
+     190: b9401e81     	ldr	w1, [x20, #0x1c]
+     194: c2c1d040     	mov	c0, c2
+     198: 52a00042     	mov	w2, #0x20000            // =131072
+     19c: 94000000     	bl	0x19c <bpf_cheri_map_lookup_impl+0x88>
+		000000000000019c:  R_AARCH64_CALL26	cheri_check_cap
+     1a0: a25f03a1     	ldur	c1, [x29, #-0x10]
+     1a4: 360005c0     	tbz	w0, #0x0, 0x25c <bpf_cheri_map_lookup_impl+0x148>
+     1a8: 90000016     	adrp	x22, 0x0 <bpf_cheri_helper_gateway>
+		00000000000001a8:  R_AARCH64_ADR_PREL_PG_HI21	.data..ro_after_init
+     1ac: aa1403e0     	mov	x0, x20
+     1b0: 2a1f03e2     	mov	w2, wzr
+     1b4: 2a1f03e3     	mov	w3, wzr
+     1b8: c2c05021     	gcvalue	x1, c1
+     1bc: b94002c8     	ldr	w8, [x22]
+		00000000000001bc:  R_AARCH64_LDST32_ABS_LO12_NC	.data..ro_after_init
+     1c0: 7100011f     	cmp	w8, #0x0
+     1c4: 1a9f07e4     	cset	w4, ne
+     1c8: 94000000     	bl	0x1c8 <bpf_cheri_map_lookup_impl+0xb4>
+		00000000000001c8:  R_AARCH64_CALL26	bpf_array_provider_value_cap
+     1cc: c2c09008     	gctag	x8, c0
+     1d0: b4000468     	cbz	x8, 0x25c <bpf_cheri_map_lookup_impl+0x148>
+     1d4: 90000008     	adrp	x8, 0x0 <bpf_cheri_helper_gateway>
+		00000000000001d4:  R_AARCH64_ADR_PREL_PG_HI21	.data..ro_after_init+0xc
+     1d8: 52964049     	mov	w9, #0xb202             // =45570
+     1dc: c2c05015     	gcvalue	x21, c0
+     1e0: b9400108     	ldr	w8, [x8]
+		00000000000001e0:  R_AARCH64_LDST32_ABS_LO12_NC	.data..ro_after_init+0xc
+     1e4: c2c9a00c     	clrperm	c12, c0, x9
+     1e8: 350004a8     	cbnz	w8, 0x27c <bpf_cheri_map_lookup_impl+0x168>
+     1ec: b94002c8     	ldr	w8, [x22]
+		00000000000001ec:  R_AARCH64_LDST32_ABS_LO12_NC	.data..ro_after_init
+     1f0: 340003a8     	cbz	w8, 0x264 <bpf_cheri_map_lookup_impl+0x150>
+     1f4: c2c09188     	gctag	x8, c12
+     1f8: b9403683     	ldr	w3, [x20, #0x34]
+     1fc: f100011f     	cmp	x8, #0x0
+     200: c2c0b188     	gcseal	x8, c12
+     204: 1a9f07e2     	cset	w2, ne
+     208: f100011f     	cmp	x8, #0x0
+     20c: c2c0d188     	gcperm	x8, c12
+     210: b9401a84     	ldr	w4, [x20, #0x18]
+     214: b9402286     	ldr	w6, [x20, #0x20]
+     218: 1a9f07e9     	cset	w9, ne
+     21c: 92407d08     	and	x8, x8, #0xffffffff
+     220: 90000000     	adrp	x0, 0x0 <bpf_cheri_helper_gateway>
+		0000000000000220:  R_AARCH64_ADR_PREL_PG_HI21	.rodata.str1.1+0x1b
+     224: 91000000     	add	x0, x0, #0x0
+		0000000000000224:  R_AARCH64_ADD_ABS_LO12_NC	.rodata.str1.1+0x1b
+     228: 90000007     	adrp	x7, 0x0 <bpf_cheri_helper_gateway>
+		0000000000000228:  R_AARCH64_ADR_PREL_PG_HI21	.rodata.str1.1+0xd6
+     22c: 910000e7     	add	x7, x7, #0x0
+		000000000000022c:  R_AARCH64_ADD_ABS_LO12_NC	.rodata.str1.1+0xd6
+     230: aa1303e1     	mov	x1, x19
+     234: aa1503e5     	mov	x5, x21
+     238: c2c0118a     	gcbase	x10, c12
+     23c: c2c0318b     	gclen	x11, c12
+     240: a901a3ec     	stp	x12, x8, [sp, #0x18]
+     244: a900afea     	stp	x10, x11, [sp, #0x8]
+     248: a21f03ac     	stur	c12, [x29, #-0x10]
+     24c: b90003e9     	str	w9, [sp]
+     250: 94000000     	bl	0x250 <bpf_cheri_map_lookup_impl+0x13c>
+		0000000000000250:  R_AARCH64_CALL26	_printk
+     254: a25f03ac     	ldur	c12, [x29, #-0x10]
+     258: 14000003     	b	0x264 <bpf_cheri_map_lookup_impl+0x150>
+     25c: c29b4120     	mrs	c0, DDC
+     260: c2c1900c     	clrtag	c12, c0
+     264: a9474ff4     	ldp	x20, x19, [sp, #0x70]
+     268: c2c1d180     	mov	c0, c12
+     26c: a94657f6     	ldp	x22, x21, [sp, #0x60]
+     270: a9457bfd     	ldp	x29, x30, [sp, #0x50]
+     274: 910203ff     	add	sp, sp, #0x80
+     278: d65f03c0     	ret
+     27c: c2c09188     	gctag	x8, c12
+     280: 90000001     	adrp	x1, 0x0 <bpf_cheri_helper_gateway>
+		0000000000000280:  R_AARCH64_ADR_PREL_PG_HI21	.rodata.str1.1
+     284: 91000021     	add	x1, x1, #0x0
+		0000000000000284:  R_AARCH64_ADD_ABS_LO12_NC	.rodata.str1.1
+     288: f100011f     	cmp	x8, #0x0
+     28c: c2c0b188     	gcseal	x8, c12
+     290: 1a9f07e6     	cset	w6, ne
+     294: f100011f     	cmp	x8, #0x0
+     298: c2c0d188     	gcperm	x8, c12
+     29c: b9402285     	ldr	w5, [x20, #0x20]
+     2a0: 1a9f07e7     	cset	w7, ne
+     2a4: 92407d08     	and	x8, x8, #0xffffffff
+     2a8: 90000000     	adrp	x0, 0x0 <bpf_cheri_helper_gateway>
+		00000000000002a8:  R_AARCH64_ADR_PREL_PG_HI21	.rodata.str1.1+0x405
+     2ac: 91000000     	add	x0, x0, #0x0
+		00000000000002ac:  R_AARCH64_ADD_ABS_LO12_NC	.rodata.str1.1+0x405
+     2b0: 90000002     	adrp	x2, 0x0 <bpf_cheri_helper_gateway>
+		00000000000002b0:  R_AARCH64_ADR_PREL_PG_HI21	.rodata.str1.1+0xa
+     2b4: 91000042     	add	x2, x2, #0x0
+		00000000000002b4:  R_AARCH64_ADD_ABS_LO12_NC	.rodata.str1.1+0xa
+     2b8: aa0103e3     	mov	x3, x1
+     2bc: aa1503e4     	mov	x4, x21
+     2c0: c2c01189     	gcbase	x9, c12
+     2c4: c2c0318a     	gclen	x10, c12
+     2c8: a90123ec     	stp	x12, x8, [sp, #0x10]
+     2cc: a9002be9     	stp	x9, x10, [sp]
+     2d0: a21f03ac     	stur	c12, [x29, #-0x10]
+     2d4: 94000000     	bl	0x2d4 <bpf_cheri_map_lookup_impl+0x1c0>
+		00000000000002d4:  R_AARCH64_CALL26	_printk
+     2d8: a25f03ac     	ldur	c12, [x29, #-0x10]
+     2dc: b94002c8     	ldr	w8, [x22]
+		00000000000002dc:  R_AARCH64_LDST32_ABS_LO12_NC	.data..ro_after_init
+     2e0: 34fffc28     	cbz	w8, 0x264 <bpf_cheri_map_lookup_impl+0x150>
+     2e4: 17ffffc4     	b	0x1f4 <bpf_cheri_map_lookup_impl+0xe0>
+
+=== broad bpf_jit_comp.o: bpf_cheri_map_lookup_impl [0x114,0x2f0) ===
+
+/build/broad/arch/arm64/net/bpf_jit_comp.o:	file format elf64-littleaarch64
+
+Disassembly of section .text:
+
+0000000000000114 <bpf_cheri_map_lookup_impl>:
+     114: d10203ff     	sub	sp, sp, #0x80
+     118: a9057bfd     	stp	x29, x30, [sp, #0x50]
+     11c: a90657f6     	stp	x22, x21, [sp, #0x60]
+     120: a9074ff4     	stp	x20, x19, [sp, #0x70]
+     124: 910143fd     	add	x29, sp, #0x50
+     128: c2c1d043     	mov	c3, c2
+     12c: c2c09048     	gctag	x8, c2
+     130: b40009a8     	cbz	x8, 0x264 <bpf_cheri_map_lookup_impl+0x150>
+     134: c2c0b068     	gcseal	x8, c3
+     138: b5000968     	cbnz	x8, 0x264 <bpf_cheri_map_lookup_impl+0x150>
+     13c: aa0003f3     	mov	x19, x0
+     140: c2c03068     	gclen	x8, c3
+     144: eb480c1f     	cmp	x0, x8, lsr #3
+     148: 540008e2     	b.hs	0x264 <bpf_cheri_map_lookup_impl+0x150>
+     14c: c2c1d022     	mov	c2, c1
+     150: d37df268     	lsl	x8, x19, #3
+     154: 91002101     	add	x1, x8, #0x8
+     158: a21f03a2     	stur	c2, [x29, #-0x10]
+     15c: 52a00042     	mov	w2, #0x20000            // =131072
+     160: c2c1d060     	mov	c0, c3
+     164: a21e03a3     	stur	c3, [x29, #-0x20]
+     168: 94000000     	bl	0x168 <bpf_cheri_map_lookup_impl+0x54>
+		0000000000000168:  R_AARCH64_CALL26	cheri_check_cap
+     16c: a25e03a1     	ldur	c1, [x29, #-0x20]
+     170: a25f03a2     	ldur	c2, [x29, #-0x10]
+     174: 36000780     	tbz	w0, #0x0, 0x264 <bpf_cheri_map_lookup_impl+0x150>
+     178: f8737834     	ldr	x20, [x1, x19, lsl #3]
+     17c: b4000754     	cbz	x20, 0x264 <bpf_cheri_map_lookup_impl+0x150>
+     180: f9400288     	ldr	x8, [x20]
+     184: b4000708     	cbz	x8, 0x264 <bpf_cheri_map_lookup_impl+0x150>
+     188: f9403108     	ldr	x8, [x8, #0x60]
+     18c: b40006c8     	cbz	x8, 0x264 <bpf_cheri_map_lookup_impl+0x150>
+     190: b9401e81     	ldr	w1, [x20, #0x1c]
+     194: c2c1d040     	mov	c0, c2
+     198: 52a00042     	mov	w2, #0x20000            // =131072
+     19c: 94000000     	bl	0x19c <bpf_cheri_map_lookup_impl+0x88>
+		000000000000019c:  R_AARCH64_CALL26	cheri_check_cap
+     1a0: a25f03a1     	ldur	c1, [x29, #-0x10]
+     1a4: 36000600     	tbz	w0, #0x0, 0x264 <bpf_cheri_map_lookup_impl+0x150>
+     1a8: 90000016     	adrp	x22, 0x0 <bpf_cheri_helper_gateway>
+		00000000000001a8:  R_AARCH64_ADR_PREL_PG_HI21	.data..ro_after_init
+     1ac: aa1403e0     	mov	x0, x20
+     1b0: 2a1f03e2     	mov	w2, wzr
+     1b4: 52800023     	mov	w3, #0x1                // =1
+     1b8: c2c05021     	gcvalue	x1, c1
+     1bc: b94002c8     	ldr	w8, [x22]
+		00000000000001bc:  R_AARCH64_LDST32_ABS_LO12_NC	.data..ro_after_init
+     1c0: 7100011f     	cmp	w8, #0x0
+     1c4: 1a9f07e4     	cset	w4, ne
+     1c8: 94000000     	bl	0x1c8 <bpf_cheri_map_lookup_impl+0xb4>
+		00000000000001c8:  R_AARCH64_CALL26	bpf_array_provider_value_cap
+     1cc: c2c09008     	gctag	x8, c0
+     1d0: b40004a8     	cbz	x8, 0x264 <bpf_cheri_map_lookup_impl+0x150>
+     1d4: 90000008     	adrp	x8, 0x0 <bpf_cheri_helper_gateway>
+		00000000000001d4:  R_AARCH64_ADR_PREL_PG_HI21	.data..ro_after_init+0xc
+     1d8: 52964049     	mov	w9, #0xb202             // =45570
+     1dc: c29b4121     	mrs	c1, DDC
+     1e0: c2c05015     	gcvalue	x21, c0
+     1e4: c2d54020     	scvalue	c0, c1, x21
+     1e8: b9400108     	ldr	w8, [x8]
+		00000000000001e8:  R_AARCH64_LDST32_ABS_LO12_NC	.data..ro_after_init+0xc
+     1ec: c2c9a00c     	clrperm	c12, c0, x9
+     1f0: 350004a8     	cbnz	w8, 0x284 <bpf_cheri_map_lookup_impl+0x170>
+     1f4: b94002c8     	ldr	w8, [x22]
+		00000000000001f4:  R_AARCH64_LDST32_ABS_LO12_NC	.data..ro_after_init
+     1f8: 340003a8     	cbz	w8, 0x26c <bpf_cheri_map_lookup_impl+0x158>
+     1fc: c2c09188     	gctag	x8, c12
+     200: b9403683     	ldr	w3, [x20, #0x34]
+     204: f100011f     	cmp	x8, #0x0
+     208: c2c0b188     	gcseal	x8, c12
+     20c: 1a9f07e2     	cset	w2, ne
+     210: f100011f     	cmp	x8, #0x0
+     214: c2c0d188     	gcperm	x8, c12
+     218: b9401a84     	ldr	w4, [x20, #0x18]
+     21c: b9402286     	ldr	w6, [x20, #0x20]
+     220: 1a9f07e9     	cset	w9, ne
+     224: 92407d08     	and	x8, x8, #0xffffffff
+     228: 90000000     	adrp	x0, 0x0 <bpf_cheri_helper_gateway>
+		0000000000000228:  R_AARCH64_ADR_PREL_PG_HI21	.rodata.str1.1+0x1b
+     22c: 91000000     	add	x0, x0, #0x0
+		000000000000022c:  R_AARCH64_ADD_ABS_LO12_NC	.rodata.str1.1+0x1b
+     230: 90000007     	adrp	x7, 0x0 <bpf_cheri_helper_gateway>
+		0000000000000230:  R_AARCH64_ADR_PREL_PG_HI21	.rodata.str1.1+0xd6
+     234: 910000e7     	add	x7, x7, #0x0
+		0000000000000234:  R_AARCH64_ADD_ABS_LO12_NC	.rodata.str1.1+0xd6
+     238: aa1303e1     	mov	x1, x19
+     23c: aa1503e5     	mov	x5, x21
+     240: c2c0118a     	gcbase	x10, c12
+     244: c2c0318b     	gclen	x11, c12
+     248: a901a3ec     	stp	x12, x8, [sp, #0x18]
+     24c: a900afea     	stp	x10, x11, [sp, #0x8]
+     250: a21f03ac     	stur	c12, [x29, #-0x10]
+     254: b90003e9     	str	w9, [sp]
+     258: 94000000     	bl	0x258 <bpf_cheri_map_lookup_impl+0x144>
+		0000000000000258:  R_AARCH64_CALL26	_printk
+     25c: a25f03ac     	ldur	c12, [x29, #-0x10]
+     260: 14000003     	b	0x26c <bpf_cheri_map_lookup_impl+0x158>
+     264: c29b4120     	mrs	c0, DDC
+     268: c2c1900c     	clrtag	c12, c0
+     26c: a9474ff4     	ldp	x20, x19, [sp, #0x70]
+     270: c2c1d180     	mov	c0, c12
+     274: a94657f6     	ldp	x22, x21, [sp, #0x60]
+     278: a9457bfd     	ldp	x29, x30, [sp, #0x50]
+     27c: 910203ff     	add	sp, sp, #0x80
+     280: d65f03c0     	ret
+     284: c2c09188     	gctag	x8, c12
+     288: 90000001     	adrp	x1, 0x0 <bpf_cheri_helper_gateway>
+		0000000000000288:  R_AARCH64_ADR_PREL_PG_HI21	.rodata.str1.1
+     28c: 91000021     	add	x1, x1, #0x0
+		000000000000028c:  R_AARCH64_ADD_ABS_LO12_NC	.rodata.str1.1
+     290: f100011f     	cmp	x8, #0x0
+     294: c2c0b188     	gcseal	x8, c12
+     298: 1a9f07e6     	cset	w6, ne
+     29c: f100011f     	cmp	x8, #0x0
+     2a0: c2c0d188     	gcperm	x8, c12
+     2a4: b9402285     	ldr	w5, [x20, #0x20]
+     2a8: 1a9f07e7     	cset	w7, ne
+     2ac: 92407d08     	and	x8, x8, #0xffffffff
+     2b0: 90000000     	adrp	x0, 0x0 <bpf_cheri_helper_gateway>
+		00000000000002b0:  R_AARCH64_ADR_PREL_PG_HI21	.rodata.str1.1+0x400
+     2b4: 91000000     	add	x0, x0, #0x0
+		00000000000002b4:  R_AARCH64_ADD_ABS_LO12_NC	.rodata.str1.1+0x400
+     2b8: 90000002     	adrp	x2, 0x0 <bpf_cheri_helper_gateway>
+		00000000000002b8:  R_AARCH64_ADR_PREL_PG_HI21	.rodata.str1.1+0xa
+     2bc: 91000042     	add	x2, x2, #0x0
+		00000000000002bc:  R_AARCH64_ADD_ABS_LO12_NC	.rodata.str1.1+0xa
+     2c0: aa0103e3     	mov	x3, x1
+     2c4: aa1503e4     	mov	x4, x21
+     2c8: c2c01189     	gcbase	x9, c12
+     2cc: c2c0318a     	gclen	x10, c12
+     2d0: a90123ec     	stp	x12, x8, [sp, #0x10]
+     2d4: a9002be9     	stp	x9, x10, [sp]
+     2d8: a21f03ac     	stur	c12, [x29, #-0x10]
+     2dc: 94000000     	bl	0x2dc <bpf_cheri_map_lookup_impl+0x1c8>
+		00000000000002dc:  R_AARCH64_CALL26	_printk
+     2e0: a25f03ac     	ldur	c12, [x29, #-0x10]
+     2e4: b94002c8     	ldr	w8, [x22]
+		00000000000002e4:  R_AARCH64_LDST32_ABS_LO12_NC	.data..ro_after_init
+     2e8: 34fffc28     	cbz	w8, 0x26c <bpf_cheri_map_lookup_impl+0x158>
+     2ec: 17ffffc4     	b	0x1fc <bpf_cheri_map_lookup_impl+0xe8>

@@ -1,0 +1,38 @@
+{
+  "result": "PASS",
+  "scope": "Pre-execution review of frozen recipe and guest control-flow boundaries; observed container configuration retained separately. No source edits or new cases. This is not a formal safety proof.",
+  "checks": {
+    "ownership_builder_offline_unprivileged_flags": true,
+    "spatial_builder_offline_unprivileged_flags": true,
+    "ownership_stock_verifier_required_by_runner": true,
+    "guest_load_only_branch_precedes_native_image_and_test_run": true,
+    "guest_load_only_branch_goes_directly_to_cleanup": true,
+    "guest_attachment_api_absent": true,
+    "guest_60_second_timeout_one_cpu_no_nic_no_shared_host_fs": true,
+    "spatial_requested_objects_only": true,
+    "spatial_inherited_test_modes_disabled": true,
+    "ownership_research_configuration_rejected": true
+  },
+  "reviewed_files": [
+    {
+      "file": "tools/build_ownership_kernel.sh",
+      "bytes": 9770,
+      "sha256": "b730ab5dde4d051da80602c0a7a2315d7a9533599137cc426c4e4f3bec0936a9"
+    },
+    {
+      "file": "tools/run_ownership.sh",
+      "bytes": 18224,
+      "sha256": "3cebc14fe5c6c487a769b469d02654250984096cb52f191ff5349b377d1051af"
+    },
+    {
+      "file": "tools/check_spatial.sh",
+      "bytes": 8650,
+      "sha256": "ea5a572f8674d8e0bebab52b520cfea6cb681221fc0980749b8b25c3ac526a96"
+    },
+    {
+      "file": "linux/ownership/guest.c",
+      "bytes": 6793,
+      "sha256": "89d31fbab37ad07d56b2fbc3fc4d9b7c37d985ad1c5e1be3651632dbbb2d4477"
+    }
+  ]
+}

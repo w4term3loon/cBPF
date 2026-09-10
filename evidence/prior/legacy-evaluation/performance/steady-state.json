@@ -1,0 +1,688 @@
+{
+  "schema_version": 1,
+  "record_type": "capebpf-performance-study",
+  "status": "developmental",
+  "hardware_performance_claim_ready": false,
+  "platform": "qemu-morello",
+  "machine_label": "qemu-balanced-local",
+  "platform_model": "QEMU Virtual Machine",
+  "platform_model_source": "dmi-product-name",
+  "source_tree": "e6c69574c16bc2b9bce06329f9ac3f4b3269e79a",
+  "benchmark_binary_sha256": "741ff491d6f2f94b464c23d1db41a4fd821e85dfd899cc52a2b2c7f32c658246",
+  "comparison_config_sha256": "461352bba7e4a93fca7f62455f715dedc868fa9815a03db64a6f4b76681ea6b5",
+  "matched_bytecode": {
+    "control": {
+      "instruction_count": 3,
+      "sha256": "ad574f362ee635e63317400604ceb6d954ccb1f85077e3f2010c950a50700781"
+    },
+    "direct_1": {
+      "instruction_count": 12,
+      "sha256": "4067b98d8bef449b9e570aaba86c78c3014744ad937f38871f538fe741727e87"
+    },
+    "direct_32": {
+      "instruction_count": 43,
+      "sha256": "c99ef261dee8141cc9f464882b21a1d3801831c09b449bd607de5a30953a9f30"
+    },
+    "direct_8": {
+      "instruction_count": 19,
+      "sha256": "113b93fc890f90ed4fb3f1a6be3ee801d32a4cecab462f7b618c51eb62bf9543"
+    },
+    "gateway_1": {
+      "instruction_count": 12,
+      "sha256": "4067b98d8bef449b9e570aaba86c78c3014744ad937f38871f538fe741727e87"
+    },
+    "gateway_16": {
+      "instruction_count": 132,
+      "sha256": "94b7d4f855ba7469d4a9c7fabb41dcad1e2da3d7576f60534013611fe18b07e1"
+    },
+    "gateway_4": {
+      "instruction_count": 36,
+      "sha256": "9380684907903a01bb6611cfa06126baaabf8d52fafa979c37fcb00235b6c72d"
+    }
+  },
+  "matched_build_inputs": {
+    "kernel_releases": {
+      "exact": "6.7.0-capebpf-e6c69574-fixed",
+      "scalar": "6.7.0-capebpf-e6c69574-perf-scalar",
+      "strict": "6.7.0-capebpf-e6c69574-fixed"
+    },
+    "source_revision": "b96da308ef1a054c3c04c9445e5ed70259b7c397",
+    "source_manifest_sha256": "bcce56e1333570eae303425cf4d88257c9cb6ef47d163d993de84ea47eaca61e",
+    "init_binary_sha256": "4cfd7311fcf828596f64dc03f4a3c2a16815edfade1a7873581648ceb140e39f",
+    "kernel_identity_sha256": "15fecd3f149cf012aacf6e771808ac57aa2380bbf52b82b4484aebd6c6c716a9",
+    "builder_image_archive_sha256": "1db1b1256689805177ab1c94706c4fb609b5d64c7039b04e2c69ddae7af085e7",
+    "builder_definition_sha256": "74e3a5a928ca99521ba3dff7ee561d84913ed3dd5caf2c35b4aa8f1ec752f824",
+    "harness_sysroot_archive_sha256": "23c7979c2a3b6d1ef748d5fffb572f8b1d29c73f9a827957ebbdcb43fb2d1a82",
+    "compiler_rt_builtins_sha256": "8c96d25351796fc618fa85d8f9d9f11a0b2b5415bd0b2441256953d4ed7fb4f1"
+  },
+  "matched_benchmark_protocol": {
+    "warmup_samples": 5,
+    "load_samples": 31,
+    "execution_samples": 31,
+    "execution_repeats": 1000,
+    "throughput_samples": 11,
+    "throughput_packets": 2000,
+    "order_seed": 12623551
+  },
+  "matched_runtime_policy": {
+    "cpu": 0,
+    "clocksource": "arch_sys_counter",
+    "online_cpus": "0-3",
+    "governors": "unavailable",
+    "bpf_jit_harden": 2,
+    "emulator_sha256": "b0a0b21a9ee5e4b01a1f7d40bcb1ec6289cd51eab1a0f66deafc419b1db3e219",
+    "diagnostic_logging": "disabled-and-attested"
+  },
+  "boot_counts": {
+    "exact": 5,
+    "scalar": 5,
+    "strict": 5
+  },
+  "protocol_failures": [
+    "QEMU observations are ineligible for hardware-performance claims"
+  ],
+  "input_runs": [
+    "linux/benchmarks/results/qemu-balanced-2026-08-30-publication/boot-01-paired-exact-strict.exact.run.json",
+    "linux/benchmarks/results/qemu-balanced-2026-08-30-publication/boot-01-paired-exact-strict.strict.run.json",
+    "linux/benchmarks/results/qemu-balanced-2026-08-30-publication/boot-01-scalar.scalar.run.json",
+    "linux/benchmarks/results/qemu-balanced-2026-08-30-publication/boot-02-paired-exact-strict.exact.run.json",
+    "linux/benchmarks/results/qemu-balanced-2026-08-30-publication/boot-02-paired-exact-strict.strict.run.json",
+    "linux/benchmarks/results/qemu-balanced-2026-08-30-publication/boot-02-scalar.scalar.run.json",
+    "linux/benchmarks/results/qemu-balanced-2026-08-30-publication/boot-03-scalar.scalar.run.json",
+    "linux/benchmarks/results/qemu-balanced-2026-08-30-publication/boot-03-paired-strict-exact.exact.run.json",
+    "linux/benchmarks/results/qemu-balanced-2026-08-30-publication/boot-03-paired-strict-exact.strict.run.json",
+    "linux/benchmarks/results/qemu-balanced-2026-08-30-publication/boot-04-scalar.scalar.run.json",
+    "linux/benchmarks/results/qemu-balanced-2026-08-30-publication/boot-04-paired-strict-exact.exact.run.json",
+    "linux/benchmarks/results/qemu-balanced-2026-08-30-publication/boot-04-paired-strict-exact.strict.run.json",
+    "linux/benchmarks/results/qemu-balanced-2026-08-30-publication/boot-05-paired-exact-strict.exact.run.json",
+    "linux/benchmarks/results/qemu-balanced-2026-08-30-publication/boot-05-paired-exact-strict.strict.run.json",
+    "linux/benchmarks/results/qemu-balanced-2026-08-30-publication/boot-05-scalar.scalar.run.json"
+  ],
+  "input_records": [
+    {
+      "path": "linux/benchmarks/results/qemu-balanced-2026-08-30-publication/boot-01-paired-exact-strict.exact.run.json",
+      "sha256": "e4d790fe17240932c3c5493df7e9b196e272b21c2960263f7c60973ad4864762"
+    },
+    {
+      "path": "linux/benchmarks/results/qemu-balanced-2026-08-30-publication/boot-01-paired-exact-strict.strict.run.json",
+      "sha256": "43cc2bd162842ef607f3df0ca2c7614590e603e7b1b425cf58f23d00542f2ec5"
+    },
+    {
+      "path": "linux/benchmarks/results/qemu-balanced-2026-08-30-publication/boot-01-scalar.scalar.run.json",
+      "sha256": "6666e0845ac2510879bae7ad2a9c1fd681401aad563bdf375d1763e0a9509581"
+    },
+    {
+      "path": "linux/benchmarks/results/qemu-balanced-2026-08-30-publication/boot-02-paired-exact-strict.exact.run.json",
+      "sha256": "3f619f3a593980f23730c367701e4f8a14f0fe76520118cdb7093f4f340017ac"
+    },
+    {
+      "path": "linux/benchmarks/results/qemu-balanced-2026-08-30-publication/boot-02-paired-exact-strict.strict.run.json",
+      "sha256": "eaef95b5d84e02d359fb94094717e3e99caaae1a45fd70ff3cdb6f0743885219"
+    },
+    {
+      "path": "linux/benchmarks/results/qemu-balanced-2026-08-30-publication/boot-02-scalar.scalar.run.json",
+      "sha256": "a1e00e3e0de69eb759381f4252c2f2b6fb6e1c3991d289ed4dbc615203f83b23"
+    },
+    {
+      "path": "linux/benchmarks/results/qemu-balanced-2026-08-30-publication/boot-03-scalar.scalar.run.json",
+      "sha256": "8d408990d2e9d3e7b1f2a6c0414edced818aa5c42154b8944bc3b9832607645f"
+    },
+    {
+      "path": "linux/benchmarks/results/qemu-balanced-2026-08-30-publication/boot-03-paired-strict-exact.exact.run.json",
+      "sha256": "4b0e51b0a3c76e57bbd5a550f5b3d6f4bb3047538460fe1a35c3da83ecc8ff27"
+    },
+    {
+      "path": "linux/benchmarks/results/qemu-balanced-2026-08-30-publication/boot-03-paired-strict-exact.strict.run.json",
+      "sha256": "c346bfa8c7ca3e842974f5c28c4de949d0c9c5b22f22c899ca2e0a2c3f362f40"
+    },
+    {
+      "path": "linux/benchmarks/results/qemu-balanced-2026-08-30-publication/boot-04-scalar.scalar.run.json",
+      "sha256": "5309da1ad55232200df68572fa23a27bb0b17798c41b856527cd2b456407844e"
+    },
+    {
+      "path": "linux/benchmarks/results/qemu-balanced-2026-08-30-publication/boot-04-paired-strict-exact.exact.run.json",
+      "sha256": "db6401a06d87c4d6e56531ac1345c516a5353c6251e21b259d3db2dfcf314048"
+    },
+    {
+      "path": "linux/benchmarks/results/qemu-balanced-2026-08-30-publication/boot-04-paired-strict-exact.strict.run.json",
+      "sha256": "35a733558810f269f0c5c2f4da59f373f4466fca4279c0fc2388adee2cfdb38b"
+    },
+    {
+      "path": "linux/benchmarks/results/qemu-balanced-2026-08-30-publication/boot-05-paired-exact-strict.exact.run.json",
+      "sha256": "5f4064bcc8d8af0b035e6a46f73aa1f984aa1e5e2e29375aa80063ba1ddb0adf"
+    },
+    {
+      "path": "linux/benchmarks/results/qemu-balanced-2026-08-30-publication/boot-05-paired-exact-strict.strict.run.json",
+      "sha256": "ae670c9b9035edcdcb5c19bcca32918defd41c1aaf6c637e93f71c38135979ca"
+    },
+    {
+      "path": "linux/benchmarks/results/qemu-balanced-2026-08-30-publication/boot-05-scalar.scalar.run.json",
+      "sha256": "e3c2079e7a5428281e9b7ece5aab04b33f46a2fc65e34e2e223fde68956976b4"
+    }
+  ],
+  "comparisons": [
+    {
+      "comparison": "scalar_over_exact",
+      "case": "control",
+      "metric": "load",
+      "ratio_of_boot_medians": 1.008457,
+      "bootstrap_95_percent_interval": [
+        0.818337,
+        3.051599
+      ],
+      "bootstrap_method": "independent resampling of per-boot medians, 10000 iterations",
+      "interpretation": "scalar control includes its shared 8-byte failure stub; this ratio is not a mechanism-free baseline"
+    },
+    {
+      "comparison": "scalar_over_exact",
+      "case": "control",
+      "metric": "socket_roundtrip",
+      "ratio_of_boot_medians": 0.949045,
+      "bootstrap_95_percent_interval": [
+        0.882631,
+        1.31499
+      ],
+      "bootstrap_method": "independent resampling of per-boot medians, 10000 iterations",
+      "interpretation": "scalar control includes its shared 8-byte failure stub; this ratio is not a mechanism-free baseline"
+    },
+    {
+      "comparison": "scalar_over_exact",
+      "case": "control",
+      "metric": "test_run",
+      "ratio_of_boot_medians": 0.980342,
+      "bootstrap_95_percent_interval": [
+        0.466735,
+        1.150902
+      ],
+      "bootstrap_method": "independent resampling of per-boot medians, 10000 iterations",
+      "interpretation": "scalar control includes its shared 8-byte failure stub; this ratio is not a mechanism-free baseline"
+    },
+    {
+      "comparison": "scalar_over_exact",
+      "case": "direct_1",
+      "metric": "load",
+      "ratio_of_boot_medians": 1.065661,
+      "bootstrap_95_percent_interval": [
+        0.471532,
+        1.185606
+      ],
+      "bootstrap_method": "independent resampling of per-boot medians, 10000 iterations",
+      "interpretation": "scalar path includes its shared 8-byte failure stub and case-specific guard machinery"
+    },
+    {
+      "comparison": "scalar_over_exact",
+      "case": "direct_1",
+      "metric": "socket_roundtrip",
+      "ratio_of_boot_medians": 0.995282,
+      "bootstrap_95_percent_interval": [
+        0.940927,
+        1.33292
+      ],
+      "bootstrap_method": "independent resampling of per-boot medians, 10000 iterations",
+      "interpretation": "scalar path includes its shared 8-byte failure stub and case-specific guard machinery"
+    },
+    {
+      "comparison": "scalar_over_exact",
+      "case": "direct_1",
+      "metric": "test_run",
+      "ratio_of_boot_medians": 0.923528,
+      "bootstrap_95_percent_interval": [
+        0.496075,
+        1.855185
+      ],
+      "bootstrap_method": "independent resampling of per-boot medians, 10000 iterations",
+      "interpretation": "scalar path includes its shared 8-byte failure stub and case-specific guard machinery"
+    },
+    {
+      "comparison": "scalar_over_exact",
+      "case": "direct_32",
+      "metric": "load",
+      "ratio_of_boot_medians": 1.036757,
+      "bootstrap_95_percent_interval": [
+        0.767038,
+        1.900746
+      ],
+      "bootstrap_method": "independent resampling of per-boot medians, 10000 iterations",
+      "interpretation": "scalar path includes its shared 8-byte failure stub and case-specific guard machinery"
+    },
+    {
+      "comparison": "scalar_over_exact",
+      "case": "direct_32",
+      "metric": "test_run",
+      "ratio_of_boot_medians": 1.050219,
+      "bootstrap_95_percent_interval": [
+        0.598214,
+        1.187026
+      ],
+      "bootstrap_method": "independent resampling of per-boot medians, 10000 iterations",
+      "interpretation": "scalar path includes its shared 8-byte failure stub and case-specific guard machinery"
+    },
+    {
+      "comparison": "scalar_over_exact",
+      "case": "direct_8",
+      "metric": "load",
+      "ratio_of_boot_medians": 1.701495,
+      "bootstrap_95_percent_interval": [
+        0.792273,
+        2.35236
+      ],
+      "bootstrap_method": "independent resampling of per-boot medians, 10000 iterations",
+      "interpretation": "scalar path includes its shared 8-byte failure stub and case-specific guard machinery"
+    },
+    {
+      "comparison": "scalar_over_exact",
+      "case": "direct_8",
+      "metric": "test_run",
+      "ratio_of_boot_medians": 1.051523,
+      "bootstrap_95_percent_interval": [
+        0.544703,
+        1.931274
+      ],
+      "bootstrap_method": "independent resampling of per-boot medians, 10000 iterations",
+      "interpretation": "scalar path includes its shared 8-byte failure stub and case-specific guard machinery"
+    },
+    {
+      "comparison": "scalar_over_exact",
+      "case": "gateway_1",
+      "metric": "load",
+      "ratio_of_boot_medians": 0.788342,
+      "bootstrap_95_percent_interval": [
+        0.417571,
+        1.770948
+      ],
+      "bootstrap_method": "independent resampling of per-boot medians, 10000 iterations",
+      "interpretation": "scalar path includes its shared 8-byte failure stub and case-specific guard machinery"
+    },
+    {
+      "comparison": "scalar_over_exact",
+      "case": "gateway_1",
+      "metric": "test_run",
+      "ratio_of_boot_medians": 1.051992,
+      "bootstrap_95_percent_interval": [
+        0.535105,
+        1.95851
+      ],
+      "bootstrap_method": "independent resampling of per-boot medians, 10000 iterations",
+      "interpretation": "scalar path includes its shared 8-byte failure stub and case-specific guard machinery"
+    },
+    {
+      "comparison": "scalar_over_exact",
+      "case": "gateway_16",
+      "metric": "load",
+      "ratio_of_boot_medians": 1.02028,
+      "bootstrap_95_percent_interval": [
+        0.68555,
+        1.420277
+      ],
+      "bootstrap_method": "independent resampling of per-boot medians, 10000 iterations",
+      "interpretation": "scalar path includes its shared 8-byte failure stub and case-specific guard machinery"
+    },
+    {
+      "comparison": "scalar_over_exact",
+      "case": "gateway_16",
+      "metric": "test_run",
+      "ratio_of_boot_medians": 1.799973,
+      "bootstrap_95_percent_interval": [
+        0.913968,
+        2.021518
+      ],
+      "bootstrap_method": "independent resampling of per-boot medians, 10000 iterations",
+      "interpretation": "scalar path includes its shared 8-byte failure stub and case-specific guard machinery"
+    },
+    {
+      "comparison": "scalar_over_exact",
+      "case": "gateway_4",
+      "metric": "load",
+      "ratio_of_boot_medians": 0.632095,
+      "bootstrap_95_percent_interval": [
+        0.50288,
+        1.156846
+      ],
+      "bootstrap_method": "independent resampling of per-boot medians, 10000 iterations",
+      "interpretation": "scalar path includes its shared 8-byte failure stub and case-specific guard machinery"
+    },
+    {
+      "comparison": "scalar_over_exact",
+      "case": "gateway_4",
+      "metric": "socket_roundtrip",
+      "ratio_of_boot_medians": 1.01534,
+      "bootstrap_95_percent_interval": [
+        0.833345,
+        1.29796
+      ],
+      "bootstrap_method": "independent resampling of per-boot medians, 10000 iterations",
+      "interpretation": "scalar path includes its shared 8-byte failure stub and case-specific guard machinery"
+    },
+    {
+      "comparison": "scalar_over_exact",
+      "case": "gateway_4",
+      "metric": "test_run",
+      "ratio_of_boot_medians": 0.954884,
+      "bootstrap_95_percent_interval": [
+        0.512868,
+        1.123357
+      ],
+      "bootstrap_method": "independent resampling of per-boot medians, 10000 iterations",
+      "interpretation": "scalar path includes its shared 8-byte failure stub and case-specific guard machinery"
+    },
+    {
+      "comparison": "exact_over_strict",
+      "case": "control",
+      "metric": "load",
+      "ratio_of_boot_medians": 1.036536,
+      "bootstrap_95_percent_interval": [
+        0.342542,
+        2.29728
+      ],
+      "bootstrap_method": "paired resampling by shared boot of per-boot medians, 10000 iterations",
+      "interpretation": "same-kernel, same-boot comparison differing in spatial offload request"
+    },
+    {
+      "comparison": "exact_over_strict",
+      "case": "control",
+      "metric": "socket_roundtrip",
+      "ratio_of_boot_medians": 0.982496,
+      "bootstrap_95_percent_interval": [
+        0.955971,
+        1.144477
+      ],
+      "bootstrap_method": "paired resampling by shared boot of per-boot medians, 10000 iterations",
+      "interpretation": "same-kernel, same-boot comparison differing in spatial offload request"
+    },
+    {
+      "comparison": "exact_over_strict",
+      "case": "control",
+      "metric": "test_run",
+      "ratio_of_boot_medians": 1.013756,
+      "bootstrap_95_percent_interval": [
+        0.982581,
+        1.019258
+      ],
+      "bootstrap_method": "paired resampling by shared boot of per-boot medians, 10000 iterations",
+      "interpretation": "same-kernel, same-boot comparison differing in spatial offload request"
+    },
+    {
+      "comparison": "exact_over_strict",
+      "case": "direct_1",
+      "metric": "load",
+      "ratio_of_boot_medians": 0.887445,
+      "bootstrap_95_percent_interval": [
+        0.757652,
+        1.035907
+      ],
+      "bootstrap_method": "paired resampling by shared boot of per-boot medians, 10000 iterations",
+      "interpretation": "same-kernel, same-boot comparison differing in spatial offload request"
+    },
+    {
+      "comparison": "exact_over_strict",
+      "case": "direct_1",
+      "metric": "socket_roundtrip",
+      "ratio_of_boot_medians": 1.058992,
+      "bootstrap_95_percent_interval": [
+        0.936419,
+        1.116855
+      ],
+      "bootstrap_method": "paired resampling by shared boot of per-boot medians, 10000 iterations",
+      "interpretation": "same-kernel, same-boot comparison differing in spatial offload request"
+    },
+    {
+      "comparison": "exact_over_strict",
+      "case": "direct_1",
+      "metric": "test_run",
+      "ratio_of_boot_medians": 1.086444,
+      "bootstrap_95_percent_interval": [
+        0.577545,
+        2.117036
+      ],
+      "bootstrap_method": "paired resampling by shared boot of per-boot medians, 10000 iterations",
+      "interpretation": "same-kernel, same-boot comparison differing in spatial offload request"
+    },
+    {
+      "comparison": "exact_over_strict",
+      "case": "direct_32",
+      "metric": "load",
+      "ratio_of_boot_medians": 0.720582,
+      "bootstrap_95_percent_interval": [
+        0.524264,
+        1.710787
+      ],
+      "bootstrap_method": "paired resampling by shared boot of per-boot medians, 10000 iterations",
+      "interpretation": "same-kernel, same-boot comparison differing in spatial offload request"
+    },
+    {
+      "comparison": "exact_over_strict",
+      "case": "direct_32",
+      "metric": "test_run",
+      "ratio_of_boot_medians": 1.074027,
+      "bootstrap_95_percent_interval": [
+        0.950244,
+        1.991339
+      ],
+      "bootstrap_method": "paired resampling by shared boot of per-boot medians, 10000 iterations",
+      "interpretation": "same-kernel, same-boot comparison differing in spatial offload request"
+    },
+    {
+      "comparison": "exact_over_strict",
+      "case": "direct_8",
+      "metric": "load",
+      "ratio_of_boot_medians": 0.582142,
+      "bootstrap_95_percent_interval": [
+        0.423597,
+        2.161128
+      ],
+      "bootstrap_method": "paired resampling by shared boot of per-boot medians, 10000 iterations",
+      "interpretation": "same-kernel, same-boot comparison differing in spatial offload request"
+    },
+    {
+      "comparison": "exact_over_strict",
+      "case": "direct_8",
+      "metric": "test_run",
+      "ratio_of_boot_medians": 1.028635,
+      "bootstrap_95_percent_interval": [
+        0.890301,
+        2.05069
+      ],
+      "bootstrap_method": "paired resampling by shared boot of per-boot medians, 10000 iterations",
+      "interpretation": "same-kernel, same-boot comparison differing in spatial offload request"
+    },
+    {
+      "comparison": "exact_over_strict",
+      "case": "gateway_1",
+      "metric": "load",
+      "ratio_of_boot_medians": 1.132409,
+      "bootstrap_95_percent_interval": [
+        0.94329,
+        2.04498
+      ],
+      "bootstrap_method": "paired resampling by shared boot of per-boot medians, 10000 iterations",
+      "interpretation": "same-kernel, same-boot comparison differing in spatial offload request"
+    },
+    {
+      "comparison": "exact_over_strict",
+      "case": "gateway_1",
+      "metric": "test_run",
+      "ratio_of_boot_medians": 1.048906,
+      "bootstrap_95_percent_interval": [
+        0.475019,
+        2.062104
+      ],
+      "bootstrap_method": "paired resampling by shared boot of per-boot medians, 10000 iterations",
+      "interpretation": "same-kernel, same-boot comparison differing in spatial offload request"
+    },
+    {
+      "comparison": "exact_over_strict",
+      "case": "gateway_16",
+      "metric": "load",
+      "ratio_of_boot_medians": 0.980307,
+      "bootstrap_95_percent_interval": [
+        0.68697,
+        1.733728
+      ],
+      "bootstrap_method": "paired resampling by shared boot of per-boot medians, 10000 iterations",
+      "interpretation": "same-kernel, same-boot comparison differing in spatial offload request"
+    },
+    {
+      "comparison": "exact_over_strict",
+      "case": "gateway_16",
+      "metric": "test_run",
+      "ratio_of_boot_medians": 0.894399,
+      "bootstrap_95_percent_interval": [
+        0.496108,
+        1.851797
+      ],
+      "bootstrap_method": "paired resampling by shared boot of per-boot medians, 10000 iterations",
+      "interpretation": "same-kernel, same-boot comparison differing in spatial offload request"
+    },
+    {
+      "comparison": "exact_over_strict",
+      "case": "gateway_4",
+      "metric": "load",
+      "ratio_of_boot_medians": 1.261726,
+      "bootstrap_95_percent_interval": [
+        0.537695,
+        2.007283
+      ],
+      "bootstrap_method": "paired resampling by shared boot of per-boot medians, 10000 iterations",
+      "interpretation": "same-kernel, same-boot comparison differing in spatial offload request"
+    },
+    {
+      "comparison": "exact_over_strict",
+      "case": "gateway_4",
+      "metric": "socket_roundtrip",
+      "ratio_of_boot_medians": 1.038944,
+      "bootstrap_95_percent_interval": [
+        1.000449,
+        1.26584
+      ],
+      "bootstrap_method": "paired resampling by shared boot of per-boot medians, 10000 iterations",
+      "interpretation": "same-kernel, same-boot comparison differing in spatial offload request"
+    },
+    {
+      "comparison": "exact_over_strict",
+      "case": "gateway_4",
+      "metric": "test_run",
+      "ratio_of_boot_medians": 1.034156,
+      "bootstrap_95_percent_interval": [
+        0.703549,
+        1.997276
+      ],
+      "bootstrap_method": "paired resampling by shared boot of per-boot medians, 10000 iterations",
+      "interpretation": "same-kernel, same-boot comparison differing in spatial offload request"
+    }
+  ],
+  "jited_code_comparisons": [
+    {
+      "case": "control",
+      "exact_bytes": 352,
+      "scalar_bytes": 360,
+      "scalar_delta_bytes": 8,
+      "scalar_over_exact": 1.022727,
+      "exact_sample_count": 155,
+      "scalar_sample_count": 155,
+      "exact_min_bytes": 352,
+      "exact_max_bytes": 352,
+      "scalar_min_bytes": 360,
+      "scalar_max_bytes": 360,
+      "summary_method": "nearest-rank median over retained load observations",
+      "shared_scalar_failure_stub_bytes": 8,
+      "interpretation": "Code size may vary under constant blinding; values are nearest-rank medians over retained observations. The control delta is the scalar kernel's shared failure stub, not a mechanism-free baseline"
+    },
+    {
+      "case": "direct_1",
+      "exact_bytes": 440,
+      "scalar_bytes": 488,
+      "scalar_delta_bytes": 48,
+      "scalar_over_exact": 1.109091,
+      "exact_sample_count": 155,
+      "scalar_sample_count": 155,
+      "exact_min_bytes": 440,
+      "exact_max_bytes": 440,
+      "scalar_min_bytes": 488,
+      "scalar_max_bytes": 488,
+      "summary_method": "nearest-rank median over retained load observations",
+      "shared_scalar_failure_stub_bytes": 8,
+      "interpretation": "Code size may vary under constant blinding; values are nearest-rank medians over retained observations. The delta includes the scalar kernel's shared 8-byte failure stub and case-specific access guards"
+    },
+    {
+      "case": "direct_32",
+      "exact_bytes": 568,
+      "scalar_bytes": 1856,
+      "scalar_delta_bytes": 1288,
+      "scalar_over_exact": 3.267606,
+      "exact_sample_count": 155,
+      "scalar_sample_count": 155,
+      "exact_min_bytes": 568,
+      "exact_max_bytes": 568,
+      "scalar_min_bytes": 1856,
+      "scalar_max_bytes": 1856,
+      "summary_method": "nearest-rank median over retained load observations",
+      "shared_scalar_failure_stub_bytes": 8,
+      "interpretation": "Code size may vary under constant blinding; values are nearest-rank medians over retained observations. The delta includes the scalar kernel's shared 8-byte failure stub and case-specific access guards"
+    },
+    {
+      "case": "direct_8",
+      "exact_bytes": 472,
+      "scalar_bytes": 800,
+      "scalar_delta_bytes": 328,
+      "scalar_over_exact": 1.694915,
+      "exact_sample_count": 155,
+      "scalar_sample_count": 155,
+      "exact_min_bytes": 472,
+      "exact_max_bytes": 472,
+      "scalar_min_bytes": 800,
+      "scalar_max_bytes": 800,
+      "summary_method": "nearest-rank median over retained load observations",
+      "shared_scalar_failure_stub_bytes": 8,
+      "interpretation": "Code size may vary under constant blinding; values are nearest-rank medians over retained observations. The delta includes the scalar kernel's shared 8-byte failure stub and case-specific access guards"
+    },
+    {
+      "case": "gateway_1",
+      "exact_bytes": 440,
+      "scalar_bytes": 488,
+      "scalar_delta_bytes": 48,
+      "scalar_over_exact": 1.109091,
+      "exact_sample_count": 155,
+      "scalar_sample_count": 155,
+      "exact_min_bytes": 440,
+      "exact_max_bytes": 440,
+      "scalar_min_bytes": 488,
+      "scalar_max_bytes": 488,
+      "summary_method": "nearest-rank median over retained load observations",
+      "shared_scalar_failure_stub_bytes": 8,
+      "interpretation": "Code size may vary under constant blinding; values are nearest-rank medians over retained observations. The delta includes the scalar kernel's shared 8-byte failure stub and case-specific access guards"
+    },
+    {
+      "case": "gateway_16",
+      "exact_bytes": 1704,
+      "scalar_bytes": 2352,
+      "scalar_delta_bytes": 648,
+      "scalar_over_exact": 1.380282,
+      "exact_sample_count": 155,
+      "scalar_sample_count": 155,
+      "exact_min_bytes": 1704,
+      "exact_max_bytes": 1704,
+      "scalar_min_bytes": 2352,
+      "scalar_max_bytes": 2352,
+      "summary_method": "nearest-rank median over retained load observations",
+      "shared_scalar_failure_stub_bytes": 8,
+      "interpretation": "Code size may vary under constant blinding; values are nearest-rank medians over retained observations. The delta includes the scalar kernel's shared 8-byte failure stub and case-specific access guards"
+    },
+    {
+      "case": "gateway_4",
+      "exact_bytes": 696,
+      "scalar_bytes": 864,
+      "scalar_delta_bytes": 168,
+      "scalar_over_exact": 1.241379,
+      "exact_sample_count": 155,
+      "scalar_sample_count": 155,
+      "exact_min_bytes": 696,
+      "exact_max_bytes": 696,
+      "scalar_min_bytes": 864,
+      "scalar_max_bytes": 864,
+      "summary_method": "nearest-rank median over retained load observations",
+      "shared_scalar_failure_stub_bytes": 8,
+      "interpretation": "Code size may vary under constant blinding; values are nearest-rank medians over retained observations. The delta includes the scalar kernel's shared 8-byte failure stub and case-specific access guards"
+    }
+  ],
+  "interpretation": "Ratios summarize within-platform runs only. QEMU studies remain functional/developmental regardless of sample count. Bootstrap intervals describe run-to-run uncertainty and are not proof of equivalence."
+}

@@ -1,0 +1,40 @@
+{
+  "result": "PASS_MANUAL_PRE_EXECUTION_REVIEW",
+  "reviewed_at_utc": "2026-09-06T21:43:04.567279+00:00",
+  "execution_count_at_review": 0,
+  "preflight_sha256": "ea1b767684620f69367e4932eb9e838a52112f049306ff5cc08141bfa412f234",
+  "reviewed_artifact_sha256": {
+    "jit-disassembly.txt": "c053a5b601a0c1d8ecc64d987112e78f5a16bf6c4d70c46cb523e0b365e9c580",
+    "linked-disassembly.txt": "6beec689a420f8c6f425f0b78c49559b34b901299414ab08474169e1f330eb9d",
+    "ex_handler_bpf-complete-lse.txt": "bb8716be840c1d766653bac14bd1cc3833165e923fafc9158a2fcf9a2fd0baba",
+    "cbpf_map_area_alloc-complete.txt": "d5313d54e49380a12accaa3e39dd3b00aec35892846034e8211854410c899af9"
+  },
+  "boot_binding": "Recorded QEMU command selects the hashed fresh Image/initramfs; inputs.sha256 all verified. Guest release/version match build, normal flags=0. No disks/network/attachment. Inherited verifier hash unchanged, offload/test modes disabled. This is source/launch binding under a trusted host, not measured-boot attestation.",
+  "kaslr": "CONFIG_RANDOMIZE_BASE=y; firmware provided no seed; guest reports KASLR disabled. Native entry target and linked bpf_enter_sandbox agree at relocation 0.",
+  "native_review": "Reviewed all 98 words. ADD x9,x30,0 captures caller cursor; POKE is NOP. Word25 calls linked entry. Success starts restricted word26; failure returns zero through word82. Register clears and 16-byte capability stack precede key1 store. Operation0 uses BLRS c17 at71; returned c0 is capability-copied into c7 at72. Word75 LDUR x0,[c7] reads 8 bytes; word76 adds1; word77 STUR x0,[c7] writes 8 bytes. No c7 rewrite occurs between return and store; no other selected-value write, DDC selected-value body access, second helper, attachment or reachable PLT exists in this fixture. Word78 copies computed scalar result and79 branches to81. RET c30 enters executive82; saved tagged caller capability returns by RETR c16. Entry error and NULL path produce zero.",
+  "linked_review": "Entry constructs/checks exact restricted/executive intervals, installs c17 gateway and c18 one-map table, and branches via restricted sentry. Gateway operation0 dispatches lookup, saves/restores full capabilities, preserves returned c0 and RETR c14. Lookup checks table/key capability, resolves map token0, calls current cbpf_array_value_cap. Allocator derives exact retained root from executive DDC with0x30001 permissions; array allocation stores full cap in metadata. Provider retrieves retained cap, checks map/key/root, SCVALUE+SCBNDSE derives selected value; all exact shape/perms checks precede observation. Full cap stack save/reload across printk reaches c0 return. Exception handler complete symbol range, including mapping labels and LSE alternate, clears encoded destination and installs encoded fixup; source emits bounded-access destination r0 and epilogue fixup. Appended extable/PLT target data are outside retrieved JIT span and are not claimed directly measured.",
+  "expected_roots": {
+    "restricted_base": "0xffff8000813f79f0",
+    "restricted_length": 224,
+    "executive_base": "0xffff8000813f7ad0",
+    "executive_length": 56,
+    "gateway_cursor": "0xffff800080037800"
+  },
+  "expected_value": {
+    "map_id": 1,
+    "key": 1,
+    "value_size": 8,
+    "stride": 8,
+    "tag": 1,
+    "sealed": 0,
+    "length": 8,
+    "permissions": "0x30001",
+    "base_and_cursor": "values+8",
+    "initial": 41,
+    "return_and_readback": 42
+  },
+  "checker_correction": "Original snapshot and failed pre.json retained. Source bpf_jit.h:170 defines A64_MOV as ADD immediate0; source prologue uses A64_MOV(1,r9,lr). Corrected one expected constant0xaa1e03e9 to0x910003c9 with explanatory comment; no fixture, kernel, guard, or native bytes changed.",
+  "limits": "Selected fixed-path source/native correspondence only. RDDC remains vmalloc-wide and gateway has inherited DDC bounds. Construction records are source-backed observations, not independent hardware PCC attestation. No claim for all accepted programs, padding, historical CVE mitigation, or composition.",
+  "inspection_method": "Internal AI-assisted source and Morello-instruction inspection, separate from checker assertions; not independent external review or reproduction.",
+  "recorded_preflight_scope": "Preflight covered one benign TEST_RUN with repeat=1 on held descriptors 3 and 4. Execution and postflight outcomes are recorded separately."
+}

@@ -1,0 +1,134 @@
+{
+  "kind": "cbpf-historical-ring-buffer-lifetime-selection",
+  "scope": "Selected technical fields from the earlier ring-buffer lifetime manifest. These are reported historical outcomes, not new observations or actual BTF kfunc lifetime evidence.",
+  "original": {
+    "file": "${PRIOR_LIFETIME_SOURCE}/experiment/experiment-manifest.json",
+    "bytes": 27349,
+    "sha256": "36debe51d30bb6fd0e5f248ad4c66b641f28844738c1e02922404af1363c8da7"
+  },
+  "source_identity": {
+    "morello_linux_base": "b96da308ef1a054c3c04c9445e5ed70259b7c397",
+    "inherited_replay_tree": "e6c69574c16bc2b9bce06329f9ac3f4b3269e79a",
+    "lifetime_overlay_tree": "8e8152888bc9a5d21faea8f06cb7ec026e2fcc81",
+    "overlay_sha256": "c7d36dfcd2be173d2a18de7167d35220dd7c5ecae0c5526e34d3f3f88a2a76e7",
+    "kernel_release": "6.7.0-capebpf-gate3-reopen",
+    "kernel_image_sha256": "3808af33a65e4a845c57e84681803784bc49bb11e06ed931fa4a4be3bf90b811",
+    "configuration_sha256": "04633a864dbcb9dfe54d1a4084bb0cbf4271a2e3aa613832709a1ee06852ecf0",
+    "guest_binding_sha256": "fef4f8a1ee626ec0832908157bb3f7bc373c53789be333a70adf837acc6dd9f4",
+    "qemu": {
+      "version": "QEMU emulator version 7.0.0",
+      "sha256": "b0a0b21a9ee5e4b01a1f7d40bcb1ec6289cd51eab1a0f66deafc419b1db3e219"
+    }
+  },
+  "mechanism": [
+    "A successful acquisition receives a newly kmalloc-allocated, 16-byte-aligned cell. Successful cells are deliberately never freed or reused in this experiment.",
+    "The BPF-visible value is an exact read-only cell handle; the hidden c6 value is an exact private cell handle. The object capability is stored in the cell.",
+    "Register copies and the one verifier-typed full-width spill/reload carry the cell handle, not direct object authority.",
+    "The supported spill uses one exact private 16-byte c8 sidecar slot outside BPF stack authority.",
+    "Use resolves object authority into c5, performs one checked access, then clears c5 in an exact checker-recognized sequence.",
+    "Release clears c5, clears the cell, and only then invokes ring-buffer submit/discard. Cell clearing is the release linearization point for Property 2.",
+    "No register, stack, or alias scan occurs.",
+    "The direct-capability causal control bypasses cell mediation and is accepted only as one exact test profile."
+  ],
+  "reported_normal_log": {
+    "file": "gate3-final-normal.log",
+    "availability": "not_in_this_selection",
+    "sha256": "77c85a7fd0edac4802551b86d5472aa98b3199b40cf0d47bb8e252a19f983bce",
+    "bytes": 114422,
+    "final_markers": [
+      "GATE3_STATUS=PASS mode=normal cases=4 failures=0",
+      "BPF_JIT_SMOKE_STATUS=0"
+    ]
+  },
+  "reported_controls": [
+    {
+      "case": "valid pre-release spill/reload",
+      "program": "life_valid",
+      "observed": "PASS; retval=42; jited_prog_len=656",
+      "certificate": "accepted=1 stage=complete covered_words=164 image_fnv1a64=22ded03f3b64a380"
+    },
+    {
+      "case": "release then stale register use",
+      "program": "life_stale_r",
+      "observed": "PASS; recovered BPF data abort fsc=0x28 before stale read could return 42; retval=0; jited_prog_len=648",
+      "certificate": "accepted=1 stage=complete covered_words=162 image_fnv1a64=7f4dbc722bddef88"
+    },
+    {
+      "case": "release then stale spill/reload use",
+      "program": "life_stale_s",
+      "observed": "PASS; recovered BPF data abort fsc=0x28 before stale read could return 42; retval=0; jited_prog_len=656",
+      "certificate": "accepted=1 stage=complete covered_words=164 image_fnv1a64=c2bd60a3522105f9"
+    },
+    {
+      "case": "direct-capability causal control",
+      "program": "life_direct",
+      "observed": "PASS; cell mediation bypassed and the same post-release read returned 42; jited_prog_len=600",
+      "certificate": "accepted=1 stage=complete covered_words=150 image_fnv1a64=7a09fa223b277837"
+    }
+  ],
+  "reported_mutations": [
+    {
+      "mode": 18,
+      "name": "wrong-private-slot-root",
+      "log_sha256": "f519fdfe09c41692ad7d2e0057d3189a51e8c73e50c58077c7185612a7921540",
+      "image_fnv1a64": "4097eb7da64dab9c",
+      "observed": "PASS; accepted=0 stage=authority; LOAD_REJECT errno=524"
+    },
+    {
+      "mode": 19,
+      "name": "missing-resolved-object-clear",
+      "log_sha256": "2926ed5e2524427ae7316e6a1b9abd2b50768c0c160d1b5c7c5216bea9423ada",
+      "image_fnv1a64": "afb32a41baaeb383",
+      "observed": "PASS; accepted=0 stage=authority; LOAD_REJECT errno=524"
+    },
+    {
+      "mode": 20,
+      "name": "missing-cell-clear",
+      "log_sha256": "1ae2a816c945aeb8c0306a0e8335375ae619aafdfb90c3f9c564d33e17ce707b",
+      "image_fnv1a64": "fdd4bc1c979e2fa4",
+      "observed": "PASS; accepted=0 stage=authority; LOAD_REJECT errno=524"
+    },
+    {
+      "mode": 21,
+      "name": "gateway-before-cell-clear",
+      "log_sha256": "f04789a69ccf8fc35c048a912b9bcacdec3489f1cdf49dc97071913c263ebcad",
+      "image_fnv1a64": "04177c143830bdf1",
+      "observed": "PASS; accepted=0 stage=authority; LOAD_REJECT errno=524"
+    },
+    {
+      "mode": 22,
+      "name": "wrong-release-operation",
+      "log_sha256": "3ba1412fd1804659549700489abd83e0657360716c033e6052e188876a779bb6",
+      "image_fnv1a64": "37f956467fd0ba90",
+      "observed": "PASS; accepted=0 stage=authority; LOAD_REJECT errno=524"
+    },
+    {
+      "mode": 23,
+      "name": "retained-current-cell-capability",
+      "log_sha256": "a8ec90516fec459518155a23cb51074fbf89bb1f967dfdadfed63750706b7ed1",
+      "image_fnv1a64": "2acbb9e09372b472",
+      "observed": "PASS; accepted=0 stage=authority; LOAD_REJECT errno=524"
+    }
+  ],
+  "mutation_log_availability": "Original mutation-log hashes are retained above; their underlying console files are not distributed or revalidated by this selection.",
+  "configuration_facts": {
+    "CONFIG_CAPEBPF_SPATIAL_OFFLOAD": "y",
+    "CONFIG_CAPEBPF_TEST_OWNERSHIP_LIFETIME": "y",
+    "CONFIG_CAPEBPF_TEST_JIT_CERTIFICATE_MUTATION": 0,
+    "CONFIG_CAPEBPF_TEST_BROAD_MAP_AUTHORITY": "not set",
+    "CONFIG_CAPEBPF_TEST_WIDE_RINGBUF_AUTHORITY": "not set",
+    "CONFIG_CAPEBPF_TEST_SOFTWARE_MAP_BOUNDS": "not set",
+    "CONFIG_ARM64_PSEUDO_NMI": "not set",
+    "CONFIG_DEBUG_INFO_BTF": "not set"
+  },
+  "limits": [
+    "The four controls use a ring-buffer acquire/release analogue. They do not establish actual Linux BTF KF_ACQUIRE/KF_RELEASE behavior, independent A/B acquisitions, double-release effects or a destructor count.",
+    "The exact profiles deliberately skip constant blinding even though bpf_jit_harden=2 was enabled at runtime.",
+    "One private full-width spill is supported. Exact final native templates, restricted untagged RDDC, non-reentrancy and confinement of handles are premises; no shared map, subprogram, tail-call, persistent or cross-CPU transport is covered.",
+    "Successful cells were deliberately not freed or reused. General reclamation and concurrency are outside the result.",
+    "Object authority and trusted transition plumbing originate from executive DDC. Provider assignment and bounds remain trusted, not allocator-authenticated.",
+    "Trusted compiler and exception frames can retain tagged transient capabilities. Global physical erasure is not established.",
+    "Runs used Morello QEMU. No independent userspace ring-buffer-consumer oracle, physical Morello measurement or current protected-BPF stale-failure execution follows from these records.",
+    "Only the manifest source was inspected for this selection. Referenced original logs, native artifacts and transitive hashes were not rerun or independently validated."
+  ]
+}

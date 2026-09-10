@@ -1,0 +1,5 @@
+ac74717a7dbd2c61760115c1b8b719e52d27d60d02957a2b73c3ff155206c4ac  ${REPLAY_SOURCE}/build/spatial-native-build.O3L3FD/receipt/array-authority.patch
+2f7889c53d0b4de2e47a94b8acb0d6c1ab73bca6effaccee5b4733984f449b07  ${REPLAY_SOURCE}/build/spatial-native-build.O3L3FD/receipt/native-observation.patch
+6fc3441fce6d18eea68db675dd04ecec874e94fb3f7c070362f29b793ee99d08  ${REPLAY_SOURCE}/build/spatial-native-build.O3L3FD/receipt/build_spatial_native.executed.sh
+bcce56e1333570eae303425cf4d88257c9cb6ef47d163d993de84ea47eaca61e  ${REPLAY_SOURCE}/build/spatial-native-build.O3L3FD/receipt/source-tree.manifest
+96cceff529da91c1cad30eff5cff067640fbe836a2314465237755f5d08c0dad  ${REPLAY_SOURCE}/build/spatial-native-build.O3L3FD/receipt/builder-image.txt

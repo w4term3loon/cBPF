@@ -1,0 +1,371 @@
+{
+  "schema_version": 1,
+  "project": "CBPF",
+  "created": "2026-09-06",
+  "status": "Historical passive evidence selection, copied unchanged; no experiments or original validators rerun.",
+  "copied_file_count": 23,
+  "copied_bytes": 765817,
+  "files": [
+    {
+      "file": "evidence/prior/spatial/provider/morello-exact-unsafe.log",
+      "original": "${PRIOR_PROVIDER_EVIDENCE}/governed/logs/morello-exact-unsafe.log",
+      "bytes": 52346,
+      "sha256": "edf97e5b3ebc5003d07373cefba9ee01e428ba1d05d9a43652ac8a0ac6bdf057",
+      "purpose": "Historical exact selected-value metadata-read stage: recorded capability-bounds fault and unchanged sink."
+    },
+    {
+      "file": "evidence/prior/spatial/provider/morello-broad-unsafe.log",
+      "original": "${PRIOR_PROVIDER_EVIDENCE}/governed/logs/morello-broad-unsafe.log",
+      "bytes": 52018,
+      "sha256": "487fdf1932b83cadfaf356f3d548e6454b53bee2554b018f0d5d3c438f7fb7a7",
+      "purpose": "Historical broad-authority comparison: recorded metadata-read completion."
+    },
+    {
+      "file": "evidence/prior/spatial/provider/morello-wide-unsafe.log",
+      "original": "${PRIOR_PROVIDER_EVIDENCE}/governed/logs/morello-wide-unsafe.log",
+      "bytes": 52011,
+      "sha256": "e1a3c192c64098c559fa150b3193296436c9fdf0c12308cfc66dac7e860e7376",
+      "purpose": "Historical allocation-wide comparison: recorded metadata-read completion and ineligible exact binding."
+    },
+    {
+      "file": "evidence/prior/spatial/provider/morello-exact-valid.log",
+      "original": "${PRIOR_PROVIDER_EVIDENCE}/governed/logs/morello-exact-valid.log",
+      "bytes": 36395,
+      "sha256": "e6b002f0d7e5ea61132e49ac2efde86a536290f07300f04a13b9fb8546bf5c98",
+      "purpose": "Historical exact-authority in-bounds control returning 42."
+    },
+    {
+      "file": "evidence/prior/spatial/provider/experiment-manifest.json",
+      "original": "${PRIOR_PROVIDER_SOURCE}/provider-cve/experiment-manifest.json",
+      "bytes": 17997,
+      "sha256": "916f48167572a703a4f0435ce8315844e19e5e1a5fe5ccb43de062953c2236ae",
+      "purpose": "Unchanged original source/build/log identity index; references to omitted artifacts are metadata only."
+    },
+    {
+      "file": "evidence/prior/spatial/provider/FINAL_DELIVERABLES.sha256",
+      "original": "${PRIOR_PROVIDER_EVIDENCE}/FINAL_DELIVERABLES.sha256",
+      "bytes": 2172,
+      "sha256": "c5e8447982bbdd2d204668dd32d4085ec3347b51b78ecf57e2af7821bdcdb2db",
+      "purpose": "Original checksum index binding the provider manifest, disassembly, validation report and existing spatial result."
+    },
+    {
+      "file": "evidence/prior/spatial/provider/source-config-audit.txt",
+      "original": "${PRIOR_PROVIDER_EVIDENCE}/static/source-config-audit.txt",
+      "bytes": 2133,
+      "sha256": "de6a6b82d9eaef1148c4f33f210f040d54cbdddc29f3e4e0f146828dc988f7b5",
+      "purpose": "Historical source/config identity audit; records historical fault-injection settings, not instructions to reproduce them."
+    },
+    {
+      "file": "evidence/prior/spatial/provider/provider-authority-disassembly.txt",
+      "original": "${PRIOR_PROVIDER_EVIDENCE}/static/provider-authority-disassembly.txt",
+      "bytes": 33353,
+      "sha256": "d7d7d0f7b24bf994686a9b8b9e9987102d0f958d79469f3dd59b8caf740f73c8",
+      "purpose": "Historical provider disassembly supporting retained-root narrowing and the executive-DDC provenance limitation."
+    },
+    {
+      "file": "evidence/prior/spatial/provider/tool-identities.txt",
+      "original": "${PRIOR_PROVIDER_EVIDENCE}/static/tool-identities.txt",
+      "bytes": 477,
+      "sha256": "8c766ca96700aeeadd7c59dd0b978ff8bf0818368ba71bf7d8b395122ff413ab",
+      "purpose": "Historical compiler and emulator identity record."
+    },
+    {
+      "file": "evidence/prior/spatial/provider/final-validation.log",
+      "original": "${PRIOR_PROVIDER_EVIDENCE}/validator/final-validation.log",
+      "bytes": 530,
+      "sha256": "badfaca96f796d74ce797af95a65c530097374188b3dcf6f27cc13cf20572ae1",
+      "purpose": "Original six-case validator summary; retained output only, not rerun or asserted as fresh validation."
+    },
+    {
+      "file": "evidence/prior/spatial/adjacent-v5/experiment-result-v2.json",
+      "original": "${INHERITED_SOURCE}/linux/benchmarks/faulty-vs-differential/artifacts/result-v5/experiment-result-v2.json",
+      "bytes": 25989,
+      "sha256": "791ca42072c7b22616fdb20c28222dc4e5e0b43835e5cc81add2e100e9ce6ff8",
+      "purpose": "Original result-v5 aggregate result, including original raw-console hashes and historical claims/limits."
+    },
+    {
+      "file": "evidence/prior/spatial/adjacent-v5/result-report-v1.md",
+      "original": "${INHERITED_SOURCE}/linux/benchmarks/faulty-vs-differential/artifacts/result-v5/result-report-v1.md",
+      "bytes": 6428,
+      "sha256": "3c9a226d36fa8c2c7017cc1aae813b49a1c28f8f560707c3d6e6dbb2d2749616",
+      "purpose": "Original result-v5 narrative with conditions, controls and explicitly incomplete correspondence."
+    },
+    {
+      "file": "evidence/prior/spatial/adjacent-v6/experiment-result-v1.json",
+      "original": "${INHERITED_SOURCE}/linux/benchmarks/faulty-vs-differential/artifacts/result-v6/experiment-result-v1.json",
+      "bytes": 23758,
+      "sha256": "3ef12a6a40404376c13e7055fee7a2a1bfd6a8f025ca42e13434f3c39fc0e441",
+      "purpose": "Original result-v6 aggregate result, including original raw-console hashes and historical claims/limits."
+    },
+    {
+      "file": "evidence/prior/spatial/adjacent-v6/result-report-v1.md",
+      "original": "${INHERITED_SOURCE}/linux/benchmarks/faulty-vs-differential/artifacts/result-v6/result-report-v1.md",
+      "bytes": 8640,
+      "sha256": "a490052897333df83708a314e9d172e6f2081973499738269e2c909a8ad712cf",
+      "purpose": "Original result-v6 narrative with conditions, controls and explicitly incomplete correspondence."
+    },
+    {
+      "file": "evidence/prior/spatial/adjacent-v5/vertical-slice-correspondence-v1.json",
+      "original": "${INHERITED_SOURCE}/linux/benchmarks/faulty-vs-differential/artifacts/result-v5/vertical-slice-correspondence-v1.json",
+      "bytes": 46887,
+      "sha256": "1fdaee84b8f3824f76346355fa4c2a1d485f372022f7b39ceaf0428e8dbba5d7",
+      "purpose": "Original conditional store correspondence and source/build identity metadata; not a closed refinement proof."
+    },
+    {
+      "file": "evidence/prior/spatial/adjacent-v6/load-correspondence-v1.json",
+      "original": "${INHERITED_SOURCE}/linux/benchmarks/faulty-vs-differential/artifacts/result-v6/load-correspondence-v1.json",
+      "bytes": 39007,
+      "sha256": "7f1822d398beff66a02b9efd774d00899b91d2588011c8ff751e639c8fd637b0",
+      "purpose": "Original conditional load correspondence and deployment identities; direct live operand relation remains indeterminate."
+    },
+    {
+      "file": "evidence/prior/spatial/adjacent-v6/memory-operation-robustness-matrix-result-v1.json",
+      "original": "${INHERITED_SOURCE}/linux/benchmarks/faulty-vs-differential/artifacts/result-v6/memory-operation-robustness-matrix-result-v1.json",
+      "bytes": 8965,
+      "sha256": "5a42d7e990376076c7e7578272fc6889006f12f8a9560a933646e922c876880f",
+      "purpose": "Original four-case matrix linking separately governed V5 store and V6 load/control epochs."
+    },
+    {
+      "file": "evidence/prior/spatial/adjacent-v5/vs.replica.v5.b01.r04.exact.console.txt",
+      "original": "${INHERITED_SOURCE}/linux/benchmarks/faulty-vs-differential/artifacts/result-v5/collection/vs.replica.v5.b01.r04.exact.console.txt",
+      "bytes": 66128,
+      "sha256": "0937047c17a210e76f82e2eec710765e91bfc49f40e7c2942034e1bcad5b65e5",
+      "purpose": "First-block exact adjacent-value store observation; historical bounds fault before monitored byte changes."
+    },
+    {
+      "file": "evidence/prior/spatial/adjacent-v5/vs.replica.v5.b01.r05.broad.console.txt",
+      "original": "${INHERITED_SOURCE}/linux/benchmarks/faulty-vs-differential/artifacts/result-v5/collection/vs.replica.v5.b01.r05.broad.console.txt",
+      "bytes": 64964,
+      "sha256": "4fbdac5fe0d44bf9e98b315af12cf31563967e0f1712fd7efa60406fdcd9f7c0",
+      "purpose": "Matched first-block broad adjacent-value store observation; historical next-value bytes changed."
+    },
+    {
+      "file": "evidence/prior/spatial/adjacent-v6/memop.v6.b01.r03.oobload.exact.console.txt",
+      "original": "${INHERITED_SOURCE}/linux/benchmarks/faulty-vs-differential/artifacts/result-v6/collection/memop.v6.b01.r03.oobload.exact.console.txt",
+      "bytes": 66011,
+      "sha256": "c9338dafda256cae78390b6a1cd5bf3c451ba8f6eb62e596b76c4dee03951a3d",
+      "purpose": "First-block exact adjacent-value load observation; historical bounds fault before dependent completion."
+    },
+    {
+      "file": "evidence/prior/spatial/adjacent-v6/memop.v6.b01.r04.oobload.broad.console.txt",
+      "original": "${INHERITED_SOURCE}/linux/benchmarks/faulty-vs-differential/artifacts/result-v6/collection/memop.v6.b01.r04.oobload.broad.console.txt",
+      "bytes": 64816,
+      "sha256": "dffbdbcb18ee9d7b8634d0d99d9459bec24a68f11c4e2766f9b51e36889176b2",
+      "purpose": "Matched first-block broad adjacent-value load observation; historical dependent return value completed."
+    },
+    {
+      "file": "evidence/prior/spatial/adjacent-v6/memop.v6.b01.r10.validload.exact.console.txt",
+      "original": "${INHERITED_SOURCE}/linux/benchmarks/faulty-vs-differential/artifacts/result-v6/collection/memop.v6.b01.r10.validload.exact.console.txt",
+      "bytes": 47243,
+      "sha256": "3aebc8aa7e89cc30bb17d8f0335829ae3e1b6636340d1bd9d087eb58703c306b",
+      "purpose": "First-block exact valid load ending at the selected 16-byte value boundary."
+    },
+    {
+      "file": "evidence/prior/spatial/adjacent-v6/memop.v6.b01.r08.validstore.exact.console.txt",
+      "original": "${INHERITED_SOURCE}/linux/benchmarks/faulty-vs-differential/artifacts/result-v6/collection/memop.v6.b01.r08.validstore.exact.console.txt",
+      "bytes": 47549,
+      "sha256": "e123b5b82defbf34ca6978fc64c8a69a50aced8478acb4a1fac5146e9a207d3b",
+      "purpose": "First-block exact valid store ending at the selected 16-byte value boundary."
+    }
+  ],
+  "recorded_sha256_checks": [
+    {
+      "file": "evidence/prior/spatial/provider/morello-exact-unsafe.log",
+      "record": "evidence/prior/spatial/provider/experiment-manifest.json",
+      "locator": "$.cases.morello_exact.log.sha256",
+      "sha256": "edf97e5b3ebc5003d07373cefba9ee01e428ba1d05d9a43652ac8a0ac6bdf057",
+      "status": "MATCH"
+    },
+    {
+      "file": "evidence/prior/spatial/provider/morello-broad-unsafe.log",
+      "record": "evidence/prior/spatial/provider/experiment-manifest.json",
+      "locator": "$.cases.morello_broad.log.sha256",
+      "sha256": "487fdf1932b83cadfaf356f3d548e6454b53bee2554b018f0d5d3c438f7fb7a7",
+      "status": "MATCH"
+    },
+    {
+      "file": "evidence/prior/spatial/provider/morello-wide-unsafe.log",
+      "record": "evidence/prior/spatial/provider/experiment-manifest.json",
+      "locator": "$.cases.morello_wide.log.sha256",
+      "sha256": "e1a3c192c64098c559fa150b3193296436c9fdf0c12308cfc66dac7e860e7376",
+      "status": "MATCH"
+    },
+    {
+      "file": "evidence/prior/spatial/provider/morello-exact-valid.log",
+      "record": "evidence/prior/spatial/provider/experiment-manifest.json",
+      "locator": "$.cases.morello_valid.log.sha256",
+      "sha256": "e6b002f0d7e5ea61132e49ac2efde86a536290f07300f04a13b9fb8546bf5c98",
+      "status": "MATCH"
+    },
+    {
+      "file": "evidence/prior/spatial/provider/experiment-manifest.json",
+      "record": "evidence/prior/spatial/provider/FINAL_DELIVERABLES.sha256",
+      "locator": "capebpf-provider-cve/provider-cve/experiment-manifest.json",
+      "sha256": "916f48167572a703a4f0435ce8315844e19e5e1a5fe5ccb43de062953c2236ae",
+      "status": "MATCH"
+    },
+    {
+      "file": "evidence/prior/spatial/provider/source-config-audit.txt",
+      "record": "evidence/prior/spatial/provider/experiment-manifest.json",
+      "locator": "$.artifacts.source_config_audit.sha256",
+      "sha256": "de6a6b82d9eaef1148c4f33f210f040d54cbdddc29f3e4e0f146828dc988f7b5",
+      "status": "MATCH"
+    },
+    {
+      "file": "evidence/prior/spatial/provider/provider-authority-disassembly.txt",
+      "record": "evidence/prior/spatial/provider/FINAL_DELIVERABLES.sha256",
+      "locator": "capebpf-provider-cve-evidence-20260904/static/provider-authority-disassembly.txt",
+      "sha256": "d7d7d0f7b24bf994686a9b8b9e9987102d0f958d79469f3dd59b8caf740f73c8",
+      "status": "MATCH"
+    },
+    {
+      "file": "evidence/prior/spatial/provider/tool-identities.txt",
+      "record": "evidence/prior/spatial/provider/experiment-manifest.json",
+      "locator": "$.artifacts.tool_identities.sha256",
+      "sha256": "8c766ca96700aeeadd7c59dd0b978ff8bf0818368ba71bf7d8b395122ff413ab",
+      "status": "MATCH"
+    },
+    {
+      "file": "evidence/prior/spatial/provider/final-validation.log",
+      "record": "evidence/prior/spatial/provider/FINAL_DELIVERABLES.sha256",
+      "locator": "capebpf-provider-cve-evidence-20260904/validator/final-validation.log",
+      "sha256": "badfaca96f796d74ce797af95a65c530097374188b3dcf6f27cc13cf20572ae1",
+      "status": "MATCH"
+    },
+    {
+      "file": "evidence/prior/spatial/adjacent-v5/experiment-result-v2.json",
+      "record": "evidence/prior/spatial/adjacent-v6/memory-operation-robustness-matrix-result-v1.json",
+      "locator": "$.cases[0].primary_evidence[0].sha256",
+      "sha256": "791ca42072c7b22616fdb20c28222dc4e5e0b43835e5cc81add2e100e9ce6ff8",
+      "status": "MATCH"
+    },
+    {
+      "file": "evidence/prior/spatial/adjacent-v6/experiment-result-v1.json",
+      "record": "evidence/prior/spatial/adjacent-v6/load-correspondence-v1.json",
+      "locator": "$.artifact_identity.experiment_result.sha256",
+      "sha256": "3ef12a6a40404376c13e7055fee7a2a1bfd6a8f025ca42e13434f3c39fc0e441",
+      "status": "MATCH"
+    },
+    {
+      "file": "evidence/prior/spatial/adjacent-v6/experiment-result-v1.json",
+      "record": "evidence/prior/spatial/adjacent-v6/memory-operation-robustness-matrix-result-v1.json",
+      "locator": "$.cases[1].primary_evidence[0].sha256",
+      "sha256": "3ef12a6a40404376c13e7055fee7a2a1bfd6a8f025ca42e13434f3c39fc0e441",
+      "status": "MATCH"
+    },
+    {
+      "file": "evidence/prior/spatial/adjacent-v6/experiment-result-v1.json",
+      "record": "evidence/prior/spatial/adjacent-v6/memory-operation-robustness-matrix-result-v1.json",
+      "locator": "$.cases[2].primary_evidence[0].sha256",
+      "sha256": "3ef12a6a40404376c13e7055fee7a2a1bfd6a8f025ca42e13434f3c39fc0e441",
+      "status": "MATCH"
+    },
+    {
+      "file": "evidence/prior/spatial/adjacent-v6/experiment-result-v1.json",
+      "record": "evidence/prior/spatial/adjacent-v6/memory-operation-robustness-matrix-result-v1.json",
+      "locator": "$.cases[3].primary_evidence[0].sha256",
+      "sha256": "3ef12a6a40404376c13e7055fee7a2a1bfd6a8f025ca42e13434f3c39fc0e441",
+      "status": "MATCH"
+    },
+    {
+      "file": "evidence/prior/spatial/adjacent-v5/vertical-slice-correspondence-v1.json",
+      "record": "evidence/prior/spatial/adjacent-v5/result-report-v1.md",
+      "locator": "Correspondence boundary SHA-256",
+      "sha256": "1fdaee84b8f3824f76346355fa4c2a1d485f372022f7b39ceaf0428e8dbba5d7",
+      "status": "MATCH"
+    },
+    {
+      "file": "evidence/prior/spatial/adjacent-v6/load-correspondence-v1.json",
+      "record": "evidence/prior/spatial/adjacent-v6/memory-operation-robustness-matrix-result-v1.json",
+      "locator": "$.cases[1].primary_evidence[1].sha256",
+      "sha256": "7f1822d398beff66a02b9efd774d00899b91d2588011c8ff751e639c8fd637b0",
+      "status": "MATCH"
+    },
+    {
+      "file": "evidence/prior/spatial/adjacent-v5/vs.replica.v5.b01.r04.exact.console.txt",
+      "record": "evidence/prior/spatial/adjacent-v5/experiment-result-v2.json",
+      "locator": "$.observations[3].raw_console.sha256",
+      "sha256": "0937047c17a210e76f82e2eec710765e91bfc49f40e7c2942034e1bcad5b65e5",
+      "status": "MATCH"
+    },
+    {
+      "file": "evidence/prior/spatial/adjacent-v5/vs.replica.v5.b01.r04.exact.console.txt",
+      "record": "evidence/prior/spatial/adjacent-v5/vertical-slice-correspondence-v1.json",
+      "locator": "$.artifact_identity.selected_exact.raw_console.sha256",
+      "sha256": "0937047c17a210e76f82e2eec710765e91bfc49f40e7c2942034e1bcad5b65e5",
+      "status": "MATCH"
+    },
+    {
+      "file": "evidence/prior/spatial/adjacent-v5/vs.replica.v5.b01.r05.broad.console.txt",
+      "record": "evidence/prior/spatial/adjacent-v5/experiment-result-v2.json",
+      "locator": "$.observations[4].raw_console.sha256",
+      "sha256": "4fbdac5fe0d44bf9e98b315af12cf31563967e0f1712fd7efa60406fdcd9f7c0",
+      "status": "MATCH"
+    },
+    {
+      "file": "evidence/prior/spatial/adjacent-v5/vs.replica.v5.b01.r05.broad.console.txt",
+      "record": "evidence/prior/spatial/adjacent-v5/vertical-slice-correspondence-v1.json",
+      "locator": "$.artifact_identity.same_epoch_broad_controls[0].raw_console.sha256",
+      "sha256": "4fbdac5fe0d44bf9e98b315af12cf31563967e0f1712fd7efa60406fdcd9f7c0",
+      "status": "MATCH"
+    },
+    {
+      "file": "evidence/prior/spatial/adjacent-v5/vs.replica.v5.b01.r05.broad.console.txt",
+      "record": "evidence/prior/spatial/adjacent-v5/vertical-slice-correspondence-v1.json",
+      "locator": "$.residual_counterexamples[0].raw_console.sha256",
+      "sha256": "4fbdac5fe0d44bf9e98b315af12cf31563967e0f1712fd7efa60406fdcd9f7c0",
+      "status": "MATCH"
+    },
+    {
+      "file": "evidence/prior/spatial/adjacent-v6/memop.v6.b01.r03.oobload.exact.console.txt",
+      "record": "evidence/prior/spatial/adjacent-v6/experiment-result-v1.json",
+      "locator": "$.observations[2].raw_console.sha256",
+      "sha256": "c9338dafda256cae78390b6a1cd5bf3c451ba8f6eb62e596b76c4dee03951a3d",
+      "status": "MATCH"
+    },
+    {
+      "file": "evidence/prior/spatial/adjacent-v6/memop.v6.b01.r03.oobload.exact.console.txt",
+      "record": "evidence/prior/spatial/adjacent-v6/load-correspondence-v1.json",
+      "locator": "$.artifact_identity.selected_raw_console.sha256",
+      "sha256": "c9338dafda256cae78390b6a1cd5bf3c451ba8f6eb62e596b76c4dee03951a3d",
+      "status": "MATCH"
+    },
+    {
+      "file": "evidence/prior/spatial/adjacent-v6/memop.v6.b01.r03.oobload.exact.console.txt",
+      "record": "evidence/prior/spatial/adjacent-v6/load-correspondence-v1.json",
+      "locator": "$.selected_raw_console.sha256",
+      "sha256": "c9338dafda256cae78390b6a1cd5bf3c451ba8f6eb62e596b76c4dee03951a3d",
+      "status": "MATCH"
+    },
+    {
+      "file": "evidence/prior/spatial/adjacent-v6/memop.v6.b01.r04.oobload.broad.console.txt",
+      "record": "evidence/prior/spatial/adjacent-v6/experiment-result-v1.json",
+      "locator": "$.observations[3].raw_console.sha256",
+      "sha256": "dffbdbcb18ee9d7b8634d0d99d9459bec24a68f11c4e2766f9b51e36889176b2",
+      "status": "MATCH"
+    },
+    {
+      "file": "evidence/prior/spatial/adjacent-v6/memop.v6.b01.r10.validload.exact.console.txt",
+      "record": "evidence/prior/spatial/adjacent-v6/experiment-result-v1.json",
+      "locator": "$.observations[9].raw_console.sha256",
+      "sha256": "3aebc8aa7e89cc30bb17d8f0335829ae3e1b6636340d1bd9d087eb58703c306b",
+      "status": "MATCH"
+    },
+    {
+      "file": "evidence/prior/spatial/adjacent-v6/memop.v6.b01.r08.validstore.exact.console.txt",
+      "record": "evidence/prior/spatial/adjacent-v6/experiment-result-v1.json",
+      "locator": "$.observations[7].raw_console.sha256",
+      "sha256": "e123b5b82defbf34ca6978fc64c8a69a50aced8478acb4a1fac5146e9a207d3b",
+      "status": "MATCH"
+    }
+  ],
+  "no_selected_prior_hash_record": [
+    "evidence/prior/spatial/provider/FINAL_DELIVERABLES.sha256",
+    "evidence/prior/spatial/adjacent-v5/result-report-v1.md",
+    "evidence/prior/spatial/adjacent-v6/result-report-v1.md",
+    "evidence/prior/spatial/adjacent-v6/memory-operation-robustness-matrix-result-v1.json"
+  ],
+  "verification_scope": "Every selected copy matched its original bytes and recorded SHA-256 where bound by the selected historical metadata. Omitted files and transitive dependencies were not validated.",
+  "existing_result": "evidence/prior/spatial-result.md",
+  "new_work": "Selection, byte comparison, checksum checks, this manifest and README only."
+}

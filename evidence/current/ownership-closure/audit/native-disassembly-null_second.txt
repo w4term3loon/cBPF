@@ -1,0 +1,171 @@
+
+/audit/wrappers/null_second.o:	file format elf64-littleaarch64
+
+Disassembly of section .text:
+
+0000000000000000 <cbpf_retained_image>:
+       0: 910003c9     	add	x9, x30, #0x0
+       4: d503201f     	nop
+       8: a9bf7bfd     	stp	x29, x30, [sp, #-0x10]!
+       c: 910003fd     	mov	x29, sp
+      10: a9bf53f3     	stp	x19, x20, [sp, #-0x10]!
+      14: a9bf5bf5     	stp	x21, x22, [sp, #-0x10]!
+      18: a9bf63f7     	stp	x23, x24, [sp, #-0x10]!
+      1c: a9bf6bf9     	stp	x25, x26, [sp, #-0x10]!
+      20: a9bf73fb     	stp	x27, x28, [sp, #-0x10]!
+      24: a9bf7fff     	stp	xzr, xzr, [sp, #-0x10]!
+      28: d10043ff     	sub	sp, sp, #0x10
+      2c: 910003e0     	mov	x0, sp
+      30: d2800201     	mov	x1, #0x10               // =16
+      34: 10000d42     	adr	x2, 0x1dc <cbpf_retained_image+0x1dc>
+      38: d2801703     	mov	x3, #0xb8               // =184
+      3c: 91000124     	add	x4, x9, #0x0
+      40: d28e0005     	mov	x5, #0x7000             // =28672
+      44: f2b02205     	movk	x5, #0x8110, lsl #16
+      48: f2d00005     	movk	x5, #0x8000, lsl #32
+      4c: f2ffffe5     	movk	x5, #0xffff, lsl #48
+      50: d29d8f8a     	mov	x10, #0xec7c            // =60540
+      54: f2b0006a     	movk	x10, #0x8003, lsl #16
+      58: f2d0000a     	movk	x10, #0x8000, lsl #32
+      5c: f2ffffea     	movk	x10, #0xffff, lsl #48
+      60: d63f0140     	blr	x10
+      64: b4000060     	cbz	x0, 0x70 <cbpf_retained_image+0x70>
+      68: d2800007     	mov	x7, #0x0                // =0
+      6c: 1400005c     	b	0x1dc <cbpf_retained_image+0x1dc>
+      70: d2800000     	mov	x0, #0x0                // =0
+      74: d2800001     	mov	x1, #0x0                // =0
+      78: d2800002     	mov	x2, #0x0                // =0
+      7c: d2800003     	mov	x3, #0x0                // =0
+      80: d2800004     	mov	x4, #0x0                // =0
+      84: d2800005     	mov	x5, #0x0                // =0
+      88: d2800006     	mov	x6, #0x0                // =0
+      8c: d2800007     	mov	x7, #0x0                // =0
+      90: d2800008     	mov	x8, #0x0                // =0
+      94: d2800009     	mov	x9, #0x0                // =0
+      98: d280000a     	mov	x10, #0x0               // =0
+      9c: d280000b     	mov	x11, #0x0               // =0
+      a0: d280000c     	mov	x12, #0x0               // =0
+      a4: d280000d     	mov	x13, #0x0               // =0
+      a8: d280000e     	mov	x14, #0x0               // =0
+      ac: d2800010     	mov	x16, #0x0               // =0
+      b0: d2800012     	mov	x18, #0x0               // =0
+      b4: d2800013     	mov	x19, #0x0               // =0
+      b8: d2800014     	mov	x20, #0x0               // =0
+      bc: d2800015     	mov	x21, #0x0               // =0
+      c0: d2800016     	mov	x22, #0x0               // =0
+      c4: d2800017     	mov	x23, #0x0               // =0
+      c8: d2800018     	mov	x24, #0x0               // =0
+      cc: d2800019     	mov	x25, #0x0               // =0
+      d0: d280001a     	mov	x26, #0x0               // =0
+      d4: d280001b     	mov	x27, #0x0               // =0
+      d8: d280001c     	mov	x28, #0x0               // =0
+      dc: d280001d     	mov	x29, #0x0               // =0
+      e0: d2800000     	mov	x0, #0x0                // =0
+      e4: f2a00000     	movk	x0, #0x0, lsl #16
+      e8: f2c00000     	movk	x0, #0x0, lsl #32
+      ec: f2e00000     	movk	x0, #0x0, lsl #48
+      f0: d2800024     	mov	x4, #0x1                // =1
+      f4: d2800025     	mov	x5, #0x1                // =1
+      f8: c2c1d3cd     	mov	c13, c30
+      fc: c2c23222     	blrs	c17
+     100: c2c1d007     	mov	c7, c0
+     104: b4000607     	cbz	x7, 0x1c4 <cbpf_retained_image+0x1c4>
+     108: c2c1d0f3     	mov	c19, c7
+     10c: 824003f3     	str	c19, [csp, #0x0]
+     110: d2800020     	mov	x0, #0x1                // =1
+     114: f2a00000     	movk	x0, #0x0, lsl #16
+     118: f2c00000     	movk	x0, #0x0, lsl #32
+     11c: f2e00000     	movk	x0, #0x0, lsl #48
+     120: d2800024     	mov	x4, #0x1                // =1
+     124: d28000c5     	mov	x5, #0x6                // =6
+     128: c2c1d3cd     	mov	c13, c30
+     12c: c2c23222     	blrs	c17
+     130: c2c1d007     	mov	c7, c0
+     134: b4000307     	cbz	x7, 0x194 <cbpf_retained_image+0x194>
+     138: c2c1d0f4     	mov	c20, c7
+     13c: 826003f5     	ldr	c21, [csp, #0x0]
+     140: c2c1d2a0     	mov	c0, c21
+     144: d2800064     	mov	x4, #0x3                // =3
+     148: d2800165     	mov	x5, #0xb                // =11
+     14c: c2c1d3cd     	mov	c13, c30
+     150: c2c23222     	blrs	c17
+     154: c2c1d007     	mov	c7, c0
+     158: c2c1d280     	mov	c0, c20
+     15c: d2800044     	mov	x4, #0x2                // =2
+     160: d28001a5     	mov	x5, #0xd                // =13
+     164: c2c1d3cd     	mov	c13, c30
+     168: c2c23222     	blrs	c17
+     16c: c2c1d007     	mov	c7, c0
+     170: c2c1d0f6     	mov	c22, c7
+     174: c2c1d280     	mov	c0, c20
+     178: d2800064     	mov	x4, #0x3                // =3
+     17c: d2800205     	mov	x5, #0x10               // =16
+     180: c2c1d3cd     	mov	c13, c30
+     184: c2c23222     	blrs	c17
+     188: c2c1d007     	mov	c7, c0
+     18c: c2c1d2c7     	mov	c7, c22
+     190: 14000012     	b	0x1d8 <cbpf_retained_image+0x1d8>
+     194: 826003f5     	ldr	c21, [csp, #0x0]
+     198: c2c1d2a0     	mov	c0, c21
+     19c: d2800064     	mov	x4, #0x3                // =3
+     1a0: d28002a5     	mov	x5, #0x15               // =21
+     1a4: c2c1d3cd     	mov	c13, c30
+     1a8: c2c23222     	blrs	c17
+     1ac: c2c1d007     	mov	c7, c0
+     1b0: d28000e7     	mov	x7, #0x7                // =7
+     1b4: f2a00007     	movk	x7, #0x0, lsl #16
+     1b8: f2c00007     	movk	x7, #0x0, lsl #32
+     1bc: f2e00007     	movk	x7, #0x0, lsl #48
+     1c0: 14000006     	b	0x1d8 <cbpf_retained_image+0x1d8>
+     1c4: d2800007     	mov	x7, #0x0                // =0
+     1c8: f2a00007     	movk	x7, #0x0, lsl #16
+     1cc: f2c00007     	movk	x7, #0x0, lsl #32
+     1d0: f2e00007     	movk	x7, #0x0, lsl #48
+     1d4: 14000001     	b	0x1d8 <cbpf_retained_image+0x1d8>
+     1d8: c2c253c0     	ret	c30
+     1dc: f90003ff     	str	xzr, [sp]
+     1e0: f90007ff     	str	xzr, [sp, #0x8]
+     1e4: 910000e7     	add	x7, x7, #0x0
+     1e8: d2800000     	mov	x0, #0x0                // =0
+     1ec: d2800001     	mov	x1, #0x0                // =0
+     1f0: d2800002     	mov	x2, #0x0                // =0
+     1f4: d2800003     	mov	x3, #0x0                // =0
+     1f8: d2800004     	mov	x4, #0x0                // =0
+     1fc: d2800005     	mov	x5, #0x0                // =0
+     200: d2800006     	mov	x6, #0x0                // =0
+     204: d2800008     	mov	x8, #0x0                // =0
+     208: d2800009     	mov	x9, #0x0                // =0
+     20c: d280000a     	mov	x10, #0x0               // =0
+     210: d280000b     	mov	x11, #0x0               // =0
+     214: d280000c     	mov	x12, #0x0               // =0
+     218: d280000d     	mov	x13, #0x0               // =0
+     21c: d280000e     	mov	x14, #0x0               // =0
+     220: d280000f     	mov	x15, #0x0               // =0
+     224: d2800010     	mov	x16, #0x0               // =0
+     228: d2800011     	mov	x17, #0x0               // =0
+     22c: d2800012     	mov	x18, #0x0               // =0
+     230: d2800013     	mov	x19, #0x0               // =0
+     234: d2800014     	mov	x20, #0x0               // =0
+     238: d2800015     	mov	x21, #0x0               // =0
+     23c: d2800016     	mov	x22, #0x0               // =0
+     240: d2800017     	mov	x23, #0x0               // =0
+     244: d2800018     	mov	x24, #0x0               // =0
+     248: d2800019     	mov	x25, #0x0               // =0
+     24c: d280001a     	mov	x26, #0x0               // =0
+     250: d280001b     	mov	x27, #0x0               // =0
+     254: d280001c     	mov	x28, #0x0               // =0
+     258: d280001d     	mov	x29, #0x0               // =0
+     25c: 910043ff     	add	sp, sp, #0x10
+     260: c24003f0     	ldr	c16, [sp, #0x0]
+     264: 910043ff     	add	sp, sp, #0x10
+     268: a8c173fb     	ldp	x27, x28, [sp], #0x10
+     26c: a8c16bf9     	ldp	x25, x26, [sp], #0x10
+     270: a8c163f7     	ldp	x23, x24, [sp], #0x10
+     274: a8c15bf5     	ldp	x21, x22, [sp], #0x10
+     278: a8c153f3     	ldp	x19, x20, [sp], #0x10
+     27c: a8c17bfd     	ldp	x29, x30, [sp], #0x10
+     280: 910000e0     	add	x0, x7, #0x0
+     284: c2c0920a     	gctag	x10, c16
+     288: b400004a     	cbz	x10, 0x290 <cbpf_retained_image+0x290>
+     28c: c2c25203     	retr	c16
+     290: d65f03c0     	ret

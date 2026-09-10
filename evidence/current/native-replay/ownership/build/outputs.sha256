@@ -1,0 +1,5 @@
+b60f7390be2b874a475d04eb571ef7b22154b565787ea9f26b277fa88b633bc4  ${REPLAY_SOURCE}/build/ownership-callback-kernel/arch/arm64/boot/Image
+4ac8ce919bcc976d62371e74717887d640963d37236c6a03470fd42750e55f74  ${REPLAY_SOURCE}/build/ownership-callback-kernel/vmlinux
+2cdaa5365903c7026ab867e22ab8767d6d2b1c0b3944eeb7e862234b64fe7a6c  ${REPLAY_SOURCE}/build/ownership-callback-kernel/Module.symvers
+6f1988add3ba99cd6d2569b2bcbc705886c3de2fd27195564cf8b6a3324e4cff  ${REPLAY_SOURCE}/build/ownership-callback-kernel/.config
+74af41e84ad29a873ef72bac6dee73a0923aa879b5870decf456b857126225fe  ${REPLAY_SOURCE}/build/ownership-callback-headers/include/linux/bpf.h

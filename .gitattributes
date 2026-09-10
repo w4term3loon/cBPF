@@ -1,0 +1,9 @@
+# Preserve retained bytes, including console CRLF and patch context whitespace.
+evidence/** -text -whitespace
+LICENSES/** -text -whitespace
+*.patch -text -whitespace
+*.bin binary
+*.pdf binary
+*.pptx binary
+*.zip binary
+*.gz binary

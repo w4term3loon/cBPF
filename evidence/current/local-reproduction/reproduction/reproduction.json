@@ -1,0 +1,810 @@
+{
+  "project": "CBPF",
+  "study": "local reproduction",
+  "stage": "Fresh benign reproduction of the frozen spatial-provider and ownership controls",
+  "result": "PASS within the declared scope",
+  "completed_utc": "2026-09-06T20:31:14.391712+00:00",
+  "frozen_input": {
+    "manifest": "${REPOSITORY}/evidence/current/closure/m1-m3-freeze.json",
+    "manifest_sha256": "25421a3d852849f64b05d373e1c333e9c454f12fb0f738e930df0a1095727334",
+    "source_git_head_recorded_by_freeze": "1b7514a3abf16256b27e37da9faa27f81f6ed0d0",
+    "identity_rule": "The 234-file manifest, not Git HEAD alone, identifies this working-source/evidence snapshot.",
+    "snapshot": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/snapshot",
+    "archive": {
+      "path": "${REPOSITORY}/evidence/current/closure/m1-m3-source.tar.gz",
+      "bytes": 795012,
+      "sha256": "5e70a99e53aa72e55aa2615c32ae2b302e392972e59f82234ce9d7b353709795",
+      "entries": 234
+    },
+    "verified_files_before_and_after": 234,
+    "contents_sizes_modes_and_exact_archive_membership_verified": true,
+    "source_edits": 0,
+    "new_cases": 0,
+    "selected_mechanism_and_recipe_identities": [
+      {
+        "file": "Makefile",
+        "bytes": 2328,
+        "sha256": "f698f5f00ebb95754768d04935bbbae0a68a1e61275f266a55e04a892a000adb",
+        "mode": "0o664",
+        "archive_and_snapshot_equal_freeze": true
+      },
+      {
+        "file": "linux/ownership/cbpf.h",
+        "bytes": 792,
+        "sha256": "8cf3c862d0134b34fdf87335696878e49b681e492c1ad50698cd470811430235",
+        "mode": "0o664",
+        "archive_and_snapshot_equal_freeze": true
+      },
+      {
+        "file": "linux/ownership/cbpf_jit.c",
+        "bytes": 12812,
+        "sha256": "a1a3c2476380325100a9b361f213bb06db9e9dd24543ae8e12a5354ddd8dd753",
+        "mode": "0o664",
+        "archive_and_snapshot_equal_freeze": true
+      },
+      {
+        "file": "linux/ownership/cbpf_runtime.c",
+        "bytes": 15577,
+        "sha256": "a70dfb8b78ec3f6bd6d97afc3ad4c67a8cc63741955bd1005897942776b86296",
+        "mode": "0o664",
+        "archive_and_snapshot_equal_freeze": true
+      },
+      {
+        "file": "linux/ownership/guest.c",
+        "bytes": 6793,
+        "sha256": "89d31fbab37ad07d56b2fbc3fc4d9b7c37d985ad1c5e1be3651632dbbb2d4477",
+        "mode": "0o664",
+        "archive_and_snapshot_equal_freeze": true
+      },
+      {
+        "file": "linux/ownership/integration.patch",
+        "bytes": 4956,
+        "sha256": "8121d10f5e83488ed31739960d46cb3fe35e9f319e91acd5230c80718c5abe30",
+        "mode": "0o664",
+        "archive_and_snapshot_equal_freeze": true
+      },
+      {
+        "file": "linux/ownership/platform.patch",
+        "bytes": 8059,
+        "sha256": "65c34af4d8f1db14455c297a1f71fc03138b2fc9e834a8dc4480b0687e208c44",
+        "mode": "0o664",
+        "archive_and_snapshot_equal_freeze": true
+      },
+      {
+        "file": "linux/spatial/array-authority.patch",
+        "bytes": 12851,
+        "sha256": "ac74717a7dbd2c61760115c1b8b719e52d27d60d02957a2b73c3ff155206c4ac",
+        "mode": "0o664",
+        "archive_and_snapshot_equal_freeze": true
+      },
+      {
+        "file": "tools/build_ownership_kernel.sh",
+        "bytes": 9770,
+        "sha256": "b730ab5dde4d051da80602c0a7a2315d7a9533599137cc426c4e4f3bec0936a9",
+        "mode": "0o775",
+        "archive_and_snapshot_equal_freeze": true
+      },
+      {
+        "file": "tools/check_spatial.sh",
+        "bytes": 8650,
+        "sha256": "ea5a572f8674d8e0bebab52b520cfea6cb681221fc0980749b8b25c3ac526a96",
+        "mode": "0o775",
+        "archive_and_snapshot_equal_freeze": true
+      },
+      {
+        "file": "tools/run_ownership.sh",
+        "bytes": 18224,
+        "sha256": "3cebc14fe5c6c487a769b469d02654250984096cb52f191ff5349b377d1051af",
+        "mode": "0o775",
+        "archive_and_snapshot_equal_freeze": true
+      }
+    ]
+  },
+  "commands": [
+    {
+      "command": [
+        "make",
+        "ownership-kernel"
+      ],
+      "cwd": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/snapshot",
+      "started_utc": "2026-09-06T20:15:40.178680+00:00",
+      "log": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/reviewer/ownership-kernel.log",
+      "environment_overrides": {},
+      "recipe_environment": {},
+      "finished_utc": "2026-09-06T20:27:27.887513+00:00",
+      "elapsed_seconds": 707.709,
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "make",
+        "ownership-run"
+      ],
+      "cwd": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/snapshot",
+      "started_utc": "2026-09-06T20:27:43.921645+00:00",
+      "log": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/reviewer/ownership-run.log",
+      "environment_overrides": {
+        "CBPF_NATIVE_ROOT": "${REPRO_DEPENDENCIES}/runtime/morello"
+      },
+      "recipe_environment": {},
+      "finished_utc": "2026-09-06T20:27:51.347317+00:00",
+      "elapsed_seconds": 7.426,
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "make",
+        "spatial-check"
+      ],
+      "cwd": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/snapshot",
+      "started_utc": "2026-09-06T20:28:15.786316+00:00",
+      "log": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/reviewer/spatial-check.log",
+      "environment_overrides": {
+        "CBPF_SPATIAL_SOURCE_GIT": "${REPRO_DEPENDENCIES}/linux-source.git"
+      },
+      "recipe_environment": {},
+      "finished_utc": "2026-09-06T20:29:12.127288+00:00",
+      "elapsed_seconds": 56.341,
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "make",
+        "check"
+      ],
+      "cwd": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/snapshot",
+      "started_utc": "2026-09-06T20:29:24.892839+00:00",
+      "log": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/reviewer/check.log",
+      "environment_overrides": {},
+      "recipe_environment": {},
+      "finished_utc": "2026-09-06T20:29:38.951568+00:00",
+      "elapsed_seconds": 14.059,
+      "exit_code": 0
+    }
+  ],
+  "observed_results": {
+    "ownership_kernel": {
+      "clean_full_build": true,
+      "exit_code": 0,
+      "source_commit": "b96da308ef1a054c3c04c9445e5ed70259b7c397",
+      "source_tree": "0fc9d44a60944f77000cc125779c6207a37fa74d",
+      "stock_verifier_sha256": "48268a29931754296882a9ff6847eb556ba8e8564959be1c62754afdb2fb4851",
+      "normal_verifier_unchanged": true,
+      "config_equal_original_M3": true
+    },
+    "ownership_guest": {
+      "study": "ownership boundary controls",
+      "trusted_resolver_checks": [
+        "stale_copy",
+        "stale_spill",
+        "duplicate_release"
+      ],
+      "cases": [
+        {
+          "case": "ab_spill",
+          "result": "PASS",
+          "loaded": true,
+          "executed": true,
+          "retval": 42,
+          "bpf_instructions": 26,
+          "native_bytes": 660,
+          "native_sha256": "117453054e65b3f4ae6b8da5dd241b1a8db28cdbd15cfae4a1527e073f576871",
+          "acquired": 2,
+          "released": 2,
+          "reads": 1,
+          "cleanup": 0,
+          "refs": 1
+        },
+        {
+          "case": "ab_alternate",
+          "result": "PASS",
+          "loaded": true,
+          "executed": true,
+          "retval": 42,
+          "bpf_instructions": 27,
+          "native_bytes": 664,
+          "native_sha256": "1f6650e2fdcd76e1723c8c2fe0d42675c4615427721af729b80bdb0a03fa7b14",
+          "acquired": 2,
+          "released": 2,
+          "reads": 1,
+          "cleanup": 0,
+          "refs": 1
+        },
+        {
+          "case": "null_second",
+          "result": "PASS",
+          "loaded": true,
+          "executed": true,
+          "retval": 7,
+          "bpf_instructions": 26,
+          "native_bytes": 660,
+          "native_sha256": "4aef0e035a349d66cdde5dcc8b05e56c43e65dab129b0390ba0ecaf8e00bc4c3",
+          "acquired": 1,
+          "released": 1,
+          "reads": 0,
+          "cleanup": 0,
+          "refs": 1
+        },
+        {
+          "case": "fail_second",
+          "result": "PASS",
+          "loaded": true,
+          "executed": true,
+          "retval": 0,
+          "bpf_instructions": 26,
+          "native_bytes": 660,
+          "native_sha256": "3fcf9225428f9edb5488cf2647b9098b5b860cc9341b967d80412a9927aeb312",
+          "acquired": 1,
+          "released": 1,
+          "reads": 0,
+          "cleanup": 1,
+          "refs": 1
+        },
+        {
+          "case": "stale_copy",
+          "result": "PASS",
+          "loaded": false,
+          "executed": false,
+          "load_errno": 22
+        },
+        {
+          "case": "stale_spill",
+          "result": "PASS",
+          "loaded": false,
+          "executed": false,
+          "load_errno": 22
+        },
+        {
+          "case": "duplicate_release",
+          "result": "PASS",
+          "loaded": false,
+          "executed": false,
+          "load_errno": 22
+        }
+      ],
+      "qemu_exit": 0,
+      "invalid_bpf_executions": 0,
+      "limits": [
+        "Trusted stale controls do not execute invalid restricted BPF.",
+        "Scalar 2 tests pre-provider argument rejection, not exact-bounds construction failure.",
+        "Nonzero normal-return cleanup is inspected/modelled; the verifier rejects leaked ownership."
+      ]
+    },
+    "spatial": {
+      "result": "PASS",
+      "requested_objects": 3,
+      "verified_tree": "e6c69574c16bc2b9bce06329f9ac3f4b3269e79a",
+      "verified_blobs": 82487,
+      "verifier_unchanged_from_inherited_substrate": true,
+      "offload": false,
+      "inherited_test_modes": false,
+      "kernel_Image": false,
+      "vmlinux": false,
+      "guest_execution": false
+    },
+    "make_check": {
+      "exit_code": 0,
+      "log": "commands/check.log",
+      "scope": "Existing portable demos, finite model/mutation and oracle checks, reference and gate C/model conformance, and retained evidence integrity."
+    }
+  },
+  "comparisons": {
+    "all_five_kernel_outputs_byte_equal_original_M3": true,
+    "all_four_native_binaries_byte_equal_original_M3": true,
+    "structured_results_equal_original_M3": true,
+    "decisive_ordered_rows_equal_after_timestamp_removal": true,
+    "decisive_rows": 64,
+    "all_three_spatial_objects_and_config_byte_equal_original_M1": true,
+    "raw_boot_logs_byte_equal": false,
+    "observed_boot_log_differences": "Leading elapsed-time prefixes, audit initialization time, RTC time, initrd-free notice ordering, and eight native entry/restricted/executive address lines. All other lines match after CR and leading timestamp removal. Full normalized diff and exact changes are retained.",
+    "details": [
+      "review/comparison.json",
+      "review/spatial-verification.json",
+      "review/log-differences.json",
+      "review/boot-log-without-timestamps.diff"
+    ]
+  },
+  "dependency_exercise": {
+    "ownership_kernel": "Existing recipe defaults: cached pinned source store, cached builder image, original pahole runtime. No dependency fetching.",
+    "ownership_guest_restored_runtime": "${REPRO_DEPENDENCIES}/runtime/morello",
+    "spatial_restored_source_store": "${REPRO_DEPENDENCIES}/linux-source.git",
+    "builder_docker_reported_identity": "sha256:b4de3680a00e3ac68ccc56bd87131b97c1fffcd5e016c2d1a54d7e3386d9fc6e",
+    "builder_flags": "--pull=never --network none --cap-drop ALL --security-opt no-new-privileges; source mounts read-only, nonprivileged host UID. Live ownership and spatial container receipts retained."
+  },
+  "preserved_build_paths": {
+    "kernel_source": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/snapshot/build/ownership-m3-source",
+    "kernel_outputs": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/snapshot/build/ownership-m3-kernel",
+    "headers": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/snapshot/build/ownership-m3-headers",
+    "kernel_receipt": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/snapshot/build/ownership-m3-build",
+    "ownership_run": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/snapshot/build/ownership-m3-run.4B6VVP",
+    "spatial_run": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/snapshot/build/spatial-check.79YmHw",
+    "reviewer_work": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/reviewer"
+  },
+  "evidence_selection": {
+    "root": "${REPOSITORY}/evidence/current/closure/reproduction",
+    "file_count_excluding_this_receipt": 78,
+    "bytes_excluding_this_receipt": 781435,
+    "large_artifacts": "Kernel and spatial object binaries, large source-tree manifests, guest init binaries/initramfs, and dependency trees remain under the preserved fresh build or durable dependency package; their source/output identities are retained here. Original absolute paths in checksum receipts are preserved."
+  },
+  "limits": [
+    "Same-host/toolchain AI reproduction is not external/human reproduction or an independent hardware experiment.",
+    "Trusted stale-copy/spill and duplicate-release checks are direct init-only production-resolver observations; invalid BPF is rejected at load and never executed.",
+    "Scalar 2 tests pre-provider argument rejection and terminal cleanup, not allocation or exact-bounds construction failure; nonzero normal-return cleanup remains source/model evidence.",
+    "Spatial reproduction is reduced-source patch application and three-object compilation only. No new spatial runtime or CVE execution occurred; historical CVE findings remain archived.",
+    "No source change, protection weakening, new case, exploit execution, or spatial/ownership composition was introduced. Formal refinement and trusted assignment/mediation assumptions remain unchanged."
+  ],
+  "files": [
+    {
+      "file": "evidence/current/closure/reproduction/commands/check.json",
+      "bytes": 432,
+      "sha256": "ea5a70780db5ec7fc2389c9322936ec7ae11ad098a25ec856ffa0b6749eb9502",
+      "copied_from": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/reviewer/check.json"
+    },
+    {
+      "file": "evidence/current/closure/reproduction/commands/check.log",
+      "bytes": 8874,
+      "sha256": "8689d54c8446394bd6a2d2ce7668e7ccd7f0501d771fabd63f2027bc1e47bb29",
+      "copied_from": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/reviewer/check.log"
+    },
+    {
+      "file": "evidence/current/closure/reproduction/commands/ownership-kernel.json",
+      "bytes": 455,
+      "sha256": "da272e0b09bfc0c166b2b626ec89950167df00bca5ed1736bfb93ac1841c26bf",
+      "copied_from": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/reviewer/ownership-kernel.json"
+    },
+    {
+      "file": "evidence/current/closure/reproduction/commands/ownership-kernel.log",
+      "bytes": 418,
+      "sha256": "6364a45ecc7dbc61bc122ccb78fbdeda0bc573c117ee151d81cc4f1e745e9000",
+      "copied_from": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/reviewer/ownership-kernel.log"
+    },
+    {
+      "file": "evidence/current/closure/reproduction/commands/ownership-run.json",
+      "bytes": 546,
+      "sha256": "fa2e27e447e865e3fc192a710d74fa8b564258485ddce3be66783a3dac9acc4f",
+      "copied_from": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/reviewer/ownership-run.json"
+    },
+    {
+      "file": "evidence/current/closure/reproduction/commands/ownership-run.log",
+      "bytes": 14858,
+      "sha256": "be0fc3da21530c800ee2c87f3fbf369529e1e9d21593b323dce438dc2e6a4b34",
+      "copied_from": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/reviewer/ownership-run.log"
+    },
+    {
+      "file": "evidence/current/closure/reproduction/commands/spatial-check.json",
+      "bytes": 555,
+      "sha256": "9b55acd5bda4adc58e19318d0aafb5689fb1012694c2a31275a4ae473a0baf75",
+      "copied_from": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/reviewer/spatial-check.json"
+    },
+    {
+      "file": "evidence/current/closure/reproduction/commands/spatial-check.log",
+      "bytes": 567,
+      "sha256": "079c428a0f2056110baa5b977bc0c8e259c0ad85975f15e9aee2618047845656",
+      "copied_from": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/reviewer/spatial-check.log"
+    },
+    {
+      "file": "evidence/current/closure/reproduction/kernel/build-script.executed.sh",
+      "bytes": 9770,
+      "sha256": "b730ab5dde4d051da80602c0a7a2315d7a9533599137cc426c4e4f3bec0936a9",
+      "copied_from": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/snapshot/build/ownership-m3-build/build-script.executed.sh"
+    },
+    {
+      "file": "evidence/current/closure/reproduction/kernel/builder-image.txt",
+      "bytes": 178,
+      "sha256": "64cd0c0d49fe5cf28ed75cedcc141ccd9c5698afaf760b7a5b49b82b06df120c",
+      "copied_from": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/snapshot/build/ownership-m3-build/builder-image.txt"
+    },
+    {
+      "file": "evidence/current/closure/reproduction/kernel/compile.log",
+      "bytes": 139476,
+      "sha256": "7da29f4811826f375b5a0f71447afa7e522d5b8675824c6210b296c9db710b1f",
+      "copied_from": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/snapshot/build/ownership-m3-build/compile.log"
+    },
+    {
+      "file": "evidence/current/closure/reproduction/kernel/compiler.sha256",
+      "bytes": 213,
+      "sha256": "33cec68829bfd8ba37c4baafc8b4bb52d136d64a4ea4f2330f241e9d7c97ec2e",
+      "copied_from": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/snapshot/build/ownership-m3-build/compiler.sha256"
+    },
+    {
+      "file": "evidence/current/closure/reproduction/kernel/inputs-verified.txt",
+      "bytes": 2677,
+      "sha256": "fac9d5734699cd72d533a62bd9131cf839feaca526232c9413622fa7b5319d49",
+      "copied_from": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/snapshot/build/ownership-m3-build/inputs-verified.txt"
+    },
+    {
+      "file": "evidence/current/closure/reproduction/kernel/inputs.sha256",
+      "bytes": 4289,
+      "sha256": "aa769186b59b5c3e549e3175aa9fc56b5cee751e0bb52db9ff6e2323757480a8",
+      "copied_from": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/snapshot/build/ownership-m3-build/inputs.sha256"
+    },
+    {
+      "file": "evidence/current/closure/reproduction/kernel/integration.numstat",
+      "bytes": 181,
+      "sha256": "8a73bb07741845e3d5ac9689f0f96c6b87bca89a15a991d2e590180986c4b968",
+      "copied_from": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/snapshot/build/ownership-m3-build/integration.numstat"
+    },
+    {
+      "file": "evidence/current/closure/reproduction/kernel/kernel-release.txt",
+      "bytes": 21,
+      "sha256": "c17f24730632effa2b35e06a803d1a4a36935695a229944b9f88b173e9f61941",
+      "copied_from": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/snapshot/build/ownership-m3-build/kernel-release.txt"
+    },
+    {
+      "file": "evidence/current/closure/reproduction/kernel/kernel.config",
+      "bytes": 87730,
+      "sha256": "6f1988add3ba99cd6d2569b2bcbc705886c3de2fd27195564cf8b6a3324e4cff",
+      "copied_from": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/snapshot/build/ownership-m3-build/kernel.config"
+    },
+    {
+      "file": "evidence/current/closure/reproduction/kernel/outputs.container.sha256",
+      "bytes": 440,
+      "sha256": "5a6ea5f4d1feb399cd33f90ebcaf09569f1385c38a052ce46de7c831f3b8d142",
+      "copied_from": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/snapshot/build/ownership-m3-build/outputs.container.sha256"
+    },
+    {
+      "file": "evidence/current/closure/reproduction/kernel/outputs.sha256",
+      "bytes": 879,
+      "sha256": "fe232c5d09625f06479de1bdf030d8e58e42557f5a77b383157ce86138e70842",
+      "copied_from": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/snapshot/build/ownership-m3-build/outputs.sha256"
+    },
+    {
+      "file": "evidence/current/closure/reproduction/kernel/patched-sources.sha256",
+      "bytes": 3921,
+      "sha256": "87b12b81f47056b93801d02924877d19463bed55660f0b69e6ec0771f401f916",
+      "copied_from": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/snapshot/build/ownership-m3-build/patched-sources.sha256"
+    },
+    {
+      "file": "evidence/current/closure/reproduction/kernel/platform.numstat",
+      "bytes": 333,
+      "sha256": "f3a6562a1617cfb9ec4dbe93eb775e79ebb9f8aef5466bc509f673f986d75fb7",
+      "copied_from": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/snapshot/build/ownership-m3-build/platform.numstat"
+    },
+    {
+      "file": "evidence/current/closure/reproduction/kernel/source-commit.txt",
+      "bytes": 41,
+      "sha256": "58b294dd20ae2694b9cf7d8ab015f9fefd95315fbe0cfad1ebdf3d4f5a06f274",
+      "copied_from": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/snapshot/build/ownership-m3-build/source-commit.txt"
+    },
+    {
+      "file": "evidence/current/closure/reproduction/kernel/source-tree.txt",
+      "bytes": 41,
+      "sha256": "49159c654584f89b8e24fe49af39ea2f91c043e70eab2a8502756da9c262db6e",
+      "copied_from": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/snapshot/build/ownership-m3-build/source-tree.txt"
+    },
+    {
+      "file": "evidence/current/closure/reproduction/kernel/sources-verified.txt",
+      "bytes": 2619,
+      "sha256": "1f93fb6ca65af851c0c42d4399ec67cc66f1149f16cc9716c7a095bdb3580038",
+      "copied_from": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/snapshot/build/ownership-m3-build/sources-verified.txt"
+    },
+    {
+      "file": "evidence/current/closure/reproduction/kernel/summary.txt",
+      "bytes": 173,
+      "sha256": "239bd281682522da822c23d327a9375170dbadc94e92b97f129125096d063715",
+      "copied_from": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/snapshot/build/ownership-m3-build/summary.txt"
+    },
+    {
+      "file": "evidence/current/closure/reproduction/kernel/toolchain.txt",
+      "bytes": 241,
+      "sha256": "7791c28f5757d5bd258883535690c4349f19b2f51851494f1c97cb33769f5a96",
+      "copied_from": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/snapshot/build/ownership-m3-build/toolchain.txt"
+    },
+    {
+      "file": "evidence/current/closure/reproduction/kernel/verifier-before.sha256",
+      "bytes": 183,
+      "sha256": "74e053c2f22126eb3e44f298242a3035741a74b1b800f644be5f1a762914e4b1",
+      "copied_from": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/snapshot/build/ownership-m3-build/verifier-before.sha256"
+    },
+    {
+      "file": "evidence/current/closure/reproduction/kernel/verifier-unchanged.txt",
+      "bytes": 121,
+      "sha256": "639e6c44f9d826789a4d0667b15054aa4bbe61282aafe66ab67a00d75b6594de",
+      "copied_from": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/snapshot/build/ownership-m3-build/verifier-unchanged.txt"
+    },
+    {
+      "file": "evidence/current/closure/reproduction/ownership/boot.log",
+      "bytes": 120791,
+      "sha256": "12bfe17ca22a562a2f87bce381100419cbb8547dbf8f80b423daefafd3a05069",
+      "copied_from": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/snapshot/build/ownership-m3-run.4B6VVP/boot.log"
+    },
+    {
+      "file": "evidence/current/closure/reproduction/ownership/btf-selection.txt",
+      "bytes": 180,
+      "sha256": "f480eccf238eea594bca65f4a87013761637ce71c1f12c6d32b879a62f9d58b2",
+      "copied_from": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/snapshot/build/ownership-m3-run.4B6VVP/btf-selection.txt"
+    },
+    {
+      "file": "evidence/current/closure/reproduction/ownership/compile.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "copied_from": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/snapshot/build/ownership-m3-run.4B6VVP/compile.log"
+    },
+    {
+      "file": "evidence/current/closure/reproduction/ownership/guest.c",
+      "bytes": 6793,
+      "sha256": "89d31fbab37ad07d56b2fbc3fc4d9b7c37d985ad1c5e1be3651632dbbb2d4477",
+      "copied_from": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/snapshot/build/ownership-m3-run.4B6VVP/guest.c"
+    },
+    {
+      "file": "evidence/current/closure/reproduction/ownership/inputs-verified.txt",
+      "bytes": 2267,
+      "sha256": "76f09d3a437f8b8eb5411bdd29debc1ed0485fa2a2912226f35741dab02afc56",
+      "copied_from": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/snapshot/build/ownership-m3-run.4B6VVP/inputs-verified.txt"
+    },
+    {
+      "file": "evidence/current/closure/reproduction/ownership/inputs.sha256",
+      "bytes": 3569,
+      "sha256": "c449d818ff3da53ccdfcdb4075ee7321b2ee55989bc52458c7f5523dc067c186",
+      "copied_from": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/snapshot/build/ownership-m3-run.4B6VVP/inputs.sha256"
+    },
+    {
+      "file": "evidence/current/closure/reproduction/ownership/native-ab_alternate.bin",
+      "bytes": 664,
+      "sha256": "1f6650e2fdcd76e1723c8c2fe0d42675c4615427721af729b80bdb0a03fa7b14",
+      "copied_from": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/snapshot/build/ownership-m3-run.4B6VVP/native-ab_alternate.bin"
+    },
+    {
+      "file": "evidence/current/closure/reproduction/ownership/native-ab_spill.bin",
+      "bytes": 660,
+      "sha256": "117453054e65b3f4ae6b8da5dd241b1a8db28cdbd15cfae4a1527e073f576871",
+      "copied_from": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/snapshot/build/ownership-m3-run.4B6VVP/native-ab_spill.bin"
+    },
+    {
+      "file": "evidence/current/closure/reproduction/ownership/native-fail_second.bin",
+      "bytes": 660,
+      "sha256": "3fcf9225428f9edb5488cf2647b9098b5b860cc9341b967d80412a9927aeb312",
+      "copied_from": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/snapshot/build/ownership-m3-run.4B6VVP/native-fail_second.bin"
+    },
+    {
+      "file": "evidence/current/closure/reproduction/ownership/native-null_second.bin",
+      "bytes": 660,
+      "sha256": "4aef0e035a349d66cdde5dcc8b05e56c43e65dab129b0390ba0ecaf8e00bc4c3",
+      "copied_from": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/snapshot/build/ownership-m3-run.4B6VVP/native-null_second.bin"
+    },
+    {
+      "file": "evidence/current/closure/reproduction/ownership/native.sha256",
+      "bytes": 750,
+      "sha256": "b14c2c95543bce86e78cc77d282f3878b415011eb4a2a0e5ba85de907d8aea09",
+      "copied_from": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/snapshot/build/ownership-m3-run.4B6VVP/native.sha256"
+    },
+    {
+      "file": "evidence/current/closure/reproduction/ownership/ownership_ids.h",
+      "bytes": 211,
+      "sha256": "fc7a2351f33470ca47ff57012c6ae06b8a5a08bc7968f4f9647249ef12a23032",
+      "copied_from": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/snapshot/build/ownership-m3-run.4B6VVP/ownership_ids.h"
+    },
+    {
+      "file": "evidence/current/closure/reproduction/ownership/results.json",
+      "bytes": 2383,
+      "sha256": "63d3ae5462ad09f5f0a0859a1348057664767164f707cec217e9a56600065ad4",
+      "copied_from": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/snapshot/build/ownership-m3-run.4B6VVP/results.json"
+    },
+    {
+      "file": "evidence/current/closure/reproduction/ownership/run-script.executed.sh",
+      "bytes": 18224,
+      "sha256": "3cebc14fe5c6c487a769b469d02654250984096cb52f191ff5349b377d1051af",
+      "copied_from": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/snapshot/build/ownership-m3-run.4B6VVP/run-script.executed.sh"
+    },
+    {
+      "file": "evidence/current/closure/reproduction/ownership/summary.txt",
+      "bytes": 14537,
+      "sha256": "7011e0824f113e7e5091e7375149a2e6a28784beb43f4cdd7c132332ee67af70",
+      "copied_from": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/snapshot/build/ownership-m3-run.4B6VVP/summary.txt"
+    },
+    {
+      "file": "evidence/current/closure/reproduction/ownership/toolchain.txt",
+      "bytes": 473,
+      "sha256": "04c7ab2243e89b14e28ed3e09151642b6f43bec50cdff265b094e1935c305235",
+      "copied_from": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/snapshot/build/ownership-m3-run.4B6VVP/toolchain.txt"
+    },
+    {
+      "file": "evidence/current/closure/reproduction/review/baseline-verification.json",
+      "bytes": 5115,
+      "sha256": "63a6d32d8be0353f61915bde60d9a07d8318827b712809848c252368997807a5",
+      "copied_from": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/reviewer/baseline-verification.json"
+    },
+    {
+      "file": "evidence/current/closure/reproduction/review/boot-log-without-timestamps.diff",
+      "bytes": 4659,
+      "sha256": "9714f61683d205c2a3cecdb9bdcac32187b809e536cc450c8772abe383be644f",
+      "copied_from": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/reviewer/boot-log-without-timestamps.diff"
+    },
+    {
+      "file": "evidence/current/closure/reproduction/review/boundary-check.json",
+      "bytes": 1476,
+      "sha256": "d61ef789d253e010db8f201966cebb5a375f19e4623292a0f3cbb5a96e89880e",
+      "copied_from": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/reviewer/boundary-check.json"
+    },
+    {
+      "file": "evidence/current/closure/reproduction/review/compare-results.py",
+      "bytes": 3924,
+      "sha256": "a4e6a46437c4fad86207663df50e85cf49e88625cbbeaa6ae32cc4146a818b75",
+      "copied_from": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/reviewer/compare-results.py"
+    },
+    {
+      "file": "evidence/current/closure/reproduction/review/comparison.json",
+      "bytes": 8476,
+      "sha256": "7b9593eab53fedb64b88d964e48ca1eedb810a844a00502710b5237308e0e104",
+      "copied_from": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/reviewer/comparison.json"
+    },
+    {
+      "file": "evidence/current/closure/reproduction/review/freeze-validation-after.json",
+      "bytes": 59284,
+      "sha256": "f9df486ec51e5a608183b74c78e1204a979ec545f58dc814f5cc0cc38b98e779",
+      "copied_from": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/reviewer/freeze-validation-after.json"
+    },
+    {
+      "file": "evidence/current/closure/reproduction/review/freeze-validation-before.json",
+      "bytes": 59284,
+      "sha256": "c8eaaac2475edcb2f7928d894993c55d2e628022a3d59c0d8ed3d83922bcb3ba",
+      "copied_from": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/reviewer/freeze-validation-before.json"
+    },
+    {
+      "file": "evidence/current/closure/reproduction/review/host-tools.json",
+      "bytes": 1795,
+      "sha256": "81a97215357eb6f91e99f2185344d37e6cc4cf541d76d188235622abe91851ae",
+      "copied_from": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/reviewer/host-tools.json"
+    },
+    {
+      "file": "evidence/current/closure/reproduction/review/log-differences.json",
+      "bytes": 5550,
+      "sha256": "a524eff5ddcf694f316e79ed06e282972b81eee494d5270ade5323c076f37ab1",
+      "copied_from": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/reviewer/log-differences.json"
+    },
+    {
+      "file": "evidence/current/closure/reproduction/review/ownership-build-preflight.json",
+      "bytes": 703,
+      "sha256": "96ec879eb764419dc1643861f5d806aeea6bff54475755e9564a82d451a7b759",
+      "copied_from": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/reviewer/ownership-build-preflight.json"
+    },
+    {
+      "file": "evidence/current/closure/reproduction/review/ownership-container.json",
+      "bytes": 1836,
+      "sha256": "bf245a31dd1f8e857daebec1f9bc75dd2cfb03b6ced3157166b4231a14432bfc",
+      "copied_from": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/reviewer/ownership-container.json"
+    },
+    {
+      "file": "evidence/current/closure/reproduction/review/run-command.py",
+      "bytes": 1217,
+      "sha256": "3dc1078601f36de378840b9c435278e712e49094191a74823979a03161e71af1",
+      "copied_from": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/reviewer/run-command.py"
+    },
+    {
+      "file": "evidence/current/closure/reproduction/review/run-restored-command.py",
+      "bytes": 1525,
+      "sha256": "6fcf4ca0161ed1e45a7b4c4e275a1837a1a9c4b7f41118b8d1ff72513cd4972d",
+      "copied_from": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/reviewer/run-restored-command.py"
+    },
+    {
+      "file": "evidence/current/closure/reproduction/review/spatial-container.json",
+      "bytes": 1286,
+      "sha256": "e9354e80e25b30e2e06d41679bc56e59703c7a0e2806f059be1d5dd0af7d4fab",
+      "copied_from": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/reviewer/spatial-container.json"
+    },
+    {
+      "file": "evidence/current/closure/reproduction/review/spatial-verification.json",
+      "bytes": 3117,
+      "sha256": "01adee72b1fa26abdb3e2fd177fa32e23961ed1953a1138613adb211207d0a21",
+      "copied_from": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/reviewer/spatial-verification.json"
+    },
+    {
+      "file": "evidence/current/closure/reproduction/review/verify-freeze.py",
+      "bytes": 2873,
+      "sha256": "9f1689119a77b1c8f8214b4d216395a75ea1669fab1bd92906c3a5fb5c3c592c",
+      "copied_from": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/reviewer/verify-freeze.py"
+    },
+    {
+      "file": "evidence/current/closure/reproduction/spatial/array-authority.patch",
+      "bytes": 12851,
+      "sha256": "ac74717a7dbd2c61760115c1b8b719e52d27d60d02957a2b73c3ff155206c4ac",
+      "copied_from": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/snapshot/build/spatial-check.79YmHw/receipt/array-authority.patch"
+    },
+    {
+      "file": "evidence/current/closure/reproduction/spatial/builder-image.txt",
+      "bytes": 178,
+      "sha256": "64cd0c0d49fe5cf28ed75cedcc141ccd9c5698afaf760b7a5b49b82b06df120c",
+      "copied_from": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/snapshot/build/spatial-check.79YmHw/receipt/builder-image.txt"
+    },
+    {
+      "file": "evidence/current/closure/reproduction/spatial/check_spatial.executed.sh",
+      "bytes": 8650,
+      "sha256": "ea5a572f8674d8e0bebab52b520cfea6cb681221fc0980749b8b25c3ac526a96",
+      "copied_from": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/snapshot/build/spatial-check.79YmHw/receipt/check_spatial.executed.sh"
+    },
+    {
+      "file": "evidence/current/closure/reproduction/spatial/compile.log",
+      "bytes": 6157,
+      "sha256": "2d22bf84e8623f04356952b281142bc584ad61e31017896cb8593ef83ae9ccd7",
+      "copied_from": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/snapshot/build/spatial-check.79YmHw/compile.log"
+    },
+    {
+      "file": "evidence/current/closure/reproduction/spatial/compiler.sha256",
+      "bytes": 106,
+      "sha256": "e9e7ce47ac858a538ac20d3ed98a735c7ea17557ef8751e5b4ae63c5c2f4ec5c",
+      "copied_from": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/snapshot/build/spatial-check.79YmHw/receipt/compiler.sha256"
+    },
+    {
+      "file": "evidence/current/closure/reproduction/spatial/compiler.txt",
+      "bytes": 222,
+      "sha256": "fa637d12c4f5cecdca7898e378a80db8be25e70585400728f3539c6741f68ff3",
+      "copied_from": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/snapshot/build/spatial-check.79YmHw/receipt/compiler.txt"
+    },
+    {
+      "file": "evidence/current/closure/reproduction/spatial/inputs-verified.txt",
+      "bytes": 519,
+      "sha256": "452daf8e3b18f5c0e6fdc7351d694854d29e7fd9d708c40f725d65b5c7c9fcaf",
+      "copied_from": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/snapshot/build/spatial-check.79YmHw/receipt/inputs-verified.txt"
+    },
+    {
+      "file": "evidence/current/closure/reproduction/spatial/inputs.sha256",
+      "bytes": 767,
+      "sha256": "d34e609abaaae4a20c56c02ec9c0dca65edd19981c25c8cd94654f1095bb53c2",
+      "copied_from": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/snapshot/build/spatial-check.79YmHw/receipt/inputs.sha256"
+    },
+    {
+      "file": "evidence/current/closure/reproduction/spatial/kernel.config",
+      "bytes": 132831,
+      "sha256": "c1584198a3571a100e72cb5a458c31699fce6d4c0593442a758af2d0ba2b0834",
+      "copied_from": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/snapshot/build/spatial-check.79YmHw/receipt/kernel.config"
+    },
+    {
+      "file": "evidence/current/closure/reproduction/spatial/outputs.sha256",
+      "bytes": 761,
+      "sha256": "9711aa656a4840bd2d251295f5a734b5f2f6f94965e15a44e149ea5df85bd644",
+      "copied_from": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/snapshot/build/spatial-check.79YmHw/receipt/outputs.sha256"
+    },
+    {
+      "file": "evidence/current/closure/reproduction/spatial/patch-check.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "copied_from": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/snapshot/build/spatial-check.79YmHw/receipt/patch-check.log"
+    },
+    {
+      "file": "evidence/current/closure/reproduction/spatial/patch-numstat.txt",
+      "bytes": 136,
+      "sha256": "692b8e9fd2c9434dbddb06d7a9538dce93d4dab179890a6703b71ada34fed087",
+      "copied_from": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/snapshot/build/spatial-check.79YmHw/receipt/patch-numstat.txt"
+    },
+    {
+      "file": "evidence/current/closure/reproduction/spatial/patched-sources.sha256",
+      "bytes": 1148,
+      "sha256": "583110c8a07879d3c00ae632fca53ed23d4a989818a0e389a1fe241b3231ce20",
+      "copied_from": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/snapshot/build/spatial-check.79YmHw/receipt/patched-sources.sha256"
+    },
+    {
+      "file": "evidence/current/closure/reproduction/spatial/source-pins.json",
+      "bytes": 434,
+      "sha256": "724aa27472822cc40b5d74cb85e80f403107edb5a532a617f510235bc64e23de",
+      "copied_from": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/snapshot/build/spatial-check.79YmHw/receipt/source-pins.json"
+    },
+    {
+      "file": "evidence/current/closure/reproduction/spatial/sources-verified.txt",
+      "bytes": 776,
+      "sha256": "9ae4959b217200a2602e40036f376f5a7dc6fd23eba31f9b4d7aa67dbf20ed68",
+      "copied_from": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/snapshot/build/spatial-check.79YmHw/receipt/sources-verified.txt"
+    },
+    {
+      "file": "evidence/current/closure/reproduction/spatial/summary.txt",
+      "bytes": 197,
+      "sha256": "b87309719991c085a0e30d03e95e92c70bcdf2d7980671065e657192d49a18ba",
+      "copied_from": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/snapshot/build/spatial-check.79YmHw/summary.txt"
+    },
+    {
+      "file": "evidence/current/closure/reproduction/spatial/test-options.txt",
+      "bytes": 463,
+      "sha256": "4b4ede8ea0a15a54df9eafdb784cf44920412cebbc2b626a23acd869f9811dbe",
+      "copied_from": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/snapshot/build/spatial-check.79YmHw/receipt/test-options.txt"
+    },
+    {
+      "file": "evidence/current/closure/reproduction/spatial/verifier-before.sha256",
+      "bytes": 65,
+      "sha256": "0e4753294afdd01eedf2ff7f523011a0940f2839ba8c4d0378d499f5b4f7c858",
+      "copied_from": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/snapshot/build/spatial-check.79YmHw/receipt/verifier-before.sha256"
+    }
+  ],
+  "methodology": {
+    "execution": "AI-assisted local rebuild of the frozen sources, execution of the existing benign controls, and comparison with retained outputs; no source edits or added cases.",
+    "independence": "The same host and cached toolchain were used. This establishes local repeatability, not external or human reproduction, independent hardware validation, or academic acceptance."
+  }
+}

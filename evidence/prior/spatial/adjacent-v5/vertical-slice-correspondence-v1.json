@@ -1,0 +1,1029 @@
+{
+  "artifact_identity": {
+    "collection_session": {
+      "path": "${INHERITED_SOURCE}/linux/benchmarks/faulty-vs-differential/artifacts/result-v5/collection/collection-session.jsonl",
+      "sha256": "4a13992b3871df1b4017c901de03e58164d76ccd9b03cd4df1dd4973f9804eda"
+    },
+    "companion_exact": {
+      "block": 2,
+      "claim_eligible": true,
+      "completion_record": {
+        "path": "linux/benchmarks/faulty-vs-differential/artifacts/result-v5/collection/vs.replica.v5.b02.r05.exact.console.txt.completion.json",
+        "sha256": "fb46d3e94f7efd5e69d4ecc36a3bf6ca1d3f4a5af063c822b02bb2442c832680"
+      },
+      "launch_record": {
+        "path": "linux/benchmarks/faulty-vs-differential/artifacts/result-v5/collection/vs.replica.v5.b02.r05.exact.console.txt.launch.json",
+        "sha256": "d9c5890d678e1b3ceaa1f7aa7efaf541d374bb63f8e8cd9c2c3ded0313fda0e5"
+      },
+      "mode": "capebpf_exact",
+      "normalized_observation": {
+        "path": "linux/benchmarks/faulty-vs-differential/artifacts/result-v5/collection/vs.replica.v5.b02.r05.exact.console.txt.observation.json",
+        "sha256": "26021c909ae83458726bcb9566c5582322f679cbe102d59283d295d6389292c4"
+      },
+      "observation_id": "vs.replica.v5.b02.r05.exact",
+      "oracle_classification": "exact_fault_before_effect",
+      "position": 5,
+      "raw_console": {
+        "path": "linux/benchmarks/faulty-vs-differential/artifacts/result-v5/collection/vs.replica.v5.b02.r05.exact.console.txt",
+        "sha256": "3dee4b6f788084c4ded16bc59c59ed3ef01e56f1c110d2cb3d412a07ba5a619f"
+      },
+      "retention_complete": true
+    },
+    "deployment": {
+      "path": "research/faulty-vs-differential-v5/deployment-binding-v2.json",
+      "sha256": "c9722424ac0bc17e0922f87206d686fea68286775cc06f358a7f00f72ed70e93"
+    },
+    "derivation_tool": {
+      "path": "tools/faulty-vs-differential-v5/vertical_slice.py",
+      "sha256": "6fed042a85ecae13bd213e6f902074b502a05bb39e221d4d3a854c20bec5d140"
+    },
+    "exact_build": {
+      "config": {
+        "path": "${TEMP_ROOT}/capebpf-faulty-vs-study-v2/builds/exact_no_aee/.config",
+        "sha256": "fca67286bd97013d727b2d4fbf638594b9e06cf432516b6e19785a155238812c"
+      },
+      "external_path_boundary": true,
+      "image": {
+        "path": "${TEMP_ROOT}/capebpf-faulty-vs-study-v2/builds/exact_no_aee/arch/arm64/boot/Image",
+        "sha256": "570d49e3579532352557567293ba270c6f14b95de3a884ad92b1f6d0855591fc"
+      },
+      "vmlinux": {
+        "path": "${TEMP_ROOT}/capebpf-faulty-vs-study-v2/builds/exact_no_aee/vmlinux",
+        "sha256": "53178b952ab75f4689dc49fbec438f2a144f650e32f3717edd7faf0516c89277"
+      }
+    },
+    "frozen_runner": {
+      "path": "tools/faulty-vs-differential-v5/study_runtime.py",
+      "sha256": "336cbe0ca578de61773f7233bd05817a343bf5d6d7ac94f364dbbbb3b14b1f98"
+    },
+    "instrumented_descendant": {
+      "commit": "39e735aafeb1ad994e746765fdfd597d0d32848a",
+      "dirty": false,
+      "patch": {
+        "path": "linux/research/faulty-vs-differential/0002-route-faulty-vs-to-closed-checker-profile.patch",
+        "sha256": "c13844f67e54dfe754d8257f4611bced22c051c80449a8710de2553242abc9a8"
+      },
+      "tree": "aa52d79649a7589d3c347faedf42eb1c3c322b92"
+    },
+    "legacy_schema": {
+      "path": "research/schemas/faulty-vs-differential/vertical-slice-record-v1.schema.json",
+      "sha256": "5a53ef432ebc9d649691e031246195b59e1a7c084c26433915b4700792587313"
+    },
+    "patch0035": {
+      "path": "linux/patches/0035-arm64-bpf-bind-accepted-fact-gate-output-to-runtime-root.patch",
+      "sha256": "6f635e8a1981c9af4801ba828afa43606d8d063893dbdb7012fdc9167e9b6834"
+    },
+    "preregistration": {
+      "path": "research/faulty-vs-differential-v5/preregistration-v1.json",
+      "sha256": "95f58764d2e8978a7651e064d3d4abea29904e30a2f6d4784de0782d7e12d763"
+    },
+    "preregistration_freeze": {
+      "path": "research/faulty-vs-differential-v5/preregistration-v1-freeze-receipt.json",
+      "sha256": "81d9af22d0fec97d0eb642d81a979852b3774780b66ef3b9983c8dcaaceb72bf"
+    },
+    "reviewer_pilot_receipt": {
+      "path": "linux/benchmarks/reviewer-pilot/collection-receipt-v3.json",
+      "sha256": "577650e09729c193d57ecf24ffd818169bd56e140ffec7f9b60d4731b5e3a869"
+    },
+    "reviewer_pilot_result": {
+      "path": "linux/benchmarks/reviewer-pilot/artifacts/reviewer-pilot-result-v3-analysis-v2.json",
+      "sha256": "69c5e7c9bd5b73354f880d793ae85505effb2781238852797c6829c58cc05271"
+    },
+    "same_epoch_broad_controls": [
+      {
+        "block": 1,
+        "claim_eligible": true,
+        "completion_record": {
+          "path": "linux/benchmarks/faulty-vs-differential/artifacts/result-v5/collection/vs.replica.v5.b01.r05.broad.console.txt.completion.json",
+          "sha256": "548f77ffd509fab036e667b8ceb045568a2f3ed5b1308df7bbc2888d36425b4a"
+        },
+        "launch_record": {
+          "path": "linux/benchmarks/faulty-vs-differential/artifacts/result-v5/collection/vs.replica.v5.b01.r05.broad.console.txt.launch.json",
+          "sha256": "54830e9efc38caf424cf089adb9af70e47e4478131ba740cfc2df63873ecd91b"
+        },
+        "mode": "capebpf_broad",
+        "normalized_observation": {
+          "path": "linux/benchmarks/faulty-vs-differential/artifacts/result-v5/collection/vs.replica.v5.b01.r05.broad.console.txt.observation.json",
+          "sha256": "99589993c9339cb4fb9fef2cad2c32456144d64beb3b59b1aec0af301dbb338f"
+        },
+        "observation_id": "vs.replica.v5.b01.r05.broad",
+        "oracle_classification": "broad_live_control",
+        "position": 5,
+        "raw_console": {
+          "path": "linux/benchmarks/faulty-vs-differential/artifacts/result-v5/collection/vs.replica.v5.b01.r05.broad.console.txt",
+          "sha256": "4fbdac5fe0d44bf9e98b315af12cf31563967e0f1712fd7efa60406fdcd9f7c0"
+        },
+        "retention_complete": true
+      },
+      {
+        "block": 2,
+        "claim_eligible": true,
+        "completion_record": {
+          "path": "linux/benchmarks/faulty-vs-differential/artifacts/result-v5/collection/vs.replica.v5.b02.r01.broad.console.txt.completion.json",
+          "sha256": "112e83d478a0c851aef63bf70a24d5485c649e1bf7b5e337f5bfd1b1ff056b8b"
+        },
+        "launch_record": {
+          "path": "linux/benchmarks/faulty-vs-differential/artifacts/result-v5/collection/vs.replica.v5.b02.r01.broad.console.txt.launch.json",
+          "sha256": "4bff39b56b3e7ed4204f790eaf3e4ef9c1876670ab7d350dd21c7d1a7f493c4f"
+        },
+        "mode": "capebpf_broad",
+        "normalized_observation": {
+          "path": "linux/benchmarks/faulty-vs-differential/artifacts/result-v5/collection/vs.replica.v5.b02.r01.broad.console.txt.observation.json",
+          "sha256": "d14d81296e2d57b9d5644554f0b37a823697852614d238aeaa3463d0fb73b039"
+        },
+        "observation_id": "vs.replica.v5.b02.r01.broad",
+        "oracle_classification": "broad_live_control",
+        "position": 1,
+        "raw_console": {
+          "path": "linux/benchmarks/faulty-vs-differential/artifacts/result-v5/collection/vs.replica.v5.b02.r01.broad.console.txt",
+          "sha256": "bda2372440ef5f090bcdff9f474019e456a29d22c6239057551e87ff7f09a364"
+        },
+        "retention_complete": true
+      }
+    ],
+    "schedule": {
+      "path": "research/faulty-vs-differential-v5/schedule-v1.json",
+      "sha256": "62f0481fa3ca3e4424a54797ab2556bbfe811e9f53abf399f12331a187c7bb36"
+    },
+    "schedule_run_summary": {
+      "path": "${INHERITED_SOURCE}/linux/benchmarks/faulty-vs-differential/artifacts/result-v5/collection/schedule-run-summary.json",
+      "sha256": "008a5c427aff8be929aa2541b8967c6749cf943a28e1493a87ff7488242cbd0b"
+    },
+    "selected_exact": {
+      "block": 1,
+      "claim_eligible": true,
+      "completion_record": {
+        "path": "linux/benchmarks/faulty-vs-differential/artifacts/result-v5/collection/vs.replica.v5.b01.r04.exact.console.txt.completion.json",
+        "sha256": "621faa91473e850d714349009e5409f5d20d47c9e53bf12e414f14524580046e"
+      },
+      "launch_record": {
+        "path": "linux/benchmarks/faulty-vs-differential/artifacts/result-v5/collection/vs.replica.v5.b01.r04.exact.console.txt.launch.json",
+        "sha256": "801d7feeb2045c5c2d8fcedfc6afcee5c6f21a860f410f3740113ff85883e8ec"
+      },
+      "mode": "capebpf_exact",
+      "normalized_observation": {
+        "path": "linux/benchmarks/faulty-vs-differential/artifacts/result-v5/collection/vs.replica.v5.b01.r04.exact.console.txt.observation.json",
+        "sha256": "49068556463c9cc9717331758593af7c20ba26430f9cb043ab62a0953712167d"
+      },
+      "observation_id": "vs.replica.v5.b01.r04.exact",
+      "oracle_classification": "exact_fault_before_effect",
+      "position": 4,
+      "raw_console": {
+        "path": "linux/benchmarks/faulty-vs-differential/artifacts/result-v5/collection/vs.replica.v5.b01.r04.exact.console.txt",
+        "sha256": "0937047c17a210e76f82e2eec710765e91bfc49f40e7c2942034e1bcad5b65e5"
+      },
+      "retention_complete": true
+    },
+    "strict_schema": {
+      "path": "research/schemas/faulty-vs-differential-v5/post-result-vertical-slice-v1.schema.json",
+      "sha256": "8818cf889c192dc041d6522af6adec623ec8a5e5873d5da73a9430c349cec1b7"
+    }
+  },
+  "artifact_kind": "capebpf_vertical_slice_correspondence_record",
+  "blocking_missing_fields": [
+    "live post-check native-image and final-BPF immutability attestation",
+    "direct capability-operand register dump at the faulting instruction",
+    "complete production C and Linux refinement",
+    "semantic provider, element, extent, and lifetime correctness",
+    "repository-contained Image, vmlinux, and executed-tree sources",
+    "independent reproduction"
+  ],
+  "bpf_and_site_identity": {
+    "canonical_pre_relocation_bpf_sha256": "99303bd889ead83c707221ec3e74a924c9dd57143cc5a52cdc8b2ed797e5da78",
+    "final_vs_input_sha256": "2034bac788326b1f38d5336fcee6ee6c34fbfc37e6dcf8594faf0c3686c0f1c4",
+    "instruction_count": 17,
+    "normalized_va": {
+      "access_width": 8,
+      "matches_frozen_relevant_values": true,
+      "offset_interval": {
+        "maximum": 8,
+        "minimum": 0
+      },
+      "pointer_type": "PTR_TO_MAP_VALUE",
+      "provider_map_id": 1,
+      "raw_final_site_sha256": "ea3b519bad12216eac0014becdb4616c98efa25b4baf73ba3978d15570a77398",
+      "runtime_offset": 8,
+      "schema_id": "capebpf-faulty-vs-normalized-va-v2",
+      "semantic_marker_envelope_sha256": "4ad79294a37011aa9e233d09c389d93544edd03aee0e77115847462a768f20bd",
+      "store_displacement": 8,
+      "tnum": {
+        "mask": 8,
+        "value": 0
+      }
+    },
+    "post_misc_fixups_normalized_sha256": "2694f39a90f2d08e35f76e760db797b2565c15ed0adbb459e1b203f222020518",
+    "post_misc_fixups_sha256": "6db837008810fc71e5f1eeff658b6fb88a2b83ab091f3adf218094d88972769d",
+    "protected_site_digest": "ef87ee172dbdcaf421610ab9fcdca8115e462efb625be2d67a3eeb00c5f9d4c3",
+    "protected_sites": [
+      {
+        "instruction_index": 9,
+        "site_kind": 1
+      },
+      {
+        "instruction_index": 11,
+        "site_kind": 2
+      },
+      {
+        "instruction_index": 14,
+        "site_kind": 1
+      }
+    ],
+    "target_instruction_hex": "7b76080000000000",
+    "target_instruction_index": 14
+  },
+  "chain_steps": [
+    {
+      "evidence_categories": [
+        "tested conformance",
+        "runtime observation"
+      ],
+      "falsifier": "Any retained BPF byte, target instruction, or protected-site digest differs on recomputation.",
+      "from": "retained final rewritten BPF",
+      "implementation_path": [
+        {
+          "path": "authority/capebpf_authority_core.c",
+          "symbol": "capebpf_authority_analyze"
+        }
+      ],
+      "missing_or_inconsistent": [],
+      "observed_evidence": [
+        "17 post-fixup instructions; target bytes 7b76080000000000; protected-site digest rederived"
+      ],
+      "premises": [
+        "the retained post-fixup stream is the checker/JIT input"
+      ],
+      "status": "satisfied",
+      "step_id": "S01",
+      "to": "protected direct-store site 14"
+    },
+    {
+      "evidence_categories": [
+        "tested conformance",
+        "runtime observation"
+      ],
+      "falsifier": "The retained relocation or provider token differs between bound streams.",
+      "from": "loader-held array-map binding",
+      "implementation_path": [],
+      "missing_or_inconsistent": [],
+      "observed_evidence": [
+        "FD 3, binding 0, map ID 1, array value size 16; provider bridge all equal"
+      ],
+      "premises": [
+        "Linux relocation, map-ID, and helper-fixup semantics are trusted"
+      ],
+      "status": "satisfied",
+      "step_id": "S02",
+      "to": "final-BPF provider token"
+    },
+    {
+      "evidence_categories": [
+        "source-level implementation",
+        "tested conformance",
+        "runtime observation"
+      ],
+      "falsifier": "Independent reconstruction omits site 14 or differs from byte-level rederivation.",
+      "from": "final BPF plus binding",
+      "implementation_path": [
+        {
+          "path": "authority/capebpf_authority_core.c",
+          "symbol": "capebpf_authority_analyze"
+        }
+      ],
+      "missing_or_inconsistent": [],
+      "observed_evidence": [
+        "independent sites 9/1, 11/2, 14/1 and digest match byte-level rederivation"
+      ],
+      "premises": [
+        "the frozen closed helper-result lineage is in scope"
+      ],
+      "status": "satisfied",
+      "step_id": "S03",
+      "to": "independent authority reconstruction"
+    },
+    {
+      "evidence_categories": [
+        "source-level implementation",
+        "tested conformance",
+        "runtime observation"
+      ],
+      "falsifier": "The gate rejects or any of the four compared report groups differs.",
+      "from": "independently reconstructed four groups",
+      "implementation_path": [
+        {
+          "path": "authority/capebpf_verifier_fact_gate.c",
+          "symbol": "capebpf_verifier_fact_gate"
+        }
+      ],
+      "missing_or_inconsistent": [],
+      "observed_evidence": [
+        "decision 0; class/provider/root-summary/site digest match the verifier reports"
+      ],
+      "premises": [
+        "fixed independent inputs and the closed profile"
+      ],
+      "status": "satisfied",
+      "step_id": "S04",
+      "to": "fact-gate acceptance"
+    },
+    {
+      "evidence_categories": [
+        "source-level implementation",
+        "machine-checked conditional",
+        "partial refinement",
+        "runtime observation"
+      ],
+      "falsifier": "A production record-layout/output-copy mismatch breaks the accepted-field provenance.",
+      "formal_evidence": [
+        {
+          "path": "formal/integrated/CapeBPF_Verifier_Fact_Gate_C_Wire_Bridge.thy",
+          "strength": "machine-checked conditional",
+          "theorem": "c_fact_gate_accept_refines_wire_model_under_conditions"
+        }
+      ],
+      "from": "accepted gate result",
+      "implementation_path": [
+        {
+          "path": "linux/patches/0035-arm64-bpf-bind-accepted-fact-gate-output-to-runtime-root.patch",
+          "symbol": "capebpf_fact_gate_output_matches"
+        }
+      ],
+      "missing_or_inconsistent": [
+        "complete production C/Linux refinement is not available"
+      ],
+      "observed_evidence": [
+        "gate accepted class 2/provider 0xffff00000022fc00; production receipt use is observed downstream"
+      ],
+      "premises": [
+        "concrete C record/storage and production-source correspondence premises of the wire bridge"
+      ],
+      "status": "partial_refinement",
+      "step_id": "S05",
+      "to": "accepted class/provider receipt"
+    },
+    {
+      "evidence_categories": [
+        "source-level implementation",
+        "runtime observation"
+      ],
+      "falsifier": "Either handoff is absent, reordered, or carries another class/provider/PC.",
+      "from": "patch-0035 accepted receipt",
+      "implementation_path": [
+        {
+          "path": "linux/patches/0035-arm64-bpf-bind-accepted-fact-gate-output-to-runtime-root.patch",
+          "symbol": "capebpf_fact_gate_root_handoff_validate"
+        }
+      ],
+      "missing_or_inconsistent": [],
+      "observed_evidence": [
+        "two prospective accepted_consumed handoffs at the certificate-derived entry and helper-return PCs"
+      ],
+      "premises": [
+        "the source-bound caller-PC convention identifies both receipt validations"
+      ],
+      "status": "satisfied",
+      "step_id": "S06",
+      "to": "sandbox-entry and helper-return consumption"
+    },
+    {
+      "evidence_categories": [
+        "source-level implementation",
+        "runtime observation",
+        "trusted assumption"
+      ],
+      "falsifier": "A wrong provider, key, base, or stale element changes the assigned object.",
+      "from": "accepted provider plus helper lookup",
+      "implementation_path": [],
+      "missing_or_inconsistent": [],
+      "observed_evidence": [
+        "assignment records map ID 1, key 0, live base 0xffff00000022fd10"
+      ],
+      "premises": [
+        "helper selection and provider identity denote the intended live object"
+      ],
+      "status": "satisfied_under_explicit_premises",
+      "step_id": "S07",
+      "to": "live key-0 element selection"
+    },
+    {
+      "evidence_categories": [
+        "source-level implementation",
+        "runtime observation",
+        "trusted assumption"
+      ],
+      "falsifier": "A wrong kernel extent changes the authorized interval.",
+      "from": "kernel map metadata",
+      "implementation_path": [],
+      "missing_or_inconsistent": [],
+      "observed_evidence": [
+        "loader value size, assignment extent, root expected size, and installed kernel extent are 16"
+      ],
+      "premises": [
+        "the kernel-supplied extent is correct for the selected live element"
+      ],
+      "status": "satisfied_under_explicit_premises",
+      "step_id": "S08",
+      "to": "assigned extent 16"
+    },
+    {
+      "evidence_categories": [
+        "source-level implementation",
+        "tested conformance",
+        "machine-checked conditional",
+        "runtime observation"
+      ],
+      "falsifier": "Constructed base, top, tag, sealing, or modeled permissions differ.",
+      "formal_evidence": [
+        {
+          "path": "formal/CapeBPF_Object_Authority.thy",
+          "strength": "machine-checked conditional",
+          "theorem": "accepted_template_exact_object_access_is_contained"
+        }
+      ],
+      "from": "selected base and supplied extent",
+      "implementation_path": [
+        {
+          "path": "authority/capebpf_root_core.c",
+          "symbol": "capebpf_construct_root"
+        }
+      ],
+      "missing_or_inconsistent": [],
+      "observed_evidence": [
+        "root attestation and capability telemetry agree on tagged, unsealed [fd10,fd20) load/store authority"
+      ],
+      "premises": [
+        "the assigned base/extent and Morello introspection are faithful"
+      ],
+      "status": "satisfied_under_explicit_premises",
+      "step_id": "S09",
+      "to": "exact capability descriptor"
+    },
+    {
+      "evidence_categories": [
+        "tested conformance",
+        "runtime observation"
+      ],
+      "falsifier": "Installed capability telemetry differs from the root descriptor.",
+      "from": "exact capability descriptor",
+      "implementation_path": [],
+      "missing_or_inconsistent": [],
+      "observed_evidence": [
+        "installed capability is tagged, unsealed, 16 bytes, and has modeled load/store permissions"
+      ],
+      "premises": [
+        "retained capability telemetry reports the installed register faithfully"
+      ],
+      "status": "satisfied",
+      "step_id": "S10",
+      "to": "installed capability state"
+    },
+    {
+      "evidence_categories": [
+        "tested conformance",
+        "runtime observation",
+        "partial refinement"
+      ],
+      "falsifier": "The BPF owner, six native words, target index, or derived PC differs.",
+      "from": "BPF protected site 14",
+      "implementation_path": [
+        {
+          "path": "checker/capebpf_checker_core.c",
+          "symbol": "capebpf_check_memory_step"
+        }
+      ],
+      "missing_or_inconsistent": [
+        "generic decoder and whole-JIT refinement are not available"
+      ],
+      "observed_evidence": [
+        "certificate ownership maps BPF 14 to native indices 83-88 and target word e2c08274"
+      ],
+      "premises": [
+        "the closed checker template and certificate ownership correspond to execution"
+      ],
+      "status": "partial_refinement",
+      "step_id": "S11",
+      "to": "six-word native store template"
+    },
+    {
+      "evidence_categories": [
+        "tested conformance",
+        "runtime observation"
+      ],
+      "falsifier": "Checker/certificate rejects or the bound native image/digest differs.",
+      "from": "retained native instruction/image",
+      "implementation_path": [
+        {
+          "path": "checker/capebpf_checker_core.c",
+          "symbol": "capebpf_checker_core"
+        }
+      ],
+      "missing_or_inconsistent": [],
+      "observed_evidence": [
+        "native SHA-256 and certificate mapping rederive; checker and certificate both accept"
+      ],
+      "premises": [
+        "checker telemetry and retained certificate transcript are faithful"
+      ],
+      "status": "satisfied",
+      "step_id": "S12",
+      "to": "checker acceptance"
+    },
+    {
+      "evidence_categories": [
+        "trusted assumption"
+      ],
+      "falsifier": "Any post-check mutation or execution of another image invalidates the chain.",
+      "from": "checker-accepted image",
+      "implementation_path": [],
+      "missing_or_inconsistent": [
+        "no live post-check native-image or final-BPF rehash is retained"
+      ],
+      "observed_evidence": [
+        "normalizer records trusted_assumption_not_live_rehashed"
+      ],
+      "premises": [
+        "no checked native or final-BPF byte changes before execution"
+      ],
+      "status": "trusted_assumption",
+      "step_id": "S13",
+      "to": "immutable executed image"
+    },
+    {
+      "evidence_categories": [
+        "source-level implementation",
+        "runtime observation",
+        "partial refinement"
+      ],
+      "falsifier": "A direct register dump or execution trace contradicts the template-derived operand.",
+      "from": "installed capability and native template",
+      "implementation_path": [],
+      "missing_or_inconsistent": [
+        "the capability operand register is not directly dumped"
+      ],
+      "observed_evidence": [
+        "fault PC and native word are observed; capability operand register is template-derived"
+      ],
+      "premises": [
+        "the source-bound template supplies the observed capability operand"
+      ],
+      "status": "partial_refinement",
+      "step_id": "S14",
+      "to": "runtime operand and PC correspondence"
+    },
+    {
+      "evidence_categories": [
+        "tested conformance",
+        "machine-checked conditional",
+        "runtime observation"
+      ],
+      "falsifier": "The fault PC/word/syndrome differs, the successor executes, or any monitored byte changes.",
+      "formal_evidence": [
+        {
+          "path": "formal/CapeBPF_Trace_Containment.thy",
+          "strength": "machine-checked conditional",
+          "theorem": "accepted_trace_direct_spatial_containment_and_fault_before_effect"
+        }
+      ],
+      "from": "executed native store",
+      "implementation_path": [],
+      "missing_or_inconsistent": [],
+      "observed_evidence": [
+        "PC e5dc, word e2c08274, FSC 0x2a, completed 0; all three 16-byte objects unchanged"
+      ],
+      "premises": [
+        "fault telemetry and complete monitored snapshots faithfully report this event"
+      ],
+      "status": "satisfied",
+      "step_id": "S15",
+      "to": "capability fault before monitored effect"
+    },
+    {
+      "evidence_categories": [
+        "trusted assumption"
+      ],
+      "falsifier": "An internally exact capability for the wrong or stale object refutes semantic correctness.",
+      "from": "assigned provider/element/extent/lifetime",
+      "implementation_path": [],
+      "missing_or_inconsistent": [
+        "semantic object correctness and temporal safety are not established"
+      ],
+      "observed_evidence": [
+        "earlier-epoch wrong-provider, wrong-element, and wrong-extent controls expose this boundary"
+      ],
+      "premises": [
+        "provider, element, extent, and lifetime assignment are semantically correct"
+      ],
+      "status": "trusted_assumption",
+      "step_id": "S16",
+      "to": "intended semantic object"
+    }
+  ],
+  "claim_eligible_as_closed_vertical_slice": false,
+  "closure_assessment": {
+    "bounded_conditional_correspondence_eligible": true,
+    "canonical_result_binding_kind": "identity_only_not_validator_endorsement",
+    "canonical_result_claim_eligibility_vertical_slice": false,
+    "legacy_closed_slice_flag": false,
+    "machine_checked_production_refinement": false,
+    "reason": "Sixteen bounded links are recorded, but image immutability, direct operand correspondence, semantic assignment/lifetime, and complete production refinement remain open premises.",
+    "unconditional_closed_vertical_slice_eligible": false
+  },
+  "evidence_category_vocabulary": [
+    "source-level implementation",
+    "tested conformance",
+    "machine-checked conditional",
+    "partial refinement",
+    "runtime observation",
+    "trusted assumption",
+    "missing",
+    "inconsistent across patch versions"
+  ],
+  "formal_correspondence_boundary": {
+    "all_theorems_conditional": true,
+    "machine_checked_production_refinement": false,
+    "production_c_linux_correspondence": "partial",
+    "theorems": [
+      {
+        "path": "formal/integrated/CapeBPF_Verifier_Fact_Gate_C_Wire_Bridge.thy",
+        "sha256": "45ac8e3065b99bff814959210f83473578d85ff848399ad5ed85fad85cbd963b",
+        "strength": "machine-checked conditional",
+        "theorem": "c_fact_gate_accept_refines_wire_model_under_conditions"
+      },
+      {
+        "path": "formal/CapeBPF_Object_Authority.thy",
+        "sha256": "1da185095c30ba28012e8d2af36ba29428e98648551c8259c2a28b5044dd52fa",
+        "strength": "machine-checked conditional",
+        "theorem": "accepted_template_exact_object_access_is_contained"
+      },
+      {
+        "path": "formal/CapeBPF_Trace_Containment.thy",
+        "sha256": "2516cbc1f8615a0debbf6993753160cb0b4c40f57598b3640f8c9fdcc6f1c4dd",
+        "strength": "machine-checked conditional",
+        "theorem": "accepted_trace_direct_spatial_containment_and_fault_before_effect"
+      }
+    ]
+  },
+  "maximum_permitted_statement": "For the outcome-independently selected V5 exact-mode event `vs.replica.v5.b01.r04.exact`, a post-collection bounded record connects retained final BPF instruction 14 and loader binding to independently reconstructed sites/class/provider, fact-gate acceptance and two prospectively validated patch-0035 receipt uses, helper-selected key-0 assignment and kernel extent 16, an installed tagged unsealed 16-byte load/store capability, the checker-accepted native store at PC `0xffff8000814075dc`, and an FSC `0x2a` capability-bounds fault before any monitored byte changed, conditional on semantic assignment/lifetime, image immutability, operand correspondence, and telemetry premises.",
+  "observed_event": {
+    "accepted_output_uses": [
+      {
+        "line_sha256": "ba6f913ae910a34e0f26f00a2909aae88930bb7a5c23021347dadcbded61641b",
+        "pc": "0xffff8000814074e4",
+        "provider": "0xffff00000022fc00",
+        "role": "sandbox_entry_caller_return",
+        "root_class": 2
+      },
+      {
+        "line_sha256": "42d589a5c1cd2d81136455450075af346b78ae40f47c4210a859544d5e1813e5",
+        "pc": "0xffff80008140759c",
+        "provider": "0xffff00000022fc00",
+        "role": "map_helper_return",
+        "root_class": 2
+      }
+    ],
+    "assignment": {
+      "extent": 16,
+      "key": 0,
+      "map_id": 1,
+      "selected_base": "0xffff00000022fd10",
+      "status": "accepted"
+    },
+    "attempted_interval": {
+      "base": "0xffff00000022fd20",
+      "top_exclusive": "0xffff00000022fd28"
+    },
+    "companion_exact_consistency": {
+      "all_monitored_bytes_unchanged": true,
+      "fsc": "0x2a",
+      "normalized_va_matches_frozen_relevant_values": true,
+      "observation_id": "vs.replica.v5.b02.r05.exact",
+      "outcome": "exact_fault_before_effect"
+    },
+    "fault": {
+      "capability_bounds": true,
+      "completed": false,
+      "esr": "0x9600006a",
+      "fsc": "0x2a",
+      "pc": "0xffff8000814075dc",
+      "successor_native_instruction_not_reached": true,
+      "word": "0xe2c08274"
+    },
+    "gate": {
+      "accepted_class": 2,
+      "accepted_provider": "0xffff00000022fc00",
+      "decision": 0,
+      "line_sha256": "b088d59642137a731be8a2747b27c140102beac3e7100a91cc9b0fd94756c005",
+      "protected_site_count": 3,
+      "protected_site_digest": "ef87ee172dbdcaf421610ab9fcdca8115e462efb625be2d67a3eeb00c5f9d4c3",
+      "root_summary": 5
+    },
+    "installed_capability": {
+      "address": "0xffff00000022fd10",
+      "base": "0xffff00000022fd10",
+      "length": 16,
+      "modeled_permissions": [
+        "load",
+        "store"
+      ],
+      "sealed": false,
+      "tag": true,
+      "top_exclusive": "0xffff00000022fd20",
+      "unmodeled_hardware_permission_bits_retained": "0x0000000000000dfd"
+    },
+    "loader_binding": {
+      "binding_index": 0,
+      "key_size": 4,
+      "map_fd": 3,
+      "map_id": 1,
+      "map_type": "BPF_MAP_TYPE_ARRAY",
+      "max_entries": 3,
+      "provider_bridge_all_equal": true,
+      "value_size": 16
+    },
+    "monitored_objects": [
+      {
+        "after_hex": "101112131415161718191a1b1c1d1e1f",
+        "before_hex": "101112131415161718191a1b1c1d1e1f",
+        "changed": false,
+        "key": 0
+      },
+      {
+        "after_hex": "28292a2b2c2d2e2f3031323334353637",
+        "before_hex": "28292a2b2c2d2e2f3031323334353637",
+        "changed": false,
+        "key": 1
+      },
+      {
+        "after_hex": "404142434445464748494a4b4c4d4e4f",
+        "before_hex": "404142434445464748494a4b4c4d4e4f",
+        "changed": false,
+        "key": 2
+      }
+    ],
+    "native": {
+      "bpf_instruction_index": 14,
+      "certificate_accept": true,
+      "checked_image_immutability": "trusted_assumption_not_live_rehashed",
+      "checker_digest": "e3097b8775660b06e2a771b0a35ab77b7cf1ce690082b06d7eff6fac61c13109",
+      "checker_digest_kind": "BLAKE2S_256",
+      "image_sha256": "4bd0610771694798544c45ca8e16b705d1f80934245557a748167b8bf2f01d99",
+      "native_indices": [
+        83,
+        84,
+        85,
+        86,
+        87,
+        88
+      ],
+      "operand_register_correspondence": {
+        "direct_runtime_register_dump": false,
+        "evidence_category": "source_and_checker_template_derived",
+        "limitation": "The root/data register assignment is derived from the source-bound six-instruction template; it is not directly serialized."
+      },
+      "target_native_index": 88,
+      "target_pc": "0xffff8000814075dc",
+      "target_word": "0xe2c08274"
+    },
+    "root_attestation_line_sha256": "9704e2866d443b4a894f61c689994e302c7a83b31505aefe2926e5222c667ff2",
+    "same_epoch_broad_live_controls": [
+      {
+        "completed_key1_prefix": "2435465768798a9b",
+        "observation_id": "vs.replica.v5.b01.r05.broad",
+        "outcome": "broad_live_control"
+      },
+      {
+        "completed_key1_prefix": "2435465768798a9b",
+        "observation_id": "vs.replica.v5.b02.r01.broad",
+        "outcome": "broad_live_control"
+      }
+    ]
+  },
+  "prohibited_broadening": [
+    "Do not call this an unconditional closed end-to-end vertical slice.",
+    "Do not claim machine-checked production C or Linux refinement.",
+    "Do not claim that the exact capability denotes the correct semantic object.",
+    "Do not claim temporal safety.",
+    "Do not claim general verifier-trust or net-TCB reduction.",
+    "Do not combine earlier reviewer-pilot controls with V5 as one execution epoch.",
+    "Do not claim direct live operand-register observation.",
+    "Do not use QEMU execution as native Morello performance evidence."
+  ],
+  "property": {
+    "assigned_object_interval": {
+      "base": "0xffff00000022fd10",
+      "top_exclusive": "0xffff00000022fd20"
+    },
+    "attempted_interval": {
+      "base": "0xffff00000022fd20",
+      "top_exclusive": "0xffff00000022fd28"
+    },
+    "capability_authorized_interval": {
+      "base": "0xffff00000022fd10",
+      "top_exclusive": "0xffff00000022fd20"
+    },
+    "does_not_establish": [
+      "semantic provider correctness",
+      "semantic element correctness",
+      "extent correctness independent of the kernel input",
+      "object lifetime or temporal safety",
+      "whole-Linux or whole-eBPF safety",
+      "effects outside the three monitored value regions"
+    ],
+    "exact_property": "No completed byte of the target eight-byte direct store may lie outside the assigned key-0 interval [base, base + 16).",
+    "falsifier": "A completed target byte outside the assigned interval, a changed monitored byte, or a contradiction in the bound identity/authority/native chain.",
+    "intended_semantic_object": "array-map key 0 value, 16 bytes; semantic correctness and lifetime are trusted rather than established",
+    "observed_outcome": "capability_bounds_fault_before_any_monitored_byte_changed"
+  },
+  "record_id": "vs.replica.v5.b01.r04.exact.vertical.v1",
+  "recorded_date": "2026-09-02",
+  "residual_counterexamples": [
+    {
+      "control_id": "same_epoch_broad_live_1",
+      "does_not_establish": "that architecture alone, rather than authority width plus enforcement machinery, caused the differential",
+      "epoch_relation": "same_v5_epoch",
+      "interpretation": "the target effect was live and authority width changed its outcome",
+      "intervention": "a deliberate broad valid capability authorizes the adjacent element",
+      "normalized_observation": {
+        "path": "linux/benchmarks/faulty-vs-differential/artifacts/result-v5/collection/vs.replica.v5.b01.r05.broad.console.txt.observation.json",
+        "sha256": "99589993c9339cb4fb9fef2cad2c32456144d64beb3b59b1aec0af301dbb338f"
+      },
+      "observation_id": "vs.replica.v5.b01.r05.broad",
+      "observed_outcome": "the exact target eight-byte key-1 effect completed",
+      "raw_console": {
+        "path": "linux/benchmarks/faulty-vs-differential/artifacts/result-v5/collection/vs.replica.v5.b01.r05.broad.console.txt",
+        "sha256": "4fbdac5fe0d44bf9e98b315af12cf31563967e0f1712fd7efa60406fdcd9f7c0"
+      },
+      "status": "observed"
+    },
+    {
+      "control_id": "same_epoch_broad_live_2",
+      "does_not_establish": "that architecture alone, rather than authority width plus enforcement machinery, caused the differential",
+      "epoch_relation": "same_v5_epoch",
+      "interpretation": "the target effect was live and authority width changed its outcome",
+      "intervention": "a deliberate broad valid capability authorizes the adjacent element",
+      "normalized_observation": {
+        "path": "linux/benchmarks/faulty-vs-differential/artifacts/result-v5/collection/vs.replica.v5.b02.r01.broad.console.txt.observation.json",
+        "sha256": "d14d81296e2d57b9d5644554f0b37a823697852614d238aeaa3463d0fb73b039"
+      },
+      "observation_id": "vs.replica.v5.b02.r01.broad",
+      "observed_outcome": "the exact target eight-byte key-1 effect completed",
+      "raw_console": {
+        "path": "linux/benchmarks/faulty-vs-differential/artifacts/result-v5/collection/vs.replica.v5.b02.r01.broad.console.txt",
+        "sha256": "bda2372440ef5f090bcdff9f474019e456a29d22c6239057551e87ff7f09a364"
+      },
+      "status": "observed"
+    },
+    {
+      "control_id": "wrong_provider_exact_to_supplied_object",
+      "does_not_establish": "likelihood of provider-assignment corruption",
+      "epoch_relation": "earlier_patch0035_reviewer_pilot_epoch",
+      "interpretation": "internal spatial exactness does not establish semantic provider correctness",
+      "intervention": "loader/provider assignment selects provider-B instead of intended provider-A",
+      "normalized_observation": {
+        "path": "linux/benchmarks/reviewer-pilot/artifacts/full-schedule-v3/pilot.v1.b01.r02.p05.patch35_exact_authority.fault_injection.assign-loader-provider-binding.console.txt.observation.json",
+        "sha256": "1164bf83e97ea89bbd386a5b9f2256e8bd3c28c7520646cb7ba4f66f5ab425d7"
+      },
+      "observation_id": "pilot.v1.b01.r02.p05.patch35_exact_authority.fault_injection.assign-loader-provider-binding",
+      "observed_outcome": "an exact capability for provider-B.element-0 permitted the recorded write to that wrong object",
+      "raw_console": {
+        "path": "linux/benchmarks/reviewer-pilot/artifacts/full-schedule-v3/pilot.v1.b01.r02.p05.patch35_exact_authority.fault_injection.assign-loader-provider-binding.console.txt",
+        "sha256": "27fdd4e57d1406953f17ffc22292c18045f1ccf6066ce9c4485cf4b92d6fdd2a"
+      },
+      "status": "observed"
+    },
+    {
+      "control_id": "wrong_live_element_exact_to_supplied_object",
+      "does_not_establish": "temporal safety or semantic-key correctness",
+      "epoch_relation": "earlier_patch0035_reviewer_pilot_epoch",
+      "interpretation": "internal spatial exactness does not establish semantic key correctness",
+      "intervention": "helper selection uses key 2 instead of intended key 0",
+      "normalized_observation": {
+        "path": "linux/benchmarks/reviewer-pilot/artifacts/full-schedule-v3/pilot.v1.b01.r02.p15.patch35_exact_authority.fault_injection.assign-helper-selected-element.console.txt.observation.json",
+        "sha256": "8a4a64911c8b679c0eed7e8770ec6d85af5cf0091fce3c38b0b5d8cabb4aa5ed"
+      },
+      "observation_id": "pilot.v1.b01.r02.p15.patch35_exact_authority.fault_injection.assign-helper-selected-element",
+      "observed_outcome": "an exact capability for provider-A.element-2 permitted the recorded write to that wrong element",
+      "raw_console": {
+        "path": "linux/benchmarks/reviewer-pilot/artifacts/full-schedule-v3/pilot.v1.b01.r02.p15.patch35_exact_authority.fault_injection.assign-helper-selected-element.console.txt",
+        "sha256": "6068ee83bcffa0da3dec8a211193a934beddd44e35760fdb433abaf381d463f1"
+      },
+      "status": "observed"
+    },
+    {
+      "control_id": "wrong_extent_exact_to_supplied_interval",
+      "does_not_establish": "that the 32-byte capability was exact for the true object",
+      "epoch_relation": "earlier_patch0035_reviewer_pilot_epoch",
+      "interpretation": "a correct constructor can authorize an effect when its extent input is wrong",
+      "intervention": "the supplied extent is 32 bytes for a measured 16-byte element",
+      "normalized_observation": {
+        "path": "linux/benchmarks/reviewer-pilot/artifacts/full-schedule-v3/pilot.v1.b01.r02.p19.patch35_exact_authority.fault_injection.assign-kernel-extent.console.txt.observation.json",
+        "sha256": "ad884da84be376d84f711a834d441dbb7b06282b5f6708abcf7878454b94b6a8"
+      },
+      "observation_id": "pilot.v1.b01.r02.p19.patch35_exact_authority.fault_injection.assign-kernel-extent",
+      "observed_outcome": "the capability matched the supplied 32-byte interval and the adjacent key-1 write completed",
+      "raw_console": {
+        "path": "linux/benchmarks/reviewer-pilot/artifacts/full-schedule-v3/pilot.v1.b01.r02.p19.patch35_exact_authority.fault_injection.assign-kernel-extent.console.txt",
+        "sha256": "7971cf9209b5a8ec8613d4f39a9a7eeedf25c5c340bd66cfd9d9fa13ba2f32c2"
+      },
+      "status": "observed"
+    },
+    {
+      "control_id": "verifier_report_object_class_mismatch",
+      "does_not_establish": "reject-only behavior for arbitrary corruptions or profiles",
+      "epoch_relation": "earlier_patch0035_reviewer_pilot_epoch",
+      "interpretation": "this report corruption was reject-only in the retained intervention",
+      "intervention": "one verifier-report group is made inconsistent with fixed independent facts",
+      "normalized_observation": {
+        "path": "linux/benchmarks/reviewer-pilot/artifacts/full-schedule-v3/pilot.v1.b01.r02.p18.patch35_exact_authority.fault_injection.ind-class-misbind.console.txt.observation.json",
+        "sha256": "9dc7f73b7ede48f1cddd4d35274dbf669efcc601081d01fbce4c9c4f40203f84"
+      },
+      "observation_id": "pilot.v1.b01.r02.p18.patch35_exact_authority.fault_injection.ind-class-misbind",
+      "observed_outcome": "the gate rejected before checker and runtime root",
+      "raw_console": {
+        "path": "linux/benchmarks/reviewer-pilot/artifacts/full-schedule-v3/pilot.v1.b01.r02.p18.patch35_exact_authority.fault_injection.ind-class-misbind.console.txt",
+        "sha256": "51d63db2d4b6f41556275f73abc1f07fa4aedde9e83a17df7a1827e4be50e1cd"
+      },
+      "status": "observed_gate_rejection"
+    },
+    {
+      "control_id": "verifier_report_provider_mismatch",
+      "does_not_establish": "reject-only behavior for arbitrary corruptions or profiles",
+      "epoch_relation": "earlier_patch0035_reviewer_pilot_epoch",
+      "interpretation": "this report corruption was reject-only in the retained intervention",
+      "intervention": "one verifier-report group is made inconsistent with fixed independent facts",
+      "normalized_observation": {
+        "path": "linux/benchmarks/reviewer-pilot/artifacts/full-schedule-v3/pilot.v1.b01.r02.p11.patch35_exact_authority.fault_injection.ind-identity-misbind.console.txt.observation.json",
+        "sha256": "97e281125fcc673aaaf8fc6fbe1b9d143fa145c365bff4bde6115849a30b871b"
+      },
+      "observation_id": "pilot.v1.b01.r02.p11.patch35_exact_authority.fault_injection.ind-identity-misbind",
+      "observed_outcome": "the gate rejected before checker and runtime root",
+      "raw_console": {
+        "path": "linux/benchmarks/reviewer-pilot/artifacts/full-schedule-v3/pilot.v1.b01.r02.p11.patch35_exact_authority.fault_injection.ind-identity-misbind.console.txt",
+        "sha256": "f70c545f80b81782e2af85bde3dfe4a73ecd51f6f2d8acaf799f45f9b824f9ba"
+      },
+      "status": "observed_gate_rejection"
+    },
+    {
+      "control_id": "verifier_report_root_summary_mismatch",
+      "does_not_establish": "an observed gate-rejection witness for root-summary mismatch",
+      "epoch_relation": "earlier_patch0035_reviewer_pilot_epoch",
+      "interpretation": "the retained intervention rejected before runtime; gate rejection itself was not observed",
+      "intervention": "the verifier root-summary report is perturbed",
+      "normalized_observation": {
+        "path": "linux/benchmarks/reviewer-pilot/artifacts/full-schedule-v3/pilot.v1.b01.r02.p20.patch35_exact_authority.fault_injection.ind-root-summary-misbind.console.txt.observation.json",
+        "sha256": "2e1ee57a0cf2127e767840ef719c5399a9e2c32a820b0f89ef1dca91208eb856"
+      },
+      "observation_id": "pilot.v1.b01.r02.p20.patch35_exact_authority.fault_injection.ind-root-summary-misbind",
+      "observed_outcome": "the verifier rejected before the gate and runtime root",
+      "raw_console": {
+        "path": "linux/benchmarks/reviewer-pilot/artifacts/full-schedule-v3/pilot.v1.b01.r02.p20.patch35_exact_authority.fault_injection.ind-root-summary-misbind.console.txt",
+        "sha256": "eb2c1d3a1092bc7e3c119a26f6dd6a44e59d8a84deb9f78b093640d470ab488c"
+      },
+      "status": "observed_pre_gate_rejection"
+    },
+    {
+      "control_id": "verifier_report_protected_site_mismatch",
+      "does_not_establish": "reject-only behavior for arbitrary corruptions or profiles",
+      "epoch_relation": "earlier_patch0035_reviewer_pilot_epoch",
+      "interpretation": "this report corruption was reject-only in the retained intervention",
+      "intervention": "one verifier-report group is made inconsistent with fixed independent facts",
+      "normalized_observation": {
+        "path": "linux/benchmarks/reviewer-pilot/artifacts/full-schedule-v3/pilot.v1.b01.r02.p14.patch35_exact_authority.fault_injection.ind-eligibility-misbind.console.txt.observation.json",
+        "sha256": "8c73e0d7318602ae625a0578d83835d05420642adca914905c80bf455bde297e"
+      },
+      "observation_id": "pilot.v1.b01.r02.p14.patch35_exact_authority.fault_injection.ind-eligibility-misbind",
+      "observed_outcome": "the gate rejected before checker and runtime root",
+      "raw_console": {
+        "path": "linux/benchmarks/reviewer-pilot/artifacts/full-schedule-v3/pilot.v1.b01.r02.p14.patch35_exact_authority.fault_injection.ind-eligibility-misbind.console.txt",
+        "sha256": "25ccbda0a468ed681c6c77f277bc3a0c4f0776aebdfedc11f9427a5ed766bf39"
+      },
+      "status": "observed_gate_rejection"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "scope": {
+    "basic_cs_formulation": "A checked native eight-byte store started at byte 16 of a 16-byte assigned buffer; a 16-byte capability faulted at that store and all three monitored 16-byte values stayed unchanged.",
+    "epoch": "V5 known-outcome non-independent replication on the unchanged repaired patch-0035 descendant",
+    "epoch_warning": "V5 reuses V4 runtime bytes and known outcomes; it is not an independent replication and is not combined with reviewer-pilot rows as one execution epoch.",
+    "event_class": "one direct BPF_STX eight-byte store at BPF instruction 14",
+    "evidence_status": "Post-collection deterministic reconstruction and runtime observation with partial production correspondence and explicit trusted assumptions.",
+    "mode": "capebpf_exact",
+    "primary_observation_id": "vs.replica.v5.b01.r04.exact",
+    "profile": "closed final-BPF array-map lookup and direct eight-byte store",
+    "relation_to_new_faulty_vs_study": "Post-collection correspondence record for the prospectively collected V5 primary exact row; this record was not itself preregistered.",
+    "research_formulation": "For one outcome-independently selected exact-mode event, does retained evidence connect final BPF and accepted independently reconstructed authority through live assignment, installed capability, checked native code, and the observed fault under explicit production premises?",
+    "selection_rule": "first capebpf_exact row in frozen schedule order",
+    "study_id": "capebpf-faulty-vs-final-accept-16-8-replication-v5"
+  },
+  "status": "eligible_bounded_conditional_correspondence",
+  "validation": {
+    "all_bound_identities_valid": true,
+    "both_schemas_valid": true,
+    "companion_observation_recomputed_from_raw": true,
+    "derivation": "deterministic_post_collection_read_only_v1",
+    "no_qemu_launched_by_derivation": true,
+    "record_self_authenticating": false,
+    "same_epoch_broad_controls_recomputed_from_raw": true,
+    "selected_by_frozen_schedule": true,
+    "selected_observation_recomputed_from_raw": true
+  }
+}

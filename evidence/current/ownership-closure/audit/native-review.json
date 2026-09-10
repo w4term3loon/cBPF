@@ -1,0 +1,213 @@
+{
+  "study": "ownership boundary controls",
+  "date": "2026-09-06",
+  "result": "PASS within the declared bounded evidence scope",
+  "scope": "Source delta, actual retained guest trace, four final native images, linked production gateway/resolver/cleanup/entry, and linked init-only trusted resolver controls. No kernel or BPF execution was performed by this review.",
+  "run": "build/ownership-m3-run.l2BxDW",
+  "inspection": {
+    "container_image": "sha256:b4de3680a00e3ac68ccc56bd87131b97c1fffcd5e016c2d1a54d7e3386d9fc6e",
+    "mode": "Cached container; no network, read-only root, read-only kernel/run mounts, no capabilities, no-new-privileges; only the audit directory and temporary compiler directory are writable.",
+    "tool_directory": "/opt/cheri/output/morello-sdk/bin",
+    "runtime_linked_range": "[0xffff80008003e180, 0xffff80008003ef28)",
+    "init_linked_range": "[0xffff800080e4a248, 0xffff800080e4a6f4)",
+    "guard_symbol": "0xffff800080e4a2b8, size 0x43c, in .init.text",
+    "native_decoding": "Each retained native binary was emitted as .inst words in an inspection-only ELF object. llvm-objcopy extraction of .text was byte-identical to that binary before llvm-objdump inspection. No wrapper was executed.",
+    "recipe": "build/m3-review/inspect-native.sh",
+    "wrapper_equality_receipt": "build/m3-review/wrapper-equality.json"
+  },
+  "findings": [
+    {
+      "obligation": "Final bytes and observed control outcomes are bound to the retained run",
+      "evidence": "The runner checked exact equality between the kernel emitted-word transcript and BPF_OBJ_GET_INFO_BY_FD bytes for each case. Independent inspection wrappers preserve those bytes. A/B baseline is 660 bytes and byte-identical to retained protected ownership execution; alternate is 664 bytes; NULL/failure are 660 bytes. Observed scalar results are 42, 42, 7, and 0. Three invalid ownership cases are rejected at load with errno 22 and zero executions; no native/entry/gate events appear in those case sections."
+    },
+    {
+      "obligation": "Alternate admission exercises another register and branch arrangement",
+      "evidence": "In native-ab_alternate, BPF r8 maps to c21: capability copy at 0x104 precedes CBZ x21 at 0x108 to 0x1c8, the start of PC25. BPF r6 maps to c19: copy at 0x134 precedes CBZ x19 at 0x138 to 0x198, the start of PC20. STR c21,[csp] at 0x10c and LDR c20,[csp] at 0x13c preserve the full handle. Main A release, B read, and B release use fixed BLRS c17 at 0x150/0x168/0x184; operation/PC immediates are 3/11, 2/13, and 3/16. Result transport uses c22 -> c21 -> c7 at 0x18c/0x190. The NULL cleanup branch has fixed release PC22 at 0x1ac. The actual alternate trace shows B read after A consumption and balanced two-acquisition accounting."
+    },
+    {
+      "obligation": "NULL creates no acquisition and follows an ordinary forward branch",
+      "evidence": "native-null_second places scalar 1 in x0 at 0x110 and calls acquire at 0x12c with PC6. The production resolver compares the argument with 2 at 0xffff80008003e2d8, takes its nonzero NULL path at ...e2e4, traces NULL, and returns zero without the provider increment at ...e514. Native CBZ x7 at 0x134 targets 0x194, where A is reloaded and released at PC21; the program returns 7. Observed acquired/released=1/1, reads=0, cleanup=0, refs=1, with no second binding."
+    },
+    {
+      "obligation": "A real protected native failure skips its restricted continuation",
+      "evidence": "native-fail_second places scalar 2 in x0 at 0x110 and calls acquire through BLRS c17 at 0x12c with PC6. The linked production resolver's CMP x0,#2 and B.HS at ...e2d8/...e2dc reject before any provider increment. The linked gateway compares the failure sentinel at ...e1ec, selects saved executive c13 into c14 at ...e1f4, clears x0/x7 at ...e1f8/...e1fc, and RETR c14 at ...e25c enters the common executive epilogue. Thus it skips the restricted continuation at 0x130, including the branch at 0x134, release/read/release calls at 0x150/0x168/0x184, and alternate release at 0x1a8. The actual trace is acquire A -> reject PC6 -> clear A -> cleanup A -> failed, with no later program gate PC and scalar zero."
+    },
+    {
+      "obligation": "Terminal cleanup follows alias scrub and invalidates before its provider effect",
+      "evidence": "The failure image's executive epilogue begins at 0x1dc: scalar stores at 0x1dc/0x1e0 clear both sidecar halves, 0x1e4 scalarizes x7, and 0x1e8..0x258 clear native registers except the scalar result. Caller capability and integer register restoration follow. In the wrapper, native return at ...ea54 precedes the live-cell loop at ...ec18; GCTAG at ...ec20 controls the cleanup call to cbpf_consume at ...ec38 with pc=U64_MAX and cleanup=true. cbpf_consume CLRTAG at ...e7c4 and the full capability store at ...e7c8 precede both decrement alternatives: LDADDL at ...e83c and the LL/SC path ...e8fc..e904. The trace reports clear A with tagA=0 while refs=2, then cleanup=1/released=1/refs=1. Private cells/views are cleared at ...eb28..eb34 before cbpf_active is reset at ...eb48 and saved RDDC/RCSP are restored at ...eb64..eb70."
+    },
+    {
+      "obligation": "Consumed copied and explicitly spilled identities reach the production resolver intact and are rejected",
+      "evidence": "The init-only helper calls production acquire at 0xffff800080e4a3bc and production release at ...e4a420. For use_spill=1, STR c0,[sp,#0x40] at ...e4a410 precedes release, and LDR c2,[sp,#0x40] at ...e4a43c follows it. Pre-rejection checks include public GCTAG at ...e4a440, canonical CHKEQ at ...e4a44c, and private-cell GCTAG at ...e4a464. The attempted read or duplicate release calls the same cbpf_gate_impl at ...e4a4b0 with PC2; no later gate call exists in the helper. The copied identity is also preserved across the hybrid C call in the compiler's full-capability save slot [sp,#0x30]. That ABI save and the explicit volatile spill are trusted C storage, not the restricted JIT sidecar. All three observed controls retain public_tag=1/canonical=1, private tagA=0, reads=0, acquired=released=1, cleanup=0, refs=1, failed=1, and the failure sentinel."
+    },
+    {
+      "obligation": "Resolver membership and private liveness precede object use and repeated release",
+      "evidence": "Production CHKEQ at ...e320 matches the supplied capability to a private canonical view. After matching, the private object capability is loaded at ...e3bc and GCTAG/CBZ at ...e3c0/...e3c4 reject consumed authority. The capability-addressed field load is later at ...e3ec; the explicit consume call is later at ...e414. The trusted consumed controls use canonical, still-tagged public identities, so their observed rejection exercises private liveness rather than malformed-handle rejection. Exact public bounds/permissions and distinct A/B cells are separately present in the actual binding receipts."
+    },
+    {
+      "obligation": "Trusted test state does not add an exposed execution or mutation interface",
+      "evidence": "cbpf_cap_init and cbpf_guard_check are in .init.text. Only the three literal init calls precede kfunc registration at ...e4a2b0; any failed control takes the return -EINVAL path at ...e4a268. The helper installs only its local private state under bottom-half exclusion, creates consumed state through ordinary production acquire/release, and uses no BPF program. Its exceptional held-reference teardown calls existing cbpf_consume only after a private tag check. It clears cells/views/spill at ...e4a640..e4a650, removes its active pointer at ...e4a668, and then enables bottom halves at ...e4a684. It exposes no BTF, module-parameter, debug, or user-selected test hook."
+    },
+    {
+      "obligation": "Ordinary verifier rejection is retained and attributable",
+      "evidence": "The retained negative logs show A released at PC11, stale copy or stale stack reload becoming scalar at PC12, and read/release rejection at PC13 with 'arg#0 pointer type STRUCT cbpf_cap_ref must point to scalar, or struct with scalar'. The guest's reject branch exits immediately after BPF_PROG_LOAD regardless of acceptance and closes any unexpectedly accepted descriptor; it cannot reach GET_INFO or TEST_RUN. The stock verifier source hash remains 48268a29931754296882a9ff6847eb556ba8e8564959be1c62754afdb2fb4851."
+    }
+  ],
+  "limits": [
+    "These observations and source/native inspections are not a formal refinement proof, independent translation validator, or proof of arbitrary verifier/JIT fault tolerance. The kernel final-word checker shares the generator's encoder.",
+    "Trusted consumed-identity controls are direct kernel resolver observations. No invalid BPF or restricted-native stale alias was executed; protected ownership and ownership-boundary valid native paths separately establish supported capability copy/sidecar transport.",
+    "Scalar 2 exercises an existing pre-provider argument rejection. Capacity and exact-bounds construction failures are not dynamically forced. Their no-leak claim remains a source/compiled ordering argument: all such checks precede the provider increment.",
+    "Actual nonzero cleanup is terminal failure cleanup. Normal valid BPF exits have zero live owning references because the unchanged verifier rejects leaks. Nonzero cleanup at an ordinary return is supported by the shared loop and model, not newly executed kernel evidence.",
+    "Initial DDC root construction and provider assignment, trusted C/assembly/compiler, architectural enforcement, inherited exception handling, synchronous non-reentrant containment, and absence of cross-invocation alias escape remain assumptions. No global capability-erasure or production reclamation claim follows.",
+    "The permanent object remains allocated with baseline reference one. Acquisition consumption is distinct from allocation-level use-after-free prevention, and composition with spatial authority remains untested."
+  ],
+  "retained_ownership_execution_comparison": {
+    "production_resolver_source_unchanged": true,
+    "test_wrapper_gateway_and_entry_source_unchanged": true,
+    "jit_source_unchanged": true,
+    "baseline_native_bytes_equal_ownership_execution": true
+  },
+  "files": [
+    {
+      "path": "linux/ownership/cbpf_runtime.c",
+      "size": 15577,
+      "sha256": "a70dfb8b78ec3f6bd6d97afc3ad4c67a8cc63741955bd1005897942776b86296"
+    },
+    {
+      "path": "linux/ownership/cbpf_jit.c",
+      "size": 12812,
+      "sha256": "a1a3c2476380325100a9b361f213bb06db9e9dd24543ae8e12a5354ddd8dd753"
+    },
+    {
+      "path": "linux/ownership/guest.c",
+      "size": 6793,
+      "sha256": "89d31fbab37ad07d56b2fbc3fc4d9b7c37d985ad1c5e1be3651632dbbb2d4477"
+    },
+    {
+      "path": "linux/ownership/cbpf.h",
+      "size": 792,
+      "sha256": "8cf3c862d0134b34fdf87335696878e49b681e492c1ad50698cd470811430235"
+    },
+    {
+      "path": "linux/ownership/integration.patch",
+      "size": 4956,
+      "sha256": "8121d10f5e83488ed31739960d46cb3fe35e9f319e91acd5230c80718c5abe30"
+    },
+    {
+      "path": "linux/ownership/platform.patch",
+      "size": 8059,
+      "sha256": "65c34af4d8f1db14455c297a1f71fc03138b2fc9e834a8dc4480b0687e208c44"
+    },
+    {
+      "path": "tools/run_ownership.sh",
+      "size": 18224,
+      "sha256": "3cebc14fe5c6c487a769b469d02654250984096cb52f191ff5349b377d1051af"
+    },
+    {
+      "path": "tools/build_ownership_kernel.sh",
+      "size": 9770,
+      "sha256": "b730ab5dde4d051da80602c0a7a2315d7a9533599137cc426c4e4f3bec0936a9"
+    },
+    {
+      "path": "build/ownership-m3-source/kernel/bpf/verifier.c",
+      "size": 631929,
+      "sha256": "48268a29931754296882a9ff6847eb556ba8e8564959be1c62754afdb2fb4851"
+    },
+    {
+      "path": "build/ownership-m3-kernel/vmlinux",
+      "size": 185325992,
+      "sha256": "548c308bfd1cabaf3804827633578cfb481ed445d5c1cb035cae49836bab6ea3"
+    },
+    {
+      "path": "build/ownership-m3-run.l2BxDW/boot.log",
+      "size": 120791,
+      "sha256": "b0fe5332e9a52e53ac6a3f452d2f8e86bfe4a1d27a79dbc368aa1843194e1b8d"
+    },
+    {
+      "path": "build/ownership-m3-run.l2BxDW/results.json",
+      "size": 2383,
+      "sha256": "63d3ae5462ad09f5f0a0859a1348057664767164f707cec217e9a56600065ad4"
+    },
+    {
+      "path": "build/ownership-m3-run.l2BxDW/summary.txt",
+      "size": 14537,
+      "sha256": "62a458e6df209a3b80fb9a8b0374f0827a82eae29bba0c799b4d7006b62a95e8"
+    },
+    {
+      "path": "build/ownership-m3-run.l2BxDW/ownership_ids.h",
+      "size": 211,
+      "sha256": "fc7a2351f33470ca47ff57012c6ae06b8a5a08bc7968f4f9647249ef12a23032"
+    },
+    {
+      "path": "build/m3-review/runtime-linked-range.txt",
+      "size": 49273,
+      "sha256": "9641cd7dd0c7482276d2bca00d1027c626c4f747f1de95500c4cb61c01c7dfa1"
+    },
+    {
+      "path": "build/m3-review/guard-linked-range.txt",
+      "size": 17580,
+      "sha256": "5c56a70f608360102871fc3832e58742b18bd1b4ada203de338cc8392f3fa8c6"
+    },
+    {
+      "path": "build/m3-review/inspection-toolchain.txt",
+      "size": 751,
+      "sha256": "2b4f60afbbef0e15f3167a6df95ad7448619eb24806a9fd2087727afc3400804"
+    },
+    {
+      "path": "build/m3-review/inspect-native.sh",
+      "size": 2977,
+      "sha256": "937b4bcaefba94faa0785d413d677d811600b11ceb1d0884e71be469bce4ee5a"
+    },
+    {
+      "path": "build/m3-review/kernel-symbols.txt",
+      "size": 946,
+      "sha256": "d5fb288caa5b7db8ee5fdfddb83e3fb3fa6ef0e055a3ef070472641f77114e51"
+    },
+    {
+      "path": "build/m3-review/wrapper-equality.json",
+      "size": 813,
+      "sha256": "f416fbf3877ae3eb7464393918dd59154cf7885bc67a675b7d809998ad6cf971"
+    },
+    {
+      "path": "build/ownership-m3-run.l2BxDW/native-ab_spill.bin",
+      "size": 660,
+      "sha256": "117453054e65b3f4ae6b8da5dd241b1a8db28cdbd15cfae4a1527e073f576871"
+    },
+    {
+      "path": "build/m3-review/native-disassembly-ab_spill.txt",
+      "size": 8505,
+      "sha256": "1d3c3a58068443016da8fac2a753e9570cfdafc1c4860a1df0fa070f2fc7ba5e"
+    },
+    {
+      "path": "build/ownership-m3-run.l2BxDW/native-ab_alternate.bin",
+      "size": 664,
+      "sha256": "1f6650e2fdcd76e1723c8c2fe0d42675c4615427721af729b80bdb0a03fa7b14"
+    },
+    {
+      "path": "build/m3-review/native-disassembly-ab_alternate.txt",
+      "size": 8548,
+      "sha256": "21cb889067b5450c49ffdf4373e9ed123d1cb41764a7a322cda0fe08f2f5d8c7"
+    },
+    {
+      "path": "build/ownership-m3-run.l2BxDW/native-null_second.bin",
+      "size": 660,
+      "sha256": "4aef0e035a349d66cdde5dcc8b05e56c43e65dab129b0390ba0ecaf8e00bc4c3"
+    },
+    {
+      "path": "build/m3-review/native-disassembly-null_second.txt",
+      "size": 8508,
+      "sha256": "19d311e05ad0029170f3172b1e40b2b14f76c88ceb77f074c53258f9e072cf2e"
+    },
+    {
+      "path": "build/ownership-m3-run.l2BxDW/native-fail_second.bin",
+      "size": 660,
+      "sha256": "3fcf9225428f9edb5488cf2647b9098b5b860cc9341b967d80412a9927aeb312"
+    },
+    {
+      "path": "build/m3-review/native-disassembly-fail_second.txt",
+      "size": 8508,
+      "sha256": "5808e58171b6fc83dc74c4292d98a4b7316a7bb9faad8e0014baa5f8adb85beb"
+    }
+  ],
+  "inspection_method": "Internal AI-assisted inspection of source changes, retained run traces and native images. The inspection used the shared research environment and included pre-launch corrections; it did not independently rebuild the kernel or reproduce guest execution."
+}

@@ -1,0 +1,92 @@
+{
+  "build_outputs": {
+    "bpf_jit_comp_object": {
+      "name": "bpf_jit_comp.o",
+      "role": "compiled_kernel_object",
+      "sha256": "a87d177327460b10e8ba28df22bc7a62675e9df65adeb62dffd460b9888590fa",
+      "size": 553464
+    }
+  },
+  "guest_binding": {
+    "artifacts": {
+      "config": {
+        "name": "morello-e6c69574-fixed-2026-08-29.config",
+        "role": "kernel_config",
+        "sha256": "069341d7559bde97090184fa41442c949b27fc30ddcd86166441baee01e4343d",
+        "size": 132942
+      },
+      "harness": {
+        "name": "bpf-smoke",
+        "role": "bpf_harness",
+        "sha256": "6601cf925af00c44215e7b97a29dae3057e3cfacf73f88d31351a13e1d741a2d",
+        "size": 158248
+      },
+      "init": {
+        "name": "init-static",
+        "role": "init",
+        "sha256": "1f8f2b8facb9fb255dbf1d5e6e6a427a16f9369a2e03d9142d8fca6203c7b9d0",
+        "size": 60720
+      },
+      "kernel_identity": {
+        "name": "kernel-identity",
+        "role": "kernel_identity",
+        "sha256": "15fecd3f149cf012aacf6e771808ac57aa2380bbf52b82b4484aebd6c6c716a9",
+        "size": 47840
+      },
+      "kernel_image": {
+        "name": "Image",
+        "role": "kernel_image",
+        "sha256": "feaf739ef49020f07ea45a34f40c6fb15f1fc96f26b27e2737306dc3682db41d",
+        "size": 18782720
+      }
+    },
+    "builder": {
+      "archive": {
+        "name": "capebpf-morello-linux-builder.docker.tar",
+        "role": "builder_image_archive",
+        "sha256": "1db1b1256689805177ab1c94706c4fb609b5d64c7039b04e2c69ddae7af085e7",
+        "size": 3406418432
+      },
+      "definition": {
+        "name": "Dockerfile",
+        "role": "builder_definition",
+        "sha256": "74e3a5a928ca99521ba3dff7ee561d84913ed3dd5caf2c35b4aa8f1ec752f824",
+        "size": 1213
+      }
+    },
+    "expected_kernel_release": "6.7.0-capebpf-e6c69574-fixed",
+    "kind": "capebpf-linux-guest-binding",
+    "platform": "morello",
+    "schema_version": 1,
+    "source": {
+      "manifest_format": "git-ls-tree-r-z",
+      "manifest_sha256": "bcce56e1333570eae303425cf4d88257c9cb6ef47d163d993de84ea47eaca61e",
+      "revision": "b96da308ef1a054c3c04c9445e5ed70259b7c397",
+      "staged_patch_tree": true,
+      "tree": "e6c69574c16bc2b9bce06329f9ac3f4b3269e79a"
+    },
+    "toolchain_inputs": {
+      "compiler_rt_builtins": {
+        "name": "libclang_rt.builtins-aarch64.a",
+        "role": "compiler_rt_builtins",
+        "sha256": "8c96d25351796fc618fa85d8f9d9f11a0b2b5415bd0b2441256953d4ed7fb4f1",
+        "size": 438592
+      },
+      "harness_sysroot_archive": {
+        "name": "morello-musl-purecap-sysroot-0fbf604022395d130899a767c68d64bd2d46f844.tar.gz",
+        "role": "harness_sysroot_archive",
+        "sha256": "0911295b8da37ef14fb9a43bd80215beaab4ac1b8b9e0e66b0c4b65a15bafe1b",
+        "size": 759027
+      }
+    }
+  },
+  "guest_binding_sha256": "5404d588c1a309616dc72b8b43420405281c975827553d9558c176aaddd8f667",
+  "initramfs": {
+    "name": "morello-build-provenance-fixed-2026-08-29.initramfs.cpio.gz",
+    "role": "initramfs",
+    "sha256": "ce733b203994714e38f317443f66b0cb963334df0a6823253bfef0c1fac1e955",
+    "size": 113952
+  },
+  "kind": "capebpf-linux-build-receipt",
+  "schema_version": 2
+}

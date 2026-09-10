@@ -1,0 +1,22 @@
+CBPF_GATE trace=stale_spill_after_B program_begin
+  0: r0 = acquire(1)
+  1: r1 = acquire(1)
+  2: r2 = r0
+  3: spill[0] = r0
+  4: release(r0)
+  5: read(r1)
+  6: r3 = spill[0]
+  7: read(r3)
+  8: release(r1)
+  9: return 7
+CBPF_GATE trace=stale_spill_after_B effects_begin
+  step pc=0 op=acquire token=1 refs=2
+  step pc=1 op=acquire token=2 refs=3
+  step pc=2 op=copy token=1 refs=3
+  step pc=3 op=spill token=1 refs=3
+  step pc=4 op=release token=1 refs=2
+  step pc=5 op=read token=2 refs=2
+  step pc=6 op=reload token=1 refs=2
+  trap pc=7 op=read token=1 refs=2
+  cleanup pc=7 op=release token=2 refs=1
+CBPF_GATE trace=stale_spill_after_B status=trapped trap=stale pc=7 reads=1 explicit=1 cleanup=1 refs=1

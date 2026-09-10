@@ -1,0 +1,22 @@
+{
+  "prior_jit_sha256": "97d2bc5287edec817d679e8d740ea5bf51f695b3157e8683152b364afe48710d",
+  "current_jit_sha256": "f8d79016c96d74a7426fff7a80c08ccc5041fec761ba8e38b0b4f75724f00d8f",
+  "differences": [
+    {
+      "index": 18,
+      "prior": "929c4ae6",
+      "current": "929e4ae6"
+    },
+    {
+      "index": 75,
+      "prior": "e2c004e0",
+      "current": "e20064e0"
+    },
+    {
+      "index": 77,
+      "prior": "e2c000e0",
+      "current": "e20060e0"
+    }
+  ],
+  "explanation": "Word 18 is the per-program map-table address low immediate; the existing certificate/source review binds that table. Words 75/77 change only width and offset to the last logical byte; all control flow and capability transport bytes match."
+}

@@ -1,0 +1,135 @@
+{
+  "study": "Examiner dependency native replay",
+  "date": "2026-09-07",
+  "result": "PASS",
+  "completed_utc": "2026-09-07T11:11:20.819355+00:00",
+  "starting_source_edition": "cbpf-examiner-source-20260907-native",
+  "source_correction": "Two tool image references only; before/after identities in tool-pin-correction.json.",
+  "builder_image": "sha256:76c8ca062c30aa59b8eb072f30620a2a7e9604515aefe84d64161bf9eb644038",
+  "kernel_builds": 2,
+  "kernel_boots": 2,
+  "environment": "Same Ubuntu 24.04.4 x86-64 host, existing Docker 29.8.0/containerd; offline QEMU 7.0.0 Morello guests.",
+  "build_jobs_per_kernel": 2,
+  "build_memory_limit_GiB": 12,
+  "guest_memory_GiB": 2,
+  "ownership": {
+    "executed_programs": 4,
+    "returns": [
+      42,
+      42,
+      7,
+      0
+    ],
+    "trusted_resolver_checks": 3,
+    "trusted_callback_checks": 2,
+    "load_only_rejections": 3,
+    "invalid_BPF_executions": 0,
+    "all_final_references": 1,
+    "qemu_exit": 0
+  },
+  "spatial": {
+    "executed_programs": 1,
+    "test_run_count": 1,
+    "native_bytes": 392,
+    "capability_length": 8,
+    "permissions": "0x30001",
+    "initial": 41,
+    "return": 42,
+    "readback": 42,
+    "qemu_exit": 0,
+    "pre_execution_review_recorded": true
+  },
+  "CVE_projection_model_host_matches": 4,
+  "original_CVE_execution": false,
+  "kernel_or_verifier_mechanism_changes": false,
+  "host_kernel_changes": false,
+  "guest_network_or_disks": false,
+  "BPF_attachments": false,
+  "external_reproduction": false,
+  "recording_note": "The ownership code was manually inspected before launch; its receipt was written after the run following a wrong-directory write failure. Spatial review was recorded while its guest remained paused with execution count zero.",
+  "limits": [
+    "Native here means Morello machine instructions under QEMU, not physical hardware.",
+    "No original CVE trigger, negative spatial access or padding discriminator was executed.",
+    "Trusted C callbacks are not protected BPF callbacks or the original ownership CVE path.",
+    "No whole-program mediation, concurrent reclamation, composition or general fault-tolerance result.",
+    "Fresh local replay does not establish independent reproduction or academic acceptance."
+  ],
+  "kernel_fixture_and_tool_input_identities": [
+    {
+      "file": "tools/build_ownership_kernel.sh",
+      "bytes": 9872,
+      "sha256": "f820a76a3baa72df5e7164e84a04d207d703c802cbc6d2726a35171fc5d1842a"
+    },
+    {
+      "file": "tools/run_ownership.sh",
+      "bytes": 21473,
+      "sha256": "5dfc3816de4fa1b402dfe2823cf0b3f8dc7886180940516e1c65d531910bdba0"
+    },
+    {
+      "file": "tools/build_spatial_native.sh",
+      "bytes": 10066,
+      "sha256": "6fc3441fce6d18eea68db675dd04ecec874e94fb3f7c070362f29b793ee99d08"
+    },
+    {
+      "file": "tools/run_spatial_native.sh",
+      "bytes": 6350,
+      "sha256": "18e6bdc43cd130934e35c15c170d630ec01662bf0a04ad6e1f78e4065ea446d0"
+    },
+    {
+      "file": "tools/check_spatial_native.py",
+      "bytes": 20813,
+      "sha256": "72c0b60f09f60c6d5d8afa4669586f81c5ff6573f4caada6067c25c2e95be631"
+    },
+    {
+      "file": "tools/run_kfunc.sh",
+      "bytes": 9182,
+      "sha256": "09570ecd387fe8d78f8e20b4ed1631c55e381f7b62507bd174893302a5d45e46"
+    },
+    {
+      "file": "linux/ownership/cbpf.h",
+      "bytes": 792,
+      "sha256": "8cf3c862d0134b34fdf87335696878e49b681e492c1ad50698cd470811430235"
+    },
+    {
+      "file": "linux/ownership/cbpf_runtime.c",
+      "bytes": 20128,
+      "sha256": "061c262f239b109cef65750c78a3dd50f13159d6cc9890f0a2cbda1aa69c91dd"
+    },
+    {
+      "file": "linux/ownership/cbpf_jit.c",
+      "bytes": 12812,
+      "sha256": "a1a3c2476380325100a9b361f213bb06db9e9dd24543ae8e12a5354ddd8dd753"
+    },
+    {
+      "file": "linux/ownership/platform.patch",
+      "bytes": 8059,
+      "sha256": "65c34af4d8f1db14455c297a1f71fc03138b2fc9e834a8dc4480b0687e208c44"
+    },
+    {
+      "file": "linux/ownership/integration.patch",
+      "bytes": 4956,
+      "sha256": "8121d10f5e83488ed31739960d46cb3fe35e9f319e91acd5230c80718c5abe30"
+    },
+    {
+      "file": "linux/ownership/guest.c",
+      "bytes": 6807,
+      "sha256": "a9ef69108614dfdf44ac6227c0c3e5422e52d1214af4311c2dbfb0a3048b2f03"
+    },
+    {
+      "file": "linux/spatial/array-authority.patch",
+      "bytes": 12851,
+      "sha256": "ac74717a7dbd2c61760115c1b8b719e52d27d60d02957a2b73c3ff155206c4ac"
+    },
+    {
+      "file": "linux/spatial/native-observation.patch",
+      "bytes": 1473,
+      "sha256": "2f7889c53d0b4de2e47a94b8acb0d6c1ab73bca6effaccee5b4733984f449b07"
+    },
+    {
+      "file": "linux/spatial/native-guest.c",
+      "bytes": 10664,
+      "sha256": "142dbec549c7e7d69ee58759a5f1eff473eb50de2c10257bf696da9ffca373a1"
+    }
+  ],
+  "input_identity_scope": "Kernel and fixture inputs plus delivery tools; tools/run_kfunc.sh received an image-pin correction but the older ordinary-kfunc-only workload was not rerun."
+}

@@ -1,0 +1,1005 @@
+{
+  "artifact_identity": {
+    "deployment": {
+      "path": "research/faulty-vs-differential-v6/deployment-binding-v1.json",
+      "sha256": "85108fc481f8aaf92843561b1cd1842e7a73f7692c8519929db94c636d780888",
+      "size_bytes": 6762
+    },
+    "deployment_artifacts": {
+      "config": {
+        "path": "${TEMP_ROOT}/capebpf-faulty-vs-memop-v1/builds/exact_clean/.config",
+        "sha256": "fca67286bd97013d727b2d4fbf638594b9e06cf432516b6e19785a155238812c",
+        "size_bytes": 133065
+      },
+      "firmware": {
+        "path": "${TEMP_ROOT}/capebpf-qemu-code-samples-package-20260830.uJOi6Q/emulator/edk2-aarch64-code.fd",
+        "sha256": "b608de7c81a4cec0eb83422a73ee227618c30fe9513a582a6f9f786ce8d1dbf9",
+        "size_bytes": 67108864
+      },
+      "image": {
+        "path": "${TEMP_ROOT}/capebpf-faulty-vs-memop-v1/builds/exact_clean/arch/arm64/boot/Image",
+        "sha256": "f9921c9e794106b1a1510616e9b6f95aef028749ff5a24f6bd3bc9f724d6dabe",
+        "size_bytes": 18848256
+      },
+      "initramfs": {
+        "path": "${TEMP_ROOT}/capebpf-faulty-vs-memop-v1/runtime/initramfs-builds-v3/initramfs-a.cpio.gz",
+        "sha256": "7bb597b00a79047b96410436c2effc30ca29ac7da7b7e79c2abe406bfb2f7bc6",
+        "size_bytes": 55199
+      },
+      "qemu": {
+        "path": "${TEMP_ROOT}/capebpf-qemu-code-samples-package-20260830.uJOi6Q/emulator/sdk/bin/qemu-system-morello",
+        "sha256": "b0a0b21a9ee5e4b01a1f7d40bcb1ec6289cd51eab1a0f66deafc419b1db3e219",
+        "size_bytes": 59072552
+      },
+      "vmlinux": {
+        "path": "${TEMP_ROOT}/capebpf-faulty-vs-memop-v1/builds/exact_clean/vmlinux",
+        "sha256": "1164e3c5eeb9961a0aacc3765d91f0f22f1737fdd959ba2eb232815f1ba5872f",
+        "size_bytes": 219342248
+      }
+    },
+    "derivation_tool": {
+      "path": "tools/faulty-vs-differential-v6/load_correspondence.py",
+      "sha256": "36f6c5f45a9a56d1fa0c4c0052e961dad2a051850c3e998e55080b9757e809a2",
+      "size_bytes": 40766
+    },
+    "experiment_result": {
+      "path": "linux/benchmarks/faulty-vs-differential/artifacts/result-v6/experiment-result-v1.json",
+      "sha256": "3ef12a6a40404376c13e7055fee7a2a1bfd6a8f025ca42e13434f3c39fc0e441",
+      "size_bytes": 23758
+    },
+    "frozen_schedule": {
+      "path": "research/faulty-vs-differential-v6/schedule-v1.json",
+      "sha256": "2c914f1e6418f80f3209d4d1f86c883ddc5a74e1d01ec4406ad359e715a631de",
+      "size_bytes": 4814
+    },
+    "selected_launch_record": {
+      "path": "linux/benchmarks/faulty-vs-differential/artifacts/result-v6/collection/memop.v6.b01.r03.oobload.exact.console.txt.launch.json",
+      "sha256": "8f92ad26c604b9e4f6171f3f9c381bec8e68e8eeadd2b1a9c7f7f3b03da440db",
+      "size_bytes": 3810
+    },
+    "selected_raw_console": {
+      "path": "linux/benchmarks/faulty-vs-differential/artifacts/result-v6/collection/memop.v6.b01.r03.oobload.exact.console.txt",
+      "sha256": "c9338dafda256cae78390b6a1cd5bf3c451ba8f6eb62e596b76c4dee03951a3d",
+      "size_bytes": 66011
+    }
+  },
+  "artifact_kind": "capebpf_faulty_vs_v6_load_correspondence",
+  "bounded_conditional_correspondence_state": "yes",
+  "canonical_vertical_eligibility": false,
+  "does_not_establish": [
+    "canonical closed vertical correspondence",
+    "semantic correctness of object assignment",
+    "temporal safety",
+    "complete production refinement",
+    "whole-eBPF or whole-Linux memory safety",
+    "effects outside the three monitored array values"
+  ],
+  "event": {
+    "accepted_gate_and_handoffs": {
+      "cape_pipeline_valid": true,
+      "gate": {
+        "decision": "0",
+        "independent_class": "2",
+        "independent_digest": "ef87ee172dbdcaf421610ab9fcdca8115e462efb625be2d67a3eeb00c5f9d4c3",
+        "independent_identity": "ffff0000009b8400",
+        "independent_roots": "00000005",
+        "independent_sites": "3",
+        "program": "cape_vsload",
+        "verifier_binding_valid": "1",
+        "verifier_class": "2",
+        "verifier_digest": "ef87ee172dbdcaf421610ab9fcdca8115e462efb625be2d67a3eeb00c5f9d4c3",
+        "verifier_digest_valid": "1",
+        "verifier_identity": "ffff0000009b8400",
+        "verifier_roots": "00000005",
+        "verifier_sites": "3"
+      },
+      "gate_line_sha256": "901b962c16f5d41894d1563abf6be29f85bd4067fc3eebe16525b3d4dc60fe42",
+      "handoffs": [
+        {
+          "fields": {
+            "helper_return_pc": "0xffff800081407a50",
+            "observation_id": "memop.v6.b01.r03.oobload.exact",
+            "program_id": "1",
+            "provider_token": "0xffff0000009b8400",
+            "root_class": "2",
+            "status": "accepted_consumed"
+          },
+          "line_sha256": "4a551a9f84f8810ef1a77aaa344fcfb5112e7a3cdaf30d681b2ccf987ca07fd1"
+        },
+        {
+          "fields": {
+            "helper_return_pc": "0xffff800081407b08",
+            "observation_id": "memop.v6.b01.r03.oobload.exact",
+            "program_id": "1",
+            "provider_token": "0xffff0000009b8400",
+            "root_class": "2",
+            "status": "accepted_consumed"
+          },
+          "line_sha256": "37a01925ae913d258b3a0bdccef3532305098b43fa9c1e4492cf0f002b8e3880"
+        }
+      ]
+    },
+    "assignment": {
+      "conflict": "0",
+      "extent": "16",
+      "key": "0",
+      "map_id": "1",
+      "observation_id": "memop.v6.b01.r03.oobload.exact",
+      "selected_base": "0xffff0000009b8510",
+      "status": "accepted"
+    },
+    "canonical_and_final_bpf": {
+      "canonical_pre_relocation_sha256": "f6c6f582d26e820a148921791fa3c167b41417add2ee88d79698f71d2895db74",
+      "canonical_target_site_14": "6167080000000000",
+      "dependent_site_15": "bc70000000000000",
+      "final_vs_input": {
+        "canonical_equivalent_after_declared_fixups": true,
+        "complete": true,
+        "normalized_sha256": "f6c6f582d26e820a148921791fa3c167b41417add2ee88d79698f71d2895db74",
+        "sha256": "140ab2a6057c6c864d65a69f16e6e853ad399cbf9a2f216cb5b74518effa39e4"
+      },
+      "post_misc_fixups": {
+        "canonical_equivalent_after_declared_fixups": true,
+        "complete": true,
+        "normalized_sha256": "77a1341c8efb3c3073faa6da43d41e7a6aecf562e8aafacd41df3d76d0238b79",
+        "sha256": "544e6322102bfcef33c86d8c4af3dc35ac06ca772bb4c0552c58350f2dd61570"
+      }
+    },
+    "fault": {
+      "access_size": "4",
+      "attempted_base": "0xffff0000009b8520",
+      "attempted_top": "0xffff0000009b8524",
+      "cap_address": "0xffff0000009b8518",
+      "cap_base": "0xffff0000009b8510",
+      "cap_length": "16",
+      "cap_permissions": "0x0000000000030dfd",
+      "cap_sealed": "0",
+      "cap_tag": "1",
+      "cap_top": "0xffff0000009b8520",
+      "capability_bounds": "1",
+      "completed": "0",
+      "dependent_control_flow": "redirected_to_epilogue",
+      "dependent_native_instruction_not_reached": "1",
+      "esr": "0x000000009600002a",
+      "expected_dependent_retval": "724183336",
+      "fault_pc": "0xffff800081407b28",
+      "faulting_insn": "0xe2808674",
+      "fsc": "0x2a",
+      "handler_redirect_pc": "0xffff800081407b30",
+      "mapped_permissions": "0x00000003",
+      "observation_id": "memop.v6.b01.r03.oobload.exact",
+      "permits_execute": "0",
+      "permits_executive": "0",
+      "permits_load": "1",
+      "permits_load_cap": "0",
+      "permits_store": "1",
+      "permits_store_cap": "0",
+      "permits_store_local_cap": "0",
+      "range_represented": "1",
+      "unmodeled_hw_permissions": "0x0000000000000dfd",
+      "witness_requires_guest_retval_zero": "1"
+    },
+    "faulty_final_decision": {
+      "binding_equal": "1",
+      "canonical_shape": "1",
+      "expected_target": "1",
+      "frozen_va": "1",
+      "hook_armed": "1",
+      "hook_consumed": "1",
+      "hook_override": "1",
+      "injection_count": "1",
+      "insn_idx": "14",
+      "isolation": "final_range_only",
+      "max_effective_end": "20",
+      "min_effective_start": "8",
+      "normal_reason": "min_valid_max_end_exceeds_extent",
+      "normal_vs_class": "reject",
+      "normal_vs_result": "-13",
+      "observation_id": "memop.v6.b01.r03.oobload.exact",
+      "occurrence": "1",
+      "value_size": "16"
+    },
+    "installed_capability": {
+      "abstract_permissions_attested": "1",
+      "abstract_permissions_expected": "CAPEBPF_PERM_LOAD|CAPEBPF_PERM_STORE",
+      "cap_address": "0xffff0000009b8510",
+      "cap_base": "0xffff0000009b8510",
+      "cap_length": "16",
+      "cap_permissions": "0x0000000000030dfd",
+      "cap_sealed": "0",
+      "cap_tag": "1",
+      "cap_top": "0xffff0000009b8520",
+      "kernel_extent": "16",
+      "map_id": "1",
+      "mapped_permissions": "0x00000003",
+      "observation_id": "memop.v6.b01.r03.oobload.exact",
+      "permits_execute": "0",
+      "permits_executive": "0",
+      "permits_load": "1",
+      "permits_load_cap": "0",
+      "permits_store": "1",
+      "permits_store_cap": "0",
+      "permits_store_local_cap": "0",
+      "selected_base": "0xffff0000009b8510",
+      "selected_key": "0",
+      "unmodeled_hw_permissions": "0x0000000000000dfd"
+    },
+    "native": {
+      "checker_blake2s": "d075b4a683945fead9ee8e90e7fd706328d4107d2b35003e6ef817a37d430f55",
+      "checker_matches_image": true,
+      "final_native_image_sha256": "7d49a14befefd4f8887da3640beb70187a7e6f89b77427442f99d8595e59949c",
+      "final_native_image_words": 100,
+      "mapping_evidence_source": "mechanically_reconstructed_certificate_mapping",
+      "selected_access_instruction": {
+        "bpf_site": 14,
+        "certificate_image_complete": true,
+        "certificate_mapping_unique": true,
+        "checker_accept_digest_matches_image": true,
+        "checker_match": true,
+        "dependent_bpf_site": "15",
+        "dependent_decode": {
+          "destination_native_register": 7,
+          "immediate": 0,
+          "matches_declared_copy": true,
+          "operation": "ADD-immediate-32/MOV-alias",
+          "semantic_mapping": "mov32-w0-w7",
+          "source_native_register": 20
+        },
+        "dependent_native_pc": "0xffff800081407b2c",
+        "dependent_native_word": "0x11000287",
+        "dependent_semantics": "mov32-w0-w7",
+        "evidence_source": "mechanically_reconstructed_certificate_mapping",
+        "exact_fault_pc_word_matches_reconstruction": true,
+        "operation": "load",
+        "pc": "0xffff800081407b28",
+        "present_in_certificate_site": true,
+        "runtime_v2_observation_present": false,
+        "target_decode": {
+          "bpf_register_mapping": "native-w20<-BPF-w7,native-c19<-BPF-r6",
+          "destination_native_register": 20,
+          "matches_declared_access": true,
+          "opcode_masked": "0xe2800400",
+          "operation": "CHERI_LDRW",
+          "root_native_register": 19,
+          "unsigned_immediate_bytes": 8,
+          "width_bytes": 4
+        },
+        "width": "4",
+        "word": "0xe2808674"
+      },
+      "site_14_certificate_words": [
+        {
+          "native_index": 80,
+          "pc": "0xffff800081407b28",
+          "word": "0xe2808674"
+        }
+      ],
+      "site_15_certificate_words": [
+        {
+          "native_index": 81,
+          "pc": "0xffff800081407b2c",
+          "word": "0x11000287"
+        }
+      ]
+    },
+    "normalized_va": {
+      "add_operand_raw_records": {
+        "post": {
+          "complete": true,
+          "offset": {
+            "chunk_count": 4,
+            "complete": true,
+            "sha256": "aa678ab69744c3d31f437cb1d5cc265cd099768e13eb90169f22ece3890c4fc9",
+            "size_bytes": 120
+          },
+          "pointer": {
+            "chunk_count": 4,
+            "complete": true,
+            "sha256": "64fe44d1ca050c69abbc3205d703b78c770d5f376ccbb1e592dfe6262ce5411f",
+            "size_bytes": 120
+          }
+        },
+        "pre": {
+          "complete": true,
+          "offset": {
+            "chunk_count": 4,
+            "complete": true,
+            "sha256": "aa678ab69744c3d31f437cb1d5cc265cd099768e13eb90169f22ece3890c4fc9",
+            "size_bytes": 120
+          },
+          "pointer": {
+            "chunk_count": 4,
+            "complete": true,
+            "sha256": "0393c2410c85353aad64105edb696d71c856e5c14152591e69e4b13f319f93e2",
+            "size_bytes": 120
+          }
+        }
+      },
+      "raw_va_sha256": "64fe44d1ca050c69abbc3205d703b78c770d5f376ccbb1e592dfe6262ce5411f",
+      "relevant_facts": {
+        "add_post": {
+          "dst_register": "6",
+          "input_insn": "11",
+          "offset_smax": "8",
+          "offset_smin": "0",
+          "offset_tnum_mask": "0x0000000000000008",
+          "offset_tnum_value": "0x0000000000000000",
+          "offset_type_name": "SCALAR_VALUE",
+          "offset_umax": "8",
+          "offset_umin": "0",
+          "operation": "BPF_ALU64|BPF_ADD|BPF_X",
+          "pointer_fixed_off": "0",
+          "pointer_map_key_size": "4",
+          "pointer_map_max_entries": "3",
+          "pointer_map_type": "BPF_MAP_TYPE_ARRAY",
+          "pointer_map_type_raw": "2",
+          "pointer_map_value_size": "16",
+          "pointer_smax": "8",
+          "pointer_smin": "0",
+          "pointer_tnum_mask": "0x0000000000000008",
+          "pointer_tnum_value": "0x0000000000000000",
+          "pointer_type_name": "PTR_TO_MAP_VALUE",
+          "pointer_umax": "8",
+          "pointer_umin": "0",
+          "src_register": "8"
+        },
+        "add_pre": {
+          "dst_register": "6",
+          "input_insn": "11",
+          "offset_smax": "8",
+          "offset_smin": "0",
+          "offset_tnum_mask": "0x0000000000000008",
+          "offset_tnum_value": "0x0000000000000000",
+          "offset_type_name": "SCALAR_VALUE",
+          "offset_umax": "8",
+          "offset_umin": "0",
+          "operation": "BPF_ALU64|BPF_ADD|BPF_X",
+          "pointer_fixed_off": "0",
+          "pointer_map_key_size": "4",
+          "pointer_map_max_entries": "3",
+          "pointer_map_type": "BPF_MAP_TYPE_ARRAY",
+          "pointer_map_type_raw": "2",
+          "pointer_map_value_size": "16",
+          "pointer_smax": "0",
+          "pointer_smin": "0",
+          "pointer_tnum_mask": "0x0000000000000000",
+          "pointer_tnum_value": "0x0000000000000000",
+          "pointer_type_name": "PTR_TO_MAP_VALUE",
+          "pointer_umax": "0",
+          "pointer_umin": "0",
+          "src_register": "8"
+        },
+        "binding_equal": "1",
+        "binding_index": "0",
+        "displacement": "8",
+        "dst_register": "7",
+        "fixed_offset": "0",
+        "insn_idx": "14",
+        "map_key_size": "4",
+        "map_max_entries": "3",
+        "map_type": "BPF_MAP_TYPE_ARRAY",
+        "map_type_raw": "2",
+        "map_value_size": "16",
+        "max_effective_end": "20",
+        "min_effective_start": "8",
+        "normal_reason": "min_valid_max_end_exceeds_extent",
+        "normalized_effective_start_set": "8,16",
+        "normalized_offset_set": "0,8",
+        "operation": "BPF_LDX|BPF_MEM|BPF_W",
+        "pointer_class": "PTR_TO_MAP_VALUE",
+        "pointer_register": "6",
+        "provider_logical_id": "selected-provider-A",
+        "provider_map_id": "1",
+        "raw_site": "6167080000000000",
+        "smax": "8",
+        "smin": "0",
+        "src_register": "6",
+        "tnum_mask": "0x0000000000000008",
+        "tnum_value": "0x0000000000000000",
+        "umax": "8",
+        "umin": "0",
+        "value_size": "16",
+        "width": "4"
+      },
+      "semantic_equivalence_digest": "53b904826fe240c7bb31e12cabc2da9dc101d54462f37d7cc483dbc68048050c"
+    },
+    "operands_and_effective_address": {
+      "assigned_base": "0xffff0000009b8510",
+      "capability_cursor_at_fault": "0xffff0000009b8518",
+      "derived_target_address": "0xffff0000009b8520",
+      "fault_attempted_interval": [
+        "0xffff0000009b8520",
+        "0xffff0000009b8524"
+      ],
+      "instruction_displacement": 8,
+      "runtime_pointer_adjustment": 8,
+      "telemetry_arithmetic_consistent": true
+    },
+    "outcome": {
+      "all_monitored_bytes_unchanged": true,
+      "classification": "exact_fault_before_load_completion",
+      "load_instruction_completed": false,
+      "observed_loaded_or_derived_value": null,
+      "post_load_dependent_execution": false
+    },
+    "root_attestation": {
+      "address": "0xffff0000009b8510",
+      "base": "0xffff0000009b8510",
+      "destination": "c0_helper_return",
+      "expected_size": "16",
+      "kind": "map_value",
+      "length": "16",
+      "object": "map_value",
+      "object_id": "0xffff0000009b8510",
+      "perms": "0x30dfd",
+      "sealed": "0",
+      "tag": "1"
+    }
+  },
+  "evidence_state_vocabulary": [
+    "yes",
+    "no",
+    "indeterminate",
+    "not-applicable"
+  ],
+  "links": [
+    {
+      "evidence": [
+        {
+          "canonical_pre_relocation_sha256": "f6c6f582d26e820a148921791fa3c167b41417add2ee88d79698f71d2895db74",
+          "canonical_target_site_14": "6167080000000000",
+          "dependent_site_15": "bc70000000000000",
+          "final_vs_input": {
+            "canonical_equivalent_after_declared_fixups": true,
+            "complete": true,
+            "normalized_sha256": "f6c6f582d26e820a148921791fa3c167b41417add2ee88d79698f71d2895db74",
+            "sha256": "140ab2a6057c6c864d65a69f16e6e853ad399cbf9a2f216cb5b74518effa39e4"
+          },
+          "post_misc_fixups": {
+            "canonical_equivalent_after_declared_fixups": true,
+            "complete": true,
+            "normalized_sha256": "77a1341c8efb3c3073faa6da43d41e7a6aecf562e8aafacd41df3d76d0238b79",
+            "sha256": "544e6322102bfcef33c86d8c4af3dc35ac06ca772bb4c0552c58350f2dd61570"
+          }
+        }
+      ],
+      "falsifier": "Any canonical/final/post-fixup byte, target site, dependent site, or declared-fixup equivalence differs on recomputation.",
+      "link_id": "source_or_reconstructed_bpf_access",
+      "premises": [
+        "Final-BPF and loader-binding authenticity beyond retained telemetry remains a premise."
+      ],
+      "state": "yes"
+    },
+    {
+      "evidence": [
+        {
+          "add_operand_raw_records": {
+            "post": {
+              "complete": true,
+              "offset": {
+                "chunk_count": 4,
+                "complete": true,
+                "sha256": "aa678ab69744c3d31f437cb1d5cc265cd099768e13eb90169f22ece3890c4fc9",
+                "size_bytes": 120
+              },
+              "pointer": {
+                "chunk_count": 4,
+                "complete": true,
+                "sha256": "64fe44d1ca050c69abbc3205d703b78c770d5f376ccbb1e592dfe6262ce5411f",
+                "size_bytes": 120
+              }
+            },
+            "pre": {
+              "complete": true,
+              "offset": {
+                "chunk_count": 4,
+                "complete": true,
+                "sha256": "aa678ab69744c3d31f437cb1d5cc265cd099768e13eb90169f22ece3890c4fc9",
+                "size_bytes": 120
+              },
+              "pointer": {
+                "chunk_count": 4,
+                "complete": true,
+                "sha256": "0393c2410c85353aad64105edb696d71c856e5c14152591e69e4b13f319f93e2",
+                "size_bytes": 120
+              }
+            }
+          },
+          "raw_va_sha256": "64fe44d1ca050c69abbc3205d703b78c770d5f376ccbb1e592dfe6262ce5411f",
+          "relevant_facts": {
+            "add_post": {
+              "dst_register": "6",
+              "input_insn": "11",
+              "offset_smax": "8",
+              "offset_smin": "0",
+              "offset_tnum_mask": "0x0000000000000008",
+              "offset_tnum_value": "0x0000000000000000",
+              "offset_type_name": "SCALAR_VALUE",
+              "offset_umax": "8",
+              "offset_umin": "0",
+              "operation": "BPF_ALU64|BPF_ADD|BPF_X",
+              "pointer_fixed_off": "0",
+              "pointer_map_key_size": "4",
+              "pointer_map_max_entries": "3",
+              "pointer_map_type": "BPF_MAP_TYPE_ARRAY",
+              "pointer_map_type_raw": "2",
+              "pointer_map_value_size": "16",
+              "pointer_smax": "8",
+              "pointer_smin": "0",
+              "pointer_tnum_mask": "0x0000000000000008",
+              "pointer_tnum_value": "0x0000000000000000",
+              "pointer_type_name": "PTR_TO_MAP_VALUE",
+              "pointer_umax": "8",
+              "pointer_umin": "0",
+              "src_register": "8"
+            },
+            "add_pre": {
+              "dst_register": "6",
+              "input_insn": "11",
+              "offset_smax": "8",
+              "offset_smin": "0",
+              "offset_tnum_mask": "0x0000000000000008",
+              "offset_tnum_value": "0x0000000000000000",
+              "offset_type_name": "SCALAR_VALUE",
+              "offset_umax": "8",
+              "offset_umin": "0",
+              "operation": "BPF_ALU64|BPF_ADD|BPF_X",
+              "pointer_fixed_off": "0",
+              "pointer_map_key_size": "4",
+              "pointer_map_max_entries": "3",
+              "pointer_map_type": "BPF_MAP_TYPE_ARRAY",
+              "pointer_map_type_raw": "2",
+              "pointer_map_value_size": "16",
+              "pointer_smax": "0",
+              "pointer_smin": "0",
+              "pointer_tnum_mask": "0x0000000000000000",
+              "pointer_tnum_value": "0x0000000000000000",
+              "pointer_type_name": "PTR_TO_MAP_VALUE",
+              "pointer_umax": "0",
+              "pointer_umin": "0",
+              "src_register": "8"
+            },
+            "binding_equal": "1",
+            "binding_index": "0",
+            "displacement": "8",
+            "dst_register": "7",
+            "fixed_offset": "0",
+            "insn_idx": "14",
+            "map_key_size": "4",
+            "map_max_entries": "3",
+            "map_type": "BPF_MAP_TYPE_ARRAY",
+            "map_type_raw": "2",
+            "map_value_size": "16",
+            "max_effective_end": "20",
+            "min_effective_start": "8",
+            "normal_reason": "min_valid_max_end_exceeds_extent",
+            "normalized_effective_start_set": "8,16",
+            "normalized_offset_set": "0,8",
+            "operation": "BPF_LDX|BPF_MEM|BPF_W",
+            "pointer_class": "PTR_TO_MAP_VALUE",
+            "pointer_register": "6",
+            "provider_logical_id": "selected-provider-A",
+            "provider_map_id": "1",
+            "raw_site": "6167080000000000",
+            "smax": "8",
+            "smin": "0",
+            "src_register": "6",
+            "tnum_mask": "0x0000000000000008",
+            "tnum_value": "0x0000000000000000",
+            "umax": "8",
+            "umin": "0",
+            "value_size": "16",
+            "width": "4"
+          },
+          "semantic_equivalence_digest": "53b904826fe240c7bb31e12cabc2da9dc101d54462f37d7cc483dbc68048050c"
+        }
+      ],
+      "falsifier": "The normalized pointer class/provider/width/offset abstraction or raw-record recomputation differs from the frozen V.a schema.",
+      "link_id": "relevant_verifier_facts",
+      "premises": [
+        "Soundness of the retained relevant V.a facts is an experiment premise."
+      ],
+      "state": "yes"
+    },
+    {
+      "evidence": [
+        {
+          "final_decision": {
+            "binding_equal": "1",
+            "canonical_shape": "1",
+            "expected_target": "1",
+            "frozen_va": "1",
+            "hook_armed": "1",
+            "hook_consumed": "1",
+            "hook_override": "1",
+            "injection_count": "1",
+            "insn_idx": "14",
+            "isolation": "final_range_only",
+            "max_effective_end": "20",
+            "min_effective_start": "8",
+            "normal_reason": "min_valid_max_end_exceeds_extent",
+            "normal_vs_class": "reject",
+            "normal_vs_result": "-13",
+            "observation_id": "memop.v6.b01.r03.oobload.exact",
+            "occurrence": "1",
+            "value_size": "16"
+          }
+        }
+      ],
+      "falsifier": "Normal V.s does not reject, the one-shot hook does not override exactly once, or isolation differs from final_range_only.",
+      "link_id": "faulty_final_verifier_decision",
+      "premises": [
+        "The hook telemetry faithfully identifies only the final spatial decision."
+      ],
+      "state": "yes"
+    },
+    {
+      "evidence": [
+        {
+          "cape_pipeline_valid": true,
+          "gate": {
+            "decision": "0",
+            "independent_class": "2",
+            "independent_digest": "ef87ee172dbdcaf421610ab9fcdca8115e462efb625be2d67a3eeb00c5f9d4c3",
+            "independent_identity": "ffff0000009b8400",
+            "independent_roots": "00000005",
+            "independent_sites": "3",
+            "program": "cape_vsload",
+            "verifier_binding_valid": "1",
+            "verifier_class": "2",
+            "verifier_digest": "ef87ee172dbdcaf421610ab9fcdca8115e462efb625be2d67a3eeb00c5f9d4c3",
+            "verifier_digest_valid": "1",
+            "verifier_identity": "ffff0000009b8400",
+            "verifier_roots": "00000005",
+            "verifier_sites": "3"
+          },
+          "gate_line_sha256": "901b962c16f5d41894d1563abf6be29f85bd4067fc3eebe16525b3d4dc60fe42",
+          "handoffs": [
+            {
+              "fields": {
+                "helper_return_pc": "0xffff800081407a50",
+                "observation_id": "memop.v6.b01.r03.oobload.exact",
+                "program_id": "1",
+                "provider_token": "0xffff0000009b8400",
+                "root_class": "2",
+                "status": "accepted_consumed"
+              },
+              "line_sha256": "4a551a9f84f8810ef1a77aaa344fcfb5112e7a3cdaf30d681b2ccf987ca07fd1"
+            },
+            {
+              "fields": {
+                "helper_return_pc": "0xffff800081407b08",
+                "observation_id": "memop.v6.b01.r03.oobload.exact",
+                "program_id": "1",
+                "provider_token": "0xffff0000009b8400",
+                "root_class": "2",
+                "status": "accepted_consumed"
+              },
+              "line_sha256": "37a01925ae913d258b3a0bdccef3532305098b43fa9c1e4492cf0f002b8e3880"
+            }
+          ]
+        }
+      ],
+      "falsifier": "The four-group gate rejects/differs, or an accepted handoff is absent or carries another class/provider.",
+      "link_id": "accepted_handoffs",
+      "premises": [
+        "Concrete accepted-field provenance still depends on incomplete production C/Linux refinement."
+      ],
+      "state": "yes"
+    },
+    {
+      "evidence": [
+        {
+          "assignment": {
+            "conflict": "0",
+            "extent": "16",
+            "key": "0",
+            "map_id": "1",
+            "observation_id": "memop.v6.b01.r03.oobload.exact",
+            "selected_base": "0xffff0000009b8510",
+            "status": "accepted"
+          },
+          "loader_map_id": 1,
+          "verifier_provider_map_id": "1"
+        }
+      ],
+      "falsifier": "Map/provider/key/base/extent differs across binding, V.a, and assignment telemetry.",
+      "link_id": "object_assignment",
+      "premises": [
+        "Semantic provider, selected-element, extent, and lifetime correctness remain trusted."
+      ],
+      "state": "yes"
+    },
+    {
+      "evidence": [
+        {
+          "capability_shape": "exact-16-byte-live-element",
+          "installed_capability": {
+            "abstract_permissions_attested": "1",
+            "abstract_permissions_expected": "CAPEBPF_PERM_LOAD|CAPEBPF_PERM_STORE",
+            "cap_address": "0xffff0000009b8510",
+            "cap_base": "0xffff0000009b8510",
+            "cap_length": "16",
+            "cap_permissions": "0x0000000000030dfd",
+            "cap_sealed": "0",
+            "cap_tag": "1",
+            "cap_top": "0xffff0000009b8520",
+            "kernel_extent": "16",
+            "map_id": "1",
+            "mapped_permissions": "0x00000003",
+            "observation_id": "memop.v6.b01.r03.oobload.exact",
+            "permits_execute": "0",
+            "permits_executive": "0",
+            "permits_load": "1",
+            "permits_load_cap": "0",
+            "permits_store": "1",
+            "permits_store_cap": "0",
+            "permits_store_local_cap": "0",
+            "selected_base": "0xffff0000009b8510",
+            "selected_key": "0",
+            "unmodeled_hw_permissions": "0x0000000000000dfd"
+          },
+          "root_attestation": {
+            "address": "0xffff0000009b8510",
+            "base": "0xffff0000009b8510",
+            "destination": "c0_helper_return",
+            "expected_size": "16",
+            "kind": "map_value",
+            "length": "16",
+            "object": "map_value",
+            "object_id": "0xffff0000009b8510",
+            "perms": "0x30dfd",
+            "sealed": "0",
+            "tag": "1"
+          }
+        }
+      ],
+      "falsifier": "Tag, sealing, base, cursor, length, top, kernel extent, or load permission differs.",
+      "link_id": "installed_capability",
+      "premises": [
+        "Capability/root telemetry faithfully reports the installed helper-return state."
+      ],
+      "state": "yes"
+    },
+    {
+      "evidence": [
+        {
+          "checker_blake2s": "d075b4a683945fead9ee8e90e7fd706328d4107d2b35003e6ef817a37d430f55",
+          "checker_matches_image": true,
+          "final_native_image_sha256": "7d49a14befefd4f8887da3640beb70187a7e6f89b77427442f99d8595e59949c",
+          "final_native_image_words": 100,
+          "mapping_evidence_source": "mechanically_reconstructed_certificate_mapping",
+          "selected_access_instruction": {
+            "bpf_site": 14,
+            "certificate_image_complete": true,
+            "certificate_mapping_unique": true,
+            "checker_accept_digest_matches_image": true,
+            "checker_match": true,
+            "dependent_bpf_site": "15",
+            "dependent_decode": {
+              "destination_native_register": 7,
+              "immediate": 0,
+              "matches_declared_copy": true,
+              "operation": "ADD-immediate-32/MOV-alias",
+              "semantic_mapping": "mov32-w0-w7",
+              "source_native_register": 20
+            },
+            "dependent_native_pc": "0xffff800081407b2c",
+            "dependent_native_word": "0x11000287",
+            "dependent_semantics": "mov32-w0-w7",
+            "evidence_source": "mechanically_reconstructed_certificate_mapping",
+            "exact_fault_pc_word_matches_reconstruction": true,
+            "operation": "load",
+            "pc": "0xffff800081407b28",
+            "present_in_certificate_site": true,
+            "runtime_v2_observation_present": false,
+            "target_decode": {
+              "bpf_register_mapping": "native-w20<-BPF-w7,native-c19<-BPF-r6",
+              "destination_native_register": 20,
+              "matches_declared_access": true,
+              "opcode_masked": "0xe2800400",
+              "operation": "CHERI_LDRW",
+              "root_native_register": 19,
+              "unsigned_immediate_bytes": 8,
+              "width_bytes": 4
+            },
+            "width": "4",
+            "word": "0xe2808674"
+          },
+          "site_14_certificate_words": [
+            {
+              "native_index": 80,
+              "pc": "0xffff800081407b28",
+              "word": "0xe2808674"
+            }
+          ],
+          "site_15_certificate_words": [
+            {
+              "native_index": 81,
+              "pc": "0xffff800081407b2c",
+              "word": "0x11000287"
+            }
+          ]
+        }
+      ],
+      "falsifier": "The full image transcript/digest is incomplete, checker ACCEPT does not bind it, the site mapping is ambiguous, or target/dependent decoding differs.",
+      "link_id": "native_load_instruction",
+      "premises": [
+        "The retained certificate transcript and checker telemetry faithfully report the emitted image."
+      ],
+      "state": "yes"
+    },
+    {
+      "evidence": [
+        {
+          "assigned_base": "0xffff0000009b8510",
+          "capability_cursor_at_fault": "0xffff0000009b8518",
+          "derived_target_address": "0xffff0000009b8520",
+          "fault_attempted_interval": [
+            "0xffff0000009b8520",
+            "0xffff0000009b8524"
+          ],
+          "instruction_displacement": 8,
+          "runtime_pointer_adjustment": 8,
+          "telemetry_arithmetic_consistent": true
+        }
+      ],
+      "falsifier": "A direct register/trace witness contradicts the template-derived cursor, displacement, or effective interval.",
+      "link_id": "operands_and_effective_address",
+      "premises": [
+        "Direct live capability-operand/register correspondence at the memory instruction is not observed."
+      ],
+      "state": "indeterminate"
+    },
+    {
+      "evidence": [
+        {
+          "access_width": "4",
+          "attempted_interval": [
+            "0xffff0000009b8520",
+            "0xffff0000009b8524"
+          ],
+          "fault_capability_interval": [
+            "0xffff0000009b8510",
+            "0xffff0000009b8520"
+          ],
+          "installed_interval": [
+            "0xffff0000009b8510",
+            "0xffff0000009b8520"
+          ]
+        }
+      ],
+      "falsifier": "Installed/fault capability bounds differ, or the attempted four-byte interval is not exactly [base+16,base+20).",
+      "link_id": "capability_bounds",
+      "premises": [
+        "Kernel-supplied base and extent are correct for the selected live element."
+      ],
+      "state": "yes"
+    },
+    {
+      "evidence": [
+        {
+          "fault": {
+            "access_size": "4",
+            "attempted_base": "0xffff0000009b8520",
+            "attempted_top": "0xffff0000009b8524",
+            "cap_address": "0xffff0000009b8518",
+            "cap_base": "0xffff0000009b8510",
+            "cap_length": "16",
+            "cap_permissions": "0x0000000000030dfd",
+            "cap_sealed": "0",
+            "cap_tag": "1",
+            "cap_top": "0xffff0000009b8520",
+            "capability_bounds": "1",
+            "completed": "0",
+            "dependent_control_flow": "redirected_to_epilogue",
+            "dependent_native_instruction_not_reached": "1",
+            "esr": "0x000000009600002a",
+            "expected_dependent_retval": "724183336",
+            "fault_pc": "0xffff800081407b28",
+            "faulting_insn": "0xe2808674",
+            "fsc": "0x2a",
+            "handler_redirect_pc": "0xffff800081407b30",
+            "mapped_permissions": "0x00000003",
+            "observation_id": "memop.v6.b01.r03.oobload.exact",
+            "permits_execute": "0",
+            "permits_executive": "0",
+            "permits_load": "1",
+            "permits_load_cap": "0",
+            "permits_store": "1",
+            "permits_store_cap": "0",
+            "permits_store_local_cap": "0",
+            "range_represented": "1",
+            "unmodeled_hw_permissions": "0x0000000000000dfd",
+            "witness_requires_guest_retval_zero": "1"
+          },
+          "pc_word_match": true,
+          "reconstructed_target_pc": "0xffff800081407b28",
+          "reconstructed_target_word": "0xe2808674"
+        }
+      ],
+      "falsifier": "Fault PC/word differs from reconstructed site 14, FSC is not capability-bounds 0x2a, or the target instruction reports completion.",
+      "link_id": "fault_pc_and_syndrome",
+      "premises": [
+        "Architectural fault telemetry faithfully reports this execution event."
+      ],
+      "state": "yes"
+    },
+    {
+      "evidence": [
+        {
+          "all_monitored_bytes_unchanged": true,
+          "dependent_native_instruction_not_reached": "1",
+          "load_instruction_completed": false,
+          "monitored_objects": [
+            {
+              "after_hex": "101112131415161718191a1b1c1d1e1f",
+              "before_hex": "101112131415161718191a1b1c1d1e1f",
+              "changed": false,
+              "key": 0
+            },
+            {
+              "after_hex": "28292a2b2c2d2e2f3031323334353637",
+              "before_hex": "28292a2b2c2d2e2f3031323334353637",
+              "changed": false,
+              "key": 1
+            },
+            {
+              "after_hex": "404142434445464748494a4b4c4d4e4f",
+              "before_hex": "404142434445464748494a4b4c4d4e4f",
+              "changed": false,
+              "key": 2
+            }
+          ],
+          "observed_loaded_or_derived_value": null,
+          "post_load_dependent_execution": false
+        }
+      ],
+      "falsifier": "The load or dependent copy completes, a derived value is observed, the successor retires, or any monitored byte differs.",
+      "link_id": "post_load_dependent_completion_absent",
+      "premises": [
+        "The dependent-return and complete three-object snapshots faithfully report noncompletion."
+      ],
+      "state": "yes"
+    }
+  ],
+  "property": {
+    "attempted_interval": "[base+16,base+20)",
+    "event_class": "one four-byte direct BPF load at instruction 14",
+    "falsifier": "A retained exact-mode site-14 load or dependent result completes outside the assigned interval, or any bound BPF/V.a/authority/native/fault identity differs.",
+    "intended_live_interval": "[base,base+16)",
+    "load_completion_oracle": "site-15 mov32-w0-w7 dependent return after successful site-14 completion",
+    "observed_classification": "exact_fault_before_load_completion"
+  },
+  "recorded_date": "2026-09-02",
+  "remaining_premises": [
+    "Final-BPF and loader-binding authenticity beyond retained telemetry.",
+    "Complete production C/Linux/JIT refinement from retained BPF and accepted gate output.",
+    "Checked native-image immutability between checker acceptance and execution.",
+    "Direct live capability-operand/register correspondence at the faulting instruction.",
+    "Semantic provider, live-element, extent, and lifetime correctness."
+  ],
+  "schema_version": "1.0.0",
+  "selected_normalized_observation": {
+    "path": "linux/benchmarks/faulty-vs-differential/artifacts/result-v6/collection/memop.v6.b01.r03.oobload.exact.console.txt.observation.json",
+    "sha256": "3ab9a712efc9a7afef4e47d025bcadaf969e9df1c0f1c5c2ad84ca854f83624c",
+    "size_bytes": 24988
+  },
+  "selected_observation_id": "memop.v6.b01.r03.oobload.exact",
+  "selected_raw_console": {
+    "path": "linux/benchmarks/faulty-vs-differential/artifacts/result-v6/collection/memop.v6.b01.r03.oobload.exact.console.txt",
+    "sha256": "c9338dafda256cae78390b6a1cd5bf3c451ba8f6eb62e596b76c4dee03951a3d",
+    "size_bytes": 66011
+  },
+  "selected_schedule_row": {
+    "block": 1,
+    "case_id": "oob_load_w_at_16",
+    "fault_selector": "fault",
+    "mode": "capebpf_exact",
+    "observation_id": "memop.v6.b01.r03.oobload.exact",
+    "position": 3
+  },
+  "selection_rule": "First capebpf_exact oob_load_w_at_16 row in frozen schedule order, selected without reference to outcome.",
+  "status": "bounded_conditional_correspondence_record",
+  "study_id": "capebpf-faulty-vs-memory-operation-closure-v6"
+}

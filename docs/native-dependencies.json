@@ -1,0 +1,144 @@
+{
+  "edition": "cbpf-native-dependencies",
+  "prepared_date": "2026-09-07",
+  "status": "Dependency assets retain recorded identities; delivered separately from the current research source tree.",
+  "original_native_image": "sha256:b4de3680a00e3ac68ccc56bd87131b97c1fffcd5e016c2d1a54d7e3386d9fc6e",
+  "builder_image": "sha256:76c8ca062c30aa59b8eb072f30620a2a7e9604515aefe84d64161bf9eb644038",
+  "builder_config": "sha256:731d2ae309f2dd406ebec4dc24079f3cdcd68382a0b41001c6213e101496664d",
+  "builder_layers": 1,
+  "base_commit": "b96da308ef1a054c3c04c9445e5ed70259b7c397",
+  "base_tree": "0fc9d44a60944f77000cc125779c6207a37fa74d",
+  "spatial_tree": "e6c69574c16bc2b9bce06329f9ac3f4b3269e79a",
+  "source_objects": 87448,
+  "runtime_entries": 461,
+  "runtime_file_contents_and_symlink_targets_unchanged": true,
+  "source_pack_unchanged": true,
+  "privacy": {
+    "local_identity_matches_in_decoded_source_objects": 0,
+    "unresolved_selected_runtime_or_image_content_matches": 0,
+    "archive_owner_names_and_ids_normalized": true,
+    "timestamps_normalized": true,
+    "runtime_modes": "0644/0755, executable status preserved",
+    "builder_owner_ids_normalized_and_setid_bits_removed": true,
+    "generated_SSH_keys_and_original_image_layers_excluded": true,
+    "user_homes_guest_disks_guest_rootfs_and_machine_state_excluded": true,
+    "public_cryptographic_selftest_vectors": "Six embedded GnuTLS key blocks match public upstream self-test vectors; documented in the package.",
+    "scope": "Known local identity strings, credentials/path indicators, selected decoded content including gzip entries, archive headers and image metadata; not a universal secret-detection guarantee."
+  },
+  "restoration": {
+    "source_objects": 87448,
+    "source_tree_manifests_equal": true,
+    "source_pack_verified": true,
+    "source_remotes": [],
+    "runtime_entries_checked": 461,
+    "runtime_contents_modes_links_verified": true,
+    "builder_oci_digests_verified": true,
+    "builder_uncompressed_layer_verified": true,
+    "image_loaded_and_inspected_on_existing_docker_daemon": true,
+    "restoration_scope": "Fresh directory on the existing Ubuntu 24.04.4 x86-64 host; existing Docker 29.8.0/containerd daemon, not a fresh external machine.",
+    "toolchain_smoke": {
+      "status": "PASS",
+      "host_C_compile_run": true,
+      "pahole_BTF_encoding": true,
+      "Morello_purecap_object_compile": true,
+      "Morello_purecap_static_link": true,
+      "purecap_ELF_flag_verified": true,
+      "QEMU_version_only": "7.0.0",
+      "compiler_version": "17.0.0",
+      "pahole_version": "v1.25",
+      "purecap_execution": false
+    },
+    "kernel_build": false,
+    "kernel_boot": false,
+    "BPF_execution": false,
+    "CVE_execution": false,
+    "external_reproduction": false
+  },
+  "delivery": "Prepared local archive; no examiner transmission or public hosting performed.",
+  "experimental_scope": "Initial export performed no kernel/BPF/CVE execution. The later, separately identified replay built/booted two kernels for the existing safe controls; no original CVE trigger executed. The later seven-byte spatial witness reused the verified kernel unchanged for one valid invocation; no padding access or original CVE execution.",
+  "files": [
+    {
+      "file": "linux-source.pack",
+      "bytes": 255540386,
+      "sha256": "70d8e68b8462f11c80b96c7f557b8e28a9839546cf8069ac39a65f3dedfce844"
+    },
+    {
+      "file": "native-runtime.tar.gz",
+      "bytes": 103306807,
+      "sha256": "fcd9d86144287742c5ac7e09a60a0372916ec8100a3ffcfded91827184a86e89"
+    },
+    {
+      "file": "builder.docker.tar",
+      "bytes": 421007360,
+      "sha256": "4e37740fddc42485f5ee3531c41dd6388cc4da2c163e6e0baf9cc18e6de1b5c5"
+    },
+    {
+      "file": "runtime-files.json",
+      "bytes": 97935,
+      "sha256": "a00cab8bbad6302fa6ac1f4fcdbdbb578421521e0b3fe5fa3d8c0fa904a264e8"
+    },
+    {
+      "file": "builder-files.json",
+      "bytes": 5312371,
+      "sha256": "224520aa7a063db3880a890441023aaf36743954b357155c38570d18b773fc09"
+    },
+    {
+      "file": "notice-sources.json",
+      "bytes": 3257,
+      "sha256": "138c1ac9994b402713c6ebef9de926235a431f41c08d03472a5323cbbfc6ba79"
+    },
+    {
+      "file": "restoration-identity-check.json",
+      "bytes": 1021,
+      "sha256": "45b1afe34bd3ed38ad22dfad00db91c1f66adabbb77016c5ba28de349bd5142c"
+    },
+    {
+      "file": "toolchain-smoke.log",
+      "bytes": 2242,
+      "sha256": "47a3d170703cb382f62a0259ebdedffb5aed8fe60bbda3a27cee42d5686e8cb0"
+    }
+  ],
+  "native_replay": {
+    "result": "PASS",
+    "receipt": "../evidence/current/native-replay/results.json",
+    "kernel_builds": 2,
+    "kernel_boots": 2,
+    "protected_ownership_programs": 4,
+    "spatial_programs": 1,
+    "trusted_resolver_controls": 3,
+    "trusted_callback_controls": 2,
+    "invalid_BPF_executions": 0,
+    "original_CVE_execution": false,
+    "external_reproduction": false,
+    "tool_pin_corrections": 2
+  },
+  "logical_extent_discriminator": {
+    "result": "PASS",
+    "receipt": "../evidence/current/logical-extent/results.json",
+    "kernel_builds": 0,
+    "kernel_boots": 1,
+    "spatial_programs": 1,
+    "value_size": 7,
+    "stride": 8,
+    "capability_length": 7,
+    "invalid_BPF_executions": 0,
+    "padding_accesses": 0,
+    "original_CVE_execution": false,
+    "ownership_rerun": false,
+    "external_reproduction": false
+  },
+  "packaged_date": "2026-09-09",
+  "source_delivery": "Research sources and publication evidence are separate from this dependency archive.",
+  "packaging": {
+    "dependency_file_identities_verified": true,
+    "original_restoration_records_retained": true,
+    "kernel_execution": false,
+    "BPF_execution": false,
+    "CVE_execution": false
+  },
+  "archive": {
+    "file": "cbpf-native-dependencies.tar.gz",
+    "bytes": 777279853,
+    "sha256": "9e1e971330268052fde45e574a40d2491d6daa0ff5449fb1576c3e9d7331e757"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "kind": "historical replay source recovered without execution",
+  "recovered_date": "2026-09-09",
+  "source_commit": "6d4666372e0a02f0637123e3565c5eb9483c204a",
+  "receipt": "evidence/current/native-replay/results.json",
+  "files": [
+    {
+      "original_path": "linux/spatial/native-guest.c",
+      "restored_path": "linux/spatial/native-guest.c",
+      "bytes": 10664,
+      "sha256": "142dbec549c7e7d69ee58759a5f1eff473eb50de2c10257bf696da9ffca373a1"
+    },
+    {
+      "original_path": "tools/check_spatial_native.py",
+      "restored_path": "tools/check_spatial_native.py",
+      "bytes": 20813,
+      "sha256": "72c0b60f09f60c6d5d8afa4669586f81c5ff6573f4caada6067c25c2e95be631"
+    }
+  ]
+}

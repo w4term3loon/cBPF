@@ -1,0 +1,5 @@
+46	0	arch/arm64/net/bpf_jit_comp.c
+8	0	include/linux/bpf.h
+10	0	kernel/bpf/Kconfig
+95	1	kernel/bpf/arraymap.c
+34	0	kernel/bpf/syscall.c

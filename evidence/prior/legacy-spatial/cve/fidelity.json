@@ -1,0 +1,207 @@
+{
+  "schema_version": 1,
+  "normalization": "Whitespace-normalized RAW_INSN argument expressions between CAPEBPF source and suffix markers in linux/harness/bpf_jit_smoke.c",
+  "cases": [
+    {
+      "case_id": "CVE-2021-3490-spatial",
+      "fidelity_grade": "exact_public_primitive_with_observation_suffix",
+      "source_ids": [
+        "poc_3490",
+        "upstream_3490"
+      ],
+      "primary_source": {
+        "revision": "2f22ae4c773b197f4d12c7f26cb971230058c527",
+        "path": "include/exploit_configs.h",
+        "locator": "exploit_primitive_pt1 and exploit_primitive_pt2"
+      },
+      "program": {
+        "source_instruction_count": 43,
+        "source_normalized_sha256": "c14ee5d8292c736ee49363da35306762d791152556ef0981af68d07d0c499486",
+        "suffix_instruction_count": 5,
+        "suffix_normalized_sha256": "ab2d10488935370d03a104356126ae90888d39b59b0a0c231727586fa397364a",
+        "program_instruction_count": 48
+      },
+      "runtime_relocations": [
+        4,
+        14
+      ],
+      "transformations": [
+        {
+          "kind": "macro_expansion",
+          "instruction_range": "0-42",
+          "reason": "Expand the two public PoC primitive macros without changing their instruction semantics."
+        },
+        {
+          "kind": "controlled_observation_suffix",
+          "instruction_range": "43-47",
+          "reason": "Scale the runtime/verifier-confused scalar by the array-element stride, attempt one eight-byte write to the adjacent key-1 value, and return deterministically."
+        }
+      ],
+      "semantic_witness": {
+        "verifier_defect": "Unsound ALU32 bitwise bounds update leaves the runtime scalar different from the verifier's believed value.",
+        "unsafe_effect": "Eight-byte write to the separately addressable key-1 array-map value immediately after the 0x1337-byte key-0 value and its one-byte alignment padding.",
+        "authority_root": "exact_map_value_bounds"
+      },
+      "claim_limit": "The public verifier-confusion primitive is exact; the observation suffix replaces later kernel corruption and privilege escalation with one dynamically monitored adjacent-object write."
+    },
+    {
+      "case_id": "CVE-2023-2163-spatial",
+      "fidelity_grade": "exact_official_program",
+      "source_ids": [
+        "upstream_2163",
+        "poc_2163"
+      ],
+      "primary_source": {
+        "revision": "71b547f561247897a0a14f3082730156c0533fed",
+        "path": "upstream commit message",
+        "locator": "28-instruction minimal reproducer"
+      },
+      "program": {
+        "source_instruction_count": 28,
+        "source_normalized_sha256": "cea0d63e9d8a01852b63147e4f106f1ac43a1d74045333d4140a9191f8ccd172",
+        "suffix_instruction_count": 0,
+        "suffix_normalized_sha256": null,
+        "program_instruction_count": 28
+      },
+      "runtime_relocations": [
+        13
+      ],
+      "transformations": [
+        {
+          "kind": "map_fd_relocation",
+          "instruction_range": "13",
+          "reason": "Replace the BPF pseudo map descriptor with the descriptor allocated by each test run."
+        }
+      ],
+      "semantic_witness": {
+        "verifier_defect": "Incorrect precision propagation allows an unsafe path to be pruned as equivalent to a checked path.",
+        "unsafe_effect": "Eight-byte load and store at a runtime 8192-byte displacement from a 48-byte map value.",
+        "authority_root": "exact_map_value_bounds"
+      },
+      "claim_limit": "This is the exact official minimal reproducer, not the complete privilege-escalation exploit."
+    },
+    {
+      "case_id": "CVE-2021-4204-helper",
+      "fidelity_grade": "exact_official_program",
+      "source_ids": [
+        "ltp_4204",
+        "upstream_4204",
+        "poc_4204"
+      ],
+      "primary_source": {
+        "revision": "9118a480cc68700f27944aab817e0202e9e6136c",
+        "path": "testcases/kernel/syscalls/bpf/bpf_prog06.c",
+        "locator": "bpf_prog06 shifted ring-buffer submit program"
+      },
+      "program": {
+        "source_instruction_count": 14,
+        "source_normalized_sha256": "e675a4302372ec8fc253a369f0d6d83b9798d544fcea0b33c4018e69574ba5bf",
+        "suffix_instruction_count": 0,
+        "suffix_normalized_sha256": null,
+        "program_instruction_count": 14
+      },
+      "runtime_relocations": [
+        0
+      ],
+      "transformations": [
+        {
+          "kind": "map_fd_relocation",
+          "instruction_range": "0",
+          "reason": "Replace the BPF pseudo map descriptor with the ring-buffer descriptor allocated by each test run."
+        }
+      ],
+      "semantic_witness": {
+        "verifier_defect": "The vulnerable verifier accepts a shifted ring-buffer record pointer passed to the submit helper.",
+        "unsafe_effect": "Trusted helper metadata access based on an invalid record pointer.",
+        "authority_root": "trusted_ringbuf_gateway"
+      },
+      "claim_limit": "The outcome is trusted gateway rejection, not automatic architectural containment."
+    },
+    {
+      "case_id": "CVE-2020-8835-spatial",
+      "fidelity_grade": "public_primitive_with_controlled_suffix",
+      "source_ids": [
+        "upstream_8835",
+        "zdi_8835",
+        "poc_8835"
+      ],
+      "primary_source": {
+        "revision": "2f9d45187622ff245437fb0d750ede3ccdfdca38",
+        "path": "exploit.c",
+        "locator": "load_prog JMP32 range prefix and first map OOB read branch"
+      },
+      "program": {
+        "source_instruction_count": 32,
+        "source_normalized_sha256": "946a97449d46a05b99949eaec81d62a6501ac08c6868086ead41be10d3b25b1c",
+        "suffix_instruction_count": 2,
+        "suffix_normalized_sha256": "2f4b819264d909f67dd8646d5ceb13291617688bbfae5894fb224cfcbb8d4c02",
+        "program_instruction_count": 34
+      },
+      "runtime_relocations": [
+        0
+      ],
+      "transformations": [
+        {
+          "kind": "path_specialization",
+          "instruction_range": "0-31",
+          "reason": "Retain the documented range-confusion and first -0x110 map read while removing unrelated exploit operation dispatch."
+        },
+        {
+          "kind": "controlled_observation_suffix",
+          "instruction_range": "32-33",
+          "reason": "Return a deterministic value after the first unsafe read instead of continuing to pointer disclosure and escalation."
+        }
+      ],
+      "semantic_witness": {
+        "verifier_defect": "JMP32 refinement creates inconsistent 32-bit and 64-bit scalar bounds.",
+        "unsafe_effect": "Eight-byte read 0x110 bytes before an eight-byte array-map value.",
+        "authority_root": "exact_map_value_bounds"
+      },
+      "claim_limit": "The range-confusion and first spatial primitive are replayed; the official nontermination consequence and later exploit chain remain separate."
+    },
+    {
+      "case_id": "CVE-2022-23222-spatial",
+      "fidelity_grade": "adapted_public_bug_sequence",
+      "source_ids": [
+        "poc_23222",
+        "stable_51514",
+        "stable_51515",
+        "upstream_23222"
+      ],
+      "primary_source": {
+        "revision": "c528127e96dddc9e79fa9d5cce384cef568d9ff8",
+        "path": "exploit.c",
+        "locator": "prepare_arbitrary_rw nullable ring-buffer alias sequence"
+      },
+      "program": {
+        "source_instruction_count": 14,
+        "source_normalized_sha256": "0d8e297aea5f0ea55ac86385a73c1f6d4a6e851a43301a400e2feb045f067ca1",
+        "suffix_instruction_count": 12,
+        "suffix_normalized_sha256": "34056002185c13c2a4bf97a911f5513f5c17de8673e000ae83c19f89e8809366",
+        "program_instruction_count": 26
+      },
+      "runtime_relocations": [
+        0,
+        18
+      ],
+      "transformations": [
+        {
+          "kind": "bug_sequence_reduction",
+          "instruction_range": "0-13",
+          "reason": "Preserve the nullable ring-buffer return alias and one-byte pointer offset that trigger the historical promotion error."
+        },
+        {
+          "kind": "controlled_consequence_substitution",
+          "instruction_range": "14-25",
+          "reason": "Replace stack-pointer corruption and helper-assisted overwrite with a one-byte-displaced map-value load."
+        }
+      ],
+      "semantic_witness": {
+        "verifier_defect": "Nullable ring-buffer pointer arithmetic is promoted unsafely after the null branch.",
+        "unsafe_effect": "Eight-byte load at offset one from an eight-byte array-map value.",
+        "authority_root": "exact_map_value_bounds"
+      },
+      "claim_limit": "This case preserves the public verifier-bug sequence but substitutes the final unsafe effect; it is not an exact exploit primitive."
+    }
+  ]
+}

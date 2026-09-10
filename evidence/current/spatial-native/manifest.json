@@ -1,0 +1,272 @@
+{
+  "schema": "cbpf-spatial-s5-files-v1",
+  "scope": "Single-program spatial native witness; separate from the frozen local-reproduction edition",
+  "integrity_only": true,
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 5296,
+      "sha256": "46f204dd70ebeff40fb84e534034fae89d7c747dc93b29cd250f7513f6c52049"
+    },
+    {
+      "path": "attempt-before-jit/boot.log",
+      "bytes": 19653,
+      "sha256": "56cfa3e2ed45ff8904894e2785b7318b8c700e1e40efcfbb6297f2765889b5cd"
+    },
+    {
+      "path": "attempt-before-jit/inputs-verified.txt",
+      "bytes": 1385,
+      "sha256": "95176265465cfa4a823f8dee56dfc0df0062ca89283122c52ec77d16b23b871f"
+    },
+    {
+      "path": "attempt-before-jit/inputs.sha256",
+      "bytes": 2501,
+      "sha256": "0421e8dda746c1733c29fdf6e3bec183c9e5bb197bfebe84b888193b53403c9b"
+    },
+    {
+      "path": "attempt-before-jit/qemu-command.sh",
+      "bytes": 565,
+      "sha256": "cd8616da18bc4d14ee959cebf77b7afafa30a7be47bd1ff489e6bc4a2938b9e1"
+    },
+    {
+      "path": "attempt-before-jit/qemu-exit.txt",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "path": "attempt-before-jit/run-script.executed.sh",
+      "bytes": 6146,
+      "sha256": "eed6757c491d6097626c9d94c2e702c3679f9f0e178c8554282c886fec5786cf"
+    },
+    {
+      "path": "build/array-authority.patch",
+      "bytes": 12851,
+      "sha256": "ac74717a7dbd2c61760115c1b8b719e52d27d60d02957a2b73c3ff155206c4ac"
+    },
+    {
+      "path": "build/build_spatial_s5.executed.sh",
+      "bytes": 9811,
+      "sha256": "9b3fcde44e53cb33d98f4d84f78c75b9c9bef304b6dfd35c6a7503fc2d95e831"
+    },
+    {
+      "path": "build/builder-image.txt",
+      "bytes": 178,
+      "sha256": "64cd0c0d49fe5cf28ed75cedcc141ccd9c5698afaf760b7a5b49b82b06df120c"
+    },
+    {
+      "path": "build/compile.h",
+      "bytes": 262,
+      "sha256": "63588454fd27af9d88a9d5e3c62d4cbc0df076bb6f656635bb439b113cee8cf8"
+    },
+    {
+      "path": "build/compile.log",
+      "bytes": 166485,
+      "sha256": "e5ee20528746bc98b33f9a1027178dc08f2f597c6092d5b2d967317bac59b581"
+    },
+    {
+      "path": "build/compiler.sha256",
+      "bytes": 213,
+      "sha256": "33cec68829bfd8ba37c4baafc8b4bb52d136d64a4ea4f2330f241e9d7c97ec2e"
+    },
+    {
+      "path": "build/compiler.txt",
+      "bytes": 222,
+      "sha256": "fa637d12c4f5cecdca7898e378a80db8be25e70585400728f3539c6741f68ff3"
+    },
+    {
+      "path": "build/inputs.sha256",
+      "bytes": 772,
+      "sha256": "883adb5b03d496468b93e263a6d19aa21d7441352ae5f077d7dc1537d9338f1d"
+    },
+    {
+      "path": "build/kernel-release.txt",
+      "bytes": 22,
+      "sha256": "ed621d54702ae4a9fa89926dee1a57aca4ae14c74ab142b7f63e618f82278384"
+    },
+    {
+      "path": "build/kernel.config",
+      "bytes": 132858,
+      "sha256": "8d700075ed756e45fc45ada33800ce518ad61ef6ec37c27b61f1a9eb407890e5"
+    },
+    {
+      "path": "build/outputs.sha256",
+      "bytes": 1062,
+      "sha256": "1684c75357bd4707fdf03a3ea89bb2d59e7631c5e1e5288885d185a8b3856098"
+    },
+    {
+      "path": "build/patched-sources.sha256",
+      "bytes": 926,
+      "sha256": "7aad609d9608926d3ae081b5246cae68030332ae91226f71d8fd383438313417"
+    },
+    {
+      "path": "build/s5-observe.patch",
+      "bytes": 1449,
+      "sha256": "71c33ec55e72e367b50da3d54c08bb6aa028692ceba4f8370378ff2fe932592f"
+    },
+    {
+      "path": "build/source-pins.json",
+      "bytes": 407,
+      "sha256": "e7043d3428d26caeec38008bdbfc5d96cd74cb333b685a1c8e6a2d29e8315f11"
+    },
+    {
+      "path": "build/summary.txt",
+      "bytes": 187,
+      "sha256": "2b312090aca2c40f5a981bd3da0bade2582c6a9731c988677a558c125567d723"
+    },
+    {
+      "path": "build/test-options.txt",
+      "bytes": 463,
+      "sha256": "4b4ede8ea0a15a54df9eafdb784cf44920412cebbc2b626a23acd869f9811dbe"
+    },
+    {
+      "path": "build/verifier-before.sha256",
+      "bytes": 65,
+      "sha256": "0e4753294afdd01eedf2ff7f523011a0940f2839ba8c4d0378d499f5b4f7c858"
+    },
+    {
+      "path": "copy-origins.json",
+      "bytes": 3936,
+      "sha256": "6389d26d49635d49f1d587ab396a8394d9a5bf27f20e026ec2a0f318532530c0"
+    },
+    {
+      "path": "result.json",
+      "bytes": 6393,
+      "sha256": "e609856630974f18a375ca93b423021db8c9b3b612e7d1ff8d7c18e641d55816"
+    },
+    {
+      "path": "review/cbpf_map_area_alloc-complete.txt",
+      "bytes": 4851,
+      "sha256": "d5313d54e49380a12accaa3e39dd3b00aec35892846034e8211854410c899af9"
+    },
+    {
+      "path": "review/commands.md",
+      "bytes": 3558,
+      "sha256": "d7edadc7c609fe8d04f29fa843d4fc183a3c7cfee72d3c61a0fc697c9b2db995"
+    },
+    {
+      "path": "review/ex_handler_bpf-complete-lse.txt",
+      "bytes": 9618,
+      "sha256": "bb8716be840c1d766653bac14bd1cc3833165e923fafc9158a2fcf9a2fd0baba"
+    },
+    {
+      "path": "review/failed-pre.json",
+      "bytes": 195,
+      "sha256": "ac1b71f586dccf9ac6f210d11cbb17fc0f78c3db7f4e391a9e4c4816368dfb50"
+    },
+    {
+      "path": "review/jit-disassembly.txt",
+      "bytes": 10504,
+      "sha256": "c053a5b601a0c1d8ecc64d987112e78f5a16bf6c4d70c46cb523e0b365e9c580"
+    },
+    {
+      "path": "review/jit.bin",
+      "bytes": 392,
+      "sha256": "97d2bc5287edec817d679e8d740ea5bf51f695b3157e8683152b364afe48710d"
+    },
+    {
+      "path": "review/linked-disassembly.txt",
+      "bytes": 38811,
+      "sha256": "6beec689a420f8c6f425f0b78c49559b34b901299414ab08474169e1f330eb9d"
+    },
+    {
+      "path": "review/linked-symbols.json",
+      "bytes": 949,
+      "sha256": "3a1c6a18034990f0c3a02ad86b25650bf120051a2b822215b17af353ab3891a0"
+    },
+    {
+      "path": "review/manual-review.json",
+      "bytes": 4326,
+      "sha256": "467db4c8628d1a05a76cd6d9edbe942075a53fc14688af6e522a39f3ce60eee1"
+    },
+    {
+      "path": "review/post.json",
+      "bytes": 3067,
+      "sha256": "d97683311534d38d315e80b84c7e66994db2a8803d3f449d92901fd9cc055ece"
+    },
+    {
+      "path": "review/pre.json",
+      "bytes": 2237,
+      "sha256": "ea1b767684620f69367e4932eb9e838a52112f049306ff5cc08141bfa412f234"
+    },
+    {
+      "path": "review/selected-symbol-sizes.txt",
+      "bytes": 503,
+      "sha256": "6104f8c41270a7662a5d12af677ed03c7ae8e23f84bdab114cb7a97f7e105c3d"
+    },
+    {
+      "path": "run/boot.log",
+      "bytes": 39925,
+      "sha256": "1cf96d964db77ae3e6caf588f7129573dc3436477707de92ef62deff7b0d7b02"
+    },
+    {
+      "path": "run/check_spatial_s5.executed.py",
+      "bytes": 20412,
+      "sha256": "bf32ab97541dcce49cfb1134ef168880140076a3108957ba45105b2a1037553b"
+    },
+    {
+      "path": "run/check_spatial_s5.reviewed.py",
+      "bytes": 20493,
+      "sha256": "cf0e402a5d6afcbf167d5ad4311d02360839146b90cc7ec3d6fa7ffb69ed3abc"
+    },
+    {
+      "path": "run/compile.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "run/guest.c",
+      "bytes": 10405,
+      "sha256": "2a76b302cdd3d7e84a52a66ce3e00c4da79a7e5bbbe2317510f6d9537210fb6f"
+    },
+    {
+      "path": "run/init",
+      "bytes": 57440,
+      "sha256": "05ea19f9bc9d180e9bf9ab684d835e25418b6f5ce333f8180bd5c010004689ff"
+    },
+    {
+      "path": "run/initramfs.cpio.gz",
+      "bytes": 26872,
+      "sha256": "d1da6e0b351d4b23c20212f1909a6e3a28af0c23d195c0f78fe0fa5b131a0c40"
+    },
+    {
+      "path": "run/inputs-verified.txt",
+      "bytes": 1385,
+      "sha256": "7ffb0eb68db8815f2b1ca15b71b4bd43ba575734108de0ea52869f2fc11a44df"
+    },
+    {
+      "path": "run/inputs.sha256",
+      "bytes": 2501,
+      "sha256": "13a77b808777d43a23d2f359e3cdf0e6a97f630cc48b8acf9ebb0d3c77f62b94"
+    },
+    {
+      "path": "run/qemu-command.sh",
+      "bytes": 599,
+      "sha256": "c177757bb2f715126a981dcf825ea4a2bb7332ca0af8276ded45caa49cc3fe5b"
+    },
+    {
+      "path": "run/qemu-exit.txt",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "path": "run/run-script.executed.sh",
+      "bytes": 6179,
+      "sha256": "f960ed38805eaf493eebd228fbf4e92f64aa470d8e7b03e70f3c0dccdacbf63a"
+    },
+    {
+      "path": "run/toolchain.txt",
+      "bytes": 395,
+      "sha256": "0f68a9839ccf5fedf5b96aa2928960fb2ad361f875a9ddcc44ba56cec118720a"
+    },
+    {
+      "path": "validation/host-check.log",
+      "bytes": 8367,
+      "sha256": "9ace26cfb42d6d30a2253d3f9116b39c2785c296dfc1621b3620106c7046bf17"
+    },
+    {
+      "path": "validation/m4-freeze-check.log",
+      "bytes": 17471,
+      "sha256": "a1c6a11192eb86becc87ff797ea938453e63e19060098b7e83e795a1e88dbc5f"
+    }
+  ]
+}

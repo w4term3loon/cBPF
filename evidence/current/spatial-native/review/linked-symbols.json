@@ -1,0 +1,25 @@
+{
+  "nominal": {
+    "bpf_cheri_helper_gateway": 18446603338368907264,
+    "bpf_cheri_map_lookup_impl": 18446603338368907540,
+    "bpf_enter_sandbox": 18446603338368908612,
+    "ex_handler_bpf": 18446603338368912796,
+    "__bpf_call_base": 18446603338370241772,
+    "cbpf_map_area_alloc": 18446603338370269320,
+    "cbpf_array_value_cap": 18446603338370522744,
+    "array_map_alloc": 18446603338370524324,
+    "array_map_lookup_elem": 18446603338370525508
+  },
+  "runtime": {
+    "bpf_cheri_helper_gateway": 18446603338368907264,
+    "bpf_cheri_map_lookup_impl": 18446603338368907540,
+    "bpf_enter_sandbox": 18446603338368908612,
+    "ex_handler_bpf": 18446603338368912796,
+    "__bpf_call_base": 18446603338370241772,
+    "cbpf_map_area_alloc": 18446603338370269320,
+    "cbpf_array_value_cap": 18446603338370522744,
+    "array_map_alloc": 18446603338370524324,
+    "array_map_lookup_elem": 18446603338370525508
+  },
+  "inferred_relocation": 0
+}

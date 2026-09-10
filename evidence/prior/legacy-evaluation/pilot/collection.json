@@ -1,0 +1,241 @@
+{
+  "schema_version": "1.0.0",
+  "artifact_kind": "patch35_reviewer_pilot_completed_collection_receipt",
+  "recorded_date": "2026-08-31",
+  "status": "collected_and_validated",
+  "study_binding": {
+    "preregistration": {
+      "path": "research/reviewer-pilot/preregistration-v1.json",
+      "sha256": "888af2dc8fbb415344b38333f81a19845fda3a7411a2a4d1c9fab6e31f612dd1"
+    },
+    "schedule": {
+      "path": "research/reviewer-pilot/schedule-v1.json",
+      "sha256": "a5dd04a966bbe123633e16620edda3a12533af21756e31d8cdcac7427610b66a"
+    },
+    "deployment": {
+      "path": "linux/benchmarks/reviewer-pilot/deployment-bindings-v3.json",
+      "sha256": "bddff49ba961886a7888a1f9f38075c8aa589bd0ca57fb8d990af9df823003b6",
+      "deployment_id": "capebpf-patch35-reviewer-pilot-e93ed814-runtime-v3"
+    },
+    "kernel_source_receipt": {
+      "path": "linux/research/reviewer-pilot-overlay/source-receipt-v1.json",
+      "sha256": "aa8dc872209800369d0b657d6540cd6e23e10a00ea1e24b0444b5faa0bca7ba9"
+    },
+    "runtime_v3_readiness_receipt": {
+      "path": "linux/benchmarks/reviewer-pilot/collection-attempt-v3.json",
+      "sha256": "c3ed918c0733ee06bf8ed61a06d6036d094e613531ef4ae3f0ca707d4981a0b2"
+    }
+  },
+  "execution_tools": {
+    "launcher": {
+      "path": "linux/benchmarks/reviewer-pilot/run-qemu.sh",
+      "sha256": "7b35359a5c41c849fdfd38b5d3bfb8bb3f1fd4a7ddb37fe8215ec8e99fe51b4b"
+    },
+    "schedule_runner": {
+      "path": "linux/benchmarks/reviewer-pilot/run-schedule.py",
+      "sha256": "5dddfd2ef432fe020c7454421f963586675cff3894e0356204480b36432edb25"
+    },
+    "collection_normalizer": {
+      "path": "linux/benchmarks/reviewer-pilot/runtime_contract.py",
+      "sha256": "c56ab17388d0337e165529c3195a4bbd19fd8d9b823762fa754601528e078f3e"
+    },
+    "per_cell_canonical_validator": {
+      "path": "tools/reviewer-pilot/reviewer_pilot.py",
+      "sha256_at_collection": "b860e195254a25877b94d482e6328bf68aa59ca84337ab04c348431e567826ab",
+      "source_commit": "266cb34d8626b5fbbd97045597e4762de8c8edcc"
+    },
+    "assembly_and_ingest_validator": {
+      "path": "tools/reviewer-pilot/reviewer_pilot.py",
+      "sha256": "23b0c2f5aa80445dbb5c308109f583ba92dc8cf196c6c4b3b47e19475cde901a",
+      "source_commit": "9921d852c39b14a20e4279db14e761f84c137dcf"
+    },
+    "qemu": {
+      "path": "<private-path>/qemu-system-morello",
+      "sha256": "b0a0b21a9ee5e4b01a1f7d40bcb1ec6289cd51eab1a0f66deafc419b1db3e219",
+      "version_prefix": "QEMU emulator version 7.0.0"
+    },
+    "firmware": {
+      "path": "<private-path>/edk2-aarch64-code.fd",
+      "sha256": "b608de7c81a4cec0eb83422a73ee227618c30fe9513a582a6f9f786ce8d1dbf9"
+    },
+    "purecap_guest": {
+      "path": "linux/benchmarks/reviewer-pilot/artifacts/runtime-v3/reviewer-pilot-guest",
+      "sha256": "2843c9ad3cf27e8648a6491523491b312dc1095b4b7ee1d52a1d4490859ce7ed"
+    },
+    "initramfs": {
+      "path": "linux/benchmarks/reviewer-pilot/artifacts/runtime-v3/initramfs.cpio.gz",
+      "sha256": "69b301a140917c6f2d7a255c931d3727c432fcf1958a1d1d038c36cf1943a864"
+    }
+  },
+  "run": {
+    "exit_status": 0,
+    "output_directory": "linux/benchmarks/reviewer-pilot/artifacts/full-schedule-v3",
+    "summary": {
+      "path": "linux/benchmarks/reviewer-pilot/artifacts/full-schedule-v3/schedule-run-summary.json",
+      "sha256": "515b408d1900cb271e086a2af9a5d188ffd7b8564a2200a04686fde0079aec9f",
+      "size_bytes": 101684,
+      "runnable_cells": 165,
+      "passed_cells": 165,
+      "retained_failures": 0,
+      "not_applicable_cells_not_run": 15,
+      "ingest_invoked": false
+    },
+    "console_set": {
+      "file_count": 165,
+      "total_size_bytes": 12664432,
+      "aggregate_sha256": "95ae2f57643c52345e41c8127b92289dd32b8a32981d142a34b40821cd0ee177"
+    },
+    "per_cell_observation_set": {
+      "file_count": 165,
+      "total_size_bytes": 1038540,
+      "aggregate_sha256": "2e9c178d6ea493a3bb5c3a86f3ad2e43a599ad272198e1dc884f6bb88cfcf728"
+    },
+    "aggregate_digest_method": "For files sorted by basename, SHA-256 over basename, NUL, file SHA-256 hex, NUL, decimal size, newline",
+    "failed_artifact_count": 0
+  },
+  "assembly": {
+    "observations": {
+      "path": "linux/benchmarks/reviewer-pilot/artifacts/reviewer-pilot-observations-v3.json",
+      "sha256": "2a81cc1b446d95354a66a639cf848bb027d3ec96481c9dce9e7dd769c3fc69ca",
+      "size_bytes": 1112391,
+      "rows": 180,
+      "applicable_runtime_rows": 165,
+      "explicit_not_applicable_rows": 15,
+      "unique_observation_ids": 180
+    },
+    "initial_fail_closed_check": {
+      "status": "rejected_without_output",
+      "cause": "top-level JSON object member order differed between sorted per-cell contexts and schema-order schedule objects",
+      "resolution": "member order was made non-semantic only for the exact top-level observation field set; missing or extra members remain rejected",
+      "source_commit": "626f2055fec5e791b2611093595d464859b67456",
+      "mutation_test": "reversed member order accepted; missing member rejected"
+    },
+    "final_status": "pass"
+  },
+  "ingest_and_validation": {
+    "result": {
+      "path": "linux/benchmarks/reviewer-pilot/artifacts/reviewer-pilot-result-v3-analysis-v2.json",
+      "sha256": "69c5e7c9bd5b73354f880d793ae85505effb2781238852797c6829c58cc05271",
+      "size_bytes": 1276137,
+      "status": "collected",
+      "collection_ready": true,
+      "observation_count": 180,
+      "majority_voting_used": false,
+      "validation_decision": "accept_result"
+    },
+    "superseded_analysis_result": {
+      "path": "linux/benchmarks/reviewer-pilot/artifacts/reviewer-pilot-result-v3.json",
+      "sha256": "d1169b63ea7f0a7af8dabc5ab9aa11f319ccc7ccd463f10a2844b6c55fcae0bc",
+      "status": "retained_not_final",
+      "cause": "the initial analyzer required gate rejection and misclassified an earlier verifier rejection for IND-ROOT-SUMMARY-MISBIND",
+      "observations_changed": false
+    },
+    "analyzer_tests": {
+      "count": 12,
+      "status": "pass",
+      "rejection_mutations": [
+        "verifier rejection before gate accepted",
+        "gate rejection after verifier acceptance accepted",
+        "accepted path rejected",
+        "reached runtime root rejected",
+        "completed effect rejected"
+      ]
+    },
+    "runtime_tests": {
+      "count": 21,
+      "status": "pass"
+    }
+  },
+  "mechanical_result_summary": {
+    "unresolved_rows_by_property_and_mode": 0,
+    "four_reports_reject_before_runtime_root": {
+      "passed": [
+        "IND-CLASS-MISBIND",
+        "IND-IDENTITY-MISBIND",
+        "IND-ROOT-SUMMARY-MISBIND",
+        "IND-ELIGIBILITY-MISBIND"
+      ],
+      "failed": [],
+      "unresolved": []
+    },
+    "delegated_disabled_exact_broad_causal_pattern": {
+      "S_spatial": {
+        "passed": [],
+        "failed": [
+          "IND-VAR-OFFSET-OVER",
+          "IND-FINAL-RANGE-OVER",
+          "IND-CHECK-ARITH-UNDER"
+        ],
+        "unresolved": []
+      },
+      "S_identity": {
+        "passed": [],
+        "failed": [
+          "IND-VAR-OFFSET-OVER",
+          "IND-FINAL-RANGE-OVER",
+          "IND-CHECK-ARITH-UNDER"
+        ],
+        "unresolved": []
+      }
+    },
+    "assignment_boundary_checks": {
+      "ASSIGN-LOADER-PROVIDER-BINDING": {
+        "causal_modes": [
+          "patch35_capebpf_disabled",
+          "patch35_exact_authority",
+          "patch35_broad_authority_diagnostic"
+        ],
+        "failed_modes": [],
+        "unresolved_modes": []
+      },
+      "ASSIGN-HELPER-SELECTED-ELEMENT": {
+        "causal_modes": [
+          "patch35_capebpf_disabled",
+          "patch35_exact_authority",
+          "patch35_broad_authority_diagnostic"
+        ],
+        "failed_modes": [],
+        "unresolved_modes": []
+      },
+      "ASSIGN-KERNEL-EXTENT": {
+        "causal_modes": [
+          "patch35_exact_authority"
+        ],
+        "telemetry_only_modes": [
+          "patch35_broad_authority_diagnostic"
+        ],
+        "not_applicable_modes": [
+          "patch35_capebpf_disabled"
+        ],
+        "failed_modes": [],
+        "unresolved_modes": []
+      }
+    },
+    "interpretation_boundary": "Artifact validation success means the collected result is structurally and mechanically admissible; it does not turn failed preregistered causal criteria into positive findings."
+  },
+  "retained_attempts": [
+    {
+      "path": "linux/benchmarks/reviewer-pilot/artifacts/full-schedule-v1",
+      "status": "retained_non_assemblable_integration_failure"
+    },
+    {
+      "path": "linux/benchmarks/reviewer-pilot/artifacts/full-schedule-v2",
+      "status": "retained_non_assemblable_integration_failure"
+    },
+    {
+      "path": "linux/benchmarks/reviewer-pilot/artifacts/full-schedule-v3",
+      "status": "complete_zero_failure_collection"
+    }
+  ],
+  "evidence_boundary": {
+    "reviewer_pilot_runtime_observations": 165,
+    "reviewer_pilot_explicit_not_applicable_rows": 15,
+    "reviewer_pilot_total_rows": 180,
+    "separate_compact_v2_scheduled_observations": 936,
+    "separate_compact_v2_normalized_observations": 0,
+    "compact_v2_import_permitted": false,
+    "quantified_verifier_trust_reduction_claim": false,
+    "net_tcb_reduction_claim": false,
+    "fabricated_observations": 0
+  }
+}

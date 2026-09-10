@@ -1,0 +1,125 @@
+{
+  "artifact_kind": "capebpf_faulty_vs_software_normalized_observation",
+  "assigned_inputs": {
+    "B": 18446462598741737744,
+    "E": 16,
+    "W": 8,
+    "attempted_start": 18446462598741737760,
+    "attempted_top": 18446462598741737768,
+    "cursor_before_displacement": 18446462598741737752,
+    "d": 8,
+    "relations_valid": true
+  },
+  "blockers": [],
+  "claim_eligible": true,
+  "completion_record": {
+    "path": "linux/benchmarks/faulty-vs-software-supplement/artifacts/result-v2/collection/sw.v3.b02.r01.disabled.console.txt.completion.json",
+    "sha256": "1c42192e0b2a1d466d8d20747bd8bc2fcf5a743550d6549d379f859c0b2257df"
+  },
+  "dual_handoff": {
+    "all_pass": true,
+    "common_fields_valid": true,
+    "entry_line_number": 611,
+    "entry_return_native_index": 26,
+    "entry_return_pc": 18446603338389682620,
+    "expected_count": 2,
+    "helper_line_number": 617,
+    "helper_return_native_index": 72,
+    "helper_return_pc": 18446603338389682804,
+    "native_pc_derivation_valid": true,
+    "observed_count": 2,
+    "post_fixup_helper_call_sites": [
+      6
+    ],
+    "role_order_valid": true
+  },
+  "fault_isolation": {
+    "final_reject_overridden_once": true,
+    "isolated": true,
+    "sound_va": true
+  },
+  "identity_checks": {
+    "all_pass": true,
+    "bpf_ancestry": true,
+    "canonical_workload": true,
+    "fact_gate_handoff": true,
+    "object_bytes": true,
+    "provider_binding": true
+  },
+  "infrastructure": {
+    "init_complete": true,
+    "init_status": 0,
+    "normalizer_completed": true,
+    "qemu_exit_status": 0,
+    "timed_out": false
+  },
+  "launch_record": {
+    "path": "linux/benchmarks/faulty-vs-software-supplement/artifacts/result-v2/collection/sw.v3.b02.r01.disabled.console.txt.launch.json",
+    "sha256": "541a7930730f552c206bbf589c25329b3b250af679330cf4cb10af14eb27e1e6"
+  },
+  "native_guard": {
+    "all_map_sites_guarded": false,
+    "branch_targets": false,
+    "checker_accept": true,
+    "checker_profile_policy": "reviewer_pilot_v1",
+    "complete_image": true,
+    "failure_stub": true,
+    "guard_template": false,
+    "mode_valid": true,
+    "native_sha256": "24aa3f377eb28d5372078c41e84003c67e165a1e79f076dbdef589a098831faa",
+    "site14_byte_count": 24,
+    "site14_word_count": 6,
+    "site9_byte_count": 4,
+    "site9_load_word": 3804268149,
+    "site9_word_count": 1,
+    "target_store_word": 3804267124,
+    "whole_image_byte_count": 432,
+    "whole_image_word_count": 108
+  },
+  "observation": {
+    "block": 2,
+    "global_position": 3,
+    "mode": "software_disabled",
+    "observation_id": "sw.v3.b02.r01.disabled"
+  },
+  "oracle_classification": "software_disabled_effect",
+  "outcome": {
+    "all_monitored_unchanged": false,
+    "bytes_after": {
+      "0": "101112131415161718191a1b1c1d1e1f",
+      "1": "2435465768798a9b3031323334353637",
+      "2": "404142434445464748494a4b4c4d4e4f"
+    },
+    "bytes_before": {
+      "0": "101112131415161718191a1b1c1d1e1f",
+      "1": "28292a2b2c2d2e2f3031323334353637",
+      "2": "404142434445464748494a4b4c4d4e4f"
+    },
+    "capability_fault": false,
+    "completed_target_effect": true,
+    "load": "accept",
+    "retval": 42,
+    "run": "completed",
+    "successor_token_retired": true
+  },
+  "raw_console": {
+    "path": "linux/benchmarks/faulty-vs-software-supplement/artifacts/result-v2/collection/sw.v3.b02.r01.disabled.console.txt",
+    "sha256": "5eb6d88e0f962864b3284744dc0172410b70f169c718abdeeb98eb179f55389a",
+    "size_bytes": 64381
+  },
+  "retention_status": "complete",
+  "runtime_authority": {
+    "address": 18446462598741737744,
+    "base": 0,
+    "length": 18446744073709551615,
+    "mapped_permissions": 3,
+    "mode_valid": true,
+    "non_executable_data": true,
+    "raw_hw_permissions": 200189,
+    "tag": 1,
+    "top": 18446744073709551615,
+    "unmodeled_hw_permissions": 3581
+  },
+  "schema_version": "1.0.0",
+  "study_id": "capebpf-faulty-vs-software-supplement-v3"
+}

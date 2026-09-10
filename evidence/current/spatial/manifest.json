@@ -1,0 +1,96 @@
+{
+  "project": "CBPF",
+  "scope": "Reduced spatial-provider patch application and object compilation only; no kernel image, boot, or new runtime/CVE experiment.",
+  "run_directory": "${REPOSITORY}/build/spatial-check.hA1pbw",
+  "source_tree": "e6c69574c16bc2b9bce06329f9ac3f4b3269e79a",
+  "ancestry": {
+    "original_patch": "${PRIOR_PROVIDER_SOURCE}/provider-cve/patches/0001-provider-retained-array-authority.patch",
+    "original_patch_sha256": "c558e7082c987380ef29dc070e00484390f2b3936d9347a661880e658d284b39"
+  },
+  "result": {
+    "patch_application": "PASS",
+    "requested_objects": 3,
+    "kernel_changes": {
+      "added": 193,
+      "deleted": 1,
+      "files": 5
+    },
+    "verifier_unchanged_from_substrate": true,
+    "spatial_offload": false,
+    "historical_test_modes": false,
+    "kernel_image": false,
+    "guest_execution": false
+  },
+  "files": [
+    {
+      "file": "evidence/current/spatial/array-authority.patch",
+      "bytes": 12851,
+      "sha256": "ac74717a7dbd2c61760115c1b8b719e52d27d60d02957a2b73c3ff155206c4ac"
+    },
+    {
+      "file": "evidence/current/spatial/builder-image.txt",
+      "bytes": 178,
+      "sha256": "64cd0c0d49fe5cf28ed75cedcc141ccd9c5698afaf760b7a5b49b82b06df120c"
+    },
+    {
+      "file": "evidence/current/spatial/check_spatial.executed.sh",
+      "bytes": 8650,
+      "sha256": "ea5a572f8674d8e0bebab52b520cfea6cb681221fc0980749b8b25c3ac526a96"
+    },
+    {
+      "file": "evidence/current/spatial/compile.log",
+      "bytes": 6157,
+      "sha256": "4623557d8e3423aa000242eb5b7af7a18d1f54f773cc8e363169e06d1b9b4553"
+    },
+    {
+      "file": "evidence/current/spatial/compiler.sha256",
+      "bytes": 106,
+      "sha256": "e9e7ce47ac858a538ac20d3ed98a735c7ea17557ef8751e5b4ae63c5c2f4ec5c"
+    },
+    {
+      "file": "evidence/current/spatial/compiler.txt",
+      "bytes": 222,
+      "sha256": "fa637d12c4f5cecdca7898e378a80db8be25e70585400728f3539c6741f68ff3"
+    },
+    {
+      "file": "evidence/current/spatial/inputs.sha256",
+      "bytes": 607,
+      "sha256": "bdcc8e705a5944bfb59202968f0be3feb922921352bb76799c38aa5118380a1c"
+    },
+    {
+      "file": "evidence/current/spatial/kernel.config",
+      "bytes": 132831,
+      "sha256": "c1584198a3571a100e72cb5a458c31699fce6d4c0593442a758af2d0ba2b0834"
+    },
+    {
+      "file": "evidence/current/spatial/object-verification.json",
+      "bytes": 958,
+      "sha256": "5dedd8266b0b8f6072bf13ec56c9de7cda244d763119b7d9af27f4518b88b69a"
+    },
+    {
+      "file": "evidence/current/spatial/outputs.sha256",
+      "bytes": 601,
+      "sha256": "ef7fb15e033203cda6d1aadcc7e659a532090c699d7c5c4c139f39f72babd24d"
+    },
+    {
+      "file": "evidence/current/spatial/patch-numstat.txt",
+      "bytes": 136,
+      "sha256": "692b8e9fd2c9434dbddb06d7a9538dce93d4dab179890a6703b71ada34fed087"
+    },
+    {
+      "file": "evidence/current/spatial/patched-sources.sha256",
+      "bytes": 908,
+      "sha256": "916048c4ab4df73066e22923062054a5edad9acd1859d7898fb234c66b39899b"
+    },
+    {
+      "file": "evidence/current/spatial/source-pins.json",
+      "bytes": 407,
+      "sha256": "e7043d3428d26caeec38008bdbfc5d96cd74cb333b685a1c8e6a2d29e8315f11"
+    },
+    {
+      "file": "evidence/current/spatial/summary.txt",
+      "bytes": 197,
+      "sha256": "b87309719991c085a0e30d03e95e92c70bcdf2d7980671065e657192d49a18ba"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="570" viewBox="0 0 1040 570" role="img" aria-labelledby="title desc">
+  <title id="title">Authority assignment and enforcement in two separate cBPF profiles</title>
+  <desc id="desc">Each profile retains normal verification and trusted native translation. The spatial provider binds logical extent, native operands retain the capability, and CHERI checks accesses. The ownership provider binds acquisition identity, native copies retain it, and software gates check private liveness before effects and terminal cleanup. The profiles are not composed.</desc>
+  <rect width="1040" height="570" fill="white"/>
+  <g font-family="Lato, Arial, sans-serif" fill="#192c36" font-size="23" text-anchor="middle">
+    <text x="255" y="30" fill="#147d83" font-weight="bold" font-size="26">SELECTED-VALUE SPATIAL AUTHORITY</text>
+    <text x="785" y="30" fill="#ac4f36" font-weight="bold" font-size="26">PER-ACQUISITION OWNERSHIP</text>
+    <g fill="none" stroke="#c8d3d6" stroke-width="2">
+      <rect x="20" y="55" width="470" height="66"/><rect x="550" y="55" width="470" height="66"/>
+      <rect x="20" y="155" width="470" height="66"/><rect x="550" y="155" width="470" height="66"/>
+      <rect x="20" y="255" width="470" height="66"/><rect x="550" y="255" width="470" height="66"/>
+      <rect x="20" y="355" width="470" height="66"/><rect x="550" y="355" width="470" height="66"/>
+    </g>
+    <text x="255" y="82">Normal verifier admission</text><text x="255" y="108">Trusted native translation</text>
+    <text x="785" y="82">Normal verifier admission</text><text x="785" y="108">Trusted native translation</text>
+    <text x="255" y="182" font-weight="bold">Trusted array provider</text><text x="255" y="208">Logical size bounds; stride locates</text>
+    <text x="785" y="182" font-weight="bold">Trusted acquisition provider</text><text x="785" y="208">Fresh identity; private validity cell</text>
+    <text x="255" y="282">Full capability return</text><text x="255" y="308">Preserved in the native operand</text>
+    <text x="785" y="282">Full capability aliases</text><text x="785" y="308">Preserved through copies and spill</text>
+    <text x="255" y="382" font-weight="bold">CHERI bounds / permission check</text><text x="255" y="408">On the selected scalar access</text>
+    <text x="785" y="382" font-weight="bold">Gate: identity + private liveness</text><text x="785" y="408">Before read or ordered consume</text>
+    <text x="255" y="472" font-weight="bold">Selected load / store</text>
+    <text x="785" y="461" font-weight="bold">Permitted effect, or terminal rejection</text><text x="785" y="488">Trusted cleanup consumes remaining rights</text>
+    <text x="520" y="543" font-size="21" fill="#56636b">Separate kernel profiles. Assignment, translation and mediation remain trusted.</text>
+  </g>
+  <g fill="none" stroke="#56636b" stroke-width="2.5">
+    <path d="M255 123V150 M247 142L255 150L263 142 M785 123V150 M777 142L785 150L793 142"/>
+    <path d="M255 223V250 M247 242L255 250L263 242 M785 223V250 M777 242L785 250L793 242"/>
+    <path d="M255 323V350 M247 342L255 350L263 342 M785 323V350 M777 342L785 350L793 342"/>
+    <path d="M255 423V450 M247 442L255 450L263 442 M785 423V439 M777 431L785 439L793 431"/>
+  </g>
+</svg>

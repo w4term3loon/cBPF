@@ -1,0 +1,7 @@
+1	0	arch/arm64/net/Makefile
+7	0	arch/arm64/net/bpf_jit_comp.c
+3	0	include/linux/bpf.h
+11	0	kernel/bpf/Kconfig
+4	0	kernel/bpf/core.c
+18	0	kernel/bpf/syscall.c
+5	0	net/bpf/test_run.c

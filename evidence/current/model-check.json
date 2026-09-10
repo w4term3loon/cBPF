@@ -1,0 +1,29 @@
+{
+  "model": "per-acquisition ownership",
+  "bounds": {
+    "registers": 4,
+    "spills": 2,
+    "successful_acquisitions": 2,
+    "objects": 1,
+    "object_value": 42,
+    "baseline_refcount": 1
+  },
+  "check": {
+    "verified": true,
+    "reachable_states": 17828,
+    "terminal_states": 14783,
+    "transitions_checked": 149205
+  },
+  "object_wide_revocation_mutant": {
+    "verified": false,
+    "error": "alias independence: release of 1 also affects acquisition 2",
+    "counterexample": [
+      "acquire(0): success",
+      "acquire(1): success",
+      "release(0): consumed"
+    ],
+    "states_discovered_before_failure": 67,
+    "transitions_checked": 287
+  },
+  "mutation_killed": true
+}

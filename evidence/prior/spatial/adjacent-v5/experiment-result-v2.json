@@ -1,0 +1,494 @@
+{
+  "artifact_kind": "capebpf_faulty_vs_experiment_result_v2",
+  "bindings": {
+    "aee_evidence_ledger": {
+      "path": "research/faulty-vs-differential-v5/aee-post-result-ledger-v1.json",
+      "sha256": "adb49cb11fa15296cb9fee10809876a0ef8278faa0682076d9b6cd1f2febe574"
+    },
+    "attempt_journal": {
+      "path": "linux/benchmarks/faulty-vs-differential/artifacts/result-v5-attempt-v1.jsonl",
+      "sha256": "46793a9150ed55001b140bc05177da4ebe509585d3eb6dbe57c6bb55c8cfd835"
+    },
+    "collection_session": {
+      "path": "${INHERITED_SOURCE}/linux/benchmarks/faulty-vs-differential/artifacts/result-v5/collection/collection-session.jsonl",
+      "sha256": "4a13992b3871df1b4017c901de03e58164d76ccd9b03cd4df1dd4973f9804eda"
+    },
+    "deployment": {
+      "path": "research/faulty-vs-differential-v5/deployment-binding-v2.json",
+      "sha256": "c9722424ac0bc17e0922f87206d686fea68286775cc06f358a7f00f72ed70e93"
+    },
+    "preregistration": {
+      "path": "research/faulty-vs-differential-v5/preregistration-v1.json",
+      "sha256": "95f58764d2e8978a7651e064d3d4abea29904e30a2f6d4784de0782d7e12d763"
+    },
+    "preregistration_freeze": {
+      "path": "research/faulty-vs-differential-v5/preregistration-v1-freeze-receipt.json",
+      "sha256": "81d9af22d0fec97d0eb642d81a979852b3774780b66ef3b9983c8dcaaceb72bf"
+    },
+    "schedule": {
+      "path": "research/faulty-vs-differential-v5/schedule-v1.json",
+      "sha256": "62f0481fa3ca3e4424a54797ab2556bbfe811e9f53abf399f12331a187c7bb36"
+    },
+    "schedule_run_summary": {
+      "path": "${INHERITED_SOURCE}/linux/benchmarks/faulty-vs-differential/artifacts/result-v5/collection/schedule-run-summary.json",
+      "sha256": "008a5c427aff8be929aa2541b8967c6749cf943a28e1493a87ff7488242cbd0b"
+    },
+    "vertical_record": {
+      "path": null,
+      "sha256": null
+    }
+  },
+  "blockers": [],
+  "claim_eligibility": {
+    "faithful_whole_aee_comparison": false,
+    "primary_causal_claim": true,
+    "reason": "First matching frozen v5 classification: bounded_fault_class_differentiation_supported.",
+    "selected_aee_offset_comparison": true,
+    "vertical_slice": false
+  },
+  "classification": "bounded_fault_class_differentiation_supported",
+  "classification_scope": {
+    "faithful_whole_aee_comparison": false,
+    "proposed_aee_difference_refuted_available": false,
+    "selected_aee_offset_mechanism_only": true
+  },
+  "cross_mode_checks": {
+    "faulted_mode_permission_equality": {
+      "all_fields_present": true,
+      "all_loaded": true,
+      "mapped_permissions_equal": true,
+      "observations": [
+        {
+          "load_accepted": true,
+          "mapped_permissions": "0x00000003",
+          "mode": "faulty_baseline",
+          "observation_id": "vs.replica.v5.b01.r01.baseline",
+          "raw_hardware_permissions": "0x0000000000030dfd",
+          "unmodeled_hardware_permissions": "0x0000000000000dfd"
+        },
+        {
+          "load_accepted": true,
+          "mapped_permissions": "0x00000003",
+          "mode": "faithful_aee_offset",
+          "observation_id": "vs.replica.v5.b01.r03.aee",
+          "raw_hardware_permissions": "0x0000000000030dfd",
+          "unmodeled_hardware_permissions": "0x0000000000000dfd"
+        },
+        {
+          "load_accepted": true,
+          "mapped_permissions": "0x00000003",
+          "mode": "capebpf_exact",
+          "observation_id": "vs.replica.v5.b01.r04.exact",
+          "raw_hardware_permissions": "0x0000000000030dfd",
+          "unmodeled_hardware_permissions": "0x0000000000000dfd"
+        },
+        {
+          "load_accepted": true,
+          "mapped_permissions": "0x00000003",
+          "mode": "capebpf_broad",
+          "observation_id": "vs.replica.v5.b01.r05.broad",
+          "raw_hardware_permissions": "0x0000000000030dfd",
+          "unmodeled_hardware_permissions": "0x0000000000000dfd"
+        },
+        {
+          "load_accepted": true,
+          "mapped_permissions": "0x00000003",
+          "mode": "capebpf_broad",
+          "observation_id": "vs.replica.v5.b02.r01.broad",
+          "raw_hardware_permissions": "0x0000000000030dfd",
+          "unmodeled_hardware_permissions": "0x0000000000000dfd"
+        },
+        {
+          "load_accepted": true,
+          "mapped_permissions": "0x00000003",
+          "mode": "faithful_aee_offset",
+          "observation_id": "vs.replica.v5.b02.r02.aee",
+          "raw_hardware_permissions": "0x0000000000030dfd",
+          "unmodeled_hardware_permissions": "0x0000000000000dfd"
+        },
+        {
+          "load_accepted": true,
+          "mapped_permissions": "0x00000003",
+          "mode": "faulty_baseline",
+          "observation_id": "vs.replica.v5.b02.r03.baseline",
+          "raw_hardware_permissions": "0x0000000000030dfd",
+          "unmodeled_hardware_permissions": "0x0000000000000dfd"
+        },
+        {
+          "load_accepted": true,
+          "mapped_permissions": "0x00000003",
+          "mode": "capebpf_exact",
+          "observation_id": "vs.replica.v5.b02.r05.exact",
+          "raw_hardware_permissions": "0x0000000000030dfd",
+          "unmodeled_hardware_permissions": "0x0000000000000dfd"
+        }
+      ],
+      "raw_hardware_permissions_equal": true,
+      "required_modes": [
+        "faulty_baseline",
+        "faithful_aee_offset",
+        "capebpf_exact",
+        "capebpf_broad"
+      ],
+      "required_observation_count": 8,
+      "status": "passed",
+      "unmodeled_hardware_permissions_equal": true
+    }
+  },
+  "launch_governance": {
+    "arbitrary_process_crash_atomicity_claimed": false,
+    "attempt_record_count": 2,
+    "attempt_start_sha256": "b101d20435eddb71cc3b8894658c0f8750ea2a4680d2230ee7f6d70c03bc73e0",
+    "attempt_terminal_clean": true,
+    "attempt_terminal_exception_message": null,
+    "attempt_terminal_exception_type": null,
+    "attempt_terminal_exit_status": 0,
+    "attempt_tuple_validated": true,
+    "canonical_argv": [
+      "run-schedule",
+      "--deployment",
+      "research/faulty-vs-differential-v5/deployment-binding-v2.json",
+      "--output-dir",
+      "linux/benchmarks/faulty-vs-differential/artifacts/result-v5/collection",
+      "--timeout",
+      "300",
+      "--authorization",
+      "research/faulty-vs-differential-v5/launch-authorization-v2.json",
+      "--authorization-sha256",
+      "17f80c04c65668d0f9c074bd0421bbc00f23947d3ed9e17b6105bbf4c68fe102",
+      "--permit-validation",
+      "research/faulty-vs-differential-v5/permit-validation-receipt-v2.json",
+      "--permit-validation-sha256",
+      "b9ac869d49563003da5e27a41986431ea044b3d34573624b30bd059626681116"
+    ],
+    "canonical_result_path": "linux/benchmarks/faulty-vs-differential/artifacts/result-v5/experiment-result-v2.json",
+    "full_validation_after_durable_attempt_start": true,
+    "full_validation_before_result_parent_and_qemu": true,
+    "process_isolation_claimed": false
+  },
+  "observations": [
+    {
+      "block": 1,
+      "blockers": [],
+      "claim_eligible": true,
+      "completion_record": {
+        "path": "linux/benchmarks/faulty-vs-differential/artifacts/result-v5/collection/vs.replica.v5.b01.r01.baseline.console.txt.completion.json",
+        "sha256": "b739fd6215e582e4089bd49533f4f300b8f356cbda7c8d590def105e657839f4"
+      },
+      "launch_record": {
+        "path": "linux/benchmarks/faulty-vs-differential/artifacts/result-v5/collection/vs.replica.v5.b01.r01.baseline.console.txt.launch.json",
+        "sha256": "af8c6e8623076ecb8bf8be397a27ffef8ae02e4aad4302a1885d3524507e8a87"
+      },
+      "mode": "faulty_baseline",
+      "normalized_observation": {
+        "path": "linux/benchmarks/faulty-vs-differential/artifacts/result-v5/collection/vs.replica.v5.b01.r01.baseline.console.txt.observation.json",
+        "sha256": "bcac668d08f36ee456eb5e2cb9ba674598d7afed0d3c5e7208b1b950845d95f2"
+      },
+      "observation_id": "vs.replica.v5.b01.r01.baseline",
+      "oracle_classification": "baseline_live_control",
+      "position": 1,
+      "raw_console": {
+        "path": "linux/benchmarks/faulty-vs-differential/artifacts/result-v5/collection/vs.replica.v5.b01.r01.baseline.console.txt",
+        "sha256": "31730d9519624b73734cf7b789d7c16470ae72a768bcdb36418a00cfd388c769"
+      },
+      "retention_status": "complete"
+    },
+    {
+      "block": 1,
+      "blockers": [],
+      "claim_eligible": true,
+      "completion_record": {
+        "path": "linux/benchmarks/faulty-vs-differential/artifacts/result-v5/collection/vs.replica.v5.b01.r02.fixed.console.txt.completion.json",
+        "sha256": "191ba69c8b83af9482267b9bc37cbd7ac68dff1671cadb91f0170e74b82d1dc1"
+      },
+      "launch_record": {
+        "path": "linux/benchmarks/faulty-vs-differential/artifacts/result-v5/collection/vs.replica.v5.b01.r02.fixed.console.txt.launch.json",
+        "sha256": "bc7ab7c7e079a8f69219c7f3e8ae9541a999d8fef6213de4932d3844608ecaef"
+      },
+      "mode": "fixed_calibration",
+      "normalized_observation": {
+        "path": "linux/benchmarks/faulty-vs-differential/artifacts/result-v5/collection/vs.replica.v5.b01.r02.fixed.console.txt.observation.json",
+        "sha256": "8787f1c6a54ee3054c6dd7c42a097489cf547822fc87796ff67fdf3801e24a59"
+      },
+      "observation_id": "vs.replica.v5.b01.r02.fixed",
+      "oracle_classification": "fixed_reject",
+      "position": 2,
+      "raw_console": {
+        "path": "linux/benchmarks/faulty-vs-differential/artifacts/result-v5/collection/vs.replica.v5.b01.r02.fixed.console.txt",
+        "sha256": "eac16801e1058d92721b5fba973d3719789ababda63b8e6aadc277778c0cc9cb"
+      },
+      "retention_status": "complete"
+    },
+    {
+      "block": 1,
+      "blockers": [],
+      "claim_eligible": true,
+      "completion_record": {
+        "path": "linux/benchmarks/faulty-vs-differential/artifacts/result-v5/collection/vs.replica.v5.b01.r03.aee.console.txt.completion.json",
+        "sha256": "de4e883d25c3d27398a07324a2e132d72d2d199382a579e9240bb134eecc3adb"
+      },
+      "launch_record": {
+        "path": "linux/benchmarks/faulty-vs-differential/artifacts/result-v5/collection/vs.replica.v5.b01.r03.aee.console.txt.launch.json",
+        "sha256": "d74af9493b2bdb4bfcbec06a4dda64d461d27dac976460054c9a5d2d7c1dbd68"
+      },
+      "mode": "faithful_aee_offset",
+      "normalized_observation": {
+        "path": "linux/benchmarks/faulty-vs-differential/artifacts/result-v5/collection/vs.replica.v5.b01.r03.aee.console.txt.observation.json",
+        "sha256": "bdbcbf73e096e0c5b0e0ade6bfe3553c7f104c010f7f300424542b427bc63bea"
+      },
+      "observation_id": "vs.replica.v5.b01.r03.aee",
+      "oracle_classification": "aee_mechanism_eligible_effect_completed",
+      "position": 3,
+      "raw_console": {
+        "path": "linux/benchmarks/faulty-vs-differential/artifacts/result-v5/collection/vs.replica.v5.b01.r03.aee.console.txt",
+        "sha256": "a71b0d396928c8cd93665df3668a315858e58462308214c6c072c72c7e85dd51"
+      },
+      "retention_status": "complete"
+    },
+    {
+      "block": 1,
+      "blockers": [],
+      "claim_eligible": true,
+      "completion_record": {
+        "path": "linux/benchmarks/faulty-vs-differential/artifacts/result-v5/collection/vs.replica.v5.b01.r04.exact.console.txt.completion.json",
+        "sha256": "621faa91473e850d714349009e5409f5d20d47c9e53bf12e414f14524580046e"
+      },
+      "launch_record": {
+        "path": "linux/benchmarks/faulty-vs-differential/artifacts/result-v5/collection/vs.replica.v5.b01.r04.exact.console.txt.launch.json",
+        "sha256": "801d7feeb2045c5c2d8fcedfc6afcee5c6f21a860f410f3740113ff85883e8ec"
+      },
+      "mode": "capebpf_exact",
+      "normalized_observation": {
+        "path": "linux/benchmarks/faulty-vs-differential/artifacts/result-v5/collection/vs.replica.v5.b01.r04.exact.console.txt.observation.json",
+        "sha256": "49068556463c9cc9717331758593af7c20ba26430f9cb043ab62a0953712167d"
+      },
+      "observation_id": "vs.replica.v5.b01.r04.exact",
+      "oracle_classification": "exact_chain_eligible_fault_before_effect",
+      "position": 4,
+      "raw_console": {
+        "path": "linux/benchmarks/faulty-vs-differential/artifacts/result-v5/collection/vs.replica.v5.b01.r04.exact.console.txt",
+        "sha256": "0937047c17a210e76f82e2eec710765e91bfc49f40e7c2942034e1bcad5b65e5"
+      },
+      "retention_status": "complete"
+    },
+    {
+      "block": 1,
+      "blockers": [],
+      "claim_eligible": true,
+      "completion_record": {
+        "path": "linux/benchmarks/faulty-vs-differential/artifacts/result-v5/collection/vs.replica.v5.b01.r05.broad.console.txt.completion.json",
+        "sha256": "548f77ffd509fab036e667b8ceb045568a2f3ed5b1308df7bbc2888d36425b4a"
+      },
+      "launch_record": {
+        "path": "linux/benchmarks/faulty-vs-differential/artifacts/result-v5/collection/vs.replica.v5.b01.r05.broad.console.txt.launch.json",
+        "sha256": "54830e9efc38caf424cf089adb9af70e47e4478131ba740cfc2df63873ecd91b"
+      },
+      "mode": "capebpf_broad",
+      "normalized_observation": {
+        "path": "linux/benchmarks/faulty-vs-differential/artifacts/result-v5/collection/vs.replica.v5.b01.r05.broad.console.txt.observation.json",
+        "sha256": "99589993c9339cb4fb9fef2cad2c32456144d64beb3b59b1aec0af301dbb338f"
+      },
+      "observation_id": "vs.replica.v5.b01.r05.broad",
+      "oracle_classification": "broad_live_control",
+      "position": 5,
+      "raw_console": {
+        "path": "linux/benchmarks/faulty-vs-differential/artifacts/result-v5/collection/vs.replica.v5.b01.r05.broad.console.txt",
+        "sha256": "4fbdac5fe0d44bf9e98b315af12cf31563967e0f1712fd7efa60406fdcd9f7c0"
+      },
+      "retention_status": "complete"
+    },
+    {
+      "block": 2,
+      "blockers": [],
+      "claim_eligible": true,
+      "completion_record": {
+        "path": "linux/benchmarks/faulty-vs-differential/artifacts/result-v5/collection/vs.replica.v5.b02.r01.broad.console.txt.completion.json",
+        "sha256": "112e83d478a0c851aef63bf70a24d5485c649e1bf7b5e337f5bfd1b1ff056b8b"
+      },
+      "launch_record": {
+        "path": "linux/benchmarks/faulty-vs-differential/artifacts/result-v5/collection/vs.replica.v5.b02.r01.broad.console.txt.launch.json",
+        "sha256": "4bff39b56b3e7ed4204f790eaf3e4ef9c1876670ab7d350dd21c7d1a7f493c4f"
+      },
+      "mode": "capebpf_broad",
+      "normalized_observation": {
+        "path": "linux/benchmarks/faulty-vs-differential/artifacts/result-v5/collection/vs.replica.v5.b02.r01.broad.console.txt.observation.json",
+        "sha256": "d14d81296e2d57b9d5644554f0b37a823697852614d238aeaa3463d0fb73b039"
+      },
+      "observation_id": "vs.replica.v5.b02.r01.broad",
+      "oracle_classification": "broad_live_control",
+      "position": 1,
+      "raw_console": {
+        "path": "linux/benchmarks/faulty-vs-differential/artifacts/result-v5/collection/vs.replica.v5.b02.r01.broad.console.txt",
+        "sha256": "bda2372440ef5f090bcdff9f474019e456a29d22c6239057551e87ff7f09a364"
+      },
+      "retention_status": "complete"
+    },
+    {
+      "block": 2,
+      "blockers": [],
+      "claim_eligible": true,
+      "completion_record": {
+        "path": "linux/benchmarks/faulty-vs-differential/artifacts/result-v5/collection/vs.replica.v5.b02.r02.aee.console.txt.completion.json",
+        "sha256": "8019789b7e774ef29cec44d169851596647cd3d71ddb60b6a61e93c4a68f671f"
+      },
+      "launch_record": {
+        "path": "linux/benchmarks/faulty-vs-differential/artifacts/result-v5/collection/vs.replica.v5.b02.r02.aee.console.txt.launch.json",
+        "sha256": "11ac682fbe540b1124fa409c4915149e5e64defe54ff3271ab93cbb7ba990a4d"
+      },
+      "mode": "faithful_aee_offset",
+      "normalized_observation": {
+        "path": "linux/benchmarks/faulty-vs-differential/artifacts/result-v5/collection/vs.replica.v5.b02.r02.aee.console.txt.observation.json",
+        "sha256": "1a915514ea7d3fe390b1ad32b1310cb1dbef0395f163aa2d7dbf098341ff989c"
+      },
+      "observation_id": "vs.replica.v5.b02.r02.aee",
+      "oracle_classification": "aee_mechanism_eligible_effect_completed",
+      "position": 2,
+      "raw_console": {
+        "path": "linux/benchmarks/faulty-vs-differential/artifacts/result-v5/collection/vs.replica.v5.b02.r02.aee.console.txt",
+        "sha256": "e0ba4e85c245f5194e909db89f5c370c893de78a530165e8efceeac6932f3382"
+      },
+      "retention_status": "complete"
+    },
+    {
+      "block": 2,
+      "blockers": [],
+      "claim_eligible": true,
+      "completion_record": {
+        "path": "linux/benchmarks/faulty-vs-differential/artifacts/result-v5/collection/vs.replica.v5.b02.r03.baseline.console.txt.completion.json",
+        "sha256": "3109dd3e4c59e878b16e6bcd7a5bfbed293f3f68699e437a0c13c07959d6f69e"
+      },
+      "launch_record": {
+        "path": "linux/benchmarks/faulty-vs-differential/artifacts/result-v5/collection/vs.replica.v5.b02.r03.baseline.console.txt.launch.json",
+        "sha256": "60761721d269544916a20023d315761b62b7cd7ac3fa44929583fa67e666f4d1"
+      },
+      "mode": "faulty_baseline",
+      "normalized_observation": {
+        "path": "linux/benchmarks/faulty-vs-differential/artifacts/result-v5/collection/vs.replica.v5.b02.r03.baseline.console.txt.observation.json",
+        "sha256": "a4e90744a3cc41ff8389b0cc2a9a25947e79cb72e3566f51917ea35473e8a78e"
+      },
+      "observation_id": "vs.replica.v5.b02.r03.baseline",
+      "oracle_classification": "baseline_live_control",
+      "position": 3,
+      "raw_console": {
+        "path": "linux/benchmarks/faulty-vs-differential/artifacts/result-v5/collection/vs.replica.v5.b02.r03.baseline.console.txt",
+        "sha256": "c46c805c0dfadfb4cb101d886f6de38bef03b6b6182092b79514107403601080"
+      },
+      "retention_status": "complete"
+    },
+    {
+      "block": 2,
+      "blockers": [],
+      "claim_eligible": true,
+      "completion_record": {
+        "path": "linux/benchmarks/faulty-vs-differential/artifacts/result-v5/collection/vs.replica.v5.b02.r04.fixed.console.txt.completion.json",
+        "sha256": "a1d532696443f639571b3f1b28bddac6f16156990a6290a7d1876ae515cc2b00"
+      },
+      "launch_record": {
+        "path": "linux/benchmarks/faulty-vs-differential/artifacts/result-v5/collection/vs.replica.v5.b02.r04.fixed.console.txt.launch.json",
+        "sha256": "a6d21a0697e1e9dcc6caa55bea607bc5755592b8c7b592625d39d4d505c3cee8"
+      },
+      "mode": "fixed_calibration",
+      "normalized_observation": {
+        "path": "linux/benchmarks/faulty-vs-differential/artifacts/result-v5/collection/vs.replica.v5.b02.r04.fixed.console.txt.observation.json",
+        "sha256": "bf1cf20c44bb1747719bb979e25bde7dec05af03d5af8d24cbfe456a6b20a839"
+      },
+      "observation_id": "vs.replica.v5.b02.r04.fixed",
+      "oracle_classification": "fixed_reject",
+      "position": 4,
+      "raw_console": {
+        "path": "linux/benchmarks/faulty-vs-differential/artifacts/result-v5/collection/vs.replica.v5.b02.r04.fixed.console.txt",
+        "sha256": "22e59703aa18287b8c44ae51e0a13ead92ae68ba153f21ee13d7fc883e18a879"
+      },
+      "retention_status": "complete"
+    },
+    {
+      "block": 2,
+      "blockers": [],
+      "claim_eligible": true,
+      "completion_record": {
+        "path": "linux/benchmarks/faulty-vs-differential/artifacts/result-v5/collection/vs.replica.v5.b02.r05.exact.console.txt.completion.json",
+        "sha256": "fb46d3e94f7efd5e69d4ecc36a3bf6ca1d3f4a5af063c822b02bb2442c832680"
+      },
+      "launch_record": {
+        "path": "linux/benchmarks/faulty-vs-differential/artifacts/result-v5/collection/vs.replica.v5.b02.r05.exact.console.txt.launch.json",
+        "sha256": "d9c5890d678e1b3ceaa1f7aa7efaf541d374bb63f8e8cd9c2c3ded0313fda0e5"
+      },
+      "mode": "capebpf_exact",
+      "normalized_observation": {
+        "path": "linux/benchmarks/faulty-vs-differential/artifacts/result-v5/collection/vs.replica.v5.b02.r05.exact.console.txt.observation.json",
+        "sha256": "26021c909ae83458726bcb9566c5582322f679cbe102d59283d295d6389292c4"
+      },
+      "observation_id": "vs.replica.v5.b02.r05.exact",
+      "oracle_classification": "exact_chain_eligible_fault_before_effect",
+      "position": 5,
+      "raw_console": {
+        "path": "linux/benchmarks/faulty-vs-differential/artifacts/result-v5/collection/vs.replica.v5.b02.r05.exact.console.txt",
+        "sha256": "3dee4b6f788084c4ded16bc59c59ed3ef01e56f1c110d2cb3d412a07ba5a619f"
+      },
+      "retention_status": "complete"
+    }
+  ],
+  "observed_findings": [
+    {
+      "claim_eligible": true,
+      "claim_id": "FVS-V5-bounded_fault_class_differentiation_supported",
+      "conditions": [
+        "the exact frozen v5 experimental protocol and its hash-bound predecessor scientific components hold",
+        "the two-record attempt journal, deployment, schedule, and retained row identities validate",
+        "positive primary eligibility requires a zero-status attempt terminal with null exception fields",
+        "the trusted single-process experiment-driver boundary holds; process isolation is not claimed"
+      ],
+      "does_not_establish": [
+        "general verifier trust reduction or net TCB reduction",
+        "tolerance of arbitrary verifier defects",
+        "semantic correctness of the object denoted by an exact capability",
+        "temporal safety",
+        "provenance-only causal attribution",
+        "faithful whole-AEE behavior or prevention",
+        "general AEE behavior",
+        "native Morello performance",
+        "whole-Linux or production-C refinement",
+        "independent reproduction",
+        "a blinded or independent discovery result"
+      ],
+      "evidence_paths": [
+        "research/faulty-vs-differential-v5/preregistration-v1.json",
+        "research/faulty-vs-differential-v5/schedule-v1.json",
+        "research/faulty-vs-differential-v5/deployment-binding-v2.json",
+        "${INHERITED_SOURCE}/linux/benchmarks/faulty-vs-differential/artifacts/result-v5/collection/collection-session.jsonl",
+        "${INHERITED_SOURCE}/linux/benchmarks/faulty-vs-differential/artifacts/result-v5/collection/schedule-run-summary.json",
+        "research/faulty-vs-differential-v5/aee-post-result-ledger-v1.json",
+        "research/faulty-vs-differential-v5/preregistration-v1-freeze-receipt.json",
+        "linux/benchmarks/faulty-vs-differential/artifacts/result-v5/collection/vs.replica.v5.b01.r01.baseline.console.txt.observation.json",
+        "linux/benchmarks/faulty-vs-differential/artifacts/result-v5/collection/vs.replica.v5.b01.r02.fixed.console.txt.observation.json",
+        "linux/benchmarks/faulty-vs-differential/artifacts/result-v5/collection/vs.replica.v5.b01.r03.aee.console.txt.observation.json",
+        "linux/benchmarks/faulty-vs-differential/artifacts/result-v5/collection/vs.replica.v5.b01.r04.exact.console.txt.observation.json",
+        "linux/benchmarks/faulty-vs-differential/artifacts/result-v5/collection/vs.replica.v5.b01.r05.broad.console.txt.observation.json",
+        "linux/benchmarks/faulty-vs-differential/artifacts/result-v5/collection/vs.replica.v5.b02.r01.broad.console.txt.observation.json",
+        "linux/benchmarks/faulty-vs-differential/artifacts/result-v5/collection/vs.replica.v5.b02.r02.aee.console.txt.observation.json",
+        "linux/benchmarks/faulty-vs-differential/artifacts/result-v5/collection/vs.replica.v5.b02.r03.baseline.console.txt.observation.json",
+        "linux/benchmarks/faulty-vs-differential/artifacts/result-v5/collection/vs.replica.v5.b02.r04.fixed.console.txt.observation.json",
+        "linux/benchmarks/faulty-vs-differential/artifacts/result-v5/collection/vs.replica.v5.b02.r05.exact.console.txt.observation.json",
+        "linux/benchmarks/faulty-vs-differential/artifacts/result-v5-attempt-v1.jsonl"
+      ],
+      "evidence_status": "runtime_observation",
+      "falsifier": "A retained primary byte, normalized authority, identity, experimental protocol, or causal witness contradicts this bounded v5 classification.",
+      "sentence": "In a fresh known-outcome ten-boot replication of one controlled sound-V.a/faulty-final-V.s array-map workload, the selected source-mapped AEE offset mechanism and broad controls completed the adjacent-element effect while exact independently assigned 16-byte capability authority faulted first; each Cape row satisfied exactly two source/PC-derived accepted handoffs. This bounded comparison does not isolate provenance alone."
+    }
+  ],
+  "planned_observation_ids": [
+    "vs.replica.v5.b01.r01.baseline",
+    "vs.replica.v5.b01.r02.fixed",
+    "vs.replica.v5.b01.r03.aee",
+    "vs.replica.v5.b01.r04.exact",
+    "vs.replica.v5.b01.r05.broad",
+    "vs.replica.v5.b02.r01.broad",
+    "vs.replica.v5.b02.r02.aee",
+    "vs.replica.v5.b02.r03.baseline",
+    "vs.replica.v5.b02.r04.fixed",
+    "vs.replica.v5.b02.r05.exact"
+  ],
+  "schema_version": "2.0.0",
+  "status": "collected",
+  "study_id": "capebpf-faulty-vs-final-accept-16-8-replication-v5"
+}

@@ -1,0 +1,12 @@
+{
+  "schema_version": "2.0.0",
+  "artifact_kind": "compact_fault_study_result",
+  "study_id": "capebpf-compact-fault-basis-v2",
+  "status": "not_collected",
+  "collection_ready": false,
+  "observation_count": 0,
+  "observations": [],
+  "analysis": null,
+  "majority_voting_used": false,
+  "weighted_percentages_reported": false
+}

@@ -1,0 +1,21 @@
+{
+  "result": "PASS",
+  "stock_verifier_sha256": "48268a29931754296882a9ff6847eb556ba8e8564959be1c62754afdb2fb4851",
+  "baseline_configuration_changes": {
+    "CONFIG_CBPF_KFUNC_GATE": [
+      null,
+      "y"
+    ],
+    "CONFIG_LOCALVERSION": [
+      "\"-cbpf-kfunc-stock\"",
+      "\"-cbpf-ownership\""
+    ]
+  },
+  "original_M3_configuration_byte_equal": true,
+  "source_commit": "b96da308ef1a054c3c04c9445e5ed70259b7c397",
+  "source_tree": "0fc9d44a60944f77000cc125779c6207a37fa74d",
+  "source_tree_manifest_sha256": "52de0ddd29c80c4ffac0a108d9bd5212dbcfbceeeaefc31a062ff004f0d7fc9f",
+  "source_tree_blob_entries": 82486,
+  "same_compiler_identity_as_M3": true,
+  "same_toolchain_text_as_M3": true
+}

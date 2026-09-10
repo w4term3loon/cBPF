@@ -1,0 +1,12 @@
+{
+  "result": "PASS",
+  "scope": "Offline checker sensitivity only; no kernel or capability mutation and no BPF execution.",
+  "change": "Only the recorded provider capability length changed from 7 to 8; original log unchanged.",
+  "counterfactual_rejected": true,
+  "rejection": {
+    "result": "FAIL",
+    "phase": "post",
+    "reason": "selected retained capability",
+    "log_sha256": "7eabce85fcbacd5640ff3276220caa7c4360cd3008b183c8bc29d4e82a30c05f"
+  }
+}

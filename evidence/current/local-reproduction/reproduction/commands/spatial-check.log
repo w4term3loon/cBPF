@@ -1,0 +1,6 @@
+bash tools/check_spatial.sh
+CBPF spatial compile artifacts: ${REPOSITORY}/build/m4-reproduction.o5y2sbxz/snapshot/build/spatial-check.79YmHw
+CBPF spatial pristine tree verified: e6c69574c16bc2b9bce06329f9ac3f4b3269e79a
+CBPF_SPATIAL_CHECK result=PASS source_tree=e6c69574c16bc2b9bce06329f9ac3f4b3269e79a requested_objects=3
+CBPF_SPATIAL_CHECK verifier_unchanged_from_substrate=1 offload=0 test_modes=0 image=0 boot=0
+CBPF retained spatial compile evidence: ${REPOSITORY}/build/m4-reproduction.o5y2sbxz/snapshot/build/spatial-check.79YmHw

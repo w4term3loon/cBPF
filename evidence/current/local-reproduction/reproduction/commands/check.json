@@ -1,0 +1,14 @@
+{
+  "command": [
+    "make",
+    "check"
+  ],
+  "cwd": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/snapshot",
+  "started_utc": "2026-09-06T20:29:24.892839+00:00",
+  "log": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/reviewer/check.log",
+  "environment_overrides": {},
+  "recipe_environment": {},
+  "finished_utc": "2026-09-06T20:29:38.951568+00:00",
+  "elapsed_seconds": 14.059,
+  "exit_code": 0
+}

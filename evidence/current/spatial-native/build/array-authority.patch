@@ -1,0 +1,359 @@
+diff --git a/arch/arm64/net/bpf_jit_comp.c b/arch/arm64/net/bpf_jit_comp.c
+index 87e82badd8d06c0412197d2357a9c21dc31059bb..ff4a55c8d2c46d9990a568586e8d505aeb889d1f 100644
+--- a/arch/arm64/net/bpf_jit_comp.c
++++ b/arch/arm64/net/bpf_jit_comp.c
+@@ -29,6 +29,25 @@
+ #include "bpf_jit.h"
+ #include "capebpf_morello_sensitive_opcodes.h"
+ 
++#ifdef CONFIG_CBPF_ARRAY_AUTHORITY
++#if IS_ENABLED(CONFIG_CAPEBPF_SPATIAL_OFFLOAD) || \
++    IS_ENABLED(CONFIG_CAPEBPF_TEST_POST_VERIFIER_OFFSET_INJECTION) || \
++    IS_ENABLED(CONFIG_CAPEBPF_TEST_RECOVERY_LOAD_INJECTION) || \
++    IS_ENABLED(CONFIG_CAPEBPF_TEST_JIT_CERTIFICATE_CORRUPTION) || \
++    IS_ENABLED(CONFIG_CAPEBPF_TEST_SOFTWARE_MAP_BOUNDS) || \
++    IS_ENABLED(CONFIG_CAPEBPF_TEST_VULNERABLE_ALU32) || \
++    IS_ENABLED(CONFIG_CAPEBPF_TEST_VULNERABLE_PRUNING) || \
++    IS_ENABLED(CONFIG_CAPEBPF_TEST_VULNERABLE_RINGBUF) || \
++    IS_ENABLED(CONFIG_CAPEBPF_TEST_VULNERABLE_NULL_PROMOTION) || \
++    IS_ENABLED(CONFIG_CAPEBPF_TEST_VULNERABLE_JMP32_BOUNDS) || \
++    IS_ENABLED(CONFIG_CAPEBPF_TEST_RINGBUF_DIRECT_OOB) || \
++    IS_ENABLED(CONFIG_CAPEBPF_TEST_WIDE_RINGBUF_AUTHORITY) || \
++    IS_ENABLED(CONFIG_CAPEBPF_TEST_BROAD_MAP_AUTHORITY) || \
++    (defined(CONFIG_CAPEBPF_TEST_JIT_CERTIFICATE_MUTATION) && CONFIG_CAPEBPF_TEST_JIT_CERTIFICATE_MUTATION != 0)
++#error "CBPF array authority forbids delegation and historical test modes"
++#endif
++#endif
++
+ #define BPF_MIN_NATIVE_STACK_SIZE 16
+ #define BPF_CALLER_RETURN_SLOT_SIZE 16
+ #define MORELLO_FSC_CAP_BOUNDS 0x2a
+@@ -53,11 +72,16 @@ enum bpf_cheri_helper_operation {
+ 
+ static atomic64_t bpf_cheri_bounds_faults = ATOMIC64_INIT(0);
+ static atomic64_t bpf_cheri_ringbuf_protocol_rejects = ATOMIC64_INIT(0);
++#ifdef CONFIG_CBPF_ARRAY_AUTHORITY
++static const u32 bpf_cheri_test_certificate_mutation;
++#else
+ static u32 bpf_cheri_test_certificate_mutation __ro_after_init;
++#endif
+ static u32 bpf_cheri_test_certificate_report __ro_after_init;
+ static u32 bpf_cheri_test_certificate_transcript __ro_after_init;
+ static u32 bpf_cheri_test_exploit_evidence __ro_after_init;
+ 
++#ifndef CONFIG_CBPF_ARRAY_AUTHORITY
+ static int __init parse_bpf_cheri_test_certificate_mutation(char *value)
+ {
+ 	u32 mode;
+@@ -70,6 +94,8 @@ static int __init parse_bpf_cheri_test_certificate_mutation(char *value)
+ early_param("capebpf.jit_certificate_mutation",
+ 	    parse_bpf_cheri_test_certificate_mutation);
+ 
++#endif
++
+ static int __init parse_bpf_cheri_test_certificate_report(char *value)
+ {
+ 	u32 enabled;
+@@ -574,6 +600,19 @@ bpf_cheri_map_from_token(u64 map_token, void *__capability map_table_cap)
+ 	return READ_ONCE(map_table[map_token]);
+ }
+ 
++#ifdef CONFIG_CBPF_ARRAY_AUTHORITY
++noinline void *__capability
++bpf_cheri_map_lookup_impl(u64 map_token, void *__capability key_cap,
++			  void *__capability map_table_cap)
++{
++	struct bpf_map *map = bpf_cheri_map_from_token(map_token, map_table_cap);
++
++	if (!map || !cheri_check_cap(key_cap, sizeof(u32), CHERI_PERM_LOAD))
++		return bpf_cheri_null_cap();
++	return cbpf_array_value_cap(map,
++		(void *)(unsigned long)cheri_address_get(key_cap));
++}
++#else
+ noinline void *__capability
+ bpf_cheri_map_lookup_impl(u64 map_token, void *__capability key_cap,
+ 			  void *__capability map_table_cap)
+@@ -629,6 +668,8 @@ bpf_cheri_map_lookup_impl(u64 map_token, void *__capability key_cap,
+ 	return value_cap;
+ }
+ 
++#endif
++
+ noinline void *__capability
+ bpf_cheri_ringbuf_reserve_impl(u64 map_token, u64 size, u64 flags,
+ 			       void *__capability map_table_cap)
+@@ -3169,6 +3210,7 @@ struct bpf_cheri_certificate_stats {
+ 	u32 ringbuf_discard;
+ };
+ 
++#ifndef CONFIG_CBPF_ARRAY_AUTHORITY
+ static bool is_cheri_cap_addsub_imm_instruction(u32 instruction)
+ {
+ 	u32 opcode = instruction & CHERI_CAP_ADDSUB_MASK;
+@@ -3185,6 +3227,8 @@ static bool is_cheri_cap_addsub_reg_instruction(u32 instruction)
+ 	       opcode == (CHERI_CAP_ADD_REG_SXTX & CHERI_CAP_ADD_REG_MASK);
+ }
+ 
++#endif
++
+ static bool is_a64_direct_nonlinking_branch(u32 instruction)
+ {
+ 	return (instruction & 0xfc000000U) == 0x14000000U;
+@@ -3723,6 +3767,7 @@ reject:
+ 
+ static void inject_test_jit_certificate_corruption(struct jit_ctx *ctx)
+ {
++#ifndef CONFIG_CBPF_ARRAY_AUTHORITY
+ 	u32 mode = CONFIG_CAPEBPF_TEST_JIT_CERTIFICATE_MUTATION;
+ 	u32 bpf_index;
+ 
+@@ -3923,6 +3968,7 @@ static void inject_test_jit_certificate_corruption(struct jit_ctx *ctx)
+ 		return;
+ 	}
+ 	WARN_ON_ONCE(1);
++#endif
+ }
+ 
+ /*
+diff --git a/include/linux/bpf.h b/include/linux/bpf.h
+index cef583797462dcf91d21116c16141a5d27279ec1..1409810344691c709ea887070975eb27c5eecb97 100644
+--- a/include/linux/bpf.h
++++ b/include/linux/bpf.h
+@@ -2106,6 +2106,14 @@ struct bpf_map * __must_check bpf_map_inc_not_zero(struct bpf_map *map);
+ void bpf_map_put_with_uref(struct bpf_map *map);
+ void bpf_map_put(struct bpf_map *map);
+ void *bpf_map_area_alloc(u64 size, int numa_node);
++#ifdef CONFIG_CBPF_ARRAY_AUTHORITY
++/* Plain scalar data only: no capability transfer or execution authority. */
++#define CBPF_ARRAY_DATA_PERMS \
++	(CHERI_PERM_LOAD | CHERI_PERM_STORE | CHERI_PERM_GLOBAL)
++void *cbpf_map_area_alloc(u64 size, int numa_node,
++			 void *__capability *allocation_cap);
++void *__capability cbpf_array_value_cap(struct bpf_map *map, const void *key);
++#endif
+ void *bpf_map_area_mmapable_alloc(u64 size, int numa_node);
+ void bpf_map_area_free(void *base);
+ bool bpf_map_write_active(const struct bpf_map *map);
+diff --git a/kernel/bpf/Kconfig b/kernel/bpf/Kconfig
+index 705a66ecccbe1952445a719709e6e921a7a8c866..9bcae8b21547742c1275b3730fd1de3242f45999 100644
+--- a/kernel/bpf/Kconfig
++++ b/kernel/bpf/Kconfig
+@@ -54,6 +54,16 @@ config BPF_JIT
+ 	  /proc/sys/net/core/bpf_jit_harden   (optional)
+ 	  /proc/sys/net/core/bpf_jit_kallsyms (optional)
+ 
++config CBPF_ARRAY_AUTHORITY
++	bool "CBPF retained authority for plain array-map values"
++	depends on BPF_SYSCALL && BPF_JIT && ARM64_MORELLO
++	default n
++	help
++	  Retain a data-only capability at allocation and narrow it to the
++	  selected value at the existing Morello lookup gateway. Unsupported
++	  map profiles and inexact bounds return no capability. This feature
++	  does not enable verifier delegation or historical test modes.
++
+ config CAPEBPF_SPATIAL_OFFLOAD
+ 	bool "EXPERIMENTAL: capability-backed BPF spatial enforcement"
+ 	depends on BPF_SYSCALL && BPF_JIT
+diff --git a/kernel/bpf/arraymap.c b/kernel/bpf/arraymap.c
+index c85ff9162a5cd44444746f0199e508d0f045b0c4..5d094f14ff0aa77e66302e3229203e0118353f4b 100644
+--- a/kernel/bpf/arraymap.c
++++ b/kernel/bpf/arraymap.c
+@@ -12,6 +12,9 @@
+ #include <uapi/linux/btf.h>
+ #include <linux/rcupdate_trace.h>
+ #include <linux/btf_ids.h>
++#ifdef CONFIG_CBPF_ARRAY_AUTHORITY
++#include <linux/cheri.h>
++#endif
+ 
+ #include "map_in_map.h"
+ 
+@@ -19,6 +22,60 @@
+ 	(BPF_F_NUMA_NODE | BPF_F_MMAPABLE | BPF_F_ACCESS_MASK | \
+ 	 BPF_F_PRESERVE_ELEMS | BPF_F_INNER_MAP)
+ 
++#ifdef CONFIG_CBPF_ARRAY_AUTHORITY
++/* Only plain ARRAY uses this extension; PROG_ARRAY keeps its existing aux. */
++struct cbpf_array_authority {
++	struct bpf_array_aux aux;
++	void *__capability root;
++	u64 size;
++};
++
++static struct cbpf_array_authority *cbpf_array_authority(struct bpf_array *array)
++{
++	return container_of(array->aux, struct cbpf_array_authority, aux);
++}
++
++void *__capability cbpf_array_value_cap(struct bpf_map *map, const void *key)
++{
++	struct cbpf_array_authority *authority;
++	struct bpf_array *array;
++	void *__capability cap;
++	unsigned long value;
++	u32 index;
++
++	if (!map || !key || map->map_type != BPF_MAP_TYPE_ARRAY ||
++	    map->ops != &array_map_ops || map->map_flags || map->record)
++		return NULL;
++	array = container_of(map, struct bpf_array, map);
++	if (!array->aux)
++		return NULL;
++	authority = cbpf_array_authority(array);
++	cap = authority->root;
++	if (!cheri_tag_get(cap) || cheri_is_sealed(cap) ||
++	    cheri_base_get(cap) != (unsigned long)array ||
++	    cheri_address_get(cap) != (unsigned long)array ||
++	    cheri_length_get(cap) != authority->size ||
++	    cheri_perms_get(cap) != CBPF_ARRAY_DATA_PERMS ||
++	    authority->size < sizeof(*array) + (u64)map->max_entries * array->elem_size)
++		return NULL;
++	index = *(const u32 *)key;
++	if (index >= map->max_entries)
++		return NULL;
++
++	value = (unsigned long)array->value +
++		(u64)array->elem_size * (index & array->index_mask);
++	/* Lookup derives from the retained root; it never reconstructs DDC. */
++	cap = cheri_address_set(cap, value);
++	cap = cheri_bounds_set_exact(cap, map->value_size);
++	if (!cheri_tag_get(cap) || cheri_is_sealed(cap) ||
++	    cheri_base_get(cap) != value || cheri_address_get(cap) != value ||
++	    cheri_length_get(cap) != map->value_size ||
++	    cheri_perms_get(cap) != CBPF_ARRAY_DATA_PERMS)
++		return NULL;
++	return cap;
++}
++#endif
++
+ static void bpf_array_free_percpu(struct bpf_array *array)
+ {
+ 	int i;
+@@ -85,6 +142,9 @@ static struct bpf_map *array_map_alloc(union bpf_attr *attr)
+ 	bool bypass_spec_v1 = bpf_bypass_spec_v1();
+ 	u64 array_size, mask64;
+ 	struct bpf_array *array;
++#ifdef CONFIG_CBPF_ARRAY_AUTHORITY
++	void *__capability allocation_cap = NULL;
++#endif
+ 
+ 	elem_size = round_up(attr->value_size, 8);
+ 
+@@ -135,7 +195,12 @@ static struct bpf_map *array_map_alloc(union bpf_attr *attr)
+ 		array = data + PAGE_ALIGN(sizeof(struct bpf_array))
+ 			- offsetof(struct bpf_array, value);
+ 	} else {
+-		array = bpf_map_area_alloc(array_size, numa_node);
++#ifdef CONFIG_CBPF_ARRAY_AUTHORITY
++		if (attr->map_type == BPF_MAP_TYPE_ARRAY && !attr->map_flags)
++			array = cbpf_map_area_alloc(array_size, numa_node, &allocation_cap);
++		else
++#endif
++			array = bpf_map_area_alloc(array_size, numa_node);
+ 	}
+ 	if (!array)
+ 		return ERR_PTR(-ENOMEM);
+@@ -146,6 +211,22 @@ static struct bpf_map *array_map_alloc(union bpf_attr *attr)
+ 	bpf_map_init_from_attr(&array->map, attr);
+ 	array->elem_size = elem_size;
+ 
++#ifdef CONFIG_CBPF_ARRAY_AUTHORITY
++	if (attr->map_type == BPF_MAP_TYPE_ARRAY && !attr->map_flags) {
++		struct cbpf_array_authority *authority;
++
++		authority = kzalloc(sizeof(*authority), GFP_KERNEL_ACCOUNT);
++		if (!authority || !IS_ALIGNED((unsigned long)authority, __alignof__(*authority))) {
++			kfree(authority);
++			bpf_map_area_free(array);
++			return ERR_PTR(-ENOMEM);
++		}
++		authority->root = allocation_cap;
++		authority->size = array_size;
++		array->aux = &authority->aux;
++	}
++#endif
++
+ 	if (percpu && bpf_array_alloc_percpu(array)) {
+ 		bpf_map_area_free(array);
+ 		return ERR_PTR(-ENOMEM);
+@@ -435,6 +516,15 @@ static void array_map_free(struct bpf_map *map)
+ 	if (array->map.map_type == BPF_MAP_TYPE_PERCPU_ARRAY)
+ 		bpf_array_free_percpu(array);
+ 
++#ifdef CONFIG_CBPF_ARRAY_AUTHORITY
++	if (map->map_type == BPF_MAP_TYPE_ARRAY && array->aux) {
++		struct cbpf_array_authority *authority = cbpf_array_authority(array);
++
++		authority->root = cheri_tag_clear(authority->root);
++		kfree(authority);
++		array->aux = NULL;
++	}
++#endif
+ 	if (array->map.map_flags & BPF_F_MMAPABLE)
+ 		bpf_map_area_free(array_map_vmalloc_addr(array));
+ 	else
+@@ -740,6 +830,10 @@ static u64 array_map_mem_usage(const struct bpf_map *map)
+ 			usage += entries * elem_size;
+ 		}
+ 	}
++#ifdef CONFIG_CBPF_ARRAY_AUTHORITY
++	if (map->map_type == BPF_MAP_TYPE_ARRAY && array->aux)
++		usage += sizeof(struct cbpf_array_authority);
++#endif
+ 	return usage;
+ }
+ 
+diff --git a/kernel/bpf/syscall.c b/kernel/bpf/syscall.c
+index ec8e84c877628cf7b000f5ef72e491a9991b047f..46ec17b954b23562949556ec328cfd552c3bf3e8 100644
+--- a/kernel/bpf/syscall.c
++++ b/kernel/bpf/syscall.c
+@@ -35,6 +35,9 @@
+ #include <linux/rcupdate_trace.h>
+ #include <linux/memcontrol.h>
+ #include <linux/trace_events.h>
++#ifdef CONFIG_CBPF_ARRAY_AUTHORITY
++#include <linux/cheri.h>
++#endif
+ 
+ #include <net/netfilter/nf_bpf_link.h>
+ #include <net/netkit.h>
+@@ -315,6 +318,37 @@ void *bpf_map_area_alloc(u64 size, int numa_node)
+ 	return __bpf_map_area_alloc(size, numa_node, false);
+ }
+ 
++#ifdef CONFIG_CBPF_ARRAY_AUTHORITY
++void *cbpf_map_area_alloc(u64 size, int numa_node,
++			 void *__capability *allocation_cap)
++{
++	void *__capability cap;
++	void *area;
++
++	if (!allocation_cap)
++		return NULL;
++	*allocation_cap = NULL;
++	area = bpf_map_area_alloc(size, numa_node);
++	if (!area)
++		return NULL;
++
++	/* Hybrid allocator: initial root assignment remains trusted. */
++	cap = cheri_address_set(cheri_ddc_get(), (unsigned long)area);
++	cap = cheri_bounds_set_exact(cap, size);
++	cap = cheri_perms_and(cap, CBPF_ARRAY_DATA_PERMS);
++	if (!cheri_tag_get(cap) || cheri_is_sealed(cap) ||
++	    cheri_base_get(cap) != (unsigned long)area ||
++	    cheri_address_get(cap) != (unsigned long)area ||
++	    cheri_length_get(cap) != size ||
++	    cheri_perms_get(cap) != CBPF_ARRAY_DATA_PERMS) {
++		bpf_map_area_free(area);
++		return NULL;
++	}
++	*allocation_cap = cap;
++	return area;
++}
++#endif
++
+ void *bpf_map_area_mmapable_alloc(u64 size, int numa_node)
+ {
+ 	return __bpf_map_area_alloc(size, numa_node, true);

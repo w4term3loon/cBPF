@@ -1,0 +1,36 @@
+{
+  "attempts": [
+    {
+      "attempt_id": "relocated_qemu_missing_rom",
+      "configuration": "first boot of the preregistered exact/strict schedule",
+      "disposition": "The emulator was relocated with its complete sdk/share/qemu data directory before another collection was attempted.",
+      "error_class": "QEMUDataPathError",
+      "error_summary": "The relocated QEMU executable could not find efi-virtio.rom and exited before the guest booted.",
+      "evidence_file": null,
+      "input_snapshot_retained": false,
+      "observation_source": "interactive collector output; no raw guest console existed because startup failed",
+      "raw_console_retained": false,
+      "recorded_date": "2026-08-30",
+      "stage": "emulator_startup",
+      "status": "infrastructure_failure"
+    },
+    {
+      "attempt_id": "constant_jit_code_size_assumption",
+      "configuration": "first exact/strict boot with bpf_jit_harden=2, 31 load samples, and the original constant-size protocol",
+      "disposition": "The harness now retains every measured JIT length, verifies a nearest-rank median summary, and the runner preserves any future failed console as non-overwriting evidence.",
+      "error_class": "EPROTO",
+      "error_summary": "The guest aborted during a strict gateway_16 load sample when the old harness required every hardened JIT image to have an identical byte length.",
+      "evidence_file": null,
+      "input_snapshot_retained": true,
+      "observation_source": "interactive collector output; the superseded runner removed its temporary failed console",
+      "raw_console_retained": false,
+      "recorded_date": "2026-08-30",
+      "stage": "guest_benchmark",
+      "status": "infrastructure_failure"
+    }
+  ],
+  "claim_class": "functional-emulation",
+  "native_claim_allowed": false,
+  "record_type": "capebpf-qemu-performance-attempts",
+  "schema_version": 1
+}

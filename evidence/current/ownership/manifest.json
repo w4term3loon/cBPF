@@ -1,0 +1,251 @@
+{
+  "project": "CBPF",
+  "study": "protected ownership execution",
+  "date": "2026-09-06",
+  "scope": "One benign, unattached, normal-verifier-accepted A/B program through a bounded protected native kernel path; source-to-effect review under explicit trusted-boundary assumptions.",
+  "run_directory": "${REPOSITORY}/build/ownership-run.AsvItO",
+  "build_directory": "${REPOSITORY}/build/ownership-build",
+  "source_commit": "b96da308ef1a054c3c04c9445e5ed70259b7c397",
+  "platform_ancestry": "e6c69574c16bc2b9bce06329f9ac3f4b3269e79a",
+  "verifier_sha256": "48268a29931754296882a9ff6847eb556ba8e8564959be1c62754afdb2fb4851",
+  "result": {
+    "kernel_build": "PASS",
+    "kernel_release": "6.7.0-cbpf-ownership",
+    "guest_execution": "PASS",
+    "guest_executions": 1,
+    "bpf_instructions": 26,
+    "native_words": 165,
+    "native_bytes": 660,
+    "native_sha256": "117453054e65b3f4ae6b8da5dd241b1a8db28cdbd15cfae4a1527e073f576871",
+    "ordered_gate_events": 8,
+    "distinct_acquisition_cells": 2,
+    "same_provider_object": true,
+    "a_stored_tag_cleared_before_release_effect": true,
+    "b_read_after_a_consumption": 42,
+    "acquired": 2,
+    "explicitly_released": 2,
+    "reads": 1,
+    "cleanup_releases": 0,
+    "final_provider_references": 1,
+    "remaining_live_cells": 0,
+    "rddc_tag": 0,
+    "restricted_stack_bytes": 16,
+    "sealed_gateway": true,
+    "qemu_exit": 0,
+    "normal_verifier_unchanged": true,
+    "configuration_baseline_preserved": true,
+    "attached_programs": 0,
+    "invalid_bpf_executions": 0,
+    "exploit_or_cve_executions": 0,
+    "kernel_changes": {
+      "added": 929,
+      "deleted": 24
+    }
+  },
+  "review": {
+    "source_and_compiled_code": "No material discrepancy found for the retained path.",
+    "final_native_review": "audit/native-review.json",
+    "independent_reproduction": false,
+    "template_checker": "Uses the same encoder as generation; consistency evidence, not independent translation validation."
+  },
+  "limits": [
+    "Provider correspondence and initial roots from executive DDC, trusted C/assembly/compiler, architectural enforcement, normal verifier checks, image integrity, inherited exception handling and synchronous non-reentrant containment remain premises.",
+    "This is a bounded fixed-provider kfunc contract and native subset, not a general kfunc ABI, compiler correctness proof or whole-kernel isolation theorem.",
+    "This initial record excludes consumed-alias, NULL/failure, terminal-cleanup and alternate-arrangement runtime controls. Their observations are recorded separately as ownership boundary controls.",
+    "No composition with the separately retained spatial mechanism is established.",
+    "Two compile failures and one pre-boot BTF selection failure are preserved in ignored build directories; none executed a guest.",
+    "Large external kernel, source and toolchain artifacts are hash-bound by retained build receipts rather than copied into this selection."
+  ],
+  "files": [
+    {
+      "file": "evidence/current/ownership/README.md",
+      "bytes": 3421,
+      "sha256": "0a5fe0dbb58780713d11810d007a23282505f440b47f45645e3d91863b05ae12"
+    },
+    {
+      "file": "evidence/current/ownership/audit/boundary-review.json",
+      "bytes": 2974,
+      "sha256": "e63f296c4236a31f245af14d12a0a1796dbb4e6922296817c635a3900e010122"
+    },
+    {
+      "file": "evidence/current/ownership/audit/native-review.json",
+      "bytes": 8299,
+      "sha256": "610c3b300da0846c6174128afae98cc68a09d2f1cb6479fc61a67b01a7135eae"
+    },
+    {
+      "file": "evidence/current/ownership/audit/review.json",
+      "bytes": 2623,
+      "sha256": "91358d3749774faad4d748188c7ffbe222c0b6811b50a288f89ed31bb2b42dbd"
+    },
+    {
+      "file": "evidence/current/ownership/audit/runtime-linked-range.txt",
+      "bytes": 49273,
+      "sha256": "8460efc70a36e5e40d981557578709836978dc16d479a3367eab397c59be9e1a"
+    },
+    {
+      "file": "evidence/current/ownership/audit/runtime-linked.txt",
+      "bytes": 31995,
+      "sha256": "5c2fc56701340050902be0891d4e58a015c7c2354ce58d4371ae811375c5e9bc"
+    },
+    {
+      "file": "evidence/current/ownership/audit/runtime-object.txt",
+      "bytes": 46894,
+      "sha256": "c457bc822b4a06f25340d072ef16e7a0c317b5c1be6f124fdedf14ad0a8b4a75"
+    },
+    {
+      "file": "evidence/current/ownership/boot.log",
+      "bytes": 38920,
+      "sha256": "32ded28b9c3f9c99695daea2e7c22cec642a8307617e7ef34c2cd9e6a072a8c4"
+    },
+    {
+      "file": "evidence/current/ownership/btf-contract.txt",
+      "bytes": 908,
+      "sha256": "7e2675d42edc7dd8d08ef1ce5722e36c75de9e1b350b718d1e6f2268d82404f5"
+    },
+    {
+      "file": "evidence/current/ownership/btf-selection.txt",
+      "bytes": 180,
+      "sha256": "f480eccf238eea594bca65f4a87013761637ce71c1f12c6d32b879a62f9d58b2"
+    },
+    {
+      "file": "evidence/current/ownership/compile.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "evidence/current/ownership/inputs.sha256",
+      "bytes": 2781,
+      "sha256": "f33161c63d68538ffc9a56e57a8a26f572b569b29732606b078990e293965f05"
+    },
+    {
+      "file": "evidence/current/ownership/kernel/builder-image.txt",
+      "bytes": 178,
+      "sha256": "64cd0c0d49fe5cf28ed75cedcc141ccd9c5698afaf760b7a5b49b82b06df120c"
+    },
+    {
+      "file": "evidence/current/ownership/kernel/compile.log",
+      "bytes": 129321,
+      "sha256": "b1434220047f128b2ccd398006ea754eb126445518397cda6a44bb9207fcc9ae"
+    },
+    {
+      "file": "evidence/current/ownership/kernel/compiler.sha256",
+      "bytes": 213,
+      "sha256": "33cec68829bfd8ba37c4baafc8b4bb52d136d64a4ea4f2330f241e9d7c97ec2e"
+    },
+    {
+      "file": "evidence/current/ownership/kernel/inputs.sha256",
+      "bytes": 3705,
+      "sha256": "091c0b49dec9ad3a581e8b2716ca08fb145b033154c212c56732a4330e654a49"
+    },
+    {
+      "file": "evidence/current/ownership/kernel/integration.numstat",
+      "bytes": 181,
+      "sha256": "8a73bb07741845e3d5ac9689f0f96c6b87bca89a15a991d2e590180986c4b968"
+    },
+    {
+      "file": "evidence/current/ownership/kernel/kernel.config",
+      "bytes": 87730,
+      "sha256": "6f1988add3ba99cd6d2569b2bcbc705886c3de2fd27195564cf8b6a3324e4cff"
+    },
+    {
+      "file": "evidence/current/ownership/kernel/outputs.sha256",
+      "bytes": 664,
+      "sha256": "cc8d015d4c6d1b65d786b9fb6e091ccb141b987be5bcdec4fde69f3bc8dc507c"
+    },
+    {
+      "file": "evidence/current/ownership/kernel/patched-sources.sha256",
+      "bytes": 3165,
+      "sha256": "c2d111adf69f54bd5d2471ec0248b0a8b6ab1306dad2aacd8b846df451986f3a"
+    },
+    {
+      "file": "evidence/current/ownership/kernel/platform.numstat",
+      "bytes": 333,
+      "sha256": "f3a6562a1617cfb9ec4dbe93eb775e79ebb9f8aef5466bc509f673f986d75fb7"
+    },
+    {
+      "file": "evidence/current/ownership/kernel/source-commit.txt",
+      "bytes": 41,
+      "sha256": "58b294dd20ae2694b9cf7d8ab015f9fefd95315fbe0cfad1ebdf3d4f5a06f274"
+    },
+    {
+      "file": "evidence/current/ownership/kernel/source-tree.txt",
+      "bytes": 41,
+      "sha256": "49159c654584f89b8e24fe49af39ea2f91c043e70eab2a8502756da9c262db6e"
+    },
+    {
+      "file": "evidence/current/ownership/kernel/summary.txt",
+      "bytes": 173,
+      "sha256": "239bd281682522da822c23d327a9375170dbadc94e92b97f129125096d063715"
+    },
+    {
+      "file": "evidence/current/ownership/kernel/toolchain.txt",
+      "bytes": 241,
+      "sha256": "7791c28f5757d5bd258883535690c4349f19b2f51851494f1c97cb33769f5a96"
+    },
+    {
+      "file": "evidence/current/ownership/native-disassembly.txt",
+      "bytes": 8407,
+      "sha256": "163bc2ea0b96ae2349c9c88152365e5c6ba8df4bfc46d5a7dcefd26e6311bcfe"
+    },
+    {
+      "file": "evidence/current/ownership/native.bin",
+      "bytes": 660,
+      "sha256": "117453054e65b3f4ae6b8da5dd241b1a8db28cdbd15cfae4a1527e073f576871"
+    },
+    {
+      "file": "evidence/current/ownership/ownership_ids.h",
+      "bytes": 211,
+      "sha256": "fc7a2351f33470ca47ff57012c6ae06b8a5a08bc7968f4f9647249ef12a23032"
+    },
+    {
+      "file": "evidence/current/ownership/source/build_ownership_kernel.sh",
+      "bytes": 9765,
+      "sha256": "a8ccb846784e9cb05cd60a9d830b51b75a0475546cf8744468065721195c2161"
+    },
+    {
+      "file": "evidence/current/ownership/source/cbpf.h",
+      "bytes": 792,
+      "sha256": "8cf3c862d0134b34fdf87335696878e49b681e492c1ad50698cd470811430235"
+    },
+    {
+      "file": "evidence/current/ownership/source/cbpf_jit.c",
+      "bytes": 12812,
+      "sha256": "a1a3c2476380325100a9b361f213bb06db9e9dd24543ae8e12a5354ddd8dd753"
+    },
+    {
+      "file": "evidence/current/ownership/source/cbpf_runtime.c",
+      "bytes": 12316,
+      "sha256": "2f7529a011de6309fdb068bfea917b196df3764d03ac84d96aca240263d99a36"
+    },
+    {
+      "file": "evidence/current/ownership/source/guest.c",
+      "bytes": 4298,
+      "sha256": "9323464c3bbb08a70c4e126d423bea321dc3c584e559bce393d0e818fd8f281b"
+    },
+    {
+      "file": "evidence/current/ownership/source/integration.patch",
+      "bytes": 4956,
+      "sha256": "8121d10f5e83488ed31739960d46cb3fe35e9f319e91acd5230c80718c5abe30"
+    },
+    {
+      "file": "evidence/current/ownership/source/platform.patch",
+      "bytes": 8059,
+      "sha256": "65c34af4d8f1db14455c297a1f71fc03138b2fc9e834a8dc4480b0687e208c44"
+    },
+    {
+      "file": "evidence/current/ownership/source/run_ownership.sh",
+      "bytes": 12969,
+      "sha256": "018d621b207c3023bea860fcbf1ef22a6a7bb167f9c9e1134a0b527f076b49b1"
+    },
+    {
+      "file": "evidence/current/ownership/summary.txt",
+      "bytes": 3054,
+      "sha256": "1399c3d865fd40055ba61cc72c0f7a9aa941cc4aa87d24eda2667fe4a5db7245"
+    },
+    {
+      "file": "evidence/current/ownership/toolchain.txt",
+      "bytes": 438,
+      "sha256": "f736a28e42d01283bffe2feba5d02c732e66d29e2cce3f430bea0ae964c4af2c"
+    }
+  ]
+}

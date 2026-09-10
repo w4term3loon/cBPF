@@ -1,0 +1,52 @@
+{
+  "symbols": {
+    "bpf_cheri_helper_gateway": {
+      "address": 18446603338368907264,
+      "size": 0,
+      "review_stop": 18446603338368907528,
+      "extent_note": "Zero-size assembly label: inspected through the next non-mapping symbol, including padding."
+    },
+    "bpf_cheri_map_lookup_impl": {
+      "address": 18446603338368907540,
+      "size": 152,
+      "review_stop": 18446603338368907692
+    },
+    "bpf_enter_sandbox": {
+      "address": 18446603338368908612,
+      "size": 1036,
+      "review_stop": 18446603338368909648
+    },
+    "ex_handler_bpf": {
+      "address": 18446603338368912796,
+      "size": 636,
+      "review_stop": 18446603338368913432
+    },
+    "__bpf_call_base": {
+      "address": 18446603338370241772,
+      "size": 8,
+      "review_stop": 18446603338370241780
+    },
+    "cbpf_map_area_alloc": {
+      "address": 18446603338370269320,
+      "size": 324,
+      "review_stop": 18446603338370269644
+    },
+    "cbpf_array_value_cap": {
+      "address": 18446603338370522744,
+      "size": 376,
+      "review_stop": 18446603338370523120
+    },
+    "array_map_alloc": {
+      "address": 18446603338370524324,
+      "size": 640,
+      "review_stop": 18446603338370524964
+    },
+    "array_map_lookup_elem": {
+      "address": 18446603338370525508,
+      "size": 48,
+      "review_stop": 18446603338370525556
+    }
+  },
+  "vmlinux_sha256": "95483c8fe7359d60ba01a8043267f275082dffa0ce20708b58ba4083d1b3798b",
+  "builder": "sha256:76c8ca062c30aa59b8eb072f30620a2a7e9604515aefe84d64161bf9eb644038"
+}

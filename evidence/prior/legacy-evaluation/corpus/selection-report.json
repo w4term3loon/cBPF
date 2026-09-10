@@ -1,0 +1,328 @@
+{
+  "excluded": [
+    {
+      "instruction_count": 6,
+      "reason": "contains_elf_relocation",
+      "section": "socket",
+      "source": "tools/testing/selftests/bpf/progs/verifier_basic_stack.c",
+      "symbol": "uninitialized_stack1"
+    },
+    {
+      "instruction_count": 4,
+      "reason": "program_section_outside_supported_frame",
+      "section": "tc",
+      "source": "tools/testing/selftests/bpf/progs/verifier_div0.c",
+      "symbol": "_0_zero_check_1_cls_1"
+    },
+    {
+      "instruction_count": 4,
+      "reason": "program_section_outside_supported_frame",
+      "section": "tc",
+      "source": "tools/testing/selftests/bpf/progs/verifier_div0.c",
+      "symbol": "_0_zero_check_1_cls_2"
+    },
+    {
+      "instruction_count": 4,
+      "reason": "program_section_outside_supported_frame",
+      "section": "tc",
+      "source": "tools/testing/selftests/bpf/progs/verifier_div0.c",
+      "symbol": "_0_zero_check_1_cls_3"
+    },
+    {
+      "instruction_count": 5,
+      "reason": "program_section_outside_supported_frame",
+      "section": "tc",
+      "source": "tools/testing/selftests/bpf/progs/verifier_div0.c",
+      "symbol": "_0_zero_check_2_cls_1"
+    },
+    {
+      "instruction_count": 5,
+      "reason": "program_section_outside_supported_frame",
+      "section": "tc",
+      "source": "tools/testing/selftests/bpf/progs/verifier_div0.c",
+      "symbol": "_0_zero_check_2_cls_2"
+    },
+    {
+      "instruction_count": 4,
+      "reason": "program_section_outside_supported_frame",
+      "section": "tc",
+      "source": "tools/testing/selftests/bpf/progs/verifier_div0.c",
+      "symbol": "_0_zero_check_2_cls_3"
+    },
+    {
+      "instruction_count": 6,
+      "reason": "program_section_outside_supported_frame",
+      "section": "tc",
+      "source": "tools/testing/selftests/bpf/progs/verifier_div0.c",
+      "symbol": "_0_zero_check_ok_cls_1"
+    },
+    {
+      "instruction_count": 6,
+      "reason": "program_section_outside_supported_frame",
+      "section": "tc",
+      "source": "tools/testing/selftests/bpf/progs/verifier_div0.c",
+      "symbol": "_0_zero_check_ok_cls_2"
+    },
+    {
+      "instruction_count": 4,
+      "reason": "program_section_outside_supported_frame",
+      "section": "tc",
+      "source": "tools/testing/selftests/bpf/progs/verifier_div0.c",
+      "symbol": "by_0_zero_check_cls"
+    },
+    {
+      "instruction_count": 4,
+      "reason": "program_section_outside_supported_frame",
+      "section": "tracepoint",
+      "source": "tools/testing/selftests/bpf/progs/verifier_loops1.c",
+      "symbol": "bounded_loop_count_to_20"
+    },
+    {
+      "instruction_count": 3,
+      "reason": "program_section_outside_supported_frame",
+      "section": "tracepoint",
+      "source": "tools/testing/selftests/bpf/progs/verifier_loops1.c",
+      "symbol": "bounded_recursion"
+    },
+    {
+      "instruction_count": 4,
+      "reason": "program_section_outside_supported_frame",
+      "section": "tracepoint",
+      "source": "tools/testing/selftests/bpf/progs/verifier_loops1.c",
+      "symbol": "count_to_4_with_equality"
+    },
+    {
+      "instruction_count": 5,
+      "reason": "program_section_outside_supported_frame",
+      "section": "tracepoint",
+      "source": "tools/testing/selftests/bpf/progs/verifier_loops1.c",
+      "symbol": "from_positive_unknown_to_4"
+    },
+    {
+      "instruction_count": 4,
+      "reason": "program_section_outside_supported_frame",
+      "section": "tracepoint",
+      "source": "tools/testing/selftests/bpf/progs/verifier_loops1.c",
+      "symbol": "from_totally_unknown_to_4"
+    },
+    {
+      "instruction_count": 4,
+      "reason": "program_section_outside_supported_frame",
+      "section": "tracepoint",
+      "source": "tools/testing/selftests/bpf/progs/verifier_loops1.c",
+      "symbol": "infinite_loop_in_two_jumps"
+    },
+    {
+      "instruction_count": 13,
+      "reason": "program_section_outside_supported_frame",
+      "section": "tracepoint",
+      "source": "tools/testing/selftests/bpf/progs/verifier_loops1.c",
+      "symbol": "infinite_loop_three_jump_trick"
+    },
+    {
+      "instruction_count": 6,
+      "reason": "program_section_outside_supported_frame",
+      "section": "tracepoint",
+      "source": "tools/testing/selftests/bpf/progs/verifier_loops1.c",
+      "symbol": "jumps_out_rather_than_in"
+    },
+    {
+      "instruction_count": 5,
+      "reason": "program_section_outside_supported_frame",
+      "section": "tracepoint",
+      "source": "tools/testing/selftests/bpf/progs/verifier_loops1.c",
+      "symbol": "loop_after_a_conditional_jump"
+    },
+    {
+      "instruction_count": 4,
+      "reason": "contains_elf_relocation",
+      "section": "xdp",
+      "source": "tools/testing/selftests/bpf/progs/verifier_loops1.c",
+      "symbol": "back_jump_to_1st_insn_2"
+    },
+    {
+      "instruction_count": 4,
+      "reason": "contains_elf_relocation",
+      "section": "xdp",
+      "source": "tools/testing/selftests/bpf/progs/verifier_loops1.c",
+      "symbol": "jump_to_1st_insn_2"
+    }
+  ],
+  "excluded_count": 21,
+  "included": [
+    {
+      "instruction_count": 5,
+      "section": "socket",
+      "source": "tools/testing/selftests/bpf/progs/verifier_basic_stack.c",
+      "symbol": "invalid_fp_arithmetic"
+    },
+    {
+      "instruction_count": 3,
+      "section": "socket",
+      "source": "tools/testing/selftests/bpf/progs/verifier_basic_stack.c",
+      "symbol": "misaligned_read_from_stack"
+    },
+    {
+      "instruction_count": 3,
+      "section": "socket",
+      "source": "tools/testing/selftests/bpf/progs/verifier_basic_stack.c",
+      "symbol": "non_invalid_fp_arithmetic"
+    },
+    {
+      "instruction_count": 3,
+      "section": "socket",
+      "source": "tools/testing/selftests/bpf/progs/verifier_basic_stack.c",
+      "symbol": "stack_out_of_bounds"
+    },
+    {
+      "instruction_count": 3,
+      "section": "socket",
+      "source": "tools/testing/selftests/bpf/progs/verifier_basic_stack.c",
+      "symbol": "uninitialized_stack2"
+    },
+    {
+      "instruction_count": 4,
+      "section": "socket",
+      "source": "tools/testing/selftests/bpf/progs/verifier_bounds_deduction.c",
+      "symbol": "deducing_bounds_from_const_1"
+    },
+    {
+      "instruction_count": 5,
+      "section": "socket",
+      "source": "tools/testing/selftests/bpf/progs/verifier_bounds_deduction.c",
+      "symbol": "deducing_bounds_from_const_10"
+    },
+    {
+      "instruction_count": 7,
+      "section": "socket",
+      "source": "tools/testing/selftests/bpf/progs/verifier_bounds_deduction.c",
+      "symbol": "deducing_bounds_from_const_2"
+    },
+    {
+      "instruction_count": 4,
+      "section": "socket",
+      "source": "tools/testing/selftests/bpf/progs/verifier_bounds_deduction.c",
+      "symbol": "deducing_bounds_from_const_3"
+    },
+    {
+      "instruction_count": 8,
+      "section": "socket",
+      "source": "tools/testing/selftests/bpf/progs/verifier_bounds_deduction.c",
+      "symbol": "deducing_bounds_from_const_4"
+    },
+    {
+      "instruction_count": 4,
+      "section": "socket",
+      "source": "tools/testing/selftests/bpf/progs/verifier_bounds_deduction.c",
+      "symbol": "deducing_bounds_from_const_5"
+    },
+    {
+      "instruction_count": 5,
+      "section": "socket",
+      "source": "tools/testing/selftests/bpf/progs/verifier_bounds_deduction.c",
+      "symbol": "deducing_bounds_from_const_6"
+    },
+    {
+      "instruction_count": 5,
+      "section": "socket",
+      "source": "tools/testing/selftests/bpf/progs/verifier_bounds_deduction.c",
+      "symbol": "deducing_bounds_from_const_7"
+    },
+    {
+      "instruction_count": 5,
+      "section": "socket",
+      "source": "tools/testing/selftests/bpf/progs/verifier_bounds_deduction.c",
+      "symbol": "deducing_bounds_from_const_8"
+    },
+    {
+      "instruction_count": 4,
+      "section": "socket",
+      "source": "tools/testing/selftests/bpf/progs/verifier_bounds_deduction.c",
+      "symbol": "deducing_bounds_from_const_9"
+    },
+    {
+      "instruction_count": 3,
+      "section": "socket",
+      "source": "tools/testing/selftests/bpf/progs/verifier_bswap.c",
+      "symbol": "bswap_16"
+    },
+    {
+      "instruction_count": 3,
+      "section": "socket",
+      "source": "tools/testing/selftests/bpf/progs/verifier_bswap.c",
+      "symbol": "bswap_32"
+    },
+    {
+      "instruction_count": 4,
+      "section": "socket",
+      "source": "tools/testing/selftests/bpf/progs/verifier_bswap.c",
+      "symbol": "bswap_64"
+    },
+    {
+      "instruction_count": 5,
+      "section": "socket",
+      "source": "tools/testing/selftests/bpf/progs/verifier_div0.c",
+      "symbol": "by_0_zero_check_1_1"
+    },
+    {
+      "instruction_count": 5,
+      "section": "socket",
+      "source": "tools/testing/selftests/bpf/progs/verifier_div0.c",
+      "symbol": "by_0_zero_check_1_2"
+    },
+    {
+      "instruction_count": 6,
+      "section": "socket",
+      "source": "tools/testing/selftests/bpf/progs/verifier_div0.c",
+      "symbol": "by_0_zero_check_2_1"
+    },
+    {
+      "instruction_count": 6,
+      "section": "socket",
+      "source": "tools/testing/selftests/bpf/progs/verifier_div0.c",
+      "symbol": "by_0_zero_check_2_2"
+    },
+    {
+      "instruction_count": 5,
+      "section": "socket",
+      "source": "tools/testing/selftests/bpf/progs/verifier_div0.c",
+      "symbol": "div64_by_0_zero_check"
+    },
+    {
+      "instruction_count": 5,
+      "section": "socket",
+      "source": "tools/testing/selftests/bpf/progs/verifier_div0.c",
+      "symbol": "mod64_by_0_zero_check"
+    },
+    {
+      "instruction_count": 3,
+      "section": "xdp",
+      "source": "tools/testing/selftests/bpf/progs/verifier_loops1.c",
+      "symbol": "back_jump_to_1st_insn_1"
+    },
+    {
+      "instruction_count": 4,
+      "section": "xdp",
+      "source": "tools/testing/selftests/bpf/progs/verifier_loops1.c",
+      "symbol": "bounded_loop_count_to_4"
+    },
+    {
+      "instruction_count": 5,
+      "section": "xdp",
+      "source": "tools/testing/selftests/bpf/progs/verifier_loops1.c",
+      "symbol": "loop_containing_a_forward_jump"
+    },
+    {
+      "instruction_count": 5,
+      "section": "socket",
+      "source": "tools/testing/selftests/bpf/progs/verifier_loops1.c",
+      "symbol": "loop_start_in_the_middle"
+    }
+  ],
+  "included_count": 28,
+  "kernel_commit": "b96da308ef1a054c3c04c9445e5ed70259b7c397",
+  "policy_sha256": "e78ceedd0fa86d3a58339a35f4ce14844585ec1c3a37680fb6676e08776ecc33",
+  "schema_version": 1,
+  "selection_rule": "Include every STT_FUNC entry in a socket or xdp ELF section from the pinned source frame when its size is a nonzero multiple of eight bytes and its byte range contains no ELF relocation. Exclude cases only by these structural rules, never by observed CapeBPF outcome.",
+  "source_count": 5
+}

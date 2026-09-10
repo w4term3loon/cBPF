@@ -1,0 +1,216 @@
+{
+  "result": "PASS",
+  "scope": "Current main-workspace model, kernel code, build/run/check recipes, theory, and Linux documentation equal the reproduced frozen selection. Local reproduction adds documents/artifacts and ignores temporary render outputs; no enforcement or model changes.",
+  "files": [
+    {
+      "file": "Makefile",
+      "bytes": 2328,
+      "sha256": "f698f5f00ebb95754768d04935bbbae0a68a1e61275f266a55e04a892a000adb",
+      "mode": "0o664"
+    },
+    {
+      "file": "linux/kfunc/Makefile",
+      "bytes": 145,
+      "sha256": "55779fb0d5a52b1d65dfe83908eedfe37a296eef608c1de1b29641ed3002da48",
+      "mode": "0o664"
+    },
+    {
+      "file": "linux/kfunc/cbpf_kfunc.c",
+      "bytes": 5337,
+      "sha256": "19558371c46c7b74e7ece244271820c1118b7df2083a4efad8e5a3fd98c41754",
+      "mode": "0o664"
+    },
+    {
+      "file": "linux/kfunc/guest.c",
+      "bytes": 16832,
+      "sha256": "1d0bc97dacf1346fce683f9ef331f3fd0c5b745a32c4128271c1c8208c2b5b9e",
+      "mode": "0o664"
+    },
+    {
+      "file": "linux/ownership/README.md",
+      "bytes": 7903,
+      "sha256": "5c2789bc5354dac9e8f0768a5d090f9bd53ea5d9ef1353a34da0cda68659f601",
+      "mode": "0o664"
+    },
+    {
+      "file": "linux/ownership/cbpf.h",
+      "bytes": 792,
+      "sha256": "8cf3c862d0134b34fdf87335696878e49b681e492c1ad50698cd470811430235",
+      "mode": "0o664"
+    },
+    {
+      "file": "linux/ownership/cbpf_jit.c",
+      "bytes": 12812,
+      "sha256": "a1a3c2476380325100a9b361f213bb06db9e9dd24543ae8e12a5354ddd8dd753",
+      "mode": "0o664"
+    },
+    {
+      "file": "linux/ownership/cbpf_runtime.c",
+      "bytes": 15577,
+      "sha256": "a70dfb8b78ec3f6bd6d97afc3ad4c67a8cc63741955bd1005897942776b86296",
+      "mode": "0o664"
+    },
+    {
+      "file": "linux/ownership/guest.c",
+      "bytes": 6793,
+      "sha256": "89d31fbab37ad07d56b2fbc3fc4d9b7c37d985ad1c5e1be3651632dbbb2d4477",
+      "mode": "0o664"
+    },
+    {
+      "file": "linux/ownership/integration.patch",
+      "bytes": 4956,
+      "sha256": "8121d10f5e83488ed31739960d46cb3fe35e9f319e91acd5230c80718c5abe30",
+      "mode": "0o664"
+    },
+    {
+      "file": "linux/ownership/platform.patch",
+      "bytes": 8059,
+      "sha256": "65c34af4d8f1db14455c297a1f71fc03138b2fc9e834a8dc4480b0687e208c44",
+      "mode": "0o664"
+    },
+    {
+      "file": "linux/spatial/README.md",
+      "bytes": 6282,
+      "sha256": "d73c5b04efe45fdb231a30004e7ba263b30a3e95351ca5145fbbd03aebc06b63",
+      "mode": "0o664"
+    },
+    {
+      "file": "linux/spatial/array-authority.patch",
+      "bytes": 12851,
+      "sha256": "ac74717a7dbd2c61760115c1b8b719e52d27d60d02957a2b73c3ff155206c4ac",
+      "mode": "0o664"
+    },
+    {
+      "file": "src/cbpf.c",
+      "bytes": 5209,
+      "sha256": "55ca962a74e57cc29598884723fc67a529ac7e0f3b278495c9f9fdf41e3ece7a",
+      "mode": "0o664"
+    },
+    {
+      "file": "src/cbpf.h",
+      "bytes": 2294,
+      "sha256": "8530f1c02110e1675811d15bc369a06d4507e16807f0556ae13dc5c01bb706ab",
+      "mode": "0o664"
+    },
+    {
+      "file": "src/cheri_demo.c",
+      "bytes": 5023,
+      "sha256": "a34d1a8097f50931662bb99e176ff0df60701a1ad3fa3a18369a8a25b97e6d90",
+      "mode": "0o664"
+    },
+    {
+      "file": "src/demo.c",
+      "bytes": 8340,
+      "sha256": "6b931329924ad068fe2e6361e8371023bbbc59785de06c2564d1a2dd2701bdab",
+      "mode": "0o664"
+    },
+    {
+      "file": "src/gate.c",
+      "bytes": 9110,
+      "sha256": "e2693cbba1eb37b92ed54aa00bd00a68e616d59dfbded175e5e4aee65aecd784",
+      "mode": "0o664"
+    },
+    {
+      "file": "src/gate.h",
+      "bytes": 1509,
+      "sha256": "3efe283e382385c3c54a30d654cbe5f009d85e2214e6b39e1d87aa50e8752013",
+      "mode": "0o664"
+    },
+    {
+      "file": "src/gate_demo.c",
+      "bytes": 14672,
+      "sha256": "133b34b1153c2cd0eaa958653c2dae14e322ce2a3e189ada5ea70e60fec1317f",
+      "mode": "0o664"
+    },
+    {
+      "file": "theory/check_conformance.py",
+      "bytes": 10390,
+      "sha256": "552c5929a53d0ea50ad981b918a7959bc04d2df8d5ef547b61cdb8270cbea246",
+      "mode": "0o664"
+    },
+    {
+      "file": "theory/check_model.py",
+      "bytes": 13345,
+      "sha256": "c973366427b63951d93de9cb41ef4f9650780ac4a1db8e8ab37120713ce5f511",
+      "mode": "0o664"
+    },
+    {
+      "file": "theory/check_oracle.py",
+      "bytes": 4106,
+      "sha256": "478f50fcda12f30fd43b9360288d86cf13d50646987a42eefa37225fb9ff50d3",
+      "mode": "0o664"
+    },
+    {
+      "file": "theory/gate-mediation.md",
+      "bytes": 6013,
+      "sha256": "ae581b8396bc97f3be4091fdfc82aa2d5c59ddbaa49ed88056b4f16eb12862bf",
+      "mode": "0o664"
+    },
+    {
+      "file": "theory/kernel-ownership.md",
+      "bytes": 7380,
+      "sha256": "dda48c26dae8416cf2d94ff22b7089a7fd8bd33a4464075d0d7e03aef3f6b2cf",
+      "mode": "0o664"
+    },
+    {
+      "file": "theory/ownership.md",
+      "bytes": 11804,
+      "sha256": "6974ed663667c2ad9bb8f025b4152a8d6666302c7c69ce86e0a7407841c188b3",
+      "mode": "0o664"
+    },
+    {
+      "file": "theory/spatial.md",
+      "bytes": 4113,
+      "sha256": "14c2a530c4126a932b2af449517bf5b322f1f6dcb983855d1507e05b4ac49114",
+      "mode": "0o664"
+    },
+    {
+      "file": "tools/build_kfunc_kernel.sh",
+      "bytes": 7556,
+      "sha256": "e05166de58b1382fa2c22205323c2ab88c4c479efeb35b8249322db24c03b7af",
+      "mode": "0o775"
+    },
+    {
+      "file": "tools/build_ownership_kernel.sh",
+      "bytes": 9770,
+      "sha256": "b730ab5dde4d051da80602c0a7a2315d7a9533599137cc426c4e4f3bec0936a9",
+      "mode": "0o775"
+    },
+    {
+      "file": "tools/check_spatial.sh",
+      "bytes": 8650,
+      "sha256": "ea5a572f8674d8e0bebab52b520cfea6cb681221fc0980749b8b25c3ac526a96",
+      "mode": "0o775"
+    },
+    {
+      "file": "tools/conformance_bridge.c",
+      "bytes": 2969,
+      "sha256": "1d34a3188ddd53d749dc633f2f542347a6fea084f20bc0554b5fae32f4f6e326",
+      "mode": "0o664"
+    },
+    {
+      "file": "tools/run_cheri.sh",
+      "bytes": 5283,
+      "sha256": "2f7bb6c4520a08d8b19ffc26840f52cac42de1ad402aad8503b34540bd00861f",
+      "mode": "0o664"
+    },
+    {
+      "file": "tools/run_kfunc.sh",
+      "bytes": 9129,
+      "sha256": "c914ae85c395be57a1e982650798f087c50703da703594cb1234eef6aec9c0ed",
+      "mode": "0o664"
+    },
+    {
+      "file": "tools/run_ownership.sh",
+      "bytes": 18224,
+      "sha256": "3cebc14fe5c6c487a769b469d02654250984096cb52f191ff5349b377d1051af",
+      "mode": "0o775"
+    },
+    {
+      "file": "tools/verify_evidence.py",
+      "bytes": 2662,
+      "sha256": "7c3bc01636bd0d825772d3e2ac7739d24e42f538b4846b6b31fce3255cf50491",
+      "mode": "0o664"
+    }
+  ]
+}

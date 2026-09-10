@@ -1,0 +1,62 @@
+{
+  "result": "PASS_PRE_EXECUTION_CHECKS",
+  "program": "cbpf_s5",
+  "image": {
+    "prog_id": "1",
+    "map_id": "1",
+    "original_count": "14",
+    "translated_count": "14",
+    "native_entry": "0xffff8000813f7988",
+    "jited_len": "392",
+    "nr_jited_ksyms": "1",
+    "nr_jited_func_lens": "1",
+    "func_len": "392"
+  },
+  "ready": {
+    "map_id": "1",
+    "prog_id": "1",
+    "held_map_fd": "3",
+    "held_prog_fd": "4",
+    "executed": "0"
+  },
+  "log_prefix_bytes": 38039,
+  "log_prefix_sha256": "829b109b4ea1a750d0c5d029cdc752d72ead75048e7563fb3f921154f63c2734",
+  "jit_sha256": "97d2bc5287edec817d679e8d740ea5bf51f695b3157e8683152b364afe48710d",
+  "vmlinux_sha256": "c68e7d4f813b4e7cf4875a83047419ae49623dfeeb2325b6404aadf0d9995ded",
+  "checker_sha256": "cf0e402a5d6afcbf167d5ad4311d02360839146b90cc7ec3d6fa7ffb69ed3abc",
+  "linked_disassembly_sha256": "6beec689a420f8c6f425f0b78c49559b34b901299414ab08474169e1f330eb9d",
+  "builder": "sha256:b4de3680a00e3ac68ccc56bd87131b97c1fffcd5e016c2d1a54d7e3386d9fc6e",
+  "symbols": {
+    "bpf_cheri_helper_gateway": 18446603338368907264,
+    "bpf_cheri_map_lookup_impl": 18446603338368907540,
+    "bpf_enter_sandbox": 18446603338368908612,
+    "ex_handler_bpf": 18446603338368912796,
+    "__bpf_call_base": 18446603338370241772,
+    "cbpf_map_area_alloc": 18446603338370269320,
+    "cbpf_array_value_cap": 18446603338370522744,
+    "array_map_alloc": 18446603338370524324,
+    "array_map_lookup_elem": 18446603338370525508
+  },
+  "relocation": 0,
+  "restricted": {
+    "base": 18446603338389617136,
+    "length": 224
+  },
+  "executive": {
+    "base": 18446603338389617360,
+    "length": 56
+  },
+  "selected": {
+    "load_native": 75,
+    "store_native": 77,
+    "capability": "c7",
+    "data_register": "x0",
+    "bytes": 8
+  },
+  "independent_review_required": [
+    "Exact boot Image/vmlinux/source/config binding",
+    "Complete emitted prologue/epilogue; linked entry C17/CLR/FNP transport, current provider branch, c0 return transport",
+    "Linked bounded exception handler clears r0 and exits; no reachable PLT/attachment"
+  ],
+  "limitations": "One fixed program; constructed operand logs, not independent hardware attestation. JIT span excludes PLT target/exception table."
+}

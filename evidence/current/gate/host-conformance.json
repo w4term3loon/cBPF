@@ -1,0 +1,53 @@
+{
+  "scope": "bounded host-C observations against finite ownership semantics",
+  "implementation": "gate",
+  "bounds": {
+    "registers": 4,
+    "spills": 2,
+    "acquisitions": 2,
+    "max_insns": 64,
+    "max_events": 66
+  },
+  "check": {
+    "matched": true,
+    "active_states": 3045,
+    "reachable_states": 17828,
+    "terminal_states": 14783,
+    "model_edges": 149205,
+    "branch_cases": {
+      "consumed": 4016,
+      "live": 4016,
+      "null": 4148
+    },
+    "scalar_boundary_cases": 4,
+    "programs_compared": 161389,
+    "maximum_generated_instructions": 12,
+    "terminal_outcomes": {
+      "exhaustion": 11664,
+      "null_read": 4148,
+      "null_release": 4148,
+      "return": 121213,
+      "stale_read": 4016,
+      "stale_release": 4016
+    }
+  },
+  "environment": {
+    "python": "3.12.3",
+    "machine": "x86_64"
+  },
+  "source_sha256": {
+    "src/cbpf.c": "55ca962a74e57cc29598884723fc67a529ac7e0f3b278495c9f9fdf41e3ece7a",
+    "src/cbpf.h": "8530f1c02110e1675811d15bc369a06d4507e16807f0556ae13dc5c01bb706ab",
+    "tools/conformance_bridge.c": "1d34a3188ddd53d749dc633f2f542347a6fea084f20bc0554b5fae32f4f6e326",
+    "theory/check_model.py": "c973366427b63951d93de9cb41ef4f9650780ac4a1db8e8ab37120713ce5f511",
+    "theory/check_conformance.py": "552c5929a53d0ea50ad981b918a7959bc04d2df8d5ef547b61cdb8270cbea246",
+    "src/gate.c": "e2693cbba1eb37b92ed54aa00bd00a68e616d59dfbded175e5e4aee65aecd784",
+    "src/gate.h": "3efe283e382385c3c54a30d654cbe5f009d85e2214e6b39e1d87aa50e8752013"
+  },
+  "library_sha256": "829d2e1b434965ff11d0942639b6136772df4c093ed14824e8f30d1f7ec6a1cd",
+  "limitations": [
+    "One shortest history per reachable abstract active state; not every program or concrete C state.",
+    "No C/native refinement proof or hardware isolation result.",
+    "No kernel, eBPF/JIT, CHERI, or external-system execution."
+  ]
+}

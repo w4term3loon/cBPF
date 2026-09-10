@@ -1,0 +1,45 @@
+CBPF_M2 kernel=6.7.0-cbpf-ownership normal_verifier=1 attached=0
+CBPF_NATIVE accepted insns=26 words=165 entry=ffff8000812c2b40 restricted_exit=118 executive_exit=119 template_check=pass
+CBPF_NATIVE map pc=0 begin=56 end=60 code=b7 op=0
+CBPF_NATIVE map pc=1 begin=60 end=65 code=85 op=1
+CBPF_NATIVE map pc=2 begin=65 end=66 code=15 op=0
+CBPF_NATIVE map pc=3 begin=66 end=67 code=bf op=0
+CBPF_NATIVE map pc=4 begin=67 end=68 code=7b op=0
+CBPF_NATIVE map pc=5 begin=68 end=72 code=b7 op=0
+CBPF_NATIVE map pc=6 begin=72 end=77 code=85 op=1
+CBPF_NATIVE map pc=7 begin=77 end=78 code=15 op=0
+CBPF_NATIVE map pc=8 begin=78 end=79 code=bf op=0
+CBPF_NATIVE map pc=9 begin=79 end=80 code=79 op=0
+CBPF_NATIVE map pc=10 begin=80 end=81 code=bf op=0
+CBPF_NATIVE map pc=11 begin=81 end=86 code=85 op=3
+CBPF_NATIVE map pc=12 begin=86 end=87 code=bf op=0
+CBPF_NATIVE map pc=13 begin=87 end=92 code=85 op=2
+CBPF_NATIVE map pc=14 begin=92 end=93 code=bf op=0
+CBPF_NATIVE map pc=15 begin=93 end=94 code=bf op=0
+CBPF_NATIVE map pc=16 begin=94 end=99 code=85 op=3
+CBPF_NATIVE map pc=17 begin=99 end=100 code=bf op=0
+CBPF_NATIVE map pc=18 begin=100 end=101 code=95 op=0
+CBPF_NATIVE map pc=19 begin=101 end=102 code=79 op=0
+CBPF_NATIVE map pc=20 begin=102 end=103 code=bf op=0
+CBPF_NATIVE map pc=21 begin=103 end=108 code=85 op=3
+CBPF_NATIVE map pc=22 begin=108 end=112 code=b7 op=0
+CBPF_NATIVE map pc=23 begin=112 end=113 code=95 op=0
+CBPF_NATIVE map pc=24 begin=113 end=117 code=b7 op=0
+CBPF_NATIVE map pc=25 begin=117 end=118 code=95 op=0
+CBPF_M2 verifier_begin
+CBPF_M2 verifier_end
+CBPF_ENTER restricted_base=0xffff8000812c2ba4 restricted_size=376 executive_base=0xffff8000812c2d1c executive_size=184 stack_base=0xffff0000001cf6e0 stack_size=16 rddc_tag=0 gate_sealed=1
+CBPF_BIND pc=1 id=1 cell=ffff0000001cf7c0 object=ffff800080f27e08 public_tag=1 public_base=0xffff0000001cf7c0 public_length=16 public_perms=0x20001
+CBPF_GATE seq=1 event=acquire pc=1 id=1 acquired=1 released=0 reads=0 cleanup=0 refs=2 tagA=1 tagB=0
+CBPF_BIND pc=6 id=2 cell=ffff0000001cf7d0 object=ffff800080f27e08 public_tag=1 public_base=0xffff0000001cf7d0 public_length=16 public_perms=0x20001
+CBPF_GATE seq=2 event=acquire pc=6 id=2 acquired=2 released=0 reads=0 cleanup=0 refs=3 tagA=1 tagB=1
+CBPF_GATE seq=3 event=clear pc=11 id=1 acquired=2 released=0 reads=0 cleanup=0 refs=3 tagA=0 tagB=1
+CBPF_GATE seq=4 event=release pc=11 id=1 acquired=2 released=1 reads=0 cleanup=0 refs=2 tagA=0 tagB=1
+CBPF_GATE seq=5 event=read pc=13 id=2 acquired=2 released=1 reads=1 cleanup=0 refs=2 tagA=0 tagB=1
+CBPF_GATE seq=6 event=clear pc=16 id=2 acquired=2 released=1 reads=1 cleanup=0 refs=2 tagA=0 tagB=0
+CBPF_GATE seq=7 event=release pc=16 id=2 acquired=2 released=2 reads=1 cleanup=0 refs=1 tagA=0 tagB=0
+CBPF_GATE seq=8 event=exit pc=18446744073709551615 id=0 acquired=2 released=2 reads=1 cleanup=0 refs=1 tagA=0 tagB=0
+CBPF_RESULT value=42 entered=1 failed=0 balanced=1
+CBPF_M2 case=ab_spill executed=1 retval=42 jited_len=660
+CBPF_M2 result=PASS
+CBPF ownership_runner=PASS qemu_exit=0 native_bytes=660

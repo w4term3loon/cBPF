@@ -1,0 +1,250 @@
+{
+  "schema_version": "1.0.0",
+  "artifact_kind": "capebpf_faulty_vs_software_supplement_result_analysis",
+  "artifact_version": "checker-compatible-result-v2-analysis-v2",
+  "study_id": "capebpf-faulty-vs-software-supplement-v3",
+  "status": "observed_eligible_supports_bounded_software_guard_distinction",
+  "governing_identities": {
+    "schedule": {
+      "path": "research/faulty-vs-software-supplement-v3/schedule-v2.json",
+      "sha256": "fb3d15764b89158f875d77b7695b542d70d6c2a35d4107ff04a1cc4f4c8617b1"
+    },
+    "build_receipt": {
+      "path": "research/faulty-vs-software-supplement-v3/build-receipt-v2.json",
+      "sha256": "050d769e4fb12c359f1ae716c2a2e6ba24f09bde70ae6dfa575cc22cc991a4e3"
+    },
+    "deployment": {
+      "path": "research/faulty-vs-software-supplement-v3/deployment-binding-v2.json",
+      "sha256": "f5d6a428fe700bdb2c996abc0432b91f069f90073cf48a4586ed2fb043db9ded"
+    },
+    "runner": {
+      "path": "tools/faulty-vs-software-supplement-v3/study_runtime.py",
+      "sha256": "38d995e75c1ee502d79980aac4a53e3755642c81330976acc187185ab0f9d00e"
+    }
+  },
+  "relationship_to_result_v1": {
+    "receipt": {
+      "path": "linux/benchmarks/faulty-vs-software-supplement/artifacts/result-v1/result-receipt-v1.json",
+      "sha256": "0ef8c13959fe6f43641af9e7bee54cdd0c72431a00478465ccf08eee100ba407"
+    },
+    "classification": "ineligible_non_diagnostic_integration_failure",
+    "separation": "Result-v1 remains immutable and separately reported. No result-v1 row, Image, disabled control, observation ID, or outcome is imported into this result.",
+    "repair_boundary": "This result uses a new checker-profile source epoch, two fresh successor builds, a new independently drawn schedule, four new boots, and new sw.v3 observation IDs."
+  },
+  "collection": {
+    "scheduled_boots": 4,
+    "completed_boots": 4,
+    "qemu_exit_zero": 4,
+    "timeouts": 0,
+    "replacement_runs": 0,
+    "infrastructure_failures": 0,
+    "row_claim_eligible": 4,
+    "row_claim_ineligible": 0,
+    "eligible_blocks": 2,
+    "study_oracle_classification": "supports_bounded_software_guard_distinction",
+    "study_evidence_eligible": true,
+    "supports_preregistered_maximum_claim": true,
+    "majority_vote": false
+  },
+  "rows": [
+    {
+      "observation_id": "sw.v3.b01.r01.disabled",
+      "block": 1,
+      "mode": "software_disabled",
+      "raw_sha256": "a818e1748cb9bae40f83d962d59d45ca447f427258a9ed741998029fb208305b",
+      "normalized_sha256": "9a0199079fefde02c458cb2287f17bf4af0a0bfbe4afc7cae830a22bd872fc4b",
+      "fault_isolation_valid": true,
+      "sound_va": true,
+      "identity_checks_pass": true,
+      "dual_handoff_pass": true,
+      "assigned_relations_valid": true,
+      "checker_accept": true,
+      "native_words": 108,
+      "site9_words": 1,
+      "site14_words": 6,
+      "load": "accept",
+      "run": "completed",
+      "retval": 42,
+      "successor_token_retired": true,
+      "key1_after": "2435465768798a9b3031323334353637",
+      "completed_target_effect": true,
+      "capability_fault": false,
+      "claim_eligible": true,
+      "classification": "software_disabled_effect"
+    },
+    {
+      "observation_id": "sw.v3.b01.r02.exact",
+      "block": 1,
+      "mode": "software_exact",
+      "raw_sha256": "60ce396feb9b0718ca39d1cf45cecd12c62c69e50488bb655a3e25e94283e176",
+      "normalized_sha256": "dcde95097fa6605a801d177f92ddc93de2a9fc074e2bf0832192f4e6c9cf49be",
+      "fault_isolation_valid": true,
+      "sound_va": true,
+      "identity_checks_pass": true,
+      "dual_handoff_pass": true,
+      "assigned_relations_valid": true,
+      "checker_accept": true,
+      "all_map_sites_guarded": true,
+      "branch_targets_valid": true,
+      "failure_stub_valid": true,
+      "native_words": 138,
+      "site9_words": 18,
+      "site14_words": 18,
+      "load": "accept",
+      "run": "completed",
+      "retval": 77,
+      "successor_token_retired": false,
+      "all_monitored_bytes_unchanged": true,
+      "completed_target_effect": false,
+      "capability_fault": false,
+      "claim_eligible": true,
+      "classification": "software_guard_prevented"
+    },
+    {
+      "observation_id": "sw.v3.b02.r01.disabled",
+      "block": 2,
+      "mode": "software_disabled",
+      "raw_sha256": "5eb6d88e0f962864b3284744dc0172410b70f169c718abdeeb98eb179f55389a",
+      "normalized_sha256": "d2525be37e8942e9ee3c19b082a1abcb8a25e302be87b9feedb578df12612655",
+      "fault_isolation_valid": true,
+      "sound_va": true,
+      "identity_checks_pass": true,
+      "dual_handoff_pass": true,
+      "assigned_relations_valid": true,
+      "checker_accept": true,
+      "native_words": 108,
+      "site9_words": 1,
+      "site14_words": 6,
+      "load": "accept",
+      "run": "completed",
+      "retval": 42,
+      "successor_token_retired": true,
+      "key1_after": "2435465768798a9b3031323334353637",
+      "completed_target_effect": true,
+      "capability_fault": false,
+      "claim_eligible": true,
+      "classification": "software_disabled_effect"
+    },
+    {
+      "observation_id": "sw.v3.b02.r02.exact",
+      "block": 2,
+      "mode": "software_exact",
+      "raw_sha256": "d936a4efe41ef0d5a310334f749e3f6c6d0e02b22c5eaef0f515c4a3b20b57f1",
+      "normalized_sha256": "44af8eddbe830f97b091380f9ecfa0e09d5cba1ccc2203743eabffe9e722e829",
+      "fault_isolation_valid": true,
+      "sound_va": true,
+      "identity_checks_pass": true,
+      "dual_handoff_pass": true,
+      "assigned_relations_valid": true,
+      "checker_accept": true,
+      "all_map_sites_guarded": true,
+      "branch_targets_valid": true,
+      "failure_stub_valid": true,
+      "native_words": 138,
+      "site9_words": 18,
+      "site14_words": 18,
+      "load": "accept",
+      "run": "completed",
+      "retval": 77,
+      "successor_token_retired": false,
+      "all_monitored_bytes_unchanged": true,
+      "completed_target_effect": false,
+      "capability_fault": false,
+      "claim_eligible": true,
+      "classification": "software_guard_prevented"
+    }
+  ],
+  "common_conditions_observed": {
+    "source": {
+      "commit": "75889c86076bc6eee1b0fbf2fbd217119cb34516",
+      "tree": "fca36d26a8cdfb327316b9970fc879bd3960a86d",
+      "clean_at_collection": true,
+      "fresh_full_links_both_roles": true,
+      "full_config_only_delta": "CONFIG_CAPEBPF_TEST_SOFTWARE_MAP_BOUNDS"
+    },
+    "workload": {
+      "canonical_pre_relocation_bpf_sha256": "99303bd889ead83c707221ec3e74a924c9dd57143cc5a52cdc8b2ed797e5da78",
+      "provider": "sole loader-bound three-element array map vs_map",
+      "selected_key": 0,
+      "E": 16,
+      "d": 8,
+      "W": 8,
+      "attempted_interval_relative_to_B": "[B+16,B+24)",
+      "target_write_bytes": "2435465768798a9b"
+    },
+    "fault": "Each row retained sound normalized V.a and exactly one isolated final V.s rejection-to-acceptance override.",
+    "handoff": "Each row retained exactly two source-explained PC-derived accepted handoffs in the required order with common class/provider/program fields.",
+    "permissions": {
+      "raw_hw_permissions": "0x0000000000030dfd",
+      "mapped_permissions": "0x00000003",
+      "unmodeled_hw_permissions": "0x0000000000000dfd",
+      "interpretation": "The unmodeled bits are retained and compared, not interpreted or normalized to zero."
+    }
+  },
+  "distinguishing_observation": {
+    "software_disabled": "In both blocks the program accepted, returned 42, retired the successor token, and changed exactly adjacent key-1 bytes [0,8) to 2435465768798a9b.",
+    "software_exact": "In both blocks the program accepted, the complete checked image contained the source-derived guards and return-77 stub, execution returned 77 before the store successor, and all three monitored 16-byte values remained unchanged.",
+    "block_classifications": [
+      "distinguishing_expected_pattern",
+      "distinguishing_expected_pattern"
+    ],
+    "interpretation": "This supports the bounded trusted-software configuration distinction preregistered for this workload. It does not show an architectural-capability advantage."
+  },
+  "emitted_code_description": {
+    "software_exact": {
+      "whole_image_words": 138,
+      "whole_image_bytes": 552,
+      "site9_words": 18,
+      "site9_bytes": 72,
+      "site14_words": 18,
+      "site14_bytes": 72
+    },
+    "software_disabled": {
+      "whole_image_words": 108,
+      "whole_image_bytes": 432,
+      "site9_words": 1,
+      "site9_bytes": 4,
+      "site14_words": 6,
+      "site14_bytes": 24
+    },
+    "software_exact_minus_disabled": {
+      "whole_image_words": 30,
+      "whole_image_bytes": 120,
+      "site9_words": 17,
+      "site9_bytes": 68,
+      "site14_words": 12,
+      "site14_bytes": 48
+    },
+    "evidence_status": "static_retained_jit_image_only",
+    "exclusions": "No dynamic instruction count, native timing, cross-boot address equality, general per-access cost, or performance claim."
+  },
+  "construct_validity_boundary": {
+    "compound_configuration_switch": "The only normalized Kconfig delta intentionally changes the assigned-root encoding, software guards, failure stub, globally selected checker profile 4, and the disabled diagnostic trace shape. The emitted images are not bit-for-bit mechanism matched.",
+    "causal_wording": "The result is attributed to the trusted software-bounds configuration and its validated guard path, not to one instruction and not to independent authority provenance.",
+    "trusted_semantics": "Provider, selected live element, extent, B/E/d/W assignment, guard semantics, failure branch/stub, and runtime/image correspondence remain trusted or deterministically validated as recorded.",
+    "formal_gap": "Existing Isabelle theories do not cover checker profile 4 or prove this production software-guard path.",
+    "artifact_boundary": "The clean source, full builds, toolchain, QEMU, firmware, and initramfs are externally referenced and are not bundled in this scoped result directory."
+  },
+  "postcollection_validation": {
+    "deterministic_renormalization_byte_identical_rows": 4,
+    "session_chain_records_valid": 10,
+    "referenced_hashes_valid": 17,
+    "raw_marker_cross_check": "Both disabled logs contain the exact key-1 effect and successor witness; both exact logs contain retval 77, no capability fault, no successor, and no monitored-byte change.",
+    "postcollection_preflight": "fails closed because the frozen collection target now exists"
+  },
+  "permitted_result_sentence": "For one checker-profile source epoch and canonical faulty-final-decision array-map workload, two frozen same-source blocks observed that the trusted software-bounds configuration emitted validated width-aware guards using the assigned B/E/d/W, returned 77 through the validated failure stub before the outside store, and changed no monitored byte, while its disabled control completed the exact adjacent-key effect. This bounded configuration-level result does not establish bit-for-bit mechanism isolation, independent authority provenance, AEE behavior, architectural capability advantage, performance, semantic object correctness, or general verifier-trust reduction.",
+  "falsifier": "An otherwise eligible enabled row that completes the outside effect, an eligible disabled row that does not complete the exact adjacent-key effect, disagreement between frozen blocks, or any failed identity, V.a, assignment, handoff, native-template, byte, or infrastructure condition falsifies or makes ineligible the stated bounded result.",
+  "does_not_establish": [
+    "AEE behavior or a faithful AEE comparison",
+    "an advantage of architectural capability enforcement over a trusted software check",
+    "independent runtime-authority provenance in this comparator",
+    "bit-for-bit mechanism isolation",
+    "a general reduction in verifier trust or a net TCB reduction",
+    "tolerance of arbitrary verifier defects",
+    "correct semantic provider, element, or extent assignment",
+    "temporal safety",
+    "machine-checked production refinement for checker profile 4",
+    "native Morello performance, dynamic instruction cost, or a general per-access cost",
+    "whole-Linux coverage, release readiness, licensing clearance, or independent reproduction"
+  ]
+}

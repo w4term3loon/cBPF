@@ -1,0 +1,52 @@
+{
+  "symbols": {
+    "cbpf_gateway": {
+      "address": 18446603338368934272,
+      "size": 0,
+      "review_stop": 18446603338368934496,
+      "extent_note": "Zero-size assembly label: inspected through the next non-mapping symbol, including padding."
+    },
+    "cbpf_gate_impl": {
+      "address": 18446603338368934496,
+      "size": 840,
+      "review_stop": 18446603338368935336
+    },
+    "cbpf_fail": {
+      "address": 18446603338368935336,
+      "size": 144,
+      "review_stop": 18446603338368935480
+    },
+    "cbpf_consume": {
+      "address": 18446603338368935812,
+      "size": 420,
+      "review_stop": 18446603338368936232
+    },
+    "cbpf_test_invoke": {
+      "address": 18446603338368936252,
+      "size": 832,
+      "review_stop": 18446603338368937084
+    },
+    "cbpf_enter": {
+      "address": 18446603338368937084,
+      "size": 684,
+      "review_stop": 18446603338368937768
+    },
+    "cbpf_callback_check": {
+      "address": 18446603338383664924,
+      "size": 964,
+      "review_stop": 18446603338383665888
+    },
+    "cbpf_dispatch_callbacks": {
+      "address": 18446603338383665888,
+      "size": 152,
+      "review_stop": 18446603338383666040
+    },
+    "cbpf_ownership_callback": {
+      "address": 18446603338383666040,
+      "size": 348,
+      "review_stop": 18446603338383666388
+    }
+  },
+  "vmlinux_sha256": "4ac8ce919bcc976d62371e74717887d640963d37236c6a03470fd42750e55f74",
+  "builder": "sha256:76c8ca062c30aa59b8eb072f30620a2a7e9604515aefe84d64161bf9eb644038"
+}

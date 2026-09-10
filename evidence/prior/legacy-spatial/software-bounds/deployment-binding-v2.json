@@ -1,0 +1,309 @@
+{
+  "artifact_kind": "capebpf_faulty_vs_software_supplement_deployment",
+  "build_receipt": {
+    "path": "research/faulty-vs-software-supplement-v3/build-receipt-v2.json",
+    "sha256": "050d769e4fb12c359f1ae716c2a2e6ba24f09bde70ae6dfa575cc22cc991a4e3"
+  },
+  "eligibility": {
+    "blockers": [],
+    "collection_allowed": true,
+    "supplemental_boots_before_binding": 0
+  },
+  "freeze_receipt": {
+    "path": "research/faulty-vs-software-supplement-v3/freeze-receipt-v1.json",
+    "sha256": "4e0e4804d6151ef08319f6fb8c57baf10904dae219aa92da0bdce8bc043bc005"
+  },
+  "full_config_delta_attestation": {
+    "comparison_domain": "all_normalized_kconfig_entries",
+    "disabled_value": "n",
+    "exact_value": "y",
+    "only_delta": "CONFIG_CAPEBPF_TEST_SOFTWARE_MAP_BOUNDS",
+    "validated_at_binding": true
+  },
+  "roles": [
+    {
+      "build_exit_status": 0,
+      "config": {
+        "path": "${TEMP_PATH}",
+        "sha256": "f0c495d3bb45697bdf13645608ea7fc472557ccd870e7e07d741ba0cdd0c857f"
+      },
+      "image": {
+        "path": "${TEMP_PATH}",
+        "sha256": "5dca016483810f163fff5b753e20adebd64126e6ac56e32b6b5539a4c793ecc2"
+      },
+      "kernel_release": "6.7.0-capebpf-fvs-swprof-75889c8-exact",
+      "localversion_override": "-capebpf-fvs-swprof-75889c8-exact",
+      "role": "software_exact",
+      "source_commit": "75889c86076bc6eee1b0fbf2fbd217119cb34516",
+      "source_tree": "fca36d26a8cdfb327316b9970fc879bd3960a86d",
+      "used_by": [
+        "software_exact"
+      ],
+      "vmlinux": {
+        "path": "${TEMP_PATH}",
+        "sha256": "7927340e8092b7ee4f7b8204c65067b18b11b776acc334f0bab6a5daf8e575bb"
+      }
+    },
+    {
+      "build_exit_status": 0,
+      "config": {
+        "path": "${TEMP_PATH}",
+        "sha256": "242ecd2ad4af48830428cc17cb9b519744e3a160bb407186fd0a7916e28ab7fb"
+      },
+      "image": {
+        "path": "${TEMP_PATH}",
+        "sha256": "5f912c5837043665211371dd3122fb2ea79576ce64268d6b2127215c6425b47f"
+      },
+      "kernel_release": "6.7.0-capebpf-fvs-swprof-75889c8-disabled",
+      "localversion_override": "-capebpf-fvs-swprof-75889c8-disabled",
+      "role": "software_disabled",
+      "source_commit": "75889c86076bc6eee1b0fbf2fbd217119cb34516",
+      "source_tree": "fca36d26a8cdfb327316b9970fc879bd3960a86d",
+      "used_by": [
+        "software_disabled"
+      ],
+      "vmlinux": {
+        "path": "${TEMP_PATH}",
+        "sha256": "ecdfc5e71db2424530a68f7a4aa5bd9c828577b2b878ebeb7b73ad72b8333a44"
+      }
+    }
+  ],
+  "runtime_substrate": {
+    "deployment_schema": {
+      "path": "research/faulty-vs-software-supplement-v3/deployment-binding-v2.schema.json",
+      "sha256": "df93599c2c66232be95b3fd48879625c95da9186127f87f58ba3c455010c6e79"
+    },
+    "firmware": {
+      "path": "${TEMP_PATH}",
+      "sha256": "b608de7c81a4cec0eb83422a73ee227618c30fe9513a582a6f9f786ce8d1dbf9"
+    },
+    "guest_test_binary": {
+      "path": "${TEMP_PATH}",
+      "sha256": "5ce5b199feb3d3f5dd0ade2c11645a15ed449e1ed2eab63d69e6d4b153736bd3"
+    },
+    "init_binary": {
+      "path": "${TEMP_PATH}",
+      "sha256": "a0a1e095bbc81e27f8a0683b46118a495f069d3b58199c5f46b9310e2341ab34"
+    },
+    "initramfs": {
+      "path": "${TEMP_PATH}",
+      "sha256": "ed841e731307fdfce36190d7f6f4d28f5cd16eadb36fe9de546788c157305747"
+    },
+    "initramfs_builder": {
+      "path": "linux/benchmarks/faulty-vs-differential/build-initramfs.sh",
+      "sha256": "56e4e8f07563e394e970b41c827066c2914c0c9c74df80df4501c64686201d6c"
+    },
+    "observation_schema": {
+      "path": "research/faulty-vs-software-supplement-v3/normalized-observation-v2.schema.json",
+      "sha256": "9a701a03c92ca99ba38fec293546b5e9ca6342cc875b90269ad898e1c04e9bb9"
+    },
+    "primary_runtime_dependency": {
+      "path": "tools/faulty-vs-differential-v2/study_runtime.py",
+      "sha256": "66e93e9c2135b91d7275131a5078858e0535c858c722bb93710beaa3bee08c10"
+    },
+    "qemu": {
+      "path": "${TEMP_PATH}",
+      "sha256": "b0a0b21a9ee5e4b01a1f7d40bcb1ec6289cd51eab1a0f66deafc419b1db3e219",
+      "version": "QEMU emulator version 7.0.0"
+    },
+    "runner": {
+      "path": "tools/faulty-vs-software-supplement-v3/study_runtime.py",
+      "sha256": "38d995e75c1ee502d79980aac4a53e3755642c81330976acc187185ab0f9d00e"
+    },
+    "summary_schema": {
+      "path": "research/faulty-vs-software-supplement-v3/schedule-summary-v2.schema.json",
+      "sha256": "c721c53cdd8b3e25f848ef17f130895be4e37d6f0046adb2a3c91005784f596f"
+    }
+  },
+  "schedule": {
+    "path": "research/faulty-vs-software-supplement-v3/schedule-v2.json",
+    "sha256": "fb3d15764b89158f875d77b7695b542d70d6c2a35d4107ff04a1cc4f4c8617b1"
+  },
+  "schema_version": "1.0.0",
+  "source": {
+    "commit": "75889c86076bc6eee1b0fbf2fbd217119cb34516",
+    "dirty": false,
+    "patch_order": [
+      {
+        "path": "linux/patches/0001-morello-bpf-compartment-rfc-replay.patch",
+        "sha256": "06c552213bc4301c40ee8d71dd46275e3c1b136ec0bdba8b9556797cf0d20677"
+      },
+      {
+        "path": "linux/patches/0002-bound-bpf-stack-capability.patch",
+        "sha256": "9085aa844cb7bfeef3c2ef983bfbaefa28214172e4d67bd3d2e43a28d0bfbe97"
+      },
+      {
+        "path": "linux/patches/0003-test-only-post-verifier-stack-offset-injection.patch",
+        "sha256": "a53faa23858d4fafcb95144b35679e1f09053319f77667b53e401292ceb6fb18"
+      },
+      {
+        "path": "linux/patches/0004-per-invocation-bpf-stack.patch",
+        "sha256": "1a2827f67bc82a58ae64be9ff33d41bc483829281208e90b5edda3f8526bf7b4"
+      },
+      {
+        "path": "linux/patches/0005-verifier-jit-memory-authority-contract.patch",
+        "sha256": "41a7df8157afafb30414fd59af51983820d51991d844362ce1288367c00c76bf"
+      },
+      {
+        "path": "linux/patches/0006-bounded-read-only-socket-context.patch",
+        "sha256": "f43004f5a1ad1398a41baa24b9414a8192f8276575b7a80c143c08095cf6de3c"
+      },
+      {
+        "path": "linux/patches/0007-bounded-map-value-helper-gateway.patch",
+        "sha256": "8ffe4dd122057e10a78282ee42bd8eeb24f9151d7d7e1085b3c01f9b213ac0f3"
+      },
+      {
+        "path": "linux/patches/0008-test-only-cve-2021-3490-verifier-mode.patch",
+        "sha256": "019199c15fb12cd9dec958b63bc9bc4772de895bd7fc9b5aa4bc1416503b7036"
+      },
+      {
+        "path": "linux/patches/0009-test-only-broad-map-authority-control.patch",
+        "sha256": "38b4df902014ad0ca0e071f296b1c8be38d9ec99a6053751559f4ad2fa3b3cbe"
+      },
+      {
+        "path": "linux/patches/0010-test-only-cve-2023-2163-verifier-mode.patch",
+        "sha256": "d56cf6ce84052a72531758cbf34b62594f968218385c342861016a67c8a77691"
+      },
+      {
+        "path": "linux/patches/0011-bounded-ringbuf-helper-gateway.patch",
+        "sha256": "a8aadde4298b9b978db05910bdd9e7d4f7f114d8955091ea81694e5205ca1b93"
+      },
+      {
+        "path": "linux/patches/0012-test-only-cve-2021-4204-verifier-mode.patch",
+        "sha256": "481963addf21a1188eef1bccab57dc6b689505734d52275f614f4baf26645e49"
+      },
+      {
+        "path": "linux/patches/0013-test-only-ringbuf-direct-oob-mode.patch",
+        "sha256": "be4066975b9a4e9d307374c85a5f6cb4e703b70ddcf6d22b4a29a2e4cc28b923"
+      },
+      {
+        "path": "linux/patches/0014-test-only-wide-ringbuf-authority-control.patch",
+        "sha256": "f714c976f5ef773ba73106ca92a95e149497de3fcdb8d32652b6aa4990d13b20"
+      },
+      {
+        "path": "linux/patches/0015-capability-backed-spatial-offload.patch",
+        "sha256": "f04f087d7d99dbd33b78ad82d53540508b1d15954227a3870a6a3c23312e3b30"
+      },
+      {
+        "path": "linux/patches/0016-post-jit-authority-certificate.patch",
+        "sha256": "ac57399ac1546c1e2fd1d4141f57697172a50d6492503e11e0a3a17c86db15cf"
+      },
+      {
+        "path": "linux/patches/0017-test-only-cve-2022-23222-null-promotion.patch",
+        "sha256": "f8e10697c3cb8b0dc3e4352225ec768574c436eeb48457ea7ccddd5a8c52031b"
+      },
+      {
+        "path": "linux/patches/0018-test-only-cve-2020-8835-jmp32-bounds.patch",
+        "sha256": "67e033373ea04551c3154e26641f8097b8c20de8f0f3c738e99c81fb54a81165"
+      },
+      {
+        "path": "linux/patches/0019-post-jit-certificate-mutation-matrix.patch",
+        "sha256": "86a88320c1b1c534d180ce6859ad24a9c587e247a7eaa9d1759450bf3b3b6cac"
+      },
+      {
+        "path": "linux/patches/0020-test-only-software-map-bounds-baseline.patch",
+        "sha256": "04f24127dc10524f9c6766b793c265fe8806774917bdfbedfac05368e338aa41"
+      },
+      {
+        "path": "linux/patches/0021-security-refinement-certificate.patch",
+        "sha256": "8459eadd66c8513066167aef1009003fbcbf190f3abc375c1a9ce243772d52a0"
+      },
+      {
+        "path": "linux/patches/0022-test-only-independent-certificate-transcript.patch",
+        "sha256": "9a2b5652ac652c5aa2e35e69b6d31f477dcd51420cc849a02fb3120b9eaa5c87"
+      },
+      {
+        "path": "linux/patches/0023-model-derived-sensitive-opcode-classifier.patch",
+        "sha256": "2575ea8bed918eb4695a954127d1d4a73c12b1f179f5ed011f88d8b5646b349a"
+      },
+      {
+        "path": "linux/patches/0024-preserve-capability-registers-across-helper-gateway.patch",
+        "sha256": "02806c503bf2ffe7b21416033d32fd4c07b692531083c516bfee200eeeb2b55c"
+      },
+      {
+        "path": "linux/patches/0025-test-only-exploit-evidence.patch",
+        "sha256": "39667fe829951c21fbfbbb91e4183d8aed8237842fffa2ffe6fb1b347a72af54"
+      },
+      {
+        "path": "linux/patches/0026-full-native-image-certificate.patch",
+        "sha256": "ccc31e24afedf512eb64f1e451669f8c4d92811d2774cb91d3107791a9aac23c"
+      },
+      {
+        "path": "linux/patches/0027-gate-post-verifier-test-injections.patch",
+        "sha256": "a054ec75bd5cebad49bf2f064d3dbe19ebc8fb9764bf0e35285added0a06464f"
+      },
+      {
+        "path": "linux/patches/0028-bound-certificate-template-rebuilds.patch",
+        "sha256": "9abe454ccdfe249d247dc97b8e5b3e2952724c9c559cc514308e03dc87fad820"
+      },
+      {
+        "path": "linux/patches/0029-fix-sandbox-transition-call-frame.patch",
+        "sha256": "c49ecf1a52f6701c722fc9672d7006c12154478807e376ef845a496e12d419ed"
+      },
+      {
+        "path": "linux/patches/0030-minimize-data-root-permissions.patch",
+        "sha256": "4b43e45d43abeda3f3ab6b60f6e83ff997a958077ef2cbb5a24481dc7f6c5b52"
+      },
+      {
+        "path": "linux/patches/0031-harden-performance-logging-policy.patch",
+        "sha256": "e27624ed64daf3e270e95c63e28309b5e6a922f95d565acdd347d6e9e16cfc46"
+      },
+      {
+        "path": "linux/patches/0032-instrument-verifier-dependence-breadth.patch",
+        "sha256": "e01904a87d51544365457d8cdbb4726e8a58b450be5261021b28b063ad95e874"
+      },
+      {
+        "path": "linux/patches/0033-deploy-independent-array-map-checker.patch",
+        "sha256": "e0a8185fe61ed8957ccd37bdb3af79205524ddab807a0206b362e17679404783"
+      },
+      {
+        "path": "linux/patches/0034-make-verifier-facts-reject-only.patch",
+        "sha256": "4ac1fe6f2a4fdb4d7d29485bcb186f441b9fe1bd620cadddd359f9ad523b5905"
+      },
+      {
+        "path": "linux/patches/0035-arm64-bpf-bind-accepted-fact-gate-output-to-runtime-root.patch",
+        "sha256": "6f635e8a1981c9af4801ba828afa43606d8d063893dbdb7012fdc9167e9b6834"
+      },
+      {
+        "path": "linux/research/reviewer-pilot-overlay/0001-bpf-add-patch-0035-reviewer-pilot.patch",
+        "sha256": "9b52a340700a259c7dfe9e16cf7c489d746fbd4ac829e2bfefe80583ec003db2"
+      },
+      {
+        "path": "linux/research/faulty-vs-differential/0001-bpf-add-faulty-final-vs-differential.patch",
+        "sha256": "5f6e0acdf4c9b384be6aea15946936ffd9bc657fa6910c048156e66b36a0284a"
+      },
+      {
+        "path": "linux/research/faulty-vs-differential/0002-route-faulty-vs-to-closed-checker-profile.patch",
+        "sha256": "c13844f67e54dfe754d8257f4611bced22c051c80449a8710de2553242abc9a8"
+      },
+      {
+        "path": "linux/research/faulty-vs-software-supplement-v3/0001-bpf-validate-software-map-bounds-profile.patch",
+        "sha256": "630c3b3da0b403be5f6d91bbf569fef6a135dbcb68b6bbe73af95c7521b605a9"
+      },
+      {
+        "path": "linux/research/faulty-vs-software-supplement-v3/0002-bpf-correct-software-bounds-test-help.patch",
+        "sha256": "95a8f11bcebb55a97d7087781bd7acfecdc128ec377f16f9ee57de3f5012e5db"
+      }
+    ],
+    "source_tree": "${TEMP_PATH}",
+    "tree": "fca36d26a8cdfb327316b9970fc879bd3960a86d"
+  },
+  "status": "frozen_for_collection",
+  "study_id": "capebpf-faulty-vs-software-supplement-v3",
+  "toolchain": {
+    "build_environment": {
+      "path": "research/faulty-vs-differential-v1/builder-environment-v1.json",
+      "sha256": "801a127d629d47ff61c778fc7c058dc2d9dc630ed415baa45d0019443ca96679"
+    },
+    "compiler": {
+      "path": "${TEMP_PATH}",
+      "sha256": "b7cecf83693933f5cc3c56ea75db972cdfe2545125321a66036254adf79fa30f",
+      "version": "clang version 17.0.0 (https://git.morello-project.org/morello/llvm-project.git 7956a8d20652883f845a41094645174eb92d1960)"
+    },
+    "linker": {
+      "path": "${TEMP_PATH}",
+      "sha256": "cc062041b9d912b9ef88efbf11ce39b57a15c46e606d33f45996db9905bdcf94",
+      "version": "LLD 17.0.0 (compatible with GNU linkers)"
+    }
+  }
+}

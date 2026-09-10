@@ -1,0 +1,135 @@
+{
+  "normalization": "Remove CR and leading kernel elapsed-time prefixes only; no address or body-field normalization. Raw logs also differ in those removed timestamps.",
+  "observed_changes": "Audit initialization time; RTC time; the placement of Freeing initrd memory relative to input registration; eight native entry/restricted/executive base address lines. All remaining normalized lines match.",
+  "diff": "boot-log-without-timestamps.diff",
+  "changes": [
+    {
+      "kind": "replace",
+      "original_line_1based": 131,
+      "reproduced_line_1based": 131,
+      "original": [
+        "audit: type=2000 audit(0.332:1): state=initialized audit_enabled=0 res=1"
+      ],
+      "reproduced": [
+        "audit: type=2000 audit(0.372:1): state=initialized audit_enabled=0 res=1"
+      ]
+    },
+    {
+      "kind": "insert",
+      "original_line_1based": 204,
+      "reproduced_line_1based": 204,
+      "original": [],
+      "reproduced": [
+        "Freeing initrd memory: 24K"
+      ]
+    },
+    {
+      "kind": "delete",
+      "original_line_1based": 205,
+      "reproduced_line_1based": 206,
+      "original": [
+        "Freeing initrd memory: 24K"
+      ],
+      "reproduced": []
+    },
+    {
+      "kind": "replace",
+      "original_line_1based": 211,
+      "reproduced_line_1based": 211,
+      "original": [
+        "rtc-efi rtc-efi.0: setting system clock to 2026-09-06T20:02:53 UTC (1788724973)"
+      ],
+      "reproduced": [
+        "rtc-efi rtc-efi.0: setting system clock to 2026-09-06T20:27:49 UTC (1788726469)"
+      ]
+    },
+    {
+      "kind": "replace",
+      "original_line_1based": 277,
+      "reproduced_line_1based": 277,
+      "original": [
+        "CBPF_NATIVE accepted insns=26 words=165 entry=ffff8000812c2b04 restricted_exit=118 executive_exit=119 template_check=pass"
+      ],
+      "reproduced": [
+        "CBPF_NATIVE accepted insns=26 words=165 entry=ffff8000812c2970 restricted_exit=118 executive_exit=119 template_check=pass"
+      ]
+    },
+    {
+      "kind": "replace",
+      "original_line_1based": 671,
+      "reproduced_line_1based": 671,
+      "original": [
+        "CBPF_ENTER restricted_base=0xffff8000812c2b68 restricted_size=376 executive_base=0xffff8000812c2ce0 executive_size=184 stack_base=0xffff0000001cf6e0 stack_size=16 rddc_tag=0 gate_sealed=1"
+      ],
+      "reproduced": [
+        "CBPF_ENTER restricted_base=0xffff8000812c29d4 restricted_size=376 executive_base=0xffff8000812c2b4c executive_size=184 stack_base=0xffff0000001cf6e0 stack_size=16 rddc_tag=0 gate_sealed=1"
+      ]
+    },
+    {
+      "kind": "replace",
+      "original_line_1based": 712,
+      "reproduced_line_1based": 712,
+      "original": [
+        "CBPF_NATIVE accepted insns=27 words=166 entry=ffff80008110bce4 restricted_exit=119 executive_exit=120 template_check=pass"
+      ],
+      "reproduced": [
+        "CBPF_NATIVE accepted insns=27 words=166 entry=ffff800081109914 restricted_exit=119 executive_exit=120 template_check=pass"
+      ]
+    },
+    {
+      "kind": "replace",
+      "original_line_1based": 1110,
+      "reproduced_line_1based": 1110,
+      "original": [
+        "CBPF_ENTER restricted_base=0xffff80008110bd48 restricted_size=380 executive_base=0xffff80008110bec4 executive_size=184 stack_base=0xffff0000001cf6e0 stack_size=16 rddc_tag=0 gate_sealed=1"
+      ],
+      "reproduced": [
+        "CBPF_ENTER restricted_base=0xffff800081109978 restricted_size=380 executive_base=0xffff800081109af4 executive_size=184 stack_base=0xffff0000001cf6e0 stack_size=16 rddc_tag=0 gate_sealed=1"
+      ]
+    },
+    {
+      "kind": "replace",
+      "original_line_1based": 1150,
+      "reproduced_line_1based": 1150,
+      "original": [
+        "CBPF_NATIVE accepted insns=26 words=165 entry=ffff80008110b47c restricted_exit=118 executive_exit=119 template_check=pass"
+      ],
+      "reproduced": [
+        "CBPF_NATIVE accepted insns=26 words=165 entry=ffff80008110976c restricted_exit=118 executive_exit=119 template_check=pass"
+      ]
+    },
+    {
+      "kind": "replace",
+      "original_line_1based": 1544,
+      "reproduced_line_1based": 1544,
+      "original": [
+        "CBPF_ENTER restricted_base=0xffff80008110b4e0 restricted_size=376 executive_base=0xffff80008110b658 executive_size=184 stack_base=0xffff0000001cf6e0 stack_size=16 rddc_tag=0 gate_sealed=1"
+      ],
+      "reproduced": [
+        "CBPF_ENTER restricted_base=0xffff8000811097d0 restricted_size=376 executive_base=0xffff800081109948 executive_size=184 stack_base=0xffff0000001cf6e0 stack_size=16 rddc_tag=0 gate_sealed=1"
+      ]
+    },
+    {
+      "kind": "replace",
+      "original_line_1based": 1580,
+      "reproduced_line_1based": 1580,
+      "original": [
+        "CBPF_NATIVE accepted insns=26 words=165 entry=ffff800081121c28 restricted_exit=118 executive_exit=119 template_check=pass"
+      ],
+      "reproduced": [
+        "CBPF_NATIVE accepted insns=26 words=165 entry=ffff800081109b20 restricted_exit=118 executive_exit=119 template_check=pass"
+      ]
+    },
+    {
+      "kind": "replace",
+      "original_line_1based": 1974,
+      "reproduced_line_1based": 1974,
+      "original": [
+        "CBPF_ENTER restricted_base=0xffff800081121c8c restricted_size=376 executive_base=0xffff800081121e04 executive_size=184 stack_base=0xffff0000001cf6e0 stack_size=16 rddc_tag=0 gate_sealed=1"
+      ],
+      "reproduced": [
+        "CBPF_ENTER restricted_base=0xffff800081109b84 restricted_size=376 executive_base=0xffff800081109cfc executive_size=184 stack_base=0xffff0000001cf6e0 stack_size=16 rddc_tag=0 gate_sealed=1"
+      ]
+    }
+  ]
+}

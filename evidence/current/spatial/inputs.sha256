@@ -1,0 +1,4 @@
+ac74717a7dbd2c61760115c1b8b719e52d27d60d02957a2b73c3ff155206c4ac  ${REPOSITORY}/build/spatial-check.hA1pbw/receipt/array-authority.patch
+ea5a572f8674d8e0bebab52b520cfea6cb681221fc0980749b8b25c3ac526a96  ${REPOSITORY}/build/spatial-check.hA1pbw/receipt/check_spatial.executed.sh
+bcce56e1333570eae303425cf4d88257c9cb6ef47d163d993de84ea47eaca61e  ${REPOSITORY}/build/spatial-check.hA1pbw/receipt/source-tree.manifest
+64cd0c0d49fe5cf28ed75cedcc141ccd9c5698afaf760b7a5b49b82b06df120c  ${REPOSITORY}/build/spatial-check.hA1pbw/receipt/builder-image.txt

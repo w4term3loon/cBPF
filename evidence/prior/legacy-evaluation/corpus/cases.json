@@ -1,0 +1,230 @@
+{
+  "kernel_commit": "b96da308ef1a054c3c04c9445e5ed70259b7c397",
+  "target_arch": "arm64",
+  "cases": [
+    {
+      "source": "tools/testing/selftests/bpf/progs/verifier_bswap.c",
+      "symbol": "bswap_16",
+      "program_type": "BPF_PROG_TYPE_SOCKET_FILTER",
+      "upstream": "accept",
+      "retval": 9215,
+      "category": "alu_endian"
+    },
+    {
+      "source": "tools/testing/selftests/bpf/progs/verifier_bswap.c",
+      "symbol": "bswap_32",
+      "program_type": "BPF_PROG_TYPE_SOCKET_FILTER",
+      "upstream": "accept",
+      "retval": 603914240,
+      "category": "alu_endian"
+    },
+    {
+      "source": "tools/testing/selftests/bpf/progs/verifier_bswap.c",
+      "symbol": "bswap_64",
+      "program_type": "BPF_PROG_TYPE_SOCKET_FILTER",
+      "upstream": "accept",
+      "retval": 889131775,
+      "category": "alu_endian"
+    },
+    {
+      "source": "tools/testing/selftests/bpf/progs/verifier_div0.c",
+      "symbol": "by_0_zero_check_1_1",
+      "program_type": "BPF_PROG_TYPE_SOCKET_FILTER",
+      "upstream": "accept",
+      "retval": 42,
+      "category": "alu_division"
+    },
+    {
+      "source": "tools/testing/selftests/bpf/progs/verifier_div0.c",
+      "symbol": "by_0_zero_check_2_1",
+      "program_type": "BPF_PROG_TYPE_SOCKET_FILTER",
+      "upstream": "accept",
+      "retval": 42,
+      "category": "alu_division"
+    },
+    {
+      "source": "tools/testing/selftests/bpf/progs/verifier_div0.c",
+      "symbol": "div64_by_0_zero_check",
+      "program_type": "BPF_PROG_TYPE_SOCKET_FILTER",
+      "upstream": "accept",
+      "retval": 42,
+      "category": "alu_division"
+    },
+    {
+      "source": "tools/testing/selftests/bpf/progs/verifier_div0.c",
+      "symbol": "by_0_zero_check_1_2",
+      "program_type": "BPF_PROG_TYPE_SOCKET_FILTER",
+      "upstream": "accept",
+      "retval": 42,
+      "category": "alu_division"
+    },
+    {
+      "source": "tools/testing/selftests/bpf/progs/verifier_div0.c",
+      "symbol": "by_0_zero_check_2_2",
+      "program_type": "BPF_PROG_TYPE_SOCKET_FILTER",
+      "upstream": "accept",
+      "retval": 42,
+      "category": "alu_division"
+    },
+    {
+      "source": "tools/testing/selftests/bpf/progs/verifier_div0.c",
+      "symbol": "mod64_by_0_zero_check",
+      "program_type": "BPF_PROG_TYPE_SOCKET_FILTER",
+      "upstream": "accept",
+      "retval": 42,
+      "category": "alu_division"
+    },
+    {
+      "source": "tools/testing/selftests/bpf/progs/verifier_basic_stack.c",
+      "symbol": "stack_out_of_bounds",
+      "program_type": "BPF_PROG_TYPE_SOCKET_FILTER",
+      "upstream": "reject",
+      "retval": null,
+      "category": "stack_reject"
+    },
+    {
+      "source": "tools/testing/selftests/bpf/progs/verifier_basic_stack.c",
+      "symbol": "uninitialized_stack2",
+      "program_type": "BPF_PROG_TYPE_SOCKET_FILTER",
+      "upstream": "reject",
+      "retval": null,
+      "category": "stack_reject"
+    },
+    {
+      "source": "tools/testing/selftests/bpf/progs/verifier_basic_stack.c",
+      "symbol": "invalid_fp_arithmetic",
+      "program_type": "BPF_PROG_TYPE_SOCKET_FILTER",
+      "upstream": "reject",
+      "retval": null,
+      "category": "stack_reject"
+    },
+    {
+      "source": "tools/testing/selftests/bpf/progs/verifier_basic_stack.c",
+      "symbol": "non_invalid_fp_arithmetic",
+      "program_type": "BPF_PROG_TYPE_SOCKET_FILTER",
+      "upstream": "accept",
+      "retval": 0,
+      "category": "stack_valid"
+    },
+    {
+      "source": "tools/testing/selftests/bpf/progs/verifier_basic_stack.c",
+      "symbol": "misaligned_read_from_stack",
+      "program_type": "BPF_PROG_TYPE_SOCKET_FILTER",
+      "upstream": "reject",
+      "retval": null,
+      "category": "stack_reject"
+    },
+    {
+      "source": "tools/testing/selftests/bpf/progs/verifier_bounds_deduction.c",
+      "symbol": "deducing_bounds_from_const_1",
+      "program_type": "BPF_PROG_TYPE_SOCKET_FILTER",
+      "upstream": "reject",
+      "retval": null,
+      "category": "pointer_bounds"
+    },
+    {
+      "source": "tools/testing/selftests/bpf/progs/verifier_bounds_deduction.c",
+      "symbol": "deducing_bounds_from_const_2",
+      "program_type": "BPF_PROG_TYPE_SOCKET_FILTER",
+      "upstream": "accept",
+      "retval": 1,
+      "category": "pointer_bounds"
+    },
+    {
+      "source": "tools/testing/selftests/bpf/progs/verifier_bounds_deduction.c",
+      "symbol": "deducing_bounds_from_const_3",
+      "program_type": "BPF_PROG_TYPE_SOCKET_FILTER",
+      "upstream": "reject",
+      "retval": null,
+      "category": "pointer_bounds"
+    },
+    {
+      "source": "tools/testing/selftests/bpf/progs/verifier_bounds_deduction.c",
+      "symbol": "deducing_bounds_from_const_4",
+      "program_type": "BPF_PROG_TYPE_SOCKET_FILTER",
+      "upstream": "accept",
+      "retval": 0,
+      "category": "pointer_bounds"
+    },
+    {
+      "source": "tools/testing/selftests/bpf/progs/verifier_loops1.c",
+      "symbol": "bounded_loop_count_to_4",
+      "program_type": "BPF_PROG_TYPE_XDP",
+      "upstream": "accept",
+      "retval": 4,
+      "category": "bounded_loop"
+    },
+    {
+      "source": "tools/testing/selftests/bpf/progs/verifier_bounds_deduction.c",
+      "symbol": "deducing_bounds_from_const_5",
+      "program_type": "BPF_PROG_TYPE_SOCKET_FILTER",
+      "upstream": "reject",
+      "retval": null,
+      "category": "pointer_bounds"
+    },
+    {
+      "source": "tools/testing/selftests/bpf/progs/verifier_bounds_deduction.c",
+      "symbol": "deducing_bounds_from_const_6",
+      "program_type": "BPF_PROG_TYPE_SOCKET_FILTER",
+      "upstream": "reject",
+      "retval": null,
+      "category": "pointer_bounds"
+    },
+    {
+      "source": "tools/testing/selftests/bpf/progs/verifier_bounds_deduction.c",
+      "symbol": "deducing_bounds_from_const_7",
+      "program_type": "BPF_PROG_TYPE_SOCKET_FILTER",
+      "upstream": "reject",
+      "retval": null,
+      "category": "pointer_bounds"
+    },
+    {
+      "source": "tools/testing/selftests/bpf/progs/verifier_bounds_deduction.c",
+      "symbol": "deducing_bounds_from_const_8",
+      "program_type": "BPF_PROG_TYPE_SOCKET_FILTER",
+      "upstream": "reject",
+      "retval": null,
+      "category": "pointer_bounds"
+    },
+    {
+      "source": "tools/testing/selftests/bpf/progs/verifier_bounds_deduction.c",
+      "symbol": "deducing_bounds_from_const_9",
+      "program_type": "BPF_PROG_TYPE_SOCKET_FILTER",
+      "upstream": "reject",
+      "retval": null,
+      "category": "pointer_bounds"
+    },
+    {
+      "source": "tools/testing/selftests/bpf/progs/verifier_bounds_deduction.c",
+      "symbol": "deducing_bounds_from_const_10",
+      "program_type": "BPF_PROG_TYPE_SOCKET_FILTER",
+      "upstream": "reject",
+      "retval": null,
+      "category": "pointer_bounds"
+    },
+    {
+      "source": "tools/testing/selftests/bpf/progs/verifier_loops1.c",
+      "symbol": "loop_containing_a_forward_jump",
+      "program_type": "BPF_PROG_TYPE_XDP",
+      "upstream": "accept",
+      "retval": 4,
+      "category": "bounded_loop"
+    },
+    {
+      "source": "tools/testing/selftests/bpf/progs/verifier_loops1.c",
+      "symbol": "back_jump_to_1st_insn_1",
+      "program_type": "BPF_PROG_TYPE_XDP",
+      "upstream": "accept",
+      "retval": 123,
+      "category": "bounded_loop"
+    },
+    {
+      "source": "tools/testing/selftests/bpf/progs/verifier_loops1.c",
+      "symbol": "loop_start_in_the_middle",
+      "program_type": "BPF_PROG_TYPE_SOCKET_FILTER",
+      "upstream": "accept",
+      "retval": 4,
+      "category": "bounded_loop"
+    }
+  ]
+}

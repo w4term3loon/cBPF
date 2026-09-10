@@ -1,0 +1,86 @@
+{
+  "schema_version": "1.0.0",
+  "artifact_kind": "local-checker-refinement-validation-receipt",
+  "recorded_at": "2026-08-30T00:54:58+02:00",
+  "scope": "Exact-source CParser/AutoCorres translation, abstract Isabelle refinement target, conditional state-chained trace lifting, and host conformance checks.",
+  "pins": {
+    "isabelle": "Isabelle2020",
+    "isabelle_image": "capebpf-isabelle2020-formal:3",
+    "isabelle_base_image_digest": "sha256:5b08499c39b1f443ea39a59b568d1f84120c4bdaf9937198d36f23e5d074de9b",
+    "autocorres_version": "1.7",
+    "cparser_version": "1.17",
+    "l4v_revision": "e51ea954278db48c20dc5132bbbbcb54b511433f"
+  },
+  "source_sha256": {
+    "checker/capebpf_checker_core.c": "edabc2c76b381719e0e2ba088f6814e66517193befa22d40d96511fe9d256751",
+    "checker/capebpf_checker_core.h": "8fd90c70f4e92be841139666c52f29b889815d6d1f688b14d0152d02d96df35c",
+    "formal/CapeBPF_Checker_C_AutoCorres.thy": "742dfbd1bbb086a018f868d47608968c30bdb78a657e27dcc74b77565c4f0fb7",
+    "formal/CapeBPF_Checker_Refinement_Model.thy": "a3767ef330ed4900741650bcf91f567dc2d96d027e8b6384edbe6dd6ba3aa90f",
+    "formal/CapeBPF_Trace_Containment.thy": "b121c3a496c77a4e877b9025658c4ef37b91ab0dae0b4ae13ba92e497a235fe5",
+    "formal/c_checker/capebpf_checker_core_verify.c": "7e3c0f7d51b5742631c3910107140487f4c25f5271d24ddb2a0d151f5c67434c",
+    "formal/c_checker/umm_types.txt": "079b41a72e80d74a226b7097d1e90faed01cf28f81be72248c072a92b73b015e",
+    "tools/tests/test_checker_core.py": "266b34581c4c8f9dfe2a0d58678a459f9df39cd747d68384d83052685320d6cf"
+  },
+  "checks": [
+    {
+      "exit_status": 0,
+      "finished_at_utc": "2026-08-29T22:48:53Z",
+      "elapsed": "0:02:46",
+      "cpu_time": "0:05:49",
+      "result": {
+        "session": "CapeBPF-Object-Authority",
+        "full_envelope_witnesses": 31,
+        "checked_body_instructions": 592,
+        "abstract_refinement_target_checked": true,
+        "conditional_state_chained_trace_lifting_checked": true
+      }
+    },
+    {
+      "exit_status": 0,
+      "finished_at_utc": "2026-08-29T22:54:52Z",
+      "elapsed": "0:10:12",
+      "cpu_time": "0:16:16",
+      "result": {
+        "session": "CapeBPF-C-Checker",
+        "cparser_install_checked": true,
+        "autocorres_generated_semantics_checked": true,
+        "c_acceptance_implies_full_envelope_checked": false
+      }
+    },
+    {
+      "exit_status": 0,
+      "result": {
+        "tests_run": 29,
+        "tests_failed": 0
+      }
+    },
+    {
+      "exit_status": 0,
+      "result": {
+        "containment_matrix_status": "pass",
+        "obligation_inventory_status": "pass",
+        "pending_verified_refinements": 2
+      }
+    }
+  ],
+  "open_gates": [
+    {
+      "id": "c_acceptance_to_full_envelope",
+      "status": "pending_verified_refinement",
+      "machine_flag": "c_to_isabelle_full_envelope_refinement_is_pending",
+      "reason": "No theorem over capebpf_checker_core' connects a zero C return through a heap representation relation to full_envelope_certificate_accepts."
+    },
+    {
+      "id": "universal_whole_trace_runtime_correspondence",
+      "status": "pending_verified_refinement",
+      "machine_flag": "whole_trace_runtime_correspondence_is_pending",
+      "reason": "The checked theorem lifts an explicit per_event_morello_certificate_discharge; image acceptance alone does not establish that premise for every runtime event."
+    },
+    {
+      "id": "linux_adapter_integration",
+      "status": "not_integrated",
+      "reason": "The pure core is a standalone candidate proof target and has not replaced the jit_ctx-coupled checker in the pinned 31-patch Linux tree."
+    }
+  ],
+  "attestation_boundary": "This is a local validation receipt, not independent reproduction, measured boot, or a verified C-to-Isabelle refinement result."
+}

@@ -1,0 +1,50 @@
+{
+  "scope": "bounded host-C observations against finite ownership semantics",
+  "bounds": {
+    "registers": 4,
+    "spills": 2,
+    "acquisitions": 2,
+    "max_insns": 64,
+    "max_events": 66
+  },
+  "check": {
+    "matched": true,
+    "active_states": 3045,
+    "reachable_states": 17828,
+    "terminal_states": 14783,
+    "model_edges": 149205,
+    "branch_cases": {
+      "consumed": 4016,
+      "live": 4016,
+      "null": 4148
+    },
+    "scalar_boundary_cases": 4,
+    "programs_compared": 161389,
+    "maximum_generated_instructions": 12,
+    "terminal_outcomes": {
+      "exhaustion": 11664,
+      "null_read": 4148,
+      "null_release": 4148,
+      "return": 121213,
+      "stale_read": 4016,
+      "stale_release": 4016
+    }
+  },
+  "environment": {
+    "python": "3.12.3",
+    "machine": "x86_64"
+  },
+  "source_sha256": {
+    "src/cbpf.c": "55ca962a74e57cc29598884723fc67a529ac7e0f3b278495c9f9fdf41e3ece7a",
+    "src/cbpf.h": "8530f1c02110e1675811d15bc369a06d4507e16807f0556ae13dc5c01bb706ab",
+    "tools/conformance_bridge.c": "35e3acc23fae516e16feea975c561f48cd053b222c83e5e32eb5da41b457a752",
+    "theory/check_model.py": "c973366427b63951d93de9cb41ef4f9650780ac4a1db8e8ab37120713ce5f511",
+    "theory/check_conformance.py": "2b3c68fadb7628b5d0248a0d9eb24a1f7fad32918f0bb7380e1a70549825f46d"
+  },
+  "library_sha256": "d5d048825341057e5719f2a3feec140f503f70bc298c933b9fb7da49d9395f39",
+  "limitations": [
+    "One shortest history per reachable abstract active state; not every program or concrete C state.",
+    "No C/native refinement proof or hardware isolation result.",
+    "No kernel, eBPF/JIT, CHERI, or external-system execution."
+  ]
+}

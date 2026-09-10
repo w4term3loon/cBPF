@@ -1,0 +1,2128 @@
+[2J[01;01H[=3h[2J[01;01HEFI stub: Booting Linux Kernel...
+EFI stub: EFI_RNG_PROTOCOL unavailable
+EFI stub: Loaded initrd from LINUX_EFI_INITRD_MEDIA_GUID device path
+EFI stub: Generating empty DTB
+EFI stub: Exiting boot services...
+[    0.000000] Booting Linux on physical CPU 0x0000000000 [0x410fd083]
+[    0.000000] Linux version 6.7.0-cbpf-ownership (cbpf@ownership) (clang version 17.0.0 (https://git.morello-project.org/morello/llvm-project.git 7956a8d20652883f845a41094645174eb92d1960), LLD 17.0.0) #1 SMP PREEMPT 2026-09-06 00:00:00 UTC
+[    0.000000] Userspace ABI: pure-capability (PCuABI)
+[    0.000000] KASLR disabled due to lack of seed
+[    0.000000] efi: EFI v2.7 by EDK II
+[    0.000000] efi: SMBIOS 3.0=0xbf700000 MEMATTR=0xbd5b3018 ACPI 2.0=0xbbf70018 INITRD=0xbc373f18 MEMRESERVE=0xbc373f98 
+[    0.000000] ACPI: Early table checksum verification disabled
+[    0.000000] ACPI: RSDP 0x00000000BBF70018 000024 (v02 BOCHS )
+[    0.000000] ACPI: XSDT 0x00000000BBF7FE98 000064 (v01 BOCHS  BXPC     00000001      01000013)
+[    0.000000] ACPI: FACP 0x00000000BBF7FA98 00010C (v05 BOCHS  BXPC     00000001 BXPC 00000001)
+[    0.000000] ACPI: DSDT 0x00000000BBF77518 00144C (v02 BOCHS  BXPC     00000001 BXPC 00000001)
+[    0.000000] ACPI: APIC 0x00000000BBF7FC18 0000B4 (v03 BOCHS  BXPC     00000001 BXPC 00000001)
+[    0.000000] ACPI: PPTT 0x00000000BBF7FD18 000060 (v02 BOCHS  BXPC     00000001 BXPC 00000001)
+[    0.000000] ACPI: GTDT 0x00000000BBF7D898 000060 (v02 BOCHS  BXPC     00000001 BXPC 00000001)
+[    0.000000] ACPI: MCFG 0x00000000BBF7FE18 00003C (v01 BOCHS  BXPC     00000001 BXPC 00000001)
+[    0.000000] ACPI: SPCR 0x00000000BBF7FF98 000050 (v02 BOCHS  BXPC     00000001 BXPC 00000001)
+[    0.000000] ACPI: DBG2 0x00000000BBF7E818 000057 (v00 BOCHS  BXPC     00000001 BXPC 00000001)
+[    0.000000] ACPI: IORT 0x00000000BBF7E898 000080 (v03 BOCHS  BXPC     00000001 BXPC 00000001)
+[    0.000000] ACPI: SPCR: console: pl011,mmio,0x9000000,9600
+[    0.000000] NUMA: Failed to initialise from firmware
+[    0.000000] NUMA: Faking a node at [mem 0x0000000040000000-0x00000000bfffffff]
+[    0.000000] NUMA: NODE_DATA [mem 0xbfbf6ac0-0xbfbf8fff]
+[    0.000000] Zone ranges:
+[    0.000000]   DMA      [mem 0x0000000040000000-0x00000000bfffffff]
+[    0.000000]   DMA32    empty
+[    0.000000]   Normal   empty
+[    0.000000] Movable zone start for each node
+[    0.000000] Early memory node ranges
+[    0.000000]   node   0: [mem 0x0000000040000000-0x00000000bbf7ffff]
+[    0.000000]   node   0: [mem 0x00000000bbf80000-0x00000000bbffffff]
+[    0.000000]   node   0: [mem 0x00000000bc000000-0x00000000bc01ffff]
+[    0.000000]   node   0: [mem 0x00000000bc020000-0x00000000bc36ffff]
+[    0.000000]   node   0: [mem 0x00000000bc370000-0x00000000bf64ffff]
+[    0.000000]   node   0: [mem 0x00000000bf650000-0x00000000bf6dffff]
+[    0.000000]   node   0: [mem 0x00000000bf6e0000-0x00000000bf6effff]
+[    0.000000]   node   0: [mem 0x00000000bf6f0000-0x00000000bf80ffff]
+[    0.000000]   node   0: [mem 0x00000000bf810000-0x00000000bfffffff]
+[    0.000000] Initmem setup node 0 [mem 0x0000000040000000-0x00000000bfffffff]
+[    0.000000] psci: probing for conduit method from ACPI.
+[    0.000000] psci: PSCIv1.1 detected in firmware.
+[    0.000000] psci: Using standard PSCI v0.2 function IDs
+[    0.000000] psci: Trusted OS migration not required
+[    0.000000] psci: SMC Calling Convention v1.0
+[    0.000000] percpu: Embedded 33 pages/cpu s97320 r8192 d29656 u135168
+[    0.000000] Detected PIPT I-cache on CPU0
+[    0.000000] CPU features: detected: GIC system register CPU interface
+[    0.000000] CPU features: detected: Morello Capability Architecture
+[    0.000000] CPU features: detected: Spectre-v2
+[    0.000000] CPU features: detected: Spectre-v3a
+[    0.000000] CPU features: detected: Spectre-v4
+[    0.000000] CPU features: detected: Spectre-BHB
+[    0.000000] CPU features: kernel page table isolation disabled by kernel configuration
+[    0.000000] CPU features: detected: ARM erratum 1742098
+[    0.000000] CPU features: detected: ARM errata 1165522, 1319367, or 1530923
+[    0.000000] alternatives: applying boot alternatives
+[    0.000000] Kernel command line: console=ttyAMA0 loglevel=7 rdinit=/init panic=-1 initrd=initrd
+[    0.000000] Dentry cache hash table entries: 262144 (order: 9, 2097152 bytes, linear)
+[    0.000000] Inode-cache hash table entries: 131072 (order: 8, 1048576 bytes, linear)
+[    0.000000] Fallback order for Node 0: 0 
+[    0.000000] Built 1 zonelists, mobility grouping on.  Total pages: 516096
+[    0.000000] Policy zone: DMA
+[    0.000000] mem auto-init: stack:all(zero), heap alloc:off, heap free:off
+[    0.000000] software IO TLB: SWIOTLB bounce buffer size adjusted to 2MB
+[    0.000000] software IO TLB: area num 1.
+[    0.000000] software IO TLB: mapped [mem 0x00000000bd3b3000-0x00000000bd5b3000] (2MB)
+[    0.000000] Memory: 2031836K/2097152K available (8448K kernel code, 1412K rwdata, 6024K rodata, 832K init, 507K bss, 65316K reserved, 0K cma-reserved)
+[    0.000000] SLUB: HWalign=64, Order=0-3, MinObjects=0, CPUs=1, Nodes=1
+[    0.000000] trace event string verifier disabled
+[    0.000000] rcu: Preemptible hierarchical RCU implementation.
+[    0.000000] rcu: 	RCU event tracing is enabled.
+[    0.000000] rcu: 	RCU restricting CPUs from NR_CPUS=256 to nr_cpu_ids=1.
+[    0.000000] 	Trampoline variant of Tasks RCU enabled.
+[    0.000000] 	Tracing variant of Tasks RCU enabled.
+[    0.000000] rcu: RCU calculated value of scheduler-enlistment delay is 25 jiffies.
+[    0.000000] rcu: Adjusting geometry for rcu_fanout_leaf=16, nr_cpu_ids=1
+[    0.000000] NR_IRQS: 64, nr_irqs: 64, preallocated irqs: 0
+[    0.000000] GICv3: 224 SPIs implemented
+[    0.000000] GICv3: 0 Extended SPIs implemented
+[    0.000000] Root IRQ handler: gic_handle_irq
+[    0.000000] GICv3: GICv3 features: 16 PPIs
+[    0.000000] GICv3: CPU0: found redistributor 0 region 0:0x00000000080a0000
+[    0.000000] ITS [mem 0x08080000-0x0809ffff]
+[    0.000000] ITS@0x0000000008080000: allocated 8192 Devices @400d0000 (indirect, esz 8, psz 64K, shr 1)
+[    0.000000] ITS@0x0000000008080000: allocated 8192 Interrupt Collections @400e0000 (flat, esz 8, psz 64K, shr 1)
+[    0.000000] GICv3: using LPI property table @0x00000000400f0000
+[    0.000000] GICv3: CPU0: using allocated LPI pending table @0x0000000040100000
+[    0.000000] rcu: srcu_init: Setting srcu_struct sizes based on contention.
+[    0.000000] arch_timer: cp15 timer(s) running at 62.50MHz (virt).
+[    0.000000] clocksource: arch_sys_counter: mask: 0x1ffffffffffffff max_cycles: 0x1cd42e208c, max_idle_ns: 881590405314 ns
+[    0.000140] sched_clock: 57 bits at 63MHz, resolution 16ns, wraps every 4398046511096ns
+[    0.020050] Console: colour dummy device 80x25
+[    0.022848] ACPI: Core revision 20230628
+[    0.030973] Calibrating delay loop (skipped), value calculated using timer frequency.. 125.00 BogoMIPS (lpj=250000)
+[    0.031317] pid_max: default: 32768 minimum: 301
+[    0.034152] LSM: initializing lsm=capability,selinux,integrity
+[    0.035543] SELinux:  Initializing.
+[    0.039355] Mount-cache hash table entries: 4096 (order: 3, 32768 bytes, linear)
+[    0.039470] Mountpoint-cache hash table entries: 4096 (order: 3, 32768 bytes, linear)
+[    0.120511] RCU Tasks: Setting shift to 0 and lim to 1 rcu_task_cb_adjust=1.
+[    0.123088] RCU Tasks Trace: Setting shift to 0 and lim to 1 rcu_task_cb_adjust=1.
+[    0.126757] rcu: Hierarchical SRCU implementation.
+[    0.126846] rcu: 	Max phase no-delay instances is 1000.
+[    0.135831] Platform MSI: ITS@0x8080000 domain created
+[    0.136473] PCI/MSI: ITS@0x8080000 domain created
+[    0.136959] Remapping and enabling EFI services.
+[    0.142100] smp: Bringing up secondary CPUs ...
+[    0.143820] smp: Brought up 1 node, 1 CPU
+[    0.143904] SMP: Total of 1 processors activated.
+[    0.144143] CPU features: detected: Common not Private translations
+[    0.144169] CPU features: detected: CRC32 instructions
+[    0.144300] CPU features: detected: RCpc load-acquire (LDAPR)
+[    0.144319] CPU features: detected: LSE atomic instructions
+[    0.144342] CPU features: detected: Privileged Access Never
+[    0.170598] CPU: All CPU(s) started at EL1
+[    0.176453] alternatives: applying system-wide alternatives
+[    0.271570] devtmpfs: initialized
+[    0.309244] clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 7645041785100000 ns
+[    0.310506] futex hash table entries: 256 (order: 2, 16384 bytes, linear)
+[    0.339748] SMBIOS 3.0.0 present.
+[    0.340534] DMI: QEMU QEMU Virtual Machine, BIOS 0.0.0 02/06/2015
+[    0.372643] NET: Registered PF_NETLINK/PF_ROUTE protocol family
+[    0.383389] DMA: preallocated 256 KiB GFP_KERNEL pool for atomic allocations
+[    0.384163] DMA: preallocated 256 KiB GFP_KERNEL|GFP_DMA pool for atomic allocations
+[    0.384598] DMA: preallocated 256 KiB GFP_KERNEL|GFP_DMA32 pool for atomic allocations
+[    0.386644] audit: initializing netlink subsys (disabled)
+[    0.396629] audit: type=2000 audit(0.332:1): state=initialized audit_enabled=0 res=1
+[    0.400297] thermal_sys: Registered thermal governor 'step_wise'
+[    0.403422] cpuidle: using governor menu
+[    0.406131] hw-breakpoint: found 8 breakpoint and 8 watchpoint registers.
+[    0.407207] ASID allocator initialised with 65536 entries
+[    0.408808] Serial: AMBA PL011 UART driver
+[    0.414715] Modules: 28416 pages in range for non-PLT usage
+[    0.414791] Modules: 519936 pages in range for PLT usage
+[    0.431378] HugeTLB: registered 1.00 GiB page size, pre-allocated 0 pages
+[    0.431443] HugeTLB: 0 KiB vmemmap can be freed for a 1.00 GiB page
+[    0.431534] HugeTLB: registered 32.0 MiB page size, pre-allocated 0 pages
+[    0.431557] HugeTLB: 0 KiB vmemmap can be freed for a 32.0 MiB page
+[    0.431585] HugeTLB: registered 2.00 MiB page size, pre-allocated 0 pages
+[    0.431603] HugeTLB: 0 KiB vmemmap can be freed for a 2.00 MiB page
+[    0.431631] HugeTLB: registered 64.0 KiB page size, pre-allocated 0 pages
+[    0.431649] HugeTLB: 0 KiB vmemmap can be freed for a 64.0 KiB page
+[    0.461901] ACPI: Added _OSI(Module Device)
+[    0.461991] ACPI: Added _OSI(Processor Device)
+[    0.462019] ACPI: Added _OSI(3.0 _SCP Extensions)
+[    0.462043] ACPI: Added _OSI(Processor Aggregator Device)
+[    0.517070] ACPI: 1 ACPI AML tables successfully acquired and loaded
+[    0.542108] ACPI: Interpreter enabled
+[    0.542226] ACPI: Using GIC for interrupt routing
+[    0.543373] ACPI: MCFG table detected, 1 entries
+[    0.640200] ARMH0011:00: ttyAMA0 at MMIO 0x9000000 (irq = 12, base_baud = 0) is a SBSA
+[    0.642344] printk: legacy console [ttyAMA0] enabled
+[    0.739946] ACPI: PCI Root Bridge [PCI0] (domain 0000 [bus 00-ff])
+[    0.744162] acpi PNP0A08:00: _OSC: OS supports [ExtendedConfig ASPM ClockPM Segments MSI HPX-Type3]
+[    0.744774] acpi PNP0A08:00: PCIe port services disabled; not requesting _OSC control
+[    0.762604] acpi PNP0A08:00: ECAM area [mem 0x4010000000-0x401fffffff] reserved by PNP0C02:00
+[    0.763701] acpi PNP0A08:00: ECAM at [mem 0x4010000000-0x401fffffff] for [bus 00-ff]
+[    0.765733] ACPI: Remapped I/O 0x000000003eff0000 to [io  0x0000-0xffff window]
+[    0.771777] PCI host bridge to bus 0000:00
+[    0.772358] pci_bus 0000:00: root bus resource [mem 0x10000000-0x3efeffff window]
+[    0.772612] pci_bus 0000:00: root bus resource [io  0x0000-0xffff window]
+[    0.772824] pci_bus 0000:00: root bus resource [mem 0x8000000000-0xffffffffff window]
+[    0.773261] pci_bus 0000:00: root bus resource [bus 00-ff]
+[    0.777838] pci 0000:00:00.0: [1b36:0008] type 00 class 0x060000
+[    0.788868] pci_bus 0000:00: resource 4 [mem 0x10000000-0x3efeffff window]
+[    0.789170] pci_bus 0000:00: resource 5 [io  0x0000-0xffff window]
+[    0.789363] pci_bus 0000:00: resource 6 [mem 0x8000000000-0xffffffffff window]
+[    0.791942] ACPI: PCI: Interrupt link GSI0 configured for IRQ 35
+[    0.792427] ACPI: PCI: Interrupt link GSI1 configured for IRQ 36
+[    0.792763] ACPI: PCI: Interrupt link GSI2 configured for IRQ 37
+[    0.793081] ACPI: PCI: Interrupt link GSI3 configured for IRQ 38
+[    0.798571] iommu: Default domain type: Translated
+[    0.798889] iommu: DMA domain TLB invalidation policy: strict mode
+[    0.801450] pps_core: LinuxPPS API ver. 1 registered
+[    0.801654] pps_core: Software ver. 5.3.6 - Copyright 2005-2007 Rodolfo Giometti <giometti@linux.it>
+[    0.802091] PTP clock support registered
+[    0.803874] scmi_core: SCMI protocol bus registered
+[    0.808763] efivars: Registered efivars operations
+[    0.837907] vgaarb: loaded
+[    0.840752] clocksource: Switched to clocksource arch_sys_counter
+[    0.869345] pnp: PnP ACPI init
+[    0.879780] system 00:00: [mem 0x4010000000-0x401fffffff window] could not be reserved
+[    0.881565] pnp: PnP ACPI: found 1 devices
+[    0.939351] NET: Registered PF_INET protocol family
+[    0.943035] IP idents hash table entries: 32768 (order: 6, 262144 bytes, linear)
+[    0.956192] tcp_listen_portaddr_hash hash table entries: 1024 (order: 2, 16384 bytes, linear)
+[    0.956739] Table-perturb hash table entries: 65536 (order: 6, 262144 bytes, linear)
+[    0.957096] TCP established hash table entries: 16384 (order: 5, 131072 bytes, linear)
+[    0.957945] TCP bind hash table entries: 16384 (order: 7, 524288 bytes, linear)
+[    0.959804] TCP: Hash tables configured (established 16384 bind 16384)
+[    0.963864] UDP hash table entries: 1024 (order: 3, 32768 bytes, linear)
+[    0.964975] UDP-Lite hash table entries: 1024 (order: 3, 32768 bytes, linear)
+[    0.967657] NET: Registered PF_UNIX/PF_LOCAL protocol family
+[    0.969326] PCI: CLS 0 bytes, default 64
+[    0.986679] Unpacking initramfs...
+[    0.990336] workingset: timestamp_bits=42 max_order=19 bucket_order=0
+[    1.017738] io scheduler mq-deadline registered
+[    1.018226] io scheduler kyber registered
+[    1.019087] io scheduler bfq registered
+[    1.058215] input: Power Button as /devices/LNXSYSTM:00/LNXSYBUS:00/PNP0C0C:00/input/input0
+[    1.061827] Freeing initrd memory: 24K
+[    1.063257] ACPI: button: Power Button [PWRB]
+[    1.069336] EINJ: EINJ table not found.
+[    1.209146] loop: module loaded
+[    1.214004] mousedev: PS/2 mouse device common for all mice
+[    1.225499] rtc-efi rtc-efi.0: registered as rtc0
+[    1.227592] rtc-efi rtc-efi.0: setting system clock to 2026-09-06T20:02:53 UTC (1788724973)
+[    1.231828] pstore: Using crash dump compression: deflate
+[    1.232489] pstore: Registered efi_pstore as persistent store backend
+[    1.240910] hw perfevents: enabled with armv8_pmuv3_0 PMU driver, 5 counters available
+[    1.348297] IPVS: Registered protocols ()
+[    1.348870] IPVS: Connection hash table configured (size=4096, memory=32Kbytes)
+[    1.351675] IPVS: ipvs loaded.
+[    1.354735] NET: Registered PF_INET6 protocol family
+[    1.370385] Segment Routing with IPv6
+[    1.371030] In-situ OAM (IOAM) with IPv6
+[    1.372773] sit: IPv6, IPv4 and MPLS over IPv4 tunneling driver
+[    1.380089] NET: Registered PF_PACKET protocol family
+[    1.381408] Bridge firewalling registered
+[    1.381823] CBPF_GUARD case=stale_copy phase=begin native_bpf=0 scope=trusted_resolver
+[    1.382508] CBPF_BIND pc=0 id=1 cell=ffff0000001cf7a0 object=ffff800080f27e08 public_tag=1 public_base=0xffff0000001cf7a0 public_length=16 public_perms=0x20001
+[    1.382990] CBPF_GATE seq=1 event=acquire pc=0 id=1 acquired=1 released=0 reads=0 cleanup=0 refs=2 tagA=1 tagB=0
+[    1.383570] CBPF_GATE seq=2 event=clear pc=1 id=1 acquired=1 released=0 reads=0 cleanup=0 refs=2 tagA=0 tagB=0
+[    1.384042] CBPF_GATE seq=3 event=release pc=1 id=1 acquired=1 released=1 reads=0 cleanup=0 refs=1 tagA=0 tagB=0
+[    1.384532] CBPF_GATE seq=4 event=reject pc=2 id=0 acquired=1 released=1 reads=0 cleanup=0 refs=1 tagA=0 tagB=0
+[    1.385122] CBPF_GUARD case=stale_copy result=PASS acquired=1 released=1 reads=0 cleanup=0 refs=1 public_tag=1 canonical=1 tagA=0 failed=1 failure_return=1 native_bpf=0 scope=trusted_resolver
+[    1.385688] CBPF_GUARD case=stale_spill phase=begin native_bpf=0 scope=trusted_resolver
+[    1.385886] CBPF_BIND pc=0 id=1 cell=ffff0000001cf7a0 object=ffff800080f27e08 public_tag=1 public_base=0xffff0000001cf7a0 public_length=16 public_perms=0x20001
+[    1.386204] CBPF_GATE seq=1 event=acquire pc=0 id=1 acquired=1 released=0 reads=0 cleanup=0 refs=2 tagA=1 tagB=0
+[    1.386469] CBPF_GATE seq=2 event=clear pc=1 id=1 acquired=1 released=0 reads=0 cleanup=0 refs=2 tagA=0 tagB=0
+[    1.386715] CBPF_GATE seq=3 event=release pc=1 id=1 acquired=1 released=1 reads=0 cleanup=0 refs=1 tagA=0 tagB=0
+[    1.386967] CBPF_GATE seq=4 event=reject pc=2 id=0 acquired=1 released=1 reads=0 cleanup=0 refs=1 tagA=0 tagB=0
+[    1.387193] CBPF_GUARD case=stale_spill result=PASS acquired=1 released=1 reads=0 cleanup=0 refs=1 public_tag=1 canonical=1 tagA=0 failed=1 failure_return=1 native_bpf=0 scope=trusted_resolver
+[    1.387558] CBPF_GUARD case=duplicate_release phase=begin native_bpf=0 scope=trusted_resolver
+[    1.387742] CBPF_BIND pc=0 id=1 cell=ffff0000001cf7a0 object=ffff800080f27e08 public_tag=1 public_base=0xffff0000001cf7a0 public_length=16 public_perms=0x20001
+[    1.388156] CBPF_GATE seq=1 event=acquire pc=0 id=1 acquired=1 released=0 reads=0 cleanup=0 refs=2 tagA=1 tagB=0
+[    1.388421] CBPF_GATE seq=2 event=clear pc=1 id=1 acquired=1 released=0 reads=0 cleanup=0 refs=2 tagA=0 tagB=0
+[    1.388648] CBPF_GATE seq=3 event=release pc=1 id=1 acquired=1 released=1 reads=0 cleanup=0 refs=1 tagA=0 tagB=0
+[    1.388882] CBPF_GATE seq=4 event=reject pc=2 id=0 acquired=1 released=1 reads=0 cleanup=0 refs=1 tagA=0 tagB=0
+[    1.389108] CBPF_GUARD case=duplicate_release result=PASS acquired=1 released=1 reads=0 cleanup=0 refs=1 public_tag=1 canonical=1 tagA=0 failed=1 failure_return=1 native_bpf=0 scope=trusted_resolver
+[    1.418535] registered taskstats version 1
+[    1.483029] clk: Disabling unused clocks
+[    1.575665] Freeing unused kernel memory: 832K
+[    1.578491] Run /init as init process
+CBPF_M3 kernel=6.7.0-cbpf-ownership normal_verifier=1 attached=0
+CBPF_M3 case=ab_spill phase=begin expected=execute
+CBPF_M3 bpf pc=0 code=b7 dst=1 src=0 off=0 imm=0
+CBPF_M3 bpf pc=1 code=85 dst=0 src=2 off=0 imm=44135
+CBPF_M3 bpf pc=2 code=15 dst=0 src=0 off=21 imm=0
+CBPF_M3 bpf pc=3 code=bf dst=6 src=0 off=0 imm=0
+CBPF_M3 bpf pc=4 code=7b dst=10 src=6 off=-8 imm=0
+CBPF_M3 bpf pc=5 code=b7 dst=1 src=0 off=0 imm=0
+CBPF_M3 bpf pc=6 code=85 dst=0 src=2 off=0 imm=44135
+CBPF_M3 bpf pc=7 code=15 dst=0 src=0 off=11 imm=0
+CBPF_M3 bpf pc=8 code=bf dst=7 src=0 off=0 imm=0
+CBPF_M3 bpf pc=9 code=79 dst=8 src=10 off=-8 imm=0
+CBPF_M3 bpf pc=10 code=bf dst=1 src=8 off=0 imm=0
+CBPF_M3 bpf pc=11 code=85 dst=0 src=2 off=0 imm=44140
+CBPF_M3 bpf pc=12 code=bf dst=1 src=7 off=0 imm=0
+CBPF_M3 bpf pc=13 code=85 dst=0 src=2 off=0 imm=44138
+CBPF_M3 bpf pc=14 code=bf dst=9 src=0 off=0 imm=0
+CBPF_M3 bpf pc=15 code=bf dst=1 src=7 off=0 imm=0
+CBPF_M3 bpf pc=16 code=85 dst=0 src=2 off=0 imm=44140
+CBPF_M3 bpf pc=17 code=bf dst=0 src=9 off=0 imm=0
+CBPF_M3 bpf pc=18 code=95 dst=0 src=0 off=0 imm=0
+CBPF_M3 bpf pc=19 code=79 dst=8 src=10 off=-8 imm=0
+CBPF_M3 bpf pc=20 code=bf dst=1 src=8 off=0 imm=0
+CBPF_M3 bpf pc=21 code=85 dst=0 src=2 off=0 imm=44140
+CBPF_M3 bpf pc=22 code=b7 dst=0 src=0 off=0 imm=7
+CBPF_M3 bpf pc=23 code=95 dst=0 src=0 off=0 imm=0
+CBPF_M3 bpf pc=24 code=b7 dst=0 src=0 off=0 imm=0
+CBPF_M3 bpf pc=25 code=95 dst=0 src=0 off=0 imm=0
+[    1.714649] CBPF_NATIVE accepted insns=26 words=165 entry=ffff8000812c2b04 restricted_exit=118 executive_exit=119 template_check=pass
+[    1.715130] CBPF_NATIVE map pc=0 begin=56 end=60 code=b7 op=0
+[    1.715336] CBPF_NATIVE map pc=1 begin=60 end=65 code=85 op=1
+[    1.715486] CBPF_NATIVE map pc=2 begin=65 end=66 code=15 op=0
+[    1.715634] CBPF_NATIVE map pc=3 begin=66 end=67 code=bf op=0
+[    1.715787] CBPF_NATIVE map pc=4 begin=67 end=68 code=7b op=0
+[    1.716112] CBPF_NATIVE map pc=5 begin=68 end=72 code=b7 op=0
+[    1.716334] CBPF_NATIVE map pc=6 begin=72 end=77 code=85 op=1
+[    1.716485] CBPF_NATIVE map pc=7 begin=77 end=78 code=15 op=0
+[    1.716631] CBPF_NATIVE map pc=8 begin=78 end=79 code=bf op=0
+[    1.716783] CBPF_NATIVE map pc=9 begin=79 end=80 code=79 op=0
+[    1.716943] CBPF_NATIVE map pc=10 begin=80 end=81 code=bf op=0
+[    1.717111] CBPF_NATIVE map pc=11 begin=81 end=86 code=85 op=3
+[    1.717257] CBPF_NATIVE map pc=12 begin=86 end=87 code=bf op=0
+[    1.717402] CBPF_NATIVE map pc=13 begin=87 end=92 code=85 op=2
+[    1.717548] CBPF_NATIVE map pc=14 begin=92 end=93 code=bf op=0
+[    1.717693] CBPF_NATIVE map pc=15 begin=93 end=94 code=bf op=0
+[    1.717865] CBPF_NATIVE map pc=16 begin=94 end=99 code=85 op=3
+[    1.718014] CBPF_NATIVE map pc=17 begin=99 end=100 code=bf op=0
+[    1.718178] CBPF_NATIVE map pc=18 begin=100 end=101 code=95 op=0
+[    1.718328] CBPF_NATIVE map pc=19 begin=101 end=102 code=79 op=0
+[    1.718478] CBPF_NATIVE map pc=20 begin=102 end=103 code=bf op=0
+[    1.718626] CBPF_NATIVE map pc=21 begin=103 end=108 code=85 op=3
+[    1.718781] CBPF_NATIVE map pc=22 begin=108 end=112 code=b7 op=0
+[    1.718930] CBPF_NATIVE map pc=23 begin=112 end=113 code=95 op=0
+[    1.719080] CBPF_NATIVE map pc=24 begin=113 end=117 code=b7 op=0
+[    1.719229] CBPF_NATIVE map pc=25 begin=117 end=118 code=95 op=0
+[    1.719418] CBPF_NATIVE word index=0 value=910003c9
+[    1.719580] CBPF_NATIVE word index=1 value=d503201f
+[    1.719702] CBPF_NATIVE word index=2 value=a9bf7bfd
+[    1.719828] CBPF_NATIVE word index=3 value=910003fd
+[    1.720098] CBPF_NATIVE word index=4 value=a9bf53f3
+[    1.720257] CBPF_NATIVE word index=5 value=a9bf5bf5
+[    1.720379] CBPF_NATIVE word index=6 value=a9bf63f7
+[    1.720500] CBPF_NATIVE word index=7 value=a9bf6bf9
+[    1.720623] CBPF_NATIVE word index=8 value=a9bf73fb
+[    1.720758] CBPF_NATIVE word index=9 value=a9bf7fff
+[    1.720886] CBPF_NATIVE word index=10 value=d10043ff
+[    1.721014] CBPF_NATIVE word index=11 value=910003e0
+[    1.721143] CBPF_NATIVE word index=12 value=d2800201
+[    1.721275] CBPF_NATIVE word index=13 value=10000d42
+[    1.721407] CBPF_NATIVE word index=14 value=d2801703
+[    1.721535] CBPF_NATIVE word index=15 value=91000124
+[    1.721663] CBPF_NATIVE word index=16 value=d2980005
+[    1.721799] CBPF_NATIVE word index=17 value=f2b02565
+[    1.721926] CBPF_NATIVE word index=18 value=f2d00005
+[    1.722054] CBPF_NATIVE word index=19 value=f2ffffe5
+[    1.722182] CBPF_NATIVE word index=20 value=d29d8f8a
+[    1.722311] CBPF_NATIVE word index=21 value=f2b0006a
+[    1.722440] CBPF_NATIVE word index=22 value=f2d0000a
+[    1.722573] CBPF_NATIVE word index=23 value=f2ffffea
+[    1.722708] CBPF_NATIVE word index=24 value=d63f0140
+[    1.722854] CBPF_NATIVE word index=25 value=b4000060
+[    1.722990] CBPF_NATIVE word index=26 value=d2800007
+[    1.723123] CBPF_NATIVE word index=27 value=1400005c
+[    1.723258] CBPF_NATIVE word index=28 value=d2800000
+[    1.723394] CBPF_NATIVE word index=29 value=d2800001
+[    1.723526] CBPF_NATIVE word index=30 value=d2800002
+[    1.723653] CBPF_NATIVE word index=31 value=d2800003
+[    1.723789] CBPF_NATIVE word index=32 value=d2800004
+[    1.724090] CBPF_NATIVE word index=33 value=d2800005
+[    1.724231] CBPF_NATIVE word index=34 value=d2800006
+[    1.724363] CBPF_NATIVE word index=35 value=d2800007
+[    1.724491] CBPF_NATIVE word index=36 value=d2800008
+[    1.724618] CBPF_NATIVE word index=37 value=d2800009
+[    1.724752] CBPF_NATIVE word index=38 value=d280000a
+[    1.724883] CBPF_NATIVE word index=39 value=d280000b
+[    1.725010] CBPF_NATIVE word index=40 value=d280000c
+[    1.725139] CBPF_NATIVE word index=41 value=d280000d
+[    1.725267] CBPF_NATIVE word index=42 value=d280000e
+[    1.725396] CBPF_NATIVE word index=43 value=d2800010
+[    1.725524] CBPF_NATIVE word index=44 value=d2800012
+[    1.725653] CBPF_NATIVE word index=45 value=d2800013
+[    1.725790] CBPF_NATIVE word index=46 value=d2800014
+[    1.725920] CBPF_NATIVE word index=47 value=d2800015
+[    1.726048] CBPF_NATIVE word index=48 value=d2800016
+[    1.726178] CBPF_NATIVE word index=49 value=d2800017
+[    1.726308] CBPF_NATIVE word index=50 value=d2800018
+[    1.726437] CBPF_NATIVE word index=51 value=d2800019
+[    1.726573] CBPF_NATIVE word index=52 value=d280001a
+[    1.726703] CBPF_NATIVE word index=53 value=d280001b
+[    1.726840] CBPF_NATIVE word index=54 value=d280001c
+[    1.727019] CBPF_NATIVE word index=55 value=d280001d
+[    1.727173] CBPF_NATIVE word index=56 value=d2800000
+[    1.727301] CBPF_NATIVE word index=57 value=f2a00000
+[    1.727430] CBPF_NATIVE word index=58 value=f2c00000
+[    1.727558] CBPF_NATIVE word index=59 value=f2e00000
+[    1.727685] CBPF_NATIVE word index=60 value=d2800024
+[    1.727823] CBPF_NATIVE word index=61 value=d2800025
+[    1.728092] CBPF_NATIVE word index=62 value=c2c1d3cd
+[    1.728259] CBPF_NATIVE word index=63 value=c2c23222
+[    1.728392] CBPF_NATIVE word index=64 value=c2c1d007
+[    1.728520] CBPF_NATIVE word index=65 value=b4000607
+[    1.728646] CBPF_NATIVE word index=66 value=c2c1d0f3
+[    1.728782] CBPF_NATIVE word index=67 value=824003f3
+[    1.728911] CBPF_NATIVE word index=68 value=d2800000
+[    1.729039] CBPF_NATIVE word index=69 value=f2a00000
+[    1.729166] CBPF_NATIVE word index=70 value=f2c00000
+[    1.729293] CBPF_NATIVE word index=71 value=f2e00000
+[    1.729422] CBPF_NATIVE word index=72 value=d2800024
+[    1.729550] CBPF_NATIVE word index=73 value=d28000c5
+[    1.729678] CBPF_NATIVE word index=74 value=c2c1d3cd
+[    1.729812] CBPF_NATIVE word index=75 value=c2c23222
+[    1.729941] CBPF_NATIVE word index=76 value=c2c1d007
+[    1.730067] CBPF_NATIVE word index=77 value=b4000307
+[    1.730194] CBPF_NATIVE word index=78 value=c2c1d0f4
+[    1.730322] CBPF_NATIVE word index=79 value=826003f5
+[    1.730486] CBPF_NATIVE word index=80 value=c2c1d2a0
+[    1.730613] CBPF_NATIVE word index=81 value=d2800064
+[    1.730746] CBPF_NATIVE word index=82 value=d2800165
+[    1.730875] CBPF_NATIVE word index=83 value=c2c1d3cd
+[    1.731001] CBPF_NATIVE word index=84 value=c2c23222
+[    1.731127] CBPF_NATIVE word index=85 value=c2c1d007
+[    1.731254] CBPF_NATIVE word index=86 value=c2c1d280
+[    1.731382] CBPF_NATIVE word index=87 value=d2800044
+[    1.731509] CBPF_NATIVE word index=88 value=d28001a5
+[    1.731636] CBPF_NATIVE word index=89 value=c2c1d3cd
+[    1.731768] CBPF_NATIVE word index=90 value=c2c23222
+[    1.731899] CBPF_NATIVE word index=91 value=c2c1d007
+[    1.732168] CBPF_NATIVE word index=92 value=c2c1d0f6
+[    1.732306] CBPF_NATIVE word index=93 value=c2c1d280
+[    1.732436] CBPF_NATIVE word index=94 value=d2800064
+[    1.732563] CBPF_NATIVE word index=95 value=d2800205
+[    1.732690] CBPF_NATIVE word index=96 value=c2c1d3cd
+[    1.732828] CBPF_NATIVE word index=97 value=c2c23222
+[    1.732958] CBPF_NATIVE word index=98 value=c2c1d007
+[    1.733086] CBPF_NATIVE word index=99 value=c2c1d2c7
+[    1.733214] CBPF_NATIVE word index=100 value=14000012
+[    1.733346] CBPF_NATIVE word index=101 value=826003f5
+[    1.733476] CBPF_NATIVE word index=102 value=c2c1d2a0
+[    1.733605] CBPF_NATIVE word index=103 value=d2800064
+[    1.733741] CBPF_NATIVE word index=104 value=d28002a5
+[    1.733872] CBPF_NATIVE word index=105 value=c2c1d3cd
+[    1.734002] CBPF_NATIVE word index=106 value=c2c23222
+[    1.734133] CBPF_NATIVE word index=107 value=c2c1d007
+[    1.734262] CBPF_NATIVE word index=108 value=d28000e7
+[    1.734393] CBPF_NATIVE word index=109 value=f2a00007
+[    1.734522] CBPF_NATIVE word index=110 value=f2c00007
+[    1.734651] CBPF_NATIVE word index=111 value=f2e00007
+[    1.734784] CBPF_NATIVE word index=112 value=14000006
+[    1.734915] CBPF_NATIVE word index=113 value=d2800007
+[    1.735044] CBPF_NATIVE word index=114 value=f2a00007
+[    1.735173] CBPF_NATIVE word index=115 value=f2c00007
+[    1.735302] CBPF_NATIVE word index=116 value=f2e00007
+[    1.735433] CBPF_NATIVE word index=117 value=14000001
+[    1.735556] CBPF_NATIVE word index=118 value=c2c253c0
+[    1.735678] CBPF_NATIVE word index=119 value=f90003ff
+[    1.735804] CBPF_NATIVE word index=120 value=f90007ff
+[    1.736087] CBPF_NATIVE word index=121 value=910000e7
+[    1.736253] CBPF_NATIVE word index=122 value=d2800000
+[    1.736379] CBPF_NATIVE word index=123 value=d2800001
+[    1.736529] CBPF_NATIVE word index=124 value=d2800002
+[    1.736661] CBPF_NATIVE word index=125 value=d2800003
+[    1.736798] CBPF_NATIVE word index=126 value=d2800004
+[    1.736946] CBPF_NATIVE word index=127 value=d2800005
+[    1.737074] CBPF_NATIVE word index=128 value=d2800006
+[    1.737205] CBPF_NATIVE word index=129 value=d2800008
+[    1.737333] CBPF_NATIVE word index=130 value=d2800009
+[    1.737462] CBPF_NATIVE word index=131 value=d280000a
+[    1.737584] CBPF_NATIVE word index=132 value=d280000b
+[    1.737708] CBPF_NATIVE word index=133 value=d280000c
+[    1.737837] CBPF_NATIVE word index=134 value=d280000d
+[    1.737959] CBPF_NATIVE word index=135 value=d280000e
+[    1.738080] CBPF_NATIVE word index=136 value=d280000f
+[    1.738204] CBPF_NATIVE word index=137 value=d2800010
+[    1.738326] CBPF_NATIVE word index=138 value=d2800011
+[    1.738448] CBPF_NATIVE word index=139 value=d2800012
+[    1.738571] CBPF_NATIVE word index=140 value=d2800013
+[    1.738696] CBPF_NATIVE word index=141 value=d2800014
+[    1.738827] CBPF_NATIVE word index=142 value=d2800015
+[    1.738950] CBPF_NATIVE word index=143 value=d2800016
+[    1.739072] CBPF_NATIVE word index=144 value=d2800017
+[    1.739196] CBPF_NATIVE word index=145 value=d2800018
+[    1.739318] CBPF_NATIVE word index=146 value=d2800019
+[    1.739440] CBPF_NATIVE word index=147 value=d280001a
+[    1.739563] CBPF_NATIVE word index=148 value=d280001b
+[    1.739689] CBPF_NATIVE word index=149 value=d280001c
+[    1.739817] CBPF_NATIVE word index=150 value=d280001d
+[    1.740044] CBPF_NATIVE word index=151 value=910043ff
+[    1.740202] CBPF_NATIVE word index=152 value=c24003f0
+[    1.740326] CBPF_NATIVE word index=153 value=910043ff
+[    1.740450] CBPF_NATIVE word index=154 value=a8c173fb
+[    1.740579] CBPF_NATIVE word index=155 value=a8c16bf9
+[    1.740710] CBPF_NATIVE word index=156 value=a8c163f7
+[    1.740851] CBPF_NATIVE word index=157 value=a8c15bf5
+[    1.740980] CBPF_NATIVE word index=158 value=a8c153f3
+[    1.741111] CBPF_NATIVE word index=159 value=a8c17bfd
+[    1.741240] CBPF_NATIVE word index=160 value=910000e0
+[    1.741369] CBPF_NATIVE word index=161 value=c2c0920a
+[    1.741497] CBPF_NATIVE word index=162 value=b400004a
+[    1.741626] CBPF_NATIVE word index=163 value=c2c25203
+[    1.741765] CBPF_NATIVE word index=164 value=d65f03c0
+CBPF_M3 verifier_begin
+func#0 @0
+0: R1=ctx(off=0,imm=0) R10=fp0
+0: (b7) r1 = 0                        ; R1_w=0
+1: (85) call cbpf_cap_acquire#44135   ; R0_w=ptr_or_null_cbpf_cap_ref(id=2,ref_obj_id=2,off=0,imm=0) refs=2
+2: (15) if r0 == 0x0 goto pc+21       ; R0_w=ptr_cbpf_cap_ref(ref_obj_id=2,off=0,imm=0) refs=2
+3: (bf) r6 = r0                       ; R0_w=ptr_cbpf_cap_ref(ref_obj_id=2,off=0,imm=0) R6_w=ptr_cbpf_cap_ref(ref_obj_id=2,off=0,imm=0) refs=2
+4: (7b) *(u64 *)(r10 -8) = r6         ; R6_w=ptr_cbpf_cap_ref(ref_obj_id=2,off=0,imm=0) R10=fp0 fp-8_w=ptr_ refs=2
+5: (b7) r1 = 0                        ; R1_w=0 refs=2
+6: (85) call cbpf_cap_acquire#44135   ; R0=ptr_or_null_cbpf_cap_ref(id=4,ref_obj_id=4,off=0,imm=0) refs=2,4
+7: (15) if r0 == 0x0 goto pc+11       ; R0=ptr_cbpf_cap_ref(ref_obj_id=4,off=0,imm=0) refs=2,4
+8: (bf) r7 = r0                       ; R0=ptr_cbpf_cap_ref(ref_obj_id=4,off=0,imm=0) R7_w=ptr_cbpf_cap_ref(ref_obj_id=4,off=0,imm=0) refs=2,4
+9: (79) r8 = *(u64 *)(r10 -8)         ; R8_w=ptr_cbpf_cap_ref(ref_obj_id=2,off=0,imm=0) R10=fp0 fp-8=ptr_ refs=2,4
+10: (bf) r1 = r8                      ; R1_w=ptr_cbpf_cap_ref(ref_obj_id=2,off=0,imm=0) R8_w=ptr_cbpf_cap_ref(ref_obj_id=2,off=0,imm=0) refs=2,4
+11: (85) call cbpf_cap_release#44140          ; refs=4
+12: (bf) r1 = r7                      ; R1_w=ptr_cbpf_cap_ref(ref_obj_id=4,off=0,imm=0) R7_w=ptr_cbpf_cap_ref(ref_obj_id=4,off=0,imm=0) refs=4
+13: (85) call cbpf_cap_read#44138     ; R0_w=scalar() refs=4
+14: (bf) r9 = r0                      ; R0_w=scalar(id=5) R9_w=scalar(id=5) refs=4
+15: (bf) r1 = r7                      ; R1_w=ptr_cbpf_cap_ref(ref_obj_id=4,off=0,imm=0) R7_w=ptr_cbpf_cap_ref(ref_obj_id=4,off=0,imm=0) refs=4
+16: (85) call cbpf_cap_release#44140          ;
+17: (bf) r0 = r9                      ; R0_w=scalar(id=5) R9=scalar(id=5)
+18: (95) exit
+
+from 7 to 19: R0=0 R6=ptr_cbpf_cap_ref(ref_obj_id=2,off=0,imm=0) R10=fp0 fp-8=ptr_ refs=2
+19: R0=0 R6=ptr_cbpf_cap_ref(ref_obj_id=2,off=0,imm=0) R10=fp0 fp-8=ptr_ refs=2
+19: (79) r8 = *(u64 *)(r10 -8)        ; R8_w=ptr_cbpf_cap_ref(ref_obj_id=2,off=0,imm=0) R10=fp0 fp-8=ptr_ refs=2
+20: (bf) r1 = r8                      ; R1_w=ptr_cbpf_cap_ref(ref_obj_id=2,off=0,imm=0) R8_w=ptr_cbpf_cap_ref(ref_obj_id=2,off=0,imm=0) refs=2
+21: (85) call cbpf_cap_release#44140          ;
+22: (b7) r0 = 7                       ; R0_w=7
+23: (95) exit
+
+from 2 to 24: R0_w=0 R10=fp0
+24: R0_w=0 R10=fp0
+24: (b7) r0 = 0                       ; R0_w=0
+25: (95) exit
+processed 26 insns (limit 1000000) max_states_per_insn 0 total_states 2 peak_states 2 mark_read 1
+CBPF_M3 verifier_end
+CBPF_M3 word index=0 value=910003c9
+CBPF_M3 word index=1 value=d503201f
+CBPF_M3 word index=2 value=a9bf7bfd
+CBPF_M3 word index=3 value=910003fd
+CBPF_M3 word index=4 value=a9bf53f3
+CBPF_M3 word index=5 value=a9bf5bf5
+CBPF_M3 word index=6 value=a9bf63f7
+CBPF_M3 word index=7 value=a9bf6bf9
+CBPF_M3 word index=8 value=a9bf73fb
+CBPF_M3 word index=9 value=a9bf7fff
+CBPF_M3 word index=10 value=d10043ff
+CBPF_M3 word index=11 value=910003e0
+CBPF_M3 word index=12 value=d2800201
+CBPF_M3 word index=13 value=10000d42
+CBPF_M3 word index=14 value=d2801703
+CBPF_M3 word index=15 value=91000124
+CBPF_M3 word index=16 value=d2980005
+CBPF_M3 word index=17 value=f2b02565
+CBPF_M3 word index=18 value=f2d00005
+CBPF_M3 word index=19 value=f2ffffe5
+CBPF_M3 word index=20 value=d29d8f8a
+CBPF_M3 word index=21 value=f2b0006a
+CBPF_M3 word index=22 value=f2d0000a
+CBPF_M3 word index=23 value=f2ffffea
+CBPF_M3 word index=24 value=d63f0140
+CBPF_M3 word index=25 value=b4000060
+CBPF_M3 word index=26 value=d2800007
+CBPF_M3 word index=27 value=1400005c
+CBPF_M3 word index=28 value=d2800000
+CBPF_M3 word index=29 value=d2800001
+CBPF_M3 word index=30 value=d2800002
+CBPF_M3 word index=31 value=d2800003
+CBPF_M3 word index=32 value=d2800004
+CBPF_M3 word index=33 value=d2800005
+CBPF_M3 word index=34 value=d2800006
+CBPF_M3 word index=35 value=d2800007
+CBPF_M3 word index=36 value=d2800008
+CBPF_M3 word index=37 value=d2800009
+CBPF_M3 word index=38 value=d280000a
+CBPF_M3 word index=39 value=d280000b
+CBPF_M3 word index=40 value=d280000c
+CBPF_M3 word index=41 value=d280000d
+CBPF_M3 word index=42 value=d280000e
+CBPF_M3 word index=43 value=d2800010
+CBPF_M3 word index=44 value=d2800012
+CBPF_M3 word index=45 value=d2800013
+CBPF_M3 word index=46 value=d2800014
+CBPF_M3 word index=47 value=d2800015
+CBPF_M3 word index=48 value=d2800016
+CBPF_M3 word index=49 value=d2800017
+CBPF_M3 word index=50 value=d2800018
+CBPF_M3 word index=51 value=d2800019
+CBPF_M3 word index=52 value=d280001a
+CBPF_M3 word index=53 value=d280001b
+CBPF_M3 word index=54 value=d280001c
+CBPF_M3 word index=55 value=d280001d
+CBPF_M3 word index=56 value=d2800000
+CBPF_M3 word index=57 value=f2a00000
+CBPF_M3 word index=58 value=f2c00000
+CBPF_M3 word index=59 value=f2e00000
+CBPF_M3 word index=60 value=d2800024
+CBPF_M3 word index=61 value=d2800025
+CBPF_M3 word index=62 value=c2c1d3cd
+CBPF_M3 word index=63 value=c2c23222
+CBPF_M3 word index=64 value=c2c1d007
+CBPF_M3 word index=65 value=b4000607
+CBPF_M3 word index=66 value=c2c1d0f3
+CBPF_M3 word index=67 value=824003f3
+CBPF_M3 word index=68 value=d2800000
+CBPF_M3 word index=69 value=f2a00000
+CBPF_M3 word index=70 value=f2c00000
+CBPF_M3 word index=71 value=f2e00000
+CBPF_M3 word index=72 value=d2800024
+CBPF_M3 word index=73 value=d28000c5
+CBPF_M3 word index=74 value=c2c1d3cd
+CBPF_M3 word index=75 value=c2c23222
+CBPF_M3 word index=76 value=c2c1d007
+CBPF_M3 word index=77 value=b4000307
+CBPF_M3 word index=78 value=c2c1d0f4
+CBPF_M3 word index=79 value=826003f5
+CBPF_M3 word index=80 value=c2c1d2a0
+CBPF_M3 word index=81 value=d2800064
+CBPF_M3 word index=82 value=d2800165
+CBPF_M3 word index=83 value=c2c1d3cd
+CBPF_M3 word index=84 value=c2c23222
+CBPF_M3 word index=85 value=c2c1d007
+CBPF_M3 word index=86 value=c2c1d280
+CBPF_M3 word index=87 value=d2800044
+CBPF_M3 word index=88 value=d28001a5
+CBPF_M3 word index=89 value=c2c1d3cd
+CBPF_M3 word index=90 value=c2c23222
+CBPF_M3 word index=91 value=c2c1d007
+CBPF_M3 word index=92 value=c2c1d0f6
+CBPF_M3 word index=93 value=c2c1d280
+CBPF_M3 word index=94 value=d2800064
+CBPF_M3 word index=95 value=d2800205
+CBPF_M3 word index=96 value=c2c1d3cd
+CBPF_M3 word index=97 value=c2c23222
+CBPF_M3 word index=98 value=c2c1d007
+CBPF_M3 word index=99 value=c2c1d2c7
+CBPF_M3 word index=100 value=14000012
+CBPF_M3 word index=101 value=826003f5
+CBPF_M3 word index=102 value=c2c1d2a0
+CBPF_M3 word index=103 value=d2800064
+CBPF_M3 word index=104 value=d28002a5
+CBPF_M3 word index=105 value=c2c1d3cd
+CBPF_M3 word index=106 value=c2c23222
+CBPF_M3 word index=107 value=c2c1d007
+CBPF_M3 word index=108 value=d28000e7
+CBPF_M3 word index=109 value=f2a00007
+CBPF_M3 word index=110 value=f2c00007
+CBPF_M3 word index=111 value=f2e00007
+CBPF_M3 word index=112 value=14000006
+CBPF_M3 word index=113 value=d2800007
+CBPF_M3 word index=114 value=f2a00007
+CBPF_M3 word index=115 value=f2c00007
+CBPF_M3 word index=116 value=f2e00007
+CBPF_M3 word index=117 value=14000001
+CBPF_M3 word index=118 value=c2c253c0
+CBPF_M3 word index=119 value=f90003ff
+CBPF_M3 word index=120 value=f90007ff
+CBPF_M3 word index=121 value=910000e7
+CBPF_M3 word index=122 value=d2800000
+CBPF_M3 word index=123 value=d2800001
+CBPF_M3 word index=124 value=d2800002
+CBPF_M3 word index=125 value=d2800003
+CBPF_M3 word index=126 value=d2800004
+CBPF_M3 word index=127 value=d2800005
+CBPF_M3 word index=128 value=d2800006
+CBPF_M3 word index=129 value=d2800008
+CBPF_M3 word index=130 value=d2800009
+CBPF_M3 word index=131 value=d280000a
+CBPF_M3 word index=132 value=d280000b
+CBPF_M3 word index=133 value=d280000c
+CBPF_M3 word index=134 value=d280000d
+CBPF_M3 word index=135 value=d280000e
+CBPF_M3 word index=136 value=d280000f
+CBPF_M3 word index=137 value=d2800010
+CBPF_M3 word index=138 value=d2800011
+CBPF_M3 word index=139 value=d2800012
+CBPF_M3 word index=140 value=d2800013
+CBPF_M3 word index=141 value=d2800014
+CBPF_M3 word index=142 value=d2800015
+CBPF_M3 word index=143 value=d2800016
+CBPF_M3 word index=144 value=d2800017
+CBPF_M3 word index=145 value=d2800018
+CBPF_M3 word index=146 value=d2800019
+CBPF_M3 word index=147 value=d280001a
+CBPF_M3 word index=148 value=d280001b
+CBPF_M3 word index=149 value=d280001c
+CBPF_M3 word index=150 value=d280001d
+CBPF_M3 word index=151 value=910043ff
+CBPF_M3 word index=152 value=c24003f0
+CBPF_M3 word index=153 value=910043ff
+CBPF_M3 word index=154 value=a8c173fb
+CBPF_M3 word index=155 value=a8c16bf9
+CBPF_M3 word index=156 value=a8c163f7
+CBPF_M3 word index=157 value=a8c15bf5
+CBPF_M3 word index=158 value=a8c153f3
+CBPF_M3 word index=159 value=a8c17bfd
+CBPF_M3 word index=160 value=910000e0
+CBPF_M3 word index=161 value=c2c0920a
+CBPF_M3 word index=162 value=b400004a
+CBPF_M3 word index=163 value=c2c25203
+CBPF_M3 word index=164 value=d65f03c0
+[    1.786994] CBPF_ENTER restricted_base=0xffff8000812c2b68 restricted_size=376 executive_base=0xffff8000812c2ce0 executive_size=184 stack_base=0xffff0000001cf6e0 stack_size=16 rddc_tag=0 gate_sealed=1
+[    1.787673] CBPF_BIND pc=1 id=1 cell=ffff0000001cf7c0 object=ffff800080f27e08 public_tag=1 public_base=0xffff0000001cf7c0 public_length=16 public_perms=0x20001
+[    1.788191] CBPF_GATE seq=1 event=acquire pc=1 id=1 acquired=1 released=0 reads=0 cleanup=0 refs=2 tagA=1 tagB=0
+[    1.788640] CBPF_BIND pc=6 id=2 cell=ffff0000001cf7d0 object=ffff800080f27e08 public_tag=1 public_base=0xffff0000001cf7d0 public_length=16 public_perms=0x20001
+[    1.788977] CBPF_GATE seq=2 event=acquire pc=6 id=2 acquired=2 released=0 reads=0 cleanup=0 refs=3 tagA=1 tagB=1
+[    1.789257] CBPF_GATE seq=3 event=clear pc=11 id=1 acquired=2 released=0 reads=0 cleanup=0 refs=3 tagA=0 tagB=1
+[    1.789501] CBPF_GATE seq=4 event=release pc=11 id=1 acquired=2 released=1 reads=0 cleanup=0 refs=2 tagA=0 tagB=1
+[    1.789866] CBPF_GATE seq=5 event=read pc=13 id=2 acquired=2 released=1 reads=1 cleanup=0 refs=2 tagA=0 tagB=1
+[    1.790161] CBPF_GATE seq=6 event=clear pc=16 id=2 acquired=2 released=1 reads=1 cleanup=0 refs=2 tagA=0 tagB=0
+[    1.790402] CBPF_GATE seq=7 event=release pc=16 id=2 acquired=2 released=2 reads=1 cleanup=0 refs=1 tagA=0 tagB=0
+[    1.790927] CBPF_GATE seq=8 event=exit pc=18446744073709551615 id=0 acquired=2 released=2 reads=1 cleanup=0 refs=1 tagA=0 tagB=0
+[    1.791267] CBPF_RESULT value=42 entered=1 failed=0 balanced=1
+CBPF_M3 case=ab_spill phase=end loaded=1 executed=1 retval=42 jited_len=660 load_errno=0 stage=execute result=PASS
+CBPF_M3 case=ab_alternate phase=begin expected=execute
+CBPF_M3 bpf pc=0 code=b7 dst=1 src=0 off=0 imm=0
+CBPF_M3 bpf pc=1 code=85 dst=0 src=2 off=0 imm=44135
+CBPF_M3 bpf pc=2 code=bf dst=8 src=0 off=0 imm=0
+CBPF_M3 bpf pc=3 code=15 dst=8 src=0 off=21 imm=0
+CBPF_M3 bpf pc=4 code=7b dst=10 src=8 off=-8 imm=0
+CBPF_M3 bpf pc=5 code=b7 dst=1 src=0 off=0 imm=0
+CBPF_M3 bpf pc=6 code=85 dst=0 src=2 off=0 imm=44135
+CBPF_M3 bpf pc=7 code=bf dst=6 src=0 off=0 imm=0
+CBPF_M3 bpf pc=8 code=15 dst=6 src=0 off=11 imm=0
+CBPF_M3 bpf pc=9 code=79 dst=7 src=10 off=-8 imm=0
+CBPF_M3 bpf pc=10 code=bf dst=1 src=7 off=0 imm=0
+CBPF_M3 bpf pc=11 code=85 dst=0 src=2 off=0 imm=44140
+CBPF_M3 bpf pc=12 code=bf dst=1 src=6 off=0 imm=0
+CBPF_M3 bpf pc=13 code=85 dst=0 src=2 off=0 imm=44138
+CBPF_M3 bpf pc=14 code=bf dst=9 src=0 off=0 imm=0
+CBPF_M3 bpf pc=15 code=bf dst=1 src=6 off=0 imm=0
+CBPF_M3 bpf pc=16 code=85 dst=0 src=2 off=0 imm=44140
+CBPF_M3 bpf pc=17 code=bf dst=8 src=9 off=0 imm=0
+CBPF_M3 bpf pc=18 code=bf dst=0 src=8 off=0 imm=0
+CBPF_M3 bpf pc=19 code=95 dst=0 src=0 off=0 imm=0
+CBPF_M3 bpf pc=20 code=79 dst=7 src=10 off=-8 imm=0
+CBPF_M3 bpf pc=21 code=bf dst=1 src=7 off=0 imm=0
+CBPF_M3 bpf pc=22 code=85 dst=0 src=2 off=0 imm=44140
+CBPF_M3 bpf pc=23 code=b7 dst=0 src=0 off=0 imm=9
+CBPF_M3 bpf pc=24 code=95 dst=0 src=0 off=0 imm=0
+CBPF_M3 bpf pc=25 code=b7 dst=0 src=0 off=0 imm=0
+CBPF_M3 bpf pc=26 code=95 dst=0 src=0 off=0 imm=0
+[    1.813090] CBPF_NATIVE accepted insns=27 words=166 entry=ffff80008110bce4 restricted_exit=119 executive_exit=120 template_check=pass
+[    1.813480] CBPF_NATIVE map pc=0 begin=56 end=60 code=b7 op=0
+[    1.813647] CBPF_NATIVE map pc=1 begin=60 end=65 code=85 op=1
+[    1.813850] CBPF_NATIVE map pc=2 begin=65 end=66 code=bf op=0
+[    1.813996] CBPF_NATIVE map pc=3 begin=66 end=67 code=15 op=0
+[    1.814141] CBPF_NATIVE map pc=4 begin=67 end=68 code=7b op=0
+[    1.814290] CBPF_NATIVE map pc=5 begin=68 end=72 code=b7 op=0
+[    1.814431] CBPF_NATIVE map pc=6 begin=72 end=77 code=85 op=1
+[    1.814581] CBPF_NATIVE map pc=7 begin=77 end=78 code=bf op=0
+[    1.814740] CBPF_NATIVE map pc=8 begin=78 end=79 code=15 op=0
+[    1.814890] CBPF_NATIVE map pc=9 begin=79 end=80 code=79 op=0
+[    1.815040] CBPF_NATIVE map pc=10 begin=80 end=81 code=bf op=0
+[    1.815195] CBPF_NATIVE map pc=11 begin=81 end=86 code=85 op=3
+[    1.815349] CBPF_NATIVE map pc=12 begin=86 end=87 code=bf op=0
+[    1.815501] CBPF_NATIVE map pc=13 begin=87 end=92 code=85 op=2
+[    1.815656] CBPF_NATIVE map pc=14 begin=92 end=93 code=bf op=0
+[    1.815818] CBPF_NATIVE map pc=15 begin=93 end=94 code=bf op=0
+[    1.816189] CBPF_NATIVE map pc=16 begin=94 end=99 code=85 op=3
+[    1.816388] CBPF_NATIVE map pc=17 begin=99 end=100 code=bf op=0
+[    1.816549] CBPF_NATIVE map pc=18 begin=100 end=101 code=bf op=0
+[    1.816708] CBPF_NATIVE map pc=19 begin=101 end=102 code=95 op=0
+[    1.816880] CBPF_NATIVE map pc=20 begin=102 end=103 code=79 op=0
+[    1.817038] CBPF_NATIVE map pc=21 begin=103 end=104 code=bf op=0
+[    1.817194] CBPF_NATIVE map pc=22 begin=104 end=109 code=85 op=3
+[    1.817351] CBPF_NATIVE map pc=23 begin=109 end=113 code=b7 op=0
+[    1.817507] CBPF_NATIVE map pc=24 begin=113 end=114 code=95 op=0
+[    1.817664] CBPF_NATIVE map pc=25 begin=114 end=118 code=b7 op=0
+[    1.817847] CBPF_NATIVE map pc=26 begin=118 end=119 code=95 op=0
+[    1.818005] CBPF_NATIVE word index=0 value=910003c9
+[    1.818151] CBPF_NATIVE word index=1 value=d503201f
+[    1.818275] CBPF_NATIVE word index=2 value=a9bf7bfd
+[    1.818401] CBPF_NATIVE word index=3 value=910003fd
+[    1.818526] CBPF_NATIVE word index=4 value=a9bf53f3
+[    1.818652] CBPF_NATIVE word index=5 value=a9bf5bf5
+[    1.818797] CBPF_NATIVE word index=6 value=a9bf63f7
+[    1.818924] CBPF_NATIVE word index=7 value=a9bf6bf9
+[    1.819048] CBPF_NATIVE word index=8 value=a9bf73fb
+[    1.819189] CBPF_NATIVE word index=9 value=a9bf7fff
+[    1.819315] CBPF_NATIVE word index=10 value=d10043ff
+[    1.819442] CBPF_NATIVE word index=11 value=910003e0
+[    1.819568] CBPF_NATIVE word index=12 value=d2800201
+[    1.819694] CBPF_NATIVE word index=13 value=10000d62
+[    1.819828] CBPF_NATIVE word index=14 value=d2801703
+[    1.820112] CBPF_NATIVE word index=15 value=91000124
+[    1.820253] CBPF_NATIVE word index=16 value=d28a0005
+[    1.820430] CBPF_NATIVE word index=17 value=f2b02205
+[    1.820559] CBPF_NATIVE word index=18 value=f2d00005
+[    1.820686] CBPF_NATIVE word index=19 value=f2ffffe5
+[    1.820823] CBPF_NATIVE word index=20 value=d29d8f8a
+[    1.820953] CBPF_NATIVE word index=21 value=f2b0006a
+[    1.821081] CBPF_NATIVE word index=22 value=f2d0000a
+[    1.821208] CBPF_NATIVE word index=23 value=f2ffffea
+[    1.821334] CBPF_NATIVE word index=24 value=d63f0140
+[    1.821463] CBPF_NATIVE word index=25 value=b4000060
+[    1.821590] CBPF_NATIVE word index=26 value=d2800007
+[    1.821715] CBPF_NATIVE word index=27 value=1400005d
+[    1.821848] CBPF_NATIVE word index=28 value=d2800000
+[    1.821978] CBPF_NATIVE word index=29 value=d2800001
+[    1.822104] CBPF_NATIVE word index=30 value=d2800002
+[    1.822231] CBPF_NATIVE word index=31 value=d2800003
+[    1.822355] CBPF_NATIVE word index=32 value=d2800004
+[    1.822476] CBPF_NATIVE word index=33 value=d2800005
+[    1.822596] CBPF_NATIVE word index=34 value=d2800006
+[    1.822715] CBPF_NATIVE word index=35 value=d2800007
+[    1.822840] CBPF_NATIVE word index=36 value=d2800008
+[    1.822962] CBPF_NATIVE word index=37 value=d2800009
+[    1.823082] CBPF_NATIVE word index=38 value=d280000a
+[    1.823201] CBPF_NATIVE word index=39 value=d280000b
+[    1.823321] CBPF_NATIVE word index=40 value=d280000c
+[    1.823443] CBPF_NATIVE word index=41 value=d280000d
+[    1.823564] CBPF_NATIVE word index=42 value=d280000e
+[    1.823687] CBPF_NATIVE word index=43 value=d2800010
+[    1.823811] CBPF_NATIVE word index=44 value=d2800012
+[    1.823994] CBPF_NATIVE word index=45 value=d2800013
+[    1.824191] CBPF_NATIVE word index=46 value=d2800014
+[    1.824383] CBPF_NATIVE word index=47 value=d2800015
+[    1.824508] CBPF_NATIVE word index=48 value=d2800016
+[    1.824630] CBPF_NATIVE word index=49 value=d2800017
+[    1.824755] CBPF_NATIVE word index=50 value=d2800018
+[    1.824874] CBPF_NATIVE word index=51 value=d2800019
+[    1.824996] CBPF_NATIVE word index=52 value=d280001a
+[    1.825117] CBPF_NATIVE word index=53 value=d280001b
+[    1.825237] CBPF_NATIVE word index=54 value=d280001c
+[    1.825357] CBPF_NATIVE word index=55 value=d280001d
+[    1.825480] CBPF_NATIVE word index=56 value=d2800000
+[    1.825599] CBPF_NATIVE word index=57 value=f2a00000
+[    1.825723] CBPF_NATIVE word index=58 value=f2c00000
+[    1.825844] CBPF_NATIVE word index=59 value=f2e00000
+[    1.825967] CBPF_NATIVE word index=60 value=d2800024
+[    1.826086] CBPF_NATIVE word index=61 value=d2800025
+[    1.826206] CBPF_NATIVE word index=62 value=c2c1d3cd
+[    1.826326] CBPF_NATIVE word index=63 value=c2c23222
+[    1.826449] CBPF_NATIVE word index=64 value=c2c1d007
+[    1.826570] CBPF_NATIVE word index=65 value=c2c1d0f5
+[    1.826689] CBPF_NATIVE word index=66 value=b4000615
+[    1.826813] CBPF_NATIVE word index=67 value=824003f5
+[    1.826988] CBPF_NATIVE word index=68 value=d2800000
+[    1.827121] CBPF_NATIVE word index=69 value=f2a00000
+[    1.827257] CBPF_NATIVE word index=70 value=f2c00000
+[    1.827384] CBPF_NATIVE word index=71 value=f2e00000
+[    1.827506] CBPF_NATIVE word index=72 value=d2800024
+[    1.827626] CBPF_NATIVE word index=73 value=d28000c5
+[    1.827754] CBPF_NATIVE word index=74 value=c2c1d3cd
+[    1.827893] CBPF_NATIVE word index=75 value=c2c23222
+[    1.828114] CBPF_NATIVE word index=76 value=c2c1d007
+[    1.828275] CBPF_NATIVE word index=77 value=c2c1d0f3
+[    1.828399] CBPF_NATIVE word index=78 value=b4000313
+[    1.828523] CBPF_NATIVE word index=79 value=826003f4
+[    1.828643] CBPF_NATIVE word index=80 value=c2c1d280
+[    1.828769] CBPF_NATIVE word index=81 value=d2800064
+[    1.828889] CBPF_NATIVE word index=82 value=d2800165
+[    1.829010] CBPF_NATIVE word index=83 value=c2c1d3cd
+[    1.829130] CBPF_NATIVE word index=84 value=c2c23222
+[    1.829250] CBPF_NATIVE word index=85 value=c2c1d007
+[    1.829372] CBPF_NATIVE word index=86 value=c2c1d260
+[    1.829493] CBPF_NATIVE word index=87 value=d2800044
+[    1.829613] CBPF_NATIVE word index=88 value=d28001a5
+[    1.829741] CBPF_NATIVE word index=89 value=c2c1d3cd
+[    1.829862] CBPF_NATIVE word index=90 value=c2c23222
+[    1.829984] CBPF_NATIVE word index=91 value=c2c1d007
+[    1.830106] CBPF_NATIVE word index=92 value=c2c1d0f6
+[    1.830226] CBPF_NATIVE word index=93 value=c2c1d260
+[    1.830348] CBPF_NATIVE word index=94 value=d2800064
+[    1.830503] CBPF_NATIVE word index=95 value=d2800205
+[    1.830625] CBPF_NATIVE word index=96 value=c2c1d3cd
+[    1.830750] CBPF_NATIVE word index=97 value=c2c23222
+[    1.830874] CBPF_NATIVE word index=98 value=c2c1d007
+[    1.830996] CBPF_NATIVE word index=99 value=c2c1d2d5
+[    1.831117] CBPF_NATIVE word index=100 value=c2c1d2a7
+[    1.831245] CBPF_NATIVE word index=101 value=14000012
+[    1.831367] CBPF_NATIVE word index=102 value=826003f4
+[    1.831489] CBPF_NATIVE word index=103 value=c2c1d280
+[    1.831615] CBPF_NATIVE word index=104 value=d2800064
+[    1.831743] CBPF_NATIVE word index=105 value=d28002c5
+[    1.831951] CBPF_NATIVE word index=106 value=c2c1d3cd
+[    1.832112] CBPF_NATIVE word index=107 value=c2c23222
+[    1.832238] CBPF_NATIVE word index=108 value=c2c1d007
+[    1.832361] CBPF_NATIVE word index=109 value=d2800127
+[    1.832483] CBPF_NATIVE word index=110 value=f2a00007
+[    1.832608] CBPF_NATIVE word index=111 value=f2c00007
+[    1.832737] CBPF_NATIVE word index=112 value=f2e00007
+[    1.832858] CBPF_NATIVE word index=113 value=14000006
+[    1.832980] CBPF_NATIVE word index=114 value=d2800007
+[    1.833104] CBPF_NATIVE word index=115 value=f2a00007
+[    1.833229] CBPF_NATIVE word index=116 value=f2c00007
+[    1.833351] CBPF_NATIVE word index=117 value=f2e00007
+[    1.833473] CBPF_NATIVE word index=118 value=14000001
+[    1.833597] CBPF_NATIVE word index=119 value=c2c253c0
+[    1.833725] CBPF_NATIVE word index=120 value=f90003ff
+[    1.833865] CBPF_NATIVE word index=121 value=f90007ff
+[    1.833988] CBPF_NATIVE word index=122 value=910000e7
+[    1.834115] CBPF_NATIVE word index=123 value=d2800000
+[    1.834237] CBPF_NATIVE word index=124 value=d2800001
+[    1.834360] CBPF_NATIVE word index=125 value=d2800002
+[    1.834498] CBPF_NATIVE word index=126 value=d2800003
+[    1.834622] CBPF_NATIVE word index=127 value=d2800004
+[    1.834763] CBPF_NATIVE word index=128 value=d2800005
+[    1.834885] CBPF_NATIVE word index=129 value=d2800006
+[    1.835007] CBPF_NATIVE word index=130 value=d2800008
+[    1.835131] CBPF_NATIVE word index=131 value=d2800009
+[    1.835252] CBPF_NATIVE word index=132 value=d280000a
+[    1.835374] CBPF_NATIVE word index=133 value=d280000b
+[    1.835497] CBPF_NATIVE word index=134 value=d280000c
+[    1.835622] CBPF_NATIVE word index=135 value=d280000d
+[    1.835749] CBPF_NATIVE word index=136 value=d280000e
+[    1.835951] CBPF_NATIVE word index=137 value=d280000f
+[    1.836104] CBPF_NATIVE word index=138 value=d2800010
+[    1.836229] CBPF_NATIVE word index=139 value=d2800011
+[    1.836355] CBPF_NATIVE word index=140 value=d2800012
+[    1.836477] CBPF_NATIVE word index=141 value=d2800013
+[    1.836610] CBPF_NATIVE word index=142 value=d2800014
+[    1.836740] CBPF_NATIVE word index=143 value=d2800015
+[    1.836864] CBPF_NATIVE word index=144 value=d2800016
+[    1.836985] CBPF_NATIVE word index=145 value=d2800017
+[    1.837107] CBPF_NATIVE word index=146 value=d2800018
+[    1.837230] CBPF_NATIVE word index=147 value=d2800019
+[    1.837354] CBPF_NATIVE word index=148 value=d280001a
+[    1.837476] CBPF_NATIVE word index=149 value=d280001b
+[    1.837599] CBPF_NATIVE word index=150 value=d280001c
+[    1.837725] CBPF_NATIVE word index=151 value=d280001d
+[    1.837849] CBPF_NATIVE word index=152 value=910043ff
+[    1.837973] CBPF_NATIVE word index=153 value=c24003f0
+[    1.838096] CBPF_NATIVE word index=154 value=910043ff
+[    1.838217] CBPF_NATIVE word index=155 value=a8c173fb
+[    1.838337] CBPF_NATIVE word index=156 value=a8c16bf9
+[    1.838463] CBPF_NATIVE word index=157 value=a8c163f7
+[    1.838584] CBPF_NATIVE word index=158 value=a8c15bf5
+[    1.838705] CBPF_NATIVE word index=159 value=a8c153f3
+[    1.838831] CBPF_NATIVE word index=160 value=a8c17bfd
+[    1.838955] CBPF_NATIVE word index=161 value=910000e0
+[    1.839076] CBPF_NATIVE word index=162 value=c2c0920a
+[    1.839198] CBPF_NATIVE word index=163 value=b400004a
+[    1.839320] CBPF_NATIVE word index=164 value=c2c25203
+[    1.839445] CBPF_NATIVE word index=165 value=d65f03c0
+CBPF_M3 verifier_begin
+func#0 @0
+0: R1=ctx(off=0,imm=0) R10=fp0
+0: (b7) r1 = 0                        ; R1_w=0
+1: (85) call cbpf_cap_acquire#44135   ; R0_w=ptr_or_null_cbpf_cap_ref(id=2,ref_obj_id=2,off=0,imm=0) refs=2
+2: (bf) r8 = r0                       ; R0_w=ptr_or_null_cbpf_cap_ref(id=2,ref_obj_id=2,off=0,imm=0) R8_w=ptr_or_null_cbpf_cap_ref(id=2,ref_obj_id=2,off=0,imm=0) refs=2
+3: (15) if r8 == 0x0 goto pc+21       ; R8_w=ptr_cbpf_cap_ref(ref_obj_id=2,off=0,imm=0) refs=2
+4: (7b) *(u64 *)(r10 -8) = r8         ; R8_w=ptr_cbpf_cap_ref(ref_obj_id=2,off=0,imm=0) R10=fp0 fp-8_w=ptr_ refs=2
+5: (b7) r1 = 0                        ; R1_w=0 refs=2
+6: (85) call cbpf_cap_acquire#44135   ; R0=ptr_or_null_cbpf_cap_ref(id=4,ref_obj_id=4,off=0,imm=0) refs=2,4
+7: (bf) r6 = r0                       ; R0=ptr_or_null_cbpf_cap_ref(id=4,ref_obj_id=4,off=0,imm=0) R6_w=ptr_or_null_cbpf_cap_ref(id=4,ref_obj_id=4,off=0,imm=0) refs=2,4
+8: (15) if r6 == 0x0 goto pc+11       ; R6_w=ptr_cbpf_cap_ref(ref_obj_id=4,off=0,imm=0) refs=2,4
+9: (79) r7 = *(u64 *)(r10 -8)         ; R7_w=ptr_cbpf_cap_ref(ref_obj_id=2,off=0,imm=0) R10=fp0 fp-8=ptr_ refs=2,4
+10: (bf) r1 = r7                      ; R1_w=ptr_cbpf_cap_ref(ref_obj_id=2,off=0,imm=0) R7_w=ptr_cbpf_cap_ref(ref_obj_id=2,off=0,imm=0) refs=2,4
+11: (85) call cbpf_cap_release#44140          ; refs=4
+12: (bf) r1 = r6                      ; R1_w=ptr_cbpf_cap_ref(ref_obj_id=4,off=0,imm=0) R6_w=ptr_cbpf_cap_ref(ref_obj_id=4,off=0,imm=0) refs=4
+13: (85) call cbpf_cap_read#44138     ; R0_w=scalar() refs=4
+14: (bf) r9 = r0                      ; R0_w=scalar(id=5) R9_w=scalar(id=5) refs=4
+15: (bf) r1 = r6                      ; R1_w=ptr_cbpf_cap_ref(ref_obj_id=4,off=0,imm=0) R6_w=ptr_cbpf_cap_ref(ref_obj_id=4,off=0,imm=0) refs=4
+16: (85) call cbpf_cap_release#44140          ;
+17: (bf) r8 = r9                      ; R8_w=scalar(id=5) R9=scalar(id=5)
+18: (bf) r0 = r8                      ; R0_w=scalar(id=5) R8_w=scalar(id=5)
+19: (95) exit
+
+from 8 to 20: R0=0 R6_w=0 R8=ptr_cbpf_cap_ref(ref_obj_id=2,off=0,imm=0) R10=fp0 fp-8=ptr_ refs=2
+20: R0=0 R6_w=0 R8=ptr_cbpf_cap_ref(ref_obj_id=2,off=0,imm=0) R10=fp0 fp-8=ptr_ refs=2
+20: (79) r7 = *(u64 *)(r10 -8)        ; R7_w=ptr_cbpf_cap_ref(ref_obj_id=2,off=0,imm=0) R10=fp0 fp-8=ptr_ refs=2
+21: (bf) r1 = r7                      ; R1_w=ptr_cbpf_cap_ref(ref_obj_id=2,off=0,imm=0) R7_w=ptr_cbpf_cap_ref(ref_obj_id=2,off=0,imm=0) refs=2
+22: (85) call cbpf_cap_release#44140          ;
+23: (b7) r0 = 9                       ; R0_w=9
+24: (95) exit
+
+from 3 to 25: R0=0 R8=0 R10=fp0
+25: R0=0 R8=0 R10=fp0
+25: (b7) r0 = 0                       ; R0_w=0
+26: (95) exit
+processed 27 insns (limit 1000000) max_states_per_insn 0 total_states 3 peak_states 3 mark_read 1
+CBPF_M3 verifier_end
+CBPF_M3 word index=0 value=910003c9
+CBPF_M3 word index=1 value=d503201f
+CBPF_M3 word index=2 value=a9bf7bfd
+CBPF_M3 word index=3 value=910003fd
+CBPF_M3 word index=4 value=a9bf53f3
+CBPF_M3 word index=5 value=a9bf5bf5
+CBPF_M3 word index=6 value=a9bf63f7
+CBPF_M3 word index=7 value=a9bf6bf9
+CBPF_M3 word index=8 value=a9bf73fb
+CBPF_M3 word index=9 value=a9bf7fff
+CBPF_M3 word index=10 value=d10043ff
+CBPF_M3 word index=11 value=910003e0
+CBPF_M3 word index=12 value=d2800201
+CBPF_M3 word index=13 value=10000d62
+CBPF_M3 word index=14 value=d2801703
+CBPF_M3 word index=15 value=91000124
+CBPF_M3 word index=16 value=d28a0005
+CBPF_M3 word index=17 value=f2b02205
+CBPF_M3 word index=18 value=f2d00005
+CBPF_M3 word index=19 value=f2ffffe5
+CBPF_M3 word index=20 value=d29d8f8a
+CBPF_M3 word index=21 value=f2b0006a
+CBPF_M3 word index=22 value=f2d0000a
+CBPF_M3 word index=23 value=f2ffffea
+CBPF_M3 word index=24 value=d63f0140
+CBPF_M3 word index=25 value=b4000060
+CBPF_M3 word index=26 value=d2800007
+CBPF_M3 word index=27 value=1400005d
+CBPF_M3 word index=28 value=d2800000
+CBPF_M3 word index=29 value=d2800001
+CBPF_M3 word index=30 value=d2800002
+CBPF_M3 word index=31 value=d2800003
+CBPF_M3 word index=32 value=d2800004
+CBPF_M3 word index=33 value=d2800005
+CBPF_M3 word index=34 value=d2800006
+CBPF_M3 word index=35 value=d2800007
+CBPF_M3 word index=36 value=d2800008
+CBPF_M3 word index=37 value=d2800009
+CBPF_M3 word index=38 value=d280000a
+CBPF_M3 word index=39 value=d280000b
+CBPF_M3 word index=40 value=d280000c
+CBPF_M3 word index=41 value=d280000d
+CBPF_M3 word index=42 value=d280000e
+CBPF_M3 word index=43 value=d2800010
+CBPF_M3 word index=44 value=d2800012
+CBPF_M3 word index=45 value=d2800013
+CBPF_M3 word index=46 value=d2800014
+CBPF_M3 word index=47 value=d2800015
+CBPF_M3 word index=48 value=d2800016
+CBPF_M3 word index=49 value=d2800017
+CBPF_M3 word index=50 value=d2800018
+CBPF_M3 word index=51 value=d2800019
+CBPF_M3 word index=52 value=d280001a
+CBPF_M3 word index=53 value=d280001b
+CBPF_M3 word index=54 value=d280001c
+CBPF_M3 word index=55 value=d280001d
+CBPF_M3 word index=56 value=d2800000
+CBPF_M3 word index=57 value=f2a00000
+CBPF_M3 word index=58 value=f2c00000
+CBPF_M3 word index=59 value=f2e00000
+CBPF_M3 word index=60 value=d2800024
+CBPF_M3 word index=61 value=d2800025
+CBPF_M3 word index=62 value=c2c1d3cd
+CBPF_M3 word index=63 value=c2c23222
+CBPF_M3 word index=64 value=c2c1d007
+CBPF_M3 word index=65 value=c2c1d0f5
+CBPF_M3 word index=66 value=b4000615
+CBPF_M3 word index=67 value=824003f5
+CBPF_M3 word index=68 value=d2800000
+CBPF_M3 word index=69 value=f2a00000
+CBPF_M3 word index=70 value=f2c00000
+CBPF_M3 word index=71 value=f2e00000
+CBPF_M3 word index=72 value=d2800024
+CBPF_M3 word index=73 value=d28000c5
+CBPF_M3 word index=74 value=c2c1d3cd
+CBPF_M3 word index=75 value=c2c23222
+CBPF_M3 word index=76 value=c2c1d007
+CBPF_M3 word index=77 value=c2c1d0f3
+CBPF_M3 word index=78 value=b4000313
+CBPF_M3 word index=79 value=826003f4
+CBPF_M3 word index=80 value=c2c1d280
+CBPF_M3 word index=81 value=d2800064
+CBPF_M3 word index=82 value=d2800165
+CBPF_M3 word index=83 value=c2c1d3cd
+CBPF_M3 word index=84 value=c2c23222
+CBPF_M3 word index=85 value=c2c1d007
+CBPF_M3 word index=86 value=c2c1d260
+CBPF_M3 word index=87 value=d2800044
+CBPF_M3 word index=88 value=d28001a5
+CBPF_M3 word index=89 value=c2c1d3cd
+CBPF_M3 word index=90 value=c2c23222
+CBPF_M3 word index=91 value=c2c1d007
+CBPF_M3 word index=92 value=c2c1d0f6
+CBPF_M3 word index=93 value=c2c1d260
+CBPF_M3 word index=94 value=d2800064
+CBPF_M3 word index=95 value=d2800205
+CBPF_M3 word index=96 value=c2c1d3cd
+CBPF_M3 word index=97 value=c2c23222
+CBPF_M3 word index=98 value=c2c1d007
+CBPF_M3 word index=99 value=c2c1d2d5
+CBPF_M3 word index=100 value=c2c1d2a7
+CBPF_M3 word index=101 value=14000012
+CBPF_M3 word index=102 value=826003f4
+CBPF_M3 word index=103 value=c2c1d280
+CBPF_M3 word index=104 value=d2800064
+CBPF_M3 word index=105 value=d28002c5
+CBPF_M3 word index=106 value=c2c1d3cd
+CBPF_M3 word index=107 value=c2c23222
+CBPF_M3 word index=108 value=c2c1d007
+CBPF_M3 word index=109 value=d2800127
+CBPF_M3 word index=110 value=f2a00007
+CBPF_M3 word index=111 value=f2c00007
+CBPF_M3 word index=112 value=f2e00007
+CBPF_M3 word index=113 value=14000006
+CBPF_M3 word index=114 value=d2800007
+CBPF_M3 word index=115 value=f2a00007
+CBPF_M3 word index=116 value=f2c00007
+CBPF_M3 word index=117 value=f2e00007
+CBPF_M3 word index=118 value=14000001
+CBPF_M3 word index=119 value=c2c253c0
+CBPF_M3 word index=120 value=f90003ff
+CBPF_M3 word index=121 value=f90007ff
+CBPF_M3 word index=122 value=910000e7
+CBPF_M3 word index=123 value=d2800000
+CBPF_M3 word index=124 value=d2800001
+CBPF_M3 word index=125 value=d2800002
+CBPF_M3 word index=126 value=d2800003
+CBPF_M3 word index=127 value=d2800004
+CBPF_M3 word index=128 value=d2800005
+CBPF_M3 word index=129 value=d2800006
+CBPF_M3 word index=130 value=d2800008
+CBPF_M3 word index=131 value=d2800009
+CBPF_M3 word index=132 value=d280000a
+CBPF_M3 word index=133 value=d280000b
+CBPF_M3 word index=134 value=d280000c
+CBPF_M3 word index=135 value=d280000d
+CBPF_M3 word index=136 value=d280000e
+CBPF_M3 word index=137 value=d280000f
+CBPF_M3 word index=138 value=d2800010
+CBPF_M3 word index=139 value=d2800011
+CBPF_M3 word index=140 value=d2800012
+CBPF_M3 word index=141 value=d2800013
+CBPF_M3 word index=142 value=d2800014
+CBPF_M3 word index=143 value=d2800015
+CBPF_M3 word index=144 value=d2800016
+CBPF_M3 word index=145 value=d2800017
+CBPF_M3 word index=146 value=d2800018
+CBPF_M3 word index=147 value=d2800019
+CBPF_M3 word index=148 value=d280001a
+CBPF_M3 word index=149 value=d280001b
+CBPF_M3 word index=150 value=d280001c
+CBPF_M3 word index=151 value=d280001d
+CBPF_M3 word index=152 value=910043ff
+CBPF_M3 word index=153 value=c24003f0
+CBPF_M3 word index=154 value=910043ff
+CBPF_M3 word index=155 value=a8c173fb
+CBPF_M3 word index=156 value=a8c16bf9
+CBPF_M3 word index=157 value=a8c163f7
+CBPF_M3 word index=158 value=a8c15bf5
+CBPF_M3 word index=159 value=a8c153f3
+CBPF_M3 word index=160 value=a8c17bfd
+CBPF_M3 word index=161 value=910000e0
+CBPF_M3 word index=162 value=c2c0920a
+CBPF_M3 word index=163 value=b400004a
+CBPF_M3 word index=164 value=c2c25203
+CBPF_M3 word index=165 value=d65f03c0
+[    1.874168] CBPF_ENTER restricted_base=0xffff80008110bd48 restricted_size=380 executive_base=0xffff80008110bec4 executive_size=184 stack_base=0xffff0000001cf6e0 stack_size=16 rddc_tag=0 gate_sealed=1
+[    1.874686] CBPF_BIND pc=1 id=1 cell=ffff0000001cf7c0 object=ffff800080f27e08 public_tag=1 public_base=0xffff0000001cf7c0 public_length=16 public_perms=0x20001
+[    1.875016] CBPF_GATE seq=1 event=acquire pc=1 id=1 acquired=1 released=0 reads=0 cleanup=0 refs=2 tagA=1 tagB=0
+[    1.875299] CBPF_BIND pc=6 id=2 cell=ffff0000001cf7d0 object=ffff800080f27e08 public_tag=1 public_base=0xffff0000001cf7d0 public_length=16 public_perms=0x20001
+[    1.875599] CBPF_GATE seq=2 event=acquire pc=6 id=2 acquired=2 released=0 reads=0 cleanup=0 refs=3 tagA=1 tagB=1
+[    1.875869] CBPF_GATE seq=3 event=clear pc=11 id=1 acquired=2 released=0 reads=0 cleanup=0 refs=3 tagA=0 tagB=1
+[    1.876253] CBPF_GATE seq=4 event=release pc=11 id=1 acquired=2 released=1 reads=0 cleanup=0 refs=2 tagA=0 tagB=1
+[    1.876519] CBPF_GATE seq=5 event=read pc=13 id=2 acquired=2 released=1 reads=1 cleanup=0 refs=2 tagA=0 tagB=1
+[    1.876777] CBPF_GATE seq=6 event=clear pc=16 id=2 acquired=2 released=1 reads=1 cleanup=0 refs=2 tagA=0 tagB=0
+[    1.877054] CBPF_GATE seq=7 event=release pc=16 id=2 acquired=2 released=2 reads=1 cleanup=0 refs=1 tagA=0 tagB=0
+[    1.877426] CBPF_GATE seq=8 event=exit pc=18446744073709551615 id=0 acquired=2 released=2 reads=1 cleanup=0 refs=1 tagA=0 tagB=0
+[    1.877690] CBPF_RESULT value=42 entered=1 failed=0 balanced=1
+CBPF_M3 case=ab_alternate phase=end loaded=1 executed=1 retval=42 jited_len=664 load_errno=0 stage=execute result=PASS
+CBPF_M3 case=null_second phase=begin expected=execute
+CBPF_M3 bpf pc=0 code=b7 dst=1 src=0 off=0 imm=0
+CBPF_M3 bpf pc=1 code=85 dst=0 src=2 off=0 imm=44135
+CBPF_M3 bpf pc=2 code=15 dst=0 src=0 off=21 imm=0
+CBPF_M3 bpf pc=3 code=bf dst=6 src=0 off=0 imm=0
+CBPF_M3 bpf pc=4 code=7b dst=10 src=6 off=-8 imm=0
+CBPF_M3 bpf pc=5 code=b7 dst=1 src=0 off=0 imm=1
+CBPF_M3 bpf pc=6 code=85 dst=0 src=2 off=0 imm=44135
+CBPF_M3 bpf pc=7 code=15 dst=0 src=0 off=11 imm=0
+CBPF_M3 bpf pc=8 code=bf dst=7 src=0 off=0 imm=0
+CBPF_M3 bpf pc=9 code=79 dst=8 src=10 off=-8 imm=0
+CBPF_M3 bpf pc=10 code=bf dst=1 src=8 off=0 imm=0
+CBPF_M3 bpf pc=11 code=85 dst=0 src=2 off=0 imm=44140
+CBPF_M3 bpf pc=12 code=bf dst=1 src=7 off=0 imm=0
+CBPF_M3 bpf pc=13 code=85 dst=0 src=2 off=0 imm=44138
+CBPF_M3 bpf pc=14 code=bf dst=9 src=0 off=0 imm=0
+CBPF_M3 bpf pc=15 code=bf dst=1 src=7 off=0 imm=0
+CBPF_M3 bpf pc=16 code=85 dst=0 src=2 off=0 imm=44140
+CBPF_M3 bpf pc=17 code=bf dst=0 src=9 off=0 imm=0
+CBPF_M3 bpf pc=18 code=95 dst=0 src=0 off=0 imm=0
+CBPF_M3 bpf pc=19 code=79 dst=8 src=10 off=-8 imm=0
+CBPF_M3 bpf pc=20 code=bf dst=1 src=8 off=0 imm=0
+CBPF_M3 bpf pc=21 code=85 dst=0 src=2 off=0 imm=44140
+CBPF_M3 bpf pc=22 code=b7 dst=0 src=0 off=0 imm=7
+CBPF_M3 bpf pc=23 code=95 dst=0 src=0 off=0 imm=0
+CBPF_M3 bpf pc=24 code=b7 dst=0 src=0 off=0 imm=0
+CBPF_M3 bpf pc=25 code=95 dst=0 src=0 off=0 imm=0
+[    1.892370] CBPF_NATIVE accepted insns=26 words=165 entry=ffff80008110b47c restricted_exit=118 executive_exit=119 template_check=pass
+[    1.892747] CBPF_NATIVE map pc=0 begin=56 end=60 code=b7 op=0
+[    1.892915] CBPF_NATIVE map pc=1 begin=60 end=65 code=85 op=1
+[    1.893065] CBPF_NATIVE map pc=2 begin=65 end=66 code=15 op=0
+[    1.893212] CBPF_NATIVE map pc=3 begin=66 end=67 code=bf op=0
+[    1.893359] CBPF_NATIVE map pc=4 begin=67 end=68 code=7b op=0
+[    1.893503] CBPF_NATIVE map pc=5 begin=68 end=72 code=b7 op=0
+[    1.893644] CBPF_NATIVE map pc=6 begin=72 end=77 code=85 op=1
+[    1.893818] CBPF_NATIVE map pc=7 begin=77 end=78 code=15 op=0
+[    1.893997] CBPF_NATIVE map pc=8 begin=78 end=79 code=bf op=0
+[    1.894141] CBPF_NATIVE map pc=9 begin=79 end=80 code=79 op=0
+[    1.894284] CBPF_NATIVE map pc=10 begin=80 end=81 code=bf op=0
+[    1.894429] CBPF_NATIVE map pc=11 begin=81 end=86 code=85 op=3
+[    1.894566] CBPF_NATIVE map pc=12 begin=86 end=87 code=bf op=0
+[    1.894728] CBPF_NATIVE map pc=13 begin=87 end=92 code=85 op=2
+[    1.894866] CBPF_NATIVE map pc=14 begin=92 end=93 code=bf op=0
+[    1.895005] CBPF_NATIVE map pc=15 begin=93 end=94 code=bf op=0
+[    1.895141] CBPF_NATIVE map pc=16 begin=94 end=99 code=85 op=3
+[    1.895279] CBPF_NATIVE map pc=17 begin=99 end=100 code=bf op=0
+[    1.895420] CBPF_NATIVE map pc=18 begin=100 end=101 code=95 op=0
+[    1.895564] CBPF_NATIVE map pc=19 begin=101 end=102 code=79 op=0
+[    1.895711] CBPF_NATIVE map pc=20 begin=102 end=103 code=bf op=0
+[    1.895923] CBPF_NATIVE map pc=21 begin=103 end=108 code=85 op=3
+[    1.896191] CBPF_NATIVE map pc=22 begin=108 end=112 code=b7 op=0
+[    1.896388] CBPF_NATIVE map pc=23 begin=112 end=113 code=95 op=0
+[    1.896539] CBPF_NATIVE map pc=24 begin=113 end=117 code=b7 op=0
+[    1.896691] CBPF_NATIVE map pc=25 begin=117 end=118 code=95 op=0
+[    1.896850] CBPF_NATIVE word index=0 value=910003c9
+[    1.896973] CBPF_NATIVE word index=1 value=d503201f
+[    1.897133] CBPF_NATIVE word index=2 value=a9bf7bfd
+[    1.897256] CBPF_NATIVE word index=3 value=910003fd
+[    1.897374] CBPF_NATIVE word index=4 value=a9bf53f3
+[    1.897495] CBPF_NATIVE word index=5 value=a9bf5bf5
+[    1.897616] CBPF_NATIVE word index=6 value=a9bf63f7
+[    1.897754] CBPF_NATIVE word index=7 value=a9bf6bf9
+[    1.897881] CBPF_NATIVE word index=8 value=a9bf73fb
+[    1.898007] CBPF_NATIVE word index=9 value=a9bf7fff
+[    1.898131] CBPF_NATIVE word index=10 value=d10043ff
+[    1.898261] CBPF_NATIVE word index=11 value=910003e0
+[    1.898381] CBPF_NATIVE word index=12 value=d2800201
+[    1.898502] CBPF_NATIVE word index=13 value=10000d42
+[    1.898622] CBPF_NATIVE word index=14 value=d2801703
+[    1.898768] CBPF_NATIVE word index=15 value=91000124
+[    1.898891] CBPF_NATIVE word index=16 value=d28e0005
+[    1.899012] CBPF_NATIVE word index=17 value=f2b02205
+[    1.899132] CBPF_NATIVE word index=18 value=f2d00005
+[    1.899254] CBPF_NATIVE word index=19 value=f2ffffe5
+[    1.899374] CBPF_NATIVE word index=20 value=d29d8f8a
+[    1.899496] CBPF_NATIVE word index=21 value=f2b0006a
+[    1.899622] CBPF_NATIVE word index=22 value=f2d0000a
+[    1.899760] CBPF_NATIVE word index=23 value=f2ffffea
+[    1.899936] CBPF_NATIVE word index=24 value=d63f0140
+[    1.900160] CBPF_NATIVE word index=25 value=b4000060
+[    1.900351] CBPF_NATIVE word index=26 value=d2800007
+[    1.900482] CBPF_NATIVE word index=27 value=1400005c
+[    1.900611] CBPF_NATIVE word index=28 value=d2800000
+[    1.900745] CBPF_NATIVE word index=29 value=d2800001
+[    1.900890] CBPF_NATIVE word index=30 value=d2800002
+[    1.901019] CBPF_NATIVE word index=31 value=d2800003
+[    1.901145] CBPF_NATIVE word index=32 value=d2800004
+[    1.901273] CBPF_NATIVE word index=33 value=d2800005
+[    1.901415] CBPF_NATIVE word index=34 value=d2800006
+[    1.901542] CBPF_NATIVE word index=35 value=d2800007
+[    1.901664] CBPF_NATIVE word index=36 value=d2800008
+[    1.901808] CBPF_NATIVE word index=37 value=d2800009
+[    1.901928] CBPF_NATIVE word index=38 value=d280000a
+[    1.902052] CBPF_NATIVE word index=39 value=d280000b
+[    1.902172] CBPF_NATIVE word index=40 value=d280000c
+[    1.902292] CBPF_NATIVE word index=41 value=d280000d
+[    1.902413] CBPF_NATIVE word index=42 value=d280000e
+[    1.902534] CBPF_NATIVE word index=43 value=d2800010
+[    1.902655] CBPF_NATIVE word index=44 value=d2800012
+[    1.902780] CBPF_NATIVE word index=45 value=d2800013
+[    1.902900] CBPF_NATIVE word index=46 value=d2800014
+[    1.903021] CBPF_NATIVE word index=47 value=d2800015
+[    1.903141] CBPF_NATIVE word index=48 value=d2800016
+[    1.903261] CBPF_NATIVE word index=49 value=d2800017
+[    1.903380] CBPF_NATIVE word index=50 value=d2800018
+[    1.903500] CBPF_NATIVE word index=51 value=d2800019
+[    1.903622] CBPF_NATIVE word index=52 value=d280001a
+[    1.903747] CBPF_NATIVE word index=53 value=d280001b
+[    1.903869] CBPF_NATIVE word index=54 value=d280001c
+[    1.904146] CBPF_NATIVE word index=55 value=d280001d
+[    1.904278] CBPF_NATIVE word index=56 value=d2800000
+[    1.904457] CBPF_NATIVE word index=57 value=f2a00000
+[    1.904578] CBPF_NATIVE word index=58 value=f2c00000
+[    1.904698] CBPF_NATIVE word index=59 value=f2e00000
+[    1.904826] CBPF_NATIVE word index=60 value=d2800024
+[    1.904948] CBPF_NATIVE word index=61 value=d2800025
+[    1.905067] CBPF_NATIVE word index=62 value=c2c1d3cd
+[    1.905189] CBPF_NATIVE word index=63 value=c2c23222
+[    1.905309] CBPF_NATIVE word index=64 value=c2c1d007
+[    1.905432] CBPF_NATIVE word index=65 value=b4000607
+[    1.905552] CBPF_NATIVE word index=66 value=c2c1d0f3
+[    1.905674] CBPF_NATIVE word index=67 value=824003f3
+[    1.905799] CBPF_NATIVE word index=68 value=d2800020
+[    1.905921] CBPF_NATIVE word index=69 value=f2a00000
+[    1.906043] CBPF_NATIVE word index=70 value=f2c00000
+[    1.906163] CBPF_NATIVE word index=71 value=f2e00000
+[    1.906283] CBPF_NATIVE word index=72 value=d2800024
+[    1.906405] CBPF_NATIVE word index=73 value=d28000c5
+[    1.906526] CBPF_NATIVE word index=74 value=c2c1d3cd
+[    1.906647] CBPF_NATIVE word index=75 value=c2c23222
+[    1.906772] CBPF_NATIVE word index=76 value=c2c1d007
+[    1.906893] CBPF_NATIVE word index=77 value=b4000307
+[    1.907015] CBPF_NATIVE word index=78 value=c2c1d0f4
+[    1.907134] CBPF_NATIVE word index=79 value=826003f5
+[    1.907254] CBPF_NATIVE word index=80 value=c2c1d2a0
+[    1.907373] CBPF_NATIVE word index=81 value=d2800064
+[    1.907494] CBPF_NATIVE word index=82 value=d2800165
+[    1.907613] CBPF_NATIVE word index=83 value=c2c1d3cd
+[    1.907737] CBPF_NATIVE word index=84 value=c2c23222
+[    1.907857] CBPF_NATIVE word index=85 value=c2c1d007
+[    1.908112] CBPF_NATIVE word index=86 value=c2c1d280
+[    1.908247] CBPF_NATIVE word index=87 value=d2800044
+[    1.908422] CBPF_NATIVE word index=88 value=d28001a5
+[    1.908545] CBPF_NATIVE word index=89 value=c2c1d3cd
+[    1.908665] CBPF_NATIVE word index=90 value=c2c23222
+[    1.908796] CBPF_NATIVE word index=91 value=c2c1d007
+[    1.908915] CBPF_NATIVE word index=92 value=c2c1d0f6
+[    1.909036] CBPF_NATIVE word index=93 value=c2c1d280
+[    1.909156] CBPF_NATIVE word index=94 value=d2800064
+[    1.909276] CBPF_NATIVE word index=95 value=d2800205
+[    1.909395] CBPF_NATIVE word index=96 value=c2c1d3cd
+[    1.909517] CBPF_NATIVE word index=97 value=c2c23222
+[    1.909637] CBPF_NATIVE word index=98 value=c2c1d007
+[    1.909764] CBPF_NATIVE word index=99 value=c2c1d2c7
+[    1.909884] CBPF_NATIVE word index=100 value=14000012
+[    1.910009] CBPF_NATIVE word index=101 value=826003f5
+[    1.910130] CBPF_NATIVE word index=102 value=c2c1d2a0
+[    1.910292] CBPF_NATIVE word index=103 value=d2800064
+[    1.910427] CBPF_NATIVE word index=104 value=d28002a5
+[    1.910560] CBPF_NATIVE word index=105 value=c2c1d3cd
+[    1.910682] CBPF_NATIVE word index=106 value=c2c23222
+[    1.910810] CBPF_NATIVE word index=107 value=c2c1d007
+[    1.910933] CBPF_NATIVE word index=108 value=d28000e7
+[    1.911059] CBPF_NATIVE word index=109 value=f2a00007
+[    1.911202] CBPF_NATIVE word index=110 value=f2c00007
+[    1.911325] CBPF_NATIVE word index=111 value=f2e00007
+[    1.911446] CBPF_NATIVE word index=112 value=14000006
+[    1.911567] CBPF_NATIVE word index=113 value=d2800007
+[    1.911689] CBPF_NATIVE word index=114 value=f2a00007
+[    1.911819] CBPF_NATIVE word index=115 value=f2c00007
+[    1.912059] CBPF_NATIVE word index=116 value=f2e00007
+[    1.912215] CBPF_NATIVE word index=117 value=14000001
+[    1.912339] CBPF_NATIVE word index=118 value=c2c253c0
+[    1.912463] CBPF_NATIVE word index=119 value=f90003ff
+[    1.912587] CBPF_NATIVE word index=120 value=f90007ff
+[    1.912707] CBPF_NATIVE word index=121 value=910000e7
+[    1.912836] CBPF_NATIVE word index=122 value=d2800000
+[    1.912957] CBPF_NATIVE word index=123 value=d2800001
+[    1.913083] CBPF_NATIVE word index=124 value=d2800002
+[    1.913205] CBPF_NATIVE word index=125 value=d2800003
+[    1.913326] CBPF_NATIVE word index=126 value=d2800004
+[    1.913448] CBPF_NATIVE word index=127 value=d2800005
+[    1.913564] CBPF_NATIVE word index=128 value=d2800006
+[    1.913710] CBPF_NATIVE word index=129 value=d2800008
+[    1.913839] CBPF_NATIVE word index=130 value=d2800009
+[    1.913958] CBPF_NATIVE word index=131 value=d280000a
+[    1.914077] CBPF_NATIVE word index=132 value=d280000b
+[    1.914194] CBPF_NATIVE word index=133 value=d280000c
+[    1.914310] CBPF_NATIVE word index=134 value=d280000d
+[    1.914427] CBPF_NATIVE word index=135 value=d280000e
+[    1.914550] CBPF_NATIVE word index=136 value=d280000f
+[    1.914673] CBPF_NATIVE word index=137 value=d2800010
+[    1.914800] CBPF_NATIVE word index=138 value=d2800011
+[    1.914923] CBPF_NATIVE word index=139 value=d2800012
+[    1.915047] CBPF_NATIVE word index=140 value=d2800013
+[    1.915171] CBPF_NATIVE word index=141 value=d2800014
+[    1.915294] CBPF_NATIVE word index=142 value=d2800015
+[    1.915416] CBPF_NATIVE word index=143 value=d2800016
+[    1.915540] CBPF_NATIVE word index=144 value=d2800017
+[    1.915662] CBPF_NATIVE word index=145 value=d2800018
+[    1.915793] CBPF_NATIVE word index=146 value=d2800019
+[    1.916028] CBPF_NATIVE word index=147 value=d280001a
+[    1.916189] CBPF_NATIVE word index=148 value=d280001b
+[    1.916316] CBPF_NATIVE word index=149 value=d280001c
+[    1.916440] CBPF_NATIVE word index=150 value=d280001d
+[    1.916564] CBPF_NATIVE word index=151 value=910043ff
+[    1.916686] CBPF_NATIVE word index=152 value=c24003f0
+[    1.916817] CBPF_NATIVE word index=153 value=910043ff
+[    1.916941] CBPF_NATIVE word index=154 value=a8c173fb
+[    1.917063] CBPF_NATIVE word index=155 value=a8c16bf9
+[    1.917187] CBPF_NATIVE word index=156 value=a8c163f7
+[    1.917311] CBPF_NATIVE word index=157 value=a8c15bf5
+[    1.917443] CBPF_NATIVE word index=158 value=a8c153f3
+[    1.917566] CBPF_NATIVE word index=159 value=a8c17bfd
+[    1.917689] CBPF_NATIVE word index=160 value=910000e0
+[    1.917816] CBPF_NATIVE word index=161 value=c2c0920a
+[    1.917957] CBPF_NATIVE word index=162 value=b400004a
+[    1.918084] CBPF_NATIVE word index=163 value=c2c25203
+[    1.918208] CBPF_NATIVE word index=164 value=d65f03c0
+CBPF_M3 verifier_begin
+func#0 @0
+0: R1=ctx(off=0,imm=0) R10=fp0
+0: (b7) r1 = 0                        ; R1_w=0
+1: (85) call cbpf_cap_acquire#44135   ; R0_w=ptr_or_null_cbpf_cap_ref(id=2,ref_obj_id=2,off=0,imm=0) refs=2
+2: (15) if r0 == 0x0 goto pc+21       ; R0_w=ptr_cbpf_cap_ref(ref_obj_id=2,off=0,imm=0) refs=2
+3: (bf) r6 = r0                       ; R0_w=ptr_cbpf_cap_ref(ref_obj_id=2,off=0,imm=0) R6_w=ptr_cbpf_cap_ref(ref_obj_id=2,off=0,imm=0) refs=2
+4: (7b) *(u64 *)(r10 -8) = r6         ; R6_w=ptr_cbpf_cap_ref(ref_obj_id=2,off=0,imm=0) R10=fp0 fp-8_w=ptr_ refs=2
+5: (b7) r1 = 1                        ; R1_w=1 refs=2
+6: (85) call cbpf_cap_acquire#44135   ; R0=ptr_or_null_cbpf_cap_ref(id=4,ref_obj_id=4,off=0,imm=0) refs=2,4
+7: (15) if r0 == 0x0 goto pc+11       ; R0=ptr_cbpf_cap_ref(ref_obj_id=4,off=0,imm=0) refs=2,4
+8: (bf) r7 = r0                       ; R0=ptr_cbpf_cap_ref(ref_obj_id=4,off=0,imm=0) R7_w=ptr_cbpf_cap_ref(ref_obj_id=4,off=0,imm=0) refs=2,4
+9: (79) r8 = *(u64 *)(r10 -8)         ; R8_w=ptr_cbpf_cap_ref(ref_obj_id=2,off=0,imm=0) R10=fp0 fp-8=ptr_ refs=2,4
+10: (bf) r1 = r8                      ; R1_w=ptr_cbpf_cap_ref(ref_obj_id=2,off=0,imm=0) R8_w=ptr_cbpf_cap_ref(ref_obj_id=2,off=0,imm=0) refs=2,4
+11: (85) call cbpf_cap_release#44140          ; refs=4
+12: (bf) r1 = r7                      ; R1_w=ptr_cbpf_cap_ref(ref_obj_id=4,off=0,imm=0) R7_w=ptr_cbpf_cap_ref(ref_obj_id=4,off=0,imm=0) refs=4
+13: (85) call cbpf_cap_read#44138     ; R0_w=scalar() refs=4
+14: (bf) r9 = r0                      ; R0_w=scalar(id=5) R9_w=scalar(id=5) refs=4
+15: (bf) r1 = r7                      ; R1_w=ptr_cbpf_cap_ref(ref_obj_id=4,off=0,imm=0) R7_w=ptr_cbpf_cap_ref(ref_obj_id=4,off=0,imm=0) refs=4
+16: (85) call cbpf_cap_release#44140          ;
+17: (bf) r0 = r9                      ; R0_w=scalar(id=5) R9=scalar(id=5)
+18: (95) exit
+
+from 7 to 19: R0=0 R6=ptr_cbpf_cap_ref(ref_obj_id=2,off=0,imm=0) R10=fp0 fp-8=ptr_ refs=2
+19: R0=0 R6=ptr_cbpf_cap_ref(ref_obj_id=2,off=0,imm=0) R10=fp0 fp-8=ptr_ refs=2
+19: (79) r8 = *(u64 *)(r10 -8)        ; R8_w=ptr_cbpf_cap_ref(ref_obj_id=2,off=0,imm=0) R10=fp0 fp-8=ptr_ refs=2
+20: (bf) r1 = r8                      ; R1_w=ptr_cbpf_cap_ref(ref_obj_id=2,off=0,imm=0) R8_w=ptr_cbpf_cap_ref(ref_obj_id=2,off=0,imm=0) refs=2
+21: (85) call cbpf_cap_release#44140          ;
+22: (b7) r0 = 7                       ; R0_w=7
+23: (95) exit
+
+from 2 to 24: R0_w=0 R10=fp0
+24: R0_w=0 R10=fp0
+24: (b7) r0 = 0                       ; R0_w=0
+25: (95) exit
+processed 26 insns (limit 1000000) max_states_per_insn 0 total_states 2 peak_states 2 mark_read 1
+CBPF_M3 verifier_end
+CBPF_M3 word index=0 value=910003c9
+CBPF_M3 word index=1 value=d503201f
+CBPF_M3 word index=2 value=a9bf7bfd
+CBPF_M3 word index=3 value=910003fd
+CBPF_M3 word index=4 value=a9bf53f3
+CBPF_M3 word index=5 value=a9bf5bf5
+CBPF_M3 word index=6 value=a9bf63f7
+CBPF_M3 word index=7 value=a9bf6bf9
+CBPF_M3 word index=8 value=a9bf73fb
+CBPF_M3 word index=9 value=a9bf7fff
+CBPF_M3 word index=10 value=d10043ff
+CBPF_M3 word index=11 value=910003e0
+CBPF_M3 word index=12 value=d2800201
+CBPF_M3 word index=13 value=10000d42
+CBPF_M3 word index=14 value=d2801703
+CBPF_M3 word index=15 value=91000124
+CBPF_M3 word index=16 value=d28e0005
+CBPF_M3 word index=17 value=f2b02205
+CBPF_M3 word index=18 value=f2d00005
+CBPF_M3 word index=19 value=f2ffffe5
+CBPF_M3 word index=20 value=d29d8f8a
+CBPF_M3 word index=21 value=f2b0006a
+CBPF_M3 word index=22 value=f2d0000a
+CBPF_M3 word index=23 value=f2ffffea
+CBPF_M3 word index=24 value=d63f0140
+CBPF_M3 word index=25 value=b4000060
+CBPF_M3 word index=26 value=d2800007
+CBPF_M3 word index=27 value=1400005c
+CBPF_M3 word index=28 value=d2800000
+CBPF_M3 word index=29 value=d2800001
+CBPF_M3 word index=30 value=d2800002
+CBPF_M3 word index=31 value=d2800003
+CBPF_M3 word index=32 value=d2800004
+CBPF_M3 word index=33 value=d2800005
+CBPF_M3 word index=34 value=d2800006
+CBPF_M3 word index=35 value=d2800007
+CBPF_M3 word index=36 value=d2800008
+CBPF_M3 word index=37 value=d2800009
+CBPF_M3 word index=38 value=d280000a
+CBPF_M3 word index=39 value=d280000b
+CBPF_M3 word index=40 value=d280000c
+CBPF_M3 word index=41 value=d280000d
+CBPF_M3 word index=42 value=d280000e
+CBPF_M3 word index=43 value=d2800010
+CBPF_M3 word index=44 value=d2800012
+CBPF_M3 word index=45 value=d2800013
+CBPF_M3 word index=46 value=d2800014
+CBPF_M3 word index=47 value=d2800015
+CBPF_M3 word index=48 value=d2800016
+CBPF_M3 word index=49 value=d2800017
+CBPF_M3 word index=50 value=d2800018
+CBPF_M3 word index=51 value=d2800019
+CBPF_M3 word index=52 value=d280001a
+CBPF_M3 word index=53 value=d280001b
+CBPF_M3 word index=54 value=d280001c
+CBPF_M3 word index=55 value=d280001d
+CBPF_M3 word index=56 value=d2800000
+CBPF_M3 word index=57 value=f2a00000
+CBPF_M3 word index=58 value=f2c00000
+CBPF_M3 word index=59 value=f2e00000
+CBPF_M3 word index=60 value=d2800024
+CBPF_M3 word index=61 value=d2800025
+CBPF_M3 word index=62 value=c2c1d3cd
+CBPF_M3 word index=63 value=c2c23222
+CBPF_M3 word index=64 value=c2c1d007
+CBPF_M3 word index=65 value=b4000607
+CBPF_M3 word index=66 value=c2c1d0f3
+CBPF_M3 word index=67 value=824003f3
+CBPF_M3 word index=68 value=d2800020
+CBPF_M3 word index=69 value=f2a00000
+CBPF_M3 word index=70 value=f2c00000
+CBPF_M3 word index=71 value=f2e00000
+CBPF_M3 word index=72 value=d2800024
+CBPF_M3 word index=73 value=d28000c5
+CBPF_M3 word index=74 value=c2c1d3cd
+CBPF_M3 word index=75 value=c2c23222
+CBPF_M3 word index=76 value=c2c1d007
+CBPF_M3 word index=77 value=b4000307
+CBPF_M3 word index=78 value=c2c1d0f4
+CBPF_M3 word index=79 value=826003f5
+CBPF_M3 word index=80 value=c2c1d2a0
+CBPF_M3 word index=81 value=d2800064
+CBPF_M3 word index=82 value=d2800165
+CBPF_M3 word index=83 value=c2c1d3cd
+CBPF_M3 word index=84 value=c2c23222
+CBPF_M3 word index=85 value=c2c1d007
+CBPF_M3 word index=86 value=c2c1d280
+CBPF_M3 word index=87 value=d2800044
+CBPF_M3 word index=88 value=d28001a5
+CBPF_M3 word index=89 value=c2c1d3cd
+CBPF_M3 word index=90 value=c2c23222
+CBPF_M3 word index=91 value=c2c1d007
+CBPF_M3 word index=92 value=c2c1d0f6
+CBPF_M3 word index=93 value=c2c1d280
+CBPF_M3 word index=94 value=d2800064
+CBPF_M3 word index=95 value=d2800205
+CBPF_M3 word index=96 value=c2c1d3cd
+CBPF_M3 word index=97 value=c2c23222
+CBPF_M3 word index=98 value=c2c1d007
+CBPF_M3 word index=99 value=c2c1d2c7
+CBPF_M3 word index=100 value=14000012
+CBPF_M3 word index=101 value=826003f5
+CBPF_M3 word index=102 value=c2c1d2a0
+CBPF_M3 word index=103 value=d2800064
+CBPF_M3 word index=104 value=d28002a5
+CBPF_M3 word index=105 value=c2c1d3cd
+CBPF_M3 word index=106 value=c2c23222
+CBPF_M3 word index=107 value=c2c1d007
+CBPF_M3 word index=108 value=d28000e7
+CBPF_M3 word index=109 value=f2a00007
+CBPF_M3 word index=110 value=f2c00007
+CBPF_M3 word index=111 value=f2e00007
+CBPF_M3 word index=112 value=14000006
+CBPF_M3 word index=113 value=d2800007
+CBPF_M3 word index=114 value=f2a00007
+CBPF_M3 word index=115 value=f2c00007
+CBPF_M3 word index=116 value=f2e00007
+CBPF_M3 word index=117 value=14000001
+CBPF_M3 word index=118 value=c2c253c0
+CBPF_M3 word index=119 value=f90003ff
+CBPF_M3 word index=120 value=f90007ff
+CBPF_M3 word index=121 value=910000e7
+CBPF_M3 word index=122 value=d2800000
+CBPF_M3 word index=123 value=d2800001
+CBPF_M3 word index=124 value=d2800002
+CBPF_M3 word index=125 value=d2800003
+CBPF_M3 word index=126 value=d2800004
+CBPF_M3 word index=127 value=d2800005
+CBPF_M3 word index=128 value=d2800006
+CBPF_M3 word index=129 value=d2800008
+CBPF_M3 word index=130 value=d2800009
+CBPF_M3 word index=131 value=d280000a
+CBPF_M3 word index=132 value=d280000b
+CBPF_M3 word index=133 value=d280000c
+CBPF_M3 word index=134 value=d280000d
+CBPF_M3 word index=135 value=d280000e
+CBPF_M3 word index=136 value=d280000f
+CBPF_M3 word index=137 value=d2800010
+CBPF_M3 word index=138 value=d2800011
+CBPF_M3 word index=139 value=d2800012
+CBPF_M3 word index=140 value=d2800013
+CBPF_M3 word index=141 value=d2800014
+CBPF_M3 word index=142 value=d2800015
+CBPF_M3 word index=143 value=d2800016
+CBPF_M3 word index=144 value=d2800017
+CBPF_M3 word index=145 value=d2800018
+CBPF_M3 word index=146 value=d2800019
+CBPF_M3 word index=147 value=d280001a
+CBPF_M3 word index=148 value=d280001b
+CBPF_M3 word index=149 value=d280001c
+CBPF_M3 word index=150 value=d280001d
+CBPF_M3 word index=151 value=910043ff
+CBPF_M3 word index=152 value=c24003f0
+CBPF_M3 word index=153 value=910043ff
+CBPF_M3 word index=154 value=a8c173fb
+CBPF_M3 word index=155 value=a8c16bf9
+CBPF_M3 word index=156 value=a8c163f7
+CBPF_M3 word index=157 value=a8c15bf5
+CBPF_M3 word index=158 value=a8c153f3
+CBPF_M3 word index=159 value=a8c17bfd
+CBPF_M3 word index=160 value=910000e0
+CBPF_M3 word index=161 value=c2c0920a
+CBPF_M3 word index=162 value=b400004a
+CBPF_M3 word index=163 value=c2c25203
+CBPF_M3 word index=164 value=d65f03c0
+[    1.954182] CBPF_ENTER restricted_base=0xffff80008110b4e0 restricted_size=376 executive_base=0xffff80008110b658 executive_size=184 stack_base=0xffff0000001cf6e0 stack_size=16 rddc_tag=0 gate_sealed=1
+[    1.954743] CBPF_BIND pc=1 id=1 cell=ffff0000001cf7c0 object=ffff800080f27e08 public_tag=1 public_base=0xffff0000001cf7c0 public_length=16 public_perms=0x20001
+[    1.955083] CBPF_GATE seq=1 event=acquire pc=1 id=1 acquired=1 released=0 reads=0 cleanup=0 refs=2 tagA=1 tagB=0
+[    1.955389] CBPF_GATE seq=2 event=null pc=6 id=0 acquired=1 released=0 reads=0 cleanup=0 refs=2 tagA=1 tagB=0
+[    1.955671] CBPF_GATE seq=3 event=clear pc=21 id=1 acquired=1 released=0 reads=0 cleanup=0 refs=2 tagA=0 tagB=0
+[    1.956045] CBPF_GATE seq=4 event=release pc=21 id=1 acquired=1 released=1 reads=0 cleanup=0 refs=1 tagA=0 tagB=0
+[    1.956425] CBPF_GATE seq=5 event=exit pc=18446744073709551615 id=0 acquired=1 released=1 reads=0 cleanup=0 refs=1 tagA=0 tagB=0
+[    1.956704] CBPF_RESULT value=7 entered=1 failed=0 balanced=1
+CBPF_M3 case=null_second phase=end loaded=1 executed=1 retval=7 jited_len=660 load_errno=0 stage=execute result=PASS
+CBPF_M3 case=fail_second phase=begin expected=execute
+CBPF_M3 bpf pc=0 code=b7 dst=1 src=0 off=0 imm=0
+CBPF_M3 bpf pc=1 code=85 dst=0 src=2 off=0 imm=44135
+CBPF_M3 bpf pc=2 code=15 dst=0 src=0 off=21 imm=0
+CBPF_M3 bpf pc=3 code=bf dst=6 src=0 off=0 imm=0
+CBPF_M3 bpf pc=4 code=7b dst=10 src=6 off=-8 imm=0
+CBPF_M3 bpf pc=5 code=b7 dst=1 src=0 off=0 imm=2
+CBPF_M3 bpf pc=6 code=85 dst=0 src=2 off=0 imm=44135
+CBPF_M3 bpf pc=7 code=15 dst=0 src=0 off=11 imm=0
+CBPF_M3 bpf pc=8 code=bf dst=7 src=0 off=0 imm=0
+CBPF_M3 bpf pc=9 code=79 dst=8 src=10 off=-8 imm=0
+CBPF_M3 bpf pc=10 code=bf dst=1 src=8 off=0 imm=0
+CBPF_M3 bpf pc=11 code=85 dst=0 src=2 off=0 imm=44140
+CBPF_M3 bpf pc=12 code=bf dst=1 src=7 off=0 imm=0
+CBPF_M3 bpf pc=13 code=85 dst=0 src=2 off=0 imm=44138
+CBPF_M3 bpf pc=14 code=bf dst=9 src=0 off=0 imm=0
+CBPF_M3 bpf pc=15 code=bf dst=1 src=7 off=0 imm=0
+CBPF_M3 bpf pc=16 code=85 dst=0 src=2 off=0 imm=44140
+CBPF_M3 bpf pc=17 code=bf dst=0 src=9 off=0 imm=0
+CBPF_M3 bpf pc=18 code=95 dst=0 src=0 off=0 imm=0
+CBPF_M3 bpf pc=19 code=79 dst=8 src=10 off=-8 imm=0
+CBPF_M3 bpf pc=20 code=bf dst=1 src=8 off=0 imm=0
+CBPF_M3 bpf pc=21 code=85 dst=0 src=2 off=0 imm=44140
+CBPF_M3 bpf pc=22 code=b7 dst=0 src=0 off=0 imm=7
+CBPF_M3 bpf pc=23 code=95 dst=0 src=0 off=0 imm=0
+CBPF_M3 bpf pc=24 code=b7 dst=0 src=0 off=0 imm=0
+CBPF_M3 bpf pc=25 code=95 dst=0 src=0 off=0 imm=0
+[    1.970257] CBPF_NATIVE accepted insns=26 words=165 entry=ffff800081121c28 restricted_exit=118 executive_exit=119 template_check=pass
+[    1.970608] CBPF_NATIVE map pc=0 begin=56 end=60 code=b7 op=0
+[    1.970777] CBPF_NATIVE map pc=1 begin=60 end=65 code=85 op=1
+[    1.970947] CBPF_NATIVE map pc=2 begin=65 end=66 code=15 op=0
+[    1.971112] CBPF_NATIVE map pc=3 begin=66 end=67 code=bf op=0
+[    1.971257] CBPF_NATIVE map pc=4 begin=67 end=68 code=7b op=0
+[    1.971401] CBPF_NATIVE map pc=5 begin=68 end=72 code=b7 op=0
+[    1.971561] CBPF_NATIVE map pc=6 begin=72 end=77 code=85 op=1
+[    1.971707] CBPF_NATIVE map pc=7 begin=77 end=78 code=15 op=0
+[    1.971872] CBPF_NATIVE map pc=8 begin=78 end=79 code=bf op=0
+[    1.972629] CBPF_NATIVE map pc=9 begin=79 end=80 code=79 op=0
+[    1.972809] CBPF_NATIVE map pc=10 begin=80 end=81 code=bf op=0
+[    1.972962] CBPF_NATIVE map pc=11 begin=81 end=86 code=85 op=3
+[    1.973110] CBPF_NATIVE map pc=12 begin=86 end=87 code=bf op=0
+[    1.973257] CBPF_NATIVE map pc=13 begin=87 end=92 code=85 op=2
+[    1.973403] CBPF_NATIVE map pc=14 begin=92 end=93 code=bf op=0
+[    1.973552] CBPF_NATIVE map pc=15 begin=93 end=94 code=bf op=0
+[    1.973699] CBPF_NATIVE map pc=16 begin=94 end=99 code=85 op=3
+[    1.973850] CBPF_NATIVE map pc=17 begin=99 end=100 code=bf op=0
+[    1.973999] CBPF_NATIVE map pc=18 begin=100 end=101 code=95 op=0
+[    1.974149] CBPF_NATIVE map pc=19 begin=101 end=102 code=79 op=0
+[    1.974297] CBPF_NATIVE map pc=20 begin=102 end=103 code=bf op=0
+[    1.974446] CBPF_NATIVE map pc=21 begin=103 end=108 code=85 op=3
+[    1.974597] CBPF_NATIVE map pc=22 begin=108 end=112 code=b7 op=0
+[    1.974753] CBPF_NATIVE map pc=23 begin=112 end=113 code=95 op=0
+[    1.974901] CBPF_NATIVE map pc=24 begin=113 end=117 code=b7 op=0
+[    1.975051] CBPF_NATIVE map pc=25 begin=117 end=118 code=95 op=0
+[    1.975200] CBPF_NATIVE word index=0 value=910003c9
+[    1.975322] CBPF_NATIVE word index=1 value=d503201f
+[    1.975442] CBPF_NATIVE word index=2 value=a9bf7bfd
+[    1.975560] CBPF_NATIVE word index=3 value=910003fd
+[    1.975675] CBPF_NATIVE word index=4 value=a9bf53f3
+[    1.975795] CBPF_NATIVE word index=5 value=a9bf5bf5
+[    1.976072] CBPF_NATIVE word index=6 value=a9bf63f7
+[    1.976198] CBPF_NATIVE word index=7 value=a9bf6bf9
+[    1.976316] CBPF_NATIVE word index=8 value=a9bf73fb
+[    1.976432] CBPF_NATIVE word index=9 value=a9bf7fff
+[    1.976547] CBPF_NATIVE word index=10 value=d10043ff
+[    1.976662] CBPF_NATIVE word index=11 value=910003e0
+[    1.976786] CBPF_NATIVE word index=12 value=d2800201
+[    1.976901] CBPF_NATIVE word index=13 value=10000d42
+[    1.977055] CBPF_NATIVE word index=14 value=d2801703
+[    1.977170] CBPF_NATIVE word index=15 value=91000124
+[    1.977313] CBPF_NATIVE word index=16 value=d28a0005
+[    1.977429] CBPF_NATIVE word index=17 value=f2b02205
+[    1.977543] CBPF_NATIVE word index=18 value=f2d00005
+[    1.977659] CBPF_NATIVE word index=19 value=f2ffffe5
+[    1.977781] CBPF_NATIVE word index=20 value=d29d8f8a
+[    1.977920] CBPF_NATIVE word index=21 value=f2b0006a
+[    1.978035] CBPF_NATIVE word index=22 value=f2d0000a
+[    1.978152] CBPF_NATIVE word index=23 value=f2ffffea
+[    1.978267] CBPF_NATIVE word index=24 value=d63f0140
+[    1.978383] CBPF_NATIVE word index=25 value=b4000060
+[    1.978498] CBPF_NATIVE word index=26 value=d2800007
+[    1.978612] CBPF_NATIVE word index=27 value=1400005c
+[    1.978734] CBPF_NATIVE word index=28 value=d2800000
+[    1.978851] CBPF_NATIVE word index=29 value=d2800001
+[    1.978965] CBPF_NATIVE word index=30 value=d2800002
+[    1.979079] CBPF_NATIVE word index=31 value=d2800003
+[    1.979195] CBPF_NATIVE word index=32 value=d2800004
+[    1.979310] CBPF_NATIVE word index=33 value=d2800005
+[    1.979425] CBPF_NATIVE word index=34 value=d2800006
+[    1.979540] CBPF_NATIVE word index=35 value=d2800007
+[    1.979655] CBPF_NATIVE word index=36 value=d2800008
+[    1.979779] CBPF_NATIVE word index=37 value=d2800009
+[    1.979988] CBPF_NATIVE word index=38 value=d280000a
+[    1.980130] CBPF_NATIVE word index=39 value=d280000b
+[    1.980248] CBPF_NATIVE word index=40 value=d280000c
+[    1.980400] CBPF_NATIVE word index=41 value=d280000d
+[    1.980517] CBPF_NATIVE word index=42 value=d280000e
+[    1.980635] CBPF_NATIVE word index=43 value=d2800010
+[    1.980759] CBPF_NATIVE word index=44 value=d2800012
+[    1.980884] CBPF_NATIVE word index=45 value=d2800013
+[    1.981001] CBPF_NATIVE word index=46 value=d2800014
+[    1.981117] CBPF_NATIVE word index=47 value=d2800015
+[    1.981233] CBPF_NATIVE word index=48 value=d2800016
+[    1.981347] CBPF_NATIVE word index=49 value=d2800017
+[    1.981461] CBPF_NATIVE word index=50 value=d2800018
+[    1.981578] CBPF_NATIVE word index=51 value=d2800019
+[    1.981691] CBPF_NATIVE word index=52 value=d280001a
+[    1.981816] CBPF_NATIVE word index=53 value=d280001b
+[    1.981929] CBPF_NATIVE word index=54 value=d280001c
+[    1.982045] CBPF_NATIVE word index=55 value=d280001d
+[    1.982161] CBPF_NATIVE word index=56 value=d2800000
+[    1.982276] CBPF_NATIVE word index=57 value=f2a00000
+[    1.982390] CBPF_NATIVE word index=58 value=f2c00000
+[    1.982505] CBPF_NATIVE word index=59 value=f2e00000
+[    1.982620] CBPF_NATIVE word index=60 value=d2800024
+[    1.982739] CBPF_NATIVE word index=61 value=d2800025
+[    1.982853] CBPF_NATIVE word index=62 value=c2c1d3cd
+[    1.982967] CBPF_NATIVE word index=63 value=c2c23222
+[    1.983083] CBPF_NATIVE word index=64 value=c2c1d007
+[    1.983198] CBPF_NATIVE word index=65 value=b4000607
+[    1.983313] CBPF_NATIVE word index=66 value=c2c1d0f3
+[    1.983428] CBPF_NATIVE word index=67 value=824003f3
+[    1.983542] CBPF_NATIVE word index=68 value=d2800040
+[    1.983658] CBPF_NATIVE word index=69 value=f2a00000
+[    1.983779] CBPF_NATIVE word index=70 value=f2c00000
+[    1.983983] CBPF_NATIVE word index=71 value=f2e00000
+[    1.984128] CBPF_NATIVE word index=72 value=d2800024
+[    1.984246] CBPF_NATIVE word index=73 value=d28000c5
+[    1.984362] CBPF_NATIVE word index=74 value=c2c1d3cd
+[    1.984476] CBPF_NATIVE word index=75 value=c2c23222
+[    1.984592] CBPF_NATIVE word index=76 value=c2c1d007
+[    1.984707] CBPF_NATIVE word index=77 value=b4000307
+[    1.984830] CBPF_NATIVE word index=78 value=c2c1d0f4
+[    1.984944] CBPF_NATIVE word index=79 value=826003f5
+[    1.985059] CBPF_NATIVE word index=80 value=c2c1d2a0
+[    1.985177] CBPF_NATIVE word index=81 value=d2800064
+[    1.985291] CBPF_NATIVE word index=82 value=d2800165
+[    1.985405] CBPF_NATIVE word index=83 value=c2c1d3cd
+[    1.985518] CBPF_NATIVE word index=84 value=c2c23222
+[    1.985635] CBPF_NATIVE word index=85 value=c2c1d007
+[    1.985753] CBPF_NATIVE word index=86 value=c2c1d280
+[    1.985866] CBPF_NATIVE word index=87 value=d2800044
+[    1.985980] CBPF_NATIVE word index=88 value=d28001a5
+[    1.986094] CBPF_NATIVE word index=89 value=c2c1d3cd
+[    1.986209] CBPF_NATIVE word index=90 value=c2c23222
+[    1.986324] CBPF_NATIVE word index=91 value=c2c1d007
+[    1.986437] CBPF_NATIVE word index=92 value=c2c1d0f6
+[    1.986570] CBPF_NATIVE word index=93 value=c2c1d280
+[    1.986686] CBPF_NATIVE word index=94 value=d2800064
+[    1.986804] CBPF_NATIVE word index=95 value=d2800205
+[    1.986918] CBPF_NATIVE word index=96 value=c2c1d3cd
+[    1.987033] CBPF_NATIVE word index=97 value=c2c23222
+[    1.987149] CBPF_NATIVE word index=98 value=c2c1d007
+[    1.987279] CBPF_NATIVE word index=99 value=c2c1d2c7
+[    1.987394] CBPF_NATIVE word index=100 value=14000012
+[    1.987511] CBPF_NATIVE word index=101 value=826003f5
+[    1.987645] CBPF_NATIVE word index=102 value=c2c1d2a0
+[    1.987768] CBPF_NATIVE word index=103 value=d2800064
+[    1.987965] CBPF_NATIVE word index=104 value=d28002a5
+[    1.988110] CBPF_NATIVE word index=105 value=c2c1d3cd
+[    1.988230] CBPF_NATIVE word index=106 value=c2c23222
+[    1.988347] CBPF_NATIVE word index=107 value=c2c1d007
+[    1.988464] CBPF_NATIVE word index=108 value=d28000e7
+[    1.988579] CBPF_NATIVE word index=109 value=f2a00007
+[    1.988696] CBPF_NATIVE word index=110 value=f2c00007
+[    1.988818] CBPF_NATIVE word index=111 value=f2e00007
+[    1.988936] CBPF_NATIVE word index=112 value=14000006
+[    1.989052] CBPF_NATIVE word index=113 value=d2800007
+[    1.989172] CBPF_NATIVE word index=114 value=f2a00007
+[    1.989288] CBPF_NATIVE word index=115 value=f2c00007
+[    1.989405] CBPF_NATIVE word index=116 value=f2e00007
+[    1.989526] CBPF_NATIVE word index=117 value=14000001
+[    1.989644] CBPF_NATIVE word index=118 value=c2c253c0
+[    1.989764] CBPF_NATIVE word index=119 value=f90003ff
+[    1.989880] CBPF_NATIVE word index=120 value=f90007ff
+[    1.989996] CBPF_NATIVE word index=121 value=910000e7
+[    1.990112] CBPF_NATIVE word index=122 value=d2800000
+[    1.990230] CBPF_NATIVE word index=123 value=d2800001
+[    1.990344] CBPF_NATIVE word index=124 value=d2800002
+[    1.990460] CBPF_NATIVE word index=125 value=d2800003
+[    1.990576] CBPF_NATIVE word index=126 value=d2800004
+[    1.990693] CBPF_NATIVE word index=127 value=d2800005
+[    1.990814] CBPF_NATIVE word index=128 value=d2800006
+[    1.990929] CBPF_NATIVE word index=129 value=d2800008
+[    1.991045] CBPF_NATIVE word index=130 value=d2800009
+[    1.991162] CBPF_NATIVE word index=131 value=d280000a
+[    1.991277] CBPF_NATIVE word index=132 value=d280000b
+[    1.991394] CBPF_NATIVE word index=133 value=d280000c
+[    1.991509] CBPF_NATIVE word index=134 value=d280000d
+[    1.991627] CBPF_NATIVE word index=135 value=d280000e
+[    1.991751] CBPF_NATIVE word index=136 value=d280000f
+[    1.991867] CBPF_NATIVE word index=137 value=d2800010
+[    1.992103] CBPF_NATIVE word index=138 value=d2800011
+[    1.992231] CBPF_NATIVE word index=139 value=d2800012
+[    1.992347] CBPF_NATIVE word index=140 value=d2800013
+[    1.992465] CBPF_NATIVE word index=141 value=d2800014
+[    1.992580] CBPF_NATIVE word index=142 value=d2800015
+[    1.992696] CBPF_NATIVE word index=143 value=d2800016
+[    1.992818] CBPF_NATIVE word index=144 value=d2800017
+[    1.992936] CBPF_NATIVE word index=145 value=d2800018
+[    1.993050] CBPF_NATIVE word index=146 value=d2800019
+[    1.993167] CBPF_NATIVE word index=147 value=d280001a
+[    1.993280] CBPF_NATIVE word index=148 value=d280001b
+[    1.993396] CBPF_NATIVE word index=149 value=d280001c
+[    1.993513] CBPF_NATIVE word index=150 value=d280001d
+[    1.993631] CBPF_NATIVE word index=151 value=910043ff
+[    1.993771] CBPF_NATIVE word index=152 value=c24003f0
+[    1.993908] CBPF_NATIVE word index=153 value=910043ff
+[    1.994027] CBPF_NATIVE word index=154 value=a8c173fb
+[    1.994144] CBPF_NATIVE word index=155 value=a8c16bf9
+[    1.994260] CBPF_NATIVE word index=156 value=a8c163f7
+[    1.994375] CBPF_NATIVE word index=157 value=a8c15bf5
+[    1.994492] CBPF_NATIVE word index=158 value=a8c153f3
+[    1.994608] CBPF_NATIVE word index=159 value=a8c17bfd
+[    1.994751] CBPF_NATIVE word index=160 value=910000e0
+[    1.994869] CBPF_NATIVE word index=161 value=c2c0920a
+[    1.994987] CBPF_NATIVE word index=162 value=b400004a
+[    1.995103] CBPF_NATIVE word index=163 value=c2c25203
+[    1.995218] CBPF_NATIVE word index=164 value=d65f03c0
+CBPF_M3 verifier_begin
+func#0 @0
+0: R1=ctx(off=0,imm=0) R10=fp0
+0: (b7) r1 = 0                        ; R1_w=0
+1: (85) call cbpf_cap_acquire#44135   ; R0_w=ptr_or_null_cbpf_cap_ref(id=2,ref_obj_id=2,off=0,imm=0) refs=2
+2: (15) if r0 == 0x0 goto pc+21       ; R0_w=ptr_cbpf_cap_ref(ref_obj_id=2,off=0,imm=0) refs=2
+3: (bf) r6 = r0                       ; R0_w=ptr_cbpf_cap_ref(ref_obj_id=2,off=0,imm=0) R6_w=ptr_cbpf_cap_ref(ref_obj_id=2,off=0,imm=0) refs=2
+4: (7b) *(u64 *)(r10 -8) = r6         ; R6_w=ptr_cbpf_cap_ref(ref_obj_id=2,off=0,imm=0) R10=fp0 fp-8_w=ptr_ refs=2
+5: (b7) r1 = 2                        ; R1_w=2 refs=2
+6: (85) call cbpf_cap_acquire#44135   ; R0=ptr_or_null_cbpf_cap_ref(id=4,ref_obj_id=4,off=0,imm=0) refs=2,4
+7: (15) if r0 == 0x0 goto pc+11       ; R0=ptr_cbpf_cap_ref(ref_obj_id=4,off=0,imm=0) refs=2,4
+8: (bf) r7 = r0                       ; R0=ptr_cbpf_cap_ref(ref_obj_id=4,off=0,imm=0) R7_w=ptr_cbpf_cap_ref(ref_obj_id=4,off=0,imm=0) refs=2,4
+9: (79) r8 = *(u64 *)(r10 -8)         ; R8_w=ptr_cbpf_cap_ref(ref_obj_id=2,off=0,imm=0) R10=fp0 fp-8=ptr_ refs=2,4
+10: (bf) r1 = r8                      ; R1_w=ptr_cbpf_cap_ref(ref_obj_id=2,off=0,imm=0) R8_w=ptr_cbpf_cap_ref(ref_obj_id=2,off=0,imm=0) refs=2,4
+11: (85) call cbpf_cap_release#44140          ; refs=4
+12: (bf) r1 = r7                      ; R1_w=ptr_cbpf_cap_ref(ref_obj_id=4,off=0,imm=0) R7_w=ptr_cbpf_cap_ref(ref_obj_id=4,off=0,imm=0) refs=4
+13: (85) call cbpf_cap_read#44138     ; R0_w=scalar() refs=4
+14: (bf) r9 = r0                      ; R0_w=scalar(id=5) R9_w=scalar(id=5) refs=4
+15: (bf) r1 = r7                      ; R1_w=ptr_cbpf_cap_ref(ref_obj_id=4,off=0,imm=0) R7_w=ptr_cbpf_cap_ref(ref_obj_id=4,off=0,imm=0) refs=4
+16: (85) call cbpf_cap_release#44140          ;
+17: (bf) r0 = r9                      ; R0_w=scalar(id=5) R9=scalar(id=5)
+18: (95) exit
+
+from 7 to 19: R0=0 R6=ptr_cbpf_cap_ref(ref_obj_id=2,off=0,imm=0) R10=fp0 fp-8=ptr_ refs=2
+19: R0=0 R6=ptr_cbpf_cap_ref(ref_obj_id=2,off=0,imm=0) R10=fp0 fp-8=ptr_ refs=2
+19: (79) r8 = *(u64 *)(r10 -8)        ; R8_w=ptr_cbpf_cap_ref(ref_obj_id=2,off=0,imm=0) R10=fp0 fp-8=ptr_ refs=2
+20: (bf) r1 = r8                      ; R1_w=ptr_cbpf_cap_ref(ref_obj_id=2,off=0,imm=0) R8_w=ptr_cbpf_cap_ref(ref_obj_id=2,off=0,imm=0) refs=2
+21: (85) call cbpf_cap_release#44140          ;
+22: (b7) r0 = 7                       ; R0_w=7
+23: (95) exit
+
+from 2 to 24: R0_w=0 R10=fp0
+24: R0_w=0 R10=fp0
+24: (b7) r0 = 0                       ; R0_w=0
+25: (95) exit
+processed 26 insns (limit 1000000) max_states_per_insn 0 total_states 2 peak_states 2 mark_read 1
+CBPF_M3 verifier_end
+CBPF_M3 word index=0 value=910003c9
+CBPF_M3 word index=1 value=d503201f
+CBPF_M3 word index=2 value=a9bf7bfd
+CBPF_M3 word index=3 value=910003fd
+CBPF_M3 word index=4 value=a9bf53f3
+CBPF_M3 word index=5 value=a9bf5bf5
+CBPF_M3 word index=6 value=a9bf63f7
+CBPF_M3 word index=7 value=a9bf6bf9
+CBPF_M3 word index=8 value=a9bf73fb
+CBPF_M3 word index=9 value=a9bf7fff
+CBPF_M3 word index=10 value=d10043ff
+CBPF_M3 word index=11 value=910003e0
+CBPF_M3 word index=12 value=d2800201
+CBPF_M3 word index=13 value=10000d42
+CBPF_M3 word index=14 value=d2801703
+CBPF_M3 word index=15 value=91000124
+CBPF_M3 word index=16 value=d28a0005
+CBPF_M3 word index=17 value=f2b02205
+CBPF_M3 word index=18 value=f2d00005
+CBPF_M3 word index=19 value=f2ffffe5
+CBPF_M3 word index=20 value=d29d8f8a
+CBPF_M3 word index=21 value=f2b0006a
+CBPF_M3 word index=22 value=f2d0000a
+CBPF_M3 word index=23 value=f2ffffea
+CBPF_M3 word index=24 value=d63f0140
+CBPF_M3 word index=25 value=b4000060
+CBPF_M3 word index=26 value=d2800007
+CBPF_M3 word index=27 value=1400005c
+CBPF_M3 word index=28 value=d2800000
+CBPF_M3 word index=29 value=d2800001
+CBPF_M3 word index=30 value=d2800002
+CBPF_M3 word index=31 value=d2800003
+CBPF_M3 word index=32 value=d2800004
+CBPF_M3 word index=33 value=d2800005
+CBPF_M3 word index=34 value=d2800006
+CBPF_M3 word index=35 value=d2800007
+CBPF_M3 word index=36 value=d2800008
+CBPF_M3 word index=37 value=d2800009
+CBPF_M3 word index=38 value=d280000a
+CBPF_M3 word index=39 value=d280000b
+CBPF_M3 word index=40 value=d280000c
+CBPF_M3 word index=41 value=d280000d
+CBPF_M3 word index=42 value=d280000e
+CBPF_M3 word index=43 value=d2800010
+CBPF_M3 word index=44 value=d2800012
+CBPF_M3 word index=45 value=d2800013
+CBPF_M3 word index=46 value=d2800014
+CBPF_M3 word index=47 value=d2800015
+CBPF_M3 word index=48 value=d2800016
+CBPF_M3 word index=49 value=d2800017
+CBPF_M3 word index=50 value=d2800018
+CBPF_M3 word index=51 value=d2800019
+CBPF_M3 word index=52 value=d280001a
+CBPF_M3 word index=53 value=d280001b
+CBPF_M3 word index=54 value=d280001c
+CBPF_M3 word index=55 value=d280001d
+CBPF_M3 word index=56 value=d2800000
+CBPF_M3 word index=57 value=f2a00000
+CBPF_M3 word index=58 value=f2c00000
+CBPF_M3 word index=59 value=f2e00000
+CBPF_M3 word index=60 value=d2800024
+CBPF_M3 word index=61 value=d2800025
+CBPF_M3 word index=62 value=c2c1d3cd
+CBPF_M3 word index=63 value=c2c23222
+CBPF_M3 word index=64 value=c2c1d007
+CBPF_M3 word index=65 value=b4000607
+CBPF_M3 word index=66 value=c2c1d0f3
+CBPF_M3 word index=67 value=824003f3
+CBPF_M3 word index=68 value=d2800040
+CBPF_M3 word index=69 value=f2a00000
+CBPF_M3 word index=70 value=f2c00000
+CBPF_M3 word index=71 value=f2e00000
+CBPF_M3 word index=72 value=d2800024
+CBPF_M3 word index=73 value=d28000c5
+CBPF_M3 word index=74 value=c2c1d3cd
+CBPF_M3 word index=75 value=c2c23222
+CBPF_M3 word index=76 value=c2c1d007
+CBPF_M3 word index=77 value=b4000307
+CBPF_M3 word index=78 value=c2c1d0f4
+CBPF_M3 word index=79 value=826003f5
+CBPF_M3 word index=80 value=c2c1d2a0
+CBPF_M3 word index=81 value=d2800064
+CBPF_M3 word index=82 value=d2800165
+CBPF_M3 word index=83 value=c2c1d3cd
+CBPF_M3 word index=84 value=c2c23222
+CBPF_M3 word index=85 value=c2c1d007
+CBPF_M3 word index=86 value=c2c1d280
+CBPF_M3 word index=87 value=d2800044
+CBPF_M3 word index=88 value=d28001a5
+CBPF_M3 word index=89 value=c2c1d3cd
+CBPF_M3 word index=90 value=c2c23222
+CBPF_M3 word index=91 value=c2c1d007
+CBPF_M3 word index=92 value=c2c1d0f6
+CBPF_M3 word index=93 value=c2c1d280
+CBPF_M3 word index=94 value=d2800064
+CBPF_M3 word index=95 value=d2800205
+CBPF_M3 word index=96 value=c2c1d3cd
+CBPF_M3 word index=97 value=c2c23222
+CBPF_M3 word index=98 value=c2c1d007
+CBPF_M3 word index=99 value=c2c1d2c7
+CBPF_M3 word index=100 value=14000012
+CBPF_M3 word index=101 value=826003f5
+CBPF_M3 word index=102 value=c2c1d2a0
+CBPF_M3 word index=103 value=d2800064
+CBPF_M3 word index=104 value=d28002a5
+CBPF_M3 word index=105 value=c2c1d3cd
+CBPF_M3 word index=106 value=c2c23222
+CBPF_M3 word index=107 value=c2c1d007
+CBPF_M3 word index=108 value=d28000e7
+CBPF_M3 word index=109 value=f2a00007
+CBPF_M3 word index=110 value=f2c00007
+CBPF_M3 word index=111 value=f2e00007
+CBPF_M3 word index=112 value=14000006
+CBPF_M3 word index=113 value=d2800007
+CBPF_M3 word index=114 value=f2a00007
+CBPF_M3 word index=115 value=f2c00007
+CBPF_M3 word index=116 value=f2e00007
+CBPF_M3 word index=117 value=14000001
+CBPF_M3 word index=118 value=c2c253c0
+CBPF_M3 word index=119 value=f90003ff
+CBPF_M3 word index=120 value=f90007ff
+CBPF_M3 word index=121 value=910000e7
+CBPF_M3 word index=122 value=d2800000
+CBPF_M3 word index=123 value=d2800001
+CBPF_M3 word index=124 value=d2800002
+CBPF_M3 word index=125 value=d2800003
+CBPF_M3 word index=126 value=d2800004
+CBPF_M3 word index=127 value=d2800005
+CBPF_M3 word index=128 value=d2800006
+CBPF_M3 word index=129 value=d2800008
+CBPF_M3 word index=130 value=d2800009
+CBPF_M3 word index=131 value=d280000a
+CBPF_M3 word index=132 value=d280000b
+CBPF_M3 word index=133 value=d280000c
+CBPF_M3 word index=134 value=d280000d
+CBPF_M3 word index=135 value=d280000e
+CBPF_M3 word index=136 value=d280000f
+CBPF_M3 word index=137 value=d2800010
+CBPF_M3 word index=138 value=d2800011
+CBPF_M3 word index=139 value=d2800012
+CBPF_M3 word index=140 value=d2800013
+CBPF_M3 word index=141 value=d2800014
+CBPF_M3 word index=142 value=d2800015
+CBPF_M3 word index=143 value=d2800016
+CBPF_M3 word index=144 value=d2800017
+CBPF_M3 word index=145 value=d2800018
+CBPF_M3 word index=146 value=d2800019
+CBPF_M3 word index=147 value=d280001a
+CBPF_M3 word index=148 value=d280001b
+CBPF_M3 word index=149 value=d280001c
+CBPF_M3 word index=150 value=d280001d
+CBPF_M3 word index=151 value=910043ff
+CBPF_M3 word index=152 value=c24003f0
+CBPF_M3 word index=153 value=910043ff
+CBPF_M3 word index=154 value=a8c173fb
+CBPF_M3 word index=155 value=a8c16bf9
+CBPF_M3 word index=156 value=a8c163f7
+CBPF_M3 word index=157 value=a8c15bf5
+CBPF_M3 word index=158 value=a8c153f3
+CBPF_M3 word index=159 value=a8c17bfd
+CBPF_M3 word index=160 value=910000e0
+CBPF_M3 word index=161 value=c2c0920a
+CBPF_M3 word index=162 value=b400004a
+CBPF_M3 word index=163 value=c2c25203
+CBPF_M3 word index=164 value=d65f03c0
+[    2.027323] CBPF_ENTER restricted_base=0xffff800081121c8c restricted_size=376 executive_base=0xffff800081121e04 executive_size=184 stack_base=0xffff0000001cf6e0 stack_size=16 rddc_tag=0 gate_sealed=1
+[    2.027806] CBPF_BIND pc=1 id=1 cell=ffff0000001cf7c0 object=ffff800080f27e08 public_tag=1 public_base=0xffff0000001cf7c0 public_length=16 public_perms=0x20001
+[    2.028238] CBPF_GATE seq=1 event=acquire pc=1 id=1 acquired=1 released=0 reads=0 cleanup=0 refs=2 tagA=1 tagB=0
+[    2.028637] CBPF_GATE seq=2 event=reject pc=6 id=0 acquired=1 released=0 reads=0 cleanup=0 refs=2 tagA=1 tagB=0
+[    2.029012] CBPF_GATE seq=3 event=clear pc=18446744073709551615 id=1 acquired=1 released=0 reads=0 cleanup=0 refs=2 tagA=0 tagB=0
+[    2.029366] CBPF_GATE seq=4 event=cleanup pc=18446744073709551615 id=1 acquired=1 released=1 reads=0 cleanup=1 refs=1 tagA=0 tagB=0
+[    2.029645] CBPF_GATE seq=5 event=failed pc=18446744073709551615 id=0 acquired=1 released=1 reads=0 cleanup=1 refs=1 tagA=0 tagB=0
+[    2.029911] CBPF_RESULT value=0 entered=1 failed=1 balanced=1
+CBPF_M3 case=fail_second phase=end loaded=1 executed=1 retval=0 jited_len=660 load_errno=0 stage=execute result=PASS
+CBPF_M3 case=stale_copy phase=begin expected=reject
+CBPF_M3 bpf pc=0 code=b7 dst=1 src=0 off=0 imm=0
+CBPF_M3 bpf pc=1 code=85 dst=0 src=2 off=0 imm=44135
+CBPF_M3 bpf pc=2 code=15 dst=0 src=0 off=21 imm=0
+CBPF_M3 bpf pc=3 code=bf dst=6 src=0 off=0 imm=0
+CBPF_M3 bpf pc=4 code=7b dst=10 src=6 off=-8 imm=0
+CBPF_M3 bpf pc=5 code=b7 dst=1 src=0 off=0 imm=0
+CBPF_M3 bpf pc=6 code=85 dst=0 src=2 off=0 imm=44135
+CBPF_M3 bpf pc=7 code=15 dst=0 src=0 off=11 imm=0
+CBPF_M3 bpf pc=8 code=bf dst=7 src=0 off=0 imm=0
+CBPF_M3 bpf pc=9 code=79 dst=8 src=10 off=-8 imm=0
+CBPF_M3 bpf pc=10 code=bf dst=1 src=8 off=0 imm=0
+CBPF_M3 bpf pc=11 code=85 dst=0 src=2 off=0 imm=44140
+CBPF_M3 bpf pc=12 code=bf dst=1 src=6 off=0 imm=0
+CBPF_M3 bpf pc=13 code=85 dst=0 src=2 off=0 imm=44138
+CBPF_M3 bpf pc=14 code=bf dst=9 src=0 off=0 imm=0
+CBPF_M3 bpf pc=15 code=bf dst=1 src=7 off=0 imm=0
+CBPF_M3 bpf pc=16 code=85 dst=0 src=2 off=0 imm=44140
+CBPF_M3 bpf pc=17 code=bf dst=0 src=9 off=0 imm=0
+CBPF_M3 bpf pc=18 code=95 dst=0 src=0 off=0 imm=0
+CBPF_M3 bpf pc=19 code=79 dst=8 src=10 off=-8 imm=0
+CBPF_M3 bpf pc=20 code=bf dst=1 src=8 off=0 imm=0
+CBPF_M3 bpf pc=21 code=85 dst=0 src=2 off=0 imm=44140
+CBPF_M3 bpf pc=22 code=b7 dst=0 src=0 off=0 imm=7
+CBPF_M3 bpf pc=23 code=95 dst=0 src=0 off=0 imm=0
+CBPF_M3 bpf pc=24 code=b7 dst=0 src=0 off=0 imm=0
+CBPF_M3 bpf pc=25 code=95 dst=0 src=0 off=0 imm=0
+CBPF_M3 verifier_begin
+func#0 @0
+0: R1=ctx(off=0,imm=0) R10=fp0
+0: (b7) r1 = 0                        ; R1_w=0
+1: (85) call cbpf_cap_acquire#44135   ; R0_w=ptr_or_null_cbpf_cap_ref(id=2,ref_obj_id=2,off=0,imm=0) refs=2
+2: (15) if r0 == 0x0 goto pc+21       ; R0_w=ptr_cbpf_cap_ref(ref_obj_id=2,off=0,imm=0) refs=2
+3: (bf) r6 = r0                       ; R0_w=ptr_cbpf_cap_ref(ref_obj_id=2,off=0,imm=0) R6_w=ptr_cbpf_cap_ref(ref_obj_id=2,off=0,imm=0) refs=2
+4: (7b) *(u64 *)(r10 -8) = r6         ; R6_w=ptr_cbpf_cap_ref(ref_obj_id=2,off=0,imm=0) R10=fp0 fp-8_w=ptr_ refs=2
+5: (b7) r1 = 0                        ; R1_w=0 refs=2
+6: (85) call cbpf_cap_acquire#44135   ; R0=ptr_or_null_cbpf_cap_ref(id=4,ref_obj_id=4,off=0,imm=0) refs=2,4
+7: (15) if r0 == 0x0 goto pc+11       ; R0=ptr_cbpf_cap_ref(ref_obj_id=4,off=0,imm=0) refs=2,4
+8: (bf) r7 = r0                       ; R0=ptr_cbpf_cap_ref(ref_obj_id=4,off=0,imm=0) R7_w=ptr_cbpf_cap_ref(ref_obj_id=4,off=0,imm=0) refs=2,4
+9: (79) r8 = *(u64 *)(r10 -8)         ; R8_w=ptr_cbpf_cap_ref(ref_obj_id=2,off=0,imm=0) R10=fp0 fp-8=ptr_ refs=2,4
+10: (bf) r1 = r8                      ; R1_w=ptr_cbpf_cap_ref(ref_obj_id=2,off=0,imm=0) R8_w=ptr_cbpf_cap_ref(ref_obj_id=2,off=0,imm=0) refs=2,4
+11: (85) call cbpf_cap_release#44140          ; refs=4
+12: (bf) r1 = r6                      ; R1_w=scalar(id=5) R6=scalar(id=5) refs=4
+13: (85) call cbpf_cap_read#44138
+arg#0 pointer type STRUCT cbpf_cap_ref must point to scalar, or struct with scalar
+processed 14 insns (limit 1000000) max_states_per_insn 0 total_states 1 peak_states 1 mark_read 1
+CBPF_M3 verifier_end
+CBPF_M3 case=stale_copy phase=end loaded=0 executed=0 retval=0 jited_len=0 load_errno=22 stage=load result=PASS
+CBPF_M3 case=stale_spill phase=begin expected=reject
+CBPF_M3 bpf pc=0 code=b7 dst=1 src=0 off=0 imm=0
+CBPF_M3 bpf pc=1 code=85 dst=0 src=2 off=0 imm=44135
+CBPF_M3 bpf pc=2 code=15 dst=0 src=0 off=21 imm=0
+CBPF_M3 bpf pc=3 code=bf dst=6 src=0 off=0 imm=0
+CBPF_M3 bpf pc=4 code=7b dst=10 src=6 off=-8 imm=0
+CBPF_M3 bpf pc=5 code=b7 dst=1 src=0 off=0 imm=0
+CBPF_M3 bpf pc=6 code=85 dst=0 src=2 off=0 imm=44135
+CBPF_M3 bpf pc=7 code=15 dst=0 src=0 off=11 imm=0
+CBPF_M3 bpf pc=8 code=bf dst=7 src=0 off=0 imm=0
+CBPF_M3 bpf pc=9 code=79 dst=8 src=10 off=-8 imm=0
+CBPF_M3 bpf pc=10 code=bf dst=1 src=8 off=0 imm=0
+CBPF_M3 bpf pc=11 code=85 dst=0 src=2 off=0 imm=44140
+CBPF_M3 bpf pc=12 code=79 dst=1 src=10 off=-8 imm=0
+CBPF_M3 bpf pc=13 code=85 dst=0 src=2 off=0 imm=44138
+CBPF_M3 bpf pc=14 code=bf dst=9 src=0 off=0 imm=0
+CBPF_M3 bpf pc=15 code=bf dst=1 src=7 off=0 imm=0
+CBPF_M3 bpf pc=16 code=85 dst=0 src=2 off=0 imm=44140
+CBPF_M3 bpf pc=17 code=bf dst=0 src=9 off=0 imm=0
+CBPF_M3 bpf pc=18 code=95 dst=0 src=0 off=0 imm=0
+CBPF_M3 bpf pc=19 code=79 dst=8 src=10 off=-8 imm=0
+CBPF_M3 bpf pc=20 code=bf dst=1 src=8 off=0 imm=0
+CBPF_M3 bpf pc=21 code=85 dst=0 src=2 off=0 imm=44140
+CBPF_M3 bpf pc=22 code=b7 dst=0 src=0 off=0 imm=7
+CBPF_M3 bpf pc=23 code=95 dst=0 src=0 off=0 imm=0
+CBPF_M3 bpf pc=24 code=b7 dst=0 src=0 off=0 imm=0
+CBPF_M3 bpf pc=25 code=95 dst=0 src=0 off=0 imm=0
+CBPF_M3 verifier_begin
+func#0 @0
+0: R1=ctx(off=0,imm=0) R10=fp0
+0: (b7) r1 = 0                        ; R1_w=0
+1: (85) call cbpf_cap_acquire#44135   ; R0_w=ptr_or_null_cbpf_cap_ref(id=2,ref_obj_id=2,off=0,imm=0) refs=2
+2: (15) if r0 == 0x0 goto pc+21       ; R0_w=ptr_cbpf_cap_ref(ref_obj_id=2,off=0,imm=0) refs=2
+3: (bf) r6 = r0                       ; R0_w=ptr_cbpf_cap_ref(ref_obj_id=2,off=0,imm=0) R6_w=ptr_cbpf_cap_ref(ref_obj_id=2,off=0,imm=0) refs=2
+4: (7b) *(u64 *)(r10 -8) = r6         ; R6_w=ptr_cbpf_cap_ref(ref_obj_id=2,off=0,imm=0) R10=fp0 fp-8_w=ptr_ refs=2
+5: (b7) r1 = 0                        ; R1_w=0 refs=2
+6: (85) call cbpf_cap_acquire#44135   ; R0=ptr_or_null_cbpf_cap_ref(id=4,ref_obj_id=4,off=0,imm=0) refs=2,4
+7: (15) if r0 == 0x0 goto pc+11       ; R0=ptr_cbpf_cap_ref(ref_obj_id=4,off=0,imm=0) refs=2,4
+8: (bf) r7 = r0                       ; R0=ptr_cbpf_cap_ref(ref_obj_id=4,off=0,imm=0) R7_w=ptr_cbpf_cap_ref(ref_obj_id=4,off=0,imm=0) refs=2,4
+9: (79) r8 = *(u64 *)(r10 -8)         ; R8_w=ptr_cbpf_cap_ref(ref_obj_id=2,off=0,imm=0) R10=fp0 fp-8=ptr_ refs=2,4
+10: (bf) r1 = r8                      ; R1_w=ptr_cbpf_cap_ref(ref_obj_id=2,off=0,imm=0) R8_w=ptr_cbpf_cap_ref(ref_obj_id=2,off=0,imm=0) refs=2,4
+11: (85) call cbpf_cap_release#44140          ; refs=4
+12: (79) r1 = *(u64 *)(r10 -8)        ; R1_w=scalar() R10=fp0 fp-8= refs=4
+13: (85) call cbpf_cap_read#44138
+arg#0 pointer type STRUCT cbpf_cap_ref must point to scalar, or struct with scalar
+processed 14 insns (limit 1000000) max_states_per_insn 0 total_states 1 peak_states 1 mark_read 1
+CBPF_M3 verifier_end
+CBPF_M3 case=stale_spill phase=end loaded=0 executed=0 retval=0 jited_len=0 load_errno=22 stage=load result=PASS
+CBPF_M3 case=duplicate_release phase=begin expected=reject
+CBPF_M3 bpf pc=0 code=b7 dst=1 src=0 off=0 imm=0
+CBPF_M3 bpf pc=1 code=85 dst=0 src=2 off=0 imm=44135
+CBPF_M3 bpf pc=2 code=15 dst=0 src=0 off=21 imm=0
+CBPF_M3 bpf pc=3 code=bf dst=6 src=0 off=0 imm=0
+CBPF_M3 bpf pc=4 code=7b dst=10 src=6 off=-8 imm=0
+CBPF_M3 bpf pc=5 code=b7 dst=1 src=0 off=0 imm=0
+CBPF_M3 bpf pc=6 code=85 dst=0 src=2 off=0 imm=44135
+CBPF_M3 bpf pc=7 code=15 dst=0 src=0 off=11 imm=0
+CBPF_M3 bpf pc=8 code=bf dst=7 src=0 off=0 imm=0
+CBPF_M3 bpf pc=9 code=79 dst=8 src=10 off=-8 imm=0
+CBPF_M3 bpf pc=10 code=bf dst=1 src=8 off=0 imm=0
+CBPF_M3 bpf pc=11 code=85 dst=0 src=2 off=0 imm=44140
+CBPF_M3 bpf pc=12 code=bf dst=1 src=6 off=0 imm=0
+CBPF_M3 bpf pc=13 code=85 dst=0 src=2 off=0 imm=44140
+CBPF_M3 bpf pc=14 code=bf dst=9 src=0 off=0 imm=0
+CBPF_M3 bpf pc=15 code=bf dst=1 src=7 off=0 imm=0
+CBPF_M3 bpf pc=16 code=85 dst=0 src=2 off=0 imm=44140
+CBPF_M3 bpf pc=17 code=bf dst=0 src=9 off=0 imm=0
+CBPF_M3 bpf pc=18 code=95 dst=0 src=0 off=0 imm=0
+CBPF_M3 bpf pc=19 code=79 dst=8 src=10 off=-8 imm=0
+CBPF_M3 bpf pc=20 code=bf dst=1 src=8 off=0 imm=0
+CBPF_M3 bpf pc=21 code=85 dst=0 src=2 off=0 imm=44140
+CBPF_M3 bpf pc=22 code=b7 dst=0 src=0 off=0 imm=7
+CBPF_M3 bpf pc=23 code=95 dst=0 src=0 off=0 imm=0
+CBPF_M3 bpf pc=24 code=b7 dst=0 src=0 off=0 imm=0
+CBPF_M3 bpf pc=25 code=95 dst=0 src=0 off=0 imm=0
+CBPF_M3 verifier_begin
+func#0 @0
+0: R1=ctx(off=0,imm=0) R10=fp0
+0: (b7) r1 = 0                        ; R1_w=0
+1: (85) call cbpf_cap_acquire#44135   ; R0_w=ptr_or_null_cbpf_cap_ref(id=2,ref_obj_id=2,off=0,imm=0) refs=2
+2: (15) if r0 == 0x0 goto pc+21       ; R0_w=ptr_cbpf_cap_ref(ref_obj_id=2,off=0,imm=0) refs=2
+3: (bf) r6 = r0                       ; R0_w=ptr_cbpf_cap_ref(ref_obj_id=2,off=0,imm=0) R6_w=ptr_cbpf_cap_ref(ref_obj_id=2,off=0,imm=0) refs=2
+4: (7b) *(u64 *)(r10 -8) = r6         ; R6_w=ptr_cbpf_cap_ref(ref_obj_id=2,off=0,imm=0) R10=fp0 fp-8_w=ptr_ refs=2
+5: (b7) r1 = 0                        ; R1_w=0 refs=2
+6: (85) call cbpf_cap_acquire#44135   ; R0=ptr_or_null_cbpf_cap_ref(id=4,ref_obj_id=4,off=0,imm=0) refs=2,4
+7: (15) if r0 == 0x0 goto pc+11       ; R0=ptr_cbpf_cap_ref(ref_obj_id=4,off=0,imm=0) refs=2,4
+8: (bf) r7 = r0                       ; R0=ptr_cbpf_cap_ref(ref_obj_id=4,off=0,imm=0) R7_w=ptr_cbpf_cap_ref(ref_obj_id=4,off=0,imm=0) refs=2,4
+9: (79) r8 = *(u64 *)(r10 -8)         ; R8_w=ptr_cbpf_cap_ref(ref_obj_id=2,off=0,imm=0) R10=fp0 fp-8=ptr_ refs=2,4
+10: (bf) r1 = r8                      ; R1_w=ptr_cbpf_cap_ref(ref_obj_id=2,off=0,imm=0) R8_w=ptr_cbpf_cap_ref(ref_obj_id=2,off=0,imm=0) refs=2,4
+11: (85) call cbpf_cap_release#44140          ; refs=4
+12: (bf) r1 = r6                      ; R1_w=scalar(id=5) R6=scalar(id=5) refs=4
+13: (85) call cbpf_cap_release#44140
+arg#0 pointer type STRUCT cbpf_cap_ref must point to scalar, or struct with scalar
+processed 14 insns (limit 1000000) max_states_per_insn 0 total_states 1 peak_states 1 mark_read 1
+CBPF_M3 verifier_end
+CBPF_M3 case=duplicate_release phase=end loaded=0 executed=0 retval=0 jited_len=0 load_errno=22 stage=load result=PASS
+CBPF_M3 result=PASS
+[    2.092354] reboot: Power down

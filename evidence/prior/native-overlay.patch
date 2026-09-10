@@ -1,0 +1,2023 @@
+diff --git a/arch/arm64/net/bpf_jit_comp.c b/arch/arm64/net/bpf_jit_comp.c
+index 18c4a3f9c..461c9bd54 100644
+--- a/arch/arm64/net/bpf_jit_comp.c
++++ b/arch/arm64/net/bpf_jit_comp.c
+@@ -35,6 +35,7 @@
+ #define MORELLO_FSC_CAP_BOUNDS 0x2a
+ #define BPF_LIFETIME_TRANSIENT_CAP_REG A64_R(5)
+ #define BPF_LIFETIME_CURRENT_CAP_REG A64_R(6)
++#define BPF_GATE4_SECOND_CELL_CAP_REG A64_R(23)
+ #define BPF_LIFETIME_SIDECAR_CAP_REG A64_R(8)
+ #define BPF_GATE_STACK_CAP_REG A64_R(15)
+ #define BPF_CONTEXT_CAP_REG A64_R(16)
+@@ -55,11 +56,35 @@ enum bpf_cheri_helper_operation {
+ 	BPF_CHERI_HELPER_LIFETIME_RESERVE,
+ 	BPF_CHERI_HELPER_RAW_RINGBUF_SUBMIT,
+ 	BPF_CHERI_HELPER_RAW_RINGBUF_DISCARD,
++	BPF_CHERI_HELPER_GATE4_ACQUIRE_A,
++	BPF_CHERI_HELPER_GATE4_ACQUIRE_B,
++	BPF_CHERI_HELPER_GATE4_ACQUIRE_DIRECT,
++	BPF_CHERI_HELPER_GATE4_RELEASE_A,
++	BPF_CHERI_HELPER_GATE4_RELEASE_B,
+ 	BPF_CHERI_HELPER_INVALID,
+ };
+ 
++static bool bpf_gate4_kfunc_mode(const struct bpf_prog *prog)
++{
++	static const char * const names[] = {
++		"g4_btf_valid", "g4_valid", "g4_stale_r", "g4_stale_s",
++		"g4_direct", "g4_independent", "g4_double",
++	};
++	u32 index;
++
++	if (!IS_ENABLED(CONFIG_CAPEBPF_TEST_OWNERSHIP_LIFETIME) ||
++	    !prog || !prog->aux || !prog->aux->ownership_lifetime_mode)
++		return false;
++	for (index = 0; index < ARRAY_SIZE(names); index++)
++		if (!strcmp(prog->aux->name, names[index]))
++			return true;
++	return false;
++}
++
+ static bool bpf_ownership_lifetime_cell_mode(const struct bpf_prog *prog)
+ {
++	if (prog && prog->aux && !strcmp(prog->aux->name, "g4_direct"))
++		return false;
+ 	return IS_ENABLED(CONFIG_CAPEBPF_TEST_OWNERSHIP_LIFETIME) &&
+ 	       prog->aux->ownership_lifetime_mode !=
+ 		BPF_OWNERSHIP_LIFETIME_NONE &&
+@@ -78,7 +103,7 @@ static int __init parse_bpf_cheri_test_certificate_mutation(char *value)
+ {
+ 	u32 mode;
+ 
+-	if (!value || kstrtou32(value, 0, &mode) || mode > 23)
++	if (!value || kstrtou32(value, 0, &mode) || mode > 35)
+ 		return -EINVAL;
+ 	bpf_cheri_test_certificate_mutation = mode;
+ 	return 0;
+@@ -191,12 +216,14 @@ static const int bpf2a64[] = {
+ #define BPF_CHERI_NULL BIT(5)
+ #define BPF_CHERI_UNINIT BIT(6)
+ #define BPF_CHERI_RINGBUF_VALUE BIT(7)
++#define BPF_CHERI_KFUNC_VALUE BIT(8)
+ #define BPF_CHERI_CAPABILITIES \
+ 	(BPF_CHERI_STACK | BPF_CHERI_CONTEXT | BPF_CHERI_MAP_VALUE | \
+-	 BPF_CHERI_RINGBUF_VALUE)
++	 BPF_CHERI_RINGBUF_VALUE | BPF_CHERI_KFUNC_VALUE)
+ 
+ struct bpf_cheri_reg_state {
+-	u8 kind;
++	u16 kind;
++	u8 acquisition;
+ 	bool known;
+ 	u64 value;
+ };
+@@ -527,6 +554,66 @@ static void emit_ownership_lifetime_release(
+ 	emit(A64_MOV(1, r0, A64_R(0)), ctx);
+ }
+ 
++static void emit_gate4_acquire(enum bpf_cheri_helper_operation operation,
++			       u64 target, struct jit_ctx *ctx)
++{
++	const u8 r0 = bpf2a64[BPF_REG_0];
++
++	emit_addr_mov_i64(A64_R(5), target, ctx);
++	emit_cheri_helper_call(operation, ctx);
++	emit_cheri_cap_mov(r0, A64_R(0), ctx);
++}
++
++static void emit_gate4_release(enum bpf_cheri_helper_operation operation,
++			       u64 target, bool direct, struct jit_ctx *ctx)
++{
++	const u8 public_root = direct ?
++		(operation == BPF_CHERI_HELPER_GATE4_RELEASE_B ?
++		 BPF_GATE4_SECOND_CELL_CAP_REG : BPF_LIFETIME_CURRENT_CAP_REG) :
++		bpf2a64[BPF_REG_1];
++	const u8 private_root =
++		operation == BPF_CHERI_HELPER_GATE4_RELEASE_B ?
++		BPF_GATE4_SECOND_CELL_CAP_REG : BPF_LIFETIME_CURRENT_CAP_REG;
++	const u8 r0 = bpf2a64[BPF_REG_0];
++	const u8 public_tag = bpf2a64[TMP_REG_1];
++	const u8 private_tag = bpf2a64[TMP_REG_2];
++	const u8 object_address = bpf2a64[TMP_REG_2];
++
++	/*
++	 * The public argument must name the same acquisition cell as the hidden
++	 * private handle.  In the direct-capability causal control only, the
++	 * public argument is intentionally the object itself, so this equality
++	 * check is made against the private handle twice.
++	 */
++	emit(A64_MOVZ(1, r0, 0, 0), ctx);
++	emit(CHERI_CAP_GCTAG | (public_root << 5) | public_tag, ctx);
++	emit(CHERI_CAP_GCTAG | (private_root << 5) | private_tag, ctx);
++	emit(A64_CBZ(1, public_tag, 21), ctx);
++	emit(A64_CBZ(1, private_tag, 20), ctx);
++	emit(CHERI_CAP_GCVALUE | (public_root << 5) | public_tag, ctx);
++	emit(CHERI_CAP_GCVALUE | (private_root << 5) | private_tag, ctx);
++	emit(A64_CMP(1, public_tag, private_tag), ctx);
++	emit(A64_B_(A64_COND_NE, 16), ctx);
++
++	/* Resolve, extract the scalar provider pointer, and clear c5 first. */
++	emit(CHERI_CAP_CBASE_LDR | (private_root << 5) |
++	     BPF_LIFETIME_TRANSIENT_CAP_REG, ctx);
++	emit(CHERI_CAP_GCTAG |
++	     (BPF_LIFETIME_TRANSIENT_CAP_REG << 5) | public_tag, ctx);
++	emit(CHERI_CAP_GCVALUE |
++	     (BPF_LIFETIME_TRANSIENT_CAP_REG << 5) | object_address, ctx);
++	emit(A64_MOVZ(1, BPF_LIFETIME_TRANSIENT_CAP_REG, 0, 0), ctx);
++	emit(A64_CBZ(1, public_tag, 11), ctx);
++
++	/* This store is the release linearization point. */
++	emit(CHERI_LS_STRX | (private_root << 5) | A64_ZR, ctx);
++	emit(A64_MOVZ(1, private_root, 0, 0), ctx);
++	emit(A64_MOV(1, A64_R(0), object_address), ctx);
++	emit_addr_mov_i64(A64_R(5), target, ctx);
++	emit_cheri_helper_call(operation, ctx);
++	emit(A64_MOVZ(1, r0, 0, 0), ctx);
++}
++
+ static void emit_cheri_cap_setbounds(u8 cd, u8 cn, u32 length,
+ 				     struct jit_ctx *ctx)
+ {
+@@ -724,6 +811,8 @@ struct bpf_cheri_lifetime_cell {
+ 	uintcap_t object;
+ } __aligned(16);
+ 
++#define BPF_GATE4_OBJECT_SIZE 32U
++
+ noinline void *__capability
+ bpf_cheri_lifetime_reserve_impl(u64 map_token, u64 size, u64 flags,
+ 				void *__capability map_table_cap,
+@@ -779,6 +868,124 @@ bpf_cheri_lifetime_reserve_impl(u64 map_token, u64 size, u64 flags,
+ 	return bpf_cheri_null_cap();
+ }
+ 
++/*
++ * This is deliberately an exact one-pair experiment, not a generic kfunc
++ * ABI.  The ordinary pointer returned by the pinned provider is converted to
++ * a 32-byte, read-only capability from executive DDC.  Provider-derived
++ * provenance is therefore a stated premise of the experiment, not a result.
++ */
++typedef void *(*bpf_gate4_acquire_fn)(unsigned long *);
++typedef void (*bpf_gate4_release_fn)(void *);
++
++noinline void *__capability
++bpf_cheri_gate4_acquire_impl(void *__capability scalar_cap, u64 target,
++			     u64 acquisition, u64 direct,
++			     uintcap_t *__capability private_out)
++{
++	struct bpf_cheri_lifetime_cell *cell = NULL;
++	void *__capability private_handle;
++	void *__capability public_handle;
++	void *__capability object_cap;
++	unsigned long *scalar_ptr;
++	void *object;
++
++	if (!target || (acquisition != 1 && acquisition != 2) || direct > 1 ||
++	    !cheri_check_cap(scalar_cap, sizeof(*scalar_ptr), CHERI_PERM_STORE) ||
++	    !cheri_check_cap(private_out, sizeof(*private_out),
++			     CHERI_PERM_STORE | CHERI_PERM_STORE_CAP))
++		return bpf_cheri_null_cap();
++	*private_out = (uintcap_t)bpf_cheri_null_cap();
++
++	/* Allocate and initialize the non-reused cell before invoking acquire. */
++	cell = kmalloc(sizeof(*cell), GFP_ATOMIC);
++	if (!cell || !IS_ALIGNED((unsigned long)cell, sizeof(*cell)))
++		goto fail_cell;
++	cell->object = (uintcap_t)bpf_cheri_null_cap();
++
++	private_handle = cheri_address_set(cheri_ddc_get(),
++					   (unsigned long)cell);
++	private_handle = cheri_bounds_set(private_handle, sizeof(*cell));
++	if (!cheri_tag_get(private_handle) ||
++	    cheri_base_get(private_handle) != (unsigned long)cell ||
++	    cheri_length_get(private_handle) != sizeof(*cell))
++		goto fail_cell;
++	private_handle = cheri_perms_clear(private_handle,
++		CHERI_PERMS_EXEC | PERM_EXECUTIVE | CHERI_PERM_STORE_CAP |
++		CHERI_PERM_STORE_LOCAL_CAP | PERM_SYS_REG);
++	public_handle = cheri_perms_clear(private_handle,
++					 CHERI_PERM_STORE | CHERI_PERM_GLOBAL);
++
++	/* Preserve the provider's real scalar-pointer argument and side effect. */
++	scalar_ptr = (unsigned long *)cheri_address_get(scalar_cap);
++	object = ((bpf_gate4_acquire_fn)(unsigned long)target)(scalar_ptr);
++	if (!object)
++		goto fail_cell;
++
++	object_cap = cheri_address_set(cheri_ddc_get(), (unsigned long)object);
++	object_cap = cheri_bounds_set(object_cap, BPF_GATE4_OBJECT_SIZE);
++	if (!cheri_tag_get(object_cap) ||
++	    cheri_base_get(object_cap) != (unsigned long)object ||
++	    cheri_length_get(object_cap) != BPF_GATE4_OBJECT_SIZE)
++		goto fail_acquired;
++	object_cap = cheri_perms_clear(object_cap,
++		CHERI_PERMS_WRITE | CHERI_PERMS_EXEC | PERM_EXECUTIVE |
++		PERM_SYS_REG);
++	cell->object = (uintcap_t)object_cap;
++	*private_out = (uintcap_t)private_handle;
++
++	if (bpf_cheri_test_certificate_transcript) {
++		pr_info("GATE4_ACQUIRE_BIND acquisition=%llu target=0x%llx object=0x%lx cell=0x%lx direct=%llu\n",
++			(unsigned long long)acquisition,
++			(unsigned long long)target, (unsigned long)object,
++			(unsigned long)cell, (unsigned long long)direct);
++		report_root_attestation("gate4_cell_private",
++			acquisition == 1 ? "c6_gateway_restore" :
++					   "c23_gateway_restore",
++			"kfunc_acquisition_cell", (unsigned long)cell,
++			sizeof(*cell), private_handle);
++		report_root_attestation("gate4_cell_public", "c0_kfunc_return",
++			"kfunc_acquisition_cell", (unsigned long)cell,
++			sizeof(*cell), public_handle);
++		report_root_attestation("gate4_object_transient", "trusted_only",
++			"prog_test_ref_kfunc", (unsigned long)object,
++			BPF_GATE4_OBJECT_SIZE, object_cap);
++	}
++
++	/* In the governed profile this local is dead before restricted BPF resumes. */
++	if (direct)
++		return object_cap;
++	object_cap = bpf_cheri_null_cap();
++	asm volatile("" : "+C" (object_cap) :: "memory");
++	return public_handle;
++
++fail_acquired:
++	/*
++	 * The exact 32-byte authority construction is a stop condition.  This
++	 * path deliberately does not guess a release target from the acquire
++	 * address; the governed run must fail and the fresh boot is discarded.
++	 */
++	pr_err("Gate-4 exact object authority construction failed after acquire\n");
++fail_cell:
++	if (cell)
++		kfree(cell);
++	return bpf_cheri_null_cap();
++}
++
++noinline u64 bpf_cheri_gate4_release_impl(u64 object, u64 target,
++					  u64 acquisition)
++{
++	if (!object || !target || (acquisition != 1 && acquisition != 2))
++		return 0;
++	if (bpf_cheri_test_certificate_transcript)
++		pr_info("GATE4_RELEASE_EFFECT_CALL acquisition=%llu target=0x%llx object=0x%llx\n",
++			(unsigned long long)acquisition,
++			(unsigned long long)target,
++			(unsigned long long)object);
++	((bpf_gate4_release_fn)(unsigned long)target)((void *)(unsigned long)object);
++	/* Preserve a zero r0 so an exact post-release fault has a stable result. */
++	return 0;
++}
++
+ static bool
+ bpf_cheri_ringbuf_protocol_valid(void *__capability sample_cap)
+ {
+@@ -838,7 +1045,7 @@ asm(
+ "bti c\n"
+ "mov x12, sp\n"
+ "mov sp, x15\n"
+-"sub sp, sp, #240\n"
++"sub sp, sp, #256\n"
+ "str x15, [sp, #0]\n"
+ "str x12, [sp, #8]\n"
+ "str c6, [sp, #16]\n"
+@@ -854,7 +1061,8 @@ asm(
+ "str c25, [sp, #176]\n"
+ "str c26, [sp, #192]\n"
+ "str c27, [sp, #208]\n"
+-"str c30, [sp, #224]\n"
++"str c23, [sp, #224]\n"
++"str c30, [sp, #240]\n"
+ "cmp x4, #0\n"
+ "b.eq 1f\n"
+ "cmp x4, #1\n"
+@@ -869,6 +1077,16 @@ asm(
+ "b.eq 7f\n"
+ "cmp x4, #6\n"
+ "b.eq 8f\n"
++"cmp x4, #7\n"
++"b.eq 9f\n"
++"cmp x4, #8\n"
++"b.eq 10f\n"
++"cmp x4, #9\n"
++"b.eq 11f\n"
++"cmp x4, #10\n"
++"b.eq 12f\n"
++"cmp x4, #11\n"
++"b.eq 13f\n"
+ "bl bpf_cheri_invalid_helper_impl\n"
+ "b 5f\n"
+ "1:\n"
+@@ -900,6 +1118,49 @@ asm(
+ "b 5f\n"
+ "8:\n"
+ "bl bpf_cheri_raw_ringbuf_discard_impl\n"
++"b 5f\n"
++"9:\n"
++"mov x9, sp\n"
++"add x9, x9, #16\n"
++"mrs c4, DDC\n"
++"scvalue c4, c4, x9\n"
++"scbnds c4, c4, #16\n"
++"mov x1, x5\n"
++"mov x2, #1\n"
++"mov x3, #0\n"
++"bl bpf_cheri_gate4_acquire_impl\n"
++"b 5f\n"
++"10:\n"
++"mov x9, sp\n"
++"add x9, x9, #224\n"
++"mrs c4, DDC\n"
++"scvalue c4, c4, x9\n"
++"scbnds c4, c4, #16\n"
++"mov x1, x5\n"
++"mov x2, #2\n"
++"mov x3, #0\n"
++"bl bpf_cheri_gate4_acquire_impl\n"
++"b 5f\n"
++"11:\n"
++"mov x9, sp\n"
++"add x9, x9, #16\n"
++"mrs c4, DDC\n"
++"scvalue c4, c4, x9\n"
++"scbnds c4, c4, #16\n"
++"mov x1, x5\n"
++"mov x2, #1\n"
++"mov x3, #1\n"
++"bl bpf_cheri_gate4_acquire_impl\n"
++"b 5f\n"
++"12:\n"
++"mov x1, x5\n"
++"mov x2, #1\n"
++"bl bpf_cheri_gate4_release_impl\n"
++"b 5f\n"
++"13:\n"
++"mov x1, x5\n"
++"mov x2, #2\n"
++"bl bpf_cheri_gate4_release_impl\n"
+ "5:\n"
+ "ldr x15, [sp, #0]\n"
+ "ldr x12, [sp, #8]\n"
+@@ -916,8 +1177,9 @@ asm(
+ "ldr c25, [sp, #176]\n"
+ "ldr c26, [sp, #192]\n"
+ "ldr c27, [sp, #208]\n"
+-"ldr c14, [sp, #224]\n"
+-"add sp, sp, #240\n"
++"ldr c23, [sp, #224]\n"
++"ldr c14, [sp, #240]\n"
++"add sp, sp, #256\n"
+ "mov sp, x12\n"
+ "mov c30, c13\n"
+ "mov x1, xzr\n"
+@@ -1642,7 +1904,22 @@ static void build_epilogue(struct jit_ctx *ctx)
+ 	const u8 r0 = bpf2a64[BPF_REG_0];
+ 	int reg;
+ 
+-	if (ctx->prog->aux->ownership_lifetime_mode) {
++	if (bpf_gate4_kfunc_mode(ctx->prog)) {
++		/*
++		 * The exact kfunc profile never synthesizes an implicit release at
++		 * exit.  Verifier-valid source releases every live reference; faults
++		 * in governed stale tests occur only after the explicit release.  The
++		 * private spill and all capability registers are nevertheless scrubbed.
++		 */
++		emit(CHERI_LS_STRX |
++		     (BPF_LIFETIME_SIDECAR_CAP_REG << 5) | A64_ZR, ctx);
++		emit(CHERI_LS_STRX | (8U << 12) |
++		     (BPF_LIFETIME_SIDECAR_CAP_REG << 5) | A64_ZR, ctx);
++		emit(A64_MOV(1, r0, r0), ctx);
++		for (reg = 0; reg <= 29; reg++)
++			if (reg != r0)
++				emit(A64_MOVZ(1, reg, 0, 0), ctx);
++	} else if (ctx->prog->aux->ownership_lifetime_mode) {
+ 		const u8 tag = bpf2a64[TMP_REG_1];
+ 		const u8 address = bpf2a64[TMP_REG_2];
+ 
+@@ -1723,13 +2000,13 @@ static void build_epilogue(struct jit_ctx *ctx)
+ 	emit(A64_RET(A64_LR), ctx);
+ }
+ 
+-static bool bpf_cheri_cap_kind(u8 kind);
++static bool bpf_cheri_cap_kind(u16 kind);
+ 
+ static bool is_cheri_bounded_memory(const struct bpf_insn *insn,
+ 				    const struct jit_ctx *ctx)
+ {
+ 	const struct bpf_cheri_state *state;
+-	u8 kind;
++	u16 kind;
+ 	u8 mode = BPF_MODE(insn->code);
+ 	u32 index = insn - ctx->prog->insnsi;
+ 
+@@ -1901,6 +2178,7 @@ static void bpf_cheri_set_scalar(struct bpf_cheri_reg_state *reg,
+ 				 bool known, u64 value)
+ {
+ 	reg->kind = BPF_CHERI_SCALAR;
++	reg->acquisition = 0;
+ 	reg->known = known;
+ 	reg->value = value;
+ }
+@@ -1919,12 +2197,38 @@ static void bpf_cheri_merge_state(struct bpf_cheri_state *destination,
+ 	for (index = 0; index < MAX_BPF_JIT_REG; index++) {
+ 		struct bpf_cheri_reg_state *dst = &destination->regs[index];
+ 		const struct bpf_cheri_reg_state *src = &source->regs[index];
++		bool dst_zero = dst->kind == BPF_CHERI_SCALAR && dst->known &&
++			!dst->value;
++		bool src_zero = src->kind == BPF_CHERI_SCALAR && src->known &&
++			!src->value;
++
++		/* Preserve the exact nullable capability join used by Gate 4 B. */
++		if ((dst_zero && src->kind == BPF_CHERI_KFUNC_VALUE &&
++		     src->acquisition) ||
++		    (src_zero && dst->kind == BPF_CHERI_KFUNC_VALUE &&
++		     dst->acquisition)) {
++			const struct bpf_cheri_reg_state *cap = dst_zero ? src : dst;
++
++			dst->kind = cap->kind | BPF_CHERI_NULL;
++			dst->acquisition = cap->acquisition;
++			dst->known = false;
++			dst->value = 0;
++			continue;
++		}
+ 
+ 		dst->kind |= src->kind;
++		if (!src->acquisition || !dst->acquisition ||
++		    src->acquisition != dst->acquisition)
++			dst->acquisition = 0;
+ 		if (!src->known || !dst->known || src->value != dst->value)
+ 			dst->known = false;
+ 	}
+ 	destination->lifetime_spill.kind |= source->lifetime_spill.kind;
++	if (!source->lifetime_spill.acquisition ||
++	    !destination->lifetime_spill.acquisition ||
++	    source->lifetime_spill.acquisition !=
++		destination->lifetime_spill.acquisition)
++		destination->lifetime_spill.acquisition = 0;
+ 	if (!source->lifetime_spill.known ||
+ 	    !destination->lifetime_spill.known ||
+ 	    source->lifetime_spill.value != destination->lifetime_spill.value)
+@@ -1978,6 +2282,120 @@ bpf_cheri_helper_call(const struct bpf_prog *prog,
+ 	return BPF_CHERI_HELPER_INVALID;
+ }
+ 
++static enum bpf_cheri_helper_operation
++bpf_cheri_gate4_call(const struct bpf_prog *prog,
++		     const struct bpf_insn *insn, u32 insn_index,
++		     u64 *target, const struct bpf_gate4_kfunc_call **call_out)
++{
++	const struct bpf_gate4_kfunc_call *call;
++	enum bpf_cheri_helper_operation operation = BPF_CHERI_HELPER_INVALID;
++
++	if (!bpf_gate4_kfunc_mode(prog))
++		return operation;
++	call = bpf_jit_find_gate4_kfunc_call(prog, insn, insn_index);
++	if (!call || call->object_btf_size != BPF_GATE4_OBJECT_SIZE ||
++	    !call->resolved_target)
++		return operation;
++
++	if (call->effect == BPF_GATE4_KFUNC_EFFECT_ACQUIRE) {
++		if (call->acquisition_ordinal == 1)
++			operation = prog->aux->ownership_lifetime_mode ==
++				BPF_OWNERSHIP_LIFETIME_G4_DIRECT ?
++				BPF_CHERI_HELPER_GATE4_ACQUIRE_DIRECT :
++				BPF_CHERI_HELPER_GATE4_ACQUIRE_A;
++		else if (call->acquisition_ordinal == 2)
++			operation = BPF_CHERI_HELPER_GATE4_ACQUIRE_B;
++	} else if (call->effect == BPF_GATE4_KFUNC_EFFECT_RELEASE) {
++		if (call->release_binding == 1)
++			operation = BPF_CHERI_HELPER_GATE4_RELEASE_A;
++		else if (call->release_binding == 2)
++			operation = BPF_CHERI_HELPER_GATE4_RELEASE_B;
++	}
++	if (operation == BPF_CHERI_HELPER_INVALID)
++		return operation;
++	if (target)
++		*target = call->resolved_target;
++	if (call_out)
++		*call_out = call;
++	return operation;
++}
++
++static int inject_gate4_kfunc_reorder(struct bpf_prog *prog)
++{
++	struct bpf_gate4_kfunc_contract *contract =
++		prog->aux->gate4_kfunc_contract;
++	struct bpf_insn saved[2];
++	u8 mode = prog->aux->ownership_lifetime_mode;
++
++	if (!bpf_gate4_kfunc_mode(prog) ||
++	    mode == BPF_OWNERSHIP_LIFETIME_G4_VALID ||
++	    mode == BPF_OWNERSHIP_LIFETIME_G4_DOUBLE)
++		return 0;
++	if (prog->aux->ownership_lifetime_reordered || !contract ||
++	    !contract->valid)
++		return -EINVAL;
++
++	if (mode == BPF_OWNERSHIP_LIFETIME_G4_STALE_REG ||
++	    mode == BPF_OWNERSHIP_LIFETIME_G4_DIRECT) {
++		if (prog->len != 12 ||
++		    prog->insnsi[7].code !=
++			    (BPF_LDX | BPF_PROBE_MEM | BPF_W) ||
++		    prog->insnsi[8].code != (BPF_ALU64 | BPF_MOV | BPF_X) ||
++		    prog->insnsi[9].code != (BPF_JMP | BPF_CALL))
++			return -EINVAL;
++		saved[0] = prog->insnsi[7];
++		memmove(&prog->insnsi[7], &prog->insnsi[8],
++			2 * sizeof(struct bpf_insn));
++		prog->insnsi[9] = saved[0];
++		if (bpf_jit_update_gate4_kfunc_call_index(prog, 9, 8))
++			return -EINVAL;
++	} else if (mode == BPF_OWNERSHIP_LIFETIME_G4_STALE_SPILL) {
++		if (prog->len != 13 ||
++		    prog->insnsi[7].code != (BPF_LDX | BPF_MEM | BPF_DW) ||
++		    prog->insnsi[8].code !=
++			    (BPF_LDX | BPF_PROBE_MEM | BPF_W) ||
++		    prog->insnsi[9].code != (BPF_ALU64 | BPF_MOV | BPF_X) ||
++		    prog->insnsi[10].code != (BPF_JMP | BPF_CALL))
++			return -EINVAL;
++		saved[0] = prog->insnsi[7];
++		saved[1] = prog->insnsi[8];
++		memmove(&prog->insnsi[7], &prog->insnsi[9],
++			2 * sizeof(struct bpf_insn));
++		prog->insnsi[9] = saved[0];
++		prog->insnsi[10] = saved[1];
++		if (bpf_jit_update_gate4_kfunc_call_index(prog, 10, 8))
++			return -EINVAL;
++	} else if (mode == BPF_OWNERSHIP_LIFETIME_G4_INDEPENDENT) {
++		if (prog->len != 26 || prog->insnsi[12].off != 3 ||
++		    prog->insnsi[14].code != (BPF_LDX | BPF_MEM | BPF_DW) ||
++		    prog->insnsi[15].code !=
++			    (BPF_LDX | BPF_PROBE_MEM | BPF_W) ||
++		    prog->insnsi[17].code != (BPF_JMP | BPF_CALL) ||
++		    prog->insnsi[18].code != (BPF_JMP | BPF_JEQ | BPF_K) ||
++		    prog->insnsi[18].off != 5 ||
++		    prog->insnsi[21].code != (BPF_JMP | BPF_CALL))
++			return -EINVAL;
++		saved[0] = prog->insnsi[14];
++		saved[1] = prog->insnsi[15];
++		memmove(&prog->insnsi[14], &prog->insnsi[16],
++			7 * sizeof(struct bpf_insn));
++		prog->insnsi[21] = saved[0];
++		prog->insnsi[22] = saved[1];
++		prog->insnsi[12].off = 1;
++		prog->insnsi[16].off = 7;
++		if (bpf_jit_update_gate4_kfunc_call_index(prog, 17, 15) ||
++		    bpf_jit_update_gate4_kfunc_call_index(prog, 21, 19))
++			return -EINVAL;
++	} else {
++		return -EINVAL;
++	}
++
++	prog->aux->ownership_lifetime_reordered = true;
++	pr_info("Gate-4 exact post-verifier reorder program=%s mode=%u\n",
++		prog->aux->name, mode);
++	return 0;
++}
++
+ static int inject_ownership_lifetime_reorder(struct bpf_prog *prog)
+ {
+ 	struct bpf_insn saved[2];
+@@ -1985,6 +2403,8 @@ static int inject_ownership_lifetime_reorder(struct bpf_prog *prog)
+ 
+ 	if (!mode || prog->aux->ownership_lifetime_reordered)
+ 		return 0;
++	if (bpf_gate4_kfunc_mode(prog))
++		return inject_gate4_kfunc_reorder(prog);
+ 	if (mode == BPF_OWNERSHIP_LIFETIME_VALID)
+ 		return 0;
+ 	if (mode == BPF_OWNERSHIP_LIFETIME_STALE_REG ||
+@@ -2041,7 +2461,7 @@ static int inject_ownership_lifetime_reorder(struct bpf_prog *prog)
+ 	return 0;
+ }
+ 
+-static bool bpf_cheri_cap_kind(u8 kind)
++static bool bpf_cheri_cap_kind(u16 kind)
+ {
+ 	return kind && !(kind & (kind - 1)) &&
+ 	       (kind & BPF_CHERI_CAPABILITIES);
+@@ -2219,7 +2639,9 @@ static int bpf_cheri_build_authority(const struct bpf_prog *prog,
+ 			    insn->src_reg == BPF_REG_FP && insn->off == -8 &&
+ 			    prog->aux->ownership_lifetime_spill_loads == 1) {
+ 				if (next.lifetime_spill.kind !=
+-				    BPF_CHERI_RINGBUF_VALUE)
++				    (bpf_gate4_kfunc_mode(prog) ?
++				     BPF_CHERI_KFUNC_VALUE :
++				     BPF_CHERI_RINGBUF_VALUE))
+ 					goto reject;
+ 				*dst = next.lifetime_spill;
+ 				observed_roots |= BPF_JIT_ROOT_STACK;
+@@ -2231,6 +2653,9 @@ static int bpf_cheri_build_authority(const struct bpf_prog *prog,
+ 				observed_roots |= BPF_JIT_ROOT_STACK;
+ 			else if (source.kind == BPF_CHERI_CONTEXT)
+ 				observed_roots |= BPF_JIT_ROOT_CONTEXT;
++			else if (bpf_gate4_kfunc_mode(prog) &&
++				 source.kind == BPF_CHERI_KFUNC_VALUE)
++				observed_roots |= BPF_JIT_ROOT_OTHER;
+ 			else
+ 				observed_roots |= BPF_JIT_ROOT_MAP_VALUE;
+ 			bpf_cheri_set_scalar(dst, false, 0);
+@@ -2248,7 +2673,10 @@ static int bpf_cheri_build_authority(const struct bpf_prog *prog,
+ 			    insn->dst_reg == BPF_REG_FP && insn->off == -8 &&
+ 			    prog->aux->ownership_lifetime_spill_stores == 1) {
+ 				source = next.regs[insn->src_reg];
+-				if (source.kind != BPF_CHERI_RINGBUF_VALUE)
++				if (source.kind !=
++				    (bpf_gate4_kfunc_mode(prog) ?
++				     BPF_CHERI_KFUNC_VALUE :
++				     BPF_CHERI_RINGBUF_VALUE))
+ 					goto reject;
+ 				next.lifetime_spill = source;
+ 				observed_roots |= BPF_JIT_ROOT_STACK;
+@@ -2272,9 +2700,28 @@ static int bpf_cheri_build_authority(const struct bpf_prog *prog,
+ 				const struct bpf_cheri_reg_state *arg1;
+ 				u32 reg;
+ 
+-				helper_operation = bpf_cheri_helper_call(prog, insn);
++				helper_operation = bpf_cheri_gate4_call(
++					prog, insn, index, NULL, NULL);
++				if (helper_operation == BPF_CHERI_HELPER_INVALID)
++					helper_operation = bpf_cheri_helper_call(prog, insn);
+ 				arg1 = &next.regs[BPF_REG_1];
+ 				switch (helper_operation) {
++				case BPF_CHERI_HELPER_GATE4_ACQUIRE_A:
++				case BPF_CHERI_HELPER_GATE4_ACQUIRE_B:
++				case BPF_CHERI_HELPER_GATE4_ACQUIRE_DIRECT:
++					if (arg1->kind != BPF_CHERI_STACK)
++						goto reject;
++					break;
++				case BPF_CHERI_HELPER_GATE4_RELEASE_A:
++					if (arg1->kind != BPF_CHERI_KFUNC_VALUE ||
++					    arg1->acquisition != 1)
++						goto reject;
++					break;
++				case BPF_CHERI_HELPER_GATE4_RELEASE_B:
++					if (arg1->kind != BPF_CHERI_KFUNC_VALUE ||
++					    arg1->acquisition != 2)
++						goto reject;
++					break;
+ 				case BPF_CHERI_HELPER_MAP_LOOKUP:
+ 					if (arg1->kind != BPF_CHERI_MAP_TOKEN ||
+ 					    !arg1->known ||
+@@ -2311,11 +2758,21 @@ static int bpf_cheri_build_authority(const struct bpf_prog *prog,
+ 				default:
+ 					goto reject;
+ 				}
+-				for (reg = BPF_REG_1; reg <= BPF_REG_5; reg++)
++				for (reg = BPF_REG_1; reg <= BPF_REG_5; reg++) {
+ 					next.regs[reg].kind = BPF_CHERI_UNINIT;
++					next.regs[reg].acquisition = 0;
++				}
+ 				if (helper_operation == BPF_CHERI_HELPER_MAP_LOOKUP)
+ 					next.regs[BPF_REG_0].kind =
+ 						BPF_CHERI_MAP_VALUE | BPF_CHERI_NULL;
++				else if (helper_operation ==
++					 BPF_CHERI_HELPER_GATE4_ACQUIRE_A ||
++					 helper_operation ==
++					 BPF_CHERI_HELPER_GATE4_ACQUIRE_B ||
++					 helper_operation ==
++					 BPF_CHERI_HELPER_GATE4_ACQUIRE_DIRECT)
++					next.regs[BPF_REG_0].kind =
++						BPF_CHERI_KFUNC_VALUE | BPF_CHERI_NULL;
+ 				else if (helper_operation ==
+ 					 BPF_CHERI_HELPER_RINGBUF_RESERVE ||
+ 					 helper_operation ==
+@@ -2324,6 +2781,16 @@ static int bpf_cheri_build_authority(const struct bpf_prog *prog,
+ 						BPF_CHERI_RINGBUF_VALUE | BPF_CHERI_NULL;
+ 				else
+ 					next.regs[BPF_REG_0].kind = BPF_CHERI_UNINIT;
++				if (helper_operation ==
++				    BPF_CHERI_HELPER_GATE4_ACQUIRE_B)
++					next.regs[BPF_REG_0].acquisition = 2;
++				else if (helper_operation ==
++					 BPF_CHERI_HELPER_GATE4_ACQUIRE_A ||
++					 helper_operation ==
++					 BPF_CHERI_HELPER_GATE4_ACQUIRE_DIRECT)
++					next.regs[BPF_REG_0].acquisition = 1;
++				else
++					next.regs[BPF_REG_0].acquisition = 0;
+ 				next.regs[BPF_REG_0].known = false;
+ 				goto propagate_next;
+ 			}
+@@ -2340,7 +2807,7 @@ static int bpf_cheri_build_authority(const struct bpf_prog *prog,
+ 				struct bpf_cheri_state taken = next;
+ 				struct bpf_cheri_state fall_state = next;
+ 				struct bpf_cheri_reg_state comparison = source;
+-				u8 nullable_kind =
++				u16 nullable_kind =
+ 					next.regs[insn->dst_reg].kind & ~BPF_CHERI_NULL;
+ 				s32 target = index + 1 + insn->off;
+ 				bool compare_zero;
+@@ -2366,6 +2833,7 @@ static int bpf_cheri_build_authority(const struct bpf_prog *prog,
+ 						&fall_state.regs[insn->dst_reg] :
+ 						&taken.regs[insn->dst_reg];
+ 					equal_reg->kind = BPF_CHERI_NULL;
++					equal_reg->acquisition = 0;
+ 					equal_reg->known = true;
+ 					equal_reg->value = 0;
+ 					nonnull_reg->kind = nullable_kind;
+@@ -2403,6 +2871,8 @@ static int bpf_cheri_build_authority(const struct bpf_prog *prog,
+ int bpf_jit_validate_prog(const struct bpf_prog *prog)
+ {
+ 	struct bpf_cheri_state *states;
++	u32 allowed_roots = BPF_JIT_ROOT_STACK | BPF_JIT_ROOT_CONTEXT |
++		BPF_JIT_ROOT_MAP_VALUE;
+ 	int error;
+ 	u32 index;
+ 
+@@ -2416,9 +2886,10 @@ int bpf_jit_validate_prog(const struct bpf_prog *prog)
+ 	    (!IS_ENABLED(CONFIG_CAPEBPF_SPATIAL_OFFLOAD) ||
+ 	     !prog->aux->spatial_bounds_offload_accesses))
+ 		return -EOPNOTSUPP;
+-	if ((prog->aux->jit_memory_roots &
+-	     ~(BPF_JIT_ROOT_STACK | BPF_JIT_ROOT_CONTEXT |
+-	       BPF_JIT_ROOT_MAP_VALUE)) ||
++	if (bpf_gate4_kfunc_mode(prog) && prog->aux->gate4_kfunc_contract &&
++	    prog->aux->gate4_kfunc_contract->valid)
++		allowed_roots |= BPF_JIT_ROOT_OTHER;
++	if ((prog->aux->jit_memory_roots & ~allowed_roots) ||
+ 	    (prog->aux->jit_memory_roots & BPF_JIT_ROOT_CONTEXT &&
+ 	     prog->type != BPF_PROG_TYPE_SOCKET_FILTER) ||
+ 	    prog->aux->used_map_cnt > 2 || prog->aux->func_cnt ||
+@@ -2560,7 +3031,8 @@ static int add_exception_handler(const struct bpf_insn *insn,
+ 	 * isn't part of the main exception table.
+ 	 */
+ 	if (cheri_bounded_access) {
+-		dst_reg = bpf2a64[BPF_REG_0];
++		if (!bpf_gate4_kfunc_mode(ctx->prog))
++			dst_reg = bpf2a64[BPF_REG_0];
+ 		fixup = (unsigned long)&ctx->image[ctx->epilogue_offset];
+ 	} else {
+ 		fixup = pc + AARCH64_INSN_SIZE;
+@@ -2598,7 +3070,7 @@ static int build_insn(const struct bpf_insn *insn, struct jit_ctx *ctx,
+ 	const s32 imm = insn->imm;
+ 	const int i = insn - ctx->prog->insnsi;
+ 	const struct bpf_cheri_state *authority = &ctx->authority[i];
+-	const u8 dst_kind = authority->regs[insn->dst_reg].kind;
++	const u16 dst_kind = authority->regs[insn->dst_reg].kind;
+ 	const bool is64 = BPF_CLASS(code) == BPF_ALU64 ||
+ 			  BPF_CLASS(code) == BPF_JMP;
+ 	u8 jmp_cond;
+@@ -2961,6 +3433,7 @@ static int build_insn(const struct bpf_insn *insn, struct jit_ctx *ctx,
+ 	{
+ 		const u8 r0 = bpf2a64[BPF_REG_0];
+ 		enum bpf_cheri_helper_operation helper_operation;
++		enum bpf_cheri_helper_operation gate4_operation;
+ 		bool func_addr_fixed;
+ 		u64 func_addr;
+ 
+@@ -2968,6 +3441,28 @@ static int build_insn(const struct bpf_insn *insn, struct jit_ctx *ctx,
+ 					    &func_addr, &func_addr_fixed);
+ 		if (ret < 0)
+ 			return ret;
++		gate4_operation = bpf_cheri_gate4_call(ctx->prog, insn, i,
++							     &func_addr, NULL);
++		if (gate4_operation == BPF_CHERI_HELPER_GATE4_ACQUIRE_A ||
++		    gate4_operation == BPF_CHERI_HELPER_GATE4_ACQUIRE_B ||
++		    gate4_operation == BPF_CHERI_HELPER_GATE4_ACQUIRE_DIRECT) {
++			emit_gate4_acquire(gate4_operation, func_addr, ctx);
++			break;
++		}
++		if (gate4_operation == BPF_CHERI_HELPER_GATE4_RELEASE_A ||
++		    gate4_operation == BPF_CHERI_HELPER_GATE4_RELEASE_B) {
++			emit_gate4_release(gate4_operation, func_addr,
++				ctx->prog->aux->ownership_lifetime_mode ==
++					BPF_OWNERSHIP_LIFETIME_G4_DIRECT,
++				ctx);
++			if (ctx->prog->aux->ownership_lifetime_mode ==
++			    BPF_OWNERSHIP_LIFETIME_G4_DOUBLE)
++				emit_gate4_release(gate4_operation, func_addr,
++						   false, ctx);
++			break;
++		}
++		if (bpf_gate4_kfunc_mode(ctx->prog))
++			return -EINVAL;
+ 		helper_operation = bpf_cheri_helper_call(ctx->prog, insn);
+ 		if (helper_operation != BPF_CHERI_HELPER_INVALID) {
+ 			if (helper_operation ==
+@@ -3090,7 +3585,9 @@ static int build_insn(const struct bpf_insn *insn, struct jit_ctx *ctx,
+ 			}
+ 			if (bpf_ownership_lifetime_cell_mode(ctx->prog) &&
+ 			    authority->regs[insn->src_reg].kind ==
+-				    BPF_CHERI_RINGBUF_VALUE) {
++				    (bpf_gate4_kfunc_mode(ctx->prog) ?
++				     BPF_CHERI_KFUNC_VALUE :
++				     BPF_CHERI_RINGBUF_VALUE)) {
+ 				int memory_index;
+ 
+ 				if (off)
+@@ -3325,7 +3822,9 @@ static int build_insn(const struct bpf_insn *insn, struct jit_ctx *ctx,
+ 				return -EINVAL;
+ 			}
+ 			if (bpf_ownership_lifetime_cell_mode(ctx->prog) &&
+-			    dst_kind == BPF_CHERI_RINGBUF_VALUE) {
++			    dst_kind == (bpf_gate4_kfunc_mode(ctx->prog) ?
++					 BPF_CHERI_KFUNC_VALUE :
++					 BPF_CHERI_RINGBUF_VALUE)) {
+ 				int memory_index;
+ 
+ 				if (off)
+@@ -3590,6 +4089,7 @@ struct bpf_cheri_certificate_stats {
+ 	u32 context;
+ 	u32 map;
+ 	u32 ringbuf;
++	u32 kfunc;
+ 	u32 copies;
+ 	u32 pointer_arithmetic;
+ 	u32 helpers;
+@@ -3693,7 +4193,7 @@ validate_cheri_authority_encoding(const struct jit_ctx *ctx, u32 bpf_index,
+ 	u8 dst = bpf2a64[insn->dst_reg];
+ 	u8 src = bpf2a64[insn->src_reg];
+ 	u8 tmp = bpf2a64[TMP_REG_1];
+-	u8 dst_kind = state->regs[insn->dst_reg].kind;
++	u16 dst_kind = state->regs[insn->dst_reg].kind;
+ 	u32 expected[4];
+ 
+ 	if (code == (BPF_ALU64 | BPF_MOV | BPF_X) && !insn->off) {
+@@ -3944,6 +4444,163 @@ static int validate_cheri_memory_encoding(const struct jit_ctx *ctx,
+ 	}
+ }
+ 
++static void gate4_expected_addr_mov(u32 *expected, u8 reg, u64 target)
++{
++	expected[0] = A64_MOVN(1, reg, ~target & 0xffff, 0);
++	target >>= 16;
++	expected[1] = A64_MOVK(1, reg, target & 0xffff, 16);
++	target >>= 16;
++	expected[2] = A64_MOVK(1, reg, target & 0xffff, 32);
++}
++
++static void gate4_expected_release(u32 *expected,
++		enum bpf_cheri_helper_operation operation, u64 target, bool direct)
++{
++	u8 public_root = direct ?
++		(operation == BPF_CHERI_HELPER_GATE4_RELEASE_B ?
++		 BPF_GATE4_SECOND_CELL_CAP_REG : BPF_LIFETIME_CURRENT_CAP_REG) :
++		bpf2a64[BPF_REG_1];
++	u8 private_root = operation == BPF_CHERI_HELPER_GATE4_RELEASE_B ?
++		BPF_GATE4_SECOND_CELL_CAP_REG : BPF_LIFETIME_CURRENT_CAP_REG;
++	u8 r0 = bpf2a64[BPF_REG_0];
++	u8 public_tag = bpf2a64[TMP_REG_1];
++	u8 private_tag = bpf2a64[TMP_REG_2];
++
++	expected[0] = A64_MOVZ(1, r0, 0, 0);
++	expected[1] = CHERI_CAP_GCTAG | (public_root << 5) | public_tag;
++	expected[2] = CHERI_CAP_GCTAG | (private_root << 5) | private_tag;
++	expected[3] = A64_CBZ(1, public_tag, 21);
++	expected[4] = A64_CBZ(1, private_tag, 20);
++	expected[5] = CHERI_CAP_GCVALUE | (public_root << 5) | public_tag;
++	expected[6] = CHERI_CAP_GCVALUE | (private_root << 5) | private_tag;
++	expected[7] = A64_CMP(1, public_tag, private_tag);
++	expected[8] = A64_B_(A64_COND_NE, 16);
++	expected[9] = CHERI_CAP_CBASE_LDR | (private_root << 5) |
++		BPF_LIFETIME_TRANSIENT_CAP_REG;
++	expected[10] = CHERI_CAP_GCTAG |
++		(BPF_LIFETIME_TRANSIENT_CAP_REG << 5) | public_tag;
++	expected[11] = CHERI_CAP_GCVALUE |
++		(BPF_LIFETIME_TRANSIENT_CAP_REG << 5) | private_tag;
++	expected[12] = A64_MOVZ(1, BPF_LIFETIME_TRANSIENT_CAP_REG, 0, 0);
++	expected[13] = A64_CBZ(1, public_tag, 11);
++	expected[14] = CHERI_LS_STRX | (private_root << 5) | A64_ZR;
++	expected[15] = A64_MOVZ(1, private_root, 0, 0);
++	expected[16] = A64_MOV(1, A64_R(0), private_tag);
++	gate4_expected_addr_mov(&expected[17], A64_R(5), target);
++	expected[20] = A64_MOVZ(1, A64_R(4), operation, 0);
++	expected[21] = CHERI_CAP_MOV | (A64_LR << 5) | A64_R(13);
++	expected[22] = CHERI_BLRS | (BPF_HELPER_GATE_CAP_REG << 5);
++	expected[23] = A64_MOVZ(1, r0, 0, 0);
++}
++
++static int validate_gate4_kfunc_encoding(
++		const struct jit_ctx *ctx, u32 bpf_index,
++		struct bpf_cheri_certificate_stats *stats)
++{
++	const struct bpf_insn *insn = &ctx->prog->insnsi[bpf_index];
++	const struct bpf_cheri_state *state = &ctx->authority[bpf_index];
++	const struct bpf_gate4_kfunc_call *call = NULL;
++	enum bpf_cheri_helper_operation operation;
++	u32 expected[48];
++	u64 target = 0;
++	u8 dst = bpf2a64[insn->dst_reg];
++	u8 src = bpf2a64[insn->src_reg];
++	u8 r0 = bpf2a64[BPF_REG_0];
++
++	if (!bpf_gate4_kfunc_mode(ctx->prog))
++		return 0;
++
++	if (insn->code == (BPF_STX | BPF_MEM | BPF_DW) &&
++	    insn->dst_reg == BPF_REG_FP && insn->off == -8) {
++		expected[0] = CHERI_CAP_CBASE_STR |
++			(BPF_LIFETIME_SIDECAR_CAP_REG << 5) | src;
++		if (validate_exact_native_range(ctx, bpf_index, expected, 1))
++			return -EINVAL;
++		stats->memory++;
++		stats->stack++;
++		stats->lifetime_spill_store++;
++		return 1;
++	}
++	if (insn->code == (BPF_LDX | BPF_MEM | BPF_DW) &&
++	    insn->src_reg == BPF_REG_FP && insn->off == -8) {
++		expected[0] = CHERI_CAP_CBASE_LDR |
++			(BPF_LIFETIME_SIDECAR_CAP_REG << 5) | dst;
++		if (validate_exact_native_range(ctx, bpf_index, expected, 1))
++			return -EINVAL;
++		stats->memory++;
++		stats->stack++;
++		stats->lifetime_spill_load++;
++		return 1;
++	}
++	if (bpf_ownership_lifetime_cell_mode(ctx->prog) &&
++	    BPF_CLASS(insn->code) == BPF_LDX &&
++	    state->regs[insn->src_reg].kind == BPF_CHERI_KFUNC_VALUE) {
++		u32 memory_operation;
++		u8 rt, root, cap_tmp;
++
++		if (insn->off || expected_cheri_memory_encoding(insn, ctx,
++				&memory_operation, &rt, &root, &cap_tmp) != 1)
++			return -EINVAL;
++		expected[0] = CHERI_CAP_CBASE_LDR | (src << 5) |
++			BPF_LIFETIME_TRANSIENT_CAP_REG;
++		expected[1] = memory_operation |
++			(BPF_LIFETIME_TRANSIENT_CAP_REG << 5) | rt;
++		expected[2] = A64_MOVZ(1, BPF_LIFETIME_TRANSIENT_CAP_REG, 0, 0);
++		if (validate_exact_native_range(ctx, bpf_index, expected, 3))
++			return -EINVAL;
++		stats->memory++;
++		stats->kfunc++;
++		stats->lifetime_resolve++;
++		return 1;
++	}
++	if (insn->code != (BPF_JMP | BPF_CALL))
++		return 0;
++
++	operation = bpf_cheri_gate4_call(ctx->prog, insn, bpf_index,
++					  &target, &call);
++	if (operation == BPF_CHERI_HELPER_INVALID || !call ||
++	    call->object_btf_size != BPF_GATE4_OBJECT_SIZE)
++		return -EINVAL;
++	if (operation == BPF_CHERI_HELPER_GATE4_ACQUIRE_A ||
++	    operation == BPF_CHERI_HELPER_GATE4_ACQUIRE_B ||
++	    operation == BPF_CHERI_HELPER_GATE4_ACQUIRE_DIRECT) {
++		if (call->effect != BPF_GATE4_KFUNC_EFFECT_ACQUIRE ||
++		    call->kfunc_flags != (KF_ACQUIRE | KF_RET_NULL) ||
++		    call->owner_kind != BPF_GATE4_KFUNC_OWNER_MODULE ||
++		    strcmp(call->owner_name, "bpf_testmod"))
++			return -EINVAL;
++		gate4_expected_addr_mov(expected, A64_R(5), target);
++		expected[3] = A64_MOVZ(1, A64_R(4), operation, 0);
++		expected[4] = CHERI_CAP_MOV | (A64_LR << 5) | A64_R(13);
++		expected[5] = CHERI_BLRS | (BPF_HELPER_GATE_CAP_REG << 5);
++		expected[6] = CHERI_CAP_MOV | (A64_R(0) << 5) | r0;
++		if (validate_exact_native_range(ctx, bpf_index, expected, 7))
++			return -EINVAL;
++		stats->helpers++;
++		return 1;
++	}
++
++	if (call->effect != BPF_GATE4_KFUNC_EFFECT_RELEASE ||
++	    call->kfunc_flags != KF_RELEASE ||
++	    call->owner_kind != BPF_GATE4_KFUNC_OWNER_VMLINUX ||
++	    strcmp(call->owner_name, "vmlinux"))
++		return -EINVAL;
++	gate4_expected_release(expected, operation, target,
++		ctx->prog->aux->ownership_lifetime_mode ==
++			BPF_OWNERSHIP_LIFETIME_G4_DIRECT);
++	if (ctx->prog->aux->ownership_lifetime_mode ==
++	    BPF_OWNERSHIP_LIFETIME_G4_DOUBLE) {
++		gate4_expected_release(&expected[24], operation, target, false);
++		if (validate_exact_native_range(ctx, bpf_index, expected, 48))
++			return -EINVAL;
++	} else if (validate_exact_native_range(ctx, bpf_index, expected, 24)) {
++		return -EINVAL;
++	}
++	stats->helpers++;
++	stats->lifetime_consume++;
++	return 1;
++}
++
+ static int validate_ownership_lifetime_encoding(
+ 		const struct jit_ctx *ctx, u32 bpf_index,
+ 		struct bpf_cheri_certificate_stats *stats)
+@@ -3959,6 +4616,8 @@ static int validate_ownership_lifetime_encoding(
+ 	u8 address = bpf2a64[TMP_REG_2];
+ 	u8 r0 = bpf2a64[BPF_REG_0];
+ 
++	if (bpf_gate4_kfunc_mode(ctx->prog))
++		return validate_gate4_kfunc_encoding(ctx, bpf_index, stats);
+ 	if (!bpf_ownership_lifetime_cell_mode(ctx->prog))
+ 		return 0;
+ 	if (insn->code == (BPF_STX | BPF_MEM | BPF_DW) &&
+@@ -4290,7 +4949,7 @@ static int validate_emitted_authority(struct jit_ctx *ctx)
+ 		{
+ 			u8 authority_reg = BPF_CLASS(insn->code) == BPF_LDX ?
+ 				insn->src_reg : insn->dst_reg;
+-			u8 kind = ctx->authority[bpf_index].regs[authority_reg].kind;
++			u16 kind = ctx->authority[bpf_index].regs[authority_reg].kind;
+ 
+ 			if (kind == BPF_CHERI_STACK)
+ 				stats.stack++;
+@@ -4300,15 +4959,18 @@ static int validate_emitted_authority(struct jit_ctx *ctx)
+ 				stats.map++;
+ 			else if (kind & BPF_CHERI_RINGBUF_VALUE)
+ 				stats.ringbuf++;
++			else if (kind & BPF_CHERI_KFUNC_VALUE)
++				stats.kfunc++;
+ 			else
+ 				goto reject;
+ 		}
+ 	}
+ 
+ 	if (bpf_cheri_test_certificate_report)
+-		pr_info("authority certificate accepted program %s memory=%u stack=%u context=%u map=%u ringbuf=%u copies=%u pointer_arithmetic=%u helpers=%u map_lookup=%u ringbuf_reserve=%u ringbuf_submit=%u ringbuf_discard=%u lifetime_spill_store=%u lifetime_spill_load=%u lifetime_resolve=%u lifetime_consume=%u\n",
++		pr_info("authority certificate accepted program %s memory=%u stack=%u context=%u map=%u ringbuf=%u kfunc=%u copies=%u pointer_arithmetic=%u helpers=%u map_lookup=%u ringbuf_reserve=%u ringbuf_submit=%u ringbuf_discard=%u lifetime_spill_store=%u lifetime_spill_load=%u lifetime_resolve=%u lifetime_consume=%u\n",
+ 			ctx->prog->aux->name, stats.memory, stats.stack,
+-			stats.context, stats.map, stats.ringbuf, stats.copies,
++			stats.context, stats.map, stats.ringbuf, stats.kfunc,
++			stats.copies,
+ 			stats.pointer_arithmetic, stats.helpers,
+ 			stats.map_lookup, stats.ringbuf_reserve,
+ 			stats.ringbuf_submit, stats.ringbuf_discard,
+@@ -4332,6 +4994,113 @@ static void inject_test_jit_certificate_corruption(struct jit_ctx *ctx)
+ 		mode = bpf_cheri_test_certificate_mutation;
+ 	if (!mode && IS_ENABLED(CONFIG_CAPEBPF_TEST_JIT_CERTIFICATE_CORRUPTION))
+ 		mode = 1;
++	if (mode >= 24 && mode <= 35) {
++		struct bpf_gate4_kfunc_contract *contract =
++			ctx->prog->aux->gate4_kfunc_contract;
++		int acquire = ctx->offset[3];
++		int release = ctx->offset[10];
++		int native_index = -1;
++		const char *mutation = NULL;
++
++		if (ctx->prog->aux->ownership_lifetime_mode !=
++		    BPF_OWNERSHIP_LIFETIME_G4_VALID ||
++		    strcmp(ctx->prog->aux->name, "g4_valid") || !contract ||
++		    contract->nr_calls != 2)
++			return;
++		switch (mode) {
++		case 24: {
++			u32 instruction;
++
++			native_index = ctx->offset[6];
++			instruction = le32_to_cpu(ctx->image[native_index]);
++			instruction &= ~GENMASK(9, 5);
++			instruction |= BPF_GATE_STACK_CAP_REG << 5;
++			ctx->image[native_index] = cpu_to_le32(instruction);
++			mutation = "M01-wrong-private-sidecar-root";
++			break;
++		}
++		case 25:
++			native_index = ctx->offset[9] - 1;
++			ctx->image[native_index] = cpu_to_le32(A64_NOP);
++			mutation = "M02-missing-transient-object-clear";
++			break;
++		case 26:
++			native_index = release + 14;
++			ctx->image[native_index] = cpu_to_le32(A64_NOP);
++			mutation = "M03-missing-cell-clear";
++			break;
++		case 27: {
++			__le32 clear[2] = {
++				ctx->image[release + 14],
++				ctx->image[release + 15],
++			};
++
++			memmove(&ctx->image[release + 14],
++				&ctx->image[release + 16], 7 * sizeof(__le32));
++			ctx->image[release + 21] = clear[0];
++			ctx->image[release + 22] = clear[1];
++			native_index = release + 14;
++			mutation = "M04-release-effect-before-cell-clear";
++			break;
++		}
++		case 28:
++			native_index = release + 20;
++			ctx->image[native_index] = cpu_to_le32(A64_MOVZ(
++				1, A64_R(4), BPF_CHERI_HELPER_GATE4_RELEASE_B, 0));
++			mutation = "M05-wrong-release-selector";
++			break;
++		case 29:
++			for (native_index = ctx->epilogue_offset;
++			     native_index < ctx->ret_clr_offset; native_index++)
++				if (le32_to_cpu(ctx->image[native_index]) ==
++				    A64_MOVZ(1, BPF_LIFETIME_CURRENT_CAP_REG, 0, 0))
++					break;
++			if (native_index >= ctx->ret_clr_offset) {
++				WARN_ON_ONCE(1);
++				return;
++			}
++			ctx->image[native_index] = cpu_to_le32(A64_NOP);
++			mutation = "M06-retained-private-cell-capability";
++			break;
++		case 30:
++			native_index = acquire;
++			ctx->image[native_index] = cpu_to_le32(
++				le32_to_cpu(ctx->image[native_index]) ^ BIT(5));
++			mutation = "M07-wrong-acquire-target";
++			break;
++		case 31:
++			native_index = release + 17;
++			ctx->image[native_index] = cpu_to_le32(
++				le32_to_cpu(ctx->image[native_index]) ^ BIT(5));
++			mutation = "M08-wrong-release-target";
++			break;
++		case 32:
++			contract->calls[0].function_btf_id++;
++			native_index = acquire;
++			mutation = "M09-wrong-BTF-identity";
++			break;
++		case 33:
++			contract->calls[0].kfunc_flags ^= KF_RET_NULL;
++			native_index = acquire;
++			mutation = "M10-wrong-effect-flags";
++			break;
++		case 34:
++			contract->calls[1].release_binding = 2;
++			native_index = release;
++			mutation = "M11-wrong-acquisition-binding";
++			break;
++		case 35:
++			native_index = acquire + 3;
++			ctx->image[native_index] = cpu_to_le32(A64_MOVZ(
++				1, A64_R(4),
++				BPF_CHERI_HELPER_GATE4_ACQUIRE_DIRECT, 0));
++			mutation = "M12-direct-object-escape";
++			break;
++		}
++		pr_warn("Gate-4 checker mutation program=%s mode=%u native=%d mutation=%s expected=checker-reject\n",
++			ctx->prog->aux->name, mode, native_index, mutation);
++		return;
++	}
+ 	if (mode >= 18 && mode <= 23) {
+ 		int release = ctx->offset[14];
+ 		int native_index = -1;
+@@ -4531,7 +5300,7 @@ static void inject_test_jit_certificate_corruption(struct jit_ctx *ctx)
+ 		const struct bpf_insn *insn = &ctx->prog->insnsi[bpf_index];
+ 		const struct bpf_cheri_state *state =
+ 			&ctx->authority[bpf_index];
+-		u8 kind;
++		u16 kind;
+ 
+ 		if (BPF_CLASS(insn->code) == BPF_LDX)
+ 			kind = state->regs[insn->src_reg].kind;
+diff --git a/include/linux/bpf.h b/include/linux/bpf.h
+index 1d226a256..cf338a026 100644
+--- a/include/linux/bpf.h
++++ b/include/linux/bpf.h
+@@ -1414,6 +1414,53 @@ struct bpf_kfunc_desc_tab;
+ #define BPF_OWNERSHIP_LIFETIME_STALE_REG	2
+ #define BPF_OWNERSHIP_LIFETIME_STALE_SPILL	3
+ #define BPF_OWNERSHIP_LIFETIME_DIRECT		4
++#define BPF_OWNERSHIP_LIFETIME_G4_VALID		5
++#define BPF_OWNERSHIP_LIFETIME_G4_STALE_REG	6
++#define BPF_OWNERSHIP_LIFETIME_G4_STALE_SPILL	7
++#define BPF_OWNERSHIP_LIFETIME_G4_DIRECT		8
++#define BPF_OWNERSHIP_LIFETIME_G4_INDEPENDENT	9
++#define BPF_OWNERSHIP_LIFETIME_G4_DOUBLE		10
++
++#define BPF_GATE4_MAX_KFUNC_CALLS	4
++
++enum bpf_gate4_kfunc_owner {
++	BPF_GATE4_KFUNC_OWNER_NONE,
++	BPF_GATE4_KFUNC_OWNER_VMLINUX,
++	BPF_GATE4_KFUNC_OWNER_MODULE,
++};
++
++enum bpf_gate4_kfunc_effect {
++	BPF_GATE4_KFUNC_EFFECT_NONE,
++	BPF_GATE4_KFUNC_EFFECT_ACQUIRE,
++	BPF_GATE4_KFUNC_EFFECT_RELEASE,
++};
++
++/* Identity is immutable; only source_call_index has a validated JIT rebind. */
++struct bpf_gate4_kfunc_call {
++	struct btf_func_model func_model;
++	unsigned long resolved_target;
++	u32 source_call_index;
++	u32 original_call_index;
++	u32 btf_object_id;
++	u32 function_btf_id;
++	u32 object_btf_id;
++	u32 object_btf_size;
++	u32 kfunc_flags;
++	u32 verifier_ref_obj_id;
++	u8 owner_kind;
++	u8 effect;
++	u8 acquisition_ordinal;
++	u8 release_binding;
++	char owner_name[MODULE_NAME_LEN];
++};
++
++struct bpf_gate4_kfunc_contract {
++	u8 nr_calls;
++	u8 nr_acquires;
++	u8 nr_releases;
++	bool valid;
++	struct bpf_gate4_kfunc_call calls[BPF_GATE4_MAX_KFUNC_CALLS];
++};
+ 
+ struct bpf_prog_aux {
+ 	atomic64_t refcnt;
+@@ -1468,6 +1515,7 @@ struct bpf_prog_aux {
+ 	struct bpf_jit_poke_descriptor *poke_tab;
+ 	struct bpf_kfunc_desc_tab *kfunc_tab;
+ 	struct bpf_kfunc_btf_tab *kfunc_btf_tab;
++	struct bpf_gate4_kfunc_contract *gate4_kfunc_contract;
+ 	u32 size_poke_tab;
+ 	struct bpf_ksym ksym;
+ 	const struct bpf_prog_ops *ops;
+@@ -2486,6 +2534,11 @@ bool bpf_prog_has_kfunc_call(const struct bpf_prog *prog);
+ const struct btf_func_model *
+ bpf_jit_find_kfunc_model(const struct bpf_prog *prog,
+ 			 const struct bpf_insn *insn);
++const struct bpf_gate4_kfunc_call *
++bpf_jit_find_gate4_kfunc_call(const struct bpf_prog *prog,
++			      const struct bpf_insn *insn, u32 insn_idx);
++int bpf_jit_update_gate4_kfunc_call_index(struct bpf_prog *prog,
++					 u32 original_idx, u32 new_idx);
+ int bpf_get_kfunc_addr(const struct bpf_prog *prog, u32 func_id,
+ 		       u16 btf_fd_idx, u8 **func_addr);
+ 
+@@ -2742,6 +2795,20 @@ bpf_jit_find_kfunc_model(const struct bpf_prog *prog,
+ 	return NULL;
+ }
+ 
++static inline const struct bpf_gate4_kfunc_call *
++bpf_jit_find_gate4_kfunc_call(const struct bpf_prog *prog,
++			      const struct bpf_insn *insn, u32 insn_idx)
++{
++	return NULL;
++}
++
++static inline int
++bpf_jit_update_gate4_kfunc_call_index(struct bpf_prog *prog,
++					 u32 original_idx, u32 new_idx)
++{
++	return -ENOTSUPP;
++}
++
+ static inline int
+ bpf_get_kfunc_addr(const struct bpf_prog *prog, u32 func_id,
+ 		   u16 btf_fd_idx, u8 **func_addr)
+diff --git a/include/linux/bpf_verifier.h b/include/linux/bpf_verifier.h
+index 0ac5acf94..becc576fe 100644
+--- a/include/linux/bpf_verifier.h
++++ b/include/linux/bpf_verifier.h
+@@ -517,6 +517,7 @@ struct bpf_insn_aux_data {
+ 	bool spatial_offset_offloaded; /* map pointer offset enforced by capability */
+ 	bool ownership_lifetime_spill; /* verified owning-reference spill */
+ 	bool ownership_lifetime_reload; /* verified owning-reference reload */
++	u32 gate4_ref_obj_id; /* exact-profile acquisition identity at this call */
+ 	u8 alu_state; /* used in combination with alu_limit */
+ 
+ 	/* below fields are initialized once */
+diff --git a/kernel/bpf/Kconfig b/kernel/bpf/Kconfig
+index 4866d91f0..7d9edc4eb 100644
+--- a/kernel/bpf/Kconfig
++++ b/kernel/bpf/Kconfig
+@@ -103,7 +103,7 @@ config CAPEBPF_TEST_JIT_CERTIFICATE_CORRUPTION
+ 
+ config CAPEBPF_TEST_JIT_CERTIFICATE_MUTATION
+ 	int "TEST ONLY: emitted BPF authority mutation"
+-	range 0 23
++	range 0 35
+ 	depends on CAPEBPF_SPATIAL_OFFLOAD && ARM64_MORELLO
+ 	default 0
+ 	help
+@@ -117,7 +117,9 @@ config CAPEBPF_TEST_JIT_CERTIFICATE_MUTATION
+ 	  replace one prologue, epilogue, or PLT word with a NOP to exercise the
+ 	  complete emitted-instruction envelope. Modes 18-23 mutate the exact
+ 	  ownership-lifetime sidecar, clear, ordering, gateway, and exit-scrub
+-	  templates. The authority
++	  templates. Modes 24-35 mutate the exact Gate-4 kfunc cell,
++	  resolve/use/clear, release-ordering, target, BTF/effect binding, and
++	  direct-capability exclusion templates. The authority
+ 	  certificate checker must reject every nonzero mode before the image can
+ 	  execute. This option is not suitable for production kernels.
+ 
+diff --git a/kernel/bpf/core.c b/kernel/bpf/core.c
+index 7169c66b6..f17676030 100644
+--- a/kernel/bpf/core.c
++++ b/kernel/bpf/core.c
+@@ -270,6 +270,7 @@ void __bpf_prog_free(struct bpf_prog *fp)
+ 		mutex_destroy(&fp->aux->used_maps_mutex);
+ 		mutex_destroy(&fp->aux->dst_mutex);
+ 		kfree(fp->aux->poke_tab);
++		kfree(fp->aux->gate4_kfunc_contract);
+ 		kfree(fp->aux);
+ 	}
+ 	free_percpu(fp->stats);
+diff --git a/kernel/bpf/verifier.c b/kernel/bpf/verifier.c
+index 150f2309f..cbff6ae63 100644
+--- a/kernel/bpf/verifier.c
++++ b/kernel/bpf/verifier.c
+@@ -265,6 +265,27 @@ static bool bpf_pseudo_kfunc_call(const struct bpf_insn *insn)
+ 	       insn->src_reg == BPF_PSEUDO_KFUNC_CALL;
+ }
+ 
++static u8 bpf_gate4_mode_from_name(const struct bpf_prog *prog)
++{
++	const char *name = prog->aux->name;
++
++	if (!IS_ENABLED(CONFIG_CAPEBPF_TEST_OWNERSHIP_LIFETIME))
++		return BPF_OWNERSHIP_LIFETIME_NONE;
++	if (!strcmp(name, "g4_valid") || !strcmp(name, "g4_btf_valid"))
++		return BPF_OWNERSHIP_LIFETIME_G4_VALID;
++	if (!strcmp(name, "g4_stale_r"))
++		return BPF_OWNERSHIP_LIFETIME_G4_STALE_REG;
++	if (!strcmp(name, "g4_stale_s"))
++		return BPF_OWNERSHIP_LIFETIME_G4_STALE_SPILL;
++	if (!strcmp(name, "g4_direct"))
++		return BPF_OWNERSHIP_LIFETIME_G4_DIRECT;
++	if (!strcmp(name, "g4_independent"))
++		return BPF_OWNERSHIP_LIFETIME_G4_INDEPENDENT;
++	if (!strcmp(name, "g4_double"))
++		return BPF_OWNERSHIP_LIFETIME_G4_DOUBLE;
++	return BPF_OWNERSHIP_LIFETIME_NONE;
++}
++
+ struct bpf_call_arg_meta {
+ 	struct bpf_map *map_ptr;
+ 	bool raw_mode;
+@@ -2784,9 +2805,16 @@ static int bpf_find_exception_callback_insn_off(struct bpf_verifier_env *env)
+ 
+ struct bpf_kfunc_desc {
+ 	struct btf_func_model func_model;
++	struct btf *btf;
++	const char *owner_name;
+ 	u32 func_id;
++	u32 btf_object_id;
++	u32 kfunc_flags;
++	u32 object_btf_id;
++	u32 object_btf_size;
+ 	s32 imm;
+ 	u16 offset;
++	u8 owner_kind;
+ 	unsigned long addr;
+ };
+ 
+@@ -2941,6 +2969,59 @@ static struct btf *find_kfunc_desc_btf(struct bpf_verifier_env *env, s16 offset)
+ 	return btf_vmlinux ?: ERR_PTR(-ENOENT);
+ }
+ 
++static const char *kfunc_btf_owner_name(struct bpf_verifier_env *env,
++					struct btf *btf, u16 offset,
++					u8 *owner_kind)
++{
++	struct bpf_kfunc_btf_tab *tab = env->prog->aux->kfunc_btf_tab;
++	u32 i;
++
++	if (btf == btf_vmlinux && !offset) {
++		*owner_kind = BPF_GATE4_KFUNC_OWNER_VMLINUX;
++		return "vmlinux";
++	}
++	if (!btf_is_module(btf) || !tab)
++		return NULL;
++	for (i = 0; i < tab->nr_descs; i++) {
++		if (tab->descs[i].offset != offset || tab->descs[i].btf != btf)
++			continue;
++		*owner_kind = BPF_GATE4_KFUNC_OWNER_MODULE;
++		return module_name(tab->descs[i].module);
++	}
++	return NULL;
++}
++
++static void kfunc_object_identity(struct btf *btf,
++				  const struct btf_type *func_proto, u32 flags,
++				  u32 *object_btf_id, u32 *object_btf_size)
++{
++	const struct btf_param *args;
++	const struct btf_type *t;
++	u32 type_id, size;
++
++	*object_btf_id = 0;
++	*object_btf_size = 0;
++	if (flags & KF_ACQUIRE) {
++		type_id = func_proto->type;
++	} else if (flags & KF_RELEASE) {
++		if (!btf_type_vlen(func_proto))
++			return;
++		args = btf_params(func_proto);
++		type_id = args[0].type;
++	} else {
++		return;
++	}
++
++	t = btf_type_skip_modifiers(btf, type_id, NULL);
++	if (!t || !btf_type_is_ptr(t))
++		return;
++	t = btf_type_skip_modifiers(btf, t->type, &type_id);
++	if (!t || IS_ERR(btf_resolve_size(btf, t, &size)))
++		return;
++	*object_btf_id = type_id;
++	*object_btf_size = size;
++}
++
+ static int add_kfunc_call(struct bpf_verifier_env *env, u32 func_id, s16 offset)
+ {
+ 	const struct btf_type *func, *func_proto;
+@@ -2952,6 +3033,7 @@ static int add_kfunc_call(struct bpf_verifier_env *env, u32 func_id, s16 offset)
+ 	struct btf *desc_btf;
+ 	unsigned long call_imm;
+ 	unsigned long addr;
++	u32 *kfunc_flags;
+ 	int err;
+ 
+ 	prog_aux = env->prog->aux;
+@@ -3055,10 +3137,19 @@ static int add_kfunc_call(struct bpf_verifier_env *env, u32 func_id, s16 offset)
+ 	}
+ 
+ 	desc = &tab->descs[tab->nr_descs++];
++	desc->btf = desc_btf;
++	desc->btf_object_id = btf_obj_id(desc_btf);
+ 	desc->func_id = func_id;
+ 	desc->imm = call_imm;
+ 	desc->offset = offset;
+ 	desc->addr = addr;
++	desc->owner_name = kfunc_btf_owner_name(env, desc_btf, offset,
++						 &desc->owner_kind);
++	kfunc_flags = btf_kfunc_id_set_contains(desc_btf, func_id, env->prog);
++	if (kfunc_flags)
++		desc->kfunc_flags = *kfunc_flags;
++	kfunc_object_identity(desc_btf, func_proto, desc->kfunc_flags,
++			      &desc->object_btf_id, &desc->object_btf_size);
+ 	err = btf_distill_func_proto(&env->log, desc_btf,
+ 				     func_proto, func_name,
+ 				     &desc->func_model);
+@@ -3115,6 +3206,96 @@ bpf_jit_find_kfunc_model(const struct bpf_prog *prog,
+ 	return res ? &res->func_model : NULL;
+ }
+ 
++static bool gate4_contract_call_matches_desc(
++		const struct bpf_prog *prog,
++		const struct bpf_gate4_kfunc_call *call,
++		const struct bpf_insn *insn)
++{
++	const struct bpf_kfunc_desc key = {
++		.imm = insn->imm,
++		.offset = insn->off,
++	};
++	const struct bpf_kfunc_desc *desc;
++	struct bpf_kfunc_desc_tab *tab = prog->aux->kfunc_tab;
++
++	if (!tab)
++		return false;
++	desc = bsearch(&key, tab->descs, tab->nr_descs,
++		       sizeof(tab->descs[0]), kfunc_desc_cmp_by_imm_off);
++	return desc && desc->owner_name &&
++	       call->function_btf_id == desc->func_id &&
++	       call->btf_object_id == desc->btf_object_id &&
++	       call->object_btf_id == desc->object_btf_id &&
++	       call->object_btf_size == desc->object_btf_size &&
++	       call->kfunc_flags == desc->kfunc_flags &&
++	       call->resolved_target == desc->addr &&
++	       call->owner_kind == desc->owner_kind &&
++	       !strcmp(call->owner_name, desc->owner_name) &&
++	       !memcmp(&call->func_model, &desc->func_model,
++		       sizeof(call->func_model));
++}
++
++const struct bpf_gate4_kfunc_call *
++bpf_jit_find_gate4_kfunc_call(const struct bpf_prog *prog,
++			      const struct bpf_insn *insn, u32 insn_idx)
++{
++	const struct bpf_gate4_kfunc_contract *contract;
++	u32 i;
++
++	contract = prog->aux->gate4_kfunc_contract;
++	if (!contract || !contract->valid)
++		return NULL;
++	for (i = 0; i < contract->nr_calls; i++) {
++		const struct bpf_gate4_kfunc_call *call = &contract->calls[i];
++
++		if (call->source_call_index == insn_idx &&
++		    ((call->owner_kind == BPF_GATE4_KFUNC_OWNER_VMLINUX &&
++		      !insn->off) ||
++		     (call->owner_kind == BPF_GATE4_KFUNC_OWNER_MODULE &&
++		      insn->off == 1)) &&
++		    gate4_contract_call_matches_desc(prog, call, insn))
++			return call;
++	}
++	return NULL;
++}
++
++int bpf_jit_update_gate4_kfunc_call_index(struct bpf_prog *prog,
++					 u32 original_idx, u32 new_idx)
++{
++	struct bpf_gate4_kfunc_contract *contract;
++	const struct bpf_insn *insn;
++	u32 i;
++
++	contract = prog->aux->gate4_kfunc_contract;
++	if (!contract || !contract->valid || new_idx >= prog->len)
++		return -EINVAL;
++	insn = &prog->insnsi[new_idx];
++	if (!bpf_pseudo_kfunc_call(insn))
++		return -EINVAL;
++	for (i = 0; i < contract->nr_calls; i++) {
++		struct bpf_gate4_kfunc_call *call = &contract->calls[i];
++
++		if (call->source_call_index == new_idx &&
++		    call->original_call_index != original_idx)
++			return -EINVAL;
++	}
++	for (i = 0; i < contract->nr_calls; i++) {
++		struct bpf_gate4_kfunc_call *call = &contract->calls[i];
++
++		if (call->original_call_index != original_idx)
++			continue;
++		if ((call->owner_kind == BPF_GATE4_KFUNC_OWNER_VMLINUX &&
++		     insn->off) ||
++		    (call->owner_kind == BPF_GATE4_KFUNC_OWNER_MODULE &&
++		     insn->off != 1) ||
++		    !gate4_contract_call_matches_desc(prog, call, insn))
++			return -EINVAL;
++		call->source_call_index = new_idx;
++		return 0;
++	}
++	return -ENOENT;
++}
++
+ static int add_subprog_and_kfunc(struct bpf_verifier_env *env)
+ {
+ 	struct bpf_subprog_info *subprog = env->subprog_info;
+@@ -4757,8 +4938,11 @@ static int check_stack_write_fixed_off(struct bpf_verifier_env *env,
+ 		save_register_state(state, spi, reg, size);
+ 		if (IS_ENABLED(CONFIG_CAPEBPF_TEST_OWNERSHIP_LIFETIME) &&
+ 		    dst_reg == BPF_REG_FP && off == -BPF_REG_SIZE &&
+-		    size == BPF_REG_SIZE && base_type(reg->type) == PTR_TO_MEM &&
+-		    (reg->type & MEM_RINGBUF) && reg->ref_obj_id)
++		    size == BPF_REG_SIZE && reg->ref_obj_id &&
++		    ((base_type(reg->type) == PTR_TO_MEM &&
++		      (reg->type & MEM_RINGBUF)) ||
++		     (bpf_gate4_mode_from_name(env->prog) &&
++		      base_type(reg->type) == PTR_TO_BTF_ID)))
+ 			env->insn_aux_data[insn_idx].ownership_lifetime_spill = true;
+ 	} else {
+ 		u8 type = STACK_MISC;
+@@ -5043,8 +5227,11 @@ static int check_stack_read_fixed_off(struct bpf_verifier_env *env,
+ 			copy_register_state(&state->regs[dst_regno], reg);
+ 			if (IS_ENABLED(CONFIG_CAPEBPF_TEST_OWNERSHIP_LIFETIME) &&
+ 			    off == -BPF_REG_SIZE && size == BPF_REG_SIZE &&
+-			    base_type(reg->type) == PTR_TO_MEM &&
+-			    (reg->type & MEM_RINGBUF) && reg->ref_obj_id)
++			    reg->ref_obj_id &&
++			    ((base_type(reg->type) == PTR_TO_MEM &&
++			      (reg->type & MEM_RINGBUF)) ||
++			     (bpf_gate4_mode_from_name(env->prog) &&
++			      base_type(reg->type) == PTR_TO_BTF_ID)))
+ 				env->insn_aux_data[env->insn_idx].ownership_lifetime_reload = true;
+ 			/* mark reg as written since spilled pointer state likely
+ 			 * has its liveness marks cleared by is_state_visited()
+@@ -12101,6 +12288,22 @@ static int fetch_kfunc_meta(struct bpf_verifier_env *env,
+ 	return 0;
+ }
+ 
++static int gate4_record_ref_obj_id(struct bpf_verifier_env *env, int insn_idx,
++				   u32 ref_obj_id)
++{
++	struct bpf_insn_aux_data *aux = &env->insn_aux_data[insn_idx];
++
++	if (!bpf_gate4_mode_from_name(env->prog))
++		return 0;
++	if (!ref_obj_id || (aux->gate4_ref_obj_id &&
++			    aux->gate4_ref_obj_id != ref_obj_id)) {
++		verbose(env, "Gate-4 kfunc call has inconsistent acquisition identity\n");
++		return -EINVAL;
++	}
++	aux->gate4_ref_obj_id = ref_obj_id;
++	return 0;
++}
++
+ static int check_return_code(struct bpf_verifier_env *env, int regno);
+ 
+ static int check_kfunc_call(struct bpf_verifier_env *env, struct bpf_insn *insn,
+@@ -12197,6 +12400,10 @@ static int check_kfunc_call(struct bpf_verifier_env *env, struct bpf_insn *insn,
+ 	 * PTR_TO_BTF_ID in bpf_kfunc_arg_meta, do the release now.
+ 	 */
+ 	if (meta.release_regno) {
++		err = gate4_record_ref_obj_id(env, insn_idx,
++					      regs[meta.release_regno].ref_obj_id);
++		if (err)
++			return err;
+ 		err = release_reference(env, regs[meta.release_regno].ref_obj_id);
+ 		if (err) {
+ 			verbose(env, "kfunc %s#%d reference has not been acquired before\n",
+@@ -12458,6 +12665,9 @@ static int check_kfunc_call(struct bpf_verifier_env *env, struct bpf_insn *insn,
+ 
+ 			if (id < 0)
+ 				return id;
++			err = gate4_record_ref_obj_id(env, insn_idx, id);
++			if (err)
++				return err;
+ 			if (is_kfunc_ret_null(&meta))
+ 				regs[BPF_REG_0].id = id;
+ 			regs[BPF_REG_0].ref_obj_id = id;
+@@ -17560,6 +17770,350 @@ static bool ownership_lifetime_map(const struct bpf_prog *prog)
+ 	ownership_lifetime_insn(&prog->insnsi[_i], (_code), (_dst), (_src), \
+ 				 (_off), (_imm))
+ 
++struct gate4_expected_profile {
++	u32 len;
++	u32 call_index[BPF_GATE4_MAX_KFUNC_CALLS];
++	u8 effect[BPF_GATE4_MAX_KFUNC_CALLS];
++	s16 spill_index;
++	s16 reload_index;
++	u8 nr_calls;
++};
++
++static int gate4_expected_profile(const struct bpf_prog *prog,
++				  struct gate4_expected_profile *expected)
++{
++	if (!strcmp(prog->aux->name, "g4_btf_valid")) {
++		*expected = (struct gate4_expected_profile) {
++			.len = 11, .call_index = { 3, 8 },
++			.effect = { BPF_GATE4_KFUNC_EFFECT_ACQUIRE,
++				    BPF_GATE4_KFUNC_EFFECT_RELEASE },
++			.spill_index = -1, .reload_index = -1, .nr_calls = 2,
++		};
++	} else if (!strcmp(prog->aux->name, "g4_valid") ||
++		   !strcmp(prog->aux->name, "g4_stale_s")) {
++		*expected = (struct gate4_expected_profile) {
++			.len = 13, .call_index = { 3, 10 },
++			.effect = { BPF_GATE4_KFUNC_EFFECT_ACQUIRE,
++				    BPF_GATE4_KFUNC_EFFECT_RELEASE },
++			.spill_index = 6, .reload_index = 7, .nr_calls = 2,
++		};
++	} else if (!strcmp(prog->aux->name, "g4_stale_r") ||
++		   !strcmp(prog->aux->name, "g4_direct")) {
++		*expected = (struct gate4_expected_profile) {
++			.len = 12, .call_index = { 3, 9 },
++			.effect = { BPF_GATE4_KFUNC_EFFECT_ACQUIRE,
++				    BPF_GATE4_KFUNC_EFFECT_RELEASE },
++			.spill_index = -1, .reload_index = -1, .nr_calls = 2,
++		};
++	} else if (!strcmp(prog->aux->name, "g4_independent")) {
++		*expected = (struct gate4_expected_profile) {
++			.len = 26, .call_index = { 3, 11, 17, 21 },
++			.effect = { BPF_GATE4_KFUNC_EFFECT_ACQUIRE,
++				    BPF_GATE4_KFUNC_EFFECT_ACQUIRE,
++				    BPF_GATE4_KFUNC_EFFECT_RELEASE,
++				    BPF_GATE4_KFUNC_EFFECT_RELEASE },
++			.spill_index = 6, .reload_index = 14, .nr_calls = 4,
++		};
++	} else if (!strcmp(prog->aux->name, "g4_double")) {
++		*expected = (struct gate4_expected_profile) {
++			.len = 10, .call_index = { 3, 7 },
++			.effect = { BPF_GATE4_KFUNC_EFFECT_ACQUIRE,
++				    BPF_GATE4_KFUNC_EFFECT_RELEASE },
++			.spill_index = -1, .reload_index = -1, .nr_calls = 2,
++		};
++	} else {
++		return -ENOENT;
++	}
++	return 0;
++}
++
++#define G4_INSN(_i, _code, _dst, _src, _off, _imm) \
++	ownership_lifetime_insn(&prog->insnsi[_i], (_code), (_dst), (_src), \
++				 (_off), (_imm))
++#define G4_EXIT(_i) G4_INSN((_i), BPF_JMP | BPF_EXIT, 0, 0, 0, 0)
++
++static bool gate4_call_shape(const struct bpf_prog *prog, u32 index, s16 off)
++{
++	const struct bpf_insn *insn = &prog->insnsi[index];
++
++	return bpf_pseudo_kfunc_call(insn) && !insn->dst_reg &&
++	       insn->off == off && insn->imm;
++}
++
++static bool gate4_source_prefix(const struct bpf_prog *prog)
++{
++	return G4_INSN(0, BPF_ST | BPF_MEM | BPF_DW,
++		       BPF_REG_10, 0, -8, 0) &&
++	       G4_INSN(1, BPF_ALU64 | BPF_MOV | BPF_X,
++		       BPF_REG_1, BPF_REG_10, 0, 0) &&
++	       G4_INSN(2, BPF_ALU64 | BPF_ADD | BPF_K,
++		       BPF_REG_1, 0, 0, -8) &&
++	       gate4_call_shape(prog, 3, 1);
++}
++
++static bool gate4_exact_source_shape(const struct bpf_prog *prog)
++{
++	if (!gate4_source_prefix(prog))
++		return false;
++	if (!strcmp(prog->aux->name, "g4_btf_valid"))
++		return G4_INSN(4, BPF_JMP | BPF_JEQ | BPF_K,
++			       BPF_REG_0, 0, 5, 0) &&
++		       G4_INSN(5, BPF_ALU64 | BPF_MOV | BPF_X,
++			       BPF_REG_6, BPF_REG_0, 0, 0) &&
++		       G4_INSN(6, BPF_LDX | BPF_PROBE_MEM | BPF_W,
++			       BPF_REG_7, BPF_REG_6, 0, 0) &&
++		       G4_INSN(7, BPF_ALU64 | BPF_MOV | BPF_X,
++			       BPF_REG_1, BPF_REG_6, 0, 0) &&
++		       gate4_call_shape(prog, 8, 0) &&
++		       G4_INSN(9, BPF_ALU64 | BPF_MOV | BPF_X,
++			       BPF_REG_0, BPF_REG_7, 0, 0) && G4_EXIT(10);
++	if (!strcmp(prog->aux->name, "g4_valid") ||
++	    !strcmp(prog->aux->name, "g4_stale_s"))
++		return G4_INSN(4, BPF_JMP | BPF_JEQ | BPF_K,
++			       BPF_REG_0, 0, 7, 0) &&
++		       G4_INSN(5, BPF_ALU64 | BPF_MOV | BPF_X,
++			       BPF_REG_6, BPF_REG_0, 0, 0) &&
++		       G4_INSN(6, BPF_STX | BPF_MEM | BPF_DW,
++			       BPF_REG_10, BPF_REG_6, -8, 0) &&
++		       G4_INSN(7, BPF_LDX | BPF_MEM | BPF_DW,
++			       BPF_REG_7, BPF_REG_10, -8, 0) &&
++		       G4_INSN(8, BPF_LDX | BPF_PROBE_MEM | BPF_W,
++			       BPF_REG_8, BPF_REG_7, 0, 0) &&
++		       G4_INSN(9, BPF_ALU64 | BPF_MOV | BPF_X,
++			       BPF_REG_1, BPF_REG_6, 0, 0) &&
++		       gate4_call_shape(prog, 10, 0) &&
++		       G4_INSN(11, BPF_ALU64 | BPF_MOV | BPF_X,
++			       BPF_REG_0, BPF_REG_8, 0, 0) && G4_EXIT(12);
++	if (!strcmp(prog->aux->name, "g4_stale_r") ||
++	    !strcmp(prog->aux->name, "g4_direct"))
++		return G4_INSN(4, BPF_JMP | BPF_JEQ | BPF_K,
++			       BPF_REG_0, 0, 6, 0) &&
++		       G4_INSN(5, BPF_ALU64 | BPF_MOV | BPF_X,
++			       BPF_REG_6, BPF_REG_0, 0, 0) &&
++		       G4_INSN(6, BPF_ALU64 | BPF_MOV | BPF_X,
++			       BPF_REG_7, BPF_REG_0, 0, 0) &&
++		       G4_INSN(7, BPF_LDX | BPF_PROBE_MEM | BPF_W,
++			       BPF_REG_8, BPF_REG_7, 0, 0) &&
++		       G4_INSN(8, BPF_ALU64 | BPF_MOV | BPF_X,
++			       BPF_REG_1, BPF_REG_6, 0, 0) &&
++		       gate4_call_shape(prog, 9, 0) &&
++		       G4_INSN(10, BPF_ALU64 | BPF_MOV | BPF_X,
++			       BPF_REG_0, BPF_REG_8, 0, 0) && G4_EXIT(11);
++	if (!strcmp(prog->aux->name, "g4_double"))
++		return G4_INSN(4, BPF_JMP | BPF_JEQ | BPF_K,
++			       BPF_REG_0, 0, 4, 0) &&
++		       G4_INSN(5, BPF_ALU64 | BPF_MOV | BPF_X,
++			       BPF_REG_6, BPF_REG_0, 0, 0) &&
++		       G4_INSN(6, BPF_ALU64 | BPF_MOV | BPF_X,
++			       BPF_REG_1, BPF_REG_6, 0, 0) &&
++		       gate4_call_shape(prog, 7, 0) &&
++		       G4_INSN(8, BPF_ALU64 | BPF_MOV | BPF_K,
++			       BPF_REG_0, 0, 0, 42) && G4_EXIT(9);
++	if (strcmp(prog->aux->name, "g4_independent"))
++		return false;
++	return G4_INSN(4, BPF_JMP | BPF_JEQ | BPF_K,
++		       BPF_REG_0, 0, 20, 0) &&
++	       G4_INSN(5, BPF_ALU64 | BPF_MOV | BPF_X,
++		       BPF_REG_6, BPF_REG_0, 0, 0) &&
++	       G4_INSN(6, BPF_STX | BPF_MEM | BPF_DW,
++		       BPF_REG_10, BPF_REG_6, -8, 0) &&
++	       G4_INSN(7, BPF_ALU64 | BPF_MOV | BPF_K,
++		       BPF_REG_7, 0, 0, 0) &&
++	       G4_INSN(8, BPF_ST | BPF_MEM | BPF_DW,
++		       BPF_REG_10, 0, -16, 0) &&
++	       G4_INSN(9, BPF_ALU64 | BPF_MOV | BPF_X,
++		       BPF_REG_1, BPF_REG_10, 0, 0) &&
++	       G4_INSN(10, BPF_ALU64 | BPF_ADD | BPF_K,
++		       BPF_REG_1, 0, 0, -16) &&
++	       gate4_call_shape(prog, 11, 1) &&
++	       G4_INSN(12, BPF_JMP | BPF_JEQ | BPF_K,
++		       BPF_REG_0, 0, 3, 0) &&
++	       G4_INSN(13, BPF_ALU64 | BPF_MOV | BPF_X,
++		       BPF_REG_7, BPF_REG_0, 0, 0) &&
++	       G4_INSN(14, BPF_LDX | BPF_MEM | BPF_DW,
++		       BPF_REG_8, BPF_REG_10, -8, 0) &&
++	       G4_INSN(15, BPF_LDX | BPF_PROBE_MEM | BPF_W,
++		       BPF_REG_9, BPF_REG_8, 0, 0) &&
++	       G4_INSN(16, BPF_ALU64 | BPF_MOV | BPF_X,
++		       BPF_REG_1, BPF_REG_6, 0, 0) &&
++	       gate4_call_shape(prog, 17, 0) &&
++	       G4_INSN(18, BPF_JMP | BPF_JEQ | BPF_K,
++		       BPF_REG_7, 0, 5, 0) &&
++	       G4_INSN(19, BPF_LDX | BPF_PROBE_MEM | BPF_W,
++		       BPF_REG_9, BPF_REG_7, 0, 0) &&
++	       G4_INSN(20, BPF_ALU64 | BPF_MOV | BPF_X,
++		       BPF_REG_1, BPF_REG_7, 0, 0) &&
++	       gate4_call_shape(prog, 21, 0) &&
++	       G4_INSN(22, BPF_ALU64 | BPF_MOV | BPF_X,
++		       BPF_REG_0, BPF_REG_9, 0, 0) && G4_EXIT(23) &&
++	       G4_INSN(24, BPF_ALU64 | BPF_MOV | BPF_K,
++		       BPF_REG_0, 0, 0, 0) && G4_EXIT(25);
++}
++
++#undef G4_EXIT
++#undef G4_INSN
++
++static const struct bpf_kfunc_desc *
++gate4_kfunc_desc(const struct bpf_prog *prog, const struct bpf_insn *insn)
++{
++	const struct bpf_kfunc_desc key = {
++		.imm = insn->imm,
++		.offset = insn->off,
++	};
++	struct bpf_kfunc_desc_tab *tab = prog->aux->kfunc_tab;
++
++	if (!tab)
++		return NULL;
++	return bsearch(&key, tab->descs, tab->nr_descs,
++		       sizeof(tab->descs[0]), kfunc_desc_cmp_by_imm_off);
++}
++
++static int finalize_gate4_kfunc(struct bpf_verifier_env *env, u8 mode)
++{
++	struct bpf_gate4_kfunc_contract *contract;
++	struct gate4_expected_profile expected;
++	struct bpf_prog *prog = env->prog;
++	u32 acquisition_ref[BPF_GATE4_MAX_KFUNC_CALLS] = {};
++	bool released[BPF_GATE4_MAX_KFUNC_CALLS] = {};
++	u32 object_size = 0, actual_calls = 0;
++	u8 spill_stores = 0, spill_loads = 0;
++	u32 i, j;
++	int err;
++
++	err = gate4_expected_profile(prog, &expected);
++	if (err)
++		return err;
++	if (prog->len != expected.len || !gate4_exact_source_shape(prog) ||
++	    prog->type != BPF_PROG_TYPE_SCHED_CLS ||
++	    env->subprog_cnt != 1 || !prog->gpl_compatible ||
++	    expected.nr_calls > BPF_GATE4_MAX_KFUNC_CALLS ||
++	    prog->aux->gate4_kfunc_contract)
++		goto reject;
++
++	for (i = 0; i < prog->len; i++) {
++		actual_calls += bpf_pseudo_kfunc_call(&prog->insnsi[i]);
++		spill_stores += env->insn_aux_data[i].ownership_lifetime_spill;
++		spill_loads += env->insn_aux_data[i].ownership_lifetime_reload;
++	}
++	if (actual_calls != expected.nr_calls ||
++	    spill_stores != (expected.spill_index >= 0) ||
++	    spill_loads != (expected.reload_index >= 0) ||
++	    (expected.spill_index >= 0 &&
++	     !env->insn_aux_data[expected.spill_index].ownership_lifetime_spill) ||
++	    (expected.reload_index >= 0 &&
++	     !env->insn_aux_data[expected.reload_index].ownership_lifetime_reload))
++		goto reject;
++
++	contract = kzalloc(sizeof(*contract), GFP_KERNEL);
++	if (!contract)
++		return -ENOMEM;
++	for (i = 0; i < expected.nr_calls; i++) {
++		const struct bpf_kfunc_desc *desc;
++		struct bpf_gate4_kfunc_call *call = &contract->calls[i];
++		const struct btf_type *func, *object;
++		const struct bpf_insn *insn;
++		const char *func_name, *object_name, *wanted_name;
++		u32 index = expected.call_index[i];
++		u32 wanted_flags;
++
++		insn = &prog->insnsi[index];
++		if (!bpf_pseudo_kfunc_call(insn) ||
++		    env->insn_aux_data[index].orig_idx != index)
++			goto reject_free;
++		desc = gate4_kfunc_desc(prog, insn);
++		if (!desc || !desc->btf || !desc->owner_name || !desc->addr ||
++		    !desc->btf_object_id || !desc->object_btf_id ||
++		    !desc->object_btf_size ||
++		    btf_obj_id(desc->btf) != desc->btf_object_id)
++			goto reject_free;
++
++		if (expected.effect[i] == BPF_GATE4_KFUNC_EFFECT_ACQUIRE) {
++			wanted_flags = KF_ACQUIRE | KF_RET_NULL;
++			wanted_name = "bpf_kfunc_call_test_acquire";
++			if (insn->off != 1 ||
++			    desc->owner_kind != BPF_GATE4_KFUNC_OWNER_MODULE ||
++			    strcmp(desc->owner_name, "bpf_testmod"))
++				goto reject_free;
++		} else {
++			wanted_flags = KF_RELEASE;
++			wanted_name = "bpf_kfunc_call_test_release";
++			if (insn->off ||
++			    desc->owner_kind != BPF_GATE4_KFUNC_OWNER_VMLINUX ||
++			    strcmp(desc->owner_name, "vmlinux"))
++				goto reject_free;
++		}
++		func = btf_type_by_id(desc->btf, desc->func_id);
++		object = btf_type_by_id(desc->btf, desc->object_btf_id);
++		if (!func || !object || !btf_type_is_func(func) ||
++		    !btf_type_is_struct(object) ||
++		    desc->kfunc_flags != wanted_flags)
++			goto reject_free;
++		func_name = btf_name_by_offset(desc->btf, func->name_off);
++		object_name = btf_name_by_offset(desc->btf, object->name_off);
++		if (strcmp(func_name, wanted_name) ||
++		    desc->addr != kallsyms_lookup_name(wanted_name) ||
++		    strcmp(object_name, "prog_test_ref_kfunc"))
++			goto reject_free;
++		if (!object_size)
++			object_size = desc->object_btf_size;
++		else if (object_size != desc->object_btf_size)
++			goto reject_free;
++
++		call->func_model = desc->func_model;
++		call->resolved_target = desc->addr;
++		call->source_call_index = index;
++		call->original_call_index = env->insn_aux_data[index].orig_idx;
++		call->btf_object_id = desc->btf_object_id;
++		call->function_btf_id = desc->func_id;
++		call->object_btf_id = desc->object_btf_id;
++		call->object_btf_size = desc->object_btf_size;
++		call->kfunc_flags = desc->kfunc_flags;
++		call->verifier_ref_obj_id = env->insn_aux_data[index].gate4_ref_obj_id;
++		call->owner_kind = desc->owner_kind;
++		call->effect = expected.effect[i];
++		strscpy(call->owner_name, desc->owner_name, sizeof(call->owner_name));
++		if (!call->verifier_ref_obj_id)
++			goto reject_free;
++
++		if (call->effect == BPF_GATE4_KFUNC_EFFECT_ACQUIRE) {
++			for (j = 0; j < contract->nr_acquires; j++)
++				if (acquisition_ref[j] ==
++				    call->verifier_ref_obj_id)
++					goto reject_free;
++			contract->nr_acquires++;
++			acquisition_ref[contract->nr_acquires - 1] =
++				call->verifier_ref_obj_id;
++			call->acquisition_ordinal = contract->nr_acquires;
++		} else {
++			for (j = 0; j < contract->nr_acquires; j++)
++				if (acquisition_ref[j] == call->verifier_ref_obj_id)
++					break;
++			if (j == contract->nr_acquires || released[j])
++				goto reject_free;
++			released[j] = true;
++			call->release_binding = j + 1;
++			contract->nr_releases++;
++		}
++	}
++	if (contract->nr_acquires != contract->nr_releases)
++		goto reject_free;
++	contract->nr_calls = expected.nr_calls;
++	contract->valid = true;
++	prog->aux->gate4_kfunc_contract = contract;
++	prog->aux->ownership_lifetime_mode = mode;
++	prog->aux->ownership_lifetime_spill_stores = spill_stores;
++	prog->aux->ownership_lifetime_spill_loads = spill_loads;
++	prog->aux->ownership_lifetime_spill_off = spill_stores ? -8 : 0;
++	prog->aux->ownership_lifetime_reordered = false;
++	return 0;
++
++reject_free:
++	kfree(contract);
++reject:
++	verbose(env, "Gate-4 exact kfunc semantic contract rejected\n");
++	return -EINVAL;
++}
++
+ static int finalize_ownership_lifetime(struct bpf_verifier_env *env)
+ {
+ 	struct bpf_prog *prog = env->prog;
+@@ -17570,6 +18124,9 @@ static int finalize_ownership_lifetime(struct bpf_verifier_env *env)
+ 
+ 	if (!IS_ENABLED(CONFIG_CAPEBPF_TEST_OWNERSHIP_LIFETIME))
+ 		return 0;
++	mode = bpf_gate4_mode_from_name(prog);
++	if (mode)
++		return finalize_gate4_kfunc(env, mode);
+ 	if (!strcmp(prog->aux->name, "life_valid"))
+ 		mode = BPF_OWNERSHIP_LIFETIME_VALID;
+ 	else if (!strcmp(prog->aux->name, "life_stale_r"))
+diff --git a/net/bpf/test_run.c b/net/bpf/test_run.c
+index 11b73c81b..2642fddbe 100644
+--- a/net/bpf/test_run.c
++++ b/net/bpf/test_run.c
+@@ -595,9 +595,18 @@ struct prog_test_ref_kfunc {
+ 	refcount_t cnt;
+ };
+ 
++static atomic64_t gate4_release_effect_count = ATOMIC64_INIT(0);
++
+ __bpf_kfunc void bpf_kfunc_call_test_release(struct prog_test_ref_kfunc *p)
+ {
++	u64 effect = atomic64_inc_return(&gate4_release_effect_count);
++	unsigned int before = refcount_read(&p->cnt);
++	unsigned int after;
++
+ 	refcount_dec(&p->cnt);
++	after = refcount_read(&p->cnt);
++	pr_info("GATE4_RELEASE_EFFECT count=%llu object=0x%lx ref_before=%u ref_after=%u\n",
++		(unsigned long long)effect, (unsigned long)p, before, after);
+ }
+ 
+ __bpf_kfunc void bpf_kfunc_call_memb_release(struct prog_test_member *p)
+diff --git a/tools/testing/selftests/bpf/bpf_testmod/bpf_testmod.c b/tools/testing/selftests/bpf/bpf_testmod/bpf_testmod.c
+index 91907b321..1d1f919ab 100644
+--- a/tools/testing/selftests/bpf/bpf_testmod/bpf_testmod.c
++++ b/tools/testing/selftests/bpf/bpf_testmod/bpf_testmod.c
+@@ -383,10 +383,18 @@ static struct prog_test_ref_kfunc prog_test_struct = {
+ 	.cnt = REFCOUNT_INIT(1),
+ };
+ 
++static atomic64_t gate4_acquire_effect_count = ATOMIC64_INIT(0);
++
+ __bpf_kfunc struct prog_test_ref_kfunc *
+ bpf_kfunc_call_test_acquire(unsigned long *scalar_ptr)
+ {
++	u64 effect;
++
+ 	refcount_inc(&prog_test_struct.cnt);
++	effect = atomic64_inc_return(&gate4_acquire_effect_count);
++	pr_info("GATE4_ACQUIRE_EFFECT count=%llu object=0x%lx ref_after=%u\n",
++		(unsigned long long)effect, (unsigned long)&prog_test_struct,
++		refcount_read(&prog_test_struct.cnt));
+ 	return &prog_test_struct;
+ }
+ 

@@ -1,0 +1,21 @@
+CBPF_GATE scope=validated_IR isolation=0 kfunc=0 jit=0
+CBPF_GATE backend=cheri
+CBPF_GATE trace=stale_spill_after_B program_begin
+CBPF_GATE trace=stale_spill_after_B effects_begin
+CBPF_GATE trace=stale_spill_after_B status=trapped trap=stale pc=7 reads=1 explicit=1 cleanup=1 refs=1
+CBPF_GATE family=valid_A_B cases=48 result=PASS
+CBPF_GATE family=stale_copy_after_B cases=48 result=PASS
+CBPF_GATE family=stale_spill_after_B cases=48 result=PASS
+CBPF_GATE family=repeated_release cases=48 result=PASS
+CBPF_GATE family=null_acquisition_branch cases=48 result=PASS
+CBPF_GATE family=consumed_token_nonnull cases=48 result=PASS
+CBPF_GATE family=overwrite_last_alias cases=48 result=PASS
+CBPF_GATE family=exhaustion_cleanup cases=48 result=PASS
+CBPF_GATE family=null_read cases=48 result=PASS
+CBPF_GATE family=null_release cases=48 result=PASS
+CBPF_GATE boundaries=malformed_unreachable_full64_event66 result=PASS
+CBPF_GATE baseline=direct_object live_object=1 released_A_read=42 live_B_read=42 refs=1 effects=2 result=PASS
+CBPF_GATE representation=purecap_1 cell_bytes=16 handle_bytes=16
+CBPF_GATE cases=494 matched=494
+CBPF_GATE result=PASS
+CBPF runner=PASS mode=gate qemu_exit=0

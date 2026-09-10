@@ -1,0 +1,26 @@
+[
+  {
+    "file": "native-ab_alternate.bin",
+    "sha256": "1f6650e2fdcd76e1723c8c2fe0d42675c4615427721af729b80bdb0a03fa7b14",
+    "bytes": 664,
+    "matches_prior_public_native_bytes": true
+  },
+  {
+    "file": "native-ab_spill.bin",
+    "sha256": "117453054e65b3f4ae6b8da5dd241b1a8db28cdbd15cfae4a1527e073f576871",
+    "bytes": 660,
+    "matches_prior_public_native_bytes": true
+  },
+  {
+    "file": "native-fail_second.bin",
+    "sha256": "3fcf9225428f9edb5488cf2647b9098b5b860cc9341b967d80412a9927aeb312",
+    "bytes": 660,
+    "matches_prior_public_native_bytes": true
+  },
+  {
+    "file": "native-null_second.bin",
+    "sha256": "4aef0e035a349d66cdde5dcc8b05e56c43e65dab129b0390ba0ecaf8e00bc4c3",
+    "bytes": 660,
+    "matches_prior_public_native_bytes": true
+  }
+]

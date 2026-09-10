@@ -1,0 +1,2 @@
+CBPF_SPATIAL_NATIVE_BUILD result=PASS source_tree=e6c69574c16bc2b9bce06329f9ac3f4b3269e79a image=1
+CBPF_SPATIAL_NATIVE_BUILD verifier_unchanged_from_substrate=1 offload=0 test_modes=0 observation_sites=2 boot=0

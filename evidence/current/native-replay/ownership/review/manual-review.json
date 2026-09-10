@@ -1,0 +1,23 @@
+{
+  "result": "PASS_MANUAL_LINKED_REVIEW",
+  "recorded_utc": "2026-09-07T11:04:00.547145+00:00",
+  "manual_inspection_before_launch": true,
+  "receipt_written_after_run": true,
+  "recording_note": "The instruction comparison and manual source/disassembly reading preceded launch. The first receipt-write command used the wrong working directory and failed; the separately authorized runner then completed. This receipt records that sequence after the run; no pre-launch file timestamp is claimed.",
+  "vmlinux_sha256": "4ac8ce919bcc976d62371e74717887d640963d37236c6a03470fd42750e55f74",
+  "disassembly_sha256": "5cacff5c0f48b8e87e4ac47493f90d30569cff925a80ff919aa11dc99093c8b6",
+  "scope": "Internal inspection, not independent external review or a general native validator. Nine complete numeric ranges match the prior linked kernel. Gate/consume and dispatcher/callback instructions were reread before launch.",
+  "findings": [
+    "Canonical CHKEQ at 0xffff80008003e320 and private tag check at 0xffff80008003e3c0 precede read/release; stale identities reject before either effect.",
+    "CLRTAG/store at 0xffff80008003e7c4/7c8 precede both the LSE and LL/SC provider decrements.",
+    "Callback reloads full c2 from the persistent context, saves/reloads full capabilities around logging, and calls the production gate at 0xffff80008003e260.",
+    "The dispatcher retains indirect BLR calls and returns after a false callback result; only successful callbacks increment completed.",
+    "Source/linked wrapper and gateway preserve terminal failure routing and cleanup. The provider retains its permanent baseline.",
+    "Guest source loads the three negative programs only; all unexpected acceptances stop before TEST_RUN. Four admitted controls use one TEST_RUN each."
+  ],
+  "prior_review": "evidence/current/ownership-callback/review/linked-review.json",
+  "limits": [
+    "Trusted synchronous C callbacks are not protected BPF callbacks or the original CVE helper path.",
+    "Original outcomes are not reassigned to this new vmlinux; fresh execution results have their own receipt."
+  ]
+}

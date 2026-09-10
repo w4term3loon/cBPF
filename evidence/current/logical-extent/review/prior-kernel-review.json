@@ -1,0 +1,40 @@
+{
+  "result": "PASS_MANUAL_PRE_EXECUTION_REVIEW",
+  "recorded_utc": "2026-09-07T11:09:38.984363+00:00",
+  "execution_count_at_review": 0,
+  "preflight_sha256": "0798fd500a911aaae0a65fb532011af11df5b3f97e11805bc29571a23a7ac3f3",
+  "vmlinux_sha256": "95483c8fe7359d60ba01a8043267f275082dffa0ce20708b58ba4083d1b3798b",
+  "jit_sha256": "97d2bc5287edec817d679e8d740ea5bf51f695b3157e8683152b364afe48710d",
+  "complete_linked_disassembly_sha256": "b6d8d9e164b1b7b232ed8637c1e7d046008bf3d0d3808411f72e208af239888b",
+  "scope": "Local manual source/native review of one fixed program and nine complete numeric linked ranges, including ELF mapping-label continuations. Internal inspection, not independent external review or a general validator.",
+  "boot_binding": "Fresh Image/vmlinux/configuration, unchanged inherited verifier and initramfs/tool/firmware inputs verified. Normal verifier, no offload/test modes, no disk/network/attachment; held FDs 3/4, relocation zero, initial key 1 is 41.",
+  "native_review": "All 98 words inspected and match prior fixed native bytes. Entry-error and NULL branches skip value accesses; lookup operation 0 uses BLRS c17. Word 72 copies full c0 to c7; words 75/77 use unchanged c7 for the sole eight-byte value load/store. Word 78 carries the computed scalar result; RET c30 enters the executive return and RETR c16 restores the tagged caller. PLT has no reachable edge in this program.",
+  "linked_review": "Lookup checks map table and key, dispatches to the reduced provider, and preserves full c0 through the gateway. Provider checks the retained root and map/key profile, uses SCVALUE/SCBNDSE with logical value_size, checks exact shape/perms, then preserves the full capability across logging and return. Allocator derives/checks/stores the retained full root; entry constructs restricted/executive ranges and installs c17/c18. The complete exception handler clears the encoded destination and installs the encoded fixup; its test-evidence flag is zero.",
+  "changed_words": "29 linked words differ from the prior image: relocated string addresses, the same kmalloc_caches slot at offset 0x188, and the relocated zero test-evidence flag. Control flow, capability checks, transport and accesses are unchanged. String referents and symbol locations were inspected.",
+  "expected_roots": {
+    "restricted": {
+      "base": 18446603338389617228,
+      "length": 224
+    },
+    "executive": {
+      "base": 18446603338389617452,
+      "length": 56
+    },
+    "gateway_cursor": 18446603338368907264
+  },
+  "expected_selected": {
+    "map_id": 1,
+    "key": 1,
+    "value_size": 8,
+    "stride": 8,
+    "length": 8,
+    "tag": 1,
+    "sealed": 0,
+    "permissions": "0x30001",
+    "initial": 41,
+    "return": 42,
+    "readback": 42
+  },
+  "limits": "One valid program; no observed negative spatial access, padding discriminator, original CVE replay or whole-program mediation theorem. DDC/gateway retain broader authority. Constructed-operand telemetry is not hardware attestation.",
+  "recorded_preflight_scope": "Preflight covered one ordinary TEST_RUN on the held descriptors. Execution and postflight outcomes are recorded separately."
+}

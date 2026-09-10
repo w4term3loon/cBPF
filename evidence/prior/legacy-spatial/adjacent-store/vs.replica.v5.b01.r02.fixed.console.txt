@@ -1,0 +1,404 @@
+CAPEBPF_FAULTY_VS_HOST_V1 observation_id=vs.replica.v5.b01.r02.fixed mode=fixed_calibration image_role=broad_no_aee deployment_sha256=c9722424ac0bc17e0922f87206d686fea68286775cc06f358a7f00f72ed70e93 workload_sha256=6fde6a18ce1454c6a7c65ed09bd4dad838e9df4c6f373f125c7749f442e8ec7b canonical_bpf_sha256=99303bd889ead83c707221ec3e74a924c9dd57143cc5a52cdc8b2ed797e5da78 image_sha256=a3af831d5b4e91db5b71736be88ae2a00f918c032903750ff321f36f00beb11a config_sha256=242ecd2ad4af48830428cc17cb9b519744e3a160bb407186fd0a7916e28ab7fb vmlinux_sha256=7160554a38c8a53bf9a44d948e8019fb4b716541222230468d2fa0522a1dd39b initramfs_sha256=ed841e731307fdfce36190d7f6f4d28f5cd16eadb36fe9de546788c157305747 guest_sha256=5ce5b199feb3d3f5dd0ade2c11645a15ed449e1ed2eab63d69e6d4b153736bd3 init_sha256=a0a1e095bbc81e27f8a0683b46118a495f069d3b58199c5f46b9310e2341ab34 initramfs_builder_sha256=56e4e8f07563e394e970b41c827066c2914c0c9c74df80df4501c64686201d6c qemu_sha256=b0a0b21a9ee5e4b01a1f7d40bcb1ec6289cd51eab1a0f66deafc419b1db3e219 firmware_sha256=b608de7c81a4cec0eb83422a73ee227618c30fe9513a582a6f9f786ce8d1dbf9 runner_sha256=336cbe0ca578de61773f7233bd05817a343bf5d6d7ac94f364dbbbb3b14b1f98 
+[2J[01;01H[=3h[2J[01;01HEFI stub: Booting Linux Kernel...
+EFI stub: EFI_RNG_PROTOCOL unavailable
+EFI stub: Loaded initrd from LINUX_EFI_INITRD_MEDIA_GUID device path
+EFI stub: Generating empty DTB
+EFI stub: Exiting boot services...
+[    0.000000] Booting Linux on physical CPU 0x0000000000 [0x410fd083]
+[    0.000000] Linux version 6.7.0-capebpf-fvs-repair-39e735a-broad (capebpf@faulty-vs-repair) (clang version 17.0.0 (https://git.morello-project.org/morello/llvm-project.git 7956a8d20652883f845a41094645174eb92d1960), LLD 17.0.0) #1 SMP PREEMPT 2026-09-01 14:00:00 +0000
+[    0.000000] Userspace ABI: pure-capability (PCuABI)
+[    0.000000] KASLR disabled due to lack of seed
+[    0.000000] CAPEBPF_FAULTY_VS_ARM_V1 observation_id=vs.replica.v5.b01.r02.fixed selector=calibration semantic_fault_arm=off hook=final-vs-bound-decision armed=0 one_shot=1 runtime_default=off
+[    0.000000] efi: EFI v2.7 by EDK II
+[    0.000000] efi: SMBIOS 3.0=0xbf700000 MEMATTR=0xbd3f8018 ACPI 2.0=0xbbf70018 INITRD=0xbc373c18 MEMRESERVE=0xbc373c98 
+[    0.000000] ACPI: Early table checksum verification disabled
+[    0.000000] ACPI: RSDP 0x00000000BBF70018 000024 (v02 BOCHS )
+[    0.000000] ACPI: XSDT 0x00000000BBF7FE98 000064 (v01 BOCHS  BXPC     00000001      01000013)
+[    0.000000] ACPI: FACP 0x00000000BBF7FA98 00010C (v05 BOCHS  BXPC     00000001 BXPC 00000001)
+[    0.000000] ACPI: DSDT 0x00000000BBF77518 0014A2 (v02 BOCHS  BXPC     00000001 BXPC 00000001)
+[    0.000000] ACPI: APIC 0x00000000BBF7FC18 000198 (v03 BOCHS  BXPC     00000001 BXPC 00000001)
+[    0.000000] ACPI: PPTT 0x00000000BBF7D898 00009C (v02 BOCHS  BXPC     00000001 BXPC 00000001)
+[    0.000000] ACPI: GTDT 0x00000000BBF7E818 000060 (v02 BOCHS  BXPC     00000001 BXPC 00000001)
+[    0.000000] ACPI: MCFG 0x00000000BBF7E918 00003C (v01 BOCHS  BXPC     00000001 BXPC 00000001)
+[    0.000000] ACPI: SPCR 0x00000000BBF7FF98 000050 (v02 BOCHS  BXPC     00000001 BXPC 00000001)
+[    0.000000] ACPI: DBG2 0x00000000BBF7E418 000057 (v00 BOCHS  BXPC     00000001 BXPC 00000001)
+[    0.000000] ACPI: IORT 0x00000000BBF7E718 000080 (v03 BOCHS  BXPC     00000001 BXPC 00000001)
+[    0.000000] ACPI: SPCR: console: pl011,mmio,0x9000000,9600
+[    0.000000] NUMA: Failed to initialise from firmware
+[    0.000000] NUMA: Faking a node at [mem 0x0000000040000000-0x00000000bfffffff]
+[    0.000000] NUMA: NODE_DATA [mem 0xbfbf5ac0-0xbfbf7fff]
+[    0.000000] Zone ranges:
+[    0.000000]   DMA      [mem 0x0000000040000000-0x00000000bfffffff]
+[    0.000000]   DMA32    empty
+[    0.000000]   Normal   empty
+[    0.000000] Movable zone start for each node
+[    0.000000] Early memory node ranges
+[    0.000000]   node   0: [mem 0x0000000040000000-0x00000000bbf7ffff]
+[    0.000000]   node   0: [mem 0x00000000bbf80000-0x00000000bbffffff]
+[    0.000000]   node   0: [mem 0x00000000bc000000-0x00000000bc01ffff]
+[    0.000000]   node   0: [mem 0x00000000bc020000-0x00000000bc36ffff]
+[    0.000000]   node   0: [mem 0x00000000bc370000-0x00000000bf64ffff]
+[    0.000000]   node   0: [mem 0x00000000bf650000-0x00000000bf6dffff]
+[    0.000000]   node   0: [mem 0x00000000bf6e0000-0x00000000bf6effff]
+[    0.000000]   node   0: [mem 0x00000000bf6f0000-0x00000000bf80ffff]
+[    0.000000]   node   0: [mem 0x00000000bf810000-0x00000000bfffffff]
+[    0.000000] Initmem setup node 0 [mem 0x0000000040000000-0x00000000bfffffff]
+[    0.000000] psci: probing for conduit method from ACPI.
+[    0.000000] psci: PSCIv1.1 detected in firmware.
+[    0.000000] psci: Using standard PSCI v0.2 function IDs
+[    0.000000] psci: Trusted OS migration not required
+[    0.000000] psci: SMC Calling Convention v1.0
+[    0.000000] percpu: Embedded 34 pages/cpu s98984 r8192 d32088 u139264
+[    0.000000] pcpu-alloc: s98984 r8192 d32088 u139264 alloc=34*4096
+[    0.000000] pcpu-alloc: [0] 0 [0] 1 [0] 2 [0] 3 
+[    0.000000] Detected PIPT I-cache on CPU0
+[    0.000000] CPU features: detected: GIC system register CPU interface
+[    0.000000] CPU features: detected: Morello Capability Architecture
+[    0.000000] CPU features: detected: Spectre-v2
+[    0.000000] CPU features: detected: Spectre-v3a
+[    0.000000] CPU features: detected: Spectre-v4
+[    0.000000] CPU features: detected: Spectre-BHB
+[    0.000000] CPU features: kernel page table isolation disabled by kernel configuration
+[    0.000000] CPU features: detected: ARM erratum 1742098
+[    0.000000] CPU features: detected: ARM errata 1165522, 1319367, or 1530923
+[    0.000000] alternatives: applying boot alternatives
+[    0.000000] Kernel command line: console=ttyAMA0 loglevel=8 rdinit=/init panic=-1 capebpf.jit_certificate_report=1 capebpf.jit_certificate_transcript=1 capebpf.exploit_evidence=1 capebpf.faulty_vs=calibration:vs.replica.v5.b01.r02.fixed -- --faulty-vs-mode=fixed_calibration --observation-id=vs.replica.v5.b01.r02.fixed initrd=initrd
+[    0.000000] Dentry cache hash table entries: 262144 (order: 9, 2097152 bytes, linear)
+[    0.000000] Inode-cache hash table entries: 131072 (order: 8, 1048576 bytes, linear)
+[    0.000000] Fallback order for Node 0: 0 
+[    0.000000] Built 1 zonelists, mobility grouping on.  Total pages: 516096
+[    0.000000] Policy zone: DMA
+[    0.000000] mem auto-init: stack:all(zero), heap alloc:off, heap free:off
+[    0.000000] software IO TLB: SWIOTLB bounce buffer size adjusted to 2MB
+[    0.000000] software IO TLB: area num 4.
+[    0.000000] software IO TLB: mapped [mem 0x00000000bd400000-0x00000000bd600000] (2MB)
+[    0.000000] Memory: 2029792K/2097152K available (11456K kernel code, 1894K rwdata, 4012K rodata, 960K init, 553K bss, 67360K reserved, 0K cma-reserved)
+[    0.000000] SLUB: HWalign=64, Order=0-3, MinObjects=0, CPUs=4, Nodes=1
+[    0.000000] trace event string verifier disabled
+[    0.000000] rcu: Preemptible hierarchical RCU implementation.
+[    0.000000] rcu: 	RCU event tracing is enabled.
+[    0.000000] rcu: 	RCU restricting CPUs from NR_CPUS=256 to nr_cpu_ids=4.
+[    0.000000] 	Trampoline variant of Tasks RCU enabled.
+[    0.000000] 	Tracing variant of Tasks RCU enabled.
+[    0.000000] rcu: RCU calculated value of scheduler-enlistment delay is 25 jiffies.
+[    0.000000] rcu: Adjusting geometry for rcu_fanout_leaf=16, nr_cpu_ids=4
+[    0.000000] NR_IRQS: 64, nr_irqs: 64, preallocated irqs: 0
+[    0.000000] GICv3: 224 SPIs implemented
+[    0.000000] GICv3: 0 Extended SPIs implemented
+[    0.000000] Root IRQ handler: gic_handle_irq
+[    0.000000] GICv3: GICv3 features: 16 PPIs
+[    0.000000] GICv3: CPU0: found redistributor 0 region 0:0x00000000080a0000
+[    0.000000] ITS [mem 0x08080000-0x0809ffff]
+[    0.000000] ITS@0x0000000008080000: allocated 8192 Devices @40100000 (indirect, esz 8, psz 64K, shr 1)
+[    0.000000] ITS@0x0000000008080000: allocated 8192 Interrupt Collections @40110000 (flat, esz 8, psz 64K, shr 1)
+[    0.000000] GICv3: using LPI property table @0x0000000040120000
+[    0.000000] GICv3: CPU0: using allocated LPI pending table @0x0000000040130000
+[    0.000000] rcu: srcu_init: Setting srcu_struct sizes based on contention.
+[    0.000000] arch_timer: cp15 timer(s) running at 62.50MHz (virt).
+[    0.000000] clocksource: arch_sys_counter: mask: 0x1ffffffffffffff max_cycles: 0x1cd42e208c, max_idle_ns: 881590405314 ns
+[    0.000147] sched_clock: 57 bits at 63MHz, resolution 16ns, wraps every 4398046511096ns
+[    0.020038] Console: colour dummy device 80x25
+[    0.022928] ACPI: Core revision 20230628
+[    0.031024] Calibrating delay loop (skipped), value calculated using timer frequency.. 125.00 BogoMIPS (lpj=250000)
+[    0.031370] pid_max: default: 32768 minimum: 301
+[    0.034545] LSM: initializing lsm=capability,selinux,integrity
+[    0.035452] SELinux:  Initializing.
+[    0.040174] Mount-cache hash table entries: 4096 (order: 3, 32768 bytes, linear)
+[    0.040297] Mountpoint-cache hash table entries: 4096 (order: 3, 32768 bytes, linear)
+[    0.127864] RCU Tasks: Setting shift to 2 and lim to 1 rcu_task_cb_adjust=1.
+[    0.130957] RCU Tasks Trace: Setting shift to 2 and lim to 1 rcu_task_cb_adjust=1.
+[    0.135157] rcu: Hierarchical SRCU implementation.
+[    0.135252] rcu: 	Max phase no-delay instances is 1000.
+[    0.144433] Platform MSI: ITS@0x8080000 domain created
+[    0.147182] PCI/MSI: ITS@0x8080000 domain created
+[    0.147829] Remapping and enabling EFI services.
+[    0.156077] smp: Bringing up secondary CPUs ...
+[    0.165797] Detected PIPT I-cache on CPU1
+[    0.171972] GICv3: CPU1: found redistributor 1 region 0:0x00000000080c0000
+[    0.172239] GICv3: CPU1: using allocated LPI pending table @0x0000000040140000
+[    0.172922] CPU1: Booted secondary processor 0x0000000001 [0x410fd083]
+[    0.188317] Detected PIPT I-cache on CPU2
+[    0.188492] GICv3: CPU2: found redistributor 2 region 0:0x00000000080e0000
+[    0.188674] GICv3: CPU2: using allocated LPI pending table @0x0000000040150000
+[    0.189589] CPU2: Booted secondary processor 0x0000000002 [0x410fd083]
+[    0.195812] Detected PIPT I-cache on CPU3
+[    0.195977] GICv3: CPU3: found redistributor 3 region 0:0x0000000008100000
+[    0.196170] GICv3: CPU3: using allocated LPI pending table @0x0000000040160000
+[    0.196782] CPU3: Booted secondary processor 0x0000000003 [0x410fd083]
+[    0.198703] smp: Brought up 1 node, 4 CPUs
+[    0.198978] SMP: Total of 4 processors activated.
+[    0.199283] CPU features: detected: Common not Private translations
+[    0.199317] CPU features: detected: CRC32 instructions
+[    0.199519] CPU features: detected: RCpc load-acquire (LDAPR)
+[    0.199544] CPU features: detected: LSE atomic instructions
+[    0.199574] CPU features: detected: Privileged Access Never
+[    0.248162] CPU: All CPU(s) started at EL1
+[    0.259885] alternatives: applying system-wide alternatives
+[    0.396219] devtmpfs: initialized
+[    0.439621] clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 7645041785100000 ns
+[    0.441797] futex hash table entries: 1024 (order: 4, 65536 bytes, linear)
+[    0.477192] SMBIOS 3.0.0 present.
+[    0.478114] DMI: QEMU QEMU Virtual Machine, BIOS 0.0.0 02/06/2015
+[    0.506799] NET: Registered PF_NETLINK/PF_ROUTE protocol family
+[    0.520458] DMA: preallocated 256 KiB GFP_KERNEL pool for atomic allocations
+[    0.521594] DMA: preallocated 256 KiB GFP_KERNEL|GFP_DMA pool for atomic allocations
+[    0.522049] DMA: preallocated 256 KiB GFP_KERNEL|GFP_DMA32 pool for atomic allocations
+[    0.522796] audit: initializing netlink subsys (disabled)
+[    0.531731] audit: type=2000 audit(0.436:1): state=initialized audit_enabled=0 res=1
+[    0.539737] thermal_sys: Registered thermal governor 'step_wise'
+[    0.543569] cpuidle: using governor menu
+[    0.546838] hw-breakpoint: found 8 breakpoint and 8 watchpoint registers.
+[    0.548985] ASID allocator initialised with 65536 entries
+[    0.551406] Serial: AMBA PL011 UART driver
+[    0.560014] Modules: 28016 pages in range for non-PLT usage
+[    0.560089] Modules: 519536 pages in range for PLT usage
+[    0.597568] HugeTLB: registered 1.00 GiB page size, pre-allocated 0 pages
+[    0.597638] HugeTLB: 0 KiB vmemmap can be freed for a 1.00 GiB page
+[    0.597737] HugeTLB: registered 32.0 MiB page size, pre-allocated 0 pages
+[    0.597761] HugeTLB: 0 KiB vmemmap can be freed for a 32.0 MiB page
+[    0.597792] HugeTLB: registered 2.00 MiB page size, pre-allocated 0 pages
+[    0.597812] HugeTLB: 0 KiB vmemmap can be freed for a 2.00 MiB page
+[    0.597843] HugeTLB: registered 64.0 KiB page size, pre-allocated 0 pages
+[    0.597863] HugeTLB: 0 KiB vmemmap can be freed for a 64.0 KiB page
+[    0.665831] ACPI: Added _OSI(Module Device)
+[    0.665939] ACPI: Added _OSI(Processor Device)
+[    0.666013] ACPI: Added _OSI(3.0 _SCP Extensions)
+[    0.666041] ACPI: Added _OSI(Processor Aggregator Device)
+[    0.756676] ACPI: 1 ACPI AML tables successfully acquired and loaded
+[    0.839090] ACPI: Interpreter enabled
+[    0.839214] ACPI: Using GIC for interrupt routing
+[    0.840547] ACPI: MCFG table detected, 1 entries
+[    1.065162] ARMH0011:00: ttyAMA0 at MMIO 0x9000000 (irq = 12, base_baud = 0) is a SBSA
+[    1.071480] printk: legacy console [ttyAMA0] enabled
+[    1.172663] ACPI: PCI Root Bridge [PCI0] (domain 0000 [bus 00-ff])
+[    1.177337] acpi PNP0A08:00: _OSC: OS supports [ExtendedConfig ASPM ClockPM Segments MSI HPX-Type3]
+[    1.177963] acpi PNP0A08:00: PCIe port services disabled; not requesting _OSC control
+[    1.199080] acpi PNP0A08:00: ECAM area [mem 0x4010000000-0x401fffffff] reserved by PNP0C02:00
+[    1.200516] acpi PNP0A08:00: ECAM at [mem 0x4010000000-0x401fffffff] for [bus 00-ff]
+[    1.203249] ACPI: Remapped I/O 0x000000003eff0000 to [io  0x0000-0xffff window]
+[    1.209667] PCI host bridge to bus 0000:00
+[    1.210619] pci_bus 0000:00: root bus resource [mem 0x10000000-0x3efeffff window]
+[    1.210862] pci_bus 0000:00: root bus resource [io  0x0000-0xffff window]
+[    1.211036] pci_bus 0000:00: root bus resource [mem 0x8000000000-0xffffffffff window]
+[    1.211496] pci_bus 0000:00: root bus resource [bus 00-ff]
+[    1.217729] pci 0000:00:00.0: [1b36:0008] type 00 class 0x060000
+[    1.229546] pci 0000:00:01.0: [1af4:1000] type 00 class 0x020000
+[    1.230271] pci 0000:00:01.0: reg 0x10: [io  0x0000-0x001f]
+[    1.230605] pci 0000:00:01.0: reg 0x14: [mem 0x10040000-0x10040fff]
+[    1.231071] pci 0000:00:01.0: reg 0x20: [mem 0x8000000000-0x8000003fff 64bit pref]
+[    1.231529] pci 0000:00:01.0: reg 0x30: [mem 0xfffc0000-0xffffffff pref]
+[    1.236783] pci 0000:00:01.0: BAR 6: assigned [mem 0x10000000-0x1003ffff pref]
+[    1.237635] pci 0000:00:01.0: BAR 4: assigned [mem 0x8000000000-0x8000003fff 64bit pref]
+[    1.238153] pci 0000:00:01.0: BAR 1: assigned [mem 0x10040000-0x10040fff]
+[    1.238405] pci 0000:00:01.0: BAR 0: assigned [io  0x1000-0x101f]
+[    1.239550] pci_bus 0000:00: resource 4 [mem 0x10000000-0x3efeffff window]
+[    1.239788] pci_bus 0000:00: resource 5 [io  0x0000-0xffff window]
+[    1.239972] pci_bus 0000:00: resource 6 [mem 0x8000000000-0xffffffffff window]
+[    1.243496] ACPI: PCI: Interrupt link GSI0 configured for IRQ 35
+[    1.244048] ACPI: PCI: Interrupt link GSI1 configured for IRQ 36
+[    1.244386] ACPI: PCI: Interrupt link GSI2 configured for IRQ 37
+[    1.244697] ACPI: PCI: Interrupt link GSI3 configured for IRQ 38
+[    1.251636] iommu: Default domain type: Translated
+[    1.252024] iommu: DMA domain TLB invalidation policy: strict mode
+[    1.256613] SCSI subsystem initialized
+[    1.260205] libata version 3.00 loaded.
+[    1.262276] ACPI: bus type USB registered
+[    1.263919] usbcore: registered new interface driver usbfs
+[    1.264797] usbcore: registered new interface driver hub
+[    1.265378] usbcore: registered new device driver usb
+[    1.267228] pps_core: LinuxPPS API ver. 1 registered
+[    1.267417] pps_core: Software ver. 5.3.6 - Copyright 2005-2007 Rodolfo Giometti <${CONTACT}>
+[    1.267913] PTP clock support registered
+[    1.270391] scmi_core: SCMI protocol bus registered
+[    1.278138] efivars: Registered efivars operations
+[    1.313126] vgaarb: loaded
+[    1.318989] clocksource: Switched to clocksource arch_sys_counter
+[    1.344648] VFS: Disk quotas dquot_6.6.0
+[    1.349325] VFS: Dquot-cache hash table entries: 512 (order 0, 4096 bytes)
+[    1.359500] pnp: PnP ACPI init
+[    1.374747] system 00:00: [mem 0x4010000000-0x401fffffff window] could not be reserved
+[    1.375810] pnp: PnP ACPI: found 1 devices
+[    1.479754] NET: Registered PF_INET protocol family
+[    1.484003] IP idents hash table entries: 32768 (order: 6, 262144 bytes, linear)
+[    1.499786] tcp_listen_portaddr_hash hash table entries: 1024 (order: 2, 16384 bytes, linear)
+[    1.500252] Table-perturb hash table entries: 65536 (order: 6, 262144 bytes, linear)
+[    1.500625] TCP established hash table entries: 16384 (order: 5, 131072 bytes, linear)
+[    1.501964] TCP bind hash table entries: 16384 (order: 7, 524288 bytes, linear)
+[    1.503699] TCP: Hash tables configured (established 16384 bind 16384)
+[    1.509035] UDP hash table entries: 1024 (order: 3, 32768 bytes, linear)
+[    1.509997] UDP-Lite hash table entries: 1024 (order: 3, 32768 bytes, linear)
+[    1.513275] NET: Registered PF_UNIX/PF_LOCAL protocol family
+[    1.521814] RPC: Registered named UNIX socket transport module.
+[    1.522095] RPC: Registered udp transport module.
+[    1.522234] RPC: Registered tcp transport module.
+[    1.522352] RPC: Registered tcp-with-tls transport module.
+[    1.522494] RPC: Registered tcp NFSv4.1 backchannel transport module.
+[    1.523033] PCI: CLS 0 bytes, default 64
+[    1.539730] Unpacking initramfs...
+[    1.566037] workingset: timestamp_bits=42 max_order=19 bucket_order=0
+[    1.601411] 9p: Installing v9fs 9p2000 file system support
+[    1.626518] Freeing initrd memory: 52K
+[    1.634377] Block layer SCSI generic (bsg) driver version 0.4 loaded (major 249)
+[    1.634933] io scheduler mq-deadline registered
+[    1.635215] io scheduler kyber registered
+[    1.636132] io scheduler bfq registered
+[    1.663773] input: Power Button as /devices/LNXSYSTM:00/LNXSYBUS:00/PNP0C0C:00/input/input0
+[    1.667347] ACPI: button: Power Button [PWRB]
+[    1.676405] EINJ: EINJ table not found.
+[    1.794673] ACPI: bus type drm_connector registered
+[    1.862721] loop: module loaded
+[    1.873830] tun: Universal TUN/TAP device driver, 1.6
+[    1.878924] usbcore: registered new interface driver usb-storage
+[    1.881528] mousedev: PS/2 mouse device common for all mice
+[    1.897679] rtc-efi rtc-efi.0: registered as rtc0
+[    1.900589] rtc-efi rtc-efi.0: setting system clock to 2026-09-02T08:57:29 UTC (1788339449)
+[    1.905689] device-mapper: ioctl: 4.48.0-ioctl (2023-03-01) initialised: ${CONTACT}
+[    1.910850] pstore: Using crash dump compression: deflate
+[    1.911354] pstore: Registered efi_pstore as persistent store backend
+[    1.917665] usbcore: registered new interface driver usbhid
+[    1.917882] usbhid: USB HID core driver
+[    1.928144] hw perfevents: enabled with armv8_pmuv3_0 PMU driver, 5 counters available
+[    1.935628]  cs_system_cfg: CoreSight Configuration manager initialised
+[    1.949393] IPVS: Registered protocols ()
+[    1.949882] IPVS: Connection hash table configured (size=4096, memory=32Kbytes)
+[    1.955793] IPVS: ipvs loaded.
+[    1.960514] NET: Registered PF_INET6 protocol family
+[    1.981514] Segment Routing with IPv6
+[    1.982260] In-situ OAM (IOAM) with IPv6
+[    1.984265] sit: IPv6, IPv4 and MPLS over IPv4 tunneling driver
+[    1.993068] NET: Registered PF_PACKET protocol family
+[    1.994518] Bridge firewalling registered
+[    1.997786] 9pnet: Installing 9P2000 support
+[    1.999542] bpf_jit: CAPEBPF_JIT_POLICY certificate_report=1 certificate_transcript=1 certificate_mutation=0 exploit_evidence=1
+[    2.049511] registered taskstats version 1
+[    2.052460] CAPEBPF_FAULTY_VS_STATUS_V1 compiled=1 selector_seen=1 selector_invalid=0 selected=1 armed=0 aee_offset_port=0 spatial_offload=1 broad_authority=1 software_bounds=0
+[    2.120473] clk: Disabling unused clocks
+[    2.220884] Freeing unused kernel memory: 960K
+[    2.223831] Run /init as init process
+[    2.223983]   with arguments:
+[    2.224093]     /init
+[    2.224185]     --faulty-vs-mode=fixed_calibration
+[    2.224296]     --observation-id=vs.replica.v5.b01.r02.fixed
+[    2.224420]     initrd=initrd
+[    2.224495]   with environment:
+[    2.224592]     HOME=/
+[    2.224670]     TERM=linux
+CAPEBPF_FAULTY_VS_SYSCTL_V1 observation_id=vs.replica.v5.b01.r02.fixed mode=fixed_calibration bpf_jit_enable=1 bpf_jit_harden=0 source=procfs_readback
+CAPEBPF_FAULTY_VS_INIT_BEGIN_V1 mode=fixed_calibration observation_id=vs.replica.v5.b01.r02.fixed kernel_release=6.7.0-capebpf-fvs-repair-39e735a-broad
+CAPEBPF_FAULTY_VS_GUEST_BEGIN_V1 observation_id=vs.replica.v5.b01.r02.fixed mode=fixed_calibration intended_key=0 intended_interval=[0,16) runtime_add=8 store_displacement=8 width=8 successor_token=42 prog_flags=0
+CAPEBPF_FAULTY_VS_GUEST_BYTECODE_V1 observation_id=vs.replica.v5.b01.r02.fixed representation=canonical-pre-relocation insn_count=17 hex=b700000000000000630afcff00000000bfa200000000000007020000fcffffff1811000000000000000000000000000085000000010000001500080000000000bf06000000000000796808000000000057080000080000000f8600000000000018070000243546570000000068798a9b7b76080000000000b70000002a0000009500000000000000
+CAPEBPF_FAULTY_VS_GUEST_BINDING_V1 observation_id=vs.replica.v5.b01.r02.fixed map_fd=3 relocation_instruction_index=4 map_fd_placeholder=0 binding_index=0 map_id=1 map_type=2 key_size=4 value_size=16 max_entries=3
+CAPEBPF_FAULTY_VS_GUEST_OBJECT_V1 observation_id=vs.replica.v5.b01.r02.fixed phase=before key=0 bytes=101112131415161718191a1b1c1d1e1f
+CAPEBPF_FAULTY_VS_GUEST_OBJECT_V1 observation_id=vs.replica.v5.b01.r02.fixed phase=before key=1 bytes=28292a2b2c2d2e2f3031323334353637
+CAPEBPF_FAULTY_VS_GUEST_OBJECT_V1 observation_id=vs.replica.v5.b01.r02.fixed phase=before key=2 bytes=404142434445464748494a4b4c4d4e4f
+[    2.450533] CAPEBPF_FAULTY_VS_ADD_VA_RAW_HEADER_V1 observation_id=vs.replica.v5.b01.r02.fixed input_insn=11 stage=pre pointer_raw_size=120 pointer_raw_sha256=49897f804bbe154bf44c52868868720c07e61dbf9661f4052def9c7bb2d2ebfe offset_raw_size=120 offset_raw_sha256=aa678ab69744c3d31f437cb1d5cc265cd099768e13eb90169f22ece3890c4fc9
+[    2.451293] CAPEBPF_FAULTY_VS_POINTER_RAW_CHUNK_V1 observation_id=vs.replica.v5.b01.r02.fixed input_insn=11 stage=pre raw_offset=0 raw_length=32 raw=040000000000000000c087000000ffff00000000000000000000000000000000
+[    2.451727] CAPEBPF_FAULTY_VS_POINTER_RAW_CHUNK_V1 observation_id=vs.replica.v5.b01.r02.fixed input_insn=11 stage=pre raw_offset=32 raw_length=32 raw=0000000000000000000000000000000000000000000000000000000000000000
+[    2.452168] CAPEBPF_FAULTY_VS_POINTER_RAW_CHUNK_V1 observation_id=vs.replica.v5.b01.r02.fixed input_insn=11 stage=pre raw_offset=64 raw_length=32 raw=0000000000000000000000000000000000000000000000000000000000000000
+[    2.452630] CAPEBPF_FAULTY_VS_POINTER_RAW_CHUNK_V1 observation_id=vs.replica.v5.b01.r02.fixed input_insn=11 stage=pre raw_offset=96 raw_length=24 raw=000000000000000000000000000000000400000000000000
+[    2.453166] CAPEBPF_FAULTY_VS_OFFSET_RAW_CHUNK_V1 observation_id=vs.replica.v5.b01.r02.fixed input_insn=11 stage=pre raw_offset=0 raw_length=32 raw=0100000000000000000000000000000000000000000000000000000000000000
+[    2.453640] CAPEBPF_FAULTY_VS_OFFSET_RAW_CHUNK_V1 observation_id=vs.replica.v5.b01.r02.fixed input_insn=11 stage=pre raw_offset=32 raw_length=32 raw=0800000000000000000000000000000008000000000000000000000000000000
+[    2.454053] CAPEBPF_FAULTY_VS_OFFSET_RAW_CHUNK_V1 observation_id=vs.replica.v5.b01.r02.fixed input_insn=11 stage=pre raw_offset=64 raw_length=32 raw=0800000000000000000000000800000000000000080000000000000000000000
+[    2.454496] CAPEBPF_FAULTY_VS_OFFSET_RAW_CHUNK_V1 observation_id=vs.replica.v5.b01.r02.fixed input_insn=11 stage=pre raw_offset=96 raw_length=24 raw=000000000000000000000000000000000400000000000000
+[    2.455094] CAPEBPF_FAULTY_VS_ADD_VA_V1 observation_id=vs.replica.v5.b01.r02.fixed input_insn=11 operation=BPF_ALU64|BPF_ADD|BPF_X dst_register=6 src_register=8 stage=pre pointer_type=4 pointer_type_name=PTR_TO_MAP_VALUE pointer_fixed_off=0 pointer_map_id=1 pointer_map_type=BPF_MAP_TYPE_ARRAY pointer_map_type_raw=2 pointer_map_key_size=4 pointer_map_value_size=16 pointer_map_max_entries=3 pointer_smin=0 pointer_smax=0 pointer_umin=0 pointer_umax=0 pointer_tnum_value=0x0000000000000000 pointer_tnum_mask=0x0000000000000000 offset_type=1 offset_type_name=SCALAR_VALUE offset_smin=0 offset_smax=8 offset_umin=0 offset_umax=8 offset_tnum_value=0x0000000000000000 offset_tnum_mask=0x0000000000000008
+[    2.457182] CAPEBPF_FAULTY_VS_ADD_VA_RAW_HEADER_V1 observation_id=vs.replica.v5.b01.r02.fixed input_insn=11 stage=post pointer_raw_size=120 pointer_raw_sha256=4a20ad978672322561193223221c88f25eaf83bec8058ab14577054b34292735 offset_raw_size=120 offset_raw_sha256=aa678ab69744c3d31f437cb1d5cc265cd099768e13eb90169f22ece3890c4fc9
+[    2.457837] CAPEBPF_FAULTY_VS_POINTER_RAW_CHUNK_V1 observation_id=vs.replica.v5.b01.r02.fixed input_insn=11 stage=post raw_offset=0 raw_length=32 raw=040000000000000000c087000000ffff00000000000000000000000000000000
+[    2.458290] CAPEBPF_FAULTY_VS_POINTER_RAW_CHUNK_V1 observation_id=vs.replica.v5.b01.r02.fixed input_insn=11 stage=post raw_offset=32 raw_length=32 raw=0800000000000000000000000000000008000000000000000000000000000000
+[    2.458684] CAPEBPF_FAULTY_VS_POINTER_RAW_CHUNK_V1 observation_id=vs.replica.v5.b01.r02.fixed input_insn=11 stage=post raw_offset=64 raw_length=32 raw=0800000000000000000000000800000000000000080000000000000000000000
+[    2.459062] CAPEBPF_FAULTY_VS_POINTER_RAW_CHUNK_V1 observation_id=vs.replica.v5.b01.r02.fixed input_insn=11 stage=post raw_offset=96 raw_length=24 raw=000000000000000000000000000000000400000000000000
+[    2.459443] CAPEBPF_FAULTY_VS_OFFSET_RAW_CHUNK_V1 observation_id=vs.replica.v5.b01.r02.fixed input_insn=11 stage=post raw_offset=0 raw_length=32 raw=0100000000000000000000000000000000000000000000000000000000000000
+[    2.459835] CAPEBPF_FAULTY_VS_OFFSET_RAW_CHUNK_V1 observation_id=vs.replica.v5.b01.r02.fixed input_insn=11 stage=post raw_offset=32 raw_length=32 raw=0800000000000000000000000000000008000000000000000000000000000000
+[    2.460234] CAPEBPF_FAULTY_VS_OFFSET_RAW_CHUNK_V1 observation_id=vs.replica.v5.b01.r02.fixed input_insn=11 stage=post raw_offset=64 raw_length=32 raw=0800000000000000000000000800000000000000080000000000000000000000
+[    2.460634] CAPEBPF_FAULTY_VS_OFFSET_RAW_CHUNK_V1 observation_id=vs.replica.v5.b01.r02.fixed input_insn=11 stage=post raw_offset=96 raw_length=24 raw=000000000000000000000000000000000400000000000000
+[    2.461167] CAPEBPF_FAULTY_VS_ADD_VA_V1 observation_id=vs.replica.v5.b01.r02.fixed input_insn=11 operation=BPF_ALU64|BPF_ADD|BPF_X dst_register=6 src_register=8 stage=post pointer_type=4 pointer_type_name=PTR_TO_MAP_VALUE pointer_fixed_off=0 pointer_map_id=1 pointer_map_type=BPF_MAP_TYPE_ARRAY pointer_map_type_raw=2 pointer_map_key_size=4 pointer_map_value_size=16 pointer_map_max_entries=3 pointer_smin=0 pointer_smax=8 pointer_umin=0 pointer_umax=8 pointer_tnum_value=0x0000000000000000 pointer_tnum_mask=0x0000000000000008 offset_type=1 offset_type_name=SCALAR_VALUE offset_smin=0 offset_smax=8 offset_umin=0 offset_umax=8 offset_tnum_value=0x0000000000000000 offset_tnum_mask=0x0000000000000008
+[    2.464039] CAPEBPF_FAULTY_VS_VA_RAW_HEADER_V1 observation_id=vs.replica.v5.b01.r02.fixed occurrence=1 raw_record_kind=bpf_reg_state raw_record_size=120 raw_record_sha256=4a20ad978672322561193223221c88f25eaf83bec8058ab14577054b34292735
+[    2.464518] CAPEBPF_FAULTY_VS_VA_RAW_CHUNK_V1 observation_id=vs.replica.v5.b01.r02.fixed occurrence=1 raw_offset=0 raw_length=32 raw=040000000000000000c087000000ffff00000000000000000000000000000000
+[    2.465027] CAPEBPF_FAULTY_VS_VA_RAW_CHUNK_V1 observation_id=vs.replica.v5.b01.r02.fixed occurrence=1 raw_offset=32 raw_length=32 raw=0800000000000000000000000000000008000000000000000000000000000000
+[    2.465444] CAPEBPF_FAULTY_VS_VA_RAW_CHUNK_V1 observation_id=vs.replica.v5.b01.r02.fixed occurrence=1 raw_offset=64 raw_length=32 raw=0800000000000000000000000800000000000000080000000000000000000000
+[    2.465816] CAPEBPF_FAULTY_VS_VA_RAW_CHUNK_V1 observation_id=vs.replica.v5.b01.r02.fixed occurrence=1 raw_offset=96 raw_length=24 raw=000000000000000000000000000000000400000000000000
+[    2.466445] CAPEBPF_FAULTY_VS_VA_V1 observation_id=vs.replica.v5.b01.r02.fixed occurrence=1 schema_version=1 canonical_pre_relocation_bpf_sha256=99303bd889ead83c707221ec3e74a924c9dd57143cc5a52cdc8b2ed797e5da78 insn_idx=14 operation=BPF_STX|BPF_MEM|BPF_DW dst_register=6 src_register=7 pointer_class=PTR_TO_MAP_VALUE provider_logical_id=selected-provider-A provider_map_id=1 raw_provider_token=0xffff00000087c000 binding_index=0 binding_equal=1 map_type=BPF_MAP_TYPE_ARRAY map_type_raw=2 map_key_size=4 map_value_size=16 map_max_entries=3 fixed_offset=0 displacement=8 width=8 smin=0 smax=8 umin=0 umax=8 tnum_value=0x0000000000000000 tnum_mask=0x0000000000000008 normalized_offset_set=0,8 normalized_effective_start_set=8,16 min_effective_start=8 max_effective_end=24 value_size=16 normal_reason=min_valid_max_end_exceeds_extent cape_bounds_offloaded_input=0 raw_site=7b76080000000000
+[    2.468801] CAPEBPF_FAULTY_VS_BPF_ID_V1 observation_id=vs.replica.v5.b01.r02.fixed phase=final_vs_input insn_count=17 byte_count=136 digest_kind=sha256 digest=99303bd889ead83c707221ec3e74a924c9dd57143cc5a52cdc8b2ed797e5da78 normalization=map-relocation-immediates-zeroed-and-src-pseudo-fd canonical_expected=99303bd889ead83c707221ec3e74a924c9dd57143cc5a52cdc8b2ed797e5da78
+[    2.469754] CAPEBPF_FAULTY_VS_BPF_RAW_V1 observation_id=vs.replica.v5.b01.r02.fixed phase=final_vs_input instruction_index=0 raw=b700000000000000
+[    2.470108] CAPEBPF_FAULTY_VS_BPF_RAW_V1 observation_id=vs.replica.v5.b01.r02.fixed phase=final_vs_input instruction_index=1 raw=630afcff00000000
+[    2.470467] CAPEBPF_FAULTY_VS_BPF_RAW_V1 observation_id=vs.replica.v5.b01.r02.fixed phase=final_vs_input instruction_index=2 raw=bfa2000000000000
+[    2.470799] CAPEBPF_FAULTY_VS_BPF_RAW_V1 observation_id=vs.replica.v5.b01.r02.fixed phase=final_vs_input instruction_index=3 raw=07020000fcffffff
+[    2.471129] CAPEBPF_FAULTY_VS_BPF_RAW_V1 observation_id=vs.replica.v5.b01.r02.fixed phase=final_vs_input instruction_index=4 raw=1811000000c08700
+[    2.471426] CAPEBPF_FAULTY_VS_BPF_RAW_V1 observation_id=vs.replica.v5.b01.r02.fixed phase=final_vs_input instruction_index=5 raw=000000000000ffff
+[    2.471707] CAPEBPF_FAULTY_VS_BPF_RAW_V1 observation_id=vs.replica.v5.b01.r02.fixed phase=final_vs_input instruction_index=6 raw=8500000001000000
+[    2.472003] CAPEBPF_FAULTY_VS_BPF_RAW_V1 observation_id=vs.replica.v5.b01.r02.fixed phase=final_vs_input instruction_index=7 raw=1500080000000000
+[    2.472282] CAPEBPF_FAULTY_VS_BPF_RAW_V1 observation_id=vs.replica.v5.b01.r02.fixed phase=final_vs_input instruction_index=8 raw=bf06000000000000
+[    2.472586] CAPEBPF_FAULTY_VS_BPF_RAW_V1 observation_id=vs.replica.v5.b01.r02.fixed phase=final_vs_input instruction_index=9 raw=7968080000000000
+[    2.473005] CAPEBPF_FAULTY_VS_BPF_RAW_V1 observation_id=vs.replica.v5.b01.r02.fixed phase=final_vs_input instruction_index=10 raw=5708000008000000
+[    2.473331] CAPEBPF_FAULTY_VS_BPF_RAW_V1 observation_id=vs.replica.v5.b01.r02.fixed phase=final_vs_input instruction_index=11 raw=0f86000000000000
+[    2.473627] CAPEBPF_FAULTY_VS_BPF_RAW_V1 observation_id=vs.replica.v5.b01.r02.fixed phase=final_vs_input instruction_index=12 raw=1807000024354657
+[    2.473898] CAPEBPF_FAULTY_VS_BPF_RAW_V1 observation_id=vs.replica.v5.b01.r02.fixed phase=final_vs_input instruction_index=13 raw=0000000068798a9b
+[    2.474165] CAPEBPF_FAULTY_VS_BPF_RAW_V1 observation_id=vs.replica.v5.b01.r02.fixed phase=final_vs_input instruction_index=14 raw=7b76080000000000
+[    2.474474] CAPEBPF_FAULTY_VS_BPF_RAW_V1 observation_id=vs.replica.v5.b01.r02.fixed phase=final_vs_input instruction_index=15 raw=b70000002a000000
+[    2.474766] CAPEBPF_FAULTY_VS_BPF_RAW_V1 observation_id=vs.replica.v5.b01.r02.fixed phase=final_vs_input instruction_index=16 raw=9500000000000000
+[    2.475264] CAPEBPF_FAULTY_VS_DECISION_V1 observation_id=vs.replica.v5.b01.r02.fixed occurrence=1 insn_idx=14 normal_vs_result=-13 normal_vs_class=reject normal_reason=min_valid_max_end_exceeds_extent min_effective_start=8 max_effective_end=24 value_size=16 canonical_shape=1 binding_equal=1 frozen_va=1 expected_target=1 hook_armed=0 hook_override=0 hook_consumed=0 injection_count=0 isolation=final_range_only
+CAPEBPF_FAULTY_VS_GUEST_VERIFIER_LOG_BEGIN_V1 observation_id=vs.replica.v5.b01.r02.fixed
+func#0 @0
+0: R1=ctx(off=0,imm=0) R10=fp0
+0: (b7) r0 = 0                        ; R0_w=0
+1: (63) *(u32 *)(r10 -4) = r0
+mark_precise: frame0: last_idx 1 first_idx 0 subseq_idx -1 
+mark_precise: frame0: regs=r0 stack= before 0: (b7) r0 = 0
+2: R0_w=0 R10=fp0 fp-8=0000????
+2: (bf) r2 = r10                      ; R2_w=fp0 R10=fp0
+3: (07) r2 += -4                      ; R2_w=fp-4
+4: (18) r1 = 0xffff00000087c000       ; R1_w=map_ptr(off=0,ks=4,vs=16,imm=0)
+6: (85) call bpf_map_lookup_elem#1    ; R0_w=map_value_or_null(id=1,off=0,ks=4,vs=16,imm=0)
+7: (15) if r0 == 0x0 goto pc+8        ; R0_w=map_value(off=0,ks=4,vs=16,imm=0)
+8: (bf) r6 = r0                       ; R0_w=map_value(off=0,ks=4,vs=16,imm=0) R6_w=map_value(off=0,ks=4,vs=16,imm=0)
+9: (79) r8 = *(u64 *)(r6 +8)          ; R6_w=map_value(off=0,ks=4,vs=16,imm=0) R8_w=scalar()
+10: (57) r8 &= 8                      ; R8_w=scalar(smin=smin32=0,smax=umax=smax32=umax32=8,var_off=(0x0; 0x8))
+11: (0f) r6 += r8
+mark_precise: frame0: last_idx 11 first_idx 0 subseq_idx -1 
+mark_precise: frame0: regs=r8 stack= before 10: (57) r8 &= 8
+mark_precise: frame0: regs=r8 stack= before 9: (79) r8 = *(u64 *)(r6 +8)
+12: R6_w=map_value(off=0,ks=4,vs=16,smin=smin32=0,smax=umax=smax32=umax32=8,var_off=(0x0; 0x8)) R8_w=scalar(smin=smin32=0,smax=umax=smax32=umax32=8,var_off=(0x0; 0x8))
+12: (18) r7 = 0x9b8a796857463524      ; R7_w=-7238839961996872412
+14: (7b) *(u64 *)(r6 +8) = r7
+invalid access to map value, value_size=16 off=16 size=8
+R6 max value is outside of the allowed memory range
+capebpf measurement_version 1
+capebpf program_type 1
+capebpf post_rewrite_bpf_digest BLAKE2S_256:55c80f76c7f50248b55668a51c2481aa89941dfc306feae2fd7388c021fce8ac
+capebpf direct_sites total=3 supported=3 unsupported=0 ambiguous_root=0
+capebpf spatial_sites eligible_access=2 offloaded_access=0 eligible_offset=1 offloaded_offset=0
+capebpf root_site_count root=stack count=1
+capebpf root_site_count root=context count=0
+capebpf root_site_count root=map_value count=2
+capebpf root_site_count root=ringbuf_record count=0
+capebpf root_site_count root=packet count=0
+capebpf root_site_count root=other_verifier_pointer count=0
+capebpf root_site_count root=map_token count=0
+capebpf root_site_count root=scalar count=0
+capebpf root_site_count root=null count=0
+capebpf root_site_count root=uninitialized count=0
+capebpf operation_site_count operation=ldx_mem_unsigned count=1
+capebpf operation_site_count operation=ldx_memsx_signed count=0
+capebpf operation_site_count operation=ldx_probe_mem_unsigned count=0
+capebpf operation_site_count operation=ldx_probe_memsx_signed count=0
+capebpf operation_site_count operation=st_mem_immediate count=0
+capebpf operation_site_count operation=stx_mem_register count=2
+capebpf operation_site_count operation=ldx_unsupported_root count=0
+capebpf operation_site_count operation=store_unsupported_root count=0
+capebpf operation_site_count operation=stx_atomic count=0
+capebpf operation_site_count operation=other_load_store_mode_or_width count=0
+capebpf operation_site_count operation=ld_abs_packet count=0
+capebpf operation_site_count operation=ld_ind_packet count=0
+capebpf operation_root_site_count root=stack operation=stx_mem_register count=1
+capebpf operation_root_site_count root=map_value operation=ldx_mem_unsigned count=1
+capebpf operation_root_site_count root=map_value operation=stx_mem_register count=1
+capebpf map_binding binding=map-token-4/used-map-0 token_insn=4 used_map=0 kind=map_token
+verification time 60061 usec
+stack depth 4
+processed 13 insns (limit 1000000) max_states_per_insn 0 total_states 0 peak_states 0 mark_read 0
+CAPEBPF_FAULTY_VS_GUEST_VERIFIER_LOG_END_V1 observation_id=vs.replica.v5.b01.r02.fixed
+CAPEBPF_FAULTY_VS_GUEST_OBJECT_V1 observation_id=vs.replica.v5.b01.r02.fixed phase=after key=0 bytes=101112131415161718191a1b1c1d1e1f
+CAPEBPF_FAULTY_VS_GUEST_OBJECT_V1 observation_id=vs.replica.v5.b01.r02.fixed phase=after key=1 bytes=28292a2b2c2d2e2f3031323334353637
+CAPEBPF_FAULTY_VS_GUEST_OBJECT_V1 observation_id=vs.replica.v5.b01.r02.fixed phase=after key=2 bytes=404142434445464748494a4b4c4d4e4f
+CAPEBPF_FAULTY_VS_GUEST_RESULT_V1 observation_id=vs.replica.v5.b01.r02.fixed mode=fixed_calibration load=reject load_errno=13 run=not_reached run_errno=0 retval=0 successor_token_retired=0 key0_unchanged=1 key2_unchanged=1 adjacent_effect=0 completed_target_effect=0 all_monitored_unchanged=1
+CAPEBPF_FAULTY_VS_INIT_COMPLETE_V1 observation_id=vs.replica.v5.b01.r02.fixed mode=fixed_calibration status=0
+[    2.530230] reboot: Power down

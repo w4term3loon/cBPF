@@ -1,0 +1,532 @@
+CAPEBPF_MEMOP_HOST_V1 observation_id=memop.v6.b02.r06.validstore.baseline mode=faulty_baseline case_id=valid_store_w_at_12 image_role=broad_no_aee deployment_sha256=85108fc481f8aaf92843561b1cd1842e7a73f7692c8519929db94c636d780888 preregistration_addendum_sha256=71069c9951a02b4883813153954629ca62fe63830f80356d564378d365c21629 matrix_definition_sha256=03d012ee15ae113f44b5634be85f4e8a82d1fc5d253490129dddc2fd35fc459e governance_freeze_receipt_sha256=1d272fda39cda17b210bb1404e7054483c6c430fb2e72e447aae6c90a4035572 implementation_conformance_amendment_sha256=5cdf08a39cdf6d476ba94cb02a8ddbccaea97fea0ac9849cafd4cb72cf0b3a7e implementation_conformance_amendment_human_sha256=d88783ae726d2fd62c245cc0fa95925b43a7e565c8b3eea3a8373c93ecfe2424 implementation_conformance_amendment_freeze_receipt_sha256=8f87a5641ad948f01e560aa47d028f59532f080be82c82c67a8d9052aedddd48 canonical_bpf_sha256=f04dfaada6e1f00b9ccb9189567f3524f59ad9bb537bb52f7f3d17dafba15991 image_sha256=89e065819b48842fa3bf17376658689e7af9345df97ae9bad17c9ed2c4acdd78 config_sha256=242ecd2ad4af48830428cc17cb9b519744e3a160bb407186fd0a7916e28ab7fb vmlinux_sha256=0e958ad1b25f8de0de3e13c510924ca934099644872ed015bd3940b3724f3cfb initramfs_sha256=7bb597b00a79047b96410436c2effc30ca29ac7da7b7e79c2abe406bfb2f7bc6 guest_sha256=c18954166e533bf9d0305b977a9165897545330e631774381e6f5fa309076d05 init_sha256=058f130c6b12405e5daab74c4b53c1b2bf7be78821c648d2359d6134885b5a90 qemu_sha256=b0a0b21a9ee5e4b01a1f7d40bcb1ec6289cd51eab1a0f66deafc419b1db3e219 firmware_sha256=b608de7c81a4cec0eb83422a73ee227618c30fe9513a582a6f9f786ce8d1dbf9 runner_sha256=25c0f61ce6e35f8659f89ee60045dfb4ad8a77c1c215d02f544a41f643d28827 
+[2J[01;01H[=3h[2J[01;01HEFI stub: Booting Linux Kernel...
+EFI stub: EFI_RNG_PROTOCOL unavailable
+EFI stub: Loaded initrd from LINUX_EFI_INITRD_MEDIA_GUID device path
+EFI stub: Generating empty DTB
+EFI stub: Exiting boot services...
+[    0.000000] Booting Linux on physical CPU 0x0000000000 [0x410fd083]
+[    0.000000] Linux version 6.7.0-capebpf-memop-v1 (capebpf@memop-closure) (clang version 17.0.0 (https://git.morello-project.org/morello/llvm-project.git 7956a8d20652883f845a41094645174eb92d1960), LLD 17.0.0) #1 SMP PREEMPT 2026-09-02 12:00:00 +0000
+[    0.000000] Userspace ABI: pure-capability (PCuABI)
+[    0.000000] KASLR disabled due to lack of seed
+[    0.000000] CAPEBPF_FAULTY_VS_ARM_V1 observation_id=memop.v6.b02.r06.validstore.baseline selector=calibration semantic_fault_arm=off hook=final-vs-bound-decision armed=0 one_shot=1 runtime_default=off
+[    0.000000] efi: EFI v2.7 by EDK II
+[    0.000000] efi: SMBIOS 3.0=0xbf700000 MEMATTR=0xbd3f8018 ACPI 2.0=0xbbf70018 INITRD=0xbc373f98 MEMRESERVE=0xbc373d18 
+[    0.000000] ACPI: Early table checksum verification disabled
+[    0.000000] ACPI: RSDP 0x00000000BBF70018 000024 (v02 BOCHS )
+[    0.000000] ACPI: XSDT 0x00000000BBF7FE98 000064 (v01 BOCHS  BXPC     00000001      01000013)
+[    0.000000] ACPI: FACP 0x00000000BBF7FA98 00010C (v05 BOCHS  BXPC     00000001 BXPC 00000001)
+[    0.000000] ACPI: DSDT 0x00000000BBF77518 0014A2 (v02 BOCHS  BXPC     00000001 BXPC 00000001)
+[    0.000000] ACPI: APIC 0x00000000BBF7FC18 000198 (v03 BOCHS  BXPC     00000001 BXPC 00000001)
+[    0.000000] ACPI: PPTT 0x00000000BBF7D898 00009C (v02 BOCHS  BXPC     00000001 BXPC 00000001)
+[    0.000000] ACPI: GTDT 0x00000000BBF7E818 000060 (v02 BOCHS  BXPC     00000001 BXPC 00000001)
+[    0.000000] ACPI: MCFG 0x00000000BBF7E918 00003C (v01 BOCHS  BXPC     00000001 BXPC 00000001)
+[    0.000000] ACPI: SPCR 0x00000000BBF7FF98 000050 (v02 BOCHS  BXPC     00000001 BXPC 00000001)
+[    0.000000] ACPI: DBG2 0x00000000BBF7E418 000057 (v00 BOCHS  BXPC     00000001 BXPC 00000001)
+[    0.000000] ACPI: IORT 0x00000000BBF7E718 000080 (v03 BOCHS  BXPC     00000001 BXPC 00000001)
+[    0.000000] ACPI: SPCR: console: pl011,mmio,0x9000000,9600
+[    0.000000] NUMA: Failed to initialise from firmware
+[    0.000000] NUMA: Faking a node at [mem 0x0000000040000000-0x00000000bfffffff]
+[    0.000000] NUMA: NODE_DATA [mem 0xbfbf5ac0-0xbfbf7fff]
+[    0.000000] Zone ranges:
+[    0.000000]   DMA      [mem 0x0000000040000000-0x00000000bfffffff]
+[    0.000000]   DMA32    empty
+[    0.000000]   Normal   empty
+[    0.000000] Movable zone start for each node
+[    0.000000] Early memory node ranges
+[    0.000000]   node   0: [mem 0x0000000040000000-0x00000000bbf7ffff]
+[    0.000000]   node   0: [mem 0x00000000bbf80000-0x00000000bbffffff]
+[    0.000000]   node   0: [mem 0x00000000bc000000-0x00000000bc01ffff]
+[    0.000000]   node   0: [mem 0x00000000bc020000-0x00000000bc36ffff]
+[    0.000000]   node   0: [mem 0x00000000bc370000-0x00000000bf64ffff]
+[    0.000000]   node   0: [mem 0x00000000bf650000-0x00000000bf6dffff]
+[    0.000000]   node   0: [mem 0x00000000bf6e0000-0x00000000bf6effff]
+[    0.000000]   node   0: [mem 0x00000000bf6f0000-0x00000000bf80ffff]
+[    0.000000]   node   0: [mem 0x00000000bf810000-0x00000000bfffffff]
+[    0.000000] Initmem setup node 0 [mem 0x0000000040000000-0x00000000bfffffff]
+[    0.000000] psci: probing for conduit method from ACPI.
+[    0.000000] psci: PSCIv1.1 detected in firmware.
+[    0.000000] psci: Using standard PSCI v0.2 function IDs
+[    0.000000] psci: Trusted OS migration not required
+[    0.000000] psci: SMC Calling Convention v1.0
+[    0.000000] percpu: Embedded 34 pages/cpu s98984 r8192 d32088 u139264
+[    0.000000] pcpu-alloc: s98984 r8192 d32088 u139264 alloc=34*4096
+[    0.000000] pcpu-alloc: [0] 0 [0] 1 [0] 2 [0] 3 
+[    0.000000] Detected PIPT I-cache on CPU0
+[    0.000000] CPU features: detected: GIC system register CPU interface
+[    0.000000] CPU features: detected: Morello Capability Architecture
+[    0.000000] CPU features: detected: Spectre-v2
+[    0.000000] CPU features: detected: Spectre-v3a
+[    0.000000] CPU features: detected: Spectre-v4
+[    0.000000] CPU features: detected: Spectre-BHB
+[    0.000000] CPU features: kernel page table isolation disabled by kernel configuration
+[    0.000000] CPU features: detected: ARM erratum 1742098
+[    0.000000] CPU features: detected: ARM errata 1165522, 1319367, or 1530923
+[    0.000000] alternatives: applying boot alternatives
+[    0.000000] Kernel command line: console=ttyAMA0 loglevel=8 rdinit=/init panic=-1 capebpf.jit_certificate_report=1 capebpf.jit_certificate_transcript=1 capebpf.exploit_evidence=1 capebpf.faulty_vs=calibration:memop.v6.b02.r06.validstore.baseline -- --memop-mode=faulty_baseline --memop-case=valid_store_w_at_12 --observation-id=memop.v6.b02.r06.validstore.baseline initrd=initrd
+[    0.000000] Dentry cache hash table entries: 262144 (order: 9, 2097152 bytes, linear)
+[    0.000000] Inode-cache hash table entries: 131072 (order: 8, 1048576 bytes, linear)
+[    0.000000] Fallback order for Node 0: 0 
+[    0.000000] Built 1 zonelists, mobility grouping on.  Total pages: 516096
+[    0.000000] Policy zone: DMA
+[    0.000000] mem auto-init: stack:all(zero), heap alloc:off, heap free:off
+[    0.000000] software IO TLB: SWIOTLB bounce buffer size adjusted to 2MB
+[    0.000000] software IO TLB: area num 4.
+[    0.000000] software IO TLB: mapped [mem 0x00000000bd400000-0x00000000bd600000] (2MB)
+[    0.000000] Memory: 2029792K/2097152K available (11456K kernel code, 1894K rwdata, 4012K rodata, 960K init, 553K bss, 67360K reserved, 0K cma-reserved)
+[    0.000000] SLUB: HWalign=64, Order=0-3, MinObjects=0, CPUs=4, Nodes=1
+[    0.000000] trace event string verifier disabled
+[    0.000000] rcu: Preemptible hierarchical RCU implementation.
+[    0.000000] rcu: 	RCU event tracing is enabled.
+[    0.000000] rcu: 	RCU restricting CPUs from NR_CPUS=256 to nr_cpu_ids=4.
+[    0.000000] 	Trampoline variant of Tasks RCU enabled.
+[    0.000000] 	Tracing variant of Tasks RCU enabled.
+[    0.000000] rcu: RCU calculated value of scheduler-enlistment delay is 25 jiffies.
+[    0.000000] rcu: Adjusting geometry for rcu_fanout_leaf=16, nr_cpu_ids=4
+[    0.000000] NR_IRQS: 64, nr_irqs: 64, preallocated irqs: 0
+[    0.000000] GICv3: 224 SPIs implemented
+[    0.000000] GICv3: 0 Extended SPIs implemented
+[    0.000000] Root IRQ handler: gic_handle_irq
+[    0.000000] GICv3: GICv3 features: 16 PPIs
+[    0.000000] GICv3: CPU0: found redistributor 0 region 0:0x00000000080a0000
+[    0.000000] ITS [mem 0x08080000-0x0809ffff]
+[    0.000000] ITS@0x0000000008080000: allocated 8192 Devices @40100000 (indirect, esz 8, psz 64K, shr 1)
+[    0.000000] ITS@0x0000000008080000: allocated 8192 Interrupt Collections @40110000 (flat, esz 8, psz 64K, shr 1)
+[    0.000000] GICv3: using LPI property table @0x0000000040120000
+[    0.000000] GICv3: CPU0: using allocated LPI pending table @0x0000000040130000
+[    0.000000] rcu: srcu_init: Setting srcu_struct sizes based on contention.
+[    0.000000] arch_timer: cp15 timer(s) running at 62.50MHz (virt).
+[    0.000000] clocksource: arch_sys_counter: mask: 0x1ffffffffffffff max_cycles: 0x1cd42e208c, max_idle_ns: 881590405314 ns
+[    0.000176] sched_clock: 57 bits at 63MHz, resolution 16ns, wraps every 4398046511096ns
+[    0.023661] Console: colour dummy device 80x25
+[    0.026850] ACPI: Core revision 20230628
+[    0.036671] Calibrating delay loop (skipped), value calculated using timer frequency.. 125.00 BogoMIPS (lpj=250000)
+[    0.037070] pid_max: default: 32768 minimum: 301
+[    0.040490] LSM: initializing lsm=capability,selinux,integrity
+[    0.042297] SELinux:  Initializing.
+[    0.047851] Mount-cache hash table entries: 4096 (order: 3, 32768 bytes, linear)
+[    0.048013] Mountpoint-cache hash table entries: 4096 (order: 3, 32768 bytes, linear)
+[    0.150765] RCU Tasks: Setting shift to 2 and lim to 1 rcu_task_cb_adjust=1.
+[    0.151709] RCU Tasks Trace: Setting shift to 2 and lim to 1 rcu_task_cb_adjust=1.
+[    0.156270] rcu: Hierarchical SRCU implementation.
+[    0.156388] rcu: 	Max phase no-delay instances is 1000.
+[    0.166180] Platform MSI: ITS@0x8080000 domain created
+[    0.168988] PCI/MSI: ITS@0x8080000 domain created
+[    0.169629] Remapping and enabling EFI services.
+[    0.178614] smp: Bringing up secondary CPUs ...
+[    0.193578] Detected PIPT I-cache on CPU1
+[    0.195195] GICv3: CPU1: found redistributor 1 region 0:0x00000000080c0000
+[    0.195458] GICv3: CPU1: using allocated LPI pending table @0x0000000040140000
+[    0.196149] CPU1: Booted secondary processor 0x0000000001 [0x410fd083]
+[    0.211959] Detected PIPT I-cache on CPU2
+[    0.212169] GICv3: CPU2: found redistributor 2 region 0:0x00000000080e0000
+[    0.212368] GICv3: CPU2: using allocated LPI pending table @0x0000000040150000
+[    0.212873] CPU2: Booted secondary processor 0x0000000002 [0x410fd083]
+[    0.221640] Detected PIPT I-cache on CPU3
+[    0.222308] GICv3: CPU3: found redistributor 3 region 0:0x0000000008100000
+[    0.222603] GICv3: CPU3: using allocated LPI pending table @0x0000000040160000
+[    0.223558] CPU3: Booted secondary processor 0x0000000003 [0x410fd083]
+[    0.226146] smp: Brought up 1 node, 4 CPUs
+[    0.227202] SMP: Total of 4 processors activated.
+[    0.227713] CPU features: detected: Common not Private translations
+[    0.227753] CPU features: detected: CRC32 instructions
+[    0.227957] CPU features: detected: RCpc load-acquire (LDAPR)
+[    0.227982] CPU features: detected: LSE atomic instructions
+[    0.228012] CPU features: detected: Privileged Access Never
+[    0.280631] CPU: All CPU(s) started at EL1
+[    0.285551] alternatives: applying system-wide alternatives
+[    0.428384] devtmpfs: initialized
+[    0.475497] clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 7645041785100000 ns
+[    0.477481] futex hash table entries: 1024 (order: 4, 65536 bytes, linear)
+[    0.512946] SMBIOS 3.0.0 present.
+[    0.513839] DMI: QEMU QEMU Virtual Machine, BIOS 0.0.0 02/06/2015
+[    0.548463] NET: Registered PF_NETLINK/PF_ROUTE protocol family
+[    0.563101] DMA: preallocated 256 KiB GFP_KERNEL pool for atomic allocations
+[    0.564311] DMA: preallocated 256 KiB GFP_KERNEL|GFP_DMA pool for atomic allocations
+[    0.564544] DMA: preallocated 256 KiB GFP_KERNEL|GFP_DMA32 pool for atomic allocations
+[    0.565308] audit: initializing netlink subsys (disabled)
+[    0.573030] audit: type=2000 audit(0.480:1): state=initialized audit_enabled=0 res=1
+[    0.584003] thermal_sys: Registered thermal governor 'step_wise'
+[    0.588086] cpuidle: using governor menu
+[    0.591667] hw-breakpoint: found 8 breakpoint and 8 watchpoint registers.
+[    0.595796] ASID allocator initialised with 65536 entries
+[    0.597897] Serial: AMBA PL011 UART driver
+[    0.607304] Modules: 28016 pages in range for non-PLT usage
+[    0.607383] Modules: 519536 pages in range for PLT usage
+[    0.635051] HugeTLB: registered 1.00 GiB page size, pre-allocated 0 pages
+[    0.635144] HugeTLB: 0 KiB vmemmap can be freed for a 1.00 GiB page
+[    0.635250] HugeTLB: registered 32.0 MiB page size, pre-allocated 0 pages
+[    0.635275] HugeTLB: 0 KiB vmemmap can be freed for a 32.0 MiB page
+[    0.635306] HugeTLB: registered 2.00 MiB page size, pre-allocated 0 pages
+[    0.635326] HugeTLB: 0 KiB vmemmap can be freed for a 2.00 MiB page
+[    0.635356] HugeTLB: registered 64.0 KiB page size, pre-allocated 0 pages
+[    0.635376] HugeTLB: 0 KiB vmemmap can be freed for a 64.0 KiB page
+[    0.755440] ACPI: Added _OSI(Module Device)
+[    0.755549] ACPI: Added _OSI(Processor Device)
+[    0.755583] ACPI: Added _OSI(3.0 _SCP Extensions)
+[    0.755609] ACPI: Added _OSI(Processor Aggregator Device)
+[    0.868934] ACPI: 1 ACPI AML tables successfully acquired and loaded
+[    0.976465] ACPI: Interpreter enabled
+[    0.976586] ACPI: Using GIC for interrupt routing
+[    0.977952] ACPI: MCFG table detected, 1 entries
+[    1.185108] ARMH0011:00: ttyAMA0 at MMIO 0x9000000 (irq = 12, base_baud = 0) is a SBSA
+[    1.187892] printk: legacy console [ttyAMA0] enabled
+[    1.289092] ACPI: PCI Root Bridge [PCI0] (domain 0000 [bus 00-ff])
+[    1.295575] acpi PNP0A08:00: _OSC: OS supports [ExtendedConfig ASPM ClockPM Segments MSI HPX-Type3]
+[    1.296262] acpi PNP0A08:00: PCIe port services disabled; not requesting _OSC control
+[    1.318628] acpi PNP0A08:00: ECAM area [mem 0x4010000000-0x401fffffff] reserved by PNP0C02:00
+[    1.319919] acpi PNP0A08:00: ECAM at [mem 0x4010000000-0x401fffffff] for [bus 00-ff]
+[    1.322978] ACPI: Remapped I/O 0x000000003eff0000 to [io  0x0000-0xffff window]
+[    1.330486] PCI host bridge to bus 0000:00
+[    1.331074] pci_bus 0000:00: root bus resource [mem 0x10000000-0x3efeffff window]
+[    1.331319] pci_bus 0000:00: root bus resource [io  0x0000-0xffff window]
+[    1.331507] pci_bus 0000:00: root bus resource [mem 0x8000000000-0xffffffffff window]
+[    1.331968] pci_bus 0000:00: root bus resource [bus 00-ff]
+[    1.338238] pci 0000:00:00.0: [1b36:0008] type 00 class 0x060000
+[    1.350027] pci 0000:00:01.0: [1af4:1000] type 00 class 0x020000
+[    1.351180] pci 0000:00:01.0: reg 0x10: [io  0x0000-0x001f]
+[    1.351430] pci 0000:00:01.0: reg 0x14: [mem 0x10040000-0x10040fff]
+[    1.351710] pci 0000:00:01.0: reg 0x20: [mem 0x8000000000-0x8000003fff 64bit pref]
+[    1.352204] pci 0000:00:01.0: reg 0x30: [mem 0xfffc0000-0xffffffff pref]
+[    1.359275] pci 0000:00:01.0: BAR 6: assigned [mem 0x10000000-0x1003ffff pref]
+[    1.360089] pci 0000:00:01.0: BAR 4: assigned [mem 0x8000000000-0x8000003fff 64bit pref]
+[    1.360651] pci 0000:00:01.0: BAR 1: assigned [mem 0x10040000-0x10040fff]
+[    1.360906] pci 0000:00:01.0: BAR 0: assigned [io  0x1000-0x101f]
+[    1.361699] pci_bus 0000:00: resource 4 [mem 0x10000000-0x3efeffff window]
+[    1.362048] pci_bus 0000:00: resource 5 [io  0x0000-0xffff window]
+[    1.362248] pci_bus 0000:00: resource 6 [mem 0x8000000000-0xffffffffff window]
+[    1.365633] ACPI: PCI: Interrupt link GSI0 configured for IRQ 35
+[    1.366331] ACPI: PCI: Interrupt link GSI1 configured for IRQ 36
+[    1.366787] ACPI: PCI: Interrupt link GSI2 configured for IRQ 37
+[    1.367327] ACPI: PCI: Interrupt link GSI3 configured for IRQ 38
+[    1.373351] iommu: Default domain type: Translated
+[    1.373593] iommu: DMA domain TLB invalidation policy: strict mode
+[    1.378519] SCSI subsystem initialized
+[    1.382115] libata version 3.00 loaded.
+[    1.384819] ACPI: bus type USB registered
+[    1.386070] usbcore: registered new interface driver usbfs
+[    1.387116] usbcore: registered new interface driver hub
+[    1.388219] usbcore: registered new device driver usb
+[    1.389727] pps_core: LinuxPPS API ver. 1 registered
+[    1.389906] pps_core: Software ver. 5.3.6 - Copyright 2005-2007 Rodolfo Giometti <${CONTACT}>
+[    1.390323] PTP clock support registered
+[    1.393115] scmi_core: SCMI protocol bus registered
+[    1.398869] efivars: Registered efivars operations
+[    1.433826] vgaarb: loaded
+[    1.439221] clocksource: Switched to clocksource arch_sys_counter
+[    1.470937] VFS: Disk quotas dquot_6.6.0
+[    1.471566] VFS: Dquot-cache hash table entries: 512 (order 0, 4096 bytes)
+[    1.486414] pnp: PnP ACPI init
+[    1.498016] system 00:00: [mem 0x4010000000-0x401fffffff window] could not be reserved
+[    1.499098] pnp: PnP ACPI: found 1 devices
+[    1.595445] NET: Registered PF_INET protocol family
+[    1.600154] IP idents hash table entries: 32768 (order: 6, 262144 bytes, linear)
+[    1.616532] tcp_listen_portaddr_hash hash table entries: 1024 (order: 2, 16384 bytes, linear)
+[    1.617019] Table-perturb hash table entries: 65536 (order: 6, 262144 bytes, linear)
+[    1.617392] TCP established hash table entries: 16384 (order: 5, 131072 bytes, linear)
+[    1.618718] TCP bind hash table entries: 16384 (order: 7, 524288 bytes, linear)
+[    1.620458] TCP: Hash tables configured (established 16384 bind 16384)
+[    1.626715] UDP hash table entries: 1024 (order: 3, 32768 bytes, linear)
+[    1.627641] UDP-Lite hash table entries: 1024 (order: 3, 32768 bytes, linear)
+[    1.630865] NET: Registered PF_UNIX/PF_LOCAL protocol family
+[    1.640055] RPC: Registered named UNIX socket transport module.
+[    1.640402] RPC: Registered udp transport module.
+[    1.640548] RPC: Registered tcp transport module.
+[    1.640676] RPC: Registered tcp-with-tls transport module.
+[    1.640809] RPC: Registered tcp NFSv4.1 backchannel transport module.
+[    1.641378] PCI: CLS 0 bytes, default 64
+[    1.656966] Unpacking initramfs...
+[    1.679122] workingset: timestamp_bits=42 max_order=19 bucket_order=0
+[    1.714745] 9p: Installing v9fs 9p2000 file system support
+[    1.746217] Freeing initrd memory: 52K
+[    1.753646] Block layer SCSI generic (bsg) driver version 0.4 loaded (major 249)
+[    1.755235] io scheduler mq-deadline registered
+[    1.755521] io scheduler kyber registered
+[    1.756379] io scheduler bfq registered
+[    1.783884] input: Power Button as /devices/LNXSYSTM:00/LNXSYBUS:00/PNP0C0C:00/input/input0
+[    1.787100] ACPI: button: Power Button [PWRB]
+[    1.797142] EINJ: EINJ table not found.
+[    1.909176] ACPI: bus type drm_connector registered
+[    1.977667] loop: module loaded
+[    1.988996] tun: Universal TUN/TAP device driver, 1.6
+[    1.993526] usbcore: registered new interface driver usb-storage
+[    1.996958] mousedev: PS/2 mouse device common for all mice
+[    2.013382] rtc-efi rtc-efi.0: registered as rtc0
+[    2.016910] rtc-efi rtc-efi.0: setting system clock to 2026-09-02T11:44:04 UTC (1788349444)
+[    2.022561] device-mapper: ioctl: 4.48.0-ioctl (2023-03-01) initialised: ${CONTACT}
+[    2.028348] pstore: Using crash dump compression: deflate
+[    2.028889] pstore: Registered efi_pstore as persistent store backend
+[    2.035228] usbcore: registered new interface driver usbhid
+[    2.035443] usbhid: USB HID core driver
+[    2.045568] hw perfevents: enabled with armv8_pmuv3_0 PMU driver, 5 counters available
+[    2.053615]  cs_system_cfg: CoreSight Configuration manager initialised
+[    2.067795] IPVS: Registered protocols ()
+[    2.068366] IPVS: Connection hash table configured (size=4096, memory=32Kbytes)
+[    2.073615] IPVS: ipvs loaded.
+[    2.079535] NET: Registered PF_INET6 protocol family
+[    2.101432] Segment Routing with IPv6
+[    2.102621] In-situ OAM (IOAM) with IPv6
+[    2.104767] sit: IPv6, IPv4 and MPLS over IPv4 tunneling driver
+[    2.114105] NET: Registered PF_PACKET protocol family
+[    2.115653] Bridge firewalling registered
+[    2.119323] 9pnet: Installing 9P2000 support
+[    2.121235] bpf_jit: CAPEBPF_JIT_POLICY certificate_report=1 certificate_transcript=1 certificate_mutation=0 exploit_evidence=1
+[    2.178822] registered taskstats version 1
+[    2.182185] CAPEBPF_FAULTY_VS_STATUS_V1 compiled=1 selector_seen=1 selector_invalid=0 selected=1 armed=0 aee_offset_port=0 spatial_offload=1 broad_authority=1 software_bounds=0
+[    2.263747] clk: Disabling unused clocks
+[    2.379769] Freeing unused kernel memory: 960K
+[    2.383527] Run /init as init process
+[    2.383727]   with arguments:
+[    2.383855]     /init
+[    2.383960]     --memop-mode=faulty_baseline
+[    2.384079]     --memop-case=valid_store_w_at_12
+[    2.384192]     --observation-id=memop.v6.b02.r06.validstore.baseline
+[    2.384328]     initrd=initrd
+[    2.384418]   with environment:
+[    2.384526]     HOME=/
+[    2.384621]     TERM=linux
+CAPEBPF_MEMOP_SYSCTL_V1 observation_id=memop.v6.b02.r06.validstore.baseline mode=faulty_baseline case_id=valid_store_w_at_12 bpf_jit_enable=1 bpf_jit_harden=0 source=procfs_readback
+CAPEBPF_MEMOP_INIT_BEGIN_V1 mode=faulty_baseline case_id=valid_store_w_at_12 observation_id=memop.v6.b02.r06.validstore.baseline kernel_release=6.7.0-capebpf-memop-v1
+CAPEBPF_MEMOP_GUEST_BEGIN_V1 observation_id=memop.v6.b02.r06.validstore.baseline mode=faulty_baseline case_id=valid_store_w_at_12 operation=store intended_key=0 intended_interval=[0,16) runtime_add=8 displacement=4 effective_start=12 width=4 target_interval=[12,16) outside=0 expected_retval=43 prog_flags=0
+CAPEBPF_MEMOP_GUEST_BYTECODE_V1 observation_id=memop.v6.b02.r06.validstore.baseline case_id=valid_store_w_at_12 representation=canonical-pre-relocation insn_count=17 hex=b700000000000000630afcff00000000bfa200000000000007020000fcffffff1811000000000000000000000000000085000000010000001500080000000000bf06000000000000796808000000000057080000080000000f8600000000000018070000243546570000000068798a9b6376040000000000b70000002b0000009500000000000000
+CAPEBPF_MEMOP_GUEST_BINDING_V1 observation_id=memop.v6.b02.r06.validstore.baseline map_fd=3 relocation_instruction_index=4 map_fd_placeholder=0 binding_index=0 map_id=1 map_type=2 key_size=4 value_size=16 max_entries=3
+CAPEBPF_MEMOP_GUEST_OBJECT_V1 observation_id=memop.v6.b02.r06.validstore.baseline phase=before key=0 bytes=101112131415161718191a1b1c1d1e1f
+CAPEBPF_MEMOP_GUEST_OBJECT_V1 observation_id=memop.v6.b02.r06.validstore.baseline phase=before key=1 bytes=28292a2b2c2d2e2f3031323334353637
+CAPEBPF_MEMOP_GUEST_OBJECT_V1 observation_id=memop.v6.b02.r06.validstore.baseline phase=before key=2 bytes=404142434445464748494a4b4c4d4e4f
+[    2.651241] bpf_jit: CERT_BEGIN program=cape_mvctrl bpf_len=17 native_len=102 body_start=64 body_end=85 epilogue_start=85 plt_start=100 stack_size=16 executive_return_size=56 image=0xffff80008140751c
+[    2.651810] bpf_jit: CERT_ENVELOPE program=cape_mvctrl region=prologue start=0 end=64 policy=exact_template
+[    2.652130] bpf_jit: CERT_IMAGE_WORD program=cape_mvctrl region=prologue native=0 value=910003c9
+[    2.652393] bpf_jit: CERT_IMAGE_WORD program=cape_mvctrl region=prologue native=1 value=d503201f
+[    2.652598] bpf_jit: CERT_IMAGE_WORD program=cape_mvctrl region=prologue native=2 value=a9bf7bfd
+[    2.652795] bpf_jit: CERT_IMAGE_WORD program=cape_mvctrl region=prologue native=3 value=910003fd
+[    2.652979] bpf_jit: CERT_IMAGE_WORD program=cape_mvctrl region=prologue native=4 value=a9bf53f3
+[    2.653173] bpf_jit: CERT_IMAGE_WORD program=cape_mvctrl region=prologue native=5 value=a9bf5bf5
+[    2.653357] bpf_jit: CERT_IMAGE_WORD program=cape_mvctrl region=prologue native=6 value=a9bf63f7
+[    2.653539] bpf_jit: CERT_IMAGE_WORD program=cape_mvctrl region=prologue native=7 value=a9bf6bf9
+[    2.653716] bpf_jit: CERT_IMAGE_WORD program=cape_mvctrl region=prologue native=8 value=a9bf73fb
+[    2.654148] bpf_jit: CERT_IMAGE_WORD program=cape_mvctrl region=prologue native=9 value=a9bf7fff
+[    2.654345] bpf_jit: CERT_IMAGE_WORD program=cape_mvctrl region=prologue native=10 value=d10043ff
+[    2.654527] bpf_jit: CERT_IMAGE_WORD program=cape_mvctrl region=prologue native=11 value=f90003e9
+[    2.654702] bpf_jit: CERT_IMAGE_WORD program=cape_mvctrl region=prologue native=12 value=91000004
+[    2.654877] bpf_jit: CERT_IMAGE_WORD program=cape_mvctrl region=prologue native=13 value=910003e0
+[    2.655054] bpf_jit: CERT_IMAGE_WORD program=cape_mvctrl region=prologue native=14 value=52800201
+[    2.655234] bpf_jit: CERT_IMAGE_WORD program=cape_mvctrl region=prologue native=15 value=100008e2
+[    2.655407] bpf_jit: CERT_IMAGE_WORD program=cape_mvctrl region=prologue native=16 value=52800703
+[    2.655583] bpf_jit: CERT_IMAGE_WORD program=cape_mvctrl region=prologue native=17 value=52800005
+[    2.655756] bpf_jit: CERT_IMAGE_WORD program=cape_mvctrl region=prologue native=18 value=929d58e6
+[    2.655928] bpf_jit: CERT_IMAGE_WORD program=cape_mvctrl region=prologue native=19 value=f2a01b66
+[    2.656113] bpf_jit: CERT_IMAGE_WORD program=cape_mvctrl region=prologue native=20 value=f2c00006
+[    2.656288] bpf_jit: CERT_IMAGE_WORD program=cape_mvctrl region=prologue native=21 value=52800027
+[    2.656463] bpf_jit: CERT_IMAGE_WORD program=cape_mvctrl region=prologue native=22 value=928f77ea
+[    2.656638] bpf_jit: CERT_IMAGE_WORD program=cape_mvctrl region=prologue native=23 value=f2b0006a
+[    2.656824] bpf_jit: CERT_IMAGE_WORD program=cape_mvctrl region=prologue native=24 value=f2d0000a
+[    2.657011] bpf_jit: CERT_IMAGE_WORD program=cape_mvctrl region=prologue native=25 value=d63f0140
+[    2.657201] bpf_jit: CERT_IMAGE_WORD program=cape_mvctrl region=prologue native=26 value=b4000060
+[    2.657392] bpf_jit: CERT_IMAGE_WORD program=cape_mvctrl region=prologue native=27 value=d2800007
+[    2.657574] bpf_jit: CERT_IMAGE_WORD program=cape_mvctrl region=prologue native=28 value=1400003a
+[    2.657768] bpf_jit: CERT_IMAGE_WORD program=cape_mvctrl region=prologue native=29 value=d2800000
+[    2.658118] bpf_jit: CERT_IMAGE_WORD program=cape_mvctrl region=prologue native=30 value=d2800001
+[    2.658312] bpf_jit: CERT_IMAGE_WORD program=cape_mvctrl region=prologue native=31 value=d2800002
+[    2.658504] bpf_jit: CERT_IMAGE_WORD program=cape_mvctrl region=prologue native=32 value=d2800003
+[    2.658691] bpf_jit: CERT_IMAGE_WORD program=cape_mvctrl region=prologue native=33 value=d2800004
+[    2.658879] bpf_jit: CERT_IMAGE_WORD program=cape_mvctrl region=prologue native=34 value=d2800005
+[    2.659069] bpf_jit: CERT_IMAGE_WORD program=cape_mvctrl region=prologue native=35 value=d2800006
+[    2.659257] bpf_jit: CERT_IMAGE_WORD program=cape_mvctrl region=prologue native=36 value=d2800007
+[    2.659440] bpf_jit: CERT_IMAGE_WORD program=cape_mvctrl region=prologue native=37 value=d2800008
+[    2.659630] bpf_jit: CERT_IMAGE_WORD program=cape_mvctrl region=prologue native=38 value=d2800009
+[    2.659821] bpf_jit: CERT_IMAGE_WORD program=cape_mvctrl region=prologue native=39 value=d280000a
+[    2.660002] bpf_jit: CERT_IMAGE_WORD program=cape_mvctrl region=prologue native=40 value=d280000b
+[    2.660200] bpf_jit: CERT_IMAGE_WORD program=cape_mvctrl region=prologue native=41 value=d280000c
+[    2.660384] bpf_jit: CERT_IMAGE_WORD program=cape_mvctrl region=prologue native=42 value=d280000d
+[    2.660568] bpf_jit: CERT_IMAGE_WORD program=cape_mvctrl region=prologue native=43 value=d280000e
+[    2.660755] bpf_jit: CERT_IMAGE_WORD program=cape_mvctrl region=prologue native=44 value=d2800013
+[    2.660941] bpf_jit: CERT_IMAGE_WORD program=cape_mvctrl region=prologue native=45 value=d2800014
+[    2.661130] bpf_jit: CERT_IMAGE_WORD program=cape_mvctrl region=prologue native=46 value=d2800015
+[    2.661313] bpf_jit: CERT_IMAGE_WORD program=cape_mvctrl region=prologue native=47 value=d2800016
+[    2.661498] bpf_jit: CERT_IMAGE_WORD program=cape_mvctrl region=prologue native=48 value=c2c1d2f7
+[    2.661689] bpf_jit: CERT_IMAGE_WORD program=cape_mvctrl region=prologue native=49 value=c2c1d318
+[    2.662005] bpf_jit: CERT_IMAGE_WORD program=cape_mvctrl region=prologue native=50 value=d2800019
+[    2.662214] bpf_jit: CERT_IMAGE_WORD program=cape_mvctrl region=prologue native=51 value=d280001a
+[    2.662405] bpf_jit: CERT_IMAGE_WORD program=cape_mvctrl region=prologue native=52 value=d280001b
+[    2.662595] bpf_jit: CERT_IMAGE_WORD program=cape_mvctrl region=prologue native=53 value=d280001c
+[    2.662784] bpf_jit: CERT_IMAGE_WORD program=cape_mvctrl region=prologue native=54 value=d280001d
+[    2.662969] bpf_jit: CERT_IMAGE_WORD program=cape_mvctrl region=prologue native=55 value=c2c1d200
+[    2.663162] bpf_jit: CERT_IMAGE_WORD program=cape_mvctrl region=prologue native=56 value=d2800010
+[    2.663348] bpf_jit: CERT_IMAGE_WORD program=cape_mvctrl region=prologue native=57 value=c2c1d3f9
+[    2.663536] bpf_jit: CERT_IMAGE_WORD program=cape_mvctrl region=prologue native=58 value=02804339
+[    2.663725] bpf_jit: CERT_IMAGE_WORD program=cape_mvctrl region=prologue native=59 value=c2c83b39
+[    2.663913] bpf_jit: CERT_IMAGE_WORD program=cape_mvctrl region=prologue native=60 value=02004339
+[    2.664113] bpf_jit: CERT_IMAGE_WORD program=cape_mvctrl region=prologue native=61 value=d280001a
+[    2.664299] bpf_jit: CERT_IMAGE_WORD program=cape_mvctrl region=prologue native=62 value=d100033b
+[    2.664484] bpf_jit: CERT_IMAGE_WORD program=cape_mvctrl region=prologue native=63 value=d10043ff
+[    2.664720] bpf_jit: CERT_ENVELOPE program=cape_mvctrl region=software_stub start=85 end=85 policy=exact_template
+[    2.665004] bpf_jit: CERT_ENVELOPE program=cape_mvctrl region=epilogue start=85 end=100 policy=exact_template
+[    2.665297] bpf_jit: CERT_IMAGE_WORD program=cape_mvctrl region=epilogue native=85 value=c2c253c0
+[    2.665535] bpf_jit: CERT_IMAGE_WORD program=cape_mvctrl region=epilogue native=86 value=910043ff
+[    2.665727] bpf_jit: CERT_IMAGE_WORD program=cape_mvctrl region=epilogue native=87 value=c24003f0
+[    2.666074] bpf_jit: CERT_IMAGE_WORD program=cape_mvctrl region=epilogue native=88 value=910043ff
+[    2.666271] bpf_jit: CERT_IMAGE_WORD program=cape_mvctrl region=epilogue native=89 value=a8c173fb
+[    2.666462] bpf_jit: CERT_IMAGE_WORD program=cape_mvctrl region=epilogue native=90 value=a8c16bf9
+[    2.666654] bpf_jit: CERT_IMAGE_WORD program=cape_mvctrl region=epilogue native=91 value=a8c163f7
+[    2.666840] bpf_jit: CERT_IMAGE_WORD program=cape_mvctrl region=epilogue native=92 value=a8c15bf5
+[    2.667027] bpf_jit: CERT_IMAGE_WORD program=cape_mvctrl region=epilogue native=93 value=a8c153f3
+[    2.667224] bpf_jit: CERT_IMAGE_WORD program=cape_mvctrl region=epilogue native=94 value=a8c17bfd
+[    2.667414] bpf_jit: CERT_IMAGE_WORD program=cape_mvctrl region=epilogue native=95 value=910000e0
+[    2.667602] bpf_jit: CERT_IMAGE_WORD program=cape_mvctrl region=epilogue native=96 value=c2c0920a
+[    2.667789] bpf_jit: CERT_IMAGE_WORD program=cape_mvctrl region=epilogue native=97 value=b400004a
+[    2.667978] bpf_jit: CERT_IMAGE_WORD program=cape_mvctrl region=epilogue native=98 value=c2c25203
+[    2.668174] bpf_jit: CERT_IMAGE_WORD program=cape_mvctrl region=epilogue native=99 value=d65f03c0
+[    2.668399] bpf_jit: CERT_ENVELOPE program=cape_mvctrl region=plt start=100 end=102 policy=exact_template
+[    2.668677] bpf_jit: CERT_IMAGE_WORD program=cape_mvctrl region=plt native=100 value=5800004a
+[    2.668913] bpf_jit: CERT_IMAGE_WORD program=cape_mvctrl region=plt native=101 value=d61f0140
+[    2.669267] bpf_jit: CERT_SOURCE program=cape_mvctrl bpf=0 code=b7 dst=0 src=0
+[    2.669564] bpf_jit: CERT_STATE program=cape_mvctrl bpf=0 dst_kind=64 src_kind=64 helper=5
+[    2.669987] bpf_jit: CERT_RANGE program=cape_mvctrl bpf=0 off=0 imm=0 start=64 end=65
+[    2.670333] bpf_jit: CERT_WORD program=cape_mvctrl bpf=0 native=64 value=d2800007
+[    2.670571] bpf_jit: CERT_SOURCE program=cape_mvctrl bpf=1 code=63 dst=10 src=0
+[    2.670748] bpf_jit: CERT_STATE program=cape_mvctrl bpf=1 dst_kind=2 src_kind=1 helper=5
+[    2.670931] bpf_jit: CERT_RANGE program=cape_mvctrl bpf=1 off=-4 imm=0 start=65 end=66
+[    2.671132] bpf_jit: CERT_WORD program=cape_mvctrl bpf=1 native=65 value=e29fc327
+[    2.671299] bpf_jit: CERT_SOURCE program=cape_mvctrl bpf=2 code=bf dst=2 src=10
+[    2.671469] bpf_jit: CERT_STATE program=cape_mvctrl bpf=2 dst_kind=64 src_kind=2 helper=5
+[    2.671646] bpf_jit: CERT_RANGE program=cape_mvctrl bpf=2 off=0 imm=0 start=66 end=67
+[    2.671821] bpf_jit: CERT_WORD program=cape_mvctrl bpf=2 native=66 value=c2c1d321
+[    2.671992] bpf_jit: CERT_SOURCE program=cape_mvctrl bpf=3 code=07 dst=2 src=0
+[    2.672164] bpf_jit: CERT_STATE program=cape_mvctrl bpf=3 dst_kind=2 src_kind=1 helper=5
+[    2.672348] bpf_jit: CERT_RANGE program=cape_mvctrl bpf=3 off=0 imm=-4 start=67 end=68
+[    2.672530] bpf_jit: CERT_WORD program=cape_mvctrl bpf=3 native=67 value=02801021
+[    2.672700] bpf_jit: CERT_SOURCE program=cape_mvctrl bpf=4 code=18 dst=1 src=0
+[    2.672861] bpf_jit: CERT_STATE program=cape_mvctrl bpf=4 dst_kind=4 src_kind=1 helper=5
+[    2.673040] bpf_jit: CERT_RANGE program=cape_mvctrl bpf=4 off=0 imm=11592192 start=68 end=69
+[    2.673233] bpf_jit: CERT_WORD program=cape_mvctrl bpf=4 native=68 value=52800000
+[    2.673402] bpf_jit: CERT_SOURCE program=cape_mvctrl bpf=5 code=00 dst=0 src=0
+[    2.673573] bpf_jit: CERT_STATE program=cape_mvctrl bpf=5 dst_kind=0 src_kind=0 helper=5
+[    2.673767] bpf_jit: CERT_RANGE program=cape_mvctrl bpf=5 off=0 imm=-65536 start=69 end=69
+[    2.674414] bpf_jit: CERT_SOURCE program=cape_mvctrl bpf=6 code=85 dst=0 src=0
+[    2.674598] bpf_jit: CERT_STATE program=cape_mvctrl bpf=6 dst_kind=1 src_kind=1 helper=0
+[    2.674781] bpf_jit: CERT_RANGE program=cape_mvctrl bpf=6 off=0 imm=294060 start=69 end=73
+[    2.674971] bpf_jit: CERT_WORD program=cape_mvctrl bpf=6 native=69 value=d2800004
+[    2.675176] bpf_jit: CERT_WORD program=cape_mvctrl bpf=6 native=70 value=c2c1d3cd
+[    2.675347] bpf_jit: CERT_WORD program=cape_mvctrl bpf=6 native=71 value=c2c23222
+[    2.675516] bpf_jit: CERT_WORD program=cape_mvctrl bpf=6 native=72 value=c2c1d007
+[    2.675679] bpf_jit: CERT_SOURCE program=cape_mvctrl bpf=7 code=15 dst=0 src=0
+[    2.675841] bpf_jit: CERT_STATE program=cape_mvctrl bpf=7 dst_kind=48 src_kind=48 helper=5
+[    2.676012] bpf_jit: CERT_RANGE program=cape_mvctrl bpf=7 off=8 imm=0 start=73 end=75
+[    2.676181] bpf_jit: CERT_WORD program=cape_mvctrl bpf=7 native=73 value=f10000ff
+[    2.676334] bpf_jit: CERT_WORD program=cape_mvctrl bpf=7 native=74 value=54000160
+[    2.676489] bpf_jit: CERT_SOURCE program=cape_mvctrl bpf=8 code=bf dst=6 src=0
+[    2.676646] bpf_jit: CERT_STATE program=cape_mvctrl bpf=8 dst_kind=64 src_kind=16 helper=5
+[    2.676828] bpf_jit: CERT_RANGE program=cape_mvctrl bpf=8 off=0 imm=0 start=75 end=76
+[    2.677006] bpf_jit: CERT_WORD program=cape_mvctrl bpf=8 native=75 value=c2c1d0f3
+[    2.677177] bpf_jit: CERT_SOURCE program=cape_mvctrl bpf=9 code=79 dst=8 src=6
+[    2.677342] bpf_jit: CERT_STATE program=cape_mvctrl bpf=9 dst_kind=64 src_kind=16 helper=5
+[    2.677517] bpf_jit: CERT_RANGE program=cape_mvctrl bpf=9 off=8 imm=0 start=76 end=77
+[    2.677697] bpf_jit: CERT_WORD program=cape_mvctrl bpf=9 native=76 value=e2c08675
+[    2.677869] bpf_jit: CERT_SOURCE program=cape_mvctrl bpf=10 code=57 dst=8 src=0
+[    2.678077] bpf_jit: CERT_STATE program=cape_mvctrl bpf=10 dst_kind=1 src_kind=16 helper=5
+[    2.678459] bpf_jit: CERT_RANGE program=cape_mvctrl bpf=10 off=0 imm=8 start=77 end=78
+[    2.678682] bpf_jit: CERT_WORD program=cape_mvctrl bpf=10 native=77 value=927d02b5
+[    2.678879] bpf_jit: CERT_SOURCE program=cape_mvctrl bpf=11 code=0f dst=6 src=8
+[    2.679077] bpf_jit: CERT_STATE program=cape_mvctrl bpf=11 dst_kind=16 src_kind=1 helper=5
+[    2.679278] bpf_jit: CERT_RANGE program=cape_mvctrl bpf=11 off=0 imm=0 start=78 end=79
+[    2.679479] bpf_jit: CERT_WORD program=cape_mvctrl bpf=11 native=78 value=c2b56273
+[    2.679667] bpf_jit: CERT_SOURCE program=cape_mvctrl bpf=12 code=18 dst=7 src=0
+[    2.679843] bpf_jit: CERT_STATE program=cape_mvctrl bpf=12 dst_kind=64 src_kind=16 helper=5
+[    2.680050] bpf_jit: CERT_RANGE program=cape_mvctrl bpf=12 off=0 imm=1464218916 start=79 end=83
+[    2.680275] bpf_jit: CERT_WORD program=cape_mvctrl bpf=12 native=79 value=d2f37154
+[    2.680466] bpf_jit: CERT_WORD program=cape_mvctrl bpf=12 native=80 value=f2cf2d14
+[    2.680687] bpf_jit: CERT_WORD program=cape_mvctrl bpf=12 native=81 value=f2aae8d4
+[    2.680851] bpf_jit: CERT_WORD program=cape_mvctrl bpf=12 native=82 value=f286a494
+[    2.681018] bpf_jit: CERT_SOURCE program=cape_mvctrl bpf=13 code=00 dst=0 src=0
+[    2.681191] bpf_jit: CERT_STATE program=cape_mvctrl bpf=13 dst_kind=0 src_kind=0 helper=5
+[    2.681370] bpf_jit: CERT_RANGE program=cape_mvctrl bpf=13 off=0 imm=-1685423768 start=83 end=83
+[    2.681561] bpf_jit: CERT_SOURCE program=cape_mvctrl bpf=14 code=63 dst=6 src=7
+[    2.681731] bpf_jit: CERT_STATE program=cape_mvctrl bpf=14 dst_kind=16 src_kind=1 helper=5
+[    2.682041] bpf_jit: CERT_RANGE program=cape_mvctrl bpf=14 off=4 imm=0 start=83 end=84
+[    2.682243] bpf_jit: CERT_WORD program=cape_mvctrl bpf=14 native=83 value=e2804274
+[    2.682412] bpf_jit: CERT_SOURCE program=cape_mvctrl bpf=15 code=b7 dst=0 src=0
+[    2.682581] bpf_jit: CERT_STATE program=cape_mvctrl bpf=15 dst_kind=16 src_kind=16 helper=5
+[    2.682762] bpf_jit: CERT_RANGE program=cape_mvctrl bpf=15 off=0 imm=43 start=84 end=85
+[    2.682942] bpf_jit: CERT_WORD program=cape_mvctrl bpf=15 native=84 value=d2800567
+[    2.683117] bpf_jit: CERT_SOURCE program=cape_mvctrl bpf=16 code=95 dst=0 src=0
+[    2.683286] bpf_jit: CERT_STATE program=cape_mvctrl bpf=16 dst_kind=33 src_kind=33 helper=5
+[    2.683467] bpf_jit: CERT_RANGE program=cape_mvctrl bpf=16 off=0 imm=0 start=85 end=85
+[    2.683674] bpf_jit: CERT_END program=cape_mvctrl covered_words=102
+[    2.688077] bpf_jit: authority certificate accepted program cape_mvctrl memory=3 stack=1 context=0 map=2 ringbuf=0 copies=2 pointer_arithmetic=2 helpers=1 map_lookup=1 ringbuf_reserve=0 ringbuf_submit=0 ringbuf_discard=0
+[    2.688673] bpf_jit: CERT_DECISION program=cape_mvctrl accepted=1 stage=complete covered_words=102 image_fnv1a64=5ef4f4f06b2c63fa
+CAPEBPF_MEMOP_GUEST_VERIFIER_LOG_BEGIN_V1 observation_id=memop.v6.b02.r06.validstore.baseline
+func#0 @0
+0: R1=ctx(off=0,imm=0) R10=fp0
+0: (b7) r0 = 0                        ; R0_w=0
+1: (63) *(u32 *)(r10 -4) = r0
+mark_precise: frame0: last_idx 1 first_idx 0 subseq_idx -1 
+mark_precise: frame0: regs=r0 stack= before 0: (b7) r0 = 0
+2: R0_w=0 R10=fp0 fp-8=0000????
+2: (bf) r2 = r10                      ; R2_w=fp0 R10=fp0
+3: (07) r2 += -4                      ; R2_w=fp-4
+4: (18) r1 = 0xffff000000b0e200       ; R1_w=map_ptr(off=0,ks=4,vs=16,imm=0)
+6: (85) call bpf_map_lookup_elem#1    ; R0_w=map_value_or_null(id=1,off=0,ks=4,vs=16,imm=0)
+7: (15) if r0 == 0x0 goto pc+8        ; R0_w=map_value(off=0,ks=4,vs=16,imm=0)
+8: (bf) r6 = r0                       ; R0_w=map_value(off=0,ks=4,vs=16,imm=0) R6_w=map_value(off=0,ks=4,vs=16,imm=0)
+9: (79) r8 = *(u64 *)(r6 +8)          ; R6_w=map_value(off=0,ks=4,vs=16,imm=0) R8_w=scalar()
+10: (57) r8 &= 8                      ; R8_w=scalar(smin=smin32=0,smax=umax=smax32=umax32=8,var_off=(0x0; 0x8))
+11: (0f) r6 += r8
+mark_precise: frame0: last_idx 11 first_idx 0 subseq_idx -1 
+mark_precise: frame0: regs=r8 stack= before 10: (57) r8 &= 8
+mark_precise: frame0: regs=r8 stack= before 9: (79) r8 = *(u64 *)(r6 +8)
+12: R6_w=map_value(off=0,ks=4,vs=16,smin=smin32=0,smax=umax=smax32=umax32=8,var_off=(0x0; 0x8)) R8_w=scalar(smin=smin32=0,smax=umax=smax32=umax32=8,var_off=(0x0; 0x8))
+12: (18) r7 = 0x9b8a796857463524      ; R7_w=-7238839961996872412
+14: (63) *(u32 *)(r6 +4) = r7         ; R6_w=map_value(off=0,ks=4,vs=16,smin=smin32=0,smax=umax=smax32=umax32=8,var_off=(0x0; 0x8)) R7_w=-7238839961996872412
+15: (b7) r0 = 43                      ; R0=43
+16: (95) exit
+
+from 7 to 16: safe
+capebpf measurement_version 1
+capebpf program_type 1
+capebpf post_rewrite_bpf_digest BLAKE2S_256:31c56e47cf30c0b39cdbfc80c7d1c5cb68b3bb681bd2a99c5b8eda5472218e95
+capebpf direct_sites total=3 supported=3 unsupported=0 ambiguous_root=0
+capebpf spatial_sites eligible_access=2 offloaded_access=0 eligible_offset=1 offloaded_offset=0
+capebpf root_site_count root=stack count=1
+capebpf root_site_count root=context count=0
+capebpf root_site_count root=map_value count=2
+capebpf root_site_count root=ringbuf_record count=0
+capebpf root_site_count root=packet count=0
+capebpf root_site_count root=other_verifier_pointer count=0
+capebpf root_site_count root=map_token count=0
+capebpf root_site_count root=scalar count=0
+capebpf root_site_count root=null count=0
+capebpf root_site_count root=uninitialized count=0
+capebpf operation_site_count operation=ldx_mem_unsigned count=1
+capebpf operation_site_count operation=ldx_memsx_signed count=0
+capebpf operation_site_count operation=ldx_probe_mem_unsigned count=0
+capebpf operation_site_count operation=ldx_probe_memsx_signed count=0
+capebpf operation_site_count operation=st_mem_immediate count=0
+capebpf operation_site_count operation=stx_mem_register count=2
+capebpf operation_site_count operation=ldx_unsupported_root count=0
+capebpf operation_site_count operation=store_unsupported_root count=0
+capebpf operation_site_count operation=stx_atomic count=0
+capebpf operation_site_count operation=other_load_store_mode_or_width count=0
+capebpf operation_site_count operation=ld_abs_packet count=0
+capebpf operation_site_count operation=ld_ind_packet count=0
+capebpf operation_root_site_count root=stack operation=stx_mem_register count=1
+capebpf operation_root_site_count root=map_value operation=ldx_mem_unsigned count=1
+capebpf operation_root_site_count root=map_value operation=stx_mem_register count=1
+capebpf map_binding binding=map-token-4/used-map-0 token_insn=4 used_map=0 kind=map_token
+verification time 41202 usec
+stack depth 4
+processed 16 insns (limit 1000000) max_states_per_insn 0 total_states 1 peak_states 1 mark_read 1
+CAPEBPF_MEMOP_GUEST_VERIFIER_LOG_END_V1 observation_id=memop.v6.b02.r06.validstore.baseline
+CAPEBPF_MEMOP_GUEST_XLATED_V1 observation_id=memop.v6.b02.r06.validstore.baseline tag=518d50103e570808 verify_time_ns=41202320 xlated_len=136 xlated_hex=b700000000000000630afcff00000000bfa200000000000007020000fcffffff1811000001000000000000000000000085000000ac7c04001500080000000000bf06000000000000796808000000000057080000080000000f8600000000000018070000243546570000000068798a9b6376040000000000b70000002b0000009500000000000000
+[    2.719432] bpf_jit: ROOT_ATTEST kind=caller_return destination=c16_epilogue object=kernel_pcc object_id=0x0 expected_size=18446744073709551615 tag=1 sealed=1 base=0x0 length=18446744073709551615 address=0xffff80008095f9a4 perms=0x3ffff
+[    2.720069] bpf_jit: ROOT_ATTEST kind=context destination=c16 object=socket_context object_id=0xffff00000030a000 expected_size=0 tag=0 sealed=0 base=0x0 length=18446744073709551615 address=0x0 perms=0x3ffff
+[    2.720655] bpf_jit: ROOT_ATTEST kind=native_stack destination=rcsp_el0 object=jit_invocation_frame object_id=0xffff0000014677f0 expected_size=16 tag=1 sealed=0 base=0xffff0000014677f0 length=16 address=0xffff000001467800 perms=0x37dfd
+[    2.721238] bpf_jit: ROOT_ATTEST kind=restricted_code destination=pcc object=jit_restricted object_id=0xffff800081407584 expected_size=240 tag=1 sealed=1 base=0xffff800081407584 length=240 address=0xffff800081407584 perms=0x3fdfd
+[    2.721766] bpf_jit: ROOT_ATTEST kind=executive_return destination=clr object=jit_epilogue object_id=0xffff800081407674 expected_size=56 tag=1 sealed=1 base=0xffff800081407674 length=56 address=0xffff800081407674 perms=0x3ffff
+[    2.723204] CAPEBPF_FAULTY_VS_ASSIGNMENT_V1 observation_id=memop.v6.b02.r06.validstore.baseline status=accepted map_id=1 key=0 selected_base=0xffff000000b0e310 extent=16 conflict=0
+[    2.723703] bpf_jit: ROOT_ATTEST kind=map_value destination=c0_helper_return object=map_value object_id=0xffff000000b0e310 expected_size=16 tag=1 sealed=0 base=0x0 length=18446744073709551615 address=0xffff000000b0e310 perms=0x30dfd
+[    2.724173] bpf_jit: EXPLOIT_CAP helper=map_lookup token=0 tag=1 sealed=0 base=0x0 length=18446744073709551615 address=0xffff000000b0e310 perms=0x30dfd
+CAPEBPF_MEMOP_GUEST_OBJECT_V1 observation_id=memop.v6.b02.r06.validstore.baseline phase=after key=0 bytes=101112131415161718191a1b24354657
+CAPEBPF_MEMOP_GUEST_OBJECT_V1 observation_id=memop.v6.b02.r06.validstore.baseline phase=after key=1 bytes=28292a2b2c2d2e2f3031323334353637
+CAPEBPF_MEMOP_GUEST_OBJECT_V1 observation_id=memop.v6.b02.r06.validstore.baseline phase=after key=2 bytes=404142434445464748494a4b4c4d4e4f
+CAPEBPF_MEMOP_GUEST_RESULT_V1 observation_id=memop.v6.b02.r06.validstore.baseline mode=faulty_baseline case_id=valid_store_w_at_12 operation=store load=accept load_errno=0 run=completed run_errno=0 retval=43 expected_retval=43 target_instruction_completed=1 post_load_dependent_execution=0 observed_loaded_or_derived_value=unavailable fault_path_retval_zero=0 memory_unchanged=0 valid_store_effect=1 operation_completed=1
+CAPEBPF_MEMOP_INIT_COMPLETE_V1 observation_id=memop.v6.b02.r06.validstore.baseline mode=faulty_baseline case_id=valid_store_w_at_12 status=0
+[    2.772133] reboot: Power down

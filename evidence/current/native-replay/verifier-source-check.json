@@ -1,0 +1,8 @@
+{
+  "status": "PASS",
+  "sha256": {
+    "ownership": "48268a29931754296882a9ff6847eb556ba8e8564959be1c62754afdb2fb4851",
+    "spatial": "e1b3401c312176633922671d52b1bd0ccd75f9ab1fcc266a0acb764f784d4239"
+  },
+  "scope": "Ownership stock verifier and spatial inherited verifier match their respective recorded unchanged inputs."
+}

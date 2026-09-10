@@ -1,0 +1,593 @@
+{
+  "artifact_kind": "capebpf_faulty_vs_memop_experiment_result",
+  "causal_controls": {
+    "all_observations_claim_eligible": true,
+    "baseline_completes": true,
+    "broad_and_exact_target_permissions_identical": true,
+    "broad_completes": true,
+    "canonical_bpf_identical_within_case": {
+      "oob_load_w_at_16": true,
+      "valid_load_dw_at_8": true,
+      "valid_store_w_at_12": true
+    },
+    "exact_faults_before_dependent_completion": true,
+    "faulty_final_decision_identical_across_armed_oob_modes": true,
+    "fixed_rejects": true,
+    "object_initialization_identical_within_case": {
+      "oob_load_w_at_16": true,
+      "valid_load_dw_at_8": true,
+      "valid_store_w_at_12": true
+    },
+    "relevant_va_semantically_equivalent_across_oob_modes": true,
+    "repetition_multiplicity": true
+  },
+  "condition_results": [
+    {
+      "case_id": "oob_load_w_at_16",
+      "classifications": [
+        "fixed_verifier_rejection"
+      ],
+      "governed_stable_and_eligible": true,
+      "mode": "fixed_calibration",
+      "observation_ids": [
+        "memop.v6.b01.r07.oobload.fixed",
+        "memop.v6.b02.r09.oobload.fixed"
+      ],
+      "repetitions": 2
+    },
+    {
+      "case_id": "oob_load_w_at_16",
+      "classifications": [
+        "oob_load_completed_with_dependent_value"
+      ],
+      "governed_stable_and_eligible": true,
+      "mode": "faulty_baseline",
+      "observation_ids": [
+        "memop.v6.b01.r01.oobload.baseline",
+        "memop.v6.b02.r05.oobload.baseline"
+      ],
+      "repetitions": 2
+    },
+    {
+      "case_id": "oob_load_w_at_16",
+      "classifications": [
+        "oob_load_completed_with_dependent_value"
+      ],
+      "governed_stable_and_eligible": true,
+      "mode": "capebpf_broad",
+      "observation_ids": [
+        "memop.v6.b01.r04.oobload.broad",
+        "memop.v6.b02.r08.oobload.broad"
+      ],
+      "repetitions": 2
+    },
+    {
+      "case_id": "oob_load_w_at_16",
+      "classifications": [
+        "exact_fault_before_load_completion"
+      ],
+      "governed_stable_and_eligible": true,
+      "mode": "capebpf_exact",
+      "observation_ids": [
+        "memop.v6.b01.r03.oobload.exact",
+        "memop.v6.b02.r01.oobload.exact"
+      ],
+      "repetitions": 2
+    },
+    {
+      "case_id": "valid_load_dw_at_8",
+      "classifications": [
+        "valid_load_completed"
+      ],
+      "governed_stable_and_eligible": true,
+      "mode": "faulty_baseline",
+      "observation_ids": [
+        "memop.v6.b01.r06.validload.baseline",
+        "memop.v6.b02.r07.validload.baseline"
+      ],
+      "repetitions": 2
+    },
+    {
+      "case_id": "valid_load_dw_at_8",
+      "classifications": [
+        "valid_load_completed"
+      ],
+      "governed_stable_and_eligible": true,
+      "mode": "capebpf_broad",
+      "observation_ids": [
+        "memop.v6.b01.r09.validload.broad",
+        "memop.v6.b02.r04.validload.broad"
+      ],
+      "repetitions": 2
+    },
+    {
+      "case_id": "valid_load_dw_at_8",
+      "classifications": [
+        "valid_load_completed"
+      ],
+      "governed_stable_and_eligible": true,
+      "mode": "capebpf_exact",
+      "observation_ids": [
+        "memop.v6.b01.r10.validload.exact",
+        "memop.v6.b02.r10.validload.exact"
+      ],
+      "repetitions": 2
+    },
+    {
+      "case_id": "valid_store_w_at_12",
+      "classifications": [
+        "valid_store_completed"
+      ],
+      "governed_stable_and_eligible": true,
+      "mode": "faulty_baseline",
+      "observation_ids": [
+        "memop.v6.b01.r02.validstore.baseline",
+        "memop.v6.b02.r06.validstore.baseline"
+      ],
+      "repetitions": 2
+    },
+    {
+      "case_id": "valid_store_w_at_12",
+      "classifications": [
+        "valid_store_completed"
+      ],
+      "governed_stable_and_eligible": true,
+      "mode": "capebpf_broad",
+      "observation_ids": [
+        "memop.v6.b01.r05.validstore.broad",
+        "memop.v6.b02.r02.validstore.broad"
+      ],
+      "repetitions": 2
+    },
+    {
+      "case_id": "valid_store_w_at_12",
+      "classifications": [
+        "valid_store_completed"
+      ],
+      "governed_stable_and_eligible": true,
+      "mode": "capebpf_exact",
+      "observation_ids": [
+        "memop.v6.b01.r08.validstore.exact",
+        "memop.v6.b02.r03.validstore.exact"
+      ],
+      "repetitions": 2
+    }
+  ],
+  "governance": {
+    "blocks": 2,
+    "deployment": {
+      "path": "research/faulty-vs-differential-v6/deployment-binding-v1.json",
+      "sha256": "85108fc481f8aaf92843561b1cd1842e7a73f7692c8519929db94c636d780888"
+    },
+    "fresh_boots": 20,
+    "repetitions_per_condition": 2,
+    "replacement_runs": 0,
+    "schedule": {
+      "path": "research/faulty-vs-differential-v6/schedule-v1.json",
+      "sha256": "2c914f1e6418f80f3209d4d1f86c883ddc5a74e1d01ec4406ad359e715a631de"
+    }
+  },
+  "interpretation_boundary": {
+    "does_not_establish": [
+      "coverage of all eBPF memory operations",
+      "semantic correctness of object assignment",
+      "temporal safety",
+      "complete production refinement",
+      "superiority over software bounds checks"
+    ],
+    "supports_if_passed": "For the governed OOB W-load case, exact 16-byte authority faulted before the load and dependent return completed while baseline and deliberately broad authority completed the same load; the valid DW-load and W-store controls completed."
+  },
+  "observations": [
+    {
+      "block": 1,
+      "blockers": [],
+      "case_id": "oob_load_w_at_16",
+      "claim_eligible": true,
+      "classification": "oob_load_completed_with_dependent_value",
+      "mode": "faulty_baseline",
+      "normalized_observation": {
+        "path": "linux/benchmarks/faulty-vs-differential/artifacts/result-v6/collection/memop.v6.b01.r01.oobload.baseline.console.txt.observation.json",
+        "sha256": "da7d55cbd760241a6f1f13817bc43a013cc387d89aa644d486d7f1022499a97c"
+      },
+      "observation_id": "memop.v6.b01.r01.oobload.baseline",
+      "position": 1,
+      "raw_console": {
+        "path": "linux/benchmarks/faulty-vs-differential/artifacts/result-v6/collection/memop.v6.b01.r01.oobload.baseline.console.txt",
+        "sha256": "6aecace647ba181a8da4ca15a27cbf47f313cc9fdcb6539b0cc55364a13ed690",
+        "size_bytes": 64188
+      },
+      "retention_status": "complete"
+    },
+    {
+      "block": 1,
+      "blockers": [],
+      "case_id": "valid_store_w_at_12",
+      "claim_eligible": true,
+      "classification": "valid_store_completed",
+      "mode": "faulty_baseline",
+      "normalized_observation": {
+        "path": "linux/benchmarks/faulty-vs-differential/artifacts/result-v6/collection/memop.v6.b01.r02.validstore.baseline.console.txt.observation.json",
+        "sha256": "baf00e1e445fa8b3ac0f67a0f71a21f081811bc75b8c0ad29374774b81b5389e"
+      },
+      "observation_id": "memop.v6.b01.r02.validstore.baseline",
+      "position": 2,
+      "raw_console": {
+        "path": "linux/benchmarks/faulty-vs-differential/artifacts/result-v6/collection/memop.v6.b01.r02.validstore.baseline.console.txt",
+        "sha256": "0067c323bd8e68a5aeb49838f7acb3ca25f35a946e01a1628c32570f344e5f26",
+        "size_bytes": 46313
+      },
+      "retention_status": "complete"
+    },
+    {
+      "block": 1,
+      "blockers": [],
+      "case_id": "oob_load_w_at_16",
+      "claim_eligible": true,
+      "classification": "exact_fault_before_load_completion",
+      "mode": "capebpf_exact",
+      "normalized_observation": {
+        "path": "linux/benchmarks/faulty-vs-differential/artifacts/result-v6/collection/memop.v6.b01.r03.oobload.exact.console.txt.observation.json",
+        "sha256": "3ab9a712efc9a7afef4e47d025bcadaf969e9df1c0f1c5c2ad84ca854f83624c"
+      },
+      "observation_id": "memop.v6.b01.r03.oobload.exact",
+      "position": 3,
+      "raw_console": {
+        "path": "linux/benchmarks/faulty-vs-differential/artifacts/result-v6/collection/memop.v6.b01.r03.oobload.exact.console.txt",
+        "sha256": "c9338dafda256cae78390b6a1cd5bf3c451ba8f6eb62e596b76c4dee03951a3d",
+        "size_bytes": 66011
+      },
+      "retention_status": "complete"
+    },
+    {
+      "block": 1,
+      "blockers": [],
+      "case_id": "oob_load_w_at_16",
+      "claim_eligible": true,
+      "classification": "oob_load_completed_with_dependent_value",
+      "mode": "capebpf_broad",
+      "normalized_observation": {
+        "path": "linux/benchmarks/faulty-vs-differential/artifacts/result-v6/collection/memop.v6.b01.r04.oobload.broad.console.txt.observation.json",
+        "sha256": "878d4254c24b5cfd1a79d57171b1cfc89b47474d88736a90d3ba2815665ae27c"
+      },
+      "observation_id": "memop.v6.b01.r04.oobload.broad",
+      "position": 4,
+      "raw_console": {
+        "path": "linux/benchmarks/faulty-vs-differential/artifacts/result-v6/collection/memop.v6.b01.r04.oobload.broad.console.txt",
+        "sha256": "dffbdbcb18ee9d7b8634d0d99d9459bec24a68f11c4e2766f9b51e36889176b2",
+        "size_bytes": 64816
+      },
+      "retention_status": "complete"
+    },
+    {
+      "block": 1,
+      "blockers": [],
+      "case_id": "valid_store_w_at_12",
+      "claim_eligible": true,
+      "classification": "valid_store_completed",
+      "mode": "capebpf_broad",
+      "normalized_observation": {
+        "path": "linux/benchmarks/faulty-vs-differential/artifacts/result-v6/collection/memop.v6.b01.r05.validstore.broad.console.txt.observation.json",
+        "sha256": "38c6feced1c2a116507b3ed26f11db688ae2ba40e56104d017dff203cd8814f6"
+      },
+      "observation_id": "memop.v6.b01.r05.validstore.broad",
+      "position": 5,
+      "raw_console": {
+        "path": "linux/benchmarks/faulty-vs-differential/artifacts/result-v6/collection/memop.v6.b01.r05.validstore.broad.console.txt",
+        "sha256": "7968418bc0623b6b53b803de19f9fee186b37ba4847aec58ff9f4d3cd194e105",
+        "size_bytes": 47521
+      },
+      "retention_status": "complete"
+    },
+    {
+      "block": 1,
+      "blockers": [],
+      "case_id": "valid_load_dw_at_8",
+      "claim_eligible": true,
+      "classification": "valid_load_completed",
+      "mode": "faulty_baseline",
+      "normalized_observation": {
+        "path": "linux/benchmarks/faulty-vs-differential/artifacts/result-v6/collection/memop.v6.b01.r06.validload.baseline.console.txt.observation.json",
+        "sha256": "e432c1b9bdb5df6987cae9f62b7e5d7dbcf817e42bad0fd5e7fd7b447c13ea9c"
+      },
+      "observation_id": "memop.v6.b01.r06.validload.baseline",
+      "position": 6,
+      "raw_console": {
+        "path": "linux/benchmarks/faulty-vs-differential/artifacts/result-v6/collection/memop.v6.b01.r06.validload.baseline.console.txt",
+        "sha256": "05824a60991a6a6c67a5a696c8f2dd3a386759756cf359fede2df6d92f3de3ac",
+        "size_bytes": 46058
+      },
+      "retention_status": "complete"
+    },
+    {
+      "block": 1,
+      "blockers": [],
+      "case_id": "oob_load_w_at_16",
+      "claim_eligible": true,
+      "classification": "fixed_verifier_rejection",
+      "mode": "fixed_calibration",
+      "normalized_observation": {
+        "path": "linux/benchmarks/faulty-vs-differential/artifacts/result-v6/collection/memop.v6.b01.r07.oobload.fixed.console.txt.observation.json",
+        "sha256": "ecb02c18e50e1b48a2cc5635714f24082cc9553ffc3b6581130a590a62f9013a"
+      },
+      "observation_id": "memop.v6.b01.r07.oobload.fixed",
+      "position": 7,
+      "raw_console": {
+        "path": "linux/benchmarks/faulty-vs-differential/artifacts/result-v6/collection/memop.v6.b01.r07.oobload.fixed.console.txt",
+        "sha256": "5619d7998269fc9472c09e5eef1a499d0859ed33a6ddb9e42f74d6adc61c6b5a",
+        "size_bytes": 39013
+      },
+      "retention_status": "complete"
+    },
+    {
+      "block": 1,
+      "blockers": [],
+      "case_id": "valid_store_w_at_12",
+      "claim_eligible": true,
+      "classification": "valid_store_completed",
+      "mode": "capebpf_exact",
+      "normalized_observation": {
+        "path": "linux/benchmarks/faulty-vs-differential/artifacts/result-v6/collection/memop.v6.b01.r08.validstore.exact.console.txt.observation.json",
+        "sha256": "76d282e31a12e1e7ec14368da8c06247257f0a7340d3890c6663ae1acb11b130"
+      },
+      "observation_id": "memop.v6.b01.r08.validstore.exact",
+      "position": 8,
+      "raw_console": {
+        "path": "linux/benchmarks/faulty-vs-differential/artifacts/result-v6/collection/memop.v6.b01.r08.validstore.exact.console.txt",
+        "sha256": "e123b5b82defbf34ca6978fc64c8a69a50aced8478acb4a1fac5146e9a207d3b",
+        "size_bytes": 47549
+      },
+      "retention_status": "complete"
+    },
+    {
+      "block": 1,
+      "blockers": [],
+      "case_id": "valid_load_dw_at_8",
+      "claim_eligible": true,
+      "classification": "valid_load_completed",
+      "mode": "capebpf_broad",
+      "normalized_observation": {
+        "path": "linux/benchmarks/faulty-vs-differential/artifacts/result-v6/collection/memop.v6.b01.r09.validload.broad.console.txt.observation.json",
+        "sha256": "676a9176434001dd6856c43be2ce27241344c954b120be65e4cb307035322b93"
+      },
+      "observation_id": "memop.v6.b01.r09.validload.broad",
+      "position": 9,
+      "raw_console": {
+        "path": "linux/benchmarks/faulty-vs-differential/artifacts/result-v6/collection/memop.v6.b01.r09.validload.broad.console.txt",
+        "sha256": "b3e38147e569d79185777352cbf725cb19472b7a11099aaba71d3247fc6f0c74",
+        "size_bytes": 47267
+      },
+      "retention_status": "complete"
+    },
+    {
+      "block": 1,
+      "blockers": [],
+      "case_id": "valid_load_dw_at_8",
+      "claim_eligible": true,
+      "classification": "valid_load_completed",
+      "mode": "capebpf_exact",
+      "normalized_observation": {
+        "path": "linux/benchmarks/faulty-vs-differential/artifacts/result-v6/collection/memop.v6.b01.r10.validload.exact.console.txt.observation.json",
+        "sha256": "46fcdfd423ed6835456c4c850bfea60bb9a2873ba4b94dd8ac57537405e36c0b"
+      },
+      "observation_id": "memop.v6.b01.r10.validload.exact",
+      "position": 10,
+      "raw_console": {
+        "path": "linux/benchmarks/faulty-vs-differential/artifacts/result-v6/collection/memop.v6.b01.r10.validload.exact.console.txt",
+        "sha256": "3aebc8aa7e89cc30bb17d8f0335829ae3e1b6636340d1bd9d087eb58703c306b",
+        "size_bytes": 47243
+      },
+      "retention_status": "complete"
+    },
+    {
+      "block": 2,
+      "blockers": [],
+      "case_id": "oob_load_w_at_16",
+      "claim_eligible": true,
+      "classification": "exact_fault_before_load_completion",
+      "mode": "capebpf_exact",
+      "normalized_observation": {
+        "path": "linux/benchmarks/faulty-vs-differential/artifacts/result-v6/collection/memop.v6.b02.r01.oobload.exact.console.txt.observation.json",
+        "sha256": "53eebf31f4a8c7c3fcbe171f062d45be7b0a1fd3e673f82c3ab24b008e6082ff"
+      },
+      "observation_id": "memop.v6.b02.r01.oobload.exact",
+      "position": 1,
+      "raw_console": {
+        "path": "linux/benchmarks/faulty-vs-differential/artifacts/result-v6/collection/memop.v6.b02.r01.oobload.exact.console.txt",
+        "sha256": "bd3a4f2cd5589c97b97d8f1190f9b91f327dfbf379c6cc4481ce7ea631045931",
+        "size_bytes": 66011
+      },
+      "retention_status": "complete"
+    },
+    {
+      "block": 2,
+      "blockers": [],
+      "case_id": "valid_store_w_at_12",
+      "claim_eligible": true,
+      "classification": "valid_store_completed",
+      "mode": "capebpf_broad",
+      "normalized_observation": {
+        "path": "linux/benchmarks/faulty-vs-differential/artifacts/result-v6/collection/memop.v6.b02.r02.validstore.broad.console.txt.observation.json",
+        "sha256": "57b79778e2c96cc06e537620fdee682d30633f1386a10ff6c90549d1970e16ad"
+      },
+      "observation_id": "memop.v6.b02.r02.validstore.broad",
+      "position": 2,
+      "raw_console": {
+        "path": "linux/benchmarks/faulty-vs-differential/artifacts/result-v6/collection/memop.v6.b02.r02.validstore.broad.console.txt",
+        "sha256": "7e8c0eab8d07f55aabb693d377b539d645213edb75a2d67454e9eee70a8ba7ca",
+        "size_bytes": 47522
+      },
+      "retention_status": "complete"
+    },
+    {
+      "block": 2,
+      "blockers": [],
+      "case_id": "valid_store_w_at_12",
+      "claim_eligible": true,
+      "classification": "valid_store_completed",
+      "mode": "capebpf_exact",
+      "normalized_observation": {
+        "path": "linux/benchmarks/faulty-vs-differential/artifacts/result-v6/collection/memop.v6.b02.r03.validstore.exact.console.txt.observation.json",
+        "sha256": "03c0359b333d3c90c351bcc116e1253e2b20e3335ee068a0e3f8de4ebe5bd5fc"
+      },
+      "observation_id": "memop.v6.b02.r03.validstore.exact",
+      "position": 3,
+      "raw_console": {
+        "path": "linux/benchmarks/faulty-vs-differential/artifacts/result-v6/collection/memop.v6.b02.r03.validstore.exact.console.txt",
+        "sha256": "1982fbca5863e42bb2afbc544f96cfba3e3186d40ef9c92796354e6e202abee0",
+        "size_bytes": 47498
+      },
+      "retention_status": "complete"
+    },
+    {
+      "block": 2,
+      "blockers": [],
+      "case_id": "valid_load_dw_at_8",
+      "claim_eligible": true,
+      "classification": "valid_load_completed",
+      "mode": "capebpf_broad",
+      "normalized_observation": {
+        "path": "linux/benchmarks/faulty-vs-differential/artifacts/result-v6/collection/memop.v6.b02.r04.validload.broad.console.txt.observation.json",
+        "sha256": "0c1510112c06dff3702f07a1cab18fd5e8cedb3e8f69c696a9304c7a50d47b56"
+      },
+      "observation_id": "memop.v6.b02.r04.validload.broad",
+      "position": 4,
+      "raw_console": {
+        "path": "linux/benchmarks/faulty-vs-differential/artifacts/result-v6/collection/memop.v6.b02.r04.validload.broad.console.txt",
+        "sha256": "9e945e88753eaaf3d5448df0b14f26e48a25ff56a335ee6a158ef1623ee46cfa",
+        "size_bytes": 47266
+      },
+      "retention_status": "complete"
+    },
+    {
+      "block": 2,
+      "blockers": [],
+      "case_id": "oob_load_w_at_16",
+      "claim_eligible": true,
+      "classification": "oob_load_completed_with_dependent_value",
+      "mode": "faulty_baseline",
+      "normalized_observation": {
+        "path": "linux/benchmarks/faulty-vs-differential/artifacts/result-v6/collection/memop.v6.b02.r05.oobload.baseline.console.txt.observation.json",
+        "sha256": "0139a343b422daa532a5d25dc0f70471b01d46516514a09fd3a67941ac944482"
+      },
+      "observation_id": "memop.v6.b02.r05.oobload.baseline",
+      "position": 5,
+      "raw_console": {
+        "path": "linux/benchmarks/faulty-vs-differential/artifacts/result-v6/collection/memop.v6.b02.r05.oobload.baseline.console.txt",
+        "sha256": "63d96e2a50e2d93497d03e744122ddab8a12b6a8affeaeab412482bd4004bf7c",
+        "size_bytes": 64189
+      },
+      "retention_status": "complete"
+    },
+    {
+      "block": 2,
+      "blockers": [],
+      "case_id": "valid_store_w_at_12",
+      "claim_eligible": true,
+      "classification": "valid_store_completed",
+      "mode": "faulty_baseline",
+      "normalized_observation": {
+        "path": "linux/benchmarks/faulty-vs-differential/artifacts/result-v6/collection/memop.v6.b02.r06.validstore.baseline.console.txt.observation.json",
+        "sha256": "2098b70afffbacbb5aef4b0c29db63c0a966b05f30319660a9dbed1c397fadf0"
+      },
+      "observation_id": "memop.v6.b02.r06.validstore.baseline",
+      "position": 6,
+      "raw_console": {
+        "path": "linux/benchmarks/faulty-vs-differential/artifacts/result-v6/collection/memop.v6.b02.r06.validstore.baseline.console.txt",
+        "sha256": "f07dcf985d513c68d968d3d2fc9fcf512fa1ea869b0ce9efe35e724cf1f3ea88",
+        "size_bytes": 46313
+      },
+      "retention_status": "complete"
+    },
+    {
+      "block": 2,
+      "blockers": [],
+      "case_id": "valid_load_dw_at_8",
+      "claim_eligible": true,
+      "classification": "valid_load_completed",
+      "mode": "faulty_baseline",
+      "normalized_observation": {
+        "path": "linux/benchmarks/faulty-vs-differential/artifacts/result-v6/collection/memop.v6.b02.r07.validload.baseline.console.txt.observation.json",
+        "sha256": "9628005b392818eca427bf23272a5d80c44fada17d7191104c456edc957330f0"
+      },
+      "observation_id": "memop.v6.b02.r07.validload.baseline",
+      "position": 7,
+      "raw_console": {
+        "path": "linux/benchmarks/faulty-vs-differential/artifacts/result-v6/collection/memop.v6.b02.r07.validload.baseline.console.txt",
+        "sha256": "4a55c5889b3d7a07eabe9cc7728b28da4bd94d40e65fedc905c5a59fe55683c4",
+        "size_bytes": 46058
+      },
+      "retention_status": "complete"
+    },
+    {
+      "block": 2,
+      "blockers": [],
+      "case_id": "oob_load_w_at_16",
+      "claim_eligible": true,
+      "classification": "oob_load_completed_with_dependent_value",
+      "mode": "capebpf_broad",
+      "normalized_observation": {
+        "path": "linux/benchmarks/faulty-vs-differential/artifacts/result-v6/collection/memop.v6.b02.r08.oobload.broad.console.txt.observation.json",
+        "sha256": "822a53ea8e3589ca05641abcb91b618ca323175dde0036cff1dcfeaaf665b9e4"
+      },
+      "observation_id": "memop.v6.b02.r08.oobload.broad",
+      "position": 8,
+      "raw_console": {
+        "path": "linux/benchmarks/faulty-vs-differential/artifacts/result-v6/collection/memop.v6.b02.r08.oobload.broad.console.txt",
+        "sha256": "4e5ea3c532a26a16222d0e2c6617be4205e5b8dfd811c6f5dde8d8283ce6a383",
+        "size_bytes": 64815
+      },
+      "retention_status": "complete"
+    },
+    {
+      "block": 2,
+      "blockers": [],
+      "case_id": "oob_load_w_at_16",
+      "claim_eligible": true,
+      "classification": "fixed_verifier_rejection",
+      "mode": "fixed_calibration",
+      "normalized_observation": {
+        "path": "linux/benchmarks/faulty-vs-differential/artifacts/result-v6/collection/memop.v6.b02.r09.oobload.fixed.console.txt.observation.json",
+        "sha256": "662d81d5e3c0817bfb278e4505f246fcce0eafc97bc5b67f729b90b5b78f57f2"
+      },
+      "observation_id": "memop.v6.b02.r09.oobload.fixed",
+      "position": 9,
+      "raw_console": {
+        "path": "linux/benchmarks/faulty-vs-differential/artifacts/result-v6/collection/memop.v6.b02.r09.oobload.fixed.console.txt",
+        "sha256": "05d03cf410087570a89c24977661ace6af47a48b098619720a6d6e9bcc68dfb8",
+        "size_bytes": 39013
+      },
+      "retention_status": "complete"
+    },
+    {
+      "block": 2,
+      "blockers": [],
+      "case_id": "valid_load_dw_at_8",
+      "claim_eligible": true,
+      "classification": "valid_load_completed",
+      "mode": "capebpf_exact",
+      "normalized_observation": {
+        "path": "linux/benchmarks/faulty-vs-differential/artifacts/result-v6/collection/memop.v6.b02.r10.validload.exact.console.txt.observation.json",
+        "sha256": "cddc02e3bda5e1e5f1ae2a38b7e274d1b9f2f48fba0e9559be4d2595d1685f37"
+      },
+      "observation_id": "memop.v6.b02.r10.validload.exact",
+      "position": 10,
+      "raw_console": {
+        "path": "linux/benchmarks/faulty-vs-differential/artifacts/result-v6/collection/memop.v6.b02.r10.validload.exact.console.txt",
+        "sha256": "f10e9c8c7adca21fcc9e0b55d0d1f11b1cae558d4d97001b84b4e751f28a69c9",
+        "size_bytes": 47242
+      },
+      "retention_status": "complete"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "study_id": "capebpf-faulty-vs-memory-operation-closure-v6",
+  "summary": {
+    "all_conditions_stable": true,
+    "all_expected_outcomes_observed": true,
+    "claim_eligible_observations": 20,
+    "load_and_valid_control_result_passed": true,
+    "retained_observations": 20,
+    "scheduled_observations": 20,
+    "study_classification": "bounded_memory_operation_differential_supported"
+  }
+}

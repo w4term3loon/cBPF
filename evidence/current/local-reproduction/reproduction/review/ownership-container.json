@@ -1,0 +1,59 @@
+{
+  "observed_utc": "2026-09-06T20:16:48.739335+00:00",
+  "result": "PASS",
+  "pull_never_verified_in_executed_recipe": true,
+  "containers": [
+    {
+      "id": "56f5ed0d668b5da88a8f6de838d49f618b9ec19a5edc59837da4745544efa21c",
+      "created": "2026-09-06T20:16:09.208461389Z",
+      "image": "sha256:b4de3680a00e3ac68ccc56bd87131b97c1fffcd5e016c2d1a54d7e3386d9fc6e",
+      "user": "68403:65006",
+      "command": [
+        "/bin/bash",
+        "-s"
+      ],
+      "working_dir": "/src",
+      "network_mode": "none",
+      "cap_drop": [
+        "ALL"
+      ],
+      "security_options": [
+        "no-new-privileges"
+      ],
+      "memory_bytes": 12884901888,
+      "privileged": false,
+      "mounts": [
+        {
+          "Type": "bind",
+          "Source": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/snapshot/build/ownership-m3-kernel",
+          "Destination": "/build",
+          "RW": true
+        },
+        {
+          "Type": "bind",
+          "Source": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/snapshot/build/ownership-m3-headers",
+          "Destination": "/headers",
+          "RW": true
+        },
+        {
+          "Type": "bind",
+          "Source": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/snapshot/build/ownership-m3-build",
+          "Destination": "/receipt",
+          "RW": true
+        },
+        {
+          "Type": "bind",
+          "Source": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/snapshot/build/ownership-m3-source",
+          "Destination": "/src",
+          "RW": false
+        },
+        {
+          "Type": "bind",
+          "Source": "${PRIOR_OWNERSHIP_EVIDENCE}/tools/pahole-runtime",
+          "Destination": "/opt/gate4-pahole",
+          "RW": false
+        }
+      ]
+    }
+  ]
+}

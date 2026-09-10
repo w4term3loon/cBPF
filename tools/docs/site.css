@@ -1,0 +1,58 @@
+:root { color-scheme: light; --ink: #20323b; --muted: #5d6b72; --line: #dde4e6; --accent: #087b82; }
+* { box-sizing: border-box; }
+body { margin: 0; color: var(--ink); background: #fff; font: 16px/1.65 system-ui, sans-serif; display: grid; grid-template-columns: 260px minmax(0, 1fr) 210px; }
+a { color: var(--accent); text-underline-offset: .18em; }
+a:hover { text-decoration-thickness: 2px; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.sidebar { position: sticky; top: 0; height: 100vh; overflow: auto; border-right: 1px solid var(--line); padding: 24px 20px; font-size: 14px; }
+.brand { display: block; margin-bottom: 24px; color: var(--ink); text-decoration: none; font-size: 24px; font-weight: 700; }
+.brand span { display: block; font-size: 13px; color: var(--muted); font-weight: 400; }
+summary { cursor: pointer; font-weight: 600; }
+#navigation > summary { display: none; }
+label { display: block; font-size: 12px; color: var(--muted); margin-bottom: 5px; }
+input { width: 100%; padding: 9px 10px; border: 1px solid #bfcbd0; border-radius: 4px; background: #fff; font: inherit; }
+#search-status { color: var(--muted); font-size: 12px; min-height: 1.5em; margin: 5px 0 15px; }
+nav details { margin: 12px 0; }
+nav ul, .toc ul { list-style: none; padding: 0; margin: 8px 0; }
+nav a { display: block; padding: 7px 8px; margin: 2px 0; color: var(--ink); text-decoration: none; border-left: 2px solid transparent; }
+nav a:hover, nav a[aria-current] { background: #f1f7f7; border-color: var(--accent); }
+nav small { display: block; color: var(--muted); font-size: 10px; overflow-wrap: anywhere; }
+[hidden] { display: none !important; }
+main { min-width: 0; padding: 32px clamp(22px, 4vw, 60px) 80px; }
+main > header { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; margin-bottom: 32px; font-size: 12px; color: var(--muted); overflow-wrap: anywhere; }
+article { max-width: 1040px; margin: auto; }
+h1, h2, h3 { line-height: 1.25; scroll-margin-top: 24px; }
+h1 { font-size: clamp(26px, 3vw, 36px); margin: 0 0 24px; letter-spacing: -.025em; }
+h2 { font-size: 24px; margin: 44px 0 18px; border-bottom: 1px solid var(--line); padding-bottom: 9px; }
+h3 { font-size: 19px; margin: 30px 0 12px; }
+p, ul, ol { margin: 0 0 18px; }
+li + li { margin-top: 5px; }
+code, pre { font-family: ui-monospace, monospace; font-size: .86em; }
+code { background: #f1f4f5; padding: .12em .25em; border-radius: 3px; overflow-wrap: anywhere; }
+pre { background: #f5f7f8; padding: 16px; overflow: auto; line-height: 1.6; }
+pre code { background: none; padding: 0; overflow-wrap: normal; }
+blockquote, .notice { margin: 20px 0; border-left: 3px solid var(--accent); padding: 8px 18px; background: #f5f9f9; }
+blockquote p:last-child { margin-bottom: 0; }
+.notice { font-size: 13px; }
+.table-scroll { max-width: 100%; overflow-x: auto; margin: 22px 0; }
+table { border-collapse: collapse; width: 100%; min-width: 560px; font-size: 14px; line-height: 1.55; }
+th, td { border-bottom: 1px solid var(--line); padding: 12px 14px; text-align: left; vertical-align: top; }
+th { background: #f1f6f7; font-weight: 650; }
+td:first-child { min-width: 140px; }
+img { max-width: 100%; }
+.toc { position: sticky; top: 0; height: 100vh; overflow: auto; padding: 36px 22px 30px 0; font-size: 12px; }
+.toc a { display: block; padding: 4px 0; color: var(--muted); text-decoration: none; }
+.toc a:hover { color: var(--accent); }
+.toc .level-3 { padding-left: 12px; }
+.skip { position: fixed; z-index: 3; top: -60px; left: 15px; padding: 8px 16px; background: white; }
+.skip:focus { top: 12px; }
+@media (max-width: 1200px) { body { grid-template-columns: 240px minmax(0, 1fr); } .toc { display: none; } }
+@media (max-width: 720px) {
+  body { display: block; }
+  .sidebar { position: static; height: auto; padding: 16px 20px; border-right: 0; border-bottom: 1px solid var(--line); }
+  .brand { margin-bottom: 8px; font-size: 21px; } .brand span { display: inline; margin-left: 8px; }
+  #navigation > summary { display: list-item; margin-bottom: 12px; }
+  #navigation nav { max-height: 55vh; overflow: auto; }
+  main { padding: 24px 20px 60px; } main > header { margin-bottom: 24px; }
+}
+@media print { body { display: block; } .sidebar, .toc, .skip, main > header { display: none; } main { padding: 0; } table { min-width: 0; } .table-scroll { overflow: visible; } }

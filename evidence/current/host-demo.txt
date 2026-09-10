@@ -1,0 +1,21 @@
+CBPF host reference semantics; tiny IR, not Linux eBPF/JIT or hardware isolation
+valid_A_B: status=returned trap=none pc=6 acquired=2 reads=2 release=2 cleanup=0 refs=1 return=0
+release_A_use_B_stale_A: status=trapped trap=stale pc=4 acquired=2 reads=1 release=1 cleanup=1 refs=1 return=0
+  step pc=0 op=acquire token=1 refs=2
+  step pc=1 op=acquire token=2 refs=3
+  step pc=2 op=release token=1 refs=2
+  step pc=3 op=read token=2 refs=2
+  trap pc=4 op=read token=1 refs=2
+  cleanup pc=4 op=release token=2 refs=1
+double_release: status=trapped trap=stale pc=3 acquired=1 reads=0 release=1 cleanup=0 refs=1 return=0
+  step pc=0 op=acquire token=1 refs=2
+  step pc=1 op=copy token=1 refs=2
+  step pc=2 op=release token=1 refs=1
+  trap pc=3 op=release token=1 refs=1
+alias_spill: status=trapped trap=stale pc=5 acquired=1 reads=1 release=1 cleanup=0 refs=1 return=0
+null_acquisition: status=returned trap=none pc=3 acquired=0 reads=0 release=0 cleanup=0 refs=1 return=7
+exhaustion_no_reuse: status=trapped trap=exhausted pc=4 acquired=2 reads=0 release=2 cleanup=0 refs=1 return=0
+live_alias_cleanup: status=returned trap=none pc=3 acquired=1 reads=0 release=0 cleanup=1 refs=1 return=9
+conceptual_object_baseline: stale_A_read=42 refs=1 (plain host pointers; no CHERI)
+structural_controls: passed; malformed input has no provider effects
+CBPF examples: passed

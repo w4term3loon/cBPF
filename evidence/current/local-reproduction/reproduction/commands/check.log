@@ -1,0 +1,214 @@
+cc  -O2 -std=c11 -Wall -Wextra -Werror -pedantic src/cbpf.c src/demo.c  -o build/cbpf-demo
+./build/cbpf-demo
+CBPF host reference semantics; tiny IR, not Linux eBPF/JIT or hardware isolation
+valid_A_B: status=returned trap=none pc=6 acquired=2 reads=2 release=2 cleanup=0 refs=1 return=0
+release_A_use_B_stale_A: status=trapped trap=stale pc=4 acquired=2 reads=1 release=1 cleanup=1 refs=1 return=0
+  step pc=0 op=acquire token=1 refs=2
+  step pc=1 op=acquire token=2 refs=3
+  step pc=2 op=release token=1 refs=2
+  step pc=3 op=read token=2 refs=2
+  trap pc=4 op=read token=1 refs=2
+  cleanup pc=4 op=release token=2 refs=1
+double_release: status=trapped trap=stale pc=3 acquired=1 reads=0 release=1 cleanup=0 refs=1 return=0
+  step pc=0 op=acquire token=1 refs=2
+  step pc=1 op=copy token=1 refs=2
+  step pc=2 op=release token=1 refs=1
+  trap pc=3 op=release token=1 refs=1
+alias_spill: status=trapped trap=stale pc=5 acquired=1 reads=1 release=1 cleanup=0 refs=1 return=0
+null_acquisition: status=returned trap=none pc=3 acquired=0 reads=0 release=0 cleanup=0 refs=1 return=7
+exhaustion_no_reuse: status=trapped trap=exhausted pc=4 acquired=2 reads=0 release=2 cleanup=0 refs=1 return=0
+live_alias_cleanup: status=returned trap=none pc=3 acquired=1 reads=0 release=0 cleanup=1 refs=1 return=9
+conceptual_object_baseline: stale_A_read=42 refs=1 (plain host pointers; no CHERI)
+structural_controls: passed; malformed input has no provider effects
+execution_boundaries: passed; early return halts; maximum trace fits exactly
+CBPF examples: passed
+PYTHONDONTWRITEBYTECODE=1 python3 theory/check_model.py --mutation-check
+{
+  "model": "per-acquisition ownership",
+  "bounds": {
+    "registers": 4,
+    "spills": 2,
+    "successful_acquisitions": 2,
+    "objects": 1,
+    "object_value": 42,
+    "baseline_refcount": 1
+  },
+  "check": {
+    "verified": true,
+    "reachable_states": 17828,
+    "terminal_states": 14783,
+    "transitions_checked": 149205
+  },
+  "object_wide_revocation_mutant": {
+    "verified": false,
+    "error": "alias independence: release of 1 also affects acquisition 2",
+    "counterexample": [
+      "acquire(0): success",
+      "acquire(1): success",
+      "release(0): consumed"
+    ],
+    "states_discovered_before_failure": 67,
+    "transitions_checked": 287
+  },
+  "mutation_killed": true
+}
+PYTHONDONTWRITEBYTECODE=1 python3 theory/check_oracle.py
+CBPF oracle controls: passed; 13 valid edges accepted, 16 malformed edges rejected
+cc  -O2 -std=c11 -Wall -Wextra -Werror -pedantic -fPIC -shared src/cbpf.c tools/conformance_bridge.c  -o build/cbpf-conformance.so
+PYTHONDONTWRITEBYTECODE=1 python3 theory/check_conformance.py --library build/cbpf-conformance.so
+{
+  "scope": "bounded host-C observations against finite ownership semantics",
+  "implementation": "reference",
+  "bounds": {
+    "registers": 4,
+    "spills": 2,
+    "acquisitions": 2,
+    "max_insns": 64,
+    "max_events": 66
+  },
+  "check": {
+    "matched": true,
+    "active_states": 3045,
+    "reachable_states": 17828,
+    "terminal_states": 14783,
+    "model_edges": 149205,
+    "branch_cases": {
+      "consumed": 4016,
+      "live": 4016,
+      "null": 4148
+    },
+    "scalar_boundary_cases": 4,
+    "programs_compared": 161389,
+    "maximum_generated_instructions": 12,
+    "terminal_outcomes": {
+      "exhaustion": 11664,
+      "null_read": 4148,
+      "null_release": 4148,
+      "return": 121213,
+      "stale_read": 4016,
+      "stale_release": 4016
+    }
+  },
+  "environment": {
+    "python": "3.12.3",
+    "machine": "x86_64"
+  },
+  "source_sha256": {
+    "src/cbpf.c": "55ca962a74e57cc29598884723fc67a529ac7e0f3b278495c9f9fdf41e3ece7a",
+    "src/cbpf.h": "8530f1c02110e1675811d15bc369a06d4507e16807f0556ae13dc5c01bb706ab",
+    "tools/conformance_bridge.c": "1d34a3188ddd53d749dc633f2f542347a6fea084f20bc0554b5fae32f4f6e326",
+    "theory/check_model.py": "c973366427b63951d93de9cb41ef4f9650780ac4a1db8e8ab37120713ce5f511",
+    "theory/check_conformance.py": "552c5929a53d0ea50ad981b918a7959bc04d2df8d5ef547b61cdb8270cbea246"
+  },
+  "library_sha256": "902db616e80d85c1dec2ad63e8bfe98fb2068f648b925835c3ac1c7b0deb100c",
+  "limitations": [
+    "One shortest history per reachable abstract active state; not every program or concrete C state.",
+    "No C/native refinement proof or hardware isolation result.",
+    "No kernel, eBPF/JIT, CHERI, or external-system execution."
+  ]
+}
+cc  -O2 -std=c11 -Wall -Wextra -Werror -pedantic src/cbpf.c src/gate.c src/gate_demo.c  -o build/cbpf-gate-demo
+./build/cbpf-gate-demo
+CBPF_GATE scope=validated_IR isolation=0 kfunc=0 jit=0
+CBPF_GATE backend=software
+CBPF_GATE trace=stale_spill_after_B program_begin
+  0: r0 = acquire(1)
+  1: r1 = acquire(1)
+  2: r2 = r0
+  3: spill[0] = r0
+  4: release(r0)
+  5: read(r1)
+  6: r3 = spill[0]
+  7: read(r3)
+  8: release(r1)
+  9: return 7
+CBPF_GATE trace=stale_spill_after_B effects_begin
+  step pc=0 op=acquire token=1 refs=2
+  step pc=1 op=acquire token=2 refs=3
+  step pc=2 op=copy token=1 refs=3
+  step pc=3 op=spill token=1 refs=3
+  step pc=4 op=release token=1 refs=2
+  step pc=5 op=read token=2 refs=2
+  step pc=6 op=reload token=1 refs=2
+  trap pc=7 op=read token=1 refs=2
+  cleanup pc=7 op=release token=2 refs=1
+CBPF_GATE trace=stale_spill_after_B status=trapped trap=stale pc=7 reads=1 explicit=1 cleanup=1 refs=1
+CBPF_GATE family=valid_A_B cases=48 result=PASS
+CBPF_GATE family=stale_copy_after_B cases=48 result=PASS
+CBPF_GATE family=stale_spill_after_B cases=48 result=PASS
+CBPF_GATE family=repeated_release cases=48 result=PASS
+CBPF_GATE family=null_acquisition_branch cases=48 result=PASS
+CBPF_GATE family=consumed_token_nonnull cases=48 result=PASS
+CBPF_GATE family=overwrite_last_alias cases=48 result=PASS
+CBPF_GATE family=exhaustion_cleanup cases=48 result=PASS
+CBPF_GATE family=null_read cases=48 result=PASS
+CBPF_GATE family=null_release cases=48 result=PASS
+CBPF_GATE boundaries=malformed_unreachable_full64_event66 result=PASS
+CBPF_GATE baseline=direct_object live_object=1 released_A_read=42 live_B_read=42 refs=1 effects=2 result=PASS
+CBPF_GATE representation=purecap_0 cell_bytes=8 handle_bytes=8
+CBPF_GATE cases=494 matched=494
+CBPF_GATE result=PASS
+cc  -O2 -std=c11 -Wall -Wextra -Werror -pedantic -DCBPF_CONFORMANCE_GATE=1 -fPIC -shared src/cbpf.c src/gate.c tools/conformance_bridge.c  -o build/cbpf-gate-conformance.so
+PYTHONDONTWRITEBYTECODE=1 python3 theory/check_conformance.py --library build/cbpf-gate-conformance.so
+{
+  "scope": "bounded host-C observations against finite ownership semantics",
+  "implementation": "gate",
+  "bounds": {
+    "registers": 4,
+    "spills": 2,
+    "acquisitions": 2,
+    "max_insns": 64,
+    "max_events": 66
+  },
+  "check": {
+    "matched": true,
+    "active_states": 3045,
+    "reachable_states": 17828,
+    "terminal_states": 14783,
+    "model_edges": 149205,
+    "branch_cases": {
+      "consumed": 4016,
+      "live": 4016,
+      "null": 4148
+    },
+    "scalar_boundary_cases": 4,
+    "programs_compared": 161389,
+    "maximum_generated_instructions": 12,
+    "terminal_outcomes": {
+      "exhaustion": 11664,
+      "null_read": 4148,
+      "null_release": 4148,
+      "return": 121213,
+      "stale_read": 4016,
+      "stale_release": 4016
+    }
+  },
+  "environment": {
+    "python": "3.12.3",
+    "machine": "x86_64"
+  },
+  "source_sha256": {
+    "src/cbpf.c": "55ca962a74e57cc29598884723fc67a529ac7e0f3b278495c9f9fdf41e3ece7a",
+    "src/cbpf.h": "8530f1c02110e1675811d15bc369a06d4507e16807f0556ae13dc5c01bb706ab",
+    "tools/conformance_bridge.c": "1d34a3188ddd53d749dc633f2f542347a6fea084f20bc0554b5fae32f4f6e326",
+    "theory/check_model.py": "c973366427b63951d93de9cb41ef4f9650780ac4a1db8e8ab37120713ce5f511",
+    "theory/check_conformance.py": "552c5929a53d0ea50ad981b918a7959bc04d2df8d5ef547b61cdb8270cbea246",
+    "src/gate.c": "e2693cbba1eb37b92ed54aa00bd00a68e616d59dfbded175e5e4aee65aecd784",
+    "src/gate.h": "3efe283e382385c3c54a30d654cbe5f009d85e2214e6b39e1d87aa50e8752013"
+  },
+  "library_sha256": "829d2e1b434965ff11d0942639b6136772df4c093ed14824e8f30d1f7ec6a1cd",
+  "limitations": [
+    "One shortest history per reachable abstract active state; not every program or concrete C state.",
+    "No C/native refinement proof or hardware isolation result.",
+    "No kernel, eBPF/JIT, CHERI, or external-system execution."
+  ]
+}
+PYTHONDONTWRITEBYTECODE=1 python3 tools/verify_evidence.py
+CBPF historical evidence: 9 copied files match their hashes
+CBPF historical spatial evidence: 23 copied files match their hashes
+CBPF gate evidence: 9 retained files match their hashes
+CBPF kfunc evidence: 23 retained files match their hashes
+CBPF spatial compile evidence: 14 retained files match their hashes
+CBPF protected kernel evidence: 38 retained files match their hashes
+CBPF ownership closure evidence: 52 retained files match their hashes
+Integrity only; no native execution or semantic revalidation performed.

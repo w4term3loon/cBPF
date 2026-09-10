@@ -1,0 +1,80 @@
+{
+  "schema_version": "1.0.0",
+  "artifact_kind": "local-partial-c-checker-refinement-receipt",
+  "recorded_at": "2026-08-30T01:26:30+02:00",
+  "scope": "Concrete generated-C helper refinements over the AutoCorres lifted struct heap; no complete-step, loop, core-return, or full-envelope implication.",
+  "predecessor_receipt_sha256": "c51416e1e78a73d013ebebf3a6f64bcff70f5411aee2dd063f6863a9dc355246",
+  "pins": {
+    "isabelle": "Isabelle2020",
+    "autocorres_version": "1.7",
+    "cparser_version": "1.17",
+    "l4v_revision": "e51ea954278db48c20dc5132bbbbcb54b511433f"
+  },
+  "source_sha256": {
+    "checker/capebpf_checker_core.c": "edabc2c76b381719e0e2ba088f6814e66517193befa22d40d96511fe9d256751",
+    "checker/capebpf_checker_core.h": "8fd90c70f4e92be841139666c52f29b889815d6d1f688b14d0152d02d96df35c",
+    "formal/CapeBPF_Checker_C_AutoCorres.thy": "742dfbd1bbb086a018f868d47608968c30bdb78a657e27dcc74b77565c4f0fb7",
+    "formal/c_checker_bridge/CapeBPF_Checker_C_Bridge.thy": "ef26b36333e5b5017ea26df2dabb8a35215445a637dd40a6cdd81e2d0a4a8dfd",
+    "formal/c_checker_bridge/ROOT": "722da4509dde53ebca546de4d01ee67ae4551daec60c007af169eefb1db3a96a",
+    "formal/check_c_refinement.sh": "8978205642e29970cd3708381a4ca431ffd13d959fb0940fffd8c041be52116a",
+    "formal/CapeBPF_Trace_Containment.thy": "4f692ed654bd08a929985dd120e599700e3559356180e280d7f6996bc03556bc"
+  },
+  "checked_results": [
+    {
+      "theorem": "translated_width_supported_refines",
+      "generated_c_function": "capebpf_width_supported'",
+      "strength": "Exact monad equality for the four accepted widths."
+    },
+    {
+      "theorem": "translated_step_reserved_zero_refines",
+      "generated_c_function": "capebpf_step_reserved_zero'",
+      "strength": "Total-correctness result over checker_step_heap_rep; the generated Boolean result is equivalent to both concrete reserved fields being zero."
+    },
+    {
+      "theorem": "translated_emitted_fields_equal_refines",
+      "generated_c_function": "capebpf_emitted_fields_equal'",
+      "strength": "Total-correctness result over checker_step_heap_rep; the generated Boolean result is equivalent to all seven concrete source/emitted field equalities."
+    }
+  ],
+  "checks": [
+    {
+      "exit_status": 0,
+      "finished_at_utc": "2026-08-29T23:20:03Z",
+      "elapsed": "0:00:20",
+      "theory_elapsed_seconds": 0.995,
+      "result": "Final bridge source and all three generated-C helper theorems checked successfully."
+    },
+    {
+      "exit_status": 0,
+      "finished_at_utc": "2026-08-29T23:23:48Z",
+      "elapsed": "0:00:05",
+      "result": "Pinned CapeBPF-C-Checker and CapeBPF-C-Checker-Bridge heaps are current."
+    },
+    {
+      "exit_status": 0,
+      "finished_at_utc": "2026-08-29T23:26:19Z",
+      "elapsed": "0:02:22",
+      "cpu_time": "0:05:39",
+      "result": "Main Isabelle session accepted 31 full-envelope witnesses and 592 body instructions; trace circularity boundary remains explicit."
+    }
+  ],
+  "machine_visible_open_gates": [
+    {
+      "symbol": "translated_memory_step_refinement_is_pending",
+      "status": "pending",
+      "reason": "No generated-C zero-return theorem covers one complete normalized memory-step policy conjunction."
+    },
+    {
+      "symbol": "c_to_isabelle_full_envelope_refinement_is_pending",
+      "status": "pending",
+      "reason": "No generated core zero-return theorem, array representation/loop invariants, cross-session normalized-model relation, or full-envelope implication exists."
+    },
+    {
+      "symbol": "whole_trace_runtime_correspondence_is_pending",
+      "status": "pending",
+      "reason": "The per-event discharge contains the target subset relation; the retained result is conditional trace induction."
+    }
+  ],
+  "excluded_exploration": "Automated complete memory-step and reverse ordinary-step attempts were stopped without proof and are not retained as evidence.",
+  "attestation_boundary": "This receipt records local machine checks, not independent reproduction or completed C-to-Isabelle refinement."
+}

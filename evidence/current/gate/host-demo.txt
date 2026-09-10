@@ -1,0 +1,39 @@
+CBPF_GATE scope=validated_IR isolation=0 kfunc=0 jit=0
+CBPF_GATE backend=software
+CBPF_GATE trace=stale_spill_after_B program_begin
+  0: r0 = acquire(1)
+  1: r1 = acquire(1)
+  2: r2 = r0
+  3: spill[0] = r0
+  4: release(r0)
+  5: read(r1)
+  6: r3 = spill[0]
+  7: read(r3)
+  8: release(r1)
+  9: return 7
+CBPF_GATE trace=stale_spill_after_B effects_begin
+  step pc=0 op=acquire token=1 refs=2
+  step pc=1 op=acquire token=2 refs=3
+  step pc=2 op=copy token=1 refs=3
+  step pc=3 op=spill token=1 refs=3
+  step pc=4 op=release token=1 refs=2
+  step pc=5 op=read token=2 refs=2
+  step pc=6 op=reload token=1 refs=2
+  trap pc=7 op=read token=1 refs=2
+  cleanup pc=7 op=release token=2 refs=1
+CBPF_GATE trace=stale_spill_after_B status=trapped trap=stale pc=7 reads=1 explicit=1 cleanup=1 refs=1
+CBPF_GATE family=valid_A_B cases=48 result=PASS
+CBPF_GATE family=stale_copy_after_B cases=48 result=PASS
+CBPF_GATE family=stale_spill_after_B cases=48 result=PASS
+CBPF_GATE family=repeated_release cases=48 result=PASS
+CBPF_GATE family=null_acquisition_branch cases=48 result=PASS
+CBPF_GATE family=consumed_token_nonnull cases=48 result=PASS
+CBPF_GATE family=overwrite_last_alias cases=48 result=PASS
+CBPF_GATE family=exhaustion_cleanup cases=48 result=PASS
+CBPF_GATE family=null_read cases=48 result=PASS
+CBPF_GATE family=null_release cases=48 result=PASS
+CBPF_GATE boundaries=malformed_unreachable_full64_event66 result=PASS
+CBPF_GATE baseline=direct_object live_object=1 released_A_read=42 live_B_read=42 refs=1 effects=2 result=PASS
+CBPF_GATE representation=purecap_0 cell_bytes=8 handle_bytes=8
+CBPF_GATE cases=494 matched=494
+CBPF_GATE result=PASS

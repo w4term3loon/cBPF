@@ -1,0 +1,52 @@
+{
+  "_printk": {
+    "address": "ffff800080835694",
+    "size": "000000000000007c",
+    "type": "T"
+  },
+  "cbpf_active": {
+    "address": "ffff800080eef830",
+    "size": "0000000000000008",
+    "type": "d"
+  },
+  "cbpf_callback_check": {
+    "address": "ffff800080e4a71c",
+    "size": "00000000000003c4",
+    "type": "t"
+  },
+  "cbpf_consume": {
+    "address": "ffff80008003e784",
+    "size": "00000000000001a4",
+    "type": "t"
+  },
+  "cbpf_dispatch_callbacks": {
+    "address": "ffff800080e4aae0",
+    "size": "0000000000000098",
+    "type": "t"
+  },
+  "cbpf_fail": {
+    "address": "ffff80008003e5a8",
+    "size": "0000000000000090",
+    "type": "t"
+  },
+  "cbpf_gate_impl": {
+    "address": "ffff80008003e260",
+    "size": "0000000000000348",
+    "type": "T"
+  },
+  "cbpf_object": {
+    "address": "ffff800080f27e08",
+    "size": "0000000000000008",
+    "type": "d"
+  },
+  "cbpf_ownership_callback": {
+    "address": "ffff800080e4ab78",
+    "size": "000000000000015c",
+    "type": "t"
+  },
+  "cbpf_trace": {
+    "address": "ffff80008003e638",
+    "size": "000000000000007c",
+    "type": "t"
+  }
+}

@@ -1,0 +1,89 @@
+{
+  "result": "PASS_MANUAL_LINKED_REVIEW",
+  "scope": "Inspection of the linked trusted synchronous C callback controls and their production ownership gate. This is neither execution evidence nor a native validator.",
+  "tool": {
+    "builder": "sha256:b4de3680a00e3ac68ccc56bd87131b97c1fffcd5e016c2d1a54d7e3386d9fc6e",
+    "disassembler": "/opt/cheri/output/morello-sdk/bin/llvm-objdump -d --mattr=+morello,+lse --start-address=<symbol address> --stop-address=<address plus size> /kernel/vmlinux",
+    "isolation": "Already present image; pull disabled; network none; all container capabilities dropped; no new privileges; kernel directory mounted read-only.",
+    "selection": "Six complete numeric symbol ranges, including the cbpf_consume LL/SC continuation; linked-symbols.json records only the relevant function and data identities."
+  },
+  "sha256": {
+    "linux/ownership/cbpf_runtime.c": "9a91d5cd91e1132a40b970138b5daf82aa76e6e852fc81bdddcea8d28c14751d",
+    "build/ownership-c1-build/cbpf_runtime.c": "9a91d5cd91e1132a40b970138b5daf82aa76e6e852fc81bdddcea8d28c14751d",
+    "build/ownership-c1-source/arch/arm64/net/cbpf_runtime.c": "9a91d5cd91e1132a40b970138b5daf82aa76e6e852fc81bdddcea8d28c14751d",
+    "build/ownership-c1-kernel/vmlinux": "6497b5ba02bfc4e09cd17ff293942a45504a4b1f64497740e5fc5474345a23fa",
+    "build/ownership-c1-review/linked-symbols.json": "08101d5468fcb6e59a12437d7d358035c1e2b4c603bb6bce960b96b1548fd5fc",
+    "build/ownership-c1-review/runtime-linked-disassembly.txt": "6866594eb8a9d85696bbce60aeed9a8af41b4cb7332739baa2572a11d42bc082"
+  },
+  "source_binding": "The repository source, staged build source and prepared kernel source have identical SHA-256 values. Linked vmlinux and reviewed disassembly are bound separately above.",
+  "findings": [
+    {
+      "property": "Actual indirect callback",
+      "evidence": [
+        "cbpf_dispatch_callbacks is at 0xffff800080e4aae0. ADRP/ADD at 0xffff800080e4aaf0 and 0xffff800080e4aaf4 resolve 0xffff800080e4ab78, the linked cbpf_ownership_callback.",
+        "The target is stored at 0xffff800080e4aafc, reloaded at 0xffff800080e4ab08 and 0xffff800080e4ab40, and invoked by BLR x8 at 0xffff800080e4ab14 and 0xffff800080e4ab4c."
+      ],
+      "interpretation": "The compiler specialized the known target identity but retained real indirect calls through the volatile slot."
+    },
+    {
+      "property": "Full-capability transport across callback entry, logging and gate calls",
+      "evidence": [
+        "0xffff800080e4abe8 loads c2 from the selected context alias; 0xffff800080e4abec loads canonical c0; 0xffff800080e4abf8 compares exact capabilities; 0xffff800080e4ac1c checks the alias tag.",
+        "0xffff800080e4ac24 stores c2 to the capability stack slot before _printk at 0xffff800080e4ac44.",
+        "0xffff800080e4ac64 reloads c0 for operation 2 at 0xffff800080e4ac70; 0xffff800080e4ac84 reloads c0 for operation 3 at 0xffff800080e4ac90. Both BL targets resolve to cbpf_gate_impl at 0xffff80008003e260."
+      ],
+      "interpretation": "Each callback rereads the context capability. A full capability, rather than only its address, survives logging and the optional read before release."
+    },
+    {
+      "property": "One persistent invocation and context",
+      "evidence": [
+        "cbpf_callback_check uses state at SP+0x60 and context at SP+0x30. Existing active state and nonbaseline refs are rejected at 0xffff800080e4a7ec and 0xffff800080e4a800.",
+        "0xffff800080e4a818 publishes the state through the per-CPU cbpf_active identity 0xffff800080eef830, before acquisition at 0xffff800080e4a848. 0xffff800080e4a84c stores returned c0 in a context alias slot.",
+        "0xffff800080e4a870 passes SP+0x30 to the dispatcher call at 0xffff800080e4a878. The dispatcher retains the same context in x20 and passes it again at 0xffff800080e4ab44.",
+        "0xffff800080e4abb4 reads the same per-CPU active invocation on callback entry; no callback arena allocation, reset or reacquisition occurs."
+      ]
+    },
+    {
+      "property": "Failure stops callback dispatch and protected continuation",
+      "evidence": [
+        "0xffff800080e4ab20 branches to the dispatcher epilogue on first false return. Completion increments at 0xffff800080e4ab28 through 0xffff800080e4ab38 follow success only.",
+        "0xffff800080e4ab54 branches back on later success only; false falls through to return. A failing second release therefore cannot dispatch the planned third callback.",
+        "0xffff800080e4ac78 branches to false return after a failed read, skipping release. The release return reflects state.failed at 0xffff800080e4ac94 through 0xffff800080e4ac9c.",
+        "Identity failure calls cbpf_fail at 0xffff800080e4acac, then returns false. cbpf_fail sets state.failed at 0xffff80008003e5d8 and performs only telemetry afterward."
+      ],
+      "interpretation": "Trusted result observation and cleanup remain reachable after failure; no additional callback or modeled protected operation does."
+    },
+    {
+      "property": "Production membership and liveness checks precede the effect",
+      "evidence": [
+        "cbpf_gate_impl loads cbpf_active at 0xffff80008003e298 and rejects missing, unentered or failed state at 0xffff80008003e2b4 through 0xffff80008003e2c4.",
+        "The canonical-view loop loads c2 at 0xffff80008003e31c and uses CHKEQ at 0xffff80008003e320. A missing member rejects through 0xffff80008003e488.",
+        "The matched private object is loaded at 0xffff80008003e3bc, its tag checked at 0xffff80008003e3c0 and an untagged object rejected at 0xffff80008003e3c4.",
+        "Only after those checks does operation 2 execute LDURSW through c0 at 0xffff80008003e3ec or operation 3 call the linked cbpf_consume at 0xffff80008003e414."
+      ]
+    },
+    {
+      "property": "Private invalidation precedes provider release",
+      "evidence": [
+        "cbpf_consume clears the private object tag at 0xffff80008003e7c4 and stores the cleared capability at 0xffff80008003e7c8.",
+        "The later provider refcount address is cbpf_object+4, 0xffff800080f27e0c. The LSE decrement is LDADDL at 0xffff80008003e83c; the linked default branch selects the LL/SC sequence with LDXR at 0xffff80008003e8fc and STLXR at 0xffff80008003e904.",
+        "Both decrement sequences occur after the private invalidation store. No rejection path reaches either decrement."
+      ],
+      "interpretation": "This confirms sequential ordering in the linked implementation, not a concurrency or arbitrary reentrancy theorem."
+    },
+    {
+      "property": "Trusted teardown",
+      "evidence": [
+        "Still-tagged cells alone reach trusted cleanup at 0xffff800080e4a94c.",
+        "Full-capability zero stores at 0xffff800080e4a9b4 through 0xffff800080e4a9c8 clear cell objects, canonical views and context aliases. The active invocation is cleared at 0xffff800080e4a9e0 before local_bh_enable at 0xffff800080e4a9fc."
+      ],
+      "interpretation": "This covers the named state slots, not erasure of all historical stack bytes."
+    }
+  ],
+  "limitations": [
+    "No guest, payload or BPF program was executed for this review. Runtime observations must be cited from the separate trusted callback witness receipt.",
+    "The callback and dispatcher are trusted synchronous C code with bounded indices and no escaped handles. They are not protected BPF callback support or a general callback framework.",
+    "The trusted callback witness admits the first valid release and blocks subsequent use of that acquisition. It does not reproduce the original CVE-2022-50650 callback-frame policy, which forbids the initial caller-owned release.",
+    "The broader DDC, gateway and admission mediation premise remains trusted and is not discharged by this linked inspection."
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "scope": "Internal static inspection of no-fallback and synchronous unattached entry for the bounded protected-ownership program; no guest execution or attachment probes.",
+  "stock_source_commit": "b96da308ef1a054c3c04c9445e5ed70259b7c397",
+  "files": [
+    {
+      "file": "linux/ownership/integration.patch",
+      "sha256": "8121d10f5e83488ed31739960d46cb3fe35e9f319e91acd5230c80718c5abe30"
+    },
+    {
+      "file": "linux/ownership/cbpf_jit.c",
+      "sha256": "a1a3c2476380325100a9b361f213bb06db9e9dd24543ae8e12a5354ddd8dd753"
+    },
+    {
+      "file": "linux/ownership/cbpf_runtime.c",
+      "sha256": "2f7529a011de6309fdb068bfea917b196df3764d03ac84d96aca240263d99a36"
+    },
+    {
+      "file": "linux/ownership/guest.c",
+      "sha256": "9323464c3bbb08a70c4e126d423bea321dc3c584e559bce393d0e818fd8f281b"
+    },
+    {
+      "file": "tools/run_ownership.sh",
+      "sha256": "7cef4c27fe9ee80aa7ed61a9f9f9cb563ccd5f37bca18b8193202ab04426c0ff"
+    }
+  ],
+  "findings": [
+    {
+      "claim": "Rejected protected programs cannot fall back to ordinary execution",
+      "basis": "cbpf_jit_match dispatch precedes stock arm64 generation; rejection leaves jited false; unchanged bpf_prog_select_runtime requires JIT for a kfunc program and returns ENOTSUPP."
+    },
+    {
+      "claim": "Typed TC/pinned retrieval and program-array insertion are denied",
+      "basis": "The cbpf_gate flag is rejected by bpf_prog_get_ok and bpf_prog_map_compatible."
+    },
+    {
+      "claim": "Direct link creation and link replacement are denied",
+      "basis": "link_create checks cbpf_gate before dispatch and uses its existing out put path; link_update checks new_prog before old_prog acquisition and uses out_put_progs/out_put_link."
+    },
+    {
+      "claim": "BTF-annotated trampoline targets are excluded from this backend",
+      "basis": "cbpf_jit_compile rejects func_info_cnt; stock bpf_check_attach_target requires matching target func_info."
+    },
+    {
+      "claim": "Provider effects require the active synchronous test context",
+      "basis": "test_run holds local_bh_disable; cbpf_test_invoke installs private per-CPU state and rejects nesting; cbpf_enter verifies matching program cookie and first entry; ordinary registered kfunc bodies have no effects."
+    },
+    {
+      "claim": "Runner connects the selected BPF calls to both observed native code views",
+      "basis": "Exact kernel/GET_INFO word equality, contiguous mapping, built-in BTF identity-to-operation mapping, expected A/B gate PCs/counters/tags, and entry/executive offsets are required."
+    }
+  ],
+  "limits": [
+    "Source-level reasoning, not a formal refinement proof or runtime result.",
+    "No native ABI or platform interrupt-preservation certification follows from this review.",
+    "Provider root construction, trusted kernel/compiler, and the declared single synchronous program boundary remain assumptions.",
+    "Any later change to the hashed sources requires review of that delta."
+  ]
+}

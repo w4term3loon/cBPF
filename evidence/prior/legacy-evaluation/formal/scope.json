@@ -1,0 +1,60 @@
+{
+  "record_type": "historical-formal-scope-summary",
+  "evidence_status": "Extracted source account with separately retained local validation receipts; no proof execution was performed for this publication copy.",
+  "sources": [
+    {
+      "path": "formal/README.md",
+      "sha256": "d204a16f96b934da07b3b00f2294fefdf0631ec9bb8aa4e34293b93a0b5def43",
+      "size_bytes": 24768
+    },
+    {
+      "path": "docs/2026-09-01_whole_work_reality_audit.md",
+      "sha256": "0b1abc705b5041198f9525b272469953c215b319e687a226377dff121353f2bb",
+      "size_bytes": 15218
+    }
+  ],
+  "reported_checked_statements": "1. any access authorised through a capability by the abstract CHERI memory\n   automaton lies within that capability's memory region;\n2. a tagged capability derived monotonically from an exact object root cannot\n   gain memory authority outside the root;\n3. an access authorised through that derived capability therefore remains in\n   the exact root object's spatial region;\n4. the abstract bounded memory-template predicate requires matching access\n   direction, authority class, architectural root register, offset, width,\n   data register, capability-memory encoding, and exactly one final memory\n   operation;\n5. the abstract authority-transition predicate requires supported capability\n   copies, immediate/register pointer derivations, and fixed helper operations\n   without hidden memory or authority-sensitive effects;\n6. an abstract accepted source/emission trace has equal length and every\n   indexed pair satisfies the corresponding memory or authority predicate;\n   every memory or authority step also owns a nonempty native interval, while\n   ordinary steps may legitimately own an empty interval;\n7. a complete emitted-instruction-envelope certificate requires five adjacent\n   regions: nonempty rebuilt prologue, contiguous BPF body, absent-or-two-word\n   software failure stub, rebuilt epilogue, and a two-or-three-word exact PLT;\n   PLT exclusion from generated-code executable authority is an explicit\n   composition premise;\n8. for any indexed direct access in a complete certificate, an explicit event\n   match binds the certified kind, width, total offset, data register, source\n   range, final native index, selected root, dereference register, and effective\n   address to the architectural access, while equating the architectural word\n   with the word retained at that index in the accepted complete native image;\n9. when the selected live register is the exact object root and the actual\n   dereference register is the end of a monotonic derivation path from it,\n   Morello authorization confines the access to that object's spatial region;\n10. given an exact `0x1337`-byte array-map root, the historical reduced\n   eight-byte pre-base read, a one-byte upper-bound write, and the current\n   CVE-2021-3490 eight-byte adjacent-value store at stride `0x1338` are not\n   authorised;\n11. the composed containment result is available in the upstream\n   `Morello_Mem_Axiom_Automaton` locale, checking the concrete Morello\n   instantiation rather than leaving that connection only in prose; and\n12. broad authority, a wrong root, a wrong emitted capability, helper-mediated\n   effects, temporal misuse, and non-spatial effects do not satisfy the full\n   direct-spatial claim;\n13. the normalized ABI-v3 abstract checker-policy target consumes one raw word\n   image and source-only steps (no expected-word or emitted-field assertions)\n   and implies the existing full-envelope predicate, without claiming that the\n   translated C return value establishes that target; and\n14. a finite direct-memory trace satisfies containment and fault-before-effect\n   when each event has an explicit discharge of the existing conditional\n   Morello theorem and the four environment assumptions hold; and\n15. the minimized root constructor's fact set contains no direct verifier-\n   analysis fact, while the deployed stack profile's construction set has\n   exactly one such fact: the verifier-derived stack extent. For the modeled\n   array-map pipeline, the complete direct-verifier footprint is exactly object\n   provenance, verifier root summary, and offload eligibility. Range lower and\n   upper bounds, offset validity, and final admission are disjoint from that\n   footprint; changing all four while holding retained facts fixed leaves the\n   admitted exact-root request unchanged;\n16. the abstract verifier-fact gate copies every accepted authority field from\n   independently supplied facts. For fixed independent facts, verifier reports\n   can change acceptance but two accepted reports cannot select different\n   outputs. Explicit counterexamples retain wrong independent provider identity\n   and kernel extent as common-mode failures;\n17. the accepted abstract gate refines a representability-checked 128-byte wire\n   model. A conditional gate-composed finite-trace theorem fixes assigned event\n   intervals to the independent map root and carries an abstract source,\n   emitted-image, and site-set binding; and\n18. CParser and AutoCorres translate the exact production fact-gate entry point\n   and all four helpers. A partial Hoare theorem covers every accepted scalar\n   and all four output-digest words. For valid disjoint records and typed/raw\n   digest-storage coherence, the wire bridge derives every pure acceptance\n   guard, exact independent output, and typed-input preservation from C\n   acceptance; no semantic acceptance guard is a precondition. Total\n   non-failure, concrete-heap discharge of the storage-coherence premise, exact\n   rejection codes 3--16, the deployed digest realization, and Linux/runtime\n   composition remain explicitly pending.",
+  "reported_witness_counts": {
+    "full_envelopes": 31,
+    "body_instructions": 592,
+    "complete_native_words": 3112,
+    "runtime_certificate_links": 2
+  },
+  "accepted_c_fact_gate_result": {
+    "theorem_names": [
+      "c_fact_gate_accept_full_output_partial",
+      "c_fact_gate_accept_refines_wire_model"
+    ],
+    "source_report": "The production fact-gate accepted direction derives every pure acceptance guard, independent scalar output and all four digest words while preserving typed inputs.",
+    "premises": [
+      "valid disjoint records",
+      "typed/raw digest-storage coherence",
+      "completed accepting C execution"
+    ],
+    "reported_local_sessions": [
+      {
+        "scope": "accepted-output partial Hoare theorem",
+        "session_elapsed": "11:55",
+        "total_elapsed": "12:16",
+        "exit_status": 0
+      },
+      {
+        "scope": "separated conditional wire bridge",
+        "session_elapsed": "7:37",
+        "total_elapsed": "7:46",
+        "exit_status": 0
+      }
+    ],
+    "receipt_limit": "These later timings and successes are reported in the formal README and later audit; a separate raw build transcript is not included in this public subset."
+  },
+  "explicit_limits": [
+    "Containment is conditional on exact assigned roots, tags, authorization, monotonic derivation, live register paths, word/event semantics and native correspondence.",
+    "The complete envelope is five regions; the normalized ABI-v3 checker requires its software-stub interval to be empty. The earlier abstract envelope can represent an absent or two-word stub.",
+    "The two August-30 receipts apply to their original source snapshots. The three-helper bridge includes an emitted-field helper from that earlier version; it does not establish the later ABI-v3 core.",
+    "The August-30 helper receipt records the older circularity limitation; the later README reports a non-circular per-event discharge while still requiring its soundness and universal runtime correspondence.",
+    "Full C acceptance-to-envelope refinement, array loops and raw decoder correctness, universal trace correspondence, concrete heap storage coherence, totality, rejection codes 3–16, deployed digest realization and Linux adapter refinement remain open.",
+    "The fixed-512-byte-stack candidate is not the deployed stack profile. Its backing/layout premise is not supplied by the abstract constructor theorem; the deployed constructor still consumes verifier stack extent.",
+    "Source and validation accounts do not establish a verified JIT, arbitrary BPF safety, general helper semantics, temporal safety or whole-system isolation.",
+    "Proof sources, proof toolchains and raw build logs are retained in the original research archive, not restored as an implementation or reproducible proof build in this subset."
+  ]
+}

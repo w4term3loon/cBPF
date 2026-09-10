@@ -1,0 +1,10 @@
+clang version 17.0.0 (https://git.morello-project.org/morello/llvm-project.git 7956a8d20652883f845a41094645174eb92d1960)
+Target: x86_64-unknown-linux-gnu
+Thread model: posix
+InstalledDir: ${DEPENDENCY_ROOT}/runtime/morello/opt/cheri/output/morello-sdk/bin
+QEMU emulator version 7.0.0
+Copyright (c) 2003-2022 Fabrice Bellard and the QEMU Project developers
+Built with instruction logging enabled
+bpftool v7.7.0
+using libbpf v1.7
+features:

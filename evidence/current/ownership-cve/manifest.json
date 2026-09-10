@@ -1,0 +1,25 @@
+{
+  "project": "CBPF",
+  "study": "ownership CVE case",
+  "date": "2026-09-07",
+  "cve": "CVE-2022-50650",
+  "scope": "Conditional repeated-release case and two model/host effect controls; existing ownership boundary controls kernel mechanism evidence is separately identified",
+  "status": "PASS within the declared analytical/projection boundary",
+  "files": [
+    {
+      "file": "evidence/current/ownership-cve/README.md",
+      "bytes": 2709,
+      "sha256": "8c09013a6521c251ea3158a519995444a3ee33543a8ca9c47b00ed6b9fa7b03e"
+    },
+    {
+      "file": "evidence/current/ownership-cve/results.json",
+      "bytes": 6112,
+      "sha256": "8bf96852647c3b348808bc9db6843594e6b3b3c4f7b5e10e5624cf4d113d2eca"
+    },
+    {
+      "file": "evidence/current/ownership-cve/source-audit.json",
+      "bytes": 4090,
+      "sha256": "f4151a5bd8cbbc0c37068d2863608aed7d22eee5ce3c6f3dc8960099b8592903"
+    }
+  ]
+}

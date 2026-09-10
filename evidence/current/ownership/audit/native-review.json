@@ -1,0 +1,81 @@
+{
+  "scope": "Source-to-native inspection of the single retained benign A/B protected-ownership execution; no new kernel execution or tests.",
+  "result": "No material source-to-native discrepancy found for the retained 26-instruction, 660-byte image under the stated trusted-boundary assumptions.",
+  "run": "build/ownership-run.AsvItO",
+  "files_sha256": {
+    "linux/ownership/cbpf_jit.c": "a1a3c2476380325100a9b361f213bb06db9e9dd24543ae8e12a5354ddd8dd753",
+    "linux/ownership/cbpf_runtime.c": "2f7529a011de6309fdb068bfea917b196df3764d03ac84d96aca240263d99a36",
+    "linux/ownership/cbpf.h": "8cf3c862d0134b34fdf87335696878e49b681e492c1ad50698cd470811430235",
+    "linux/ownership/integration.patch": "8121d10f5e83488ed31739960d46cb3fe35e9f319e91acd5230c80718c5abe30",
+    "linux/ownership/platform.patch": "65c34af4d8f1db14455c297a1f71fc03138b2fc9e834a8dc4480b0687e208c44",
+    "build/ownership-run.AsvItO/guest.c": "9323464c3bbb08a70c4e126d423bea321dc3c584e559bce393d0e818fd8f281b",
+    "build/ownership-run.AsvItO/boot.log": "32ded28b9c3f9c99695daea2e7c22cec642a8307617e7ef34c2cd9e6a072a8c4",
+    "build/ownership-run.AsvItO/summary.txt": "1399c3d865fd40055ba61cc72c0f7a9aa941cc4aa87d24eda2667fe4a5db7245",
+    "build/ownership-run.AsvItO/native.bin": "117453054e65b3f4ae6b8da5dd241b1a8db28cdbd15cfae4a1527e073f576871",
+    "build/ownership-run.AsvItO/native-elf-text.bin": "117453054e65b3f4ae6b8da5dd241b1a8db28cdbd15cfae4a1527e073f576871",
+    "build/ownership-run.AsvItO/native-disassembly.txt": "163bc2ea0b96ae2349c9c88152365e5c6ba8df4bfc46d5a7dcefd26e6311bcfe",
+    "build/ownership-audit/runtime-linked-range.txt": "8460efc70a36e5e40d981557578709836978dc16d479a3367eab397c59be9e1a",
+    "build/ownership-kernel/vmlinux": "a4081eabc03383d35c9969b9867796fdc6fb6df217341a26e66e2deec9b88d1b"
+  },
+  "native_decode_bytes": {
+    "bytes": 660,
+    "words": 165,
+    "native_bin_equals_disassembled_elf_text": true
+  },
+  "findings": [
+    {
+      "obligation": "Every BPF branch enters a full instruction or common exit",
+      "evidence": "BPF PC2/native 0x104 -> 0x1c4 (PC24); PC7/0x134 -> 0x194 (PC19). EXIT PCs18/23/25 at 0x190/0x1c0/0x1d4 -> 0x1d8 RET CLR. Both forward NULL branches and all exit transfers match the retained PC map."
+    },
+    {
+      "obligation": "Full public capability copies and one complete spill",
+      "evidence": "BPF register map r0=c7,r1=c0,r6=c19,r7=c20,r8=c21,r9=c22. All body register copies decode as MOV cN,cM. PC4/native 0x10c stores c19 to [csp,#0]; PCs9/19 at 0x13c/0x194 reload complete c21 from [csp,#0]. These are the only three memory instructions in the BPF body."
+    },
+    {
+      "obligation": "All body calls use the fixed sealed executive gateway",
+      "evidence": "Six static call templates at PCs1,6,11,13,16,21 contain op selectors1,1,3,2,3,3 and their source PCs, MOV c13,c30, BLRS c17, MOV c7,c0. No ordinary BL/BLR, indirect branch, system-register instruction, capability construction or object-memory load occurs in native body [0xe0,0x1d8)."
+    },
+    {
+      "obligation": "Entry and exit ranges bind the trusted transitions",
+      "evidence": "Prologue BLR at0x60 materializes cbpf_enter=0xffff80008003ec7c; ADR at0x34 targets executive entry0x1dc, size184. Success resumes at0x64, branches over the executive-only failure path to0x70 and clears all GP/cap registers0..29 exceptx15/c17 before body0xe0. Restricted bounds observed: base0xffff8000812c2ba4, size376; executive base0xffff8000812c2d1c, size184. The only branch out of restricted PCC in the entry prefix is the executive-entry-error branch, whose execution requires cbpf_enter to return an error in executive mode; successful restricted entry forcesx0=0."
+    },
+    {
+      "obligation": "Alias scrub precedes arena end and caller restoration",
+      "evidence": "Executive entry0x1dc stores scalar zeros over both halves of the16-byte sidecar;0x1e4 scalarizesx7;0x1e8..0x258 clearsx0..x29 exceptx7. The sealed outer return is then loaded at0x260; original integer callee state and FP/LR are restored at0x268..0x27c; scalarx0 comes fromx7 at0x280. Return uses RETR c16 at0x28c, or ordinary executive error return0x290. c30 is overwritten by the restored integer LR. The wrapper clears private cells/views after native return."
+    },
+    {
+      "obligation": "Gateway preserves public aliases and routes terminal failure to the same scrub",
+      "evidence": "Linked gateway0xffff80008003e180..0xffff80008003e25c saves/restores fullc19..c22,c17,c13 plus its sealed return; calls onlycbpf_gate_impl at0xffff80008003e1bc. U64_MAX failure selects saved executive CLR, setsx7=0 and RETR enters the common executive epilogue. No supplied native target is called."
+    },
+    {
+      "obligation": "Private membership and liveness precede object read",
+      "evidence": "Linkedcbpf_gate_impl CHKEQ c0,c2 at0xffff80008003e320 matches retained private views. Private object tag is checked at0xffff80008003e3c0..e3c4 before LDURSW x21,[c0] at0xffff80008003e3ec. Acquisition exact-bounds construction checks both roots before refcount increment. The public view has16-byte bounds andpermissions0x20001 (LOAD|GLOBAL), excluding LOAD_CAP and STORE."
+    },
+    {
+      "obligation": "Stored-authority invalidation precedes every observed release effect",
+      "evidence": "Linkedcbpf_consume CLRTAG at0xffff80008003e7c4 and capability store ate7c8 precede both linked atomic alternatives: LDADDL ate83c and LL/SC loop ate8fc..e904. Run trace reports A-clear withrefs3 beforeA-release refs2, thenB-read42, thenB-clear beforeB-release refs1."
+    },
+    {
+      "obligation": "Restricted ambient roots are installed and later restored intact",
+      "evidence": "Linkedcbpf_enter installs exact16-byteRCSP at0xffff80008003eefc, writes untaggedRDDC at0xffff80008003ef00, restores trustedSP atef14, fixedc17/CLR atef18/ef20, and BRR atef24. Wrapper stores savedRDDC/RCSP as capabilities at0xffff80008003ea08/ea10 before its native call atea54 (stats alternativeebbc); reloads and restores ateb64..eb70 after cleanup. These slots are outside the restricted16-byte frame."
+    },
+    {
+      "obligation": "The decisive A/B observation has balanced accounting",
+      "evidence": "Two cells0xffff0000001cf7c0/0xffff0000001cf7d0 refer to object0xffff800080f27e08. Trace sequences1..8 show two acquisitions, Aclear/release, Bread, Bclear/release, exit. Finalvalue42, acquired2,released2,reads1,cleanup0,refs1,tagA0,tagB0,failed0. No consumed-handle or NULL branch was executed by this run."
+    }
+  ],
+  "disassembly_supplement": {
+    "reason": "The original symbol-filtered runtime-linked.txt omits blocks after local mapping symbols, including atomic alternatives and the middle of cbpf_test_invoke. runtime-linked-range.txt retains the full contiguous linked span.",
+    "command": "llvm-objdump --mattr=+morello,+lse -d --start-address=0xffff80008003e180 --stop-address=0xffff80008003ef28 /kernel/vmlinux",
+    "tool_container": "sha256:b4de3680a00e3ac68ccc56bd87131b97c1fffcd5e016c2d1a54d7e3386d9fc6e",
+    "inspection_mode": "Existing cached container; no network; read-only kernel mount and root filesystem."
+  },
+  "limits": [
+    "The kernel final-word checker regenerates its own encoder templates. Its pass is consistency evidence, not independent translation validation.",
+    "This review covers the retained native image and bounded trusted routines; it is not a proof of compiler correctness, complete kernel isolation, global capability erasure or verifier/JIT fault tolerance.",
+    "Object assignment and initial roots are constructed from executive DDC. Provider correspondence, trusted C/assembly/compiler, normal verifier checks, image integrity, inherited exception handling and synchronous non-reentrant execution remain premises.",
+    "BTF functions are fixed contract stubs; the protected gateway implements the bounded provider effects. This is not an arbitrary external kfunc wrapper.",
+    "Runtime invalid-handle, NULL/failure, terminal-cleanup and alternate-arrangement controls are outside this initial record and are documented separately as ownership boundary controls; no invalid BPF or exploit execution was performed here."
+  ],
+  "inspection_method": "Internal source and native-code inspection with AI assistance. The inspection was not independent of implementation and does not constitute independent reproduction."
+}

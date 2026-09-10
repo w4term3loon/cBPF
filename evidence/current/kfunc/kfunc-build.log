@@ -1,0 +1,11 @@
+CBPF pristine source verified: b96da308ef1a054c3c04c9445e5ed70259b7c397
+make[1]: Entering directory '/build'
+  GEN     Makefile
+mkdir -p /build/tools/bpf/resolve_btfids && make O=/build subdir=tools/bpf/resolve_btfids --no-print-directory -C bpf/resolve_btfids 
+  CALL    /src/scripts/checksyscalls.sh
+  INSTALL libsubcmd_headers
+make[1]: Leaving directory '/build'
+make[1]: Entering directory '/build'
+  INSTALL /headers/include
+make[1]: Leaving directory '/build'
+CBPF kernel build complete: ${REPOSITORY}/build/kfunc-kernel

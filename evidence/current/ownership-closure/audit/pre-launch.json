@@ -1,0 +1,25 @@
+{
+  "scope": "Pre-launch source, fixture and receipt-validator inspection for ownership boundary controls; no execution claim.",
+  "result": "PASS after consumed-spill ordering, pinned-verifier diagnostic and case-marker checks were corrected.",
+  "source_sha256": {
+    "linux/ownership/cbpf_runtime.c": "a70dfb8b78ec3f6bd6d97afc3ad4c67a8cc63741955bd1005897942776b86296",
+    "linux/ownership/cbpf_jit.c": "a1a3c2476380325100a9b361f213bb06db9e9dd24543ae8e12a5354ddd8dd753",
+    "linux/ownership/guest.c": "89d31fbab37ad07d56b2fbc3fc4d9b7c37d985ad1c5e1be3651632dbbb2d4477",
+    "tools/build_ownership_kernel.sh": "b730ab5dde4d051da80602c0a7a2315d7a9533599137cc426c4e4f3bec0936a9",
+    "tools/run_ownership.sh": "3cebc14fe5c6c487a769b469d02654250984096cb52f191ff5349b377d1051af"
+  },
+  "checks": [
+    "Three trusted init-only states call the production resolver and stop at the first rejection; no verifier bypass or restricted stale BPF execution.",
+    "The volatile capability spill is reloaded after production consumption, retaining tagged public identity while private authority is cleared.",
+    "Production resolver, invocation wrapper/assembly and native compiler remain unchanged from protected ownership execution.",
+    "All fixtures are selected before normal verification; every negative case unconditionally leaves the loader after LOAD and cannot reach TEST_RUN.",
+    "Scalar 2 rejects before provider acquisition; the valid continuation permits an observable terminal-exit check without a new failure hook.",
+    "Validator binds four native images to kernel words/maps, exact per-case events, three init guards and three verifier-only rejections."
+  ],
+  "limits": [
+    "Exact construction/capacity failure paths are inspected, not forced at runtime.",
+    "Nonzero ordinary-return cleanup is not executable under valid ownership; model/source reasoning remains explicit.",
+    "Final linked/native review and actual runtime receipts are still required."
+  ],
+  "inspection_method": "Internal AI-assisted source, fixture and validator inspection by a contributor who did not author the inspected changes. The inspection used the shared research environment and is not independent external reproduction."
+}

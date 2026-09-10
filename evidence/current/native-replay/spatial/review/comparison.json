@@ -1,0 +1,8 @@
+{
+  "same_complete_disassembly": false,
+  "same_symbol_ranges": true,
+  "prior_vmlinux_sha256": "c68e7d4f813b4e7cf4875a83047419ae49623dfeeb2325b6404aadf0d9995ded",
+  "current_vmlinux_sha256": "95483c8fe7359d60ba01a8043267f275082dffa0ce20708b58ba4083d1b3798b",
+  "current_disassembly_sha256": "b6d8d9e164b1b7b232ed8637c1e7d046008bf3d0d3808411f72e208af239888b",
+  "scope": "Nine complete source-to-effect linked ranges including mapping-label continuations. No whole-kernel identity or general mediation theorem."
+}

@@ -1,0 +1,135 @@
+{
+  "scope": "Ordinary Linux kfunc binding on a pristine pinned Morello kernel; no CHERI runtime ownership enforcement claim.",
+  "source_commit": "b96da308ef1a054c3c04c9445e5ed70259b7c397",
+  "run_directory": "${REPOSITORY}/build/kfunc-run.iheJqD",
+  "kernel_receipts": "${REPOSITORY}/build/kfunc-build",
+  "results": {
+    "positive_cases": 13,
+    "repeated_runs": 32,
+    "valid_executions": 45,
+    "rejected_loads": 5,
+    "invalid_executions": 0,
+    "acquisitions": 82,
+    "releases": 82,
+    "reads": 38,
+    "final_live": 0,
+    "final_object_refs": 1
+  },
+  "files": [
+    {
+      "file": "evidence/current/kfunc/boot.log",
+      "bytes": 9325,
+      "sha256": "47844ced79866820cb3fab5caecd05a3e95d197bee5b5a21ccd6b96a99c39a7f"
+    },
+    {
+      "file": "evidence/current/kfunc/compile.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "evidence/current/kfunc/inputs.sha256",
+      "bytes": 4990,
+      "sha256": "9656f04a91ca5566205dd9598f3a09af9320d40a8b59259bbe93b5289a0a51b6"
+    },
+    {
+      "file": "evidence/current/kfunc/kernel-builder-image.txt",
+      "bytes": 178,
+      "sha256": "64cd0c0d49fe5cf28ed75cedcc141ccd9c5698afaf760b7a5b49b82b06df120c"
+    },
+    {
+      "file": "evidence/current/kfunc/kernel-inputs.sha256",
+      "bytes": 2205,
+      "sha256": "c58841df28275c7fcb9bdf2864e80bceef6e064408db5a2c3c8bc88feb8a2ea3"
+    },
+    {
+      "file": "evidence/current/kfunc/kernel-outputs.sha256",
+      "bytes": 644,
+      "sha256": "095853869680f8fba980c0b8a477bc140bcd3af79f6b3b8439516f85081d0796"
+    },
+    {
+      "file": "evidence/current/kfunc/kernel-source-commit.txt",
+      "bytes": 41,
+      "sha256": "58b294dd20ae2694b9cf7d8ab015f9fefd95315fbe0cfad1ebdf3d4f5a06f274"
+    },
+    {
+      "file": "evidence/current/kfunc/kernel-source-tree.txt",
+      "bytes": 41,
+      "sha256": "49159c654584f89b8e24fe49af39ea2f91c043e70eab2a8502756da9c262db6e"
+    },
+    {
+      "file": "evidence/current/kfunc/kernel-toolchain.txt",
+      "bytes": 241,
+      "sha256": "7791c28f5757d5bd258883535690c4349f19b2f51851494f1c97cb33769f5a96"
+    },
+    {
+      "file": "evidence/current/kfunc/kernel.config",
+      "bytes": 87707,
+      "sha256": "ca41988a4a902f161874cfcad58221a440180f0573d2bcccff7fdeed4ed4389a"
+    },
+    {
+      "file": "evidence/current/kfunc/kfunc-build-initial.log",
+      "bytes": 139429,
+      "sha256": "3c9a683cbeb7c958f4e605bfb2d261b40747434422d33cc6c66faa279100ed06"
+    },
+    {
+      "file": "evidence/current/kfunc/kfunc-build.log",
+      "bytes": 542,
+      "sha256": "de5d2ff2aa713371910acdf7b5bae473ab6c0eff1dac6aeef6eab8a09da679f7"
+    },
+    {
+      "file": "evidence/current/kfunc/kfunc_ids.h",
+      "bytes": 216,
+      "sha256": "7fccf6e4dd5afa2859bbe1be3f212050e994d0c08422c072011e1a0df7d9c120"
+    },
+    {
+      "file": "evidence/current/kfunc/module-btf.txt",
+      "bytes": 133946,
+      "sha256": "9556267d8f59c4873d1f663a5d467382abec6ce7c1aff96d357e08c58c4ee24e"
+    },
+    {
+      "file": "evidence/current/kfunc/module-build.log",
+      "bytes": 236,
+      "sha256": "38deac9297c3aaa0f3553ad93590e83ef4ee81302a62b410904741f5612e9da5"
+    },
+    {
+      "file": "evidence/current/kfunc/module-builder-image.txt",
+      "bytes": 178,
+      "sha256": "64cd0c0d49fe5cf28ed75cedcc141ccd9c5698afaf760b7a5b49b82b06df120c"
+    },
+    {
+      "file": "evidence/current/kfunc/source/Makefile",
+      "bytes": 145,
+      "sha256": "55779fb0d5a52b1d65dfe83908eedfe37a296eef608c1de1b29641ed3002da48"
+    },
+    {
+      "file": "evidence/current/kfunc/source/build-kernel.sh",
+      "bytes": 7543,
+      "sha256": "64bc92ad46a2a0985c55e2c7ca8013324ec4acfc9381b4ed997bd5a77870b82f"
+    },
+    {
+      "file": "evidence/current/kfunc/source/cbpf_kfunc.c",
+      "bytes": 5337,
+      "sha256": "19558371c46c7b74e7ece244271820c1118b7df2083a4efad8e5a3fd98c41754"
+    },
+    {
+      "file": "evidence/current/kfunc/source/guest.c",
+      "bytes": 16832,
+      "sha256": "1d0bc97dacf1346fce683f9ef331f3fd0c5b745a32c4128271c1c8208c2b5b9e"
+    },
+    {
+      "file": "evidence/current/kfunc/source/run-kfunc.sh",
+      "bytes": 9129,
+      "sha256": "c914ae85c395be57a1e982650798f087c50703da703594cb1234eef6aec9c0ed"
+    },
+    {
+      "file": "evidence/current/kfunc/summary.txt",
+      "bytes": 4573,
+      "sha256": "c659904c3b5bb0692e4e5b86f4723e909cff549fcaec8817d990a6e4c3fab89c"
+    },
+    {
+      "file": "evidence/current/kfunc/toolchain.txt",
+      "bytes": 438,
+      "sha256": "f736a28e42d01283bffe2feba5d02c732e66d29e2cce3f430bea0ae964c4af2c"
+    }
+  ]
+}

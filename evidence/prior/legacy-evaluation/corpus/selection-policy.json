@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "kernel_commit": "b96da308ef1a054c3c04c9445e5ed70259b7c397",
+  "source_frame": [
+    "tools/testing/selftests/bpf/progs/verifier_bswap.c",
+    "tools/testing/selftests/bpf/progs/verifier_div0.c",
+    "tools/testing/selftests/bpf/progs/verifier_basic_stack.c",
+    "tools/testing/selftests/bpf/progs/verifier_bounds_deduction.c",
+    "tools/testing/selftests/bpf/progs/verifier_loops1.c"
+  ],
+  "program_sections": [
+    "socket",
+    "xdp",
+    "tc",
+    "tracepoint"
+  ],
+  "eligible_sections": {
+    "socket": "BPF_PROG_TYPE_SOCKET_FILTER",
+    "xdp": "BPF_PROG_TYPE_XDP"
+  },
+  "selection_rule": "Include every STT_FUNC entry in a socket or xdp ELF section from the pinned source frame when its size is a nonzero multiple of eight bytes and its byte range contains no ELF relocation. Exclude cases only by these structural rules, never by observed CapeBPF outcome."
+}

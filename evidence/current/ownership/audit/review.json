@@ -1,0 +1,47 @@
+{
+  "scope": "Compiled-runtime and source-boundary inspection for protected ownership execution; before guest execution",
+  "files": {
+    "linux/ownership/cbpf_runtime.c": "2f7529a011de6309fdb068bfea917b196df3764d03ac84d96aca240263d99a36",
+    "linux/ownership/cbpf_jit.c": "a1a3c2476380325100a9b361f213bb06db9e9dd24543ae8e12a5354ddd8dd753",
+    "linux/ownership/cbpf.h": "8cf3c862d0134b34fdf87335696878e49b681e492c1ad50698cd470811430235",
+    "linux/ownership/integration.patch": "8121d10f5e83488ed31739960d46cb3fe35e9f319e91acd5230c80718c5abe30",
+    "linux/ownership/platform.patch": "65c34af4d8f1db14455c297a1f71fc03138b2fc9e834a8dc4480b0687e208c44",
+    "build/ownership-audit/runtime-object.txt": "c457bc822b4a06f25340d072ef16e7a0c317b5c1be6f124fdedf14ad0a8b4a75"
+  },
+  "findings": [
+    {
+      "obligation": "Saved restricted-register capabilities survive native invocation",
+      "object_offsets": "cbpf_test_invoke: stores 0x888/0x890, native call 0x8d4 (stats variant 0xa3c), reload/MSR 0x9e4..0x9f0"
+    },
+    {
+      "obligation": "Invalidation precedes release effect",
+      "object_offsets": "cbpf_consume: CLRTAG 0x644; store 0x648; atomic decrement LSE 0x6bc or LL/SC 0x77c..0x788"
+    },
+    {
+      "obligation": "Read uses checked live capability",
+      "object_offsets": "cbpf_gate_impl: exact equality 0x1a0; private tag 0x240..0x244; LDURSW through c0 0x26c"
+    },
+    {
+      "obligation": "Construction precedes acquisition effects",
+      "object_offsets": "cbpf_exact 0x534..0x584 verifies exact bounds/permissions; acquire prepares both roots before refcount_inc call 0x394"
+    },
+    {
+      "obligation": "Full-capability gate transport and terminal failure",
+      "object_offsets": "cbpf_gateway: full c19..c22 saves/restores; SP restore 0x64..0x68; failure selects fixed executive CLR 0x6c..0x7c"
+    },
+    {
+      "obligation": "Root installation before restricted branch",
+      "object_offsets": "cbpf_enter: RCSP 0xd7c, untagged RDDC 0xd80, input reloads 0xd84..0xd8c, SP reset 0xd94, BRR 0xda4"
+    },
+    {
+      "obligation": "No fallback or public attachment",
+      "source": "intercept precedes stock JIT; unchanged runtime requires JIT for kfuncs; typed attachment, link creation/update, program-map insertion denied; program func_info metadata excluded"
+    }
+  ],
+  "limits": [
+    "Source/object inspection is not a compiler proof.",
+    "Linked code and actual native execution remain separate checks.",
+    "Initial DDC authority/provider assignment and inherited exception handling remain trusted.",
+    "No invalid BPF program, exploit, attachment probe or CVE was executed for this review."
+  ]
+}

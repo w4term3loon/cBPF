@@ -1,0 +1,12 @@
+{
+  "schema_version": "2.0.0",
+  "artifact_kind": "compact_fault_study_schedule",
+  "study_id": "capebpf-compact-fault-basis-v2",
+  "randomization_seed": "capebpf-compact-fault-basis-v2-2026-08-31",
+  "randomization_method": "ascending SHA-256 of seed, dimension label, boot, configuration, observation kind, and case identity",
+  "observation_count": 936,
+  "fault_cell_count": 468,
+  "calibration_cell_count": 468,
+  "observations_sha256": "10b89c3d324641f52f731ebfa6d67f00fe06c61e84037d53cb9388e96d047249",
+  "retention_scope": "Schedule metadata only; the 936 scheduled rows are not observations and are not imported."
+}

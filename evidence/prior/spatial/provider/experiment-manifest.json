@@ -1,0 +1,376 @@
+{
+  "schema_version": 1,
+  "kind": "capebpf-provider-cve-experiment",
+  "canonical_program": {
+    "name": "cve3490_ops",
+    "instructions": 48,
+    "bytes": 384,
+    "sha256": "b4a259d244c84345298d3efdb22d6b405dc0842644532c3bfb4582ead365db3e",
+    "fnv1a64": "de1904150ca961f9",
+    "relocations": [4, 14],
+    "value_size": 4919,
+    "unsafe_bpf_instruction": 45
+  },
+  "source_revisions": {
+    "capebpf": "450da7ae307707b0616d7b8556b6fe7bff23e645",
+    "morello_linux_base": "b96da308ef1a054c3c04c9445e5ed70259b7c397",
+    "clean_replay_tree": "e6c69574c16bc2b9bce06329f9ac3f4b3269e79a",
+    "vulnerable_x86_parent": "31379397dcc364a59ce764fabb131b645c43e340",
+    "official_fix": "049c4e13714ecbca567b4d5f6d563f05d431c80e",
+    "public_exploit": "2f22ae4c773b197f4d12c7f26cb971230058c527"
+  },
+  "artifacts": {
+    "mechanism_patch": {
+      "path": "patches/0001-provider-retained-array-authority.patch",
+      "sha256": "c558e7082c987380ef29dc070e00484390f2b3936d9347a661880e658d284b39"
+    },
+    "patch_series": {
+      "path": "patches/series",
+      "sha256": "bc4546be4a621f9b9a503467a168545a53d2c8a4cbbaa1bd6b0e024c3ca32e86"
+    },
+    "fixture_source": {
+      "path": "fixture/provider_cve.c",
+      "sha256": "782e1be57b3063e836ce91bfc2a0b38e10fd59dd0a1e5f7294693e6f3b88347c"
+    },
+    "validator_source": {
+      "path": "validator/validate.py",
+      "sha256": "99369a172ba4cbeb2118dec49f9382d026068a09df7621ec1e30acae08974055"
+    },
+    "preregistration": {
+      "path": "PREREGISTRATION.md",
+      "sha256": "1dae8a07107d54bac5943d6c89e49c6e6ba8e976dff4c1868e6ef9318eacda79"
+    },
+    "source_config_audit": {
+      "path": "${PRIOR_PROVIDER_EVIDENCE}/static/source-config-audit.txt",
+      "sha256": "de6a6b82d9eaef1148c4f33f210f040d54cbdddc29f3e4e0f146828dc988f7b5"
+    },
+    "tool_identities": {
+      "path": "${PRIOR_PROVIDER_EVIDENCE}/static/tool-identities.txt",
+      "sha256": "8c766ca96700aeeadd7c59dd0b978ff8bf0818368ba71bf7d8b395122ff413ab"
+    },
+    "public_exploit_audit": {
+      "path": "${PRIOR_PROVIDER_EVIDENCE}/static/public-exploit-source-audit.txt",
+      "sha256": "21d3c22559d974827ce19e578f3cd15007784074cf507b7ec16cdb064cf828f3"
+    },
+    "official_fix_audit": {
+      "path": "${PRIOR_PROVIDER_EVIDENCE}/static/official-fix-049c4e13.patch",
+      "sha256": "f98b709e56c4509a84c2fa0852d837dc8f72695a8f20a0e13112a5804b7149fa"
+    },
+    "x86_inventory": {
+      "path": "${PRIOR_PROVIDER_EVIDENCE}/x86/logs/x86-evidence.sha256",
+      "sha256": "3226cd3aa7b30bc38bf301e87df82aaa0c006312816d83f5a4d1f0edcc4175d3"
+    }
+  },
+  "cases": {
+    "x86_vulnerable": {
+      "mode": "x86-parent",
+      "case": "unsafe",
+      "authority": "native",
+      "claim_eligible": false,
+      "software_bounds": false,
+      "log": {
+        "path": "${PRIOR_PROVIDER_EVIDENCE}/x86/runs/parent-unsafe.log",
+        "sha256": "f5f786d2a6784704b1ac718c5a50f10748a4720daffbc2bff2635d83da3e9b3a"
+      },
+      "build": {
+        "receipt": {
+          "path": "${PRIOR_PROVIDER_EVIDENCE}/x86/receipts/parent-build-receipt.json",
+          "sha256": "1cc2dc628ba10d4e7670cf00293102b0fd8927dd7e531f413d08f86eaf62bb82"
+        },
+        "guest_binding": {
+          "path": "${PRIOR_PROVIDER_EVIDENCE}/x86/receipts/parent-guest-binding.json",
+          "sha256": "b6ac2a2cadb4f1b7a102ec4afc9ac514c8a751e1b296e8d213720c77b76da2c6"
+        },
+        "kernel_image": {
+          "path": "${PRIOR_PROVIDER_EVIDENCE}/packages/x86-parent/bzImage",
+          "sha256": "d85ad2a08ef0f4f36b1d0e3a4b5af4c69224c3bf4cfc40475a6255557d6c74d3"
+        },
+        "config": {
+          "path": "${PRIOR_PROVIDER_EVIDENCE}/packages/x86-parent/.config",
+          "sha256": "e115882c2a409667928db3e569e1a5caf736ba1ea15ce55d4023af61217d7148"
+        },
+        "initramfs": {
+          "path": "${PRIOR_PROVIDER_EVIDENCE}/x86/receipts/parent-initramfs.cpio.gz",
+          "sha256": "ac3f86b40ef90dd739738cf33812dd2a5a086fa0747aa88c9e6e70f84f6b55ef"
+        },
+        "fixture_binary": {
+          "path": "${PRIOR_PROVIDER_EVIDENCE}/x86/guest/bpf-smoke",
+          "sha256": "c3014261de54c94add6ea767a705a3609acb373ad97716ca4e1f61af7d35ac3d"
+        },
+        "compiled_object": {
+          "path": "${PRIOR_PROVIDER_EVIDENCE}/packages/x86-parent/bpf_jit_comp.o",
+          "sha256": "1e643f1d5d6480106216b7b4f49d4d88ea695b75bf5ccc42069a9b73c094bcab"
+        },
+        "expected_release": "5.12.0-capebpf-31379397dcc364a59ce764fabb131b645c43e340",
+        "source_revision": "31379397dcc364a59ce764fabb131b645c43e340",
+        "source_tree": "b8425935d3c9aebeba11671ea58badf599998bd0",
+        "platform": "x86_64"
+      }
+    },
+    "x86_fixed": {
+      "mode": "x86-fixed",
+      "case": "unsafe",
+      "authority": "native",
+      "claim_eligible": false,
+      "software_bounds": false,
+      "log": {
+        "path": "${PRIOR_PROVIDER_EVIDENCE}/x86/runs/fixed-unsafe.log",
+        "sha256": "64d30556b21d7ffa3b9ddd23d9b2c5730ecce24bf79ba51e9acadcac0f46c203"
+      },
+      "build": {
+        "receipt": {
+          "path": "${PRIOR_PROVIDER_EVIDENCE}/x86/receipts/fixed-build-receipt.json",
+          "sha256": "c639f95d74b9dfc011dff3730632d290811de8d5e7e84868e1cd177977721151"
+        },
+        "guest_binding": {
+          "path": "${PRIOR_PROVIDER_EVIDENCE}/x86/receipts/fixed-guest-binding.json",
+          "sha256": "dd5f28a90fc925b6d158b30abc21efdf7d0199f93664c1f48aac0201f6e6c1e2"
+        },
+        "kernel_image": {
+          "path": "${PRIOR_PROVIDER_EVIDENCE}/packages/x86-fixed/bzImage",
+          "sha256": "4ccff21f13450a089f6a3a71a6a8634fbd292300422f4cc06d0a86be9d8b03f3"
+        },
+        "config": {
+          "path": "${PRIOR_PROVIDER_EVIDENCE}/packages/x86-fixed/.config",
+          "sha256": "c1a6974b308d317af1606b7f14a4bc60cf1f8997ffb043925a5a19e377cbeb03"
+        },
+        "initramfs": {
+          "path": "${PRIOR_PROVIDER_EVIDENCE}/x86/receipts/fixed-initramfs.cpio.gz",
+          "sha256": "a45e1ddc8006177a088b9167e05610634a44f970b023d19abceb6323ed3965b2"
+        },
+        "fixture_binary": {
+          "path": "${PRIOR_PROVIDER_EVIDENCE}/x86/guest/bpf-smoke",
+          "sha256": "c3014261de54c94add6ea767a705a3609acb373ad97716ca4e1f61af7d35ac3d"
+        },
+        "compiled_object": {
+          "path": "${PRIOR_PROVIDER_EVIDENCE}/packages/x86-fixed/bpf_jit_comp.o",
+          "sha256": "1e643f1d5d6480106216b7b4f49d4d88ea695b75bf5ccc42069a9b73c094bcab"
+        },
+        "expected_release": "5.12.0-capebpf-049c4e13714ecbca567b4d5f6d563f05d431c80e",
+        "source_revision": "049c4e13714ecbca567b4d5f6d563f05d431c80e",
+        "source_tree": "e6aac90eb5aba34e74bdedcc37b8abc6aca64751",
+        "platform": "x86_64"
+      }
+    },
+    "morello_broad": {
+      "mode": "broad",
+      "case": "unsafe",
+      "authority": "broad_ddc",
+      "claim_eligible": false,
+      "software_bounds": false,
+      "log": {
+        "path": "${PRIOR_PROVIDER_EVIDENCE}/governed/logs/morello-broad-unsafe.log",
+        "sha256": "487fdf1932b83cadfaf356f3d548e6454b53bee2554b018f0d5d3c438f7fb7a7"
+      },
+      "native_image": {
+        "sha256": "6f3018ca3cf1562c27e48fddb588531c8779c37bae6b1cf6248682fb846fae87",
+        "fnv1a64": "9882c5f1abe3452b",
+        "words": 142,
+        "source_instruction": 45,
+        "access_start": 122,
+        "access_end": 123,
+        "access_word": "e2c00453",
+        "root_register": "c2"
+      },
+      "build": {
+        "receipt": {
+          "path": "${PRIOR_PROVIDER_EVIDENCE}/packages/broad/receipt.json",
+          "sha256": "6f67762511c11de4ab42ab293a283e995572f824f1cfa3af1f1e7fc477bb8ba0"
+        },
+        "guest_binding": {
+          "path": "${PRIOR_PROVIDER_EVIDENCE}/packages/broad/guest-binding.json",
+          "sha256": "4eaf0670a21964357b8b99be7fac588d1c4fc9d9bf26125a216cf679de6e4bd9"
+        },
+        "kernel_image": {
+          "path": "${PRIOR_PROVIDER_EVIDENCE}/packages/broad/Image",
+          "sha256": "72a1248cb2771efc0b66579a2a0f9d166db700bfe103e7220a198595f75f9664"
+        },
+        "config": {
+          "path": "${PRIOR_PROVIDER_EVIDENCE}/packages/broad/.config",
+          "sha256": "5edca7af8a729b764b9536e62d14b3822584ca68e2747cf33bd8874ba216a565"
+        },
+        "initramfs": {
+          "path": "${PRIOR_PROVIDER_EVIDENCE}/packages/broad/initramfs.cpio.gz",
+          "sha256": "0899b75ba46ec054602bc6743d218027c3c98631e532c4997888489bf8359a1e"
+        },
+        "fixture_binary": {
+          "path": "${PRIOR_PROVIDER_EVIDENCE}/governed/guest/bpf-smoke",
+          "sha256": "73b78acf4028999255cfa64bf8e5efc5b157926ab31618108b068945a152c8d2"
+        },
+        "compiled_object": {
+          "path": "${PRIOR_PROVIDER_EVIDENCE}/packages/broad/bpf_jit_comp.o",
+          "sha256": "6782e33a1716ce09f68f718e1b454a91c5830ed9be9e09209a65d61b46bb7cbc"
+        },
+        "expected_release": "6.7.0-capebpf-provider-broad",
+        "source_revision": "4e4604875fbf4144f9ce456bc6d60f3ef55da4d0",
+        "source_tree": "b0d57e3a9532e91435202be0ed8b5a17765bb354",
+        "platform": "morello"
+      }
+    },
+    "morello_exact": {
+      "mode": "exact",
+      "case": "unsafe",
+      "authority": "exact_provider",
+      "claim_eligible": true,
+      "software_bounds": false,
+      "log": {
+        "path": "${PRIOR_PROVIDER_EVIDENCE}/governed/logs/morello-exact-unsafe.log",
+        "sha256": "edf97e5b3ebc5003d07373cefba9ee01e428ba1d05d9a43652ac8a0ac6bdf057"
+      },
+      "native_image": {
+        "sha256": "0ed8cb99a3c754fa57ff55c35b4f689d10e5511bed04845a19f1931b3cf39314",
+        "fnv1a64": "6d0ee7233d32f846",
+        "words": 142,
+        "source_instruction": 45,
+        "access_start": 122,
+        "access_end": 123,
+        "access_word": "e2c00453",
+        "root_register": "c2"
+      },
+      "build": {
+        "receipt": {
+          "path": "${PRIOR_PROVIDER_EVIDENCE}/packages/exact/build-receipt.json",
+          "sha256": "2eeeb22f66a2cedf954ed6d434c26272fc1801d78c0816b46d8f47551217c88c"
+        },
+        "guest_binding": {
+          "path": "${PRIOR_PROVIDER_EVIDENCE}/packages/exact/guest-binding.json",
+          "sha256": "3eebe653eb8ae4db191f39ac671ce56fdb089db20c1e8506c8d9afd1a9270e65"
+        },
+        "kernel_image": {
+          "path": "${PRIOR_PROVIDER_EVIDENCE}/packages/exact/Image",
+          "sha256": "aee03a4e1cc29f43a7822bb0fea059039c676d9c932b3ca4a1a5ee3963c0aa54"
+        },
+        "config": {
+          "path": "${PRIOR_PROVIDER_EVIDENCE}/packages/exact/.config",
+          "sha256": "e81651fc9ce4fbdef84489be0972352c44c51a303b10c03934d7e798588ce62a"
+        },
+        "initramfs": {
+          "path": "${PRIOR_PROVIDER_EVIDENCE}/packages/exact/initramfs.cpio.gz",
+          "sha256": "71e72df4db3ab3bb479226c024a4b1c6087231abc8d82060f43228f61d8ce97c"
+        },
+        "fixture_binary": {
+          "path": "${PRIOR_PROVIDER_EVIDENCE}/governed/guest/bpf-smoke",
+          "sha256": "73b78acf4028999255cfa64bf8e5efc5b157926ab31618108b068945a152c8d2"
+        },
+        "compiled_object": {
+          "path": "${PRIOR_PROVIDER_EVIDENCE}/packages/exact/bpf_jit_comp.o",
+          "sha256": "17b6d03d310b93c920d129f41cdc8ecb88fdea7a6f21520cae65d0ff1a162b96"
+        },
+        "expected_release": "6.7.0-capebpf-provider-exact",
+        "source_revision": "4e4604875fbf4144f9ce456bc6d60f3ef55da4d0",
+        "source_tree": "b0d57e3a9532e91435202be0ed8b5a17765bb354",
+        "platform": "morello"
+      }
+    },
+    "morello_valid": {
+      "mode": "exact",
+      "case": "valid",
+      "authority": "exact_provider",
+      "claim_eligible": true,
+      "software_bounds": false,
+      "log": {
+        "path": "${PRIOR_PROVIDER_EVIDENCE}/governed/logs/morello-exact-valid.log",
+        "sha256": "e6b002f0d7e5ea61132e49ac2efde86a536290f07300f04a13b9fb8546bf5c98"
+      },
+      "native_image": {
+        "sha256": "64fdbf9986816ed274cbb60285a728b6cd2ebc46a77f0583a7d5976912d838aa",
+        "fnv1a64": "81362354f641750d",
+        "words": 94,
+        "source_instruction": 8,
+        "access_start": 75,
+        "access_end": 76,
+        "access_word": "e28004e7",
+        "root_register": "c7"
+      },
+      "build": {
+        "receipt": {
+          "path": "${PRIOR_PROVIDER_EVIDENCE}/packages/exact/build-receipt.json",
+          "sha256": "2eeeb22f66a2cedf954ed6d434c26272fc1801d78c0816b46d8f47551217c88c"
+        },
+        "guest_binding": {
+          "path": "${PRIOR_PROVIDER_EVIDENCE}/packages/exact/guest-binding.json",
+          "sha256": "3eebe653eb8ae4db191f39ac671ce56fdb089db20c1e8506c8d9afd1a9270e65"
+        },
+        "kernel_image": {
+          "path": "${PRIOR_PROVIDER_EVIDENCE}/packages/exact/Image",
+          "sha256": "aee03a4e1cc29f43a7822bb0fea059039c676d9c932b3ca4a1a5ee3963c0aa54"
+        },
+        "config": {
+          "path": "${PRIOR_PROVIDER_EVIDENCE}/packages/exact/.config",
+          "sha256": "e81651fc9ce4fbdef84489be0972352c44c51a303b10c03934d7e798588ce62a"
+        },
+        "initramfs": {
+          "path": "${PRIOR_PROVIDER_EVIDENCE}/packages/exact/initramfs.cpio.gz",
+          "sha256": "71e72df4db3ab3bb479226c024a4b1c6087231abc8d82060f43228f61d8ce97c"
+        },
+        "fixture_binary": {
+          "path": "${PRIOR_PROVIDER_EVIDENCE}/governed/guest/bpf-smoke",
+          "sha256": "73b78acf4028999255cfa64bf8e5efc5b157926ab31618108b068945a152c8d2"
+        },
+        "compiled_object": {
+          "path": "${PRIOR_PROVIDER_EVIDENCE}/packages/exact/bpf_jit_comp.o",
+          "sha256": "17b6d03d310b93c920d129f41cdc8ecb88fdea7a6f21520cae65d0ff1a162b96"
+        },
+        "expected_release": "6.7.0-capebpf-provider-exact",
+        "source_revision": "4e4604875fbf4144f9ce456bc6d60f3ef55da4d0",
+        "source_tree": "b0d57e3a9532e91435202be0ed8b5a17765bb354",
+        "platform": "morello"
+      }
+    },
+    "morello_wide": {
+      "mode": "wide",
+      "case": "unsafe",
+      "authority": "wide_provider",
+      "claim_eligible": false,
+      "software_bounds": false,
+      "log": {
+        "path": "${PRIOR_PROVIDER_EVIDENCE}/governed/logs/morello-wide-unsafe.log",
+        "sha256": "e1a3c192c64098c559fa150b3193296436c9fdf0c12308cfc66dac7e860e7376"
+      },
+      "native_image": {
+        "sha256": "5364735415837378cdc1a8dff8c68e506f22155a448ab95a4f5c991141362e26",
+        "fnv1a64": "370213523b4cdca1",
+        "words": 142,
+        "source_instruction": 45,
+        "access_start": 122,
+        "access_end": 123,
+        "access_word": "e2c00453",
+        "root_register": "c2"
+      },
+      "build": {
+        "receipt": {
+          "path": "${PRIOR_PROVIDER_EVIDENCE}/packages/wide/build-receipt.json",
+          "sha256": "c2a9825740e3ba39ce3fa121b0e51dfe977f76768779125c71f43d2d877cbce9"
+        },
+        "guest_binding": {
+          "path": "${PRIOR_PROVIDER_EVIDENCE}/packages/wide/guest-binding.json",
+          "sha256": "30d4d49c62ae2a34cafedd8f3e313c9979b61836dfabe34694f9300dca3f55fd"
+        },
+        "kernel_image": {
+          "path": "${PRIOR_PROVIDER_EVIDENCE}/packages/wide/Image",
+          "sha256": "bfe11cb7efa5e83ec0817c392b0034af8afe4e45d3a99970124424e43850b743"
+        },
+        "config": {
+          "path": "${PRIOR_PROVIDER_EVIDENCE}/packages/wide/.config",
+          "sha256": "d5415ddd91b40b73f943f1d38fdbcf52deb8b52547df285ec28963ff9ce85720"
+        },
+        "initramfs": {
+          "path": "${PRIOR_PROVIDER_EVIDENCE}/packages/wide/initramfs.cpio.gz",
+          "sha256": "f9464c8f468855abfcf587766eea371cc257840095fb979bcc1bc35461a4906a"
+        },
+        "fixture_binary": {
+          "path": "${PRIOR_PROVIDER_EVIDENCE}/governed/guest/bpf-smoke",
+          "sha256": "73b78acf4028999255cfa64bf8e5efc5b157926ab31618108b068945a152c8d2"
+        },
+        "compiled_object": {
+          "path": "${PRIOR_PROVIDER_EVIDENCE}/packages/wide/bpf_jit_comp.o",
+          "sha256": "59566fb24bd092d71a71c0196c2e1075919af12322e1bcab46b9cdc90974643d"
+        },
+        "expected_release": "6.7.0-capebpf-provider-wide",
+        "source_revision": "4e4604875fbf4144f9ce456bc6d60f3ef55da4d0",
+        "source_tree": "b0d57e3a9532e91435202be0ed8b5a17765bb354",
+        "platform": "morello"
+      }
+    }
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "project": "CBPF",
+  "created": "2026-09-06",
+  "status": "Selected historical evidence; no claim of fresh reproduction or a self-contained native build.",
+  "files": [
+    {
+      "file": "evidence/prior/native-overlay.patch",
+      "original": "${PRIOR_OWNERSHIP_SOURCE}/gate4/ownership-kfunc-overlay.patch",
+      "sha256": "ad3435135a210acd5b1565552ab367551630e438d1e0d23794dd6a77a3d23433",
+      "bytes": 73367,
+      "purpose": "Inactive source reference; requires the earlier substrate and overlay, not a standalone CBPF kernel patch."
+    },
+    {
+      "file": "evidence/prior/native-validation.json",
+      "original": "${PRIOR_OWNERSHIP_EVIDENCE}/gate4-validation-summary.json",
+      "sha256": "cd2b3b5e1580ce01b56ba91b5d572711417bf7e831de515340d75941714e2fb5",
+      "bytes": 26164,
+      "purpose": "Original validator output for the 22 archived native cases, not a new CBPF execution."
+    },
+    {
+      "file": "evidence/prior/spatial-result.md",
+      "original": "${PRIOR_PROVIDER_SOURCE}/provider-cve/RESULTS.md",
+      "sha256": "23784147a9e34d5769b1dc0661122027527b5c95076102c3bc4a233047026087",
+      "bytes": 5216,
+      "purpose": "Supporting spatial metadata-boundary result, separate from ownership enforcement."
+    },
+    {
+      "file": "evidence/prior/05-valid.log",
+      "original": "${PRIOR_OWNERSHIP_EVIDENCE}/runs/governed-restart1/05-valid.log",
+      "sha256": "39e3561a009e68406bbb77804dbfeaaedd18f093f4da779829b053058695782c",
+      "bytes": 42885,
+      "purpose": "Selected raw historical Linux/Morello console transcript."
+    },
+    {
+      "file": "evidence/prior/07-stale_s.log",
+      "original": "${PRIOR_OWNERSHIP_EVIDENCE}/runs/governed-restart1/07-stale_s.log",
+      "sha256": "b7383b7343393a17831ae802501c592b94a06cb97ef6eb5639b2d0045fe824fc",
+      "bytes": 43454,
+      "purpose": "Selected raw historical Linux/Morello console transcript."
+    },
+    {
+      "file": "evidence/prior/08-direct.log",
+      "original": "${PRIOR_OWNERSHIP_EVIDENCE}/runs/governed-restart1/08-direct.log",
+      "sha256": "6a75f61011c958426fb640f2171b51a850e057a9e0ed943e4bdd23f3ceef61b1",
+      "bytes": 42654,
+      "purpose": "Selected raw historical Linux/Morello console transcript."
+    },
+    {
+      "file": "evidence/prior/09-independent.log",
+      "original": "${PRIOR_OWNERSHIP_EVIDENCE}/runs/governed-restart1/09-independent.log",
+      "sha256": "ef77b21bfd4891d05062ec9472696ead28e932ba9efaabe9b83dfde5645a1a40",
+      "bytes": 56275,
+      "purpose": "Selected raw historical Linux/Morello console transcript."
+    },
+    {
+      "file": "evidence/prior/10-double.log",
+      "original": "${PRIOR_OWNERSHIP_EVIDENCE}/runs/governed-restart1/10-double.log",
+      "sha256": "83fe657c088da8ef7fef0e78e941271c4ce3ff944efa3de671589a82b963bf01",
+      "bytes": 43438,
+      "purpose": "Selected raw historical Linux/Morello console transcript."
+    },
+    {
+      "file": "evidence/prior/22-mutation-35.log",
+      "original": "${PRIOR_OWNERSHIP_EVIDENCE}/runs/governed-restart1/22-mutation-35.log",
+      "sha256": "c8724f7a78e742120606bf604613f34a8235e4c1972cb215eee687a78c6d1942",
+      "bytes": 40418,
+      "purpose": "Selected raw historical Linux/Morello console transcript."
+    }
+  ],
+  "synthesis_inputs": [
+    {
+      "original": "${AUTHOR_NOTES}/thesis-recommendation.md",
+      "sha256": "5684036a7621bc0e587fca54322f474f9a9541fb28fae3c3664eb589103bc253",
+      "migration": "Condensed into docs/research-plan.md and docs/evidence.md; originals preserved."
+    },
+    {
+      "original": "${AUTHOR_NOTES}/repository-audit.md",
+      "sha256": "859d58ce00739742e1f04ccf7b0030b92fd72e29ec797d3a97bf670db838c075",
+      "migration": "Condensed into docs/research-plan.md and docs/evidence.md; originals preserved."
+    }
+  ],
+  "external_native_source": "${PRIOR_OWNERSHIP_SOURCE}",
+  "external_native_evidence": "${PRIOR_OWNERSHIP_EVIDENCE}"
+}

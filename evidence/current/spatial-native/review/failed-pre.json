@@ -1,0 +1,6 @@
+{
+  "result": "FAIL",
+  "phase": "pre",
+  "reason": "return-cursor capture/POKE is not the expected MOV/NOP",
+  "log_sha256": "829b109b4ea1a750d0c5d029cdc752d72ead75048e7563fb3f921154f63c2734"
+}

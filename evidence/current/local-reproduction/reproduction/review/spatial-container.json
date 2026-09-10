@@ -1,0 +1,44 @@
+{
+  "result": "PASS",
+  "observed_utc": "2026-09-06T20:29:08.345040+00:00",
+  "pull_never_verified_in_executed_recipe": true,
+  "containers": [
+    {
+      "id": "30485c4474a095b1293018fb0ab85960d88a9c3afcfb5e8c9638fc8fd34dc70a",
+      "image": "sha256:b4de3680a00e3ac68ccc56bd87131b97c1fffcd5e016c2d1a54d7e3386d9fc6e",
+      "user": "68403:65006",
+      "command": [
+        "/bin/bash",
+        "-s",
+        "--",
+        "4"
+      ],
+      "network_mode": "none",
+      "cap_drop": [
+        "ALL"
+      ],
+      "security_options": [
+        "no-new-privileges"
+      ],
+      "memory_bytes": 4294967296,
+      "privileged": false,
+      "mounts": [
+        {
+          "Source": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/snapshot/build/spatial-check.79YmHw/objects",
+          "Destination": "/build",
+          "RW": true
+        },
+        {
+          "Source": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/snapshot/build/spatial-check.79YmHw/receipt",
+          "Destination": "/receipt",
+          "RW": true
+        },
+        {
+          "Source": "${REPOSITORY}/build/m4-reproduction.o5y2sbxz/snapshot/build/spatial-check.79YmHw/source",
+          "Destination": "/src",
+          "RW": false
+        }
+      ]
+    }
+  ]
+}
