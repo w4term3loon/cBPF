@@ -196,22 +196,42 @@ separate default-off trusted native fixture:
 make spatial-selectivity-kernel
 export CBPF_SPATIAL_SELECTIVITY_BUILD=/absolute/path/printed/by/the/build
 make spatial-selectivity-calibration
+export CBPF_SPATIAL_SELECTIVITY_CALIBRATION=/absolute/path/printed/by/the/calibration
 make spatial-selectivity
 ```
 
 Run calibration first. Its two native cases demonstrate a valid byte load and
 recovery from an expected Morello bounds fault, not rejection of unrelated
-fault classes. The current launcher does not enforce a matching calibration
-receipt; that prerequisite and host-side unrelated-syndrome tests remain to
-be implemented. The full run checks 30
-exact/stride/both-slot operations and five load-only verifier controls. It
-reruns no archived CVE. The spatial and ownership kernels remain separate
-experiments.
+fault classes. Before a matrix boot, the launcher rechecks the calibration's
+saved PASS receipt and requires the same kernel, configuration and overlay
+identities. It retains that receipt with the matrix. Unrelated-syndrome
+rejection is exercised by host-side checker tests, not additional kernel
+faults. The full run checks 30 exact/stride/both-slot operations and ten
+admission-only verifier controls: five loads and five stores, four accepted,
+six rejected, none executed. It reruns no archived CVE. The spatial and
+ownership kernels remain separate experiments.
 
 The [published spatial package](../../evidence/current/spatial-selectivity/README.md)
 binds the retained matrix to its actual build and matching calibration.
-Original results and subsequently extracted disassembly are distinguished;
-stronger spatial correspondence revalidation remains pending.
+The original five-load admission records remain distinct from the new
+ten-control run. Their [revalidation index](../../evidence/current/spatial-selectivity/revalidation/README.md)
+records strengthened backing-address, linked-PC, operand and shutdown checks,
+including the corrected post-boot checker and saved-run recheck.
+
+`make checker-tests` and `make evidence-recheck` need no Docker, QEMU or
+downloads; both are included in `make check`. A self-contained spatial receipt
+can also be checked with:
+
+```sh
+python3 tools/check_spatial_selectivity.py \
+  --run evidence/current/spatial-selectivity/matrix-v2 \
+  --output build/spatial-publication-recheck.json
+```
+
+The published `revalidation/calibration` receipt may be reused only with its
+exact kernel/build identities and a passing current-checker recheck. A changed
+image or overlay requires fresh calibration; renaming a receipt does not
+establish this match.
 
 ## Ownership CVE case controls
 

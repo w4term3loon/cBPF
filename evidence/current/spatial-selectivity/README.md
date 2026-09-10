@@ -1,4 +1,4 @@
-# Selective spatial enforcement: published original evidence
+# Selective spatial enforcement: published evidence
 
 This package publishes the original 10 September 2026 matrix and its matching
 calibration. The original checker reports 30 native observations (22 permitted,
@@ -8,11 +8,20 @@ the production provider, not verifier-admitted invalid BPF or a CVE replay.
 
 ## Status and limits
 
-Publication is complete; stronger correspondence revalidation is pending.
+Publication and the strengthened spatial receipt revalidation are complete.
+The [revalidation index](revalidation/README.md) separates the unchanged
+original records from current checks and the new ten-control admission run.
+The new run used the same kernel and overlays, with five added store submissions;
+it reports 30 native observations and ten admission controls (four accepted,
+six rejected, none executed).
+
 The original checker does not bind every comparator base to the provider's
 selected address, or runtime PCs/register operands to the linked helper.
 Its object-disassembly and shutdown checks retain the limitations described on
-the [result page](../../../docs/results/spatial-selectivity.md).
+the [result page](../../../docs/results/spatial-selectivity.md). Current checks
+bind all bases/cursors, four fixed access forms and fault PCs to the complete
+linked helper, and require actual powerdown plus QEMU exit zero. They do not
+constitute a general validator or independent external reproduction.
 
 The original matrix, calibration, executed scripts and results are preserved.
 The `derivation/` files were created later, at the timestamp in their receipt.
@@ -65,5 +74,7 @@ Exact private originals were copied and verified before publication.
 
 From the repository root, `make evidence` checks publication-file integrity.
 It does not rerun the native experiment or establish semantic correspondence.
+`make evidence-recheck` separately checks the current spatial receipts offline.
 The [packaging tool](../../../tools/package_native_extension.py) records the
-export procedure; the exact executed version is retained under `derivation/`.
+original export procedure; the exact executed version is retained under
+`derivation/`. The later export has its own snapshot under `revalidation/`.

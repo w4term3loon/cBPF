@@ -1,0 +1,22 @@
+{
+  "vmlinux_sha256": "959ef168c8a7f7967414aaddc499da1b41d1cf6c061c8c3e558ab95f4b65fc5b",
+  "ranges": [
+    {
+      "symbol": "cbpf_selectivity_native_access",
+      "elf_symbol": "27765: ffff8000801c4740   144 FUNC    LOCAL  DEFAULT    2 cbpf_selectivity_native_access",
+      "start": "0xffff8000801c4740",
+      "end_exclusive": "0xffff8000801c47d0",
+      "extent_basis": "ELF symbol st_size",
+      "section_index": 2,
+      "elf_file_offset": 1918784,
+      "file": "cbpf_selectivity_native_access.bin",
+      "bytes": 144,
+      "sha256": "b20089acd25480bcda36cba10225db4d6b8ca8a3702b100bd2e0131107f6de1f"
+    }
+  ],
+  "disassembly": {
+    "bytes": 2484,
+    "sha256": "1d59994dc13435d2f6041ec21bafc3f747a0b3a3caaf0b209c854b723ae60e43"
+  },
+  "scope": "Complete extraction and byte/decoder correspondence only; semantic inspection pending."
+}

@@ -15,6 +15,12 @@ instructions, not the entire prologue, branch targets or terminal epilogue.
 The emitter's complete re-encoding check uses its own encoder and is a separate
 internal-consistency assurance. See the [result page](../../../docs/results/ownership-native-trace.md).
 
+The later [completion recheck](revalidation/completion.json) reconciles actual
+QEMU exit zero, kernel powerdown and shared failure-marker filtering with the
+original observations. Its [receipt](revalidation/receipt.json) explicitly
+excludes stronger native correspondence or a new ownership execution.
+`make evidence-recheck` repeats this limited check offline.
+
 Original files and results are preserved. The `derivation/` records were
 generated later, with their actual timestamp. They contain complete byte-bound
 decoder listings, not a completed semantic inspection or a new execution.

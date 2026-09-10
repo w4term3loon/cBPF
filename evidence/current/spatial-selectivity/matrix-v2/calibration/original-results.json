@@ -1,0 +1,104 @@
+{
+  "schema": "cbpf-spatial-selectivity-v1",
+  "result": "PASS",
+  "mode": "calibration",
+  "native": {
+    "observations": 2,
+    "permits": 1,
+    "rejects": 1,
+    "cases": [
+      {
+        "case": 0,
+        "operation": "load",
+        "root": "exact7",
+        "offset": 6,
+        "width": 1,
+        "expected": "permit",
+        "observed": "permit",
+        "instruction": "0xe2000448",
+        "fault_pc": "0x0000000000000000",
+        "fsc": "0x0",
+        "cap_base": "0xffff000000c62f10",
+        "cap_address": "0xffff000000c62f16",
+        "cap_length": 7,
+        "before": "11223344556629a781828384858687bf",
+        "after": "11223344556629a781828384858687bf"
+      },
+      {
+        "case": 1,
+        "operation": "load",
+        "root": "exact7",
+        "offset": 7,
+        "width": 1,
+        "expected": "reject",
+        "observed": "reject",
+        "instruction": "0xe2000448",
+        "fault_pc": "0xffff8000801c4780",
+        "fsc": "0x2a",
+        "cap_base": "0xffff000000c62f10",
+        "cap_address": "0xffff000000c62f17",
+        "cap_length": 7,
+        "before": "11223344556629a781828384858687bf",
+        "after": "11223344556629a781828384858687bf"
+      }
+    ]
+  },
+  "verifier_admission": {
+    "cases": [
+      {
+        "case": 0,
+        "offset": 6,
+        "width": 1,
+        "expected": "admit",
+        "observed": "admit",
+        "errno": 0,
+        "executed": false
+      },
+      {
+        "case": 1,
+        "offset": 7,
+        "width": 1,
+        "expected": "reject",
+        "observed": "reject",
+        "errno": 13,
+        "executed": false
+      },
+      {
+        "case": 2,
+        "offset": 8,
+        "width": 1,
+        "expected": "reject",
+        "observed": "reject",
+        "errno": 13,
+        "executed": false
+      },
+      {
+        "case": 3,
+        "offset": 4,
+        "width": 2,
+        "expected": "admit",
+        "observed": "admit",
+        "errno": 0,
+        "executed": false
+      },
+      {
+        "case": 4,
+        "offset": 6,
+        "width": 2,
+        "expected": "reject",
+        "observed": "reject",
+        "errno": 13,
+        "executed": false
+      }
+    ],
+    "admitted": 2,
+    "rejected": 3,
+    "executions": 0
+  },
+  "scope": {
+    "native_fixture": "fixed trusted synthetic validation through production provider",
+    "invalid_bpf_execution": false,
+    "original_cve_execution": false,
+    "complete_mediation_claim": false
+  }
+}

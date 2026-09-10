@@ -1,0 +1,13 @@
+{
+  "recorded_utc": "2026-09-10T14:03:33.580538+00:00",
+  "command": [
+    "/usr/bin/python3",
+    "${SPATIAL_V2_RUN}/check_spatial_selectivity.executed.py",
+    "--run",
+    "${SPATIAL_V2_RUN}",
+    "--output",
+    "${PRIVATE_ORIGINALS}/initial-checker-replay/unexpected-result.json"
+  ],
+  "exit_status": 1,
+  "scope": "Post-run replay of the archived checker failure; no guest execution."
+}

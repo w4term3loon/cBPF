@@ -107,10 +107,11 @@ the Linux array-provider/native-access mapping and the bounded kfunc protocol.
 
 ## Defensible positioning and present evidence
 
-The two new native studies below have published original receipts, but their
-stronger correspondence checks and explicit native inspection are pending.
-Their numerical outcomes are reported local results, not yet completed
-experimental closure for independent assessment.
+The two new native studies below have published original receipts. Spatial
+same-storage and linked-PC/operand checks now pass, including a new ten-control
+admission edition. Ownership's stronger native inspection remains pending;
+its reported local results are not yet completed experimental closure for
+independent assessment.
 
 | Concrete contribution | Closest established result | Additional design obligation and evidence limit |
 |---|---|---|

@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "${SPATIAL_V2_RUN}/check_spatial_selectivity.executed.py", line 485, in <module>
+    main()
+  File "${SPATIAL_V2_RUN}/check_spatial_selectivity.executed.py", line 475, in main
+    result = validate_run(args.run)
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "${SPATIAL_V2_RUN}/check_spatial_selectivity.executed.py", line 429, in validate_run
+    placement, kernel_path = relocation(text, (run / "qemu-command.sh").read_text(), origin, mode)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "${SPATIAL_V2_RUN}/check_spatial_selectivity.executed.py", line 394, in relocation
+    require(len(kaslr) == 1, "Missing/contradictory KASLR basis")
+  File "${SPATIAL_V2_RUN}/native_receipt_common.py", line 8, in require
+    raise ValueError(message)
+ValueError: Missing/contradictory KASLR basis

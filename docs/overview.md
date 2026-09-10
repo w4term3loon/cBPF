@@ -4,11 +4,12 @@ cBPF asks how a capability-aware runtime can preserve the unit of authority gran
 
 The study implements these mappings in two separate bounded Linux/Morello profiles in emulation. The normal verifier remains enabled. Construction, native transport and checks at the covered effects show how accepted executions represent the interface contract; the evaluation does not measure tolerance of verifier defects.
 
-Evidence status: the original selective-spatial and integrated-ownership run
-artifacts are now published with their result pages. Their reported outcomes
-below remain subject to stronger address/instruction correspondence checks
-and explicit native inspection. These two experimental gaps are not yet
-considered closed for independent assessment.
+Evidence status: both original native-extension packages are published.
+The spatial results now pass backing-address, linked-instruction, calibration
+and completion checks, with ten admission-only load/store controls in a new
+run of the unchanged kernel. Ownership's explicit native-image inspection and
+focused terminal-path checks remain pending; that gap is not yet closed for
+independent assessment.
 
 ## 1. Array maps: which bytes does a lookup authorize?
 

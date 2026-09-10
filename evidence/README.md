@@ -33,18 +33,24 @@ reproduction or stronger security result.
 
 - [Selective spatial evidence](current/spatial-selectivity/README.md): original
   matrix and matching calibration, build/launch identities and complete helper
-  bytes/disassembly derived after the run.
+  bytes/disassembly derived after the run; separately identified strengthened
+  revalidation and a new ten-control admission run on the unchanged kernel.
 - [Integrated ownership evidence](current/ownership-native-trace/README.md):
   original three native controls, full native images and later complete decoder
   listings of the images and relevant linked production functions.
 
-These packages publish the original checker outcomes with their known limits.
-Stronger spatial correspondence checks and ownership native inspection remain
-pending. Publication and later extraction do not close those experimental gaps.
-Each package separates original records from timestamped `derivation/` records.
+These packages preserve original checker outcomes with their known limits.
+The spatial [revalidation](current/spatial-selectivity/revalidation/README.md)
+passes stronger backing-address, linked-PC, operand, calibration and completion
+checks. Ownership's focused native correspondence checks and explicit inspection
+remain pending; its new recheck improves completion checks only. Publication
+and extraction alone do not establish experimental closure. Each package
+separates original records from timestamped `derivation/` and `revalidation/`
+records; the new spatial guest execution is retained separately in `matrix-v2/`.
 The large NUL-delimited source-tree inventories are losslessly gzip-compressed;
-their original hashes apply to decompressed bytes. Native binaries and initramfs
-are unchanged. Full kernel/toolchain distributions remain external.
+their original hashes apply to decompressed bytes. Original native binaries and
+initramfs are unchanged; the new spatial guest has its own source and initramfs
+identities. Full kernel/toolchain distributions remain external.
 
 Original filenames and technical provenance retain historical edition identifiers.
 Current descriptive metadata uses study names. The identifiers remaining in

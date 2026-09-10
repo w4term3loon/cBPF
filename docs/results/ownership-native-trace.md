@@ -38,6 +38,12 @@ checks. The positive image contains 612 bytes; each negative image contains
 checker's shutdown and failure-marker checks; the standalone checker's
 `qemu_exit` field is not an independent exit-status check.
 
+The current checker now requires an explicit exit-status file, combines it
+with actual kernel powerdown and rejects the same failure markers as the
+spatial checker. The [completion recheck](../../evidence/current/ownership-native-trace/revalidation/completion.json)
+preserves the original observations without another native run. This does
+not supply the still-pending full image inspection or terminal-path checks.
+
 ## Admission and claim boundary
 
 Three separate existing BPF admission controls (stale copy, stale spill and

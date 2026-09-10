@@ -3,7 +3,7 @@ PYTHON ?= python3
 CFLAGS ?= -O2
 WARNINGS = -std=c11 -Wall -Wextra -Werror -pedantic
 
-.PHONY: all help demo model oracle conformance gate gate-conformance evidence check cheri cheri-gate kfunc-kernel kfunc spatial-check spatial-selectivity-kernel spatial-selectivity-calibration spatial-selectivity ownership-kernel ownership-run ownership-trace-kernel ownership-trace ownership-case docs docs-serve private-docs private-docs-serve presentation
+.PHONY: all help demo model oracle conformance gate gate-conformance evidence checker-tests evidence-recheck check cheri cheri-gate kfunc-kernel kfunc spatial-check spatial-selectivity-kernel spatial-selectivity-calibration spatial-selectivity ownership-kernel ownership-run ownership-trace-kernel ownership-trace ownership-case docs docs-serve private-docs private-docs-serve presentation
 
 all: build/cbpf-demo
 
@@ -60,7 +60,13 @@ gate-conformance: build/cbpf-gate-conformance.so
 evidence:
 	PYTHONDONTWRITEBYTECODE=1 $(PYTHON) tools/verify_evidence.py
 
-check: demo model oracle conformance gate gate-conformance evidence
+checker-tests:
+	PYTHONDONTWRITEBYTECODE=1 $(PYTHON) -m unittest discover -s tests -p 'test_*.py' -v
+
+evidence-recheck:
+	PYTHONDONTWRITEBYTECODE=1 $(PYTHON) tools/recheck_native_evidence.py
+
+check: demo model oracle conformance gate gate-conformance evidence checker-tests evidence-recheck
 
 # Two CVE-derived effect projections in the existing model/host implementations.
 # No kernel, BPF, callback, or vulnerable-code execution.
@@ -97,6 +103,8 @@ spatial-selectivity-calibration:
 spatial-selectivity:
 	@test -n "$(CBPF_SPATIAL_SELECTIVITY_BUILD)" || \
 		{ printf '%s\n' 'Set CBPF_SPATIAL_SELECTIVITY_BUILD to a retained build directory' >&2; exit 2; }
+	@test -n "$(CBPF_SPATIAL_SELECTIVITY_CALIBRATION)" || \
+		{ printf '%s\n' 'Set CBPF_SPATIAL_SELECTIVITY_CALIBRATION to a passing v2 calibration receipt directory' >&2; exit 2; }
 	bash tools/run_spatial_selectivity.sh "$(CBPF_SPATIAL_SELECTIVITY_BUILD)"
 
 # Optional bounded protected controls; invalid BPF remains load-only.

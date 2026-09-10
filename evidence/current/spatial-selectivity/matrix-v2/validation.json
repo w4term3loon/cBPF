@@ -1,0 +1,6 @@
+{
+  "schema": "cbpf-spatial-validation-inputs-v2",
+  "mode": "matrix",
+  "admission_profile": "loads-stores-v2",
+  "origin": "new-run"
+}

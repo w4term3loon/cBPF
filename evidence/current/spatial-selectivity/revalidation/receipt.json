@@ -1,0 +1,17 @@
+{
+  "recorded_utc": "2026-09-10T14:03:33.580538+00:00",
+  "repository_head": "7070760242b70b2cefac0685af6451f33b91cc15",
+  "working_tree_sources": "Exact checker/preparer snapshots are retained; this does not assert they belonged to repository HEAD.",
+  "kernel_rebuilds": 0,
+  "new_native_boots": 1,
+  "ownership_native_boots": 0,
+  "new_run_original_boot": {
+    "bytes": 51771,
+    "sha256": "30313660bc4e14c8749e6e45040115ad442dbc3bba0b391f411634ce0d6c32e8"
+  },
+  "new_run_qemu_exit": 0,
+  "initial_launcher_result": "Post-boot checker failed on two compatible EFI/kernel nokaslr messages. No original PASS summary was produced.",
+  "resolution": "Corrected parser; saved run revalidated without another native boot. Original checker failure is separately replayed and retained.",
+  "result_policy": "matrix-v2/rechecked-results.json preserves the pre-publication recheck. results.json is computed over publication bytes. Older original-results.json files retain v1 outcomes.",
+  "scope": "Selected spatial accesses and admission-only BPF controls; no original CVE execution or complete-mediation claim."
+}

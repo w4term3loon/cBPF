@@ -2,6 +2,7 @@
 # Boot the fixed spatial-selectivity profile. Invalid BPF remains load-only.
 # --calibration runs one permitted and one rejected native access before the matrix boot.
 set -euo pipefail
+export PYTHONDONTWRITEBYTECODE=1
 project=$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)
 [[ $# == 1 || $# == 2 ]] || {
     echo 'Usage: run_spatial_selectivity.sh BUILD_DIRECTORY [--calibration]' >&2
@@ -15,9 +16,11 @@ if [[ $# == 2 ]]; then
     }
     mode=calibration
 fi
+if [[ $mode == matrix ]]; then
+    : "${CBPF_SPATIAL_SELECTIVITY_CALIBRATION:?Set CBPF_SPATIAL_SELECTIVITY_CALIBRATION to a passing v2 calibration receipt directory}"
+fi
 build=$(realpath "$1")
 receipt=$build/receipt
-builder=sha256:76c8ca062c30aa59b8eb072f30620a2a7e9604515aefe84d64161bf9eb644038
 native=${CBPF_NATIVE_ROOT:-${XDG_CACHE_HOME:-$HOME/.cache}/cbpf/morello}
 compiler=$native/opt/cheri/output/morello-sdk/bin/clang
 linker=$native/opt/cheri/output/morello-sdk/bin/ld.lld
@@ -70,19 +73,26 @@ assert all(v in ('n','0') for k,v in settings.items() if k.startswith('CONFIG_CA
 assert hashlib.sha256((build/'source/kernel/bpf/verifier.c').read_bytes()).hexdigest()=='e1b3401c312176633922671d52b1bd0ccd75f9ab1fcc266a0acb764f784d4239'
 print('spatial selectivity source, kernel, configuration and inherited verifier identities verified')
 PY
+if [[ $mode == matrix ]]; then
+    python3 "$project/tools/prepare_spatial_selectivity.py" calibration-check \
+        "$build" "$CBPF_SPATIAL_SELECTIVITY_CALIBRATION"
+fi
 run=$(mktemp -d "$project/build/spatial-selectivity-${mode}.XXXXXX")
 printf '%s\n' "$build" > "$run/build-directory.txt"
 printf '%s\n' "$mode" > "$run/mode.txt"
 cp "$project/linux/spatial/selectivity-guest.c" "$run/guest.c"
 cp "$0" "$run/run-script.executed.sh"
 cp "$project/tools/check_spatial_selectivity.py" "$run/check_spatial_selectivity.executed.py"
+cp "$project/tools/native_receipt_common.py" "$run/native_receipt_common.py"
+cp "$project/tools/prepare_spatial_selectivity.py" "$run/prepare_spatial_selectivity.executed.py"
+cp "$project/tools/package_native_extension.py" "$run/package_native_extension.executed.py"
 cp "$receipt"/{kernel-release.txt,kernel.config,compile.h} "$run/"
 cp "$receipt/selectivity-symbols.txt" "$run/"
-docker run --rm --pull=never --network none --cap-drop ALL \
-    --security-opt no-new-privileges --user "$(id -u):$(id -g)" \
-    -v "$build/objects/kernel/bpf/arraymap.o:/input/arraymap.o:ro" \
-    "$builder" /opt/cheri/output/morello-sdk/bin/llvm-objdump -dr \
-    /input/arraymap.o > "$run/selectivity-access-disassembly.txt"
+prepare_args=("$build" "$run" --mode "$mode")
+if [[ $mode == matrix ]]; then
+    prepare_args+=(--calibration "$CBPF_SPATIAL_SELECTIVITY_CALIBRATION")
+fi
+python3 "$project/tools/prepare_spatial_selectivity.py" prepare "${prepare_args[@]}"
 echo "CBPF spatial selectivity $mode artifacts: $run"
 "$compiler" --target=aarch64-linux-musl_purecap -march=morello -mabi=purecap \
     --sysroot="$sysroot" --ld-path="$linker" -static -O2 -Wall -Wextra -Werror \
@@ -106,14 +116,17 @@ emit('TRAILER!!!',0)
 PY
 sha256sum "$run/guest.c" "$run/run-script.executed.sh" \
     "$run/check_spatial_selectivity.executed.py" \
-    "$run/selectivity-symbols.txt" "$run/selectivity-access-disassembly.txt" \
+    "$run/native_receipt_common.py" "$run/prepare_spatial_selectivity.executed.py" \
+    "$run/package_native_extension.executed.py" "$run/validation.json" \
+    "$run/selectivity-symbols.txt" "$run/linked/complete-linked-disassembly.txt" \
+    "$run/linked/linked-ranges.json" "$run/linked/cbpf_selectivity_native_access.bin" \
     "$compiler" "$linker" "$qemu" "$firmware" "$kernel" "$build/objects/vmlinux" \
     "$build/objects/.config" "$build/headers/include/linux/bpf.h" \
     "$sysroot/lib/crt1.o" "$sysroot/lib/crti.o" "$sysroot/lib/crtn.o" \
     "$sysroot/lib/libc.a" "$builtins" "$run/init" "$run/initramfs.cpio.gz" > "$run/inputs.sha256"
 "$compiler" --version > "$run/toolchain.txt"
 "$qemu" --version >> "$run/toolchain.txt"
-kernel_command='console=ttyAMA0 loglevel=7 rdinit=/init panic=-1 sysctl.net.core.bpf_jit_enable=1'
+kernel_command='console=ttyAMA0 loglevel=7 rdinit=/init panic=-1 sysctl.net.core.bpf_jit_enable=1 nokaslr'
 if [[ $mode == calibration ]]; then
     kernel_command+=' cbpf.selectivity_calibration=1'
 fi
@@ -123,6 +136,7 @@ args=(-M virt,gic-version=3 -cpu morello -m 2G -smp 1 -bios "$firmware"
       -nic none -display none -monitor none -serial stdio -no-reboot)
 printf '%q ' "$qemu" "${args[@]}" > "$run/qemu-command.sh"
 printf '\n' >> "$run/qemu-command.sh"
+sha256sum "$run/qemu-command.sh" >> "$run/inputs.sha256"
 set +e
 timeout --foreground --signal=TERM --kill-after=5 300 "$qemu" "${args[@]}" 2>&1 | tee "$run/boot.log"
 status=${PIPESTATUS[0]}
@@ -133,10 +147,7 @@ if ((status)); then
     echo "CBPF spatial selectivity QEMU failed: mode=$mode exit=$status artifacts=$run" >&2
     exit "$status"
 fi
-python3 "$run/check_spatial_selectivity.executed.py" \
-    --mode "$mode" --log "$run/boot.log" \
-    --disassembly "$run/selectivity-access-disassembly.txt" \
-    --output "$run/results.json"
+python3 "$run/check_spatial_selectivity.executed.py" --run "$run" --output "$run/results.json"
 printf 'CBPF_SPATIAL_SELECTIVITY_RUN result=PASS mode=%s qemu_exit=%s results=%s\n' \
     "$mode" "$status" "$run/results.json" > "$run/summary.txt"
 cat "$run/summary.txt"

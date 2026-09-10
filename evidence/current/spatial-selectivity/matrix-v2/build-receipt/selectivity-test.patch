@@ -1,0 +1,450 @@
+diff --git a/arch/arm64/mm/extable.c b/arch/arm64/mm/extable.c
+index 228d681a8..84fe78f44 100644
+--- a/arch/arm64/mm/extable.c
++++ b/arch/arm64/mm/extable.c
+@@ -10,6 +10,10 @@
+ #include <asm/asm-extable.h>
+ #include <asm/ptrace.h>
+ 
++#ifdef CONFIG_CBPF_SPATIAL_SELECTIVITY_TEST
++void cbpf_spatial_selectivity_record_fault(struct pt_regs *regs);
++#endif
++
+ static inline unsigned long
+ get_ex_fixup(const struct exception_table_entry *ex)
+ {
+@@ -68,7 +72,12 @@ bool fixup_exception(struct pt_regs *regs)
+ 	case EX_TYPE_BPF:
+ 		return ex_handler_bpf(ex, regs);
+ 	case EX_TYPE_UACCESS_ERR_ZERO:
++		return ex_handler_uaccess_err_zero(ex, regs);
+ 	case EX_TYPE_KACCESS_ERR_ZERO:
++#ifdef CONFIG_CBPF_SPATIAL_SELECTIVITY_TEST
++		/* Observe before the standard handler changes registers or PC. */
++		cbpf_spatial_selectivity_record_fault(regs);
++#endif
+ 		return ex_handler_uaccess_err_zero(ex, regs);
+ 	case EX_TYPE_LOAD_UNALIGNED_ZEROPAD:
+ 		return ex_handler_load_unaligned_zeropad(ex, regs);
+diff --git a/kernel/bpf/Kconfig b/kernel/bpf/Kconfig
+index 9bcae8b21..31ed2df49 100644
+--- a/kernel/bpf/Kconfig
++++ b/kernel/bpf/Kconfig
+@@ -64,6 +64,16 @@ config CBPF_ARRAY_AUTHORITY
+ 	  map profiles and inexact bounds return no capability. This feature
+ 	  does not enable verifier delegation or historical test modes.
+ 
++config CBPF_SPATIAL_SELECTIVITY_TEST
++	bool "TEST ONLY: CBPF selected-value spatial matrix"
++	depends on CBPF_ARRAY_AUTHORITY && ARM64_MORELLO
++	default n
++	help
++	  Run a fixed, boot-only trusted native matrix over two disposable
++	  seven-byte array values. The test compares the production value
++	  capability with independently derived stride and two-slot controls.
++	  This is synthetic native validation, not verifier-admitted invalid BPF.
++
+ config CAPEBPF_SPATIAL_OFFLOAD
+ 	bool "EXPERIMENTAL: capability-backed BPF spatial enforcement"
+ 	depends on BPF_SYSCALL && BPF_JIT
+diff --git a/kernel/bpf/arraymap.c b/kernel/bpf/arraymap.c
+index 23bf1284a..272fa680d 100644
+--- a/kernel/bpf/arraymap.c
++++ b/kernel/bpf/arraymap.c
+@@ -15,6 +15,15 @@
+ #ifdef CONFIG_CBPF_ARRAY_AUTHORITY
+ #include <linux/cheri.h>
+ #endif
++#ifdef CONFIG_CBPF_SPATIAL_SELECTIVITY_TEST
++#include <linux/init.h>
++#include <linux/sched.h>
++#include <linux/smp.h>
++#include <asm/asm-extable.h>
++#include <asm/esr.h>
++#include <asm/ptrace.h>
++#include <asm/sysreg.h>
++#endif
+ 
+ #include "map_in_map.h"
+ 
+@@ -537,6 +546,379 @@ static void array_map_free(struct bpf_map *map)
+ 		bpf_map_area_free(array);
+ }
+ 
++#ifdef CONFIG_CBPF_SPATIAL_SELECTIVITY_TEST
++#define CBPF_SELECTIVITY_SENTINEL 0xfeedfacecafebeefULL
++#define CBPF_SELECTIVITY_STORE8 0xd1U
++#define CBPF_SELECTIVITY_STORE16 0xd2d1U
++#define CBPF_MORELLO_FSC_CAP_BOUNDS 0x2aU
++
++struct cbpf_selectivity_fault {
++	bool active;
++	struct task_struct *task;
++	int cpu;
++	u32 seen;
++	u32 overflow;
++	u64 pc;
++	u64 esr;
++	u64 far;
++	u32 instruction;
++	u32 root_register;
++	void *__capability operand;
++} __aligned(16);
++
++struct cbpf_selectivity_access {
++	u32 offset;
++	u32 width;
++};
++
++static struct cbpf_selectivity_fault cbpf_selectivity_fault;
++static bool cbpf_selectivity_calibration;
++
++static const u8 cbpf_selectivity_initial[16] = {
++	0x11, 0x22, 0x33, 0x44, 0x55, 0x66, 0x29, 0xa7,
++	0x81, 0x82, 0x83, 0x84, 0x85, 0x86, 0x87, 0xbf,
++};
++
++static const struct cbpf_selectivity_access cbpf_selectivity_accesses[] = {
++	{ .offset = 6, .width = 1 },
++	{ .offset = 7, .width = 1 },
++	{ .offset = 8, .width = 1 },
++	{ .offset = 4, .width = 2 },
++	{ .offset = 6, .width = 2 },
++};
++
++static int __init cbpf_selectivity_calibration_setup(char *value)
++{
++	return kstrtobool(value, &cbpf_selectivity_calibration);
++}
++early_param("cbpf.selectivity_calibration", cbpf_selectivity_calibration_setup);
++
++void cbpf_spatial_selectivity_record_fault(struct pt_regs *regs);
++
++void cbpf_spatial_selectivity_record_fault(struct pt_regs *regs)
++{
++	struct cbpf_selectivity_fault *fault = &cbpf_selectivity_fault;
++	u32 instruction;
++	u32 root;
++
++	if (!READ_ONCE(fault->active) || READ_ONCE(fault->task) != current ||
++	    READ_ONCE(fault->cpu) != raw_smp_processor_id())
++		return;
++	if (fault->seen) {
++		fault->overflow++;
++		return;
++	}
++
++	instruction = le32_to_cpu(READ_ONCE(*(__le32 *)regs->pc));
++	root = (instruction >> 5) & 0x1f;
++	fault->pc = regs->pc;
++	fault->esr = read_sysreg(esr_el1);
++	fault->far = read_sysreg(far_el1);
++	fault->instruction = instruction;
++	fault->root_register = root;
++	fault->operand = (void *__capability)(root == 31 ?
++		regs->csp : regs->cregs[root]);
++	barrier();
++	fault->seen = 1;
++}
++
++#define CBPF_SELECTIVITY_LOAD(suffix) do {                               \
++	asm volatile(                                                     \
++		"mov %[operand], %[cap]\n"                               \
++		"1: ldr" suffix " %w[value], [%[cap]]\n"                  \
++		"2: adr %[pc], 1b\n"                                        \
++		_ASM_EXTABLE_KACCESS_ERR_ZERO(1b, 2b, %w[err], wzr)       \
++		: [err] "+&r" (err), [value] "+&r" (value),               \
++		  [operand] "=&C" (captured), [pc] "=&r" (access_pc)      \
++		: [cap] "C" (cap)                                         \
++		: "memory");                                                \
++} while (0)
++
++#define CBPF_SELECTIVITY_STORE(suffix) do {                              \
++	asm volatile(                                                     \
++		"mov %[operand], %[cap]\n"                               \
++		"1: str" suffix " %w[value], [%[cap]]\n"                  \
++		"2: adr %[pc], 1b\n"                                        \
++		_ASM_EXTABLE_KACCESS_ERR_ZERO(1b, 2b, %w[err], wzr)       \
++		: [err] "+&r" (err), [operand] "=&C" (captured),          \
++		  [pc] "=&r" (access_pc)                                  \
++		: [value] "r" (value), [cap] "C" (cap)                   \
++		: "memory");                                                \
++} while (0)
++
++static noinline int
++cbpf_selectivity_native_access(bool store, u32 width,
++			       void *__capability cap, u64 *result,
++			       void *__capability *operand, u64 *pc,
++			       u32 *instruction)
++{
++	void *__capability captured = NULL;
++	u64 value = *result;
++	u64 access_pc = 0;
++	int err = 0;
++
++	if (store) {
++		if (width == 1)
++			CBPF_SELECTIVITY_STORE("b");
++		else if (width == 2)
++			CBPF_SELECTIVITY_STORE("h");
++		else
++			return -EINVAL;
++	} else {
++		if (width == 1)
++			CBPF_SELECTIVITY_LOAD("b");
++		else if (width == 2)
++			CBPF_SELECTIVITY_LOAD("h");
++		else
++			return -EINVAL;
++		*result = value;
++	}
++	*operand = captured;
++	*pc = access_pc;
++	*instruction = le32_to_cpu(READ_ONCE(*(__le32 *)access_pc));
++	return err;
++}
++
++static bool cbpf_selectivity_cap_valid(void *__capability cap,
++				       unsigned long base,
++				       unsigned long address, u64 length)
++{
++	return cheri_tag_get(cap) && !cheri_is_sealed(cap) &&
++		cheri_base_get(cap) == base &&
++		cheri_address_get(cap) == address &&
++		cheri_length_get(cap) == length &&
++		cheri_perms_get(cap) == CBPF_ARRAY_DATA_PERMS;
++}
++
++static bool
++cbpf_selectivity_run_case(struct bpf_array *array,
++			  void *__capability root_cap, const char *root_name,
++			  u32 root_length, bool store, u32 access_index,
++			  u32 case_index)
++{
++	const struct cbpf_selectivity_access *access =
++		&cbpf_selectivity_accesses[access_index];
++	struct cbpf_selectivity_fault *fault = &cbpf_selectivity_fault;
++	unsigned long selected = (unsigned long)array->value;
++	void *__capability access_cap;
++	void *__capability operand = NULL;
++	u8 expected[sizeof(cbpf_selectivity_initial)];
++	u8 before[sizeof(cbpf_selectivity_initial)];
++	u8 after[sizeof(cbpf_selectivity_initial)];
++	u64 result = store ?
++		(access->width == 1 ? CBPF_SELECTIVITY_STORE8 :
++		 CBPF_SELECTIVITY_STORE16) : CBPF_SELECTIVITY_SENTINEL;
++	u64 expected_load = cbpf_selectivity_initial[access->offset];
++	const char *operation_name = "load";
++	const char *expected_name;
++	const char *observed_name;
++	const char *result_name;
++	u64 access_pc = 0;
++	u32 instruction = 0;
++	u32 operand_root_register;
++	u32 fsc;
++	u32 wnr;
++	int err;
++	bool expected_permit = access->offset + access->width <= root_length;
++	bool operand_match;
++	bool fault_match;
++	bool pass;
++
++	if (access->width == 2)
++		expected_load |= (u64)cbpf_selectivity_initial[access->offset + 1] << 8;
++	if (store)
++		operation_name = "store";
++	if (expected_permit)
++		expected_name = "permit";
++	else
++		expected_name = "reject";
++	memcpy(array->value, cbpf_selectivity_initial,
++	       sizeof(cbpf_selectivity_initial));
++	memcpy(before, array->value, sizeof(before));
++	memcpy(expected, cbpf_selectivity_initial, sizeof(expected));
++	if (store && expected_permit) {
++		expected[access->offset] = CBPF_SELECTIVITY_STORE8;
++		if (access->width == 2)
++			expected[access->offset + 1] =
++				CBPF_SELECTIVITY_STORE16 >> 8;
++	}
++
++	access_cap = cheri_address_set(root_cap, selected + access->offset);
++	memset(fault, 0, sizeof(*fault));
++	fault->task = current;
++	fault->cpu = raw_smp_processor_id();
++	WRITE_ONCE(fault->active, true);
++	barrier();
++	err = cbpf_selectivity_native_access(store, access->width, access_cap,
++					      &result, &operand, &access_pc,
++					      &instruction);
++	barrier();
++	WRITE_ONCE(fault->active, false);
++	memcpy(after, array->value, sizeof(after));
++
++	fsc = fault->esr & ESR_ELx_FSC;
++	wnr = !!(fault->esr & ESR_ELx_WNR);
++	operand_match = __builtin_cheri_equal_exact(operand, access_cap) &&
++		(!fault->seen ||
++		 __builtin_cheri_equal_exact(fault->operand, access_cap));
++	fault_match = fault->seen == 1 && !fault->overflow &&
++		fault->pc == access_pc && fault->instruction == instruction &&
++		fsc == CBPF_MORELLO_FSC_CAP_BOUNDS && wnr == store;
++	pass = cbpf_selectivity_cap_valid(access_cap, selected,
++					  selected + access->offset, root_length) &&
++		operand_match && before[0] == cbpf_selectivity_initial[0] &&
++		!memcmp(before, cbpf_selectivity_initial, sizeof(before));
++	if (expected_permit) {
++		pass &= err == 0 && !fault->seen && !fault->overflow;
++		if (!store)
++			pass &= result == expected_load;
++	} else {
++		pass &= err == -EFAULT && fault_match;
++		if (!store)
++			pass &= result == CBPF_SELECTIVITY_SENTINEL;
++	}
++	pass &= !memcmp(after, expected, sizeof(after));
++	if (fault->seen)
++		observed_name = "reject";
++	else
++		observed_name = "permit";
++	if (pass)
++		result_name = "PASS";
++	else
++		result_name = "FAIL";
++	if (fault->seen)
++		operand_root_register = fault->root_register;
++	else
++		operand_root_register = (instruction >> 5) & 0x1f;
++
++	pr_info("CBPF_SPATIAL_SELECTIVITY_CASE mode=%s case=%u op=%s root=%s offset=%u width=%u expected=%s observed=%s err=%d fault_count=%u fault_overflow=%u fsc=0x%x wnr=%u far=0x%016llx pc=0x%016llx fault_pc=0x%016llx insn=0x%08x fault_insn=0x%08x root_reg=%u operand_match=%u cap_tag=%u cap_sealed=%u cap_base=0x%llx cap_address=0x%llx cap_length=%llu cap_perms=0x%llx value=0x%016llx before=%16phN after=%16phN result=%s\n",
++		cbpf_selectivity_calibration ? "calibration" : "matrix",
++		case_index, operation_name, root_name,
++		access->offset, access->width,
++		expected_name, observed_name, err, fault->seen,
++		fault->overflow, fsc, wnr, fault->far, access_pc, fault->pc,
++		instruction, fault->instruction,
++		operand_root_register,
++		operand_match, (unsigned int)cheri_tag_get(operand),
++		(unsigned int)cheri_is_sealed(operand),
++		(u64)cheri_base_get(operand), (u64)cheri_address_get(operand),
++		(u64)cheri_length_get(operand), (u64)cheri_perms_get(operand),
++		result, before, after, result_name);
++	fault->operand = NULL;
++	return pass;
++}
++
++static int __init cbpf_spatial_selectivity_init(void)
++{
++	static const char * const root_names[] = { "exact7", "stride8", "both16" };
++	static const u32 root_lengths[] = { 7, 8, 16 };
++	union bpf_attr attr = {
++		.map_type = BPF_MAP_TYPE_ARRAY,
++		.key_size = sizeof(u32),
++		.value_size = 7,
++		.max_entries = 2,
++	};
++	void *__capability roots[ARRAY_SIZE(root_lengths)] = { NULL };
++	struct cbpf_array_authority *authority;
++	struct bpf_array *array;
++	struct bpf_map *map;
++	unsigned long selected;
++	u32 key = 0;
++	u32 cases = 0;
++	u32 permits = 0;
++	u32 rejects = 0;
++	u32 failures = 0;
++	u32 operation;
++	u32 access;
++	u32 root;
++
++	if (array_map_alloc_check(&attr)) {
++		pr_err("CBPF_SPATIAL_SELECTIVITY_SUMMARY mode=%s result=FAIL stage=alloc_check\n",
++		       cbpf_selectivity_calibration ? "calibration" : "matrix");
++		return 0;
++	}
++	map = array_map_alloc(&attr);
++	if (IS_ERR(map)) {
++		pr_err("CBPF_SPATIAL_SELECTIVITY_SUMMARY mode=%s result=FAIL stage=alloc error=%ld\n",
++		       cbpf_selectivity_calibration ? "calibration" : "matrix",
++		       PTR_ERR(map));
++		return 0;
++	}
++	map->ops = &array_map_ops;
++	array = container_of(map, struct bpf_array, map);
++	authority = cbpf_array_authority(array);
++	selected = (unsigned long)array->value;
++	roots[0] = cbpf_array_value_cap(map, &key);
++	roots[1] = cheri_bounds_set_exact(
++		cheri_address_set(authority->root, selected), root_lengths[1]);
++	roots[2] = cheri_bounds_set_exact(
++		cheri_address_set(authority->root, selected), root_lengths[2]);
++	for (root = 0; root < ARRAY_SIZE(roots); root++) {
++		if (!cbpf_selectivity_cap_valid(roots[root], selected, selected,
++						root_lengths[root]))
++			failures++;
++	}
++
++	pr_info("CBPF_SPATIAL_SELECTIVITY_BEGIN mode=%s key=0 key_size=4 value_size=7 stride=%u max_entries=2 fixture=%16phN roots_valid=%u\n",
++		cbpf_selectivity_calibration ? "calibration" : "matrix",
++		array->elem_size, cbpf_selectivity_initial, !failures);
++	migrate_disable();
++	if (cbpf_selectivity_calibration) {
++		bool pass;
++
++		pass = cbpf_selectivity_run_case(array, roots[0], root_names[0],
++						 root_lengths[0], false, 0, cases++);
++		failures += !pass;
++		permits += pass;
++		pass = cbpf_selectivity_run_case(array, roots[0], root_names[0],
++						 root_lengths[0], false, 1, cases++);
++		failures += !pass;
++		rejects += pass;
++	} else {
++		for (operation = 0; operation < 2; operation++) {
++			for (access = 0;
++			     access < ARRAY_SIZE(cbpf_selectivity_accesses);
++			     access++) {
++				for (root = 0; root < ARRAY_SIZE(roots); root++) {
++					bool expected_permit =
++						cbpf_selectivity_accesses[access].offset +
++						cbpf_selectivity_accesses[access].width <=
++						root_lengths[root];
++					bool pass = cbpf_selectivity_run_case(
++						array, roots[root], root_names[root],
++						root_lengths[root], operation, access,
++						cases++);
++
++					failures += !pass;
++					if (pass && expected_permit)
++						permits++;
++					if (pass && !expected_permit)
++						rejects++;
++				}
++			}
++		}
++	}
++	migrate_enable();
++
++	if (cbpf_selectivity_calibration) {
++		if (cases != 2 || permits != 1 || rejects != 1)
++			failures++;
++	} else if (cases != 30 || permits != 22 || rejects != 8) {
++		failures++;
++	}
++	pr_info("CBPF_SPATIAL_SELECTIVITY_SUMMARY mode=%s result=%s cases=%u permits=%u rejects=%u failures=%u provider=production comparators=trusted verifier_execution=0\n",
++		cbpf_selectivity_calibration ? "calibration" : "matrix",
++		failures ? "FAIL" : "PASS", cases, permits, rejects, failures);
++	for (root = 0; root < ARRAY_SIZE(roots); root++)
++		roots[root] = NULL;
++	cbpf_selectivity_fault.operand = NULL;
++	barrier();
++	array_map_free(map);
++	return 0;
++}
++late_initcall(cbpf_spatial_selectivity_init);
++#endif
++
+ static void array_map_seq_show_elem(struct bpf_map *map, void *key,
+ 				    struct seq_file *m)
+ {
+

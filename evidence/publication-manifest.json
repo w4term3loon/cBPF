@@ -13,14 +13,15 @@
       },
       "availability": "publication_copy",
       "publication": {
-        "bytes": 4886,
-        "sha256": "a5642ef21d0305fb7d09d053e96f96cb16899b4aa08478f0bd73125ec39aee17"
+        "bytes": 5381,
+        "sha256": "1ea6c80e115b134206d3998ddc296320648e38dc715ba3242f419142c479e724"
       },
       "changes": [
         "New publication provenance note.",
         "Publication metadata normalized; experimental observations unchanged.",
         "Administrative bindings and editorial framing omitted; experimental observations, commands and original identities retained.",
-        "Added native-extension publication index and pending-validation scope; original experimental records unchanged."
+        "Added native-extension publication index and pending-validation scope; original experimental records unchanged.",
+        "Updated Batch 2 status: strengthened spatial revalidation and new admission run; ownership native inspection remains pending."
       ],
       "original_identity_scope": "Earlier editorial publication bytes; this identity does not describe an original experiment."
     },
@@ -33,12 +34,13 @@
       },
       "availability": "publication_copy",
       "publication": {
-        "bytes": 5973,
-        "sha256": "e06a1ccfb3fc722915b350e05ca43f1f6c24bc1bb0afa2bc71e9a29a46c07e27"
+        "bytes": 6033,
+        "sha256": "de163a9613757e687b2348816fdb1587f75a49f12a62b13b0e2031227895c2cd"
       },
       "changes": [
         "Publication guide wording, titles or identity instructions updated.",
-        "Indexed the two native-extension packages with their pending correspondence checks."
+        "Indexed the two native-extension packages with their pending correspondence checks.",
+        "Updated Batch 2 status: strengthened spatial revalidation and new admission run; ownership native inspection remains pending."
       ]
     },
     {
@@ -10953,19 +10955,2370 @@
       "file": "evidence/current/spatial-selectivity/README.md",
       "availability": "publication_copy",
       "publication": {
-        "bytes": 4182,
-        "sha256": "0c9b595168d94452a80812c780e91dcc6ed3987df2965a31b0b75881c5123a63"
+        "bytes": 4903,
+        "sha256": "e1fe49d4f69642eace7fe66ba700714e168ff8a868366e971bbdfab1400b1ea8"
       },
-      "changes": ["New editorial package index; not an original execution record."]
+      "changes": [
+        "New editorial package index; not an original execution record.",
+        "Updated Batch 2 status: strengthened spatial revalidation and new admission run; ownership native inspection remains pending."
+      ]
     },
     {
       "file": "evidence/current/ownership-native-trace/README.md",
       "availability": "publication_copy",
       "publication": {
-        "bytes": 4328,
-        "sha256": "2e0b10c27f7abbbd8cbe2d5b1da49ab09042d445393c94ba1e92453e922096a9"
+        "bytes": 4691,
+        "sha256": "365c4d145db262086e96592578c7c9935fee3344fa228d754c968386f1a8ae61"
       },
-      "changes": ["New editorial package index; not an original execution record."]
+      "changes": [
+        "New editorial package index; not an original execution record.",
+        "Updated Batch 2 status: strengthened spatial revalidation and new admission run; ownership native inspection remains pending."
+      ]
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/revalidation/calibration/boot.log",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/revalidation/calibration/boot.log",
+        "bytes": 27953,
+        "sha256": "f4ca3c08a136c88cc151a643319a36b2bd387a48fe6a96a2685794fbd8f3c848"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 27953,
+        "sha256": "f4ca3c08a136c88cc151a643319a36b2bd387a48fe6a96a2685794fbd8f3c848"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/revalidation/calibration/build-directory.txt",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/revalidation/calibration/build-directory.txt",
+        "bytes": 17,
+        "sha256": "cd0815974267a8e3d537d70bedf2892afb0a4257e4de309274987b35a3b11201"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 17,
+        "sha256": "cd0815974267a8e3d537d70bedf2892afb0a4257e4de309274987b35a3b11201"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/revalidation/calibration/build-receipt/array-authority.patch",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/revalidation/calibration/build-receipt/array-authority.patch",
+        "bytes": 12851,
+        "sha256": "ac74717a7dbd2c61760115c1b8b719e52d27d60d02957a2b73c3ff155206c4ac"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 12851,
+        "sha256": "ac74717a7dbd2c61760115c1b8b719e52d27d60d02957a2b73c3ff155206c4ac"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/revalidation/calibration/build-receipt/inputs.sha256",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/revalidation/calibration/build-receipt/inputs.sha256",
+        "bytes": 693,
+        "sha256": "df14b4d235e8ea816d9c336910306e1aad2e52446022fd7c671b0088f736b540"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 693,
+        "sha256": "df14b4d235e8ea816d9c336910306e1aad2e52446022fd7c671b0088f736b540"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/revalidation/calibration/build-receipt/kernel.config",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/revalidation/calibration/build-receipt/kernel.config",
+        "bytes": 132906,
+        "sha256": "35c872e866663db2cad8874e311275e2ce16a4c0c3ba95fceac732cb9c910686"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 132906,
+        "sha256": "35c872e866663db2cad8874e311275e2ce16a4c0c3ba95fceac732cb9c910686"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/revalidation/calibration/build-receipt/native-observation.patch",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/revalidation/calibration/build-receipt/native-observation.patch",
+        "bytes": 1473,
+        "sha256": "2f7889c53d0b4de2e47a94b8acb0d6c1ab73bca6effaccee5b4733984f449b07"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 1473,
+        "sha256": "2f7889c53d0b4de2e47a94b8acb0d6c1ab73bca6effaccee5b4733984f449b07"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/revalidation/calibration/build-receipt/outputs.sha256",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/revalidation/calibration/build-receipt/outputs.sha256",
+        "bytes": 883,
+        "sha256": "79bb87eec6d46dad4b5c4bc31d915e4ebca8992d7b5daeb3a19534f29e19efd2"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 883,
+        "sha256": "79bb87eec6d46dad4b5c4bc31d915e4ebca8992d7b5daeb3a19534f29e19efd2"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/revalidation/calibration/build-receipt/patched-sources.sha256",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/revalidation/calibration/build-receipt/patched-sources.sha256",
+        "bytes": 788,
+        "sha256": "ea45c85489453fb04e8649f6588c8d0698428c464ecb66b70a389589827b6019"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 788,
+        "sha256": "ea45c85489453fb04e8649f6588c8d0698428c464ecb66b70a389589827b6019"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/revalidation/calibration/build-receipt/selectivity-test.patch",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/revalidation/calibration/build-receipt/selectivity-test.patch",
+        "bytes": 15420,
+        "sha256": "b605b96b977f9be988fff2522323f043e87023155f3cec935b320c1f2e0a7c65"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 15420,
+        "sha256": "b605b96b977f9be988fff2522323f043e87023155f3cec935b320c1f2e0a7c65"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/revalidation/calibration/build-receipt/source-pins.json",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/revalidation/calibration/build-receipt/source-pins.json",
+        "bytes": 403,
+        "sha256": "053db808416dfba95f040ff59e3b1a23c7b9eed4a33cbf3667a5427af79bff73"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 403,
+        "sha256": "053db808416dfba95f040ff59e3b1a23c7b9eed4a33cbf3667a5427af79bff73"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/revalidation/calibration/build-receipt/verifier-before.sha256",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/revalidation/calibration/build-receipt/verifier-before.sha256",
+        "bytes": 65,
+        "sha256": "0e4753294afdd01eedf2ff7f523011a0940f2839ba8c4d0378d499f5b4f7c858"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 65,
+        "sha256": "0e4753294afdd01eedf2ff7f523011a0940f2839ba8c4d0378d499f5b4f7c858"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/revalidation/calibration/check_spatial_selectivity.executed.py",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/revalidation/calibration/check_spatial_selectivity.executed.py",
+        "bytes": 13373,
+        "sha256": "f6e8c418556c854074c89d2f0df58381d4bfd91e9026d475e876b25e09a41f47"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 13373,
+        "sha256": "f6e8c418556c854074c89d2f0df58381d4bfd91e9026d475e876b25e09a41f47"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/revalidation/calibration/compile.h",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/revalidation/calibration/compile.h",
+        "bytes": 271,
+        "sha256": "6c695f13ae8761132f0eac338ffb0100575d6e0f4a1f713fddeea54ded3e5e4f"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 271,
+        "sha256": "6c695f13ae8761132f0eac338ffb0100575d6e0f4a1f713fddeea54ded3e5e4f"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/revalidation/calibration/compile.log",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/revalidation/calibration/compile.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/revalidation/calibration/guest.c",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/revalidation/calibration/guest.c",
+        "bytes": 6227,
+        "sha256": "4b394e3a46874e20719acfa55ab7cb63e9ad2e6f535c53905a24f9a0a697826a"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 6227,
+        "sha256": "4b394e3a46874e20719acfa55ab7cb63e9ad2e6f535c53905a24f9a0a697826a"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/revalidation/calibration/init",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/revalidation/calibration/init",
+        "bytes": 50656,
+        "sha256": "a2383964d2d3d7d59169e5f63940e4ea0bdf10b44868457f755331b38c2d397d"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 50656,
+        "sha256": "a2383964d2d3d7d59169e5f63940e4ea0bdf10b44868457f755331b38c2d397d"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/revalidation/calibration/initramfs.cpio.gz",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/revalidation/calibration/initramfs.cpio.gz",
+        "bytes": 24080,
+        "sha256": "df8f112735b96c57b2fe36d84b306f8befc8bcbbb72523a3721deb0bfa797b10"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 24080,
+        "sha256": "df8f112735b96c57b2fe36d84b306f8befc8bcbbb72523a3721deb0bfa797b10"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/revalidation/calibration/inputs-verified.txt",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/revalidation/calibration/inputs-verified.txt",
+        "bytes": 1025,
+        "sha256": "950822c5ddcdd1a69eb4f955cbe200d9c4913b4930fb256d432d1e17df580e17"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 1025,
+        "sha256": "950822c5ddcdd1a69eb4f955cbe200d9c4913b4930fb256d432d1e17df580e17"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/revalidation/calibration/inputs.sha256",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/revalidation/calibration/inputs.sha256",
+        "bytes": 2265,
+        "sha256": "cc93518447d831813fc9ff83732744d8c690c46bb91d2ff12af58de420fda787"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 2265,
+        "sha256": "cc93518447d831813fc9ff83732744d8c690c46bb91d2ff12af58de420fda787"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/revalidation/calibration/kernel-release.txt",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/revalidation/calibration/kernel-release.txt",
+        "bytes": 31,
+        "sha256": "b7d0c5b992bb8d559d339e4b2072e98f3ee712867e7ee1448dd417bbf9b1a3ec"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 31,
+        "sha256": "b7d0c5b992bb8d559d339e4b2072e98f3ee712867e7ee1448dd417bbf9b1a3ec"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/revalidation/calibration/kernel.config",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/revalidation/calibration/kernel.config",
+        "bytes": 132906,
+        "sha256": "35c872e866663db2cad8874e311275e2ce16a4c0c3ba95fceac732cb9c910686"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 132906,
+        "sha256": "35c872e866663db2cad8874e311275e2ce16a4c0c3ba95fceac732cb9c910686"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/revalidation/calibration/linked/cbpf_selectivity_native_access.bin",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/revalidation/calibration/linked/cbpf_selectivity_native_access.bin",
+        "bytes": 144,
+        "sha256": "b20089acd25480bcda36cba10225db4d6b8ca8a3702b100bd2e0131107f6de1f"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 144,
+        "sha256": "b20089acd25480bcda36cba10225db4d6b8ca8a3702b100bd2e0131107f6de1f"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/revalidation/calibration/linked/complete-linked-disassembly.txt",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/revalidation/calibration/linked/complete-linked-disassembly.txt",
+        "bytes": 2484,
+        "sha256": "1d59994dc13435d2f6041ec21bafc3f747a0b3a3caaf0b209c854b723ae60e43"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 2484,
+        "sha256": "1d59994dc13435d2f6041ec21bafc3f747a0b3a3caaf0b209c854b723ae60e43"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/revalidation/calibration/linked/linked-ranges.json",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/revalidation/calibration/linked/linked-ranges.json",
+        "bytes": 850,
+        "sha256": "6dfb0366881498e91fbe4067302e5966fedac7ebb4dde65935be6dfc2655194e"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 850,
+        "sha256": "6dfb0366881498e91fbe4067302e5966fedac7ebb4dde65935be6dfc2655194e"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/revalidation/calibration/mode.txt",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/revalidation/calibration/mode.txt",
+        "bytes": 12,
+        "sha256": "2b2f4f88cbfe5f92f780fbb0037dd2293c4aaee4d510da9d959894c5aabeb379"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 12,
+        "sha256": "2b2f4f88cbfe5f92f780fbb0037dd2293c4aaee4d510da9d959894c5aabeb379"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/revalidation/calibration/original-results.json",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/revalidation/calibration/original-results.json",
+        "bytes": 2453,
+        "sha256": "87b9b7c893e9391c25a6036878fd5365174ef2fb29ab01aadf240edc07d16bb7"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 2453,
+        "sha256": "87b9b7c893e9391c25a6036878fd5365174ef2fb29ab01aadf240edc07d16bb7"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/revalidation/calibration/qemu-command.sh",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/revalidation/calibration/qemu-command.sh",
+        "bytes": 485,
+        "sha256": "d6031a6738276b6419ff7de3b6327f7cb42b746f9248e184048772049580a96d"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 485,
+        "sha256": "d6031a6738276b6419ff7de3b6327f7cb42b746f9248e184048772049580a96d"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/revalidation/calibration/qemu-exit.txt",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/revalidation/calibration/qemu-exit.txt",
+        "bytes": 2,
+        "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 2,
+        "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/revalidation/calibration/results.json",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/revalidation/calibration/results.json",
+        "bytes": 6037,
+        "sha256": "33260befb864b41853dfcde40449bd82d7e44d1c7b8b3e6a78c1bc34b14d1c65"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 6037,
+        "sha256": "33260befb864b41853dfcde40449bd82d7e44d1c7b8b3e6a78c1bc34b14d1c65"
+      },
+      "changes": [
+        "Recomputed post-run validation over publication bytes; no native execution."
+      ]
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/revalidation/calibration/run-script.executed.sh",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/revalidation/calibration/run-script.executed.sh",
+        "bytes": 7940,
+        "sha256": "f7fd64a32d7f59c8ff8660dd4b874a2882fca9f7778378243230009e29dcabc6"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 7940,
+        "sha256": "f7fd64a32d7f59c8ff8660dd4b874a2882fca9f7778378243230009e29dcabc6"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/revalidation/calibration/selectivity-access-disassembly.txt",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/revalidation/calibration/selectivity-access-disassembly.txt",
+        "bytes": 185936,
+        "sha256": "46ef695216e2481d542c6d9000e368a60761330a789da6f74c071579bed09e85"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 185936,
+        "sha256": "46ef695216e2481d542c6d9000e368a60761330a789da6f74c071579bed09e85"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/revalidation/calibration/selectivity-symbols.txt",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/revalidation/calibration/selectivity-symbols.txt",
+        "bytes": 769,
+        "sha256": "e29e21817ea2ab6b80371a4bd9e7bd103e89840159a838dc6eb6e1f6a505d7c8"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 769,
+        "sha256": "e29e21817ea2ab6b80371a4bd9e7bd103e89840159a838dc6eb6e1f6a505d7c8"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/revalidation/calibration/summary.txt",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/revalidation/calibration/summary.txt",
+        "bytes": 114,
+        "sha256": "26acb64316d7dc0cf45bb0c3a0191e0de6e384d94561b8baad6980c689b6c7c9"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 114,
+        "sha256": "26acb64316d7dc0cf45bb0c3a0191e0de6e384d94561b8baad6980c689b6c7c9"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/revalidation/calibration/toolchain.txt",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/revalidation/calibration/toolchain.txt",
+        "bytes": 379,
+        "sha256": "6a62f9f5c76b3f5fc1aea19da3e5b1df2d75b0beea4a44fb01a94ad202e0307c"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 379,
+        "sha256": "6a62f9f5c76b3f5fc1aea19da3e5b1df2d75b0beea4a44fb01a94ad202e0307c"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/revalidation/calibration/validation.json",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/revalidation/calibration/validation.json",
+        "bytes": 140,
+        "sha256": "073580fade11ec0767a72d90d2133a8fe077211d8ae47388e2b13de91cfdcd8d"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 140,
+        "sha256": "073580fade11ec0767a72d90d2133a8fe077211d8ae47388e2b13de91cfdcd8d"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/revalidation/check_spatial_selectivity.py",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/revalidation/check_spatial_selectivity.py",
+        "bytes": 26367,
+        "sha256": "1ee14daac0e0c2b96214391b17e259636f99c210eb26b9e349cc14a97f202d07"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 26367,
+        "sha256": "1ee14daac0e0c2b96214391b17e259636f99c210eb26b9e349cc14a97f202d07"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/revalidation/initial-checker-replay/receipt.json",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/revalidation/initial-checker-replay/receipt.json",
+        "bytes": 538,
+        "sha256": "9867f1702c6d7713f9f5b01db60bbc74dfc9de804b27340bb69388fb600de9d1"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 394,
+        "sha256": "fa1d3ca3009f7bfe951af54077124192b65b33331b3eeba808da79a288591028"
+      },
+      "changes": [
+        "Path-only publication redaction; original embedded identities unchanged."
+      ]
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/revalidation/initial-checker-replay/stderr.txt",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/revalidation/initial-checker-replay/stderr.txt",
+        "bytes": 1139,
+        "sha256": "fc9923ec0898f8994e05e6d953b00d85239d57fcd2eeeb3d84bc5b177c7933dc"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 884,
+        "sha256": "adb606fd384a5d4b16bb9b96739198934b9a9a61be6f6e55796c16dad13f55eb"
+      },
+      "changes": [
+        "Path-only publication redaction; original embedded identities unchanged."
+      ]
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/revalidation/initial-checker-replay/stdout.txt",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/revalidation/initial-checker-replay/stdout.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/revalidation/matrix/boot.log",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/revalidation/matrix/boot.log",
+        "bytes": 43436,
+        "sha256": "5dca0836801a2d10ed5b2c9514f2731a09e85a13f85aaa92765d8fd31b168f0a"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 43436,
+        "sha256": "5dca0836801a2d10ed5b2c9514f2731a09e85a13f85aaa92765d8fd31b168f0a"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/revalidation/matrix/build-directory.txt",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/revalidation/matrix/build-directory.txt",
+        "bytes": 17,
+        "sha256": "cd0815974267a8e3d537d70bedf2892afb0a4257e4de309274987b35a3b11201"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 17,
+        "sha256": "cd0815974267a8e3d537d70bedf2892afb0a4257e4de309274987b35a3b11201"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/revalidation/matrix/build-receipt/array-authority.patch",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/revalidation/matrix/build-receipt/array-authority.patch",
+        "bytes": 12851,
+        "sha256": "ac74717a7dbd2c61760115c1b8b719e52d27d60d02957a2b73c3ff155206c4ac"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 12851,
+        "sha256": "ac74717a7dbd2c61760115c1b8b719e52d27d60d02957a2b73c3ff155206c4ac"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/revalidation/matrix/build-receipt/inputs.sha256",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/revalidation/matrix/build-receipt/inputs.sha256",
+        "bytes": 693,
+        "sha256": "df14b4d235e8ea816d9c336910306e1aad2e52446022fd7c671b0088f736b540"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 693,
+        "sha256": "df14b4d235e8ea816d9c336910306e1aad2e52446022fd7c671b0088f736b540"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/revalidation/matrix/build-receipt/kernel.config",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/revalidation/matrix/build-receipt/kernel.config",
+        "bytes": 132906,
+        "sha256": "35c872e866663db2cad8874e311275e2ce16a4c0c3ba95fceac732cb9c910686"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 132906,
+        "sha256": "35c872e866663db2cad8874e311275e2ce16a4c0c3ba95fceac732cb9c910686"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/revalidation/matrix/build-receipt/native-observation.patch",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/revalidation/matrix/build-receipt/native-observation.patch",
+        "bytes": 1473,
+        "sha256": "2f7889c53d0b4de2e47a94b8acb0d6c1ab73bca6effaccee5b4733984f449b07"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 1473,
+        "sha256": "2f7889c53d0b4de2e47a94b8acb0d6c1ab73bca6effaccee5b4733984f449b07"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/revalidation/matrix/build-receipt/outputs.sha256",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/revalidation/matrix/build-receipt/outputs.sha256",
+        "bytes": 883,
+        "sha256": "79bb87eec6d46dad4b5c4bc31d915e4ebca8992d7b5daeb3a19534f29e19efd2"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 883,
+        "sha256": "79bb87eec6d46dad4b5c4bc31d915e4ebca8992d7b5daeb3a19534f29e19efd2"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/revalidation/matrix/build-receipt/patched-sources.sha256",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/revalidation/matrix/build-receipt/patched-sources.sha256",
+        "bytes": 788,
+        "sha256": "ea45c85489453fb04e8649f6588c8d0698428c464ecb66b70a389589827b6019"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 788,
+        "sha256": "ea45c85489453fb04e8649f6588c8d0698428c464ecb66b70a389589827b6019"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/revalidation/matrix/build-receipt/selectivity-test.patch",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/revalidation/matrix/build-receipt/selectivity-test.patch",
+        "bytes": 15420,
+        "sha256": "b605b96b977f9be988fff2522323f043e87023155f3cec935b320c1f2e0a7c65"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 15420,
+        "sha256": "b605b96b977f9be988fff2522323f043e87023155f3cec935b320c1f2e0a7c65"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/revalidation/matrix/build-receipt/source-pins.json",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/revalidation/matrix/build-receipt/source-pins.json",
+        "bytes": 403,
+        "sha256": "053db808416dfba95f040ff59e3b1a23c7b9eed4a33cbf3667a5427af79bff73"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 403,
+        "sha256": "053db808416dfba95f040ff59e3b1a23c7b9eed4a33cbf3667a5427af79bff73"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/revalidation/matrix/build-receipt/verifier-before.sha256",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/revalidation/matrix/build-receipt/verifier-before.sha256",
+        "bytes": 65,
+        "sha256": "0e4753294afdd01eedf2ff7f523011a0940f2839ba8c4d0378d499f5b4f7c858"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 65,
+        "sha256": "0e4753294afdd01eedf2ff7f523011a0940f2839ba8c4d0378d499f5b4f7c858"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/revalidation/matrix/check_spatial_selectivity.executed.py",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/revalidation/matrix/check_spatial_selectivity.executed.py",
+        "bytes": 13373,
+        "sha256": "f6e8c418556c854074c89d2f0df58381d4bfd91e9026d475e876b25e09a41f47"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 13373,
+        "sha256": "f6e8c418556c854074c89d2f0df58381d4bfd91e9026d475e876b25e09a41f47"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/revalidation/matrix/compile.h",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/revalidation/matrix/compile.h",
+        "bytes": 271,
+        "sha256": "6c695f13ae8761132f0eac338ffb0100575d6e0f4a1f713fddeea54ded3e5e4f"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 271,
+        "sha256": "6c695f13ae8761132f0eac338ffb0100575d6e0f4a1f713fddeea54ded3e5e4f"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/revalidation/matrix/compile.log",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/revalidation/matrix/compile.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/revalidation/matrix/guest.c",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/revalidation/matrix/guest.c",
+        "bytes": 6227,
+        "sha256": "4b394e3a46874e20719acfa55ab7cb63e9ad2e6f535c53905a24f9a0a697826a"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 6227,
+        "sha256": "4b394e3a46874e20719acfa55ab7cb63e9ad2e6f535c53905a24f9a0a697826a"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/revalidation/matrix/init",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/revalidation/matrix/init",
+        "bytes": 50656,
+        "sha256": "a2383964d2d3d7d59169e5f63940e4ea0bdf10b44868457f755331b38c2d397d"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 50656,
+        "sha256": "a2383964d2d3d7d59169e5f63940e4ea0bdf10b44868457f755331b38c2d397d"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/revalidation/matrix/initramfs.cpio.gz",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/revalidation/matrix/initramfs.cpio.gz",
+        "bytes": 24080,
+        "sha256": "df8f112735b96c57b2fe36d84b306f8befc8bcbbb72523a3721deb0bfa797b10"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 24080,
+        "sha256": "df8f112735b96c57b2fe36d84b306f8befc8bcbbb72523a3721deb0bfa797b10"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/revalidation/matrix/inputs-verified.txt",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/revalidation/matrix/inputs-verified.txt",
+        "bytes": 969,
+        "sha256": "00b03bc05f9cc1d01cc7c3834ed8a70d46ad15aea4319f90b28058e31d6f3615"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 969,
+        "sha256": "00b03bc05f9cc1d01cc7c3834ed8a70d46ad15aea4319f90b28058e31d6f3615"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/revalidation/matrix/inputs.sha256",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/revalidation/matrix/inputs.sha256",
+        "bytes": 2209,
+        "sha256": "5aecc40cafaa09c5d5cc9447c1a629900c54bf1c90bf458eca6b580262898dbe"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 2209,
+        "sha256": "5aecc40cafaa09c5d5cc9447c1a629900c54bf1c90bf458eca6b580262898dbe"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/revalidation/matrix/kernel-release.txt",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/revalidation/matrix/kernel-release.txt",
+        "bytes": 31,
+        "sha256": "b7d0c5b992bb8d559d339e4b2072e98f3ee712867e7ee1448dd417bbf9b1a3ec"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 31,
+        "sha256": "b7d0c5b992bb8d559d339e4b2072e98f3ee712867e7ee1448dd417bbf9b1a3ec"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/revalidation/matrix/kernel.config",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/revalidation/matrix/kernel.config",
+        "bytes": 132906,
+        "sha256": "35c872e866663db2cad8874e311275e2ce16a4c0c3ba95fceac732cb9c910686"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 132906,
+        "sha256": "35c872e866663db2cad8874e311275e2ce16a4c0c3ba95fceac732cb9c910686"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/revalidation/matrix/linked/cbpf_selectivity_native_access.bin",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/revalidation/matrix/linked/cbpf_selectivity_native_access.bin",
+        "bytes": 144,
+        "sha256": "b20089acd25480bcda36cba10225db4d6b8ca8a3702b100bd2e0131107f6de1f"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 144,
+        "sha256": "b20089acd25480bcda36cba10225db4d6b8ca8a3702b100bd2e0131107f6de1f"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/revalidation/matrix/linked/complete-linked-disassembly.txt",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/revalidation/matrix/linked/complete-linked-disassembly.txt",
+        "bytes": 2484,
+        "sha256": "1d59994dc13435d2f6041ec21bafc3f747a0b3a3caaf0b209c854b723ae60e43"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 2484,
+        "sha256": "1d59994dc13435d2f6041ec21bafc3f747a0b3a3caaf0b209c854b723ae60e43"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/revalidation/matrix/linked/linked-ranges.json",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/revalidation/matrix/linked/linked-ranges.json",
+        "bytes": 850,
+        "sha256": "6dfb0366881498e91fbe4067302e5966fedac7ebb4dde65935be6dfc2655194e"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 850,
+        "sha256": "6dfb0366881498e91fbe4067302e5966fedac7ebb4dde65935be6dfc2655194e"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/revalidation/matrix/mode.txt",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/revalidation/matrix/mode.txt",
+        "bytes": 7,
+        "sha256": "06f1d533d73bfb948bce0fb53824691ca82a02e6d68513757b7f1ee9ca07b3e8"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 7,
+        "sha256": "06f1d533d73bfb948bce0fb53824691ca82a02e6d68513757b7f1ee9ca07b3e8"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/revalidation/matrix/original-results.json",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/revalidation/matrix/original-results.json",
+        "bytes": 16820,
+        "sha256": "3eee2b6a1cccfb45e15b39cfa773b89c735a74fd907e7087714028f093c685bb"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 16820,
+        "sha256": "3eee2b6a1cccfb45e15b39cfa773b89c735a74fd907e7087714028f093c685bb"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/revalidation/matrix/qemu-command.sh",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/revalidation/matrix/qemu-command.sh",
+        "bytes": 445,
+        "sha256": "c123135a42debf3e0683fd005fdcd08ab8f3e8acaf917a7eab046e42166be153"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 445,
+        "sha256": "c123135a42debf3e0683fd005fdcd08ab8f3e8acaf917a7eab046e42166be153"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/revalidation/matrix/qemu-exit.txt",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/revalidation/matrix/qemu-exit.txt",
+        "bytes": 2,
+        "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 2,
+        "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/revalidation/matrix/results.json",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/revalidation/matrix/results.json",
+        "bytes": 22056,
+        "sha256": "a3bdb04324cc2fbbefcdafc4416763250be1e6432d50c3f6ae4ef9ecab116aca"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 22056,
+        "sha256": "a3bdb04324cc2fbbefcdafc4416763250be1e6432d50c3f6ae4ef9ecab116aca"
+      },
+      "changes": [
+        "Recomputed post-run validation over publication bytes; no native execution."
+      ]
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/revalidation/matrix/run-script.executed.sh",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/revalidation/matrix/run-script.executed.sh",
+        "bytes": 7940,
+        "sha256": "f7fd64a32d7f59c8ff8660dd4b874a2882fca9f7778378243230009e29dcabc6"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 7940,
+        "sha256": "f7fd64a32d7f59c8ff8660dd4b874a2882fca9f7778378243230009e29dcabc6"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/revalidation/matrix/selectivity-access-disassembly.txt",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/revalidation/matrix/selectivity-access-disassembly.txt",
+        "bytes": 185936,
+        "sha256": "46ef695216e2481d542c6d9000e368a60761330a789da6f74c071579bed09e85"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 185936,
+        "sha256": "46ef695216e2481d542c6d9000e368a60761330a789da6f74c071579bed09e85"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/revalidation/matrix/selectivity-symbols.txt",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/revalidation/matrix/selectivity-symbols.txt",
+        "bytes": 769,
+        "sha256": "e29e21817ea2ab6b80371a4bd9e7bd103e89840159a838dc6eb6e1f6a505d7c8"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 769,
+        "sha256": "e29e21817ea2ab6b80371a4bd9e7bd103e89840159a838dc6eb6e1f6a505d7c8"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/revalidation/matrix/summary.txt",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/revalidation/matrix/summary.txt",
+        "bytes": 101,
+        "sha256": "3907622f7abe25276754f1262fa0925360d8b2b56442d31ee0c5ec367cbd2fd8"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 101,
+        "sha256": "3907622f7abe25276754f1262fa0925360d8b2b56442d31ee0c5ec367cbd2fd8"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/revalidation/matrix/toolchain.txt",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/revalidation/matrix/toolchain.txt",
+        "bytes": 379,
+        "sha256": "6a62f9f5c76b3f5fc1aea19da3e5b1df2d75b0beea4a44fb01a94ad202e0307c"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 379,
+        "sha256": "6a62f9f5c76b3f5fc1aea19da3e5b1df2d75b0beea4a44fb01a94ad202e0307c"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/revalidation/matrix/validation.json",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/revalidation/matrix/validation.json",
+        "bytes": 135,
+        "sha256": "118b43828323bf43e3e9fb59ecb0e27f614b9044db607af38ed57522b5580241"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 135,
+        "sha256": "118b43828323bf43e3e9fb59ecb0e27f614b9044db607af38ed57522b5580241"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/revalidation/native_receipt_common.py",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/revalidation/native_receipt_common.py",
+        "bytes": 1361,
+        "sha256": "60fd3c4912b0ec83e96a6cc8b7a2fa9316cd7486bae2b64feb6a2d735cc77e8c"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 1361,
+        "sha256": "60fd3c4912b0ec83e96a6cc8b7a2fa9316cd7486bae2b64feb6a2d735cc77e8c"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/revalidation/prepare_spatial_selectivity.py",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/revalidation/prepare_spatial_selectivity.py",
+        "bytes": 3650,
+        "sha256": "2b812a3b5bbdc128ec42752432877ef27168f34458cac28bf1bb9a818d3c9ffc"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 3650,
+        "sha256": "2b812a3b5bbdc128ec42752432877ef27168f34458cac28bf1bb9a818d3c9ffc"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/revalidation/publication.executed.py",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/revalidation/publication.executed.py",
+        "bytes": 8070,
+        "sha256": "851577224781e07b271a560b0620a47fde60d574f3893b63ba094b81f9c36cd5"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 8070,
+        "sha256": "851577224781e07b271a560b0620a47fde60d574f3893b63ba094b81f9c36cd5"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/revalidation/receipt.json",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/revalidation/receipt.json",
+        "bytes": 1112,
+        "sha256": "a9a70be266cde69b3336cd6dfdfd4768bf6f031f428e22c26e6896bd14f71ab3"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 1112,
+        "sha256": "a9a70be266cde69b3336cd6dfdfd4768bf6f031f428e22c26e6896bd14f71ab3"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/matrix-v2/boot.log",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/matrix-v2/boot.log",
+        "bytes": 51771,
+        "sha256": "30313660bc4e14c8749e6e45040115ad442dbc3bba0b391f411634ce0d6c32e8"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 51771,
+        "sha256": "30313660bc4e14c8749e6e45040115ad442dbc3bba0b391f411634ce0d6c32e8"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/matrix-v2/build-directory.txt",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/matrix-v2/build-directory.txt",
+        "bytes": 68,
+        "sha256": "1527e3348bf205b9ef6b5f0242942cbf827082ef95902e50ee5765a8b4c2271f"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 17,
+        "sha256": "cd0815974267a8e3d537d70bedf2892afb0a4257e4de309274987b35a3b11201"
+      },
+      "changes": [
+        "Path-only publication redaction; original embedded identities unchanged."
+      ]
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/matrix-v2/build-receipt/array-authority.patch",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/matrix-v2/build-receipt/array-authority.patch",
+        "bytes": 12851,
+        "sha256": "ac74717a7dbd2c61760115c1b8b719e52d27d60d02957a2b73c3ff155206c4ac"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 12851,
+        "sha256": "ac74717a7dbd2c61760115c1b8b719e52d27d60d02957a2b73c3ff155206c4ac"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/matrix-v2/build-receipt/inputs.sha256",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/matrix-v2/build-receipt/inputs.sha256",
+        "bytes": 999,
+        "sha256": "be6b150ba3583e5f9be93c141176f60057a6e892f9c73e0c9c91391441da787d"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 693,
+        "sha256": "df14b4d235e8ea816d9c336910306e1aad2e52446022fd7c671b0088f736b540"
+      },
+      "changes": [
+        "Path-only publication redaction; original embedded identities unchanged."
+      ]
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/matrix-v2/build-receipt/kernel.config",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/matrix-v2/build-receipt/kernel.config",
+        "bytes": 132906,
+        "sha256": "35c872e866663db2cad8874e311275e2ce16a4c0c3ba95fceac732cb9c910686"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 132906,
+        "sha256": "35c872e866663db2cad8874e311275e2ce16a4c0c3ba95fceac732cb9c910686"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/matrix-v2/build-receipt/native-observation.patch",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/matrix-v2/build-receipt/native-observation.patch",
+        "bytes": 1473,
+        "sha256": "2f7889c53d0b4de2e47a94b8acb0d6c1ab73bca6effaccee5b4733984f449b07"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 1473,
+        "sha256": "2f7889c53d0b4de2e47a94b8acb0d6c1ab73bca6effaccee5b4733984f449b07"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/matrix-v2/build-receipt/outputs.sha256",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/matrix-v2/build-receipt/outputs.sha256",
+        "bytes": 1291,
+        "sha256": "3d32c1cffc9b0da5868a2a4e9cc6f5a871d5853923dac805c6ee1ca00c8387e5"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 883,
+        "sha256": "79bb87eec6d46dad4b5c4bc31d915e4ebca8992d7b5daeb3a19534f29e19efd2"
+      },
+      "changes": [
+        "Path-only publication redaction; original embedded identities unchanged."
+      ]
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/matrix-v2/build-receipt/patched-sources.sha256",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/matrix-v2/build-receipt/patched-sources.sha256",
+        "bytes": 1145,
+        "sha256": "9d434f3788dba526a702451623ffba3db7ece9eef6ced6b8af20de4cfe9e0707"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 788,
+        "sha256": "ea45c85489453fb04e8649f6588c8d0698428c464ecb66b70a389589827b6019"
+      },
+      "changes": [
+        "Path-only publication redaction; original embedded identities unchanged."
+      ]
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/matrix-v2/build-receipt/selectivity-test.patch",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/matrix-v2/build-receipt/selectivity-test.patch",
+        "bytes": 15420,
+        "sha256": "b605b96b977f9be988fff2522323f043e87023155f3cec935b320c1f2e0a7c65"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 15420,
+        "sha256": "b605b96b977f9be988fff2522323f043e87023155f3cec935b320c1f2e0a7c65"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/matrix-v2/build-receipt/source-pins.json",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/matrix-v2/build-receipt/source-pins.json",
+        "bytes": 434,
+        "sha256": "724aa27472822cc40b5d74cb85e80f403107edb5a532a617f510235bc64e23de"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 403,
+        "sha256": "053db808416dfba95f040ff59e3b1a23c7b9eed4a33cbf3667a5427af79bff73"
+      },
+      "changes": [
+        "Path-only publication redaction; original embedded identities unchanged."
+      ]
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/matrix-v2/build-receipt/verifier-before.sha256",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/matrix-v2/build-receipt/verifier-before.sha256",
+        "bytes": 65,
+        "sha256": "0e4753294afdd01eedf2ff7f523011a0940f2839ba8c4d0378d499f5b4f7c858"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 65,
+        "sha256": "0e4753294afdd01eedf2ff7f523011a0940f2839ba8c4d0378d499f5b4f7c858"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/matrix-v2/calibration/boot.log",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/matrix-v2/calibration/boot.log",
+        "bytes": 27953,
+        "sha256": "f4ca3c08a136c88cc151a643319a36b2bd387a48fe6a96a2685794fbd8f3c848"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 27953,
+        "sha256": "f4ca3c08a136c88cc151a643319a36b2bd387a48fe6a96a2685794fbd8f3c848"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/matrix-v2/calibration/build-directory.txt",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/matrix-v2/calibration/build-directory.txt",
+        "bytes": 17,
+        "sha256": "cd0815974267a8e3d537d70bedf2892afb0a4257e4de309274987b35a3b11201"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 17,
+        "sha256": "cd0815974267a8e3d537d70bedf2892afb0a4257e4de309274987b35a3b11201"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/matrix-v2/calibration/build-receipt/array-authority.patch",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/matrix-v2/calibration/build-receipt/array-authority.patch",
+        "bytes": 12851,
+        "sha256": "ac74717a7dbd2c61760115c1b8b719e52d27d60d02957a2b73c3ff155206c4ac"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 12851,
+        "sha256": "ac74717a7dbd2c61760115c1b8b719e52d27d60d02957a2b73c3ff155206c4ac"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/matrix-v2/calibration/build-receipt/inputs.sha256",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/matrix-v2/calibration/build-receipt/inputs.sha256",
+        "bytes": 693,
+        "sha256": "df14b4d235e8ea816d9c336910306e1aad2e52446022fd7c671b0088f736b540"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 693,
+        "sha256": "df14b4d235e8ea816d9c336910306e1aad2e52446022fd7c671b0088f736b540"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/matrix-v2/calibration/build-receipt/kernel.config",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/matrix-v2/calibration/build-receipt/kernel.config",
+        "bytes": 132906,
+        "sha256": "35c872e866663db2cad8874e311275e2ce16a4c0c3ba95fceac732cb9c910686"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 132906,
+        "sha256": "35c872e866663db2cad8874e311275e2ce16a4c0c3ba95fceac732cb9c910686"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/matrix-v2/calibration/build-receipt/native-observation.patch",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/matrix-v2/calibration/build-receipt/native-observation.patch",
+        "bytes": 1473,
+        "sha256": "2f7889c53d0b4de2e47a94b8acb0d6c1ab73bca6effaccee5b4733984f449b07"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 1473,
+        "sha256": "2f7889c53d0b4de2e47a94b8acb0d6c1ab73bca6effaccee5b4733984f449b07"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/matrix-v2/calibration/build-receipt/outputs.sha256",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/matrix-v2/calibration/build-receipt/outputs.sha256",
+        "bytes": 883,
+        "sha256": "79bb87eec6d46dad4b5c4bc31d915e4ebca8992d7b5daeb3a19534f29e19efd2"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 883,
+        "sha256": "79bb87eec6d46dad4b5c4bc31d915e4ebca8992d7b5daeb3a19534f29e19efd2"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/matrix-v2/calibration/build-receipt/patched-sources.sha256",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/matrix-v2/calibration/build-receipt/patched-sources.sha256",
+        "bytes": 788,
+        "sha256": "ea45c85489453fb04e8649f6588c8d0698428c464ecb66b70a389589827b6019"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 788,
+        "sha256": "ea45c85489453fb04e8649f6588c8d0698428c464ecb66b70a389589827b6019"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/matrix-v2/calibration/build-receipt/selectivity-test.patch",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/matrix-v2/calibration/build-receipt/selectivity-test.patch",
+        "bytes": 15420,
+        "sha256": "b605b96b977f9be988fff2522323f043e87023155f3cec935b320c1f2e0a7c65"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 15420,
+        "sha256": "b605b96b977f9be988fff2522323f043e87023155f3cec935b320c1f2e0a7c65"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/matrix-v2/calibration/build-receipt/source-pins.json",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/matrix-v2/calibration/build-receipt/source-pins.json",
+        "bytes": 403,
+        "sha256": "053db808416dfba95f040ff59e3b1a23c7b9eed4a33cbf3667a5427af79bff73"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 403,
+        "sha256": "053db808416dfba95f040ff59e3b1a23c7b9eed4a33cbf3667a5427af79bff73"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/matrix-v2/calibration/build-receipt/verifier-before.sha256",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/matrix-v2/calibration/build-receipt/verifier-before.sha256",
+        "bytes": 65,
+        "sha256": "0e4753294afdd01eedf2ff7f523011a0940f2839ba8c4d0378d499f5b4f7c858"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 65,
+        "sha256": "0e4753294afdd01eedf2ff7f523011a0940f2839ba8c4d0378d499f5b4f7c858"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/matrix-v2/calibration/check_spatial_selectivity.executed.py",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/matrix-v2/calibration/check_spatial_selectivity.executed.py",
+        "bytes": 13373,
+        "sha256": "f6e8c418556c854074c89d2f0df58381d4bfd91e9026d475e876b25e09a41f47"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 13373,
+        "sha256": "f6e8c418556c854074c89d2f0df58381d4bfd91e9026d475e876b25e09a41f47"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/matrix-v2/calibration/compile.h",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/matrix-v2/calibration/compile.h",
+        "bytes": 271,
+        "sha256": "6c695f13ae8761132f0eac338ffb0100575d6e0f4a1f713fddeea54ded3e5e4f"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 271,
+        "sha256": "6c695f13ae8761132f0eac338ffb0100575d6e0f4a1f713fddeea54ded3e5e4f"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/matrix-v2/calibration/compile.log",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/matrix-v2/calibration/compile.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/matrix-v2/calibration/guest.c",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/matrix-v2/calibration/guest.c",
+        "bytes": 6227,
+        "sha256": "4b394e3a46874e20719acfa55ab7cb63e9ad2e6f535c53905a24f9a0a697826a"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 6227,
+        "sha256": "4b394e3a46874e20719acfa55ab7cb63e9ad2e6f535c53905a24f9a0a697826a"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/matrix-v2/calibration/init",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/matrix-v2/calibration/init",
+        "bytes": 50656,
+        "sha256": "a2383964d2d3d7d59169e5f63940e4ea0bdf10b44868457f755331b38c2d397d"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 50656,
+        "sha256": "a2383964d2d3d7d59169e5f63940e4ea0bdf10b44868457f755331b38c2d397d"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/matrix-v2/calibration/initramfs.cpio.gz",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/matrix-v2/calibration/initramfs.cpio.gz",
+        "bytes": 24080,
+        "sha256": "df8f112735b96c57b2fe36d84b306f8befc8bcbbb72523a3721deb0bfa797b10"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 24080,
+        "sha256": "df8f112735b96c57b2fe36d84b306f8befc8bcbbb72523a3721deb0bfa797b10"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/matrix-v2/calibration/inputs-verified.txt",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/matrix-v2/calibration/inputs-verified.txt",
+        "bytes": 1025,
+        "sha256": "950822c5ddcdd1a69eb4f955cbe200d9c4913b4930fb256d432d1e17df580e17"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 1025,
+        "sha256": "950822c5ddcdd1a69eb4f955cbe200d9c4913b4930fb256d432d1e17df580e17"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/matrix-v2/calibration/inputs.sha256",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/matrix-v2/calibration/inputs.sha256",
+        "bytes": 2265,
+        "sha256": "cc93518447d831813fc9ff83732744d8c690c46bb91d2ff12af58de420fda787"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 2265,
+        "sha256": "cc93518447d831813fc9ff83732744d8c690c46bb91d2ff12af58de420fda787"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/matrix-v2/calibration/kernel-release.txt",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/matrix-v2/calibration/kernel-release.txt",
+        "bytes": 31,
+        "sha256": "b7d0c5b992bb8d559d339e4b2072e98f3ee712867e7ee1448dd417bbf9b1a3ec"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 31,
+        "sha256": "b7d0c5b992bb8d559d339e4b2072e98f3ee712867e7ee1448dd417bbf9b1a3ec"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/matrix-v2/calibration/kernel.config",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/matrix-v2/calibration/kernel.config",
+        "bytes": 132906,
+        "sha256": "35c872e866663db2cad8874e311275e2ce16a4c0c3ba95fceac732cb9c910686"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 132906,
+        "sha256": "35c872e866663db2cad8874e311275e2ce16a4c0c3ba95fceac732cb9c910686"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/matrix-v2/calibration/linked/cbpf_selectivity_native_access.bin",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/matrix-v2/calibration/linked/cbpf_selectivity_native_access.bin",
+        "bytes": 144,
+        "sha256": "b20089acd25480bcda36cba10225db4d6b8ca8a3702b100bd2e0131107f6de1f"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 144,
+        "sha256": "b20089acd25480bcda36cba10225db4d6b8ca8a3702b100bd2e0131107f6de1f"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/matrix-v2/calibration/linked/complete-linked-disassembly.txt",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/matrix-v2/calibration/linked/complete-linked-disassembly.txt",
+        "bytes": 2484,
+        "sha256": "1d59994dc13435d2f6041ec21bafc3f747a0b3a3caaf0b209c854b723ae60e43"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 2484,
+        "sha256": "1d59994dc13435d2f6041ec21bafc3f747a0b3a3caaf0b209c854b723ae60e43"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/matrix-v2/calibration/linked/linked-ranges.json",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/matrix-v2/calibration/linked/linked-ranges.json",
+        "bytes": 850,
+        "sha256": "6dfb0366881498e91fbe4067302e5966fedac7ebb4dde65935be6dfc2655194e"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 850,
+        "sha256": "6dfb0366881498e91fbe4067302e5966fedac7ebb4dde65935be6dfc2655194e"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/matrix-v2/calibration/mode.txt",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/matrix-v2/calibration/mode.txt",
+        "bytes": 12,
+        "sha256": "2b2f4f88cbfe5f92f780fbb0037dd2293c4aaee4d510da9d959894c5aabeb379"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 12,
+        "sha256": "2b2f4f88cbfe5f92f780fbb0037dd2293c4aaee4d510da9d959894c5aabeb379"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/matrix-v2/calibration/original-results.json",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/matrix-v2/calibration/original-results.json",
+        "bytes": 2453,
+        "sha256": "87b9b7c893e9391c25a6036878fd5365174ef2fb29ab01aadf240edc07d16bb7"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 2453,
+        "sha256": "87b9b7c893e9391c25a6036878fd5365174ef2fb29ab01aadf240edc07d16bb7"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/matrix-v2/calibration/qemu-command.sh",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/matrix-v2/calibration/qemu-command.sh",
+        "bytes": 485,
+        "sha256": "d6031a6738276b6419ff7de3b6327f7cb42b746f9248e184048772049580a96d"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 485,
+        "sha256": "d6031a6738276b6419ff7de3b6327f7cb42b746f9248e184048772049580a96d"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/matrix-v2/calibration/qemu-exit.txt",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/matrix-v2/calibration/qemu-exit.txt",
+        "bytes": 2,
+        "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 2,
+        "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/matrix-v2/calibration/results.json",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/matrix-v2/calibration/results.json",
+        "bytes": 6037,
+        "sha256": "242d997aada90b93c861e6f3e6a588d960c775779125e47354abac0fb74ce815"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 6037,
+        "sha256": "242d997aada90b93c861e6f3e6a588d960c775779125e47354abac0fb74ce815"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/matrix-v2/calibration/run-script.executed.sh",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/matrix-v2/calibration/run-script.executed.sh",
+        "bytes": 7940,
+        "sha256": "f7fd64a32d7f59c8ff8660dd4b874a2882fca9f7778378243230009e29dcabc6"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 7940,
+        "sha256": "f7fd64a32d7f59c8ff8660dd4b874a2882fca9f7778378243230009e29dcabc6"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/matrix-v2/calibration/selectivity-access-disassembly.txt",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/matrix-v2/calibration/selectivity-access-disassembly.txt",
+        "bytes": 185936,
+        "sha256": "46ef695216e2481d542c6d9000e368a60761330a789da6f74c071579bed09e85"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 185936,
+        "sha256": "46ef695216e2481d542c6d9000e368a60761330a789da6f74c071579bed09e85"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/matrix-v2/calibration/selectivity-symbols.txt",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/matrix-v2/calibration/selectivity-symbols.txt",
+        "bytes": 769,
+        "sha256": "e29e21817ea2ab6b80371a4bd9e7bd103e89840159a838dc6eb6e1f6a505d7c8"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 769,
+        "sha256": "e29e21817ea2ab6b80371a4bd9e7bd103e89840159a838dc6eb6e1f6a505d7c8"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/matrix-v2/calibration/summary.txt",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/matrix-v2/calibration/summary.txt",
+        "bytes": 114,
+        "sha256": "26acb64316d7dc0cf45bb0c3a0191e0de6e384d94561b8baad6980c689b6c7c9"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 114,
+        "sha256": "26acb64316d7dc0cf45bb0c3a0191e0de6e384d94561b8baad6980c689b6c7c9"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/matrix-v2/calibration/toolchain.txt",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/matrix-v2/calibration/toolchain.txt",
+        "bytes": 379,
+        "sha256": "6a62f9f5c76b3f5fc1aea19da3e5b1df2d75b0beea4a44fb01a94ad202e0307c"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 379,
+        "sha256": "6a62f9f5c76b3f5fc1aea19da3e5b1df2d75b0beea4a44fb01a94ad202e0307c"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/matrix-v2/calibration/validation.json",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/matrix-v2/calibration/validation.json",
+        "bytes": 140,
+        "sha256": "073580fade11ec0767a72d90d2133a8fe077211d8ae47388e2b13de91cfdcd8d"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 140,
+        "sha256": "073580fade11ec0767a72d90d2133a8fe077211d8ae47388e2b13de91cfdcd8d"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/matrix-v2/check_spatial_selectivity.executed.py",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/matrix-v2/check_spatial_selectivity.executed.py",
+        "bytes": 25220,
+        "sha256": "2400d4ad9f428fc613448e15ab2cff4b160c029e6044a73a584c9253ba0f3aaa"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 25220,
+        "sha256": "2400d4ad9f428fc613448e15ab2cff4b160c029e6044a73a584c9253ba0f3aaa"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/matrix-v2/compile.h",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/matrix-v2/compile.h",
+        "bytes": 271,
+        "sha256": "6c695f13ae8761132f0eac338ffb0100575d6e0f4a1f713fddeea54ded3e5e4f"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 271,
+        "sha256": "6c695f13ae8761132f0eac338ffb0100575d6e0f4a1f713fddeea54ded3e5e4f"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/matrix-v2/compile.log",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/matrix-v2/compile.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/matrix-v2/guest.c",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/matrix-v2/guest.c",
+        "bytes": 6758,
+        "sha256": "07fb1f6618cb09b5ffd8194e11d1685aacfafe28fdb7d611ac2a737742862762"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 6758,
+        "sha256": "07fb1f6618cb09b5ffd8194e11d1685aacfafe28fdb7d611ac2a737742862762"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/matrix-v2/init",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/matrix-v2/init",
+        "bytes": 50976,
+        "sha256": "a66d016a9a0b9b86556da3875aeb5c999635f14186617ec5bfc14d7992ab52d9"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 50976,
+        "sha256": "a66d016a9a0b9b86556da3875aeb5c999635f14186617ec5bfc14d7992ab52d9"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/matrix-v2/initramfs.cpio.gz",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/matrix-v2/initramfs.cpio.gz",
+        "bytes": 24230,
+        "sha256": "2460a049411bc1c18315f2cf032b01d481811e39720c627e132088cb6605319a"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 24230,
+        "sha256": "2460a049411bc1c18315f2cf032b01d481811e39720c627e132088cb6605319a"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/matrix-v2/inputs-verified.txt",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/matrix-v2/inputs-verified.txt",
+        "bytes": 2412,
+        "sha256": "785c00d9a39f1a05e24ce9ef46a64b791c50e3852e1ad0f47687d7e2167b94dc"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 1350,
+        "sha256": "e9a1c3a48096040ffb48d76ebe6837ec9bb844a476410f4a07864fc1f25f47e3"
+      },
+      "changes": [
+        "Path-only publication redaction; original embedded identities unchanged."
+      ]
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/matrix-v2/inputs.sha256",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/matrix-v2/inputs.sha256",
+        "bytes": 4086,
+        "sha256": "69b60a7edcf876ae72f7292342d44722a21ebd720c44220b4c6dc51741376dd2"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 3024,
+        "sha256": "7e69971e285fefe038a71a81ab8d05f3bc7aee7f10cb5c65b972a0b94b1c9b46"
+      },
+      "changes": [
+        "Path-only publication redaction; original embedded identities unchanged."
+      ]
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/matrix-v2/kernel-release.txt",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/matrix-v2/kernel-release.txt",
+        "bytes": 31,
+        "sha256": "b7d0c5b992bb8d559d339e4b2072e98f3ee712867e7ee1448dd417bbf9b1a3ec"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 31,
+        "sha256": "b7d0c5b992bb8d559d339e4b2072e98f3ee712867e7ee1448dd417bbf9b1a3ec"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/matrix-v2/kernel.config",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/matrix-v2/kernel.config",
+        "bytes": 132906,
+        "sha256": "35c872e866663db2cad8874e311275e2ce16a4c0c3ba95fceac732cb9c910686"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 132906,
+        "sha256": "35c872e866663db2cad8874e311275e2ce16a4c0c3ba95fceac732cb9c910686"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/matrix-v2/linked/cbpf_selectivity_native_access.bin",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/matrix-v2/linked/cbpf_selectivity_native_access.bin",
+        "bytes": 144,
+        "sha256": "b20089acd25480bcda36cba10225db4d6b8ca8a3702b100bd2e0131107f6de1f"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 144,
+        "sha256": "b20089acd25480bcda36cba10225db4d6b8ca8a3702b100bd2e0131107f6de1f"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/matrix-v2/linked/commands.json",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/matrix-v2/linked/commands.json",
+        "bytes": 876,
+        "sha256": "d5148963f65a6b5e296962caf1d9ad90a8193df38cd5a82d742fdb8a1657415a"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 774,
+        "sha256": "d146d8edb27e1c33958495526953f2c9ab2f6a1369f96020d7effad0e9b30c0e"
+      },
+      "changes": [
+        "Path-only publication redaction; original embedded identities unchanged."
+      ]
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/matrix-v2/linked/complete-linked-disassembly.txt",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/matrix-v2/linked/complete-linked-disassembly.txt",
+        "bytes": 2484,
+        "sha256": "1d59994dc13435d2f6041ec21bafc3f747a0b3a3caaf0b209c854b723ae60e43"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 2484,
+        "sha256": "1d59994dc13435d2f6041ec21bafc3f747a0b3a3caaf0b209c854b723ae60e43"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/matrix-v2/linked/linked-ranges.json",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/matrix-v2/linked/linked-ranges.json",
+        "bytes": 850,
+        "sha256": "6dfb0366881498e91fbe4067302e5966fedac7ebb4dde65935be6dfc2655194e"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 850,
+        "sha256": "6dfb0366881498e91fbe4067302e5966fedac7ebb4dde65935be6dfc2655194e"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/matrix-v2/mode.txt",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/matrix-v2/mode.txt",
+        "bytes": 7,
+        "sha256": "06f1d533d73bfb948bce0fb53824691ca82a02e6d68513757b7f1ee9ca07b3e8"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 7,
+        "sha256": "06f1d533d73bfb948bce0fb53824691ca82a02e6d68513757b7f1ee9ca07b3e8"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/matrix-v2/native_receipt_common.py",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/matrix-v2/native_receipt_common.py",
+        "bytes": 1361,
+        "sha256": "60fd3c4912b0ec83e96a6cc8b7a2fa9316cd7486bae2b64feb6a2d735cc77e8c"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 1361,
+        "sha256": "60fd3c4912b0ec83e96a6cc8b7a2fa9316cd7486bae2b64feb6a2d735cc77e8c"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/matrix-v2/package_native_extension.executed.py",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/matrix-v2/package_native_extension.executed.py",
+        "bytes": 17058,
+        "sha256": "53da42ed4c9586985eb4ceae6ed36155b54260275bed9fbc712a13dd9fdf8311"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 17058,
+        "sha256": "53da42ed4c9586985eb4ceae6ed36155b54260275bed9fbc712a13dd9fdf8311"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/matrix-v2/prepare_spatial_selectivity.executed.py",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/matrix-v2/prepare_spatial_selectivity.executed.py",
+        "bytes": 3650,
+        "sha256": "2b812a3b5bbdc128ec42752432877ef27168f34458cac28bf1bb9a818d3c9ffc"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 3650,
+        "sha256": "2b812a3b5bbdc128ec42752432877ef27168f34458cac28bf1bb9a818d3c9ffc"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/matrix-v2/qemu-command.sh",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/matrix-v2/qemu-command.sh",
+        "bytes": 591,
+        "sha256": "156679d97e3d3369c79e7d2c77205fa04bb4d108b19a2bc081d0f51870c2db5d"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 457,
+        "sha256": "67d0102547d31e065ddd3be3e8a85ec6de05eaa28a86b78886fcb3b4307e848a"
+      },
+      "changes": [
+        "Path-only publication redaction; original embedded identities unchanged."
+      ]
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/matrix-v2/qemu-exit.txt",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/matrix-v2/qemu-exit.txt",
+        "bytes": 2,
+        "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 2,
+        "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/matrix-v2/rechecked-results.json",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/matrix-v2/rechecked-results.json",
+        "bytes": 29552,
+        "sha256": "88cd94fa7c12d1fb7c61f5f9b89c867388b7079717524297023393cfbbf4cbeb"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 29552,
+        "sha256": "88cd94fa7c12d1fb7c61f5f9b89c867388b7079717524297023393cfbbf4cbeb"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/matrix-v2/run-script.executed.sh",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/matrix-v2/run-script.executed.sh",
+        "bytes": 8674,
+        "sha256": "4e32b98dfdd941d021d58316ab40afe49430488e06641fb84be0726b6a841671"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 8674,
+        "sha256": "4e32b98dfdd941d021d58316ab40afe49430488e06641fb84be0726b6a841671"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/matrix-v2/selectivity-symbols.txt",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/matrix-v2/selectivity-symbols.txt",
+        "bytes": 769,
+        "sha256": "e29e21817ea2ab6b80371a4bd9e7bd103e89840159a838dc6eb6e1f6a505d7c8"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 769,
+        "sha256": "e29e21817ea2ab6b80371a4bd9e7bd103e89840159a838dc6eb6e1f6a505d7c8"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/matrix-v2/toolchain.txt",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/matrix-v2/toolchain.txt",
+        "bytes": 395,
+        "sha256": "0f68a9839ccf5fedf5b96aa2928960fb2ad361f875a9ddcc44ba56cec118720a"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 379,
+        "sha256": "6a62f9f5c76b3f5fc1aea19da3e5b1df2d75b0beea4a44fb01a94ad202e0307c"
+      },
+      "changes": [
+        "Path-only publication redaction; original embedded identities unchanged."
+      ]
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/matrix-v2/validation.json",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/matrix-v2/validation.json",
+        "bytes": 137,
+        "sha256": "822c5dccac7b60c940190020685841eb5239eb1fcf155310a2be6e238e8dfc77"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 137,
+        "sha256": "822c5dccac7b60c940190020685841eb5239eb1fcf155310a2be6e238e8dfc77"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/ownership-native-trace/revalidation/check_ownership_trace.py",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/ownership-completion/check_ownership_trace.py",
+        "bytes": 16933,
+        "sha256": "a3a27ffb82fdca552e5706967149dcce0cd156133339b121d29dbf59289b0f39"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 16933,
+        "sha256": "a3a27ffb82fdca552e5706967149dcce0cd156133339b121d29dbf59289b0f39"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/ownership-native-trace/revalidation/completion.json",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/ownership-completion/completion.json",
+        "bytes": 2320,
+        "sha256": "1bea9249ba42d6551dc7abeed047a9e10947531be3c4917c7b6ea3aff5df718d"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 2320,
+        "sha256": "1bea9249ba42d6551dc7abeed047a9e10947531be3c4917c7b6ea3aff5df718d"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/ownership-native-trace/revalidation/native_receipt_common.py",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/ownership-completion/native_receipt_common.py",
+        "bytes": 1361,
+        "sha256": "60fd3c4912b0ec83e96a6cc8b7a2fa9316cd7486bae2b64feb6a2d735cc77e8c"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 1361,
+        "sha256": "60fd3c4912b0ec83e96a6cc8b7a2fa9316cd7486bae2b64feb6a2d735cc77e8c"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/ownership-native-trace/revalidation/receipt.json",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/ownership-completion/receipt.json",
+        "bytes": 233,
+        "sha256": "e8bece3a982da8fd55d613ee1670e023f7a89312907eb6d5201d6173626aae2e"
+      },
+      "original_identity_scope": "Preserved Batch 2 source artifact; post-run checker outputs and failure replay are explicitly identified by the batch receipt.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 233,
+        "sha256": "e8bece3a982da8fd55d613ee1670e023f7a89312907eb6d5201d6173626aae2e"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/matrix-v2/results.json",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 29552,
+        "sha256": "3d2fe66c4dc3395a070e9c41b148cabd086be4227c68c325079001b60b9447d9"
+      },
+      "changes": [
+        "New post-run validation over publication bytes; no native execution."
+      ]
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/revalidation/README.md",
+      "availability": "publication_only",
+      "publication": {
+        "bytes": 4790,
+        "sha256": "e3d805a24e79b16848e6cce9e38a9a15be7242ffbf08ad5b875db114cc367c1a"
+      },
+      "changes": [
+        "New editorial index distinguishing original results, stronger revalidation and the admission-extension run."
+      ]
     }
   ]
 }

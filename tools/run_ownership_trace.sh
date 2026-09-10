@@ -1,6 +1,7 @@
 #!/bin/bash
 # Boot one synthetic native ownership trace build; invalid BPF is load-only.
 set -euo pipefail
+export PYTHONDONTWRITEBYTECODE=1
 project=$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)
 [[ $# == 1 ]] || { echo 'Usage: run_ownership_trace.sh BUILD_DIRECTORY' >&2; exit 2; }
 build=$(realpath "$1")
@@ -77,6 +78,7 @@ run=$(mktemp -d "$project/build/ownership-native-trace-run.XXXXXX")
 printf '%s\n' "$build" >"$run/build-directory.txt"
 cp "$project/linux/ownership/native-trace-guest.c" "$run/guest.c"
 cp "$project/tools/check_ownership_trace.py" "$run/check_ownership_trace.executed.py"
+cp "$project/tools/native_receipt_common.py" "$run/native_receipt_common.py"
 cp "$0" "$run/run_ownership_trace.executed.sh"
 cp "$receipt"/{kernel-release.txt,kernel.config,native-trace-symbols.txt,native-trace-linked-disassembly.txt} "$run/"
 echo "CBPF ownership native trace run artifacts: $run"
@@ -118,7 +120,7 @@ emit('dev/console', stat.S_IFCHR | 0o600, major=5, minor=1)
 emit('TRAILER!!!', 0)
 (root/'initramfs.cpio.gz').write_bytes(gzip.compress(archive, mtime=0))
 PY
-sha256sum "$run/guest.c" "$run/check_ownership_trace.executed.py" \
+sha256sum "$run/guest.c" "$run/check_ownership_trace.executed.py" "$run/native_receipt_common.py" \
 	"$run/run_ownership_trace.executed.sh" "$run/native-trace-symbols.txt" \
 	"$run/native-trace-linked-disassembly.txt" "$run/ownership_ids.h" \
 	"$run/btf-selection.txt" "$compiler" "$linker" "$qemu" "$firmware" \
@@ -148,7 +150,7 @@ if ((status)); then
 fi
 python3 "$run/check_ownership_trace.executed.py" --log "$run/boot.log" \
 	--linked-disassembly "$run/native-trace-linked-disassembly.txt" \
-	--output "$run/results.json" --native-directory "$run"
+	--output "$run/results.json" --native-directory "$run" --qemu-exit "$run/qemu-exit.txt"
 printf 'CBPF_OWNERSHIP_TRACE_RUN result=PASS qemu_exit=%s results=%s\n' \
 	"$status" "$run/results.json" >"$run/summary.txt"
 cat "$run/summary.txt"
