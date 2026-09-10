@@ -3,7 +3,7 @@ PYTHON ?= python3
 CFLAGS ?= -O2
 WARNINGS = -std=c11 -Wall -Wextra -Werror -pedantic
 
-.PHONY: all help demo model oracle conformance gate gate-conformance evidence check cheri cheri-gate kfunc-kernel kfunc spatial-check ownership-kernel ownership-run ownership-case docs docs-serve private-docs private-docs-serve presentation
+.PHONY: all help demo model oracle conformance gate gate-conformance evidence check cheri cheri-gate kfunc-kernel kfunc spatial-check spatial-selectivity-kernel spatial-selectivity-calibration spatial-selectivity ownership-kernel ownership-run ownership-case docs docs-serve private-docs private-docs-serve presentation
 
 all: build/cbpf-demo
 
@@ -84,6 +84,20 @@ kfunc: kfunc-kernel
 # Optional object-only compilation against the pinned inherited spatial tree.
 spatial-check:
 	bash tools/check_spatial.sh
+
+# Optional synthetic native spatial matrix; never part of check.
+spatial-selectivity-kernel:
+	bash tools/build_spatial_selectivity.sh
+
+spatial-selectivity-calibration:
+	@test -n "$(CBPF_SPATIAL_SELECTIVITY_BUILD)" || \
+		{ printf '%s\n' 'Set CBPF_SPATIAL_SELECTIVITY_BUILD to a retained build directory' >&2; exit 2; }
+	bash tools/run_spatial_selectivity.sh "$(CBPF_SPATIAL_SELECTIVITY_BUILD)" --calibration
+
+spatial-selectivity:
+	@test -n "$(CBPF_SPATIAL_SELECTIVITY_BUILD)" || \
+		{ printf '%s\n' 'Set CBPF_SPATIAL_SELECTIVITY_BUILD to a retained build directory' >&2; exit 2; }
+	bash tools/run_spatial_selectivity.sh "$(CBPF_SPATIAL_SELECTIVITY_BUILD)"
 
 # Optional bounded protected controls; invalid BPF remains load-only.
 ownership-kernel:

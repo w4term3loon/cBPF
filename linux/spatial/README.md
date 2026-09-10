@@ -78,6 +78,35 @@ logical size from stride. Padding accesses and bounds faults are not executed.
 The earlier eight-byte witness retains its separate receipt. The result
 establishes neither general JIT mediation nor a fresh CVE mitigation result.
 
+## Selective spatial validation profile
+
+The separate, default-off selectivity profile applies
+`selectivity-test.patch` after the unchanged provider and observation overlay.
+It creates two disposable seven-byte values at stride eight and compares the
+production exact-value capability with trusted eight- and sixteen-byte
+controls. Fixed byte and halfword loads and stores cover the last logical byte,
+padding, the neighbouring value, an in-bounds halfword, and a halfword crossing
+the logical boundary. Existing kernel-access exception-table recovery records
+only faults from the active boot fixture; it does not add a new exception type.
+
+Build once, run the two-case recovery calibration, then run the 30-case matrix:
+
+```sh
+make spatial-selectivity-kernel
+export CBPF_SPATIAL_SELECTIVITY_BUILD=/absolute/path/printed/by/the/build
+make spatial-selectivity-calibration
+make spatial-selectivity
+```
+
+The accompanying purecap guest submits five load-only programs to the normal
+verifier: two valid accesses and three explicit out-of-value accesses. It never
+uses `BPF_PROG_TEST_RUN`; an unexpectedly admitted negative is closed without
+execution. The checker requires 22 permitted native operations, eight Morello
+bounds faults, complete fixture preservation on rejected stores, unchanged
+load sentinels, and zero BPF executions. This is synthetic native validation
+through the production provider, not execution of verifier-admitted invalid
+eBPF and not reproduction of an original vulnerable path.
+
 ## Spatial provider reduction prerequisites and reproduction
 
 ```sh
