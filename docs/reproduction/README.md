@@ -188,9 +188,22 @@ identifies the preflight, manual review, execution and postflight stages.
 Fresh reproduction must substitute its own build/run identities and preserve
 its own review record before the execution token.
 
-Spatial native witness does not exercise out-of-bounds behavior or rerun the archived CVE. Its
-broader gateway/RDDC authority and single-program scope remain explicit in
-the result. The spatial and ownership kernels remain separate experiments.
+Spatial native witness itself does not exercise out-of-bounds behavior. The
+later [selective spatial enforcement](../results/spatial-selectivity.md) uses a
+separate default-off trusted native fixture:
+
+```sh
+make spatial-selectivity-kernel
+export CBPF_SPATIAL_SELECTIVITY_BUILD=/absolute/path/printed/by/the/build
+make spatial-selectivity-calibration
+make spatial-selectivity
+```
+
+Calibration must first prove that the narrow recovery site handles the expected
+Morello bounds fault and rejects unrelated faults. The full run checks 30
+exact/stride/both-slot operations and five load-only verifier controls. It
+reruns no archived CVE. The spatial and ownership kernels remain separate
+experiments.
 
 ## Ownership CVE case controls
 
@@ -234,3 +247,24 @@ identity, exact gate effects, immediate dispatch termination on rejection,
 and the existing ownership boundary controls outcomes separately. The [trusted callback witness receipt](../../evidence/current/ownership-callback/README.md)
 records build/run identities and linked callback transport inspection. Its
 manifest verifies retained files without repeating a kernel experiment.
+
+## Synthetic native ownership trace supplement
+
+The default-off [integrated trace](../results/ownership-native-trace.md) builds
+from the pinned Morello base plus the same production platform, integration,
+compiler and runtime sources. It requires the restored ownership source Git
+store and pahole runtime:
+
+```sh
+make ownership-trace-kernel
+export CBPF_OWNERSHIP_TRACE_BUILD=/absolute/path/printed/by/the/build
+make ownership-trace
+```
+
+The builder requires an unchanged verifier and limits its test overlay to
+Kconfig, one header, the restricted compiler and runtime. The runner uses one
+offline CPU, no network or host filesystem, and verifies all source/build
+identities before boot. It checks positive, stale-read and repeated-release
+native fixtures, plus three load-only verifier rejections. The fixtures are
+fixed trusted native descriptions through the production path; they do not
+authorize invalid BPF execution or reproduce the original callback CVE.

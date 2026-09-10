@@ -6,10 +6,11 @@ value and an independently acquired kfunc reference. The
 CVE relationship; the [claim table](../research/claim-evidence.md) identifies each
 argument, implementation premise, observation, and remaining obligation.
 
-The spatial evidence includes archived containment comparisons and one fresh
-benign native witness, followed by a [logical extent discriminator](logical-extent.md)
-with length seven and stride eight. Ownership includes protocol arguments, model checks,
-bounded native controls and ownership CVE case's projected software controls. The principal
+The spatial evidence includes archived containment comparisons, a fresh benign
+native witness and a [selective spatial matrix](spatial-selectivity.md) over
+length-seven, stride-eight values. Ownership includes protocol arguments,
+model checks, bounded native controls and one integrated
+[synthetic native containment trace](ownership-native-trace.md). The principal
 spatial CVE study retains an experimental observation of one archived metadata-read stage.
 The [earlier findings](earlier-findings.md) distinguish additional historical cases and their fidelity.
 The ownership CVE case does not execute the original
@@ -46,9 +47,11 @@ builds and offline runs of both bounded kernel profiles with the clean image.
 | Local reproduction | Fresh frozen-source ownership build/run and spatial object check pass; selected output bytes match ownership boundary controls and spatial provider reduction. | Repeatability on the same host/toolchain; internal validation, not external reproduction. |
 | Initial spatial native witness | One normally verified 14-instruction/392-native-byte control; exact eight-byte capability; key 1 changes 41→42; return/readback 42. | Fresh selected-value construction, handoff and native access correspondence for two inspected accesses. |
 | Logical extent discriminator | Logical size 7, stride 8, exact capability length 7; inspected byte-six increment 41→42 and six unchanged logical bytes. | Construction discrimination and valid native correspondence; no padding access or bounds-fault observation. |
+| Selective spatial matrix | Thirty matched load/store observations: 22 permits and 8 Morello bounds faults across exact-7, stride-8 and both-slot-16 roots. | Selected synthetic native enforcement through the production provider; no verifier-admitted invalid eBPF or original-CVE execution. |
 | Acquisition distinguishability argument | Object attributes and aggregate counts cannot distinguish consumed A from live B; immutable identity also requires associated validity. | A necessary observation criterion for runtime enforcement of the existing acquisition contract. |
 | Ownership CVE case | Conditional repeated-release argument for CVE-2022-50650; two projected model/host controls, four matches. | A named-CVE causal mapping and bounded software checks, with prior ownership boundary controls mechanism evidence; no original callback/CVE execution. |
 | Trusted callback witness | Two kernel C callback controls preserve context and capability identity; repeated release is rejected, while independent B reads 42. | Actual trusted callback transport through the existing production gate; no BPF callback, original-CVE path or hostile-callback isolation. |
+| Synthetic native ownership trace | Positive, stale-read and repeated-release fixtures traverse restricted entry, transport, production gate, epilogue and cleanup; B reads 42 before both negative rejections and refs end at 1. | Integrated production-path mechanism evidence from fixed trusted native fixtures; not normally verified stale eBPF or the original callback path. |
 
 The [conformance report](conformance.md) divides its coverage into 149,205
 model edges after one shortest history per active state, 12,180 forward-branch
@@ -82,6 +85,12 @@ verifier. Its upstream fix corrects that tracking. The spatial case study
 instead measures containment of one resulting out-of-value metadata-read
 stage. [Original disclosure](https://www.openwall.com/lists/oss-security/2021/05/11/11),
 [upstream fix](https://github.com/torvalds/linux/commit/049c4e13714ecbca567b4d5f6d563f05d431c80e).
+
+[CVE-2021-3419](https://raw.githubusercontent.com/CVEProject/cvelistV5/main/cves/2021/3xxx/CVE-2021-3419.json)
+is rejected and records that it was withdrawn by its assigning authority. It
+must not identify this study. The historical workload enabled
+`CONFIG_CAPEBPF_TEST_VULNERABLE_ALU32`; the current reduced/selectivity profile
+explicitly disables that mode and leaves the inherited verifier unchanged.
 
 The [archived provider result](../../evidence/prior/spatial-result.md) records a
 read of coallocated map metadata: outside the selected value but inside its
@@ -125,6 +134,14 @@ release requests. The second request rejects after one decrement and prevents
 a third callback. A separate A/B control reads B=42 after A consumption. This
 adds callback/context transport; it does not execute the vulnerable BPF/helper
 path or establish its full ownership policy.
+
+The [synthetic native ownership trace](ownership-native-trace.md) adds the
+previously separate native links in one bounded execution: A/B acquisition,
+alias spill/reload, A consumption, successful B read, stale gate rejection,
+terminal continuation and cleanup of B. The matching verifier programs remain
+load-only; their argument-shape diagnostics are not treated as ownership-rule
+evidence. This strengthens the production-path mechanism observation without
+turning it into original-CVE or verifier-admitted stale-BPF execution.
 
 ## Historical ownership evidence
 

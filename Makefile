@@ -3,7 +3,7 @@ PYTHON ?= python3
 CFLAGS ?= -O2
 WARNINGS = -std=c11 -Wall -Wextra -Werror -pedantic
 
-.PHONY: all help demo model oracle conformance gate gate-conformance evidence check cheri cheri-gate kfunc-kernel kfunc spatial-check spatial-selectivity-kernel spatial-selectivity-calibration spatial-selectivity ownership-kernel ownership-run ownership-case docs docs-serve private-docs private-docs-serve presentation
+.PHONY: all help demo model oracle conformance gate gate-conformance evidence check cheri cheri-gate kfunc-kernel kfunc spatial-check spatial-selectivity-kernel spatial-selectivity-calibration spatial-selectivity ownership-kernel ownership-run ownership-trace-kernel ownership-trace ownership-case docs docs-serve private-docs private-docs-serve presentation
 
 all: build/cbpf-demo
 
@@ -105,3 +105,12 @@ ownership-kernel:
 
 ownership-run:
 	bash tools/run_ownership.sh
+
+# Optional synthetic native ownership containment trace; never part of check.
+ownership-trace-kernel:
+	bash tools/build_ownership_trace.sh
+
+ownership-trace:
+	@test -n "$(CBPF_OWNERSHIP_TRACE_BUILD)" || \
+		{ printf '%s\n' 'Set CBPF_OWNERSHIP_TRACE_BUILD to a retained build directory' >&2; exit 2; }
+	bash tools/run_ownership_trace.sh "$(CBPF_OWNERSHIP_TRACE_BUILD)"

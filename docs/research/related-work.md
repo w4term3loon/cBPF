@@ -109,8 +109,8 @@ the Linux array-provider/native-access mapping and the bounded kfunc protocol.
 
 | Concrete contribution | Closest established result | Additional design obligation and evidence limit |
 |---|---|---|
-| Selected semantic extent reaches the native access. | CHERI already supports subobject bounds; Linux defines map-value access; AEE already supplies object-level enforcement. | Use stride to locate the value but logical size to grant authority, then preserve that authority to the actual operand. Spatial provider reduction implements the restricted provider; [logical extent discriminator](../results/logical-extent.md) inspects two byte-six accesses through exact length seven with stride eight. Padding faults remain unexecuted; all-program mediation is unproved. |
-| Alias transport preserves an independently consumable right. | Linux tracks owning references; CETS propagates identity and shared invalidation; native lowering and typed helper mediation have prior art. | Preserve acquisition identity/validity through supported reference copies and logical eight-byte spills carried as complete 128-bit capabilities, and clear selected private validity before the provider effect. [protected ownership execution and boundary controls](../../evidence/current/ownership-closure/README.md) support native transport/independent B and separate trusted rejection. This is a restricted ABI and gate protocol, not general temporal safety or a new aliasing primitive. |
+| Selected semantic extent reaches and constrains native access. | CHERI already supports subobject bounds; Linux defines map-value access; AEE already supplies object-level enforcement. | Use stride to locate the value but logical size to grant authority. The [selective matrix](../results/spatial-selectivity.md) observes exact-seven rejection of padding, the next slot and a crossing access against matched stride-eight/both-slot controls. This is selected synthetic-native evidence; all-program mediation is unproved. |
+| Alias transport preserves an independently consumable right through failure. | Linux tracks owning references; CETS propagates identity and shared invalidation; native lowering and typed helper mediation have prior art. | Preserve acquisition identity/validity through complete-capability copies/spills, clear validity before the effect and define terminal cleanup. The [integrated native trace](../results/ownership-native-trace.md) connects independent-B use, stale rejection, skipped continuation and cleanup. This is a restricted trusted fixture, not normally verified stale BPF or general temporal safety. |
 
 The [software comparison](capability-comparison.md) specifies protected shadow
 identities and descriptors that can enforce the same abstract policy under
@@ -136,13 +136,14 @@ and no cell reuse during an invocation constrain this implementation. The
 sidecar is an implementation choice, not a new aliasing mechanism or global
 capability revocation.
 
-[ownership CVE case](../results/ownership-cve-case.md) adds a conditional CVE-derived ownership case;
-it projects the repeated-release effect onto the supported gate, without
-executing the original callback path or equating the gate to the upstream
-callback ownership policy. [trusted callback witness](../../evidence/current/ownership-callback/README.md)
+[ownership CVE case](../results/ownership-cve-case.md) adds a conditional
+CVE-derived ownership case and the integrated trusted-native production-path
+trace. It does not execute the original callback path or equate consume-once
+validity with upstream callback release eligibility. [trusted callback witness](../../evidence/current/ownership-callback/README.md)
 adds actual trusted C callback/context transport, not protected BPF callback
-execution. The spatial comparison remains an archived metadata-read-stage
-result. These examples establish relevance at different evidence levels;
+execution. The spatial CVE comparison remains an archived metadata-read-stage
+result, while the new selective matrix is a current non-CVE runtime control.
+These examples establish relevance at different evidence levels;
 neither CVE label is needed to state the contribution.
 The [causal analysis](../results/causal-review.md) locates the supporting evidence.
 Composition, comparative performance/security, smaller trust and universal
@@ -186,10 +187,11 @@ The evaluated study retains the verifier and isolates two feasibility
 questions; it establishes neither verifier relaxation, general temporal
 safety nor comparative performance. Unequal value size and stride
 distinguish two plausible constructors; A, its alias and independent B
-distinguish copying, acquisition and current validity. Trusted callback
-controls test persistence through dispatch, while source-bound native replay
-tests repeatability. These controls answer different questions and do not
-form a combined runtime or a complete stale protected-BPF execution.
+distinguish copying, acquisition and current validity. The integrated trusted
+native fixture additionally tests rejection, termination and cleanup; trusted
+callbacks test persistence through dispatch. These controls answer different
+questions and do not form a combined runtime or normally verified stale-BPF
+execution.
 
 The reusable method is to identify the semantic grant, retain every distinction
 needed at its effect boundary, and choose a control that separates the intended
@@ -209,12 +211,19 @@ recover that distinction. Exact logical bounds preserve it; a protected
 length descriptor could also do so. This is a counterfactual argument, not an
 executed padding access.
 
-| Design decision | Distinction preserved | Cost or retained obligation |
+| Reusable finding | Knowledge established and discriminating evidence | Insufficient representation |
 |---|---|---|
-| Use stride for location and logical size for exact bounds. | Selected value versus padding or adjacent storage. | Correct provider assignment and live allocation; unsupported or inexact grants reject. |
-| Associate each acquisition identity with protected mutable validity. | Consumed A versus independently live B for the same object. | Private cells and checked resolution; no cell reuse while aliases survive. |
-| Preserve the full capability through native copies and spills. | A capability identity versus its address bits alone. | Full-width transport, alignment and the sixteen-byte native sidecar for one logical eight-byte spill. |
-| Clear selected validity before release and terminate on rejection. | One permitted consume versus repeated effects or continued use. | Correct synchronous ordering, complete mediation and cleanup; no concurrent-reclamation result. |
+| Logical extent differs from storage layout. | Stride locates a value; its interface contract determines authority. Exact-seven rejects padding/adjacent/crossing accesses that selected wider controls permit. | Stride-only bounds cannot exclude padding and therefore erase the required distinction. |
+| An object differs from an acquisition. | A and B designate one object but require independent consume decisions; B reads 42 after A is consumed. | Object-only identity invalidates both rights or permits stale A; aggregate reference counts cannot select the live right. |
+| Preserved identity needs current validity. | Copies/spills retain A's tagged canonical identity after consumption, while protected validity makes its next use reject. | Immutable identity without associated validity cannot distinguish histories in which that same identity is live or consumed. |
+| Rejection needs a defined execution boundary. | Stale rejection skips the remaining native effect and trusted cleanup consumes B exactly once. | Preventing one object effect without terminal continuation and obligation accounting leaves later effects or leaks unresolved. |
+
+Every row depends on trustworthy assignment, protected state where required,
+actual operand/gate use, ordered effects and terminal handling. These are
+observed only for the bounded fixtures named above. A protected software
+descriptor can retain the same distinctions; CHERI supplies integrity and
+architectural use checks for the studied representation, not a claim that the
+policies require CHERI.
 
 ![Authority assignment and enforcement in the two separate cBPF profiles](authority-architecture.svg)
 

@@ -56,17 +56,19 @@ down with exit zero. It had no network, disk or BPF attachment.
 ## Interpretation and evidence limits
 
 The result supports a reusable design decision: **allocation layout locates
-an object; the API's logical extent defines its authority.** The
+an object; the API's logical extent defines its authority.** The later
+[selective spatial matrix](spatial-selectivity.md) executes the corresponding
+padding, adjacent-value and crossing-access discriminators. The
 [design synthesis](../research/related-work.md#source-lineage-and-design-rationale)
-states that decision alongside per-acquisition validity, native transport and
-ordered consumption, with their costs. The
+states that decision alongside object/acquisition distinction, current
+validity and terminal handling, with their costs. The
 [architecture diagram](../research/authority-architecture.svg)
 keeps the two evaluated kernel profiles separate.
 
-This is construction discrimination and valid native correspondence, not an
-observed padding fault. Neither padding nor neighboring values were read back.
+This particular witness is construction discrimination and valid native
+correspondence, not an observed padding fault. The subsequent matrix supplies
+that selected synthetic-native observation under a separate execution identity.
 Construction logs remain source-backed observations, not independent hardware
 attestation. Broader ambient roots, trusted assignment and local review still
-limit the claim. Original-CVE execution, ownership fault injection and
-composition are outside this witness. The complete stale protected-BPF
-sequence through transport, rejection and cleanup remains unobserved.
+limit the claim. Original-CVE execution and composition are outside this
+witness.

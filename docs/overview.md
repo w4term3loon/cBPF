@@ -8,25 +8,47 @@ The study implements these mappings in two separate bounded Linux/Morello profil
 
 A lookup selects one logical value inside a larger allocation. Allocation-wide bounds may also admit another value, padding or metadata. The provider must therefore use storage stride to locate the value and logical size to bound its returned capability. Correct construction is useful only if the native access uses that capability.
 
-The current witness records a seven-byte capability for a seven-byte value in an eight-byte stride. Its inspected native byte-six read/write increments 41 to 42 and preserves the other logical bytes. Length seven distinguishes the intended constructor from an incorrect stride-based grant; successful readback alone would not. No padding access or bounds fault is executed in this witness.
+The current construction witness records a seven-byte capability for a
+seven-byte value in an eight-byte stride. A subsequent
+[selective matrix](results/spatial-selectivity.md) uses that production grant
+and matched trusted eight- and sixteen-byte controls. Across loads and stores,
+the exact grant permits valid accesses and faults on padding, the next value
+and an access that starts inside but crosses the logical boundary. This is a
+fixed trusted native fixture, not execution of invalid eBPF.
 
 The [spatial argument](../theory/spatial.md) gives conditional interval containment. [Logical extent](results/logical-extent.md) records the current discriminator; the [native account](results/spatial-native-result.md) supplies its earlier correspondence context.
 
 ### Spatial CVE evidence
 
-Historical CVE-2021-3490 records contrast a selected metadata read under exact and broader authority. Exact bounds contain that recorded out-of-value effect. This is archived stage-specific evidence, not a current CVE rerun, verifier repair or whole-vulnerability guarantee. See the [causal analysis](results/causal-review.md).
+Historical CVE-2021-3490 records contrast a selected metadata read under exact
+and broader authority. Exact bounds contain that recorded out-of-value effect.
+The current reduced profile excludes the historical ALU32 test mode, so the
+new matrix is a runtime authority discriminator rather than a CVE rerun.
+CVE-2021-3419 is a withdrawn/rejected identifier and is not used for this case.
+See the [causal analysis](results/causal-review.md).
 
 ## 2. Kfunc ownership: which acquisition is still valid?
 
 Acquisitions A and B can refer to one permanently allocated object while creating separate counted rights. Copying or spilling A preserves A's identity; it creates no new right. Consuming A must invalidate its aliases while independently live B remains usable.
 
-Canonical capabilities identify protected per-acquisition cells. A gate checks the cell's validity and clears it before a provider decrement. Valid native controls preserve B after A consumption, including full-capability transport through one spill. Trusted resolver and C callback controls separately reject consumed A. A different verifier-valid native control exercises terminal failure and cleanup. Those observations do not form one complete stale protected-BPF execution.
+Canonical capabilities identify protected per-acquisition cells. A gate checks
+the cell's validity and clears it before a provider decrement. A fixed trusted
+[native containment trace](results/ownership-native-trace.md) preserves B after
+A consumption, then joins a stale read or repeated release to production-gate
+rejection, terminal native return and exactly-once cleanup of B. It is not a
+normally verified stale BPF execution.
 
 The [ownership argument](../theory/ownership.md) proves consume-once accounting under its premises. The [observation criterion](../theory/acquisition-distinguishability.md) explains why object address, liveness and total counts cannot replace acquisition-sensitive validity.
 
 ### Ownership CVE evidence
 
-The [CVE-2022-50650 case](results/ownership-cve-case.md) projects repeated release into the ownership protocol. Trusted C callbacks add actual alias/context transport and stop after rejection. The original vulnerable BPF/helper path is unexecuted. The studied policy permits one valid consume, whereas the upstream repair forbids the caller-reference release in that callback context. General reclamation and the CVE's acquisition-leak arm are outside the result.
+The [CVE-2022-50650 case](results/ownership-cve-case.md) projects repeated release
+into the ownership protocol. The integrated synthetic trace observes the
+projected effect through the production native failure path; trusted C
+callbacks separately add callback/context transport. The original vulnerable
+BPF/helper path is unexecuted. The studied policy permits one valid consume,
+whereas the upstream rule forbids a callback's first release of a caller-owned
+reference and separately requires callback-local acquisitions to be discharged.
 
 ## 3. Why the small examples answer the stated question
 
@@ -38,7 +60,12 @@ A successful out-of-value effect through the correctly assigned exact root, a se
 
 ## 4. Contribution and scope
 
-The implemented and evaluated bindings support a reusable design and evaluation procedure: identify the interface's grant, preserve the information that distinguishes its rights, follow that representation to the native operand or gate, and select a control that separates it from a plausible incorrect mapping. The seven-byte/eight-byte witness distinguishes two constructors; A, its alias and independent B distinguish copying, acquisition and current validity. These controls make the design choices testable within the studied profiles.
+The implemented bindings expose four reusable decisions: storage stride locates
+a value but logical extent defines its authority; an object is not an
+acquisition; preserved identity still needs current validity; and rejection
+needs a terminal execution boundary with cleanup. The matched spatial roots
+and integrated ownership fixtures make those decisions testable within the
+studied profiles.
 
 CHERI bounds, Linux ownership semantics and shared revocation state are established mechanisms. The contribution is their explicit interface mapping, implementation and bounded validation. The [related-work comparison](research/related-work.md#defensible-positioning-and-present-evidence) and [software alternative](research/capability-comparison.md) explain the design contribution.
 

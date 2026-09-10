@@ -3,10 +3,13 @@
 This is a source-level correspondence argument for the existing
 [ownership model](ownership.md#three-invariants-and-induction-argument), not a
 new theorem or a refinement proof of C, the verifier, JIT, or native code.
-The [protected ownership execution receipt](../evidence/current/ownership/README.md) establishes its one
-protected A/B execution. Ownership boundary controls control requirements below are distinct from
-observations; the [ownership boundary controls receipt](../evidence/current/ownership-closure/README.md)
-records their execution status and source identities.
+The [protected ownership execution receipt](../evidence/current/ownership/README.md)
+establishes its one protected A/B execution. Ownership boundary-control
+requirements below are distinct from observations; the
+[ownership boundary controls receipt](../evidence/current/ownership-closure/README.md)
+records their execution status and source identities. The later
+[synthetic native trace](../docs/results/ownership-native-trace.md) observes the
+stale-failure conjunction through the same production mechanisms.
 
 ## State correspondence
 
@@ -90,6 +93,28 @@ Exact-bound construction and capacity failures are inspected pre-effect paths,
 not injected runtime coverage. These controls neither transfer the model proof
 to machine code nor establish arbitrary verifier/JIT-failure tolerance,
 whole-kernel isolation, or composition with the separate spatial study.
+
+## Synthetic native trace: integrated failure and cleanup
+
+The default-off test overlay supplies fixed trusted instruction descriptions
+to the actual restricted compiler. It does not modify verifier policy,
+production gate decisions or provider effects. All three fixtures use the
+production restricted entry, capability spill/reload, sealed gateway, common
+epilogue and `cbpf_test_invoke` cleanup wrapper.
+
+The positive fixture consumes A, reads B=42 and consumes B. Each negative
+fixture executes that prefix through the read of B, then presents the retained
+A alias at PC 17 for a stale read or repeated release. At rejection the public
+alias is tagged and canonical, its private object tag is zero, and no requested
+effect occurs. Terminal return skips PC 19; cleanup consumes B once. In model
+terms, both negatives finish with `n=2`, `E=1`, `D=1`, `reads=1`, `rc=1` and an
+empty live set. This is one observed realization of the transition sequence,
+not a refinement proof.
+
+Three matching BPF programs remain load-only normal-verifier controls. Their
+argument-shape rejections establish admission behavior only and authorize no
+execution. The native fixtures are therefore synthetic trusted validation,
+not stale verifier-admitted BPF, callback execution or runtime-state injection.
 
 ## Trusted callback witness: persistence across trusted callbacks
 

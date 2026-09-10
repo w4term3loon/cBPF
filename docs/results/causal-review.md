@@ -5,36 +5,39 @@ premises, **inspection** for checks of source and native instructions, and
 **record** for retained telemetry. These evidence classes do not establish a
 general native refinement proof.
 
-Source/hash comparisons describe the inspection recorded on 7 September 2026.
-Public copies redact personal paths; their checksums are distinct from the
-original experimental identities listed here.
+Earlier source/hash comparisons describe the inspection recorded on 7
+September 2026; the selective and integrated native controls ran on 10
+September 2026. Public copies redact personal paths; their checksums are
+distinct from the original experimental identities listed here.
 
 ## The two CVE mappings side by side
 
 The mapping separates original defects, represented events and intercepted
-effects. Trusted callback observations supplement the earlier evidence while
-retaining their distinct source identities and execution scope.
+effects. Current synthetic native controls supplement the earlier evidence
+while retaining their distinct source identities and execution scope.
 
 | Causal question | CVE-2021-3490: selected-value spatial authority | CVE-2022-50650: per-acquisition ownership |
 |---|---|---|
 | Original failure | The verifier did not correctly update ALU32 bounds for bitwise operations, enabling out-of-bounds kernel accesses. This was a verifier defect, not an array-allocation defect. [Original disclosure](https://www.openwall.com/lists/oss-security/2021/05/11/11). | The verifier accounted for one synchronous callback execution while a helper could repeat it. Caller-owned aliases could therefore cause repeated releases; repeated acquisitions also caused leaks. [Linux announcement](https://lists.openwall.net/linux-cve-announce/2025/12/09/30). |
-| Represented events | In the historical stage: lookup selects a value, the returned authority reaches an eight-byte metadata read outside that value but inside its allocation, and a later sink records the result if the read succeeds. | ownership CVE case: acquire A, retain/reload its alias, consume A, request another consume through the same identity. Trusted callback witness: retain that identity and one invocation/context across actual trusted C callbacks making the two requests. |
-| Intercepted effect | Exact authority produces the recorded bounds fault at BPF 45/native word 122 before the metadata read completes; the sink remains unchanged. Broad and allocation-wide returns allow metadata to reach the sink. | The first valid consume clears private liveness before one decrement. The repeated request fails its liveness check before another decrement; rejection terminates the invocation/dispatch. |
-| Evidence class | **Historical observation:** exact/broad/wide stage contrasts and a valid exact control. **Initial native inspection/observation:** spatial native witness connects a correct eight-byte grant to a valid read/add/store returning and reading back 42; it supplies no new rejection or CVE run. | **Conditional argument:** consume-once invariant under identity, state, mediation and lifetime premises. **Host observation:** two ownership CVE case projections, four model/C matches. **Kernel inspection/observation:** trusted callback witness's trusted callback transport and production-gate checks; not BPF callback execution. |
-| Omitted boundaries and policy differences | No repair of ALU32 analysis, containment of every CVE stage, arbitrary-program mediation, lifetime safety or transfer of the historical outcome to current spatial native witness. Historical and current sources/configurations remain distinct. | No original BPF/helper path, hostile-callback isolation, complete callback-frame policy, leak-arm result or heap reclamation. Upstream forbids the **first** callback release of a caller-owned reference; cBPF permits one valid consume and blocks repetition. [Upstream repair](https://github.com/torvalds/linux/commit/9d9d00ac29d0ef7ce426964de46fa6b380357d0a). |
+| Represented events | Historical stage: lookup selects a value and an eight-byte metadata read leaves that value while remaining inside its allocation. Current matrix: selected accesses target the last byte, padding, the next value and a halfword crossing into padding. | Acquire A and B, retain/reload A, consume A, successfully read B, then request a stale read or repeated release through A. Trusted callbacks separately preserve A across actual C callback entries. |
+| Intercepted effect | Historical exact authority faults before the metadata transfer; broader roots permit it. Current exact-seven authority faults on padding, the adjacent value and the crossing access, while matched wider roots selectively permit them. | The first valid consume clears A before one decrement. At the repeated request A remains tagged/canonical but privately invalid; rejection prevents the requested effect, stops the native continuation and cleanup consumes B exactly once. |
+| Evidence class | **Historical observation:** exact/broad/wide CVE-stage contrasts. **Current synthetic native observation:** 30 matched operations through the production provider, with 22 permits and eight bounds faults. The normal verifier executes none of the five admission controls. | **Conditional argument:** consume-once invariant. **Current synthetic native observation:** positive, stale-read and repeated-release fixtures through production entry/gate/epilogue/cleanup. **Trusted callback observation:** callback transport through the same gate. None is original BPF callback execution. |
+| Omitted boundaries and policy differences | No repair of ALU32 analysis, original vulnerable-path rerun, containment of every CVE stage, arbitrary-program mediation or lifetime safety. The historical ALU32 mode is absent from the current profile. | No original BPF/helper path, hostile-callback isolation, callback-frame release policy, leak-arm result or heap reclamation. Upstream forbids the **first** callback release of a caller-owned reference and checks callback-local obligations; cBPF permits one valid consume and blocks repetition. [Upstream repair](https://github.com/torvalds/linux/commit/9d9d00ac29d0ef7ce426964de46fa6b380357d0a). |
 
 **Spatial conclusion:** the archived comparison supports containment of one
-CVE-linked metadata-read stage under its retained conditions. Spatial native witness separately
-establishes current valid-use correspondence. **Ownership conclusion:** ownership CVE case
-establishes conditional repeated-release-effect containment, and trusted callback witness observes
-the necessary identity persistence and rejection across trusted C callbacks.
+CVE-linked metadata-read stage under its retained conditions; the current
+selective matrix separately establishes selected native permit/reject behavior.
+**Ownership conclusion:** ownership CVE case establishes conditional
+repeated-release-effect containment, and the synthetic native fixture observes
+the projected gate-to-cleanup path. Trusted callbacks separately observe
+identity persistence across callback transport.
 Neither conclusion establishes that cBPF fixed both original CVEs in their
 original kernel execution paths.
 
 ## Selected-value spatial authority
 
-The conditional argument and historical contrasts are separate from spatial native witness's
-current source/native correspondence for one valid program.
+The conditional argument and historical contrasts are separate from the
+current valid program and selective synthetic-native matrix.
 
 ### Spatial native witness source to effect
 
@@ -44,10 +47,11 @@ Line references identify the reduced spatial patch and retained spatial native w
 |---|---|---|
 | Selected map and key → intended live value | **Inspection:** the reduced lookup checks the map-table token and key capability, then calls `cbpf_array_value_cap`. The provider checks plain ARRAY, expected operations, zero flags, no value record, retained-root shape and index range. See [patch](../../linux/spatial/array-authority.patch), lines 61–72 and 190–225. | The trusted provider/map association, intact metadata, layout, non-wrapping arithmetic and live allocation give these checks their semantic meaning. They do not authenticate an arbitrary substituted provider. |
 | Allocation → retained root | **Inspection:** `cbpf_map_area_alloc` derives exact allocation bounds from executive DDC, reduces permissions, checks the result and saves the full capability in array auxiliary state. Patch lines 262–275 and 326–354. | This is checked retention of a trusted initial assignment, not allocator-minted provenance. Writable auxiliary state remains trusted. |
-| Retained root → exact selected value | **Inspection:** cursor derivation uses element stride, but bounds use logical `value_size`; tag, sealing, base, cursor, length and exactly `LOAD \| STORE \| GLOBAL` are checked before return. Patch lines 217–227. Linked provider has `SCVALUE` at `0xffff8000801c1f58` and `SCBNDSE` at `...1f5c`, followed by checks, full-capability preservation across logging and return. [Linked code](../../evidence/current/spatial-native/review/linked-disassembly.txt), lines 413–507. | Exact construction may reject representability/profile failures. This inspection covers the equal-size/stride witness. The later [logical extent discriminator](logical-extent.md) observes length seven and stride eight; no padding fault is executed. |
+| Retained root → exact selected value | **Inspection:** cursor derivation uses element stride, but bounds use logical `value_size`; tag, sealing, base, cursor, length and exactly `LOAD \| STORE \| GLOBAL` are checked before return. Patch lines 217–227. Linked provider has `SCVALUE` at `0xffff8000801c1f58` and `SCBNDSE` at `...1f5c`, followed by checks, full-capability preservation across logging and return. [Linked code](../../evidence/current/spatial-native/review/linked-disassembly.txt), lines 413–507. | Exact construction may reject representability/profile failures. The [logical extent discriminator](logical-extent.md) observes length seven and stride eight; the [selective matrix](spatial-selectivity.md) subsequently executes padding and adjacent-value controls. |
 | Provider return → actual memory operand | **Inspection:** operation zero dispatches lookup and preserves returned `c0`; native word 72 copies the full capability into `c7`. Words 75 and 77 perform eight-byte load/store through unchanged `c7`. The complete 98-word image has no other selected-value write or alternate root for these accesses. [Native disassembly](../../evidence/current/spatial-native/review/jit-disassembly.txt), lines 65–82; linked gateway/lookup, lines 6–112. | This is the particular image retrieved from the held program FD. Image integrity, source/launch binding, compiler/architecture and synchronous invocation remain trusted. |
 | Exact root → bounded effect | **Conditional argument:** CHERI monotonicity and access checks imply that a successful access through this root lies inside the selected interval. [Spatial lemma](../../theory/spatial.md), premises 1–4. | Applying the conclusion to every admitted program requires premise 5: complete mediation. Exactness of one returned capability does not establish it. |
 | Inspected program → observed valid effect | **Record:** one normal-verifier `TEST_RUN`; selected key 1 changes 41→42; scalar return and ordinary readback equal 42. Provider records eight-byte exact authority with tag 1, sealing 0 and permissions `0x30001`. [Boot log](../../evidence/current/spatial-native/run/boot.log), lines 550–562. | Valid-use and correspondence evidence, not an observed out-of-bounds rejection. Provider logging is source-backed telemetry, not independent hardware attestation. |
+| Selected roots → discriminating effects | **Current observation:** [selective spatial enforcement](spatial-selectivity.md) applies the same byte/halfword instructions to exact-seven, stride-eight and both-slot-sixteen roots. Exact bounds reject padding, the next slot and a crossing access while valid controls complete. | Fixed trusted native fixture through the production provider. The two wider roots are harness-only comparators. No negative BPF program executes, and the matrix is not a CVE rerun. |
 
 For exact source correspondence, the inspected spatial native witness tree is
 `build/spatial-s5-build.Z4e3mc/source/`. Its `arch/arm64/net/bpf_jit_comp.c`
@@ -93,10 +97,24 @@ bounds fault from mere lack of a completion message.
 The original manifest binds the same canonical stage and target access across
 these modes, but records different native image hashes: they are matched
 experimental conditions, not byte-identical kernels/images. Historical
-configuration explicitly enabled the ALU32 test mode. Current spatial native witness disables it
-and leaves the inherited verifier unchanged. Historical permissions were
-`0x34dfd`; current reduced permissions are `0x30001`. Spatial native witness therefore does not
-repeat or automatically inherit the archived CVE observation.
+configuration explicitly enabled `CONFIG_CAPEBPF_TEST_VULNERABLE_ALU32`.
+Current spatial native and selectivity profiles disable it and leave the
+inherited verifier unchanged. Historical permissions were `0x34dfd`; current
+reduced permissions are `0x30001`. Current controls therefore do not repeat or
+automatically inherit the archived CVE observation.
+
+[CVE-2021-3419](https://raw.githubusercontent.com/CVEProject/cvelistV5/main/cves/2021/3xxx/CVE-2021-3419.json)
+is not an alternative identifier: the primary CVE record is `REJECTED` and
+says the assigning authority withdrew it. This study uses CVE-2021-3490 for
+the ALU32 bounds-tracking defect.
+
+### Current reproducibility boundary
+
+| Stage | Configuration and observation | Supported conclusion |
+|---|---|---|
+| Historical CVE-linked workload | Vulnerable ALU32 test mode enabled; retained exact/broad/wide metadata-read records | Archived containment of that recorded stage under its original conditions |
+| Current verifier admission | Inherited verifier unchanged; two valid accesses admitted, three explicit forbidden accesses rejected; zero executions | Current admission behavior only; rejection diagnostics are not runtime bounds evidence |
+| Current synthetic runtime controls | Historical ALU32 mode disabled; production exact provider plus separately constructed trusted stride/both-slot comparators; 30 matched load/store observations pass | Selective value-versus-storage enforcement for the chosen accesses, not reproduction of the original vulnerable path |
 
 The adjacent-value [matrix](../../evidence/prior/spatial/adjacent-v6/memory-operation-robustness-matrix-result-v1.json)
 adds exact/broad contrasts for an eight-byte store and four-byte load, with
@@ -126,7 +144,7 @@ to those receipts, not independent reproduction or verification of omitted
 historical binaries.
 
 **Spatial evidence boundary.** Conditional containment, archived stage
-contrasts and the native witness retain distinct evidence levels. Complete
+contrasts and the current synthetic matrix retain distinct evidence levels. Complete
 native mediation, whole-CVE mitigation, temporal safety and composition remain
 unestablished.
 
@@ -139,9 +157,9 @@ Both are conditional arguments, independent of comparison counts.
 
 ### Ownership boundary controls source to effect
 
-Line references below identify the retained ownership boundary controls runtime. Trusted callback witness's later init-only
-callback controls have a [separate build/run receipt](../../evidence/current/ownership-callback/README.md);
-the production gate is unchanged.
+Line references below identify the retained ownership boundary controls
+runtime. Trusted callbacks and the later default-off synthetic native fixture
+reuse the production gate without changing its decisions or provider effects.
 
 | Link | Support inspected | Necessary boundary |
 |---|---|---|
@@ -149,7 +167,7 @@ the production gate is unchanged.
 | Identity → retained alias | **Inspection:** [compiler](../../linux/ownership/cbpf_jit.c) admits only defined register copies and the fixed spill/reload forms, lines 123–145. [ownership boundary controls native image](../../evidence/current/ownership-closure/audit/native-disassembly-ab_spill.txt) has full-capability store/load at offsets `0x10c`/`0x13c`. **Record:** the accepted A/B program releases A through this transport and subsequently reads B. | Supported transport only. The trusted stale-spill control uses a different C stack location; it is not an execution of stale authority through the restricted sidecar. |
 | Supplied alias → checked private validity | **Inspection:** runtime lines 131–150 compare the complete capability against the canonical views, then check the selected cell's private object tag before the read or consume. [Linked resolver](../../evidence/current/ownership-closure/audit/runtime-linked-range.txt), lines 113–174, orders `CHKEQ`, private-capability load/tag check, then field load or consume call. | Every covered effect must reach this resolver. The public view is never used to dereference the cell. Checks do not prove that arbitrary native instructions cannot reach some other effect path. |
 | Valid release → one ordered provider effect | **Inspection:** runtime lines 75–88 clear and store the private capability tag before the reference decrement. Linked lines 422–454 and 502–505 preserve that order for the two decrement alternatives. **Record:** ownership boundary controls logs private tag zero at `clear` while the old count remains, then one decrement at `release`. | Synchronous, non-reentrant execution. The intermediate `clear` trace is not a completed model transition. The decrement targets the trusted fixed provider object; this is not arbitrary-object deallocation through a bounded capability or a concurrent linearizability result. |
-| Rejected operation → terminal invocation and cleanup | **Inspection:** runtime lines 333–363 route the failure sentinel to the fixed executive epilogue, and lines 279–294 clean remaining live cells and tear down the arena. [ownership boundary controls native review](../../evidence/current/ownership-closure/audit/native-review.json) binds the epilogue and linked wrapper ordering. **Record:** `fail_second` rejects before a second acquire effect and cleans A once. | The actual failure is scalar argument 2. Construction/capacity failures and nonzero cleanup after ordinary return retain their source/model basis. No restricted operation follows failure; cleanup is trusted teardown. |
+| Rejected operation → terminal invocation and cleanup | **Inspection:** runtime lines 333–363 route the failure sentinel to the fixed executive epilogue, and lines 279–294 clean remaining live cells and tear down the arena. [ownership boundary controls native review](../../evidence/current/ownership-closure/audit/native-review.json) binds the epilogue and linked wrapper ordering. **Current observation:** the [synthetic native trace](ownership-native-trace.md) joins stale rejection at PC 17 to skipped PC 19 and exactly one cleanup release of B. | Fixed trusted native fixture, not normally verified stale BPF. Construction/capacity failures and nonzero cleanup after ordinary return retain their source/model basis; cleanup is trusted teardown. |
 
 Untagged RDDC, a 16-byte sidecar, fixed gates, restricted instructions,
 scalar-only return and attachment exclusions support this profile's mediation
@@ -166,6 +184,7 @@ Compiler, gateway, kernel, exception preservation and architecture remain truste
 | Native `fail_second` | Same log, lines 1974–1981: acquire A → reject PC6 → clear A → cleanup A → failed; scalar result zero and final references one. Linked gateway and epilogue inspection corroborate skipped continuation. | A real admitted native failure reaches terminal cleanup. It is a separate execution from the trusted stale checks. |
 | Ownership CVE case retained-alias projection | [Results](../../evidence/current/ownership-cve/results.json): acquire, spill, reload, release, reload, rejected release; one explicit release, no cleanup and no read. The separate A/B control reads 42 and releases twice. | Two projected controls agree with both host C paths. They do not execute callbacks or native BPF. |
 | Trusted callback transport | [trusted callback witness boot](../../evidence/current/ownership-callback/run/boot.log), lines 245–266: the repeated A alias remains tagged/canonical across two callbacks; private liveness changes from one to zero, with one decrement and no third callback. Separate A/B callbacks read B=42 and finish with refs=1. | Actual function-pointer dispatch and persistent context/state support callback transport through the production gate. [Linked inspection](../../evidence/current/ownership-callback/review/linked-review.json) checks full-capability loads, call targets and failure edges. These are trusted executive C callbacks, not protected BPF callbacks or the original helper. |
+| Integrated synthetic native trace | [Three fixed fixtures](ownership-native-trace.md) use the real restricted emitter, full-capability spill/reload, sealed gateway calls, production gate, common epilogue and wrapper cleanup. Both negative cases read B=42, observe tagged/canonical but privately invalid A at PC 17, reject before the stale effect, skip PC 19 and clean B once. | This closes the production-mechanism conjunction only for trusted native fixtures marked `verified_bpf=0`. Three matching BPF negatives are verifier-only argument-shape rejections and never execute. |
 
 The ownership CVE case driver, [lines 43–67](../../theory/check_ownership_cve.py), retains one model
 state per case, checks terminal/count outcomes and compares complete observations
@@ -175,10 +194,12 @@ The conditional ownership CVE case invariant allows at most one effect for any f
 number of repeated requests: the first repetition rejects and terminates.
 The [source audit](../../evidence/current/ownership-cve/source-audit.json) records
 the upstream callback repair in the current base. As the opening mapping
-states, that repair forbids the first caller-reference consume; cBPF allows
-one. Trusted callback witness adds trusted C transport, leaving original-path mitigation, callback
-policy equivalence, the leak arm and reclamation unestablished. Independent
-B tests precision; it is not required by this CVE.
+states, that repair forbids the first caller-reference consume and separately
+checks callback-local ownership; cBPF allows one consume. The integrated native
+trace supplies production-path failure and cleanup, while trusted callbacks
+supply C callback transport. Original-path mitigation, callback-policy
+equivalence, the leak arm and reclamation remain unestablished. Independent B
+tests precision; it is not required by this CVE.
 
 ### Ownership artifact identities
 
@@ -199,9 +220,9 @@ of the acquisition protocol; they do not prove defect absence.
 
 | Claim | Evidence boundary |
 |---|---|
-| Exact selected authority contains covered accesses. | Supported conditionally; current native correspondence is limited to spatial native witness's inspected program. |
-| Consuming A rejects its later mediated effects while independent B remains live. | Supported by the abstract argument and complementary bounded controls; B is evaluated before any terminal failure. |
-| The two contributions are relevant to documented CVEs. | Supported, with archived spatial-stage evidence and a projected ownership case distinguished. |
+| Exact selected authority contains covered accesses. | Supported conditionally and by the selected synthetic matrix; complete mediation remains unproved. |
+| Consuming A rejects its later mediated effects while independent B remains live. | Supported by the abstract argument and integrated bounded native controls; B is evaluated before terminal rejection. |
+| The two contributions are relevant to documented CVEs. | Supported with archived spatial-stage evidence and a projected ownership effect; neither original vulnerable path is rerun. |
 | cBPF repaired both original CVEs, proves all-program mediation or combines both mechanisms safely. | Not established by the evaluated evidence. |
 
 The [contribution boundary](../research/related-work.md#defensible-positioning-and-present-evidence) relates these

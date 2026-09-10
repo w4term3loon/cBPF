@@ -24,7 +24,8 @@ therefore a source-inspected requirement, not a current observed result.
 The subsequent [logical extent discriminator](logical-extent.md) passed with
 size seven and stride eight, reusing the clean-replay kernel. It supplies
 construction discrimination and valid byte-six use, with separate receipts.
-Neither experiment claims an observed padding fault.
+A later [selective matrix](spatial-selectivity.md) separately executes padding,
+adjacent-value and crossing-access controls through the production provider.
 
 ## Claim and observed result
 

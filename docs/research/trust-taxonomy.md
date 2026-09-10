@@ -103,8 +103,10 @@ image integrity and correct architecture. **Inspected:** provider checks,
 linked return transport and spatial native witness's two actual addressing operands. These are
 separately examined obligations, not inferred from return value 42.
 **Observed:** the [logical extent discriminator](../results/logical-extent.md) records
-length seven with stride eight and byte six changing 41→42, preserving the
-other six logical bytes. The earlier eight-byte witness remains separately recorded.
+length seven with stride eight and valid byte-six use. The later
+[selective matrix](../results/spatial-selectivity.md) records 30 matched
+load/store outcomes: exact-seven rejects padding, the next slot and a crossing
+access while wider controls selectively permit them. The earlier eight-byte witness remains separately recorded.
 Its vmalloc-wide RDDC and broader gateway authority prevent treating that
 witness as general bypass exclusion. [spatial native witness](../results/spatial-native-result.md) did not attempt an
 out-of-bounds access. The [historical comparisons](../results/causal-review.md#what-the-historical-comparisons-establish)
@@ -142,8 +144,9 @@ transition system**, for arbitrary finite acquisition/register/spill bounds,
 under its protected-state, complete-mediation and invocation premises.
 Atomic model transitions do not prove compiled ordering or native mediation.
 The kernel correspondence instead inspects the bounded grammar, transport,
-gate and cleanup; protected ownership execution and boundary controls record selected executions, with stale-alias checks
-in trusted resolver C rather than invalid native BPF. Trusted callback witness records two trusted
+gate and cleanup. The [synthetic native trace](../results/ownership-native-trace.md)
+now joins stale rejection to terminal return and cleanup in fixed trusted
+fixtures; it is not invalid native BPF. Trusted callback witness records two trusted
 callback controls within persistent invocations. It supports those transports
 and effects, not every callback trace or protection from executive C that
 can modify private state. [Claim/evidence scopes](claim-evidence.md#result-quantifiers)
@@ -153,8 +156,8 @@ keep these distinct from the model's universal statement.
 
 | Case | Defect and location | Supported cBPF conclusion |
 |---|---|---|
-| **CVE-2021-3490** | Incorrect ALU32 bounds tracking: an approximation problem can lead to a wrong admission decision. [Original disclosure](https://www.openwall.com/lists/oss-security/2021/05/11/11). | Archived exact/broad comparisons show containment of one metadata-read stage. This does not repair the verifier analysis; spatial native witness separately demonstrates current valid native use. |
-| **CVE-2022-50650** | Synchronous callback reference-state management and release eligibility. The upstream repair forbids a callback's first release of a caller-owned reference. [Linux announcement](https://lists.openwall.net/linux-cve-announce/2025/12/09/30). | ownership CVE case's retained model/host projection enforces at most one consumption through an acquisition; ownership boundary controls separately supply trusted resolver and valid native controls. Those records do not establish original callback-path mitigation or equivalence to the upstream policy. |
+| **CVE-2021-3490** | Incorrect ALU32 bounds tracking: an approximation problem can lead to a wrong admission decision. [Original disclosure](https://www.openwall.com/lists/oss-security/2021/05/11/11). [CVE-2021-3419 is rejected/withdrawn](https://raw.githubusercontent.com/CVEProject/cvelistV5/main/cves/2021/3xxx/CVE-2021-3419.json) and is not this case. | Archived exact/broad comparisons show containment of one metadata-read stage. The current selective matrix runs with the historical ALU32 mode disabled, so it is runtime authority evidence rather than a CVE rerun. |
+| **CVE-2022-50650** | Synchronous callback reference-state management and release eligibility. The upstream repair forbids a callback's first release of a caller-owned reference and checks callback-local acquisitions. [Linux announcement](https://lists.openwall.net/linux-cve-announce/2025/12/09/30). | cBPF conditionally enforces at most one consume and observes the projected repeated-release failure through its synthetic production path. It implements neither upstream eligibility nor callback-local leak policy, and does not execute the original path. |
 
 The separate [trusted callback witness receipt](../../evidence/current/ownership-callback/README.md)
 observes identity persistence across trusted C callbacks: repeated release

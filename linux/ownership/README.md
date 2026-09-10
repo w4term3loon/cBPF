@@ -20,9 +20,11 @@ the capability representation; trusted software still maintains liveness.
 The target is runtime enforcement of the existing
 [Linux 6.7 kfunc ownership contract](https://docs.kernel.org/6.7/bpf/kfuncs.html#kf-release-flag).
 The evidence contains a conditional protocol proof and bounded kernel
-controls. [ownership CVE case](../../docs/results/ownership-cve-case.md) adds a conditional case for
-CVE-2022-50650's repeated-release effect, with two projected model/host
-controls. **The original callback/CVE path remains unexecuted.** The object remains allocated
+controls. [ownership CVE case](../../docs/results/ownership-cve-case.md) adds a
+conditional case for CVE-2022-50650's repeated-release effect. The later
+[synthetic native containment trace](../../docs/results/ownership-native-trace.md)
+joins stale gate rejection, native termination and cleanup through the
+production mechanisms. **The original callback/CVE path remains unexecuted.** The object remains allocated
 with a permanent baseline reference; the studied property is acquisition
 use-after-release protection, not heap use-after-free prevention.
 
@@ -40,6 +42,14 @@ adds an alternate native A/B arrangement, NULL and terminal-failure paths,
 three trusted production-resolver checks, and three unexecuted verifier
 rejections. [The kernel/model mapping](../../theory/kernel-ownership.md)
 states their precise coverage and remaining premises.
+
+**The synthetic native ownership trace passed on 10 September 2026:** one
+positive and two negative fixed trusted fixtures use the actual restricted
+emitter, entry, gateway, production gate, epilogue and cleanup wrapper. Both
+negative fixtures read B=42 before presenting consumed A, reject at PC 17,
+skip the later program effect and clean B once. Each ends with two acquisitions,
+two total releases, one cleanup release and baseline references equal to one.
+The fixtures are explicitly not normally verified eBPF.
 
 ## Boundary and representation
 
@@ -130,6 +140,13 @@ and their source/build/run identities are reported in the
 callback transport and state persistence in trusted C, not protected BPF
 callback support or mitigation of the original CVE path.
 
+`native-trace.patch` is a separate default-off test overlay. It adds fixed
+trusted instruction descriptions and observations but leaves production
+provider decisions/effects unchanged. It does not relax the verifier, patch an
+accepted native image or add protected callback support. Three corresponding
+load-only BPF controls are rejected by the normal verifier and never executed;
+their argument-shape diagnostics are admission observations only.
+
 The existing 186-line guest loader still contains four verifier-accepted
 execution controls and three load-only rejections. Trusted callback witness reuses this loader
 while checking its two boot-time callback controls separately. Build and
@@ -138,6 +155,10 @@ evidence support remain separate from the enforcement mechanism.
 ```sh
 make ownership-kernel
 make ownership-run
+
+make ownership-trace-kernel
+export CBPF_OWNERSHIP_TRACE_BUILD=/absolute/path/printed/by/the/build
+make ownership-trace
 ```
 
 These optional targets use cached dependencies and an offline build container.
@@ -152,9 +173,10 @@ The runner prepares a fresh initramfs with one benign loader, then uses one
 virtual CPU, no network or host filesystem, and a 60-second timeout. It binds
 the BTF IDs to the matching kernel and retains bytecode, verifier output,
 native bytes, ordered gate events, input hashes, and clean-poweroff status.
-Current targets use `build/ownership-callback-*`; earlier outputs retain their recorded identities.
-The portable `make check` remains separate. No CVE fixture or invalid ownership
-program is executed by protected ownership execution or ownership boundary controls.
+The production targets use `build/ownership-callback-*`; the trace target uses
+fresh `build/ownership-native-trace-*` directories. Earlier outputs retain
+their recorded identities. The portable `make check` remains separate. No CVE
+fixture or invalid ownership BPF program is executed by any of these controls.
 
 The ownership boundary controls' consumed-copy/spill and duplicate-release checks are init-only trusted
 kernel C calls to the production resolver; they do not execute invalid BPF.

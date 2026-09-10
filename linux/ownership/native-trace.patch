@@ -1,0 +1,356 @@
+diff --git a/kernel/bpf/Kconfig b/kernel/bpf/Kconfig
+--- a/kernel/bpf/Kconfig
++++ b/kernel/bpf/Kconfig
+@@ -34,6 +34,17 @@ config CBPF_KFUNC_GATE
+ 	  within one synchronous BPF_PROG_TEST_RUN invocation. Unsupported
+ 	  programs fail admission; the ordinary kfunc bodies have no effects.
+ 
++config CBPF_OWNERSHIP_NATIVE_TRACE_TEST
++	bool "CBPF synthetic native ownership containment trace"
++	depends on CBPF_KFUNC_GATE
++	default n
++	help
++	  Build and run three fixed init-only trusted native fixtures through
++	  the CBPF restricted entry, gateway, epilogue and cleanup wrapper.
++	  The fixtures exercise a positive A/B sequence, a stale read and a
++	  repeated release. They do not admit or execute verifier-rejected eBPF;
++	  this option exists only for synthetic native validation.
++
+ config BPF_SYSCALL
+ 	bool "Enable bpf() system call"
+ 	select BPF
+diff --git a/include/linux/cbpf.h b/include/linux/cbpf.h
+--- a/include/linux/cbpf.h
++++ b/include/linux/cbpf.h
+@@ -22,6 +22,16 @@
+ int cbpf_enter(void *stack_base, u32 stack_size, void *ret_addr,
+ 	       u32 executive_return_size, u64 outer_return_addr, u64 prog_cookie);
+ extern char cbpf_gateway[];
++#ifdef CONFIG_CBPF_OWNERSHIP_NATIVE_TRACE_TEST
++enum cbpf_ownership_trace_case {
++	CBPF_TRACE_POSITIVE,
++	CBPF_TRACE_STALE_READ,
++	CBPF_TRACE_REPEATED_RELEASE,
++};
++
++struct bpf_prog *
++cbpf_ownership_trace_program(enum cbpf_ownership_trace_case trace_case);
++#endif
+ #endif
+ 
+ #endif
+diff --git a/arch/arm64/net/cbpf_jit.c b/arch/arm64/net/cbpf_jit.c
+--- a/arch/arm64/net/cbpf_jit.c
++++ b/arch/arm64/net/cbpf_jit.c
+@@ -41,7 +41,7 @@ struct cbpf_compiler {
+ 	u8 operation[CBPF_MAX_INSNS];
+ 	__le32 *image;
+ 	u32 index, words, restricted_exit, executive_exit, executive_words;
+-	bool check, failed;
++	bool check, failed, trusted_fixture;
+ };
+ 
+ static u8 call_operation(const struct bpf_prog *prog,
+@@ -63,6 +63,19 @@ static u8 call_operation(const struct bpf_prog *prog,
+ 	return 0;
+ }
+ 
++static u8 compiler_call_operation(const struct cbpf_compiler *c,
++				  const struct bpf_insn *insn)
++{
++	if (!c->trusted_fixture)
++		return call_operation(c->prog, insn);
++	if (insn->code != (BPF_JMP | BPF_CALL) ||
++	    insn->src_reg != BPF_PSEUDO_KFUNC_CALL || insn->dst_reg ||
++	    insn->off || insn->imm < CBPF_OP_ACQUIRE ||
++	    insn->imm > CBPF_OP_RELEASE)
++		return 0;
++	return insn->imm;
++}
++
+ bool cbpf_jit_match(const struct bpf_prog *prog)
+ {
+ 	u32 pc;
+@@ -158,7 +171,7 @@ static int admit(struct cbpf_compiler *c)
+ 			falls_through = !!state.reg[dst];
+ 			break;
+ 		case BPF_JMP | BPF_CALL:
+-			c->operation[pc] = call_operation(c->prog, i);
++			c->operation[pc] = compiler_call_operation(c, i);
+ 			if (c->operation[pc] == CBPF_OP_ACQUIRE) {
+ 				if (!scalar(state.reg[1]) || ++acquisitions > 2)
+ 					return -EINVAL;
+@@ -366,7 +379,8 @@ static void fill_hole(void *area, unsigned int size)
+ 		words[i] = cpu_to_le32(AARCH64_BREAK_FAULT);
+ }
+ 
+-struct bpf_prog *cbpf_jit_compile(struct bpf_prog *prog)
++static struct bpf_prog *cbpf_compile(struct bpf_prog *prog,
++				     bool trusted_fixture)
+ {
+ 	struct cbpf_compiler *c;
+ 	struct bpf_binary_header *header = NULL;
+@@ -386,6 +400,7 @@ struct bpf_prog *cbpf_jit_compile(struct bpf_prog *prog)
+ 		goto rejected;
+ 	}
+ 	c->prog = prog;
++	c->trusted_fixture = trusted_fixture;
+ 	error = admit(c);
+ 	if (error)
+ 		goto free_context;
+@@ -443,3 +458,101 @@ rejected:
+ 	pr_info("CBPF_NATIVE rejected error=%d fallback=forbidden\n", error);
+ 	return prog;
+ }
++
++struct bpf_prog *cbpf_jit_compile(struct bpf_prog *prog)
++{
++	return cbpf_compile(prog, false);
++}
++
++#ifdef CONFIG_CBPF_OWNERSHIP_NATIVE_TRACE_TEST
++#define T_I(C, D, S, O, V) \
++	{ .code = (C), .dst_reg = (D), .src_reg = (S), .off = (O), .imm = (V) }
++#define T_IMM(D, V) T_I(BPF_ALU64 | BPF_MOV | BPF_K, D, 0, 0, V)
++#define T_COPY(D, S) T_I(BPF_ALU64 | BPF_MOV | BPF_X, D, S, 0, 0)
++#define T_CALL(O) T_I(BPF_JMP | BPF_CALL, 0, BPF_PSEUDO_KFUNC_CALL, 0, O)
++#define T_NULL(O) T_I(BPF_JMP | BPF_JEQ | BPF_K, BPF_REG_0, 0, O, 0)
++#define T_SPILL T_I(BPF_STX | BPF_MEM | BPF_DW, BPF_REG_10, BPF_REG_6, -8, 0)
++#define T_RELOAD T_I(BPF_LDX | BPF_MEM | BPF_DW, BPF_REG_8, BPF_REG_10, -8, 0)
++#define T_EXIT T_I(BPF_JMP | BPF_EXIT, 0, 0, 0, 0)
++
++static const struct bpf_insn cbpf_trace_positive[] = {
++	T_IMM(1, 0), T_CALL(CBPF_OP_ACQUIRE), T_NULL(16),
++	T_COPY(6, 0), T_SPILL,
++	T_IMM(1, 0), T_CALL(CBPF_OP_ACQUIRE), T_NULL(11),
++	T_COPY(7, 0), T_RELOAD, T_COPY(1, 8),
++	T_CALL(CBPF_OP_RELEASE), T_COPY(1, 7), T_CALL(CBPF_OP_READ),
++	T_COPY(9, 0), T_COPY(1, 7), T_CALL(CBPF_OP_RELEASE),
++	T_COPY(0, 9), T_EXIT,
++	T_IMM(0, 0), T_EXIT,
++};
++
++static const struct bpf_insn cbpf_trace_stale_read[] = {
++	T_IMM(1, 0), T_CALL(CBPF_OP_ACQUIRE), T_NULL(19),
++	T_COPY(6, 0), T_SPILL,
++	T_IMM(1, 0), T_CALL(CBPF_OP_ACQUIRE), T_NULL(14),
++	T_COPY(7, 0), T_RELOAD, T_COPY(1, 8),
++	T_CALL(CBPF_OP_RELEASE), T_COPY(1, 7), T_CALL(CBPF_OP_READ),
++	T_COPY(9, 0), T_RELOAD, T_COPY(1, 8), T_CALL(CBPF_OP_READ),
++	T_COPY(1, 7), T_CALL(CBPF_OP_RELEASE), T_IMM(0, 99), T_EXIT,
++	T_IMM(0, 0), T_EXIT,
++};
++
++static const struct bpf_insn cbpf_trace_repeated_release[] = {
++	T_IMM(1, 0), T_CALL(CBPF_OP_ACQUIRE), T_NULL(19),
++	T_COPY(6, 0), T_SPILL,
++	T_IMM(1, 0), T_CALL(CBPF_OP_ACQUIRE), T_NULL(14),
++	T_COPY(7, 0), T_RELOAD, T_COPY(1, 8),
++	T_CALL(CBPF_OP_RELEASE), T_COPY(1, 7), T_CALL(CBPF_OP_READ),
++	T_COPY(9, 0), T_RELOAD, T_COPY(1, 8), T_CALL(CBPF_OP_RELEASE),
++	T_COPY(1, 7), T_CALL(CBPF_OP_RELEASE), T_IMM(0, 99), T_EXIT,
++	T_IMM(0, 0), T_EXIT,
++};
++
++struct bpf_prog *
++cbpf_ownership_trace_program(enum cbpf_ownership_trace_case trace_case)
++{
++	const struct bpf_insn *insns;
++	struct bpf_prog *prog;
++	const char *name;
++	u32 count, pc;
++
++	switch (trace_case) {
++	case CBPF_TRACE_POSITIVE:
++		name = "positive";
++		insns = cbpf_trace_positive;
++		count = ARRAY_SIZE(cbpf_trace_positive);
++		break;
++	case CBPF_TRACE_STALE_READ:
++		name = "stale_read";
++		insns = cbpf_trace_stale_read;
++		count = ARRAY_SIZE(cbpf_trace_stale_read);
++		break;
++	case CBPF_TRACE_REPEATED_RELEASE:
++		name = "repeated_release";
++		insns = cbpf_trace_repeated_release;
++		count = ARRAY_SIZE(cbpf_trace_repeated_release);
++		break;
++	default:
++		return NULL;
++	}
++	prog = bpf_prog_alloc(bpf_prog_size(count), 0);
++	if (!prog)
++		return NULL;
++	prog->type = BPF_PROG_TYPE_SCHED_CLS;
++	prog->len = count;
++	prog->jit_requested = 1;
++	prog->gpl_compatible = 1;
++	prog->aux->cbpf_gate = true;
++	memcpy(prog->insnsi, insns, count * sizeof(*insns));
++	for (pc = 0; pc < count; ++pc)
++		pr_info("CBPF_TRACE_BPF case=%s pc=%u code=%02x dst=%u src=%u off=%d imm=%d\n",
++			name, pc, insns[pc].code, insns[pc].dst_reg,
++			insns[pc].src_reg, insns[pc].off, insns[pc].imm);
++	cbpf_compile(prog, true);
++	if (!prog->jited) {
++		bpf_prog_free(prog);
++		return NULL;
++	}
++	return prog;
++}
++#endif
+diff --git a/arch/arm64/net/cbpf_runtime.c b/arch/arm64/net/cbpf_runtime.c
+--- a/arch/arm64/net/cbpf_runtime.c
++++ b/arch/arm64/net/cbpf_runtime.c
+@@ -40,6 +40,18 @@ struct cbpf_invocation {
+ static struct cbpf_object cbpf_object = { 42, REFCOUNT_INIT(1) };
+ static DEFINE_PER_CPU(struct cbpf_invocation *, cbpf_active);
+ 
++#ifdef CONFIG_CBPF_OWNERSHIP_NATIVE_TRACE_TEST
++struct cbpf_native_trace_observation {
++	u32 acquired, released, reads, cleanup, refs;
++	bool entered, failed, identity_observed;
++	bool public_tag, canonical, private_tag;
++	u32 rejected_operation, tag_a, tag_b;
++};
++
++static const char *cbpf_native_trace_active;
++static struct cbpf_native_trace_observation cbpf_native_trace_observation;
++#endif
++
+ static void *__capability cbpf_exact(u64 address, u64 size, u64 perms)
+ {
+ 	void *__capability cap = cheri_address_set(cheri_ddc_get(), address);
+@@ -136,8 +148,25 @@ noinline uintcap_t cbpf_gate_impl(uintcap_t argument, u64 operation, u64 pc)
+ 				(void *__capability)s->views[index]))
+ 			break;
+ 	if (index == s->acquired ||
+-	    !cheri_tag_get((void *__capability)s->cells[index].object))
++	    !cheri_tag_get((void *__capability)s->cells[index].object)) {
++#ifdef CONFIG_CBPF_OWNERSHIP_NATIVE_TRACE_TEST
++		if (cbpf_native_trace_active && index < s->acquired) {
++			cbpf_native_trace_observation.identity_observed = true;
++			cbpf_native_trace_observation.public_tag =
++				cheri_tag_get(view);
++			cbpf_native_trace_observation.canonical = true;
++			cbpf_native_trace_observation.private_tag =
++				cheri_tag_get((void *__capability)
++					      s->cells[index].object);
++			cbpf_native_trace_observation.rejected_operation = operation;
++			pr_info("CBPF_TRACE_IDENTITY case=%s pc=%llu id=%u operation=%llu public_tag=%u canonical=1 private_tag=%u\n",
++				cbpf_native_trace_active, pc, index + 1, operation,
++				cbpf_native_trace_observation.public_tag,
++				cbpf_native_trace_observation.private_tag);
++		}
++#endif
+ 		return cbpf_fail(s, pc);
++	}
+ 	if (operation == 2) {
+ 		struct cbpf_object *__capability object =
+ 			(struct cbpf_object *__capability)s->cells[index].object;
+@@ -361,6 +390,67 @@ static bool __init cbpf_callback_check(const char *name, bool independent)
+ 	return pass;
+ }
+ 
++#ifdef CONFIG_CBPF_OWNERSHIP_NATIVE_TRACE_TEST
++static bool __init
++cbpf_native_trace_check(enum cbpf_ownership_trace_case trace_case,
++			const char *name)
++{
++	struct bpf_prog *prog = NULL;
++	u32 result = 0, expected = trace_case == CBPF_TRACE_POSITIVE ? 42 : 0;
++	bool rejects = trace_case != CBPF_TRACE_POSITIVE;
++	bool pass = false;
++
++	memset(&cbpf_native_trace_observation, 0,
++	       sizeof(cbpf_native_trace_observation));
++	cbpf_native_trace_active = name;
++	pr_info("CBPF_OWNERSHIP_TRACE case=%s phase=begin verified_bpf=0 scope=synthetic_native_production_path\n",
++		name);
++	prog = cbpf_ownership_trace_program(trace_case);
++	if (!prog)
++		goto out;
++	local_bh_disable();
++	result = cbpf_test_invoke(prog, NULL);
++	local_bh_enable();
++	pass = result == expected && cbpf_native_trace_observation.entered &&
++		cbpf_native_trace_observation.failed == rejects &&
++		cbpf_native_trace_observation.acquired == 2 &&
++		cbpf_native_trace_observation.released == 2 &&
++		cbpf_native_trace_observation.reads == 1 &&
++		cbpf_native_trace_observation.cleanup == rejects &&
++		cbpf_native_trace_observation.refs == 1 &&
++		!cbpf_native_trace_observation.tag_a &&
++		!cbpf_native_trace_observation.tag_b &&
++		cbpf_native_trace_observation.identity_observed == rejects &&
++		(!rejects ||
++		 (cbpf_native_trace_observation.public_tag &&
++		  cbpf_native_trace_observation.canonical &&
++		  !cbpf_native_trace_observation.private_tag &&
++		  cbpf_native_trace_observation.rejected_operation ==
++			(trace_case == CBPF_TRACE_STALE_READ ? 2 : 3)));
++out:
++	cbpf_native_trace_active = NULL;
++	pr_info("CBPF_OWNERSHIP_TRACE case=%s phase=end result=%s retval=%u entered=%u failed=%u acquired=%u released=%u reads=%u cleanup=%u refs=%u tagA=%u tagB=%u identity_observed=%u public_tag=%u canonical=%u private_tag=%u rejected_operation=%u verified_bpf=0 scope=synthetic_native_production_path\n",
++		name, pass ? "PASS" : "FAIL", result,
++		cbpf_native_trace_observation.entered,
++		cbpf_native_trace_observation.failed,
++		cbpf_native_trace_observation.acquired,
++		cbpf_native_trace_observation.released,
++		cbpf_native_trace_observation.reads,
++		cbpf_native_trace_observation.cleanup,
++		cbpf_native_trace_observation.refs,
++		cbpf_native_trace_observation.tag_a,
++		cbpf_native_trace_observation.tag_b,
++		cbpf_native_trace_observation.identity_observed,
++		cbpf_native_trace_observation.public_tag,
++		cbpf_native_trace_observation.canonical,
++		cbpf_native_trace_observation.private_tag,
++		cbpf_native_trace_observation.rejected_operation);
++	if (prog)
++		bpf_prog_free(prog);
++	return pass;
++}
++#endif
++
+ static int __init cbpf_cap_init(void)
+ {
+ 	BUILD_BUG_ON(sizeof(struct cbpf_cell) != 16);
+@@ -371,6 +461,13 @@ static int __init cbpf_cap_init(void)
+ 	    !cbpf_callback_check("retained_release", false) ||
+ 	    !cbpf_callback_check("independent_b", true))
+ 		return -EINVAL;
++#ifdef CONFIG_CBPF_OWNERSHIP_NATIVE_TRACE_TEST
++	if (!cbpf_native_trace_check(CBPF_TRACE_POSITIVE, "positive") ||
++	    !cbpf_native_trace_check(CBPF_TRACE_STALE_READ, "stale_read") ||
++	    !cbpf_native_trace_check(CBPF_TRACE_REPEATED_RELEASE,
++				     "repeated_release"))
++		return -EINVAL;
++#endif
+ 	return register_btf_kfunc_id_set(BPF_PROG_TYPE_SCHED_CLS, &cbpf_cap_set);
+ }
+ late_initcall(cbpf_cap_init);
+@@ -398,6 +495,22 @@ u32 cbpf_test_invoke(struct bpf_prog *prog, void *ctx)
+ 	if (!state.entered || state.acquired != state.released)
+ 		state.failed = true;
+ 	cbpf_trace(&state, state.failed ? "failed" : "exit", U64_MAX, 0);
++#ifdef CONFIG_CBPF_OWNERSHIP_NATIVE_TRACE_TEST
++	if (cbpf_native_trace_active) {
++		cbpf_native_trace_observation.acquired = state.acquired;
++		cbpf_native_trace_observation.released = state.released;
++		cbpf_native_trace_observation.reads = state.reads;
++		cbpf_native_trace_observation.cleanup = state.cleanup;
++		cbpf_native_trace_observation.refs =
++			refcount_read(&cbpf_object.refs);
++		cbpf_native_trace_observation.entered = state.entered;
++		cbpf_native_trace_observation.failed = state.failed;
++		cbpf_native_trace_observation.tag_a =
++			cheri_tag_get((void *__capability)state.cells[0].object);
++		cbpf_native_trace_observation.tag_b =
++			cheri_tag_get((void *__capability)state.cells[1].object);
++	}
++#endif
+ 	pr_info("CBPF_RESULT value=%u entered=%u failed=%u balanced=%u\n",
+ 		result, state.entered, state.failed,
+ 		state.acquired == state.released);
