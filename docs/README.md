@@ -5,6 +5,7 @@ Read the [overview](overview.md) for the two mechanisms and their findings, then
 | Area | Start with | Contents |
 |---|---|---|
 | Research argument | [Claims and evidence](research/claim-evidence.md) | Trust, related work, contribution and software comparison |
+| Presentation | [Open the slides](presentation/index.html#title), [guide and sources](presentation/README.md) | Morello architecture and the two bounded research walkthroughs |
 | Findings | [Results index](results/README.md) | Spatial extent, ownership/CVE case and supporting observations |
 | Earlier research | [Earlier findings](results/earlier-findings.md) | Historical spatial, lifetime, formal, compatibility and cost results |
 | Formal and native mapping | [Spatial argument](../theory/spatial.md), [ownership argument](../theory/ownership.md) | Conditional proofs, sufficient observations and kernel correspondence |

@@ -1,0 +1,69 @@
+:root{color-scheme:light;--paper:#202b30;--muted:#59686e;--mint:#176651;--teal:#418c78;--copper:#855523;--bg:#fff;--line:#b3c2c6;--panel:#fafbfb}
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:var(--bg);color:var(--paper);font-family:Arial,Helvetica,sans-serif}a{color:inherit}button,a{-webkit-tap-highlight-color:transparent}button{font:inherit;color:inherit;cursor:pointer;background:transparent;border:0;border-radius:4px;display:grid;place-items:center}button:hover{background:#edf3f0}button:disabled{opacity:.23;cursor:default}button:focus-visible,a:focus-visible{outline:2px solid var(--mint);outline-offset:4px}[hidden]{display:none!important}
+#presentation{height:100%;display:grid;place-items:center}#stage{width:100vw;height:56.25vw;max-height:100vh;max-width:177.7778vh;position:relative;isolation:isolate;overflow:hidden;container-type:size;background:#fff}
+#opening{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;pointer-events:none;transform-origin:50% 55%;opacity:0;will-change:transform,opacity;z-index:1}
+header{position:absolute;z-index:7;top:3.7%;left:4%}.brand{text-decoration:none;font-size:1cqw;font-weight:700;letter-spacing:.07em}
+.heading{position:absolute;z-index:5;left:4%;right:4%;top:12%;pointer-events:none}#eyebrow{font-size:.76cqw;letter-spacing:.13em;color:var(--mint);margin:0 0 .65cqw;font-weight:700}h1{font-size:3.15cqw;letter-spacing:-.04em;font-weight:500;margin:0;line-height:1.1}#subtitle{font-size:1.3cqw;color:var(--muted);margin:1cqw 0 0;max-width:86%;line-height:1.35}
+#content{position:absolute;z-index:3;left:4%;right:4%;top:30%;height:53%;display:grid;grid-template-columns:minmax(0,1.85fr) minmax(0,1fr);grid-template-rows:minmax(0,1fr);gap:3.8cqw;align-items:stretch;pointer-events:none}figure{margin:0;position:relative;display:flex;flex-direction:column;min-width:0;min-height:0}#diagram{width:100%;flex:1;min-height:0;height:0;overflow:hidden;transform-origin:0 0;will-change:transform,opacity}figcaption{flex:none;font-size:.83cqw;line-height:1.4;color:var(--muted);margin-top:.55cqw}#explanation{display:flex;flex-direction:column;justify-content:center;gap:1.7cqw;min-height:0;padding-left:1cqw}#explanation h2{font-size:1.46cqw;line-height:1.25;margin:0 0 .48cqw;font-weight:500;color:var(--mint)}#explanation p{font-size:1.28cqw;line-height:1.43;margin:0;color:#36474f}#explanation em{font-style:normal;color:var(--copper)}#explanation code{font-family:Consolas,'Liberation Mono',monospace;font-size:.92em}
+#takeaway{position:absolute;z-index:4;left:4%;right:4%;bottom:9%;margin:0;padding-top:.8cqw;font-size:1.25cqw;line-height:1.35;color:#384b52}#takeaway strong{color:var(--mint);font-weight:500}
+footer{position:absolute;bottom:2.9%;left:4%;right:4%;z-index:7;display:flex;justify-content:space-between;align-items:center;gap:2cqw}#source{color:var(--muted);font-size:.76cqw;text-decoration:none;max-width:74%;line-height:1.45}#source:hover{text-decoration:underline}nav{display:flex;gap:.85cqw;align-items:center;margin-left:auto}nav button{width:2.45cqw;height:2.45cqw;font-size:1.35cqw;min-width:24px;min-height:24px}#counter{font-size:.83cqw;font-variant-numeric:tabular-nums;letter-spacing:.08em;white-space:nowrap}
+#hero-label{position:absolute;z-index:5;left:73%;top:38%;font-size:1.4cqw;line-height:1.5;pointer-events:none;opacity:0}#hero-label small{display:block;font-size:1cqw;color:#475b62}#stage[data-slide=system] #subtitle{max-width:50%}
+/* All detail layers are retained in one SVG; only camera, masks and opacity change. */
+#diagram text{font-family:Arial,Helvetica,sans-serif;fill:var(--paper);font-weight:400}#diagram .label{font-size:24px}#diagram .small{font-size:20px;fill:#53666d}#diagram .tiny{font-size:17px;fill:#53666d}#diagram .title{font-size:28px;fill:var(--mint)}#diagram .muted{fill:var(--muted)}#diagram .mint{fill:var(--mint)}#diagram .copper-text{fill:var(--copper)}#diagram .outline{fill:none;stroke:var(--line);stroke-width:1.7}#diagram .block{fill:#fff;stroke:#99acb3;stroke-width:1.5}#diagram .cap{fill:#f2f8f5;stroke:var(--teal);stroke-width:1.7}#diagram .address{fill:#fbf6ee;stroke:#b68b55;stroke-width:1.6}#diagram .soft{fill:#fcfdfd;stroke:#bcc9cd;stroke-width:1.5}#diagram .wire{fill:none;stroke:#73858a;stroke-width:2}#diagram .cap-wire{fill:none;stroke:var(--teal);stroke-width:2.1}#diagram .dash{stroke-dasharray:7 6}#diagram .accent{fill:#f7faf8;stroke:var(--teal);stroke-width:2}#diagram .tag{fill:#d4ebdf}#diagram .tag-text{fill:#17503e;font-size:22px;font-weight:bold}#diagram .paper-line{stroke:#a8babf;stroke-width:1.5}#diagram .detail-ground{fill:#fff;stroke:none}
+/* Wide recorded-evidence panels retain the existing slide frame and branding. */
+#stage[data-layout=wide] #content{grid-template-columns:1fr;gap:0}
+#stage[data-layout=wide] #explanation-column{display:none}
+#diagram .snippet{font-family:Consolas,'Liberation Mono',monospace;font-size:26px}
+#diagram .snippet-note{font-size:27px;fill:#53666d}
+/* Local syntax colors keep the fixed excerpts editable and preserve spacing. */
+.syntax-op,.syntax-type{color:#67447e;fill:#67447e;font-weight:600}
+.syntax-function{color:#234f83;fill:#234f83;font-weight:600}
+.syntax-register,.syntax-string,.syntax-permit{color:#176651;fill:#176651}
+.syntax-number{color:#855523;fill:#855523}
+.syntax-comment{color:#59686e;fill:#59686e;font-style:italic}
+.syntax-reject{color:#9b3724;fill:#9b3724}
+#diagram .snippet-focus{fill:#e2efe8;stroke:none}
+#diagram .snippet.emphasized{font-weight:600}
+#stage[data-slide=question] #subtitle{font-size:1.45cqw;max-width:94%;text-wrap:balance}
+#stage[data-slide=question] #content{top:32%;height:51%}
+#stage[data-slide=ownership-evidence] #takeaway strong{font-weight:600;font-size:1.35cqw}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}noscript{position:absolute;bottom:0;background:#fff;padding:10px;z-index:20}#portrait-hint{display:none}
+@media(max-aspect-ratio:1/1){#presentation{display:flex;flex-direction:column;justify-content:center;gap:28px}#stage{flex:none}#portrait-hint{display:block;font-size:16px;line-height:1.6;text-align:center;padding:0 20px;max-width:400px;color:#455b62}}
+
+/* Only the die perimeter changes perspective; schematic text stays orthographic. */
+#opening-frame{position:absolute;inset:0;width:100%;height:100%;z-index:2;pointer-events:none;opacity:0}
+#die-outline{fill:none;stroke:#849d9a;stroke-width:1.4;stroke-linejoin:round;stroke-dasharray:1;vector-effect:non-scaling-stroke}
+#stage[data-motion=emergence] #diagram text{opacity:var(--opening-labels,0)}
+#explanation-column{display:flex;flex-direction:column;justify-content:center;min-height:0;padding-left:1cqw}#explanation{padding-left:0;flex:none}
+#walk-controls{margin-top:1.4cqw;pointer-events:auto;color:var(--mint);font-size:1.05cqw}#walk-controls button{padding:.4cqw 0;display:inline-flex;align-items:center;min-height:28px}#walk-start{border-bottom:1px solid #b3cfc3;border-radius:0}#walk-reset{font-size:.87cqw;color:var(--muted);margin-top:.5cqw}.walk-step-row{display:flex;align-items:center;gap:1.2cqw}#walk-status{font-variant-numeric:tabular-nums;min-width:12cqw}#walk-back,#walk-next{font-size:1.45cqw;min-width:2cqw;justify-content:center}#walk-start:hover,#walk-reset:hover{background:transparent;text-decoration:underline}
+#diagram [data-access-part]{transition:opacity 420ms ease}#diagram .access-focus>rect{stroke:var(--mint);stroke-width:3}#diagram .access-focus>path{stroke:var(--mint);stroke-width:3}
+@media(prefers-reduced-motion:reduce){#diagram [data-access-part]{transition:none}}
+#explanation code{white-space:nowrap}
+#stage[data-slide=checks]:not([data-load-step=overview]) #explanation-column{justify-content:flex-start;padding-top:1.4cqw;padding-bottom:1.2cqw}
+#stage[data-slide=checks]:not([data-load-step=overview]) #walk-controls{margin-top:auto;padding-top:1.2cqw}
+
+/* A quiet cover establishes the author and the research before the hardware tour. */
+#cover-credits{display:none;position:absolute;z-index:5;left:4%;right:4%;top:66%;grid-template-columns:1.2fr 1fr 1fr;gap:4cqw;padding-top:2cqw;border-top:1px solid #d9e3de}
+#cover-credits span{display:block;color:var(--muted);font-size:1cqw;margin-bottom:.8cqw}
+#cover-credits strong{font-size:1.6cqw;font-weight:400;letter-spacing:-.015em}
+#cover-credits .author strong{font-size:2.1cqw}
+#stage[data-slide=title] #cover-credits{display:grid}
+#stage[data-slide=title] .heading{top:24%}
+#stage[data-slide=title] h1{font-size:5.6cqw;max-width:83%;line-height:1.03}
+#stage[data-slide=title] #subtitle{font-size:1.65cqw;margin-top:1.7cqw}
+#stage[data-slide=title] #eyebrow{font-size:.9cqw;margin-bottom:1.3cqw}
+#stage[data-slide=title] #content,#stage[data-slide=title] #takeaway{visibility:hidden}
+
+/* Keep the supplied university mark fixed while the narrative moves below it. */
+#university-mark{position:absolute;z-index:8;right:4%;top:.9%;width:10cqw;height:auto;pointer-events:none;object-fit:contain}
+:root{--mono:ui-monospace,'SFMono-Regular',Consolas,'Liberation Mono',monospace}
+#diagram .code,#explanation code,#takeaway code{font-family:var(--mono);font-size:.94em;font-style:normal;letter-spacing:0}
+#diagram text.code{font-family:var(--mono);font-size:26px}
+#diagram .label.code{font-size:23px}
+#diagram .tag-text.code{font-size:21px}
+
+/* Presentation content stays visible; secondary controls appear when needed. */
+.secondary-controls{display:flex;align-items:center;gap:.65cqw;opacity:0;pointer-events:none;transition:opacity 140ms ease}
+nav:hover .secondary-controls,nav:focus-within .secondary-controls{opacity:1;pointer-events:auto}
+@media(hover:none),(pointer:coarse){.secondary-controls{opacity:1;pointer-events:auto}}
+@media(prefers-reduced-motion:reduce){.secondary-controls{transition:none}}

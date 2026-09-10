@@ -21,7 +21,7 @@ ASSETS = ROOT / 'tools/docs'
 GROUPS = ['Start here', 'Research', 'Results', 'Theory',
           'Implementation', 'Reproduction', 'Evidence', 'Private notes', 'Repository']
 START = ['README.md', 'docs/overview.md', 'docs/README.md',
-         'docs/research/claim-evidence.md']
+         'docs/research/claim-evidence.md', 'docs/presentation/README.md']
 # Deep pages remain linked and searchable without competing with the reading route.
 NAV_ENTRIES = set(START) | {
     'docs/research/related-work.md',

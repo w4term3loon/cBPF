@@ -9,6 +9,7 @@ cBPF is a defensive research proof of concept with two separate studies. A map l
 1. [Research overview](docs/overview.md): what was done, why, and what the results establish.
 2. [Claim and evidence map](docs/research/claim-evidence.md): observed results, conditional arguments and remaining assumptions.
 3. [Documentation map](docs/README.md): research, results, reproduction and implementation.
+4. [Presentation](docs/presentation/index.html#title): the existing 27-slide hardware and research walkthrough ([guide and sources](docs/presentation/README.md)).
 
 The public documentation records the research arguments, implementation, observations and limitations. [Related work and attribution](docs/research/related-work.md) distinguish inherited mechanisms, project contributions and assistance.
 
