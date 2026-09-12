@@ -38,6 +38,12 @@ values and padding. Tag, sealing, base, address, length, and permissions must
 match exactly. Unrepresentable bounds return no capability, never a wider one.
 Lookup does not derive a replacement from DDC.
 
+These consistency checks can reject an inconsistent retained allocation root;
+they do not authenticate an external intention to select A when a valid exact
+B capability is supplied to the eventual instruction. The
+[spatial argument](../../theory/spatial.md#retained-root-consistency-and-wrong-value-substitution)
+separates those cases and their trust premises.
+
 The new branch of `bpf_cheri_map_lookup_impl()` validates key access and returns
 that capability through the inherited gateway. It does not select the historical
 broad/software-bound paths. Descriptor allocation is charged to kernel memory
@@ -74,6 +80,15 @@ controls. Fixed byte and halfword loads and stores cover the last logical byte,
 padding, the neighbouring value, an in-bounds halfword, and a halfword crossing
 the logical boundary. Existing kernel-access exception-table recovery records
 only faults from the active boot fixture; it does not add a new exception type.
+
+The fixed `--substitution` mode is a separate three-load control: correct A,
+legitimate B and intended-A/actual-B, using exact roots from independent
+production-provider calls. It reuses the byte-six load helper, permissions and
+storage reset; it changes no production mechanism or exception handling. After
+the same build and calibration steps below, select it with
+`bash tools/run_spatial_selectivity.sh "$CBPF_SPATIAL_SELECTIVITY_BUILD" --substitution`
+instead of launching the matrix. Its dedicated checker requires the third
+case's expected binding mismatch. The extent checker stays strict and unchanged.
 
 Build once, run the two-case recovery calibration, then run the 30-case matrix:
 

@@ -1,0 +1,210 @@
+{
+  "schema": "cbpf-spatial-selectivity-v2",
+  "result": "PASS",
+  "mode": "calibration",
+  "origin": "new-run",
+  "checker_sha256": "1ee14daac0e0c2b96214391b17e259636f99c210eb26b9e349cc14a97f202d07",
+  "shared_checks_sha256": "60fd3c4912b0ec83e96a6cc8b7a2fa9316cd7486bae2b64feb6a2d735cc77e8c",
+  "input_sha256": {
+    "validation.json": "02d46e083eea47cd3280d3394fcc8086f5528da56848884f897884f6e7066bd1",
+    "boot.log": "3a8f34643b25ce31fe37e1d670625c4f53db8d896067146d1ea0f3bb4ea46c27",
+    "inputs.sha256": "362023ed6b2c5356c54050a27eb49c7a8b0dd972aeb28047397751cc75f62cd4",
+    "guest.c": "07fb1f6618cb09b5ffd8194e11d1685aacfafe28fdb7d611ac2a737742862762",
+    "kernel.config": "35c872e866663db2cad8874e311275e2ce16a4c0c3ba95fceac732cb9c910686",
+    "qemu-command.sh": "2b0fd80438061bf4417a00a88b08c05484854e93111646119cdf43c41676a06e",
+    "qemu-exit.txt": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "init": "a66d016a9a0b9b86556da3875aeb5c999635f14186617ec5bfc14d7992ab52d9",
+    "initramfs.cpio.gz": "2460a049411bc1c18315f2cf032b01d481811e39720c627e132088cb6605319a",
+    "build-receipt/outputs.sha256": "9a9f2ba2d33eaf165b7b2b42fcf50b08a382a81db247b4af6e5703d9e3720a8f",
+    "build-receipt/inputs.sha256": "048d606cac4d7e7862de91285ce5382bab47700999153aa4b35c229f9b316f03",
+    "build-receipt/source-pins.json": "724aa27472822cc40b5d74cb85e80f403107edb5a532a617f510235bc64e23de",
+    "build-receipt/kernel.config": "35c872e866663db2cad8874e311275e2ce16a4c0c3ba95fceac732cb9c910686",
+    "build-receipt/array-authority.patch": "ac74717a7dbd2c61760115c1b8b719e52d27d60d02957a2b73c3ff155206c4ac",
+    "build-receipt/native-observation.patch": "2f7889c53d0b4de2e47a94b8acb0d6c1ab73bca6effaccee5b4733984f449b07",
+    "build-receipt/selectivity-test.patch": "ee88fe45658b07f400015a72f3c210846e73868bb4989625747f1ca39ff9819c",
+    "build-receipt/verifier-before.sha256": "0e4753294afdd01eedf2ff7f523011a0940f2839ba8c4d0378d499f5b4f7c858",
+    "build-receipt/patched-sources.sha256": "a1e605679e6833f4c1897a914737908018c7872d363af1753996c13230f184e6",
+    "linked/linked-ranges.json": "9a1b72132e025bed101e7c2772fe6a08572ded581026f7d631d54aaeb96bcc10",
+    "linked/complete-linked-disassembly.txt": "5c86e0f8e7d86f0a185be2ae75547a6a71fe6a475aec87d2331dba1b0e15230b",
+    "linked/cbpf_selectivity_native_access.bin": "b20089acd25480bcda36cba10225db4d6b8ca8a3702b100bd2e0131107f6de1f"
+  },
+  "build_identity": {
+    "Image": "9a298dbd939a2ea8536f518ddc7ff45a0de7962abd53dec3de1c495515e1828b",
+    "vmlinux": "22e02bb68eaa2af3b94a5411626eeb4cd171153852f8edefa2160654af9a829a",
+    "config": "35c872e866663db2cad8874e311275e2ce16a4c0c3ba95fceac732cb9c910686",
+    "array-authority.patch": "ac74717a7dbd2c61760115c1b8b719e52d27d60d02957a2b73c3ff155206c4ac",
+    "native-observation.patch": "2f7889c53d0b4de2e47a94b8acb0d6c1ab73bca6effaccee5b4733984f449b07",
+    "selectivity-test.patch": "ee88fe45658b07f400015a72f3c210846e73868bb4989625747f1ca39ff9819c",
+    "source_tree": "e6c69574c16bc2b9bce06329f9ac3f4b3269e79a",
+    "verifier": "e1b3401c312176633922671d52b1bd0ccd75f9ab1fcc266a0acb764f784d4239"
+  },
+  "relocation": {
+    "offset": 0,
+    "basis": "explicit nokaslr command and boot observation"
+  },
+  "completion": {
+    "qemu_exit": 0,
+    "kernel_powerdown": true,
+    "failure_markers": false
+  },
+  "native": {
+    "observations": 2,
+    "permits": 1,
+    "rejects": 1,
+    "cases": [
+      {
+        "case": 0,
+        "operation": "load",
+        "root": "exact7",
+        "offset": 6,
+        "width": 1,
+        "expected": "permit",
+        "observed": "permit",
+        "instruction": "0xe2000448",
+        "pc": "0xffff8000801c4b08",
+        "root_reg": 2,
+        "fault_pc": "0x0000000000000000",
+        "fsc": "0x0",
+        "cap_base": "0xffff000000c61f10",
+        "cap_address": "0xffff000000c61f16",
+        "cap_length": 7,
+        "before": "11223344556629a781828384858687bf",
+        "after": "11223344556629a781828384858687bf"
+      },
+      {
+        "case": 1,
+        "operation": "load",
+        "root": "exact7",
+        "offset": 7,
+        "width": 1,
+        "expected": "reject",
+        "observed": "reject",
+        "instruction": "0xe2000448",
+        "pc": "0xffff8000801c4b08",
+        "root_reg": 2,
+        "fault_pc": "0xffff8000801c4b08",
+        "fsc": "0x2a",
+        "cap_base": "0xffff000000c61f10",
+        "cap_address": "0xffff000000c61f17",
+        "cap_length": 7,
+        "before": "11223344556629a781828384858687bf",
+        "after": "11223344556629a781828384858687bf"
+      }
+    ]
+  },
+  "verifier_admission": {
+    "profile": "loads-stores-v2",
+    "cases": [
+      {
+        "case": 0,
+        "operation": "load",
+        "offset": 6,
+        "width": 1,
+        "expected": "admit",
+        "observed": "admit",
+        "errno": 0,
+        "executed": false
+      },
+      {
+        "case": 1,
+        "operation": "load",
+        "offset": 7,
+        "width": 1,
+        "expected": "reject",
+        "observed": "reject",
+        "errno": 13,
+        "executed": false
+      },
+      {
+        "case": 2,
+        "operation": "load",
+        "offset": 8,
+        "width": 1,
+        "expected": "reject",
+        "observed": "reject",
+        "errno": 13,
+        "executed": false
+      },
+      {
+        "case": 3,
+        "operation": "load",
+        "offset": 4,
+        "width": 2,
+        "expected": "admit",
+        "observed": "admit",
+        "errno": 0,
+        "executed": false
+      },
+      {
+        "case": 4,
+        "operation": "load",
+        "offset": 6,
+        "width": 2,
+        "expected": "reject",
+        "observed": "reject",
+        "errno": 13,
+        "executed": false
+      },
+      {
+        "case": 5,
+        "operation": "store",
+        "offset": 6,
+        "width": 1,
+        "expected": "admit",
+        "observed": "admit",
+        "errno": 0,
+        "executed": false
+      },
+      {
+        "case": 6,
+        "operation": "store",
+        "offset": 7,
+        "width": 1,
+        "expected": "reject",
+        "observed": "reject",
+        "errno": 13,
+        "executed": false
+      },
+      {
+        "case": 7,
+        "operation": "store",
+        "offset": 8,
+        "width": 1,
+        "expected": "reject",
+        "observed": "reject",
+        "errno": 13,
+        "executed": false
+      },
+      {
+        "case": 8,
+        "operation": "store",
+        "offset": 4,
+        "width": 2,
+        "expected": "admit",
+        "observed": "admit",
+        "errno": 0,
+        "executed": false
+      },
+      {
+        "case": 9,
+        "operation": "store",
+        "offset": 6,
+        "width": 2,
+        "expected": "reject",
+        "observed": "reject",
+        "errno": 13,
+        "executed": false
+      }
+    ],
+    "admitted": 4,
+    "rejected": 6,
+    "executions": 0
+  },
+  "calibration": null,
+  "scope": {
+    "native_fixture": "fixed trusted synthetic validation through production provider",
+    "invalid_bpf_execution": false,
+    "original_cve_execution": false,
+    "complete_mediation_claim": false
+  }
+}

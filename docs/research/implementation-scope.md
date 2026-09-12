@@ -102,6 +102,14 @@ would not yield a precise spatial-policy size.
 
 ## Supporting infrastructure, counted separately
 
+The final spatial clarification adds **zero production mechanisms**. The fixed
+three-load substitution mode extends only the default-off native fixture and
+its runner/preparer. Its separate receipt checker, host tests, evidence export
+and presentation changes are support work. The provider and observation
+patches, existing native access helper and exception handling, verifier and
+strict selectivity checker remain unchanged. The frozen counts below retain
+their stated audit identity; they are not totals for the later support additions.
+
 | Scope | Size at the audit snapshot | Counted canonical sources |
 |---|---:|---|
 | Spatial fixtures and observation overlays | 417 additions, zero deletions | `native-observation.patch` (16) and `selectivity-test.patch` (401) |

@@ -7,6 +7,7 @@ import sys
 import tempfile
 
 from check_spatial_selectivity import validate_run
+from check_spatial_substitution import validate_run as validate_substitution
 from native_receipt_common import require
 
 
@@ -20,6 +21,11 @@ def main():
         require(actual == expected, "Spatial recheck differs from published receipt: " + name)
         print(f"Spatial {name}: PASS, native={actual['native']['observations']}, "
               f"admission={len(actual['verifier_admission']['cases'])}, executed=0")
+    substitution = spatial / "substitution"
+    actual = validate_substitution(substitution)
+    require(actual == json.loads((substitution / "results.json").read_text()),
+            "Spatial substitution recheck differs from published receipt")
+    print("Spatial substitution: PASS, native=3, permits=3, binding_mismatches=1, BPF executions=0")
     ownership = root / "evidence/current/ownership-native-trace"
     (root / "build").mkdir(exist_ok=True)
     with tempfile.TemporaryDirectory(prefix="ownership-receipt-recheck.", dir=root / "build") as temp:

@@ -216,7 +216,7 @@ Those source cases support the illustrative immediate-offset forms; the
 shown registers are aligned for comparison, not evidence of a compiled
 baseline image. This commit is also retained in the dependency bundle.
 
-### G. Effect and the separate rejection experiment
+### G. Effect and the separate extent and binding controls
 
 One normal `TEST_RUN` changes `11 22 33 44 55 66 29` to
 `11 22 33 44 55 66 2a`, returns 42 and preserves the six-byte prefix.
@@ -231,6 +231,16 @@ sentinel and fixture remain unchanged. Here the cursor already includes the
 offset, so the native displacement is zero. Wider trusted controls at the
 same selected address permit the padding read. That fixture's recovery is
 test-only; it is not the production BPF exception path or invalid BPF execution.
+
+The same retained matrix's offset-eight result separates authority over one
+value from authority over both value slots; its offset-six width-one/width-two
+pair establishes full-access checking. The separate
+[binding control](spatial-selectivity.md#selection-binding-and-the-actual-operand)
+asks whether an exact capability for B protects intended A when substituted
+at the load. Hardware checks B's actual operand; it cannot infer A's intended
+selection. This is a trusted synthetic counterexample, separate from the
+normally verified key-one execution and its bytes above. Broad capability
+controls do not replace the unbuilt conventional baseline.
 
 ## Interpretation and evidence limits
 

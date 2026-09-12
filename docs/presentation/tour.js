@@ -5,58 +5,351 @@ const $=id=>document.getElementById(id), D=window.CBPF_DIAGRAMS;
 const sources={die:'https://api.repository.cam.ac.uk/server/api/core/bitstreams/f95cc789-b818-49ec-ae35-b1f5fb677d84/content#page=6',micro:'https://www.cl.cam.ac.uk/research/security/ctsrd/pdfs/202305ieeemicro-morello-platform.pdf#page=5',hot:'https://hc34.hotchips.org/assets/program/conference/day1/Academia/HC2022.Arm.RichardGrisenthwaite.v1_0.pdf',trm:'https://documentation-service.arm.com/static/62a735d731ea212bb6623405',linux:'https://docs.kernel.org/bpf/libbpf/libbpf_overview.html',verifier:'https://docs.kernel.org/bpf/verifier.html',kfuncs:'https://www.kernel.org/doc/html/v6.7/bpf/kfuncs.html'};
 const section=(title,text)=>`<section><h2>${D.inline(title)}</h2><p>${D.inline(text)}</p></section>`;
 const slides=[
-{id:'title',chapter:'MASTER’S THESIS',title:'Hardware capabilities for eBPF',subtitle:'Selected-value bounds and per-acquisition ownership',source:'',url:'',description:'cBPF. Hardware capabilities for eBPF: selected-value bounds and per-acquisition ownership. Barna Ifkovics. Supervisor dr.ir. A. Continella. Daily supervisor Mattia Napoli.'},
-{id:'question',chapter:'RESEARCH QUESTION',title:'Preserving the exact interface right',subtitle:'Can the runtime preserve the exact right granted by an eBPF interface: one logical map value, or one independently consumable acquisition?',caption:'Two bounded case studies; ordinary verifier protections remain enabled',source:'Research question and claim–evidence map',url:'../research/claim-evidence.md',
-body:section('Spatial case','Selecting one value must not grant its padding or its neighbour.')+section('Ownership case','Consuming A must invalidate A’s aliases without consuming the independent right B.'),takeaway:'<strong>Two separate runtime profiles:</strong> selected-value bounds and consume-once ownership.',description:'Can the runtime preserve the exact right granted by an eBPF interface: one logical map value, or one independently consumable acquisition? A seven-byte logical value has an eight-byte storage stride. A and B independently acquire rights to one object; consuming A must reject A’s aliases while B remains usable before termination. Morello hardware supports the two separate runtime profiles.'},
-{id:'system',chapter:'MORELLO',title:'The Morello chip',subtitle:'Software permissions at native execution',source:'Die photograph · Watson et al., Fig. 2 · illustrative mount',url:sources.die,description:'Actual Morello die photograph on an illustrative mount. It provides a physical reference before the presentation switches to documented functional diagrams.'},
-{id:'topology',chapter:'HARDWARE / SYSTEM',title:'A top-down map of Morello',subtitle:'Two dual-core clusters connect to a coherent memory system.',diagram:'soc',caption:'Functional subset · top-down diagram, not physical circuit placement · I/O omitted',source:'Arm Morello TRM · Fig. 3-2; Appendix B.1',url:sources.trm+'#page=265',move:'photo',
-body:section('A pointer with protected authority','A capability carries an address with bounds, permissions and a validity tag. The core represents and checks this authority.')+section('Support across the system','Private L1/L2 and shared cluster L3 caches connect to the interconnect and memory controllers. Stored capability tags must survive that route.'),takeaway:'<strong>Follow one permission:</strong> the core represents it, the access path checks it, and storage preserves it.',description:'An orthographic functional Morello topology: two Rainier clusters, each with two CPU cores, private L1 and L2, and shared DSU L3. Both connect to CMN-Skeena, two DMC-Bing controllers and external DDR4.'},
-{id:'core',chapter:'HARDWARE / ONE CORE',title:'The capability changes inside a core',subtitle:'Familiar execution machinery gains authority state and checks.',diagram:'soc',focus:'core',caption:'Teal: capability support · grey: existing machinery · selected request/dependency paths',source:'Arm IEEE Micro · CPU microarchitecture; Arm Hot Chips · slide 15',url:sources.micro,move:'core',
-body:section('Data access','Capability registers carry authority. Load/store checks use it alongside existing translation and page protection.')+section('Instruction execution','The program counter capability (`PCC`) bounds execution. Fetch and branch handling check that authority.'),takeaway:'<strong>Inside the core:</strong> registers hold authority; data and instruction paths check its use.',description:'Zoom into the first core of the preceding system map. Capability registers feed load/store checks. PCC supports fetch and branch checks. Address generation feeds the MMU and capability-check paths; cache roles remain; highlighted blocks indicate capability-related functions, not measured hardware area.'},
-{id:'registers',chapter:'HARDWARE / POINTER STATE',title:'A pointer carries an access contract',subtitle:'Morello combines an address, encoded authority and a protected validity tag.',diagram:'registers',caption:'Architectural representation · logical widths · simplified metadata fields',source:'Arm IEEE Micro · pp. 5–6; Arm Hot Chips · slides 10–14',url:sources.hot+'#page=12',
-body:section('State that ordinary bits cannot forge','`Xn` overlaps the low 64 bits of `Cn`. The tag identifies a valid capability; it is separate from the 128-bit representation.')+section('Authority can be narrowed','Derivation cannot grant extra rights. Compressed bounds are reconstructed using the address; exact bounds need a representability check.'),takeaway:'<strong>Software chooses the grant.</strong> A valid capability can still cover more bytes than an interface intended.',description:'Comparison of Xn with Morello Cn: 64-bit address, 64-bit metadata, plus a separate protected tag. Encoded bounds and the address feed GetBounds to reconstruct base and limit.'},
-{id:'checks',chapter:'HARDWARE / DATA ACCESS',title:'Object authority and page protection',subtitle:'A valid page mapping does not identify which object an interface intended.',diagram:'checks',caption:'Logical conditions · most address-based checks run in parallel with the TLB/MMU',source:'Arm IEEE Micro · p. 6; cBPF spatial argument',url:sources.micro,
-body:section('Capability check','Validate the tag, operation permissions and the whole access interval against the capability’s bounds.')+section('Existing MMU check','Translate the virtual address and enforce page permissions. Both sets of checks must allow the access.'),takeaway:'<strong>Different units of protection:</strong> a mapped page can contain several objects; a capability can bound one.',description:'Metadata and tag feed capability checks. Address and access width feed the bounds condition; the address also feeds TLB/MMU translation and page permissions. The two conditions jointly authorize access. Full-width bounds are base less than or equal to a and a+w less than or equal to limit, with non-wrapping arithmetic.'},
-{id:'memory',chapter:'HARDWARE / STORED AUTHORITY',title:'Saving a capability preserves its permissions',subtitle:'Follow one pointer from a register into memory and back.',diagram:'memory',caption:'16-byte representation + protected tag per aligned slot · other copies are unchanged',source:'Arm Hot Chips · slides 10 & 16; Arm IEEE Micro · pp. 6–7',url:sources.hot+'#page=16',
-body:section('Save the whole capability','A capability store saves the address, bounds and permissions with their protected tag. A capability load restores that state.')+section('If ordinary bytes overwrite the slot','The write clears that slot’s tag. The bits may still contain an address, but they can no longer authorize an access as a valid capability.'),takeaway:'<strong>Saving the address alone is insufficient.</strong> The restrictions and protected tag must survive too.',description:'Top: a valid capability moves from a register to an aligned memory slot with a capability store, then back to a register with a capability load. The full 128-bit representation and separate validity tag are preserved. Below, a separate case shows an ordinary overlapping byte write clearing the saved slot’s tag. Loading those bits does not restore valid capability authority; other copies are unchanged. Tagged caches and the supported memory path preserve this information.'},
-{id:'software',chapter:'HARDWARE → LINUX',title:'The same chip now executes Linux',subtitle:'Kernel permissions are software policy; the core checks concrete machine state.',caption:'Software hierarchy over the same hardware · boxes are not silicon regions',source:'Linux libbpf overview',url:sources.linux,
-body:section('The kernel manages shared resources','Userspace enters through system calls. Linux manages memory, devices and networking; eBPF adds behavior at selected kernel hooks.')+section('Connect policy to the operand','The processor sees the capability used by an instruction. It cannot infer which map value was promised or which acquired right was consumed.'),takeaway:'<strong>Inside privileged execution,</strong> object and reference rules still matter alongside the user/kernel boundary.',description:'The camera returns through the system view and follows the execution-platform connection to userspace, system calls, Linux services and eBPF hooks. The same Morello cores execute these software roles; they are not separate silicon regions.'},
-{id:'ebpf',chapter:'BACKGROUND / PROGRAM LIFECYCLE',title:'How eBPF reaches execution',subtitle:'Program lifecycle: userspace preparation, then kernel execution.',diagram:'pipeline',caption:'Context around the program · typical load / attach lifecycle',source:'Linux libbpf overview; verifier documentation · abstract-state pruning',url:sources.linux,
-body:section('Before execution','The verifier reasons about abstract states, object bounds and reference obligations. A JIT translates accepted BPF instructions into native code.')+section('At execution','An attached hook invokes the prepared program. The CPU executes its actual operands; preserving the checked meaning depends on correct translation and interfaces.'),takeaway:'<strong>Static acceptance and native enforcement must agree.</strong> cBPF retains the normal verifier.',description:'Userspace C source is compiled by LLVM into eBPF bytecode, then submitted by a loader through bpf(). At load time the kernel verifier either rejects the program or permits subsequent preparation. A JIT produces native code, or an interpreter is used where configured. Once attached, a hook invokes the program. Static preparation does not occur at every event.'},
-{id:'prior-work',chapter:'CONTEXT / EXISTING RESPONSES',title:'Runtime enforcement and Morello eBPF',subtitle:'Existing work establishes the mechanisms; interface binding gives this study its focus.',diagram:'prior',caption:'Related designs · different enforcement premises · no security or cost ranking',source:'AEE · USENIX Security 2025; Leaf · Morello RFC 2024',url:'../research/related-work.md',
-body:section('AEE: enforce the analysis at runtime','Object-level spatial enforcement constrains execution to verifier approximations. Static safety rules and the enforcement mechanism remain trusted.')+section('Leaf: compartmentalise native eBPF','The Morello RFC establishes a compartment foundation. Helper/kfunc transitions and capability transport across the interface remain explicit challenges.'),takeaway:'<strong>The next design question:</strong> exactly which right should an interface convey to native execution?',description:'Two related approaches. AEE enforces verifier approximations at object granularity. Leaf’s Morello RFC explores native eBPF compartments with helper and kfunc boundary work remaining. cBPF studies limited interface bindings built on established mechanisms.'},
-{id:"spatial-question",chapter:"SPATIAL / THE QUESTION",title:"Which bytes did the lookup grant?",subtitle:"Storage layout locates a value; it does not define the returned authority.",caption:"Conditional design counterexample; Linux already checks logical value size",source:"Logical extent and exact-value argument",url:"../results/logical-extent.md",
-body:section("Two values, two sizes","A seven-byte logical value occupies an eight-byte stride. Offset seven is padding; offset eight starts the next value.")+section("The question","A stride-wide capability would honestly authorize padding. The provider must supply the interface’s logical extent."),takeaway:"<strong>Grant the selected value, not its storage slot.</strong> The capability tag is separate integrity metadata.",description:"Seven logical bytes and one padding byte. A hypothetical stride-based constructor loses the interface boundary; this is not a new Linux vulnerability."},
-{id:"spatial-input",chapter:"SPATIAL / A · INTERFACE AND INPUT",title:"A seven-byte value, a small valid program",subtitle:"Key 1 selects the second value. Byte six is the last logical byte.",caption:"Recorded BPF excerpt; inherited interface and layout",source:"Logical-extent guest and verifier transcript",url:"../results/logical-extent.md#recorded-code-to-native-walkthrough",
-body:'',takeaway:"<strong>Ordinary valid BPF:</strong> lookup → NULL check → byte-six load, increment and store.",description:"The displayed instructions are BPF PCs 5–11 from the retained key-one guest. Two values have logical size seven, stride eight and four-byte keys; no forbidden access is attempted.",layout:'wide'},
-{id:"spatial-analysis",chapter:"SPATIAL / B · ORDINARY ANALYSIS",title:"The verifier already knows the logical size",subtitle:"The non-NULL branch refines the lookup result before the byte access.",caption:"Observed verifier state; ordinary checks retained",source:"Retained logical-extent boot.log; pinned verifier source",url:"../results/logical-extent.md#recorded-code-to-native-walkthrough",
-body:'',takeaway:"<strong>Unchanged in this provider patch:</strong> map-size, access-width and NULL checks remain enabled.",description:"Before the branch R0 is map_value_or_null with vs seven; after refinement R0 is map_value with vs seven. These observed abstract states are not the runtime capability representation.",layout:'wide'},
-{id:"spatial-handoff",chapter:"SPATIAL / C · THE ACTUAL HANDOFF",title:"A root summary is not a serialized bound",subtitle:"Verifier metadata and the separate JIT authority analysis have different jobs.",caption:"Pinned-source inspection; not a new execution or analysis-correctness proof",source:"Verifier/JIT producer–field–consumer map",url:"../results/logical-extent.md#c-what-actually-crosses-the-compilation-boundary",
-body:'',takeaway:"<strong>The verifier summary constrains the profile;</strong> JIT analysis selects capability instructions; runtime map metadata supplies the bound.",description:"Verifier ptr_type becomes prog aux jit_memory_roots with version and valid fields. Separate bpf_cheri_build_authority reconstructs register kinds in ctx authority; build_insn consumes these kinds. Runtime extent comes from map value_size.",layout:'wide'},
-{id:"spatial-binding",chapter:"SPATIAL / D · RUNTIME CONSTRUCTION",title:"Selection by stride, authority by logical size",subtitle:"Stride-based address selection is inherited. cBPF adds exact logical-size authority from a retained root.",caption:"Offsets within cbpf_array_value_cap at 0xffff8000801c1e78; actual C and retained linked instructions",source:"array-authority.patch; linked provider inspection",url:"../results/logical-extent.md#d-runtime-extent-and-selected-address",
-body:'',takeaway:"<strong>New production binding:</strong> exact selected-value authority, or no usable grant.",description:"Actual provider C is aligned with extracted linked instructions. scvalue c1,c7,x6 sets the selected address; scbndse c1,c1,x3 requests exact logical bounds. Provider-local c7 is the retained allocation capability, x6 is the stride-selected address, x3 is the logical extent from map value_size, and c1 is the resulting selected-value capability. This c7 is distinct from the later JIT program’s c7. Descriptor checks require length seven, tag one, unsealed state and permissions 0x30001; unsupported construction fails.",layout:'wide'},
-{id:"spatial-transport",chapter:"SPATIAL / E · TRANSPORT",title:"Full-capability lookup transport",subtitle:"The inherited hybrid gateway returns c0; BPF R0 maps to c7.",caption:"Source and retained native inspection; existing ABI transport",source:"Lookup handoff and native word 72",url:"../results/logical-extent.md#ef-transport-and-actual-instructions",
-body:'',takeaway:"<strong>Full-capability move:</strong> address, encoded authority and tag reach the operand together.",description:"The JIT source emits emit_cheri_cap_mov from A64_R zero to the BPF result register. Native word 72 is mov c7,c0. Address-only transport would not establish this capability correspondence.",layout:'wide'},
-{id:"spatial-native",chapter:"SPATIAL / F · MACHINE CODE",title:"Capability operands in the retained native image",subtitle:"The retained image uses c7 for both one-byte accesses at displacement six.",caption:"Right: actual extracted instructions. Left: illustrative AArch64 forms, no built baseline",source:"392-byte key-one image; complete native review",url:"../results/logical-extent.md#ef-transport-and-actual-instructions",
-body:'',takeaway:"<strong>Inspected scope:</strong> these two operands use the returned capability; this is not an all-program proof.",description:"Illustrative address-based ldrb and strb through x7 are compared with actual ldurb and sturb through c7 at native words 75 and 77. On Morello address-based forms use ambient DDC authority; they are not necessarily unchecked.",layout:'wide'},
-{id:"spatial-evidence",chapter:"SPATIAL / G · VALID EFFECT",title:"One normal execution: 41 becomes 42",subtitle:"Key 1 · normally verified BPF · one TEST_RUN in Morello QEMU.",caption:"Recorded effect, joined to the inspected key-one image",source:"Logical-extent run and review artifacts",url:"../results/logical-extent.md",
-body:'',takeaway:"<strong>Observed:</strong> exact construction and valid native use. This execution attempts no padding access.",description:"Initial bytes 11 22 33 44 55 66 29 become 11 22 33 44 55 66 2a; return and readback are 42. The six-byte prefix is unchanged. This key-one execution is distinct from the key-zero rejection matrix.",layout:'wide'},
-{id:"spatial-rejection",chapter:"SPATIAL / G · SEPARATE SYNTHETIC REJECTION",title:"Exact authority selectively excludes padding",subtitle:"Key 0 · same backing address and permissions · fixed trusted native access forms.",caption:"30 operations: 22 permits, 8 bounds faults · test-only recovery · not verifier-admitted invalid BPF",source:"Spatial selectivity matrix-v2 and linked helper",url:"../results/spatial-selectivity.md",
-body:'',takeaway:"<strong>At offset six:</strong> width one is permitted; width two is rejected by exact-seven authority and permitted by both wider controls.",description:"The highlighted offset-six pair distinguishes checking the full access from only its starting address: width one is permitted by all three roots; width two is rejected by exact-seven authority and permitted by stride-eight and both-slot-sixteen controls. All roots share the selected base and permissions. The other three matrix rows are retained. Separate case three loads padding through c2 with length seven and reports FSC 0x2a, unchanged sentinel and fixture. Test-only recovery is outside the production solution.",layout:'wide'},
-{id:"ownership-question",chapter:"OWNERSHIP / THE QUESTION",title:"Same object. Which acquired right?",subtitle:"Copying A creates an alias of A, not another acquisition.",caption:"Conditional representation question; ordinary verifier ownership rules remain",source:"Acquisition-distinguishability argument",url:"../../theory/acquisition-distinguishability.md",
-body:section("Acquire A and independent B","Both rights refer to the same live object. Its address, bounds and aggregate count cannot identify which right a request presents.")+section("Consume A once","B must remain usable before termination, while a later use through any alias of A must reject."),takeaway:"<strong>Object identity is not acquisition identity.</strong> The experiment holds object lifetime constant.",description:"Two independent acquisitions share one permanent object. Copies retain A’s identity. Consuming A should invalidate A’s aliases without consuming B."},
-{id:"ownership-binding",chapter:"OWNERSHIP / CONSTRUCTION AND TRANSPORT",title:"An alias keeps A’s identity, not its validity",subtitle:"Private cells distinguish acquisitions; the public capability identifies a cell.",caption:"Actual fixed-image excerpts plus ordered gate observations",source:"Integrated native trace and complete inspection",url:"../results/ownership-native-trace.md",
-body:'',takeaway:"<strong>Hardware preserves identity; software checks current validity.</strong> A’s public tag need not clear.",description:"Native words 67 and 79 store and load complete capability A through a sixteen-byte sidecar. Release clears A’s private authority before decrementing. B then reads 42 at BPF-shaped PC 13; A’s public alias remains tagged and canonical.",layout:'wide'},
-{id:"ownership-evidence",chapter:"OWNERSHIP / REJECTION → TERMINATION → CLEANUP",title:"Stale A rejects; cleanup consumes B once",subtitle:"The native negatives reach the production gate at PC 17 after B has read 42.",caption:"Fixed trusted native fixtures, verified_bpf=0 · software ownership rejection, not an architectural bounds fault",source:"Ordered trace; linked gateway, epilogue and wrapper inspection",url:"../results/ownership-native-trace.md",
-body:'',takeaway:"<strong>Reject consumed A → skip continuation → clean live B exactly once.</strong>",description:"The gateway restores saved state before cmn x0,#1 tests the failure sentinel. Failure selects the executive epilogue with mov c14,c13, zeroes x0/x7, restores c30 and clears scratch registers. retr c14 enters word 117 directly. Normal BPF exit uses the restricted-return stub at word 116. The epilogue scrubs the sidecar and registers; wrapper cleanup consumes B once. PC 19 release and PC 20 marker do not execute. This is software ownership rejection, not a spatial bounds fault.",layout:'wide'},
-{id:"release-eligibility",chapter:"ANALYSIS / A DIFFERENT QUESTION",title:"Live does not mean entitled to release",subtitle:"An owning caller and a borrowing callback can present the same live A.",caption:"Conditional counterexample; no callback-policy implementation",source:"Validity versus contextual release eligibility",url:"../../theory/acquisition-distinguishability.md#3-live-validity-does-not-determine-release-eligibility",
-body:'',takeaway:"<strong>CVE-2022-50650 relevance:</strong> projected repeated-consumption containment, not equivalence to the repair.",description:"The same identity and live state permit an owning caller’s release but do not authorize a borrowing callback’s first release. Current and owning context, plus callback-exit obligations, are separate information not implemented by cBPF.",layout:'wide'},
-{id:"implementation-scope",chapter:"ENGINEERING / CORE AND SUPPORT",title:"Policy-specific engineering scope",subtitle:"Inherited platform and transport are credited separately from the policy-specific additions.",caption:"Physical-line estimate; mixed-file exclusions; no simplicity or security inference",source:"Reproducible implementation inventory at 89c0ece",url:"../research/implementation-scope.md",
-body:'',takeaway:"<strong>Core first, evaluation second:</strong> fixtures, recovery, checkers and evidence copies are not the runtime policy.",description:"Spatial provider integration adds 193 and deletes one line over the inherited tree. Ownership core is about 841 physical lines relative to Morello base, excluding separately attributed platform extraction and support. Counts retain the pinned snapshot, mixed-span exclusions and inherited-versus-new distinction.",layout:'wide'},
-{id:"findings",chapter:"SYNTHESIS / WHAT WAS ESTABLISHED",title:"Four decisions a runtime designer can reuse",subtitle:"Preserve the distinction the interface needs, then follow it to the actual effect.",caption:"Two separate profiles; evidence categories remain distinct",source:"Contribution and claim–evidence map",url:"../research/claim-evidence.md",
-body:section("Representation","Use logical extent rather than stride. Use acquisition identity rather than object address. Associate identity with current validity.")+section("Execution boundary","Join rejection to stopped continuation and discharged obligations. These links are observed only in the selected controls."),takeaway:"<strong>Assurance is layered:</strong> model reasoning, execution, encoder self-check and internal native inspection are different support.",description:"Four decisions: extent differs from layout, object differs from acquisition, identity requires validity, and rejection needs terminal handling. Published receipts can be rechecked; no independently provisioned external reproduction or compiler proof is claimed."},
-{id:"conclusion",chapter:"CONCLUSION / THE ANSWER",title:"Interface grants at native enforcement points",subtitle:"Construction → full transport → enforcement → terminal handling.",caption:"Bounded study complete; no performance or whole-runtime correctness claim",source:"Finalized findings and scope",url:"../research/claim-evidence.md",
-body:section("Spatial answer","A normally verified valid witness and a separate same-storage matrix connect exact logical extent to selected native permit/reject outcomes.")+section("Ownership answer","A fixed trusted native trace preserves B, rejects consumed A, stops continuation and cleans B once through the production path."),takeaway:"<strong>The contribution:</strong> concrete bindings and discriminating evidence, with explicit software and architectural premises.",description:"The two implemented profiles demonstrate bounded feasibility of selected-value and acquisition-sensitive authority. They are not composed, do not reproduce complete original CVEs, and do not prove general reclamation, compiler correctness or performance superiority."}
+ {
+  "id": "title",
+  "chapter": "MASTER’S THESIS",
+  "title": "Hardware capabilities for eBPF",
+  "subtitle": "Selected-value bounds and per-acquisition ownership",
+  "source": "",
+  "url": "",
+  "description": "cBPF. Hardware capabilities for eBPF: selected-value bounds and per-acquisition ownership. Barna Ifkovics. Supervisor dr.ir. A. Continella. Daily supervisor Mattia Napoli."
+ },
+ {
+  "id": "question",
+  "chapter": "RESEARCH QUESTION",
+  "title": "Preserving the exact interface right",
+  "subtitle": "Can the runtime preserve the exact right granted by an eBPF interface: one logical map value, or one independently consumable acquisition?",
+  "caption": "Two separate runtime profiles with normal verification enabled",
+  "source": "Research question and claim–evidence map",
+  "url": "../research/claim-evidence.md",
+  "body": "",
+  "takeaway": "",
+  "description": "Can the runtime preserve the exact right granted by an eBPF interface: one logical map value, or one independently consumable acquisition? A seven-byte logical value has an eight-byte storage stride. A and B independently acquire rights to one object; consuming A must reject A’s aliases while B remains usable before termination. Morello hardware supports the two separate runtime profiles.",
+  "layout": "wide"
+ },
+ {
+  "id": "system",
+  "chapter": "MORELLO",
+  "title": "The Morello chip",
+  "subtitle": "Software permissions at native execution",
+  "source": "Die photograph by Watson et al. (Fig. 2), illustrative mount",
+  "url": "https://api.repository.cam.ac.uk/server/api/core/bitstreams/f95cc789-b818-49ec-ae35-b1f5fb677d84/content#page=6",
+  "description": "Actual Morello die photograph on an illustrative mount. It provides a physical reference before the presentation switches to documented functional diagrams."
+ },
+ {
+  "id": "topology",
+  "chapter": "HARDWARE / SYSTEM",
+  "title": "A top-down map of Morello",
+  "subtitle": "Capability state travels through the core and memory system.",
+  "diagram": "soc",
+  "caption": "Functional topology with I/O omitted",
+  "source": "Arm Morello TRM, Fig. 3-2 and Appendix B.1",
+  "url": "https://documentation-service.arm.com/static/62a735d731ea212bb6623405#page=265",
+  "move": "photo",
+  "body": "<section><h2>Inherited platform</h2><p>Cores check capabilities. Caches and memory preserve their tags.</p></section>",
+  "takeaway": "",
+  "description": "An orthographic functional Morello topology: two Rainier clusters, each with two CPU cores, private L1 and L2, and shared DSU L3. Both connect to CMN-Skeena, two DMC-Bing controllers and external DDR4."
+ },
+ {
+  "id": "core",
+  "chapter": "HARDWARE / ONE CORE",
+  "title": "Capability support inside a core",
+  "subtitle": "Authority checks accompany instruction execution and data access.",
+  "diagram": "soc",
+  "focus": "core",
+  "caption": "Teal marks capability support, grey marks existing machinery",
+  "source": "Arm IEEE Micro and Hot Chips, CPU microarchitecture",
+  "url": "https://www.cl.cam.ac.uk/research/security/ctsrd/pdfs/202305ieeemicro-morello-platform.pdf#page=5",
+  "move": "core",
+  "body": "<section><h2>Data and execution</h2><p>Memory operations check capability authority. PCC bounds instruction execution.</p></section>",
+  "takeaway": "",
+  "description": "Zoom into the first core of the preceding system map. Capability registers feed load/store checks. PCC supports fetch and branch checks. Address generation feeds the MMU and capability-check paths; cache roles remain; highlighted blocks indicate capability-related functions, not measured hardware area."
+ },
+ {
+  "id": "registers",
+  "chapter": "HARDWARE / POINTER STATE",
+  "title": "A pointer carries an access contract",
+  "subtitle": "An address with encoded bounds, permissions and a protected tag.",
+  "diagram": "registers",
+  "caption": "Simplified architectural fields",
+  "source": "Arm IEEE Micro, pp. 5–6 and Hot Chips, slides 10–14",
+  "url": "https://hc34.hotchips.org/assets/program/conference/day1/Academia/HC2022.Arm.RichardGrisenthwaite.v1_0.pdf#page=12",
+  "body": "<section><h2>Protected validity</h2><p>Ordinary bits cannot forge a tagged capability.</p></section><section><h2>Exact bounds</h2><p>Compressed bounds need a representability check.</p></section>",
+  "takeaway": "Software still chooses which right to grant.",
+  "description": "Comparison of Xn with Morello Cn: 64-bit address, 64-bit metadata, plus a separate protected tag. Encoded bounds and the address feed GetBounds to reconstruct base and limit."
+ },
+ {
+  "id": "checks",
+  "chapter": "HARDWARE / DATA ACCESS",
+  "title": "Object authority and page protection",
+  "subtitle": "Every byte of the operation must satisfy both forms of protection.",
+  "diagram": "checks",
+  "caption": "Logical access conditions, not a cycle trace",
+  "source": "Arm IEEE Micro, p. 6 and cBPF spatial argument",
+  "url": "https://www.cl.cam.ac.uk/research/security/ctsrd/pdfs/202305ieeemicro-morello-platform.pdf#page=5",
+  "body": "<section><h2>Capability</h2><p>Check the tag, permissions and complete byte interval.</p></section><section><h2>Page mapping</h2><p>Check translation and page permissions.</p></section>",
+  "takeaway": "",
+  "description": "Metadata and tag feed capability checks. Address and access width feed the bounds condition; the address also feeds TLB/MMU translation and page permissions. The two conditions jointly authorize access. Full-width bounds are base less than or equal to a and a+w less than or equal to limit, with non-wrapping arithmetic."
+ },
+ {
+  "id": "memory",
+  "chapter": "HARDWARE / STORED AUTHORITY",
+  "title": "A capability survives a full save and restore",
+  "subtitle": "The protected tag travels with the capability.",
+  "diagram": "memory",
+  "caption": "16-byte representation with a separate tag per aligned slot",
+  "source": "Arm Hot Chips, slides 10 and 16, and IEEE Micro, pp. 6–7",
+  "url": "https://hc34.hotchips.org/assets/program/conference/day1/Academia/HC2022.Arm.RichardGrisenthwaite.v1_0.pdf#page=16",
+  "body": "<section><h2>Capability store and load</h2><p>Preserve the address and authority.</p></section><section><h2>Ordinary overlapping write</h2><p>Clears the stored tag. Other copies remain unchanged.</p></section>",
+  "takeaway": "",
+  "description": "Top: a valid capability moves from a register to an aligned memory slot with a capability store, then back to a register with a capability load. The full 128-bit representation and separate validity tag are preserved. Below, a separate case shows an ordinary overlapping byte write clearing the saved slot’s tag. Loading those bits does not restore valid capability authority; other copies are unchanged. Tagged caches and the supported memory path preserve this information."
+ },
+ {
+  "id": "software",
+  "chapter": "HARDWARE / LINUX",
+  "title": "The same chip now executes Linux",
+  "subtitle": "Kernel interfaces select the objects that native instructions access.",
+  "caption": "Software roles running on the same hardware",
+  "source": "Linux libbpf overview",
+  "url": "https://docs.kernel.org/bpf/libbpf/libbpf_overview.html",
+  "body": "<section><h2>The interface supplies a right</h2><p>The core checks the authority in the actual operand.</p></section>",
+  "takeaway": "",
+  "description": "The camera returns through the system view and follows the execution-platform connection to userspace, system calls, Linux services and eBPF hooks. The same Morello cores execute these software roles; they are not separate silicon regions."
+ },
+ {
+  "id": "ebpf",
+  "chapter": "BACKGROUND / PROGRAM LIFECYCLE",
+  "title": "How eBPF reaches execution",
+  "subtitle": "Verification and compilation precede execution.",
+  "diagram": "pipeline",
+  "caption": "Typical Linux load and attach lifecycle",
+  "source": "Linux libbpf overview and verifier documentation",
+  "url": "https://docs.kernel.org/bpf/libbpf/libbpf_overview.html",
+  "body": "<section><h2>Prepare once</h2><p>Load, verify and compile.</p></section><section><h2>Run at a hook</h2><p>Execute the prepared native program.</p></section>",
+  "takeaway": "Normal verification remains enabled in both cBPF profiles.",
+  "description": "Userspace C source is compiled by LLVM into eBPF bytecode, then submitted by a loader through bpf(). At load time the kernel verifier either rejects the program or permits subsequent preparation. A JIT produces native code, or an interpreter is used where configured. Once attached, a hook invokes the program. Static preparation does not occur at every event."
+ },
+ {
+  "id": "prior-work",
+  "chapter": "CONTEXT / EXISTING RESPONSES",
+  "title": "Runtime enforcement and Morello eBPF",
+  "subtitle": "Established mechanisms, a focused interface question.",
+  "diagram": "prior",
+  "caption": "Source comparison without a security or cost ranking",
+  "source": "AEE (USENIX Security 2025) and Leaf (Morello RFC 2024)",
+  "url": "../research/related-work.md",
+  "body": "<section><h2>cBPF’s focus</h2><p>Exact map-value grants and independent acquisition validity.</p></section>",
+  "takeaway": "",
+  "description": "Two related approaches. AEE enforces verifier approximations at object granularity. Leaf’s Morello RFC explores native eBPF compartments with helper and kfunc boundary work remaining. cBPF studies limited interface bindings built on established mechanisms."
+ },
+ {
+  "id": "spatial-question",
+  "chapter": "SPATIAL / CVE MOTIVATION",
+  "title": "CVE-2021-3490: incorrect bounds tracking",
+  "subtitle": "ALU32 bitwise analysis could admit out-of-bounds kernel accesses.",
+  "caption": "Archived metadata-read stage under the historical ALU32 test mode",
+  "source": "CVE disclosure, upstream repair and archived cBPF contrast",
+  "url": "../results/causal-review.md#the-two-cve-mappings-side-by-side",
+  "body": "",
+  "takeaway": "Current controls use a separate profile that excludes the historical vulnerable mode.",
+  "description": "CVE-2021-3490 involved incorrect verifier tracking of ALU32 AND, OR and XOR bounds. In an archived cBPF downstream metadata-read stage, exact selected-value authority faulted while allocation-wide authority permitted the read. That record used a historical ALU32 test mode excluded from the current profile. The following seven-byte study and synthetic key-zero matrix are separate records, not reproduction of the complete CVE.",
+  "layout": "wide"
+ },
+ {
+  "id": "spatial-input",
+  "chapter": "SPATIAL / A: INTERFACE AND INPUT",
+  "title": "One lookup, one logical value",
+  "subtitle": "Key 1 selects seven logical bytes in an eight-byte storage stride.",
+  "caption": "Normally verified BPF, retained PCs 5–11",
+  "source": "Logical-extent guest and verifier transcript",
+  "url": "../results/logical-extent.md#recorded-code-to-native-walkthrough",
+  "body": "",
+  "takeaway": "",
+  "description": "The displayed instructions are BPF PCs 5–11 from the retained key-one guest. Two values have logical size seven, stride eight and four-byte keys; no forbidden access is attempted.",
+  "layout": "wide"
+ },
+ {
+  "id": "spatial-analysis",
+  "chapter": "SPATIAL / B: ORDINARY ANALYSIS",
+  "title": "NULL refinement and logical value size",
+  "subtitle": "The non-NULL path permits a one-byte access at offset six.",
+  "caption": "Recorded verifier states with ordinary checks retained",
+  "source": "Retained verifier transcript and pinned source",
+  "url": "../results/logical-extent.md#recorded-code-to-native-walkthrough",
+  "body": "",
+  "takeaway": "",
+  "description": "Before the branch R0 is map_value_or_null with vs seven; after refinement R0 is map_value with vs seven. These observed abstract states are not the runtime capability representation.",
+  "layout": "wide"
+ },
+ {
+  "id": "spatial-handoff",
+  "chapter": "SPATIAL / C: COMPILATION HANDOFF",
+  "title": "Verifier, JIT and runtime metadata",
+  "subtitle": "Logical extent comes from the map at runtime.",
+  "caption": "Source inspection in pinned spatial tree e6c69574",
+  "source": "Exact verifier producer, field and JIT consumer locations",
+  "url": "../results/logical-extent.md#c-what-actually-crosses-the-compilation-boundary",
+  "body": "",
+  "takeaway": "",
+  "description": "Verifier ptr_type becomes prog aux jit_memory_roots with version and valid fields. Separate bpf_cheri_build_authority reconstructs register kinds in ctx authority; build_insn consumes these kinds. Runtime extent comes from map value_size.",
+  "layout": "wide"
+ },
+ {
+  "id": "spatial-binding",
+  "chapter": "SPATIAL / D: RUNTIME CONSTRUCTION",
+  "title": "Stride selects the address, logical size sets the bound",
+  "subtitle": "Actual provider C beside non-contiguous extracted instructions.",
+  "caption": "Provider-local c7 differs from the later program c7, and surrounding descriptor checks are omitted",
+  "source": "Logical-extent provider source and retained linked disassembly",
+  "url": "../results/logical-extent.md#d-runtime-extent-and-selected-address",
+  "body": "",
+  "takeaway": "Exact selected-value authority or no usable grant.",
+  "description": "Actual provider C is aligned with extracted linked instructions. scvalue c1,c7,x6 sets the selected address; scbndse c1,c1,x3 requests exact logical bounds. Provider-local c7 is the retained allocation capability, x6 is the stride-selected address, x3 is the logical extent from map value_size, and c1 is the resulting selected-value capability. This c7 is distinct from the later JIT program’s c7. Descriptor checks require length seven, tag one, unsealed state and permissions 0x30001; unsupported construction fails.",
+  "layout": "wide"
+ },
+ {
+  "id": "spatial-transport",
+  "chapter": "SPATIAL / E: TRANSPORT",
+  "title": "BPF R0 receives the full capability",
+  "subtitle": "The gateway’s c0 reaches the JIT program’s c7.",
+  "caption": "Inherited hybrid transport in the inspected key-one image",
+  "source": "Lookup handoff and native word 72",
+  "url": "../results/logical-extent.md#ef-transport-and-actual-instructions",
+  "body": "",
+  "takeaway": "",
+  "description": "The JIT source emits emit_cheri_cap_mov from A64_R zero to the BPF result register. Native word 72 is mov c7,c0. Address-only transport would not establish this capability correspondence.",
+  "layout": "wide"
+ },
+ {
+  "id": "spatial-native",
+  "chapter": "SPATIAL / F: MACHINE CODE",
+  "title": "Two accesses through the same capability",
+  "subtitle": "c7 supplies the authority for both one-byte operations.",
+  "caption": "Illustrative baseline syntax follows pinned lowering source b96da308, with no baseline kernel build",
+  "source": "Retained 392-byte key-one image and native inspection",
+  "url": "../results/logical-extent.md#ef-transport-and-actual-instructions",
+  "body": "",
+  "takeaway": "",
+  "description": "The large instructions are actual extracted ldurb w0,[c7,#6] and sturb w0,[c7,#6] at words 75 and 77. Both use the returned capability c7, scalar data w0 and displacement six. The lower ldrb and strb forms are illustrative AArch64 syntax, supported by pinned conventional lowering source. On Morello address-based forms use ambient DDC. No baseline image was built and no all-program mediation is claimed.",
+  "layout": "wide"
+ },
+ {
+  "id": "spatial-evidence",
+  "chapter": "SPATIAL / G: VALID EFFECT",
+  "title": "A valid execution changes 41 to 42",
+  "subtitle": "Key 1 with normally verified BPF.",
+  "caption": "One TEST_RUN in Morello QEMU, with no out-of-bounds access",
+  "source": "Logical-extent run and review artifacts",
+  "url": "../results/logical-extent.md",
+  "body": "",
+  "takeaway": "",
+  "description": "Initial bytes 11 22 33 44 55 66 29 become 11 22 33 44 55 66 2a; return and readback are 42. The six-byte prefix is unchanged. This key-one execution is distinct from the key-zero rejection matrix.",
+  "layout": "wide"
+ },
+ {
+  "id": "spatial-rejection",
+  "chapter": "SPATIAL / G: EXTENT AND BINDING",
+  "title": "Extent, binding and the actual operand",
+  "subtitle": "Bounds constrain the supplied capability. Assignment connects it to the intended value.",
+  "caption": "Retained extent matrix and separate trusted binding control; neither is a non-capability baseline",
+  "source": "Spatial selectivity, binding control and linked helper",
+  "url": "../results/spatial-selectivity.md",
+  "body": "",
+  "takeaway": "Exact B protects B even when A was intended.",
+  "description": "The highlighted offset-six pair checks the full access: width one fits exact seven, width two crosses it. At offset eight, only both-slot-sixteen permits B; this is whole-value-storage authority, excluding allocation metadata. Those matrix roots share A's base. The separate binding control keeps byte six and the existing load helper, but independently obtains exact B through provider key one. A and B have distinct bytes and matched permissions; storage resets between cases. A valid B operand permits B's byte even with A recorded as intended. The third case must report a binding mismatch. Inconsistent retained allocation roots face different provider consistency checks; neither result covers every wrong root. These trusted controls remain separate from the normally verified key-one walkthrough, and add no production mechanism or complete-mediation claim.",
+  "layout": "wide"
+ },
+ {
+  "id": "ownership-question",
+  "chapter": "OWNERSHIP / CVE MOTIVATION",
+  "title": "CVE-2022-50650: repeated callbacks",
+  "subtitle": "The verifier accounted for one invocation although helpers could repeat it.",
+  "caption": "Published callback failure with a separate synthetic native repeated-release projection",
+  "source": "Linux CVE announcement, upstream repair and cBPF causal mapping",
+  "url": "../results/causal-review.md#the-two-cve-mappings-side-by-side",
+  "body": "",
+  "takeaway": "Full callback ownership policy remains outside the implemented profile.",
+  "description": "CVE-2022-50650 involved synchronous callbacks analyzed as one invocation despite repeated helper execution. Releasing a caller-owned reference on repeated invocations could exceed its ownership; repeated acquisitions could also leak. The diagram schematizes the published failure, not extracted BPF. cBPF projects repeated consumption onto distinct A and B acquisitions of one permanent object. Its synthetic native controls are separate from original BPF callback execution.",
+  "layout": "wide"
+ },
+ {
+  "id": "ownership-binding",
+  "chapter": "OWNERSHIP / CONSTRUCTION AND TRANSPORT",
+  "title": "An alias preserves A’s identity",
+  "subtitle": "Private validity changes when A is consumed.",
+  "caption": "Synthetic native fixture with extracted spill/reload and ordered gate observations",
+  "source": "Integrated native trace and complete inspection",
+  "url": "../results/ownership-native-trace.md",
+  "body": "",
+  "takeaway": "B reads successfully before stale A reaches the gate.",
+  "description": "Native words 67 and 79 store and load complete capability A through a sixteen-byte sidecar. Release clears A’s private authority before decrementing. B then reads 42 at BPF-shaped PC 13; A’s public alias remains tagged and canonical.",
+  "layout": "wide"
+ },
+ {
+  "id": "ownership-evidence",
+  "chapter": "OWNERSHIP / TERMINAL HANDLING",
+  "title": "Ownership failure and cleanup",
+  "subtitle": "Stale read and repeated release take the same terminal route.",
+  "caption": "Fixed trusted native fixtures (verified_bpf=0), with software gate rejection",
+  "source": "Ordered trace and linked gateway, epilogue and wrapper inspection",
+  "url": "../results/ownership-native-trace.md",
+  "body": "",
+  "takeaway": "",
+  "description": "The gateway restores saved state before cmn x0,#1 tests the failure sentinel. Failure selects the executive epilogue with mov c14,c13, zeroes x0/x7, restores c30 and clears scratch registers. retr c14 enters word 117 directly. Normal BPF exit uses the restricted-return stub at word 116. The epilogue scrubs the sidecar and registers; wrapper cleanup consumes B once. PC 19 release and PC 20 marker do not execute. This is software ownership rejection, not a spatial bounds fault.",
+  "layout": "wide"
+ },
+ {
+  "id": "release-eligibility",
+  "chapter": "OWNERSHIP / CVE POLICY BOUNDARY",
+  "title": "Release permission also depends on context",
+  "subtitle": "The CVE-2022-50650 repair distinguishes caller and callback ownership.",
+  "caption": "Analytical counterexample, with callback policy outside the implemented profile",
+  "source": "Validity versus contextual release eligibility",
+  "url": "../../theory/acquisition-distinguishability.md#3-live-validity-does-not-determine-release-eligibility",
+  "body": "",
+  "takeaway": "",
+  "description": "The same identity and live state permit an owning caller’s release but do not authorize a borrowing callback’s first release. Current and owning context, plus callback-exit obligations, are separate information not implemented by cBPF.",
+  "layout": "wide"
+ },
+ {
+  "id": "implementation-scope",
+  "chapter": "ENGINEERING / CORE AND SUPPORT",
+  "title": "The policy-specific implementation",
+  "subtitle": "Core changes, inherited dependencies and supporting work counted separately.",
+  "caption": "Physical-line estimates at snapshot 89c0ece, with baselines and exclusions in the inventory",
+  "source": "Reproducible implementation inventory at 89c0ece",
+  "url": "../research/implementation-scope.md",
+  "body": "",
+  "takeaway": "",
+  "description": "Spatial provider integration adds 193 and deletes one line over the inherited tree. Ownership core is about 841 physical lines relative to Morello base, excluding separately attributed platform extraction and support. Counts retain the pinned snapshot, mixed-span exclusions and inherited-versus-new distinction.",
+  "layout": "wide"
+ },
+ {
+  "id": "findings",
+  "chapter": "SYNTHESIS / WHAT WAS ESTABLISHED",
+  "title": "Four reusable design decisions",
+  "subtitle": "Each effect needs the distinction promised by its interface.",
+  "caption": "Two separate runtime profiles with shared controls supporting the ownership findings",
+  "source": "Contribution and claim–evidence map",
+  "url": "../research/claim-evidence.md",
+  "body": "",
+  "takeaway": "",
+  "description": "Four decisions: extent differs from layout, object differs from acquisition, identity requires validity, and rejection needs terminal handling. Published receipts can be rechecked; no independently provisioned external reproduction or compiler proof is claimed.",
+  "layout": "wide"
+ },
+ {
+  "id": "conclusion",
+  "chapter": "CONCLUSION / THE ANSWER",
+  "title": "Interface rights can survive native execution",
+  "subtitle": "Bounded feasibility in two separate Morello runtime profiles.",
+  "caption": "Selected operations under explicit premises, with no whole-runtime or performance claim",
+  "source": "Finalized findings and scope",
+  "url": "../research/claim-evidence.md",
+  "body": "",
+  "takeaway": "",
+  "description": "The two implemented profiles demonstrate bounded feasibility of selected-value and acquisition-sensitive authority. They are not composed, do not reproduce complete original CVEs, and do not prove general reclamation, compiler correctness or performance superiority.",
+  "layout": "wide"
+ }
 ];
 const names=slides.map(s=>s.id), reduced=matchMedia('(prefers-reduced-motion: reduce)');
 const photoIndex=names.indexOf('system'), topologyIndex=names.indexOf('topology');
@@ -89,10 +382,11 @@ const ease=x=>x*x*x*(x*(x*6-15)+10);
 const ramp=(a,b,x)=>ease(clamp((x-a)/(b-a)));
 const timing={opening:2400,return:2200,step:1450,route:2900,minimumStep:650,copy:260};
 const walkthrough=[
- {label:'Request',parts:['capability','address'],body:section('One byte at `v + 6`','A supplied capability grants the seven-byte interval <code>[v, v + 7)</code>. The instruction requests one byte at <code>v + 6</code>.')+section('Example assumptions','The capability is tagged, unsealed and permits loads. The virtual address has a valid, readable mapping.'),takeaway:'<strong>Authority belongs to the pointer.</strong> The requested byte and the capability used to reach it are different values.'},
- {label:'Checks',parts:['capability','address','inputs','cap-check','page-check','bounds'],body:section('Capability authority','Check tag, permissions and applicable seal conditions. The complete interval <code>[v + 6, v + 7)</code> fits within the grant.')+section('Page authority','The TLB/MMU translates the same virtual address and checks the mapping’s read permissions. Page protection remains necessary alongside the capability check.'),takeaway:'<strong>Object and page protection work together.</strong> Both obligations apply to the same memory request.'},
- {label:'Permission',parts:['cap-check','page-check','join','grant','bounds'],body:section('Both conditions allow this load','The one-byte request fits the capability and satisfies the assumed mapping permissions.')+section('The whole width matters','A two-byte request at the same address would extend to <code>v + 8</code>, beyond this grant. Every byte of the operation must fit.'),takeaway:'<strong>A valid mapping alone is insufficient.</strong> The actual access also needs sufficient capability authority.'},
- {label:'Data',parts:['grant','data'],body:section('The addressed byte is returned','A cache hit can supply the byte. A miss requires further lookup in the memory hierarchy.')+section('Data and capability transport differ','An ordinary byte load returns data. The capability’s validity tag belongs to its authority; a byte does not acquire that tag.'),takeaway:'<strong>The grant constrains the read.</strong> Full capability loads and stores additionally preserve the capability’s protected metadata.'}
+ {label:'Request',parts:['capability','address'],body:section('One byte at v + 6','The grant covers [v, v + 7). Assume a valid capability and readable mapping.'),takeaway:''},
+ {label:'Checks',parts:['capability','address','inputs','cap-check','page-check','bounds'],body:section('Two access conditions','The complete byte interval fits the capability, and page permissions allow the load.'),takeaway:''},
+ {label:'Permission',parts:['cap-check','page-check','join','grant','bounds'],body:section('The whole width matters','One byte fits. Two bytes at the same starting address cross the bound.'),takeaway:''},
+ {label:'Data',parts:['grant','data'],body:section('One data byte returns','A cache or memory supplies the byte. It does not inherit the capability’s tag.'),takeaway:''}
+
 ];
 const accessParts=[...document.querySelectorAll('[data-access-part]')];
 let walkIndex=-1;
@@ -102,15 +396,15 @@ function updateWalk(){
  for(const part of accessParts){const focus=active&&step.parts.includes(part.dataset.accessPart);part.style.opacity=active&&!focus?'.32':'1';part.classList.toggle('access-focus',focus);}
  document.querySelector('[data-load-detail]').toggleAttribute('hidden',!active||walkIndex!==3);
  const rule=active?'[v + 6, v + 7) ⊆ [v, v + 7)':'base ≤ a  and  a + w ≤ limit';
- const note=active?'One-byte load · seven-byte authority · non-wrapping arithmetic':'The complete byte interval must fit; arithmetic must not wrap.';
+ const note=active?'One-byte load within seven-byte authority, without arithmetic wrap':'The complete byte interval must fit; arithmetic must not wrap.';
  for(const [id,value] of [['access-rule',rule],['access-rule-note',note]])if($(id).textContent!==value)$(id).textContent=value;
  $('explanation').innerHTML=active?step.body:s.body||'';$('takeaway').innerHTML=D.inline(active?step.takeaway:s.takeaway||'');
  if(active||headingIndex===current)$('subtitle').textContent=active?'One illustrative byte load, followed from authority to data.':s.subtitle;
- $('diagram-caption').textContent=active?'Illustrative valid load · logical obligations, not a cycle trace':s.caption||'';
+ $('diagram-caption').textContent=active?'Illustrative valid load, not a cycle trace':s.caption||'';
  $('diagram-description').textContent=active?`${s.description} Walkthrough step ${walkIndex+1}: ${step.label}. ${$('explanation').textContent}`:s.description;
  $('stage').dataset.loadStep=active?String(walkIndex+1):'overview';
  $('replay').hidden=current===0||reduced.matches||active;
- if(active){$('walk-status').textContent=`${walkIndex+1} / ${walkthrough.length} · ${step.label}`;$('walk-back').disabled=walkIndex===0;$('walk-next').disabled=walkIndex===walkthrough.length-1;}
+ if(active){$('walk-status').textContent=`${walkIndex+1} / ${walkthrough.length}: ${step.label}`;$('walk-back').disabled=walkIndex===0;$('walk-next').disabled=walkIndex===walkthrough.length-1;}
 }
 function setWalk(step){
  if(slides[current].id!=='checks'||step< -1||step>=walkthrough.length)return;
@@ -274,7 +568,9 @@ async function move(i,ticket){
  const target=map[slides[i].id];
  if(conceptMotion)return reframe(i,ticket);
  if(programAnchors[logicalNode]&&programAnchors[target]&&(logicalNode!==target||programBridge))return followProgram(i,ticket);
- const kind=conceptKind(logicalNode,target);if(kind&&!programBridge)return changeConcept(i,ticket,kind);
+ // Wide evidence layouts use the existing fade, not the narrow panel masks.
+ const wide=slides[i].layout==='wide'||slides.find(s=>s.id===logicalNode)?.layout==='wide';
+ const kind=wide?null:conceptKind(logicalNode,target);if(kind&&!programBridge)return changeConcept(i,ticket,kind);
  if(programBridge||nodes[logicalNode].sheet||nodes[target].sheet)return reframe(i,ticket);
  publish(i);viewAlpha=1;
  $('stage').classList.add('moving');copyAlpha=.3;
@@ -293,7 +589,7 @@ function publish(i){
  contentIndex=i;const s=slides[i];$('stage').dataset.slide=s.id;$('stage').dataset.layout=s.layout||'standard';
  $('description').textContent=s.description;$('diagram-title').textContent=s.title;$('diagram-description').textContent=s.description;
  $('counter').textContent=`${String(i+1).padStart(2,'0')} / ${slides.length}`;$('previous').disabled=i===0;$('next').disabled=i===slides.length-1;
- document.title=s.title+' · cBPF';
+ document.title='cBPF: '+s.title;
  updateWalk();
 }
 function show(i,animate=true){

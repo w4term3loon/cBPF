@@ -15,6 +15,15 @@ The new run used the same kernel and overlays, with five added store submissions
 it reports 30 native observations and ten admission controls (four accepted,
 six rejected, none executed).
 
+The final [binding clarification](../../../docs/results/spatial-selectivity.md#selection-binding-and-the-actual-operand)
+reuses the offset-eight and offset-six extent results. Its separate
+[substitution receipt](substitution/refinement-receipt.json) records one new
+build, calibration and three-load boot on 12 September 2026, with zero new
+production mechanisms and no matrix rerun. Exact B returned B's byte while A
+was intended; the required binding mismatch was observed. The
+[substitution checker](../../../tools/check_spatial_substitution.py) is separate
+from the unchanged strict extent checker.
+
 The original checker does not bind every comparator base to the provider's
 selected address, or runtime PCs/register operands to the linked helper.
 Its object-disassembly and shutdown checks retain the limitations described on
@@ -30,6 +39,17 @@ native inspection, new execution or stronger experimental closure.
 
 ## Inspectable records
 
+- Fixed substitution: [console](substitution/boot.log),
+  [checked result](substitution/results.json), [original result](substitution/original-results.json),
+  [launch](substitution/qemu-command.sh), [input identities](substitution/inputs.sha256),
+  [complete helper](substitution/linked/complete-linked-disassembly.txt),
+  [matching calibration](substitution/calibration/results.json),
+  [source pins](substitution/build-receipt/source-pins.json),
+  [executed test overlay](substitution/build-receipt/selectivity-test.patch),
+  [executed builder](substitution/build-receipt/build_spatial_selectivity.executed.sh),
+  [export snapshot](substitution/publication.executed.py).
+  All three byte-six loads permit; only intended-A/actual-B mismatches, with
+  unchanged storage. PASS means the expected counterexample, not correct binding.
 - Matrix: [raw console](run/boot.log), [original result](run/results.json),
   [original checker](run/check_spatial_selectivity.executed.py),
   [executed runner](run/run-script.executed.sh), [guest source](run/guest.c).

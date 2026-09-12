@@ -1,0 +1,50 @@
+
+/kernel/vmlinux:	file format elf64-littleaarch64
+
+Disassembly of section .text:
+
+ffff8000801c4ac8 <cbpf_selectivity_native_access>:
+ffff8000801c4ac8: f9400068     	ldr	x8, [x3]
+ffff8000801c4acc: 7100083f     	cmp	w1, #0x2
+ffff8000801c4ad0: 36000120     	tbz	w0, #0x0, 0xffff8000801c4af4 <cbpf_selectivity_native_access+0x2c>
+ffff8000801c4ad4: 54000240     	b.eq	0xffff8000801c4b1c <cbpf_selectivity_native_access+0x54>
+ffff8000801c4ad8: 7100043f     	cmp	w1, #0x1
+ffff8000801c4adc: 540001c1     	b.ne	0xffff8000801c4b14 <cbpf_selectivity_native_access+0x4c>
+ffff8000801c4ae0: 2a1f03e0     	mov	w0, wzr
+ffff8000801c4ae4: c2c1d041     	mov	c1, c2
+ffff8000801c4ae8: e2000048     	sturb	w8, [c2, #0x0]
+ffff8000801c4aec: 10ffffe9     	adr	x9, 0xffff8000801c4ae8 <cbpf_selectivity_native_access+0x20>
+
+ffff8000801c4af0 <$x.61>:
+ffff8000801c4af0: 14000015     	b	0xffff8000801c4b44 <cbpf_selectivity_native_access+0x7c>
+ffff8000801c4af4: 540001e0     	b.eq	0xffff8000801c4b30 <cbpf_selectivity_native_access+0x68>
+ffff8000801c4af8: 7100043f     	cmp	w1, #0x1
+ffff8000801c4afc: 540000c1     	b.ne	0xffff8000801c4b14 <cbpf_selectivity_native_access+0x4c>
+ffff8000801c4b00: 2a1f03e0     	mov	w0, wzr
+ffff8000801c4b04: c2c1d041     	mov	c1, c2
+ffff8000801c4b08: e2000448     	ldurb	w8, [c2, #0x0]
+ffff8000801c4b0c: 10ffffe9     	adr	x9, 0xffff8000801c4b08 <cbpf_selectivity_native_access+0x40>
+
+ffff8000801c4b10 <$x.63>:
+ffff8000801c4b10: 1400000c     	b	0xffff8000801c4b40 <cbpf_selectivity_native_access+0x78>
+ffff8000801c4b14: 128002a0     	mov	w0, #-0x16      // =-22
+ffff8000801c4b18: d65f03c0     	ret
+ffff8000801c4b1c: 2a1f03e0     	mov	w0, wzr
+ffff8000801c4b20: c2c1d041     	mov	c1, c2
+ffff8000801c4b24: e2400048     	sturh	w8, [c2, #0x0]
+ffff8000801c4b28: 10ffffe9     	adr	x9, 0xffff8000801c4b24 <cbpf_selectivity_native_access+0x5c>
+
+ffff8000801c4b2c <$x.65>:
+ffff8000801c4b2c: 14000006     	b	0xffff8000801c4b44 <cbpf_selectivity_native_access+0x7c>
+ffff8000801c4b30: 2a1f03e0     	mov	w0, wzr
+ffff8000801c4b34: c2c1d041     	mov	c1, c2
+ffff8000801c4b38: e2400448     	ldurh	w8, [c2, #0x0]
+ffff8000801c4b3c: 10ffffe9     	adr	x9, 0xffff8000801c4b38 <cbpf_selectivity_native_access+0x70>
+
+ffff8000801c4b40 <$x.67>:
+ffff8000801c4b40: f9000068     	str	x8, [x3]
+ffff8000801c4b44: c2000081     	str	c1, [x4, #0x0]
+ffff8000801c4b48: f90000a9     	str	x9, [x5]
+ffff8000801c4b4c: b9400128     	ldr	w8, [x9]
+ffff8000801c4b50: b90000c8     	str	w8, [x6]
+ffff8000801c4b54: d65f03c0     	ret

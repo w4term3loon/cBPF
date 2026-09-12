@@ -1,0 +1,59 @@
+{
+  "recorded_utc": "2026-09-12T20:53:40.161425+00:00",
+  "reviewed_tag": "presi",
+  "repository_head": "51a61c6b1da2cda047eac28092c918b97b47a8a4",
+  "presi_commit": "51a61c6b1da2cda047eac28092c918b97b47a8a4",
+  "working_tree_had_uncommitted_presentation_changes": [
+    "docs/presentation/README.md",
+    "docs/presentation/diagrams.js",
+    "docs/presentation/index.html",
+    "docs/presentation/recorded-walkthrough.js",
+    "docs/presentation/tour.css",
+    "docs/presentation/tour.js"
+  ],
+  "working_tree_sources": "Executed overlay and tool snapshots identify the changes; HEAD alone does not.",
+  "feasibility_inspection_utc": [
+    "2026-09-12T20:24:08Z",
+    "2026-09-12T20:34:03Z"
+  ],
+  "feasibility_limit_hours": 2,
+  "direct_existing_fixture": true,
+  "kernel_builds": 1,
+  "calibration_boots": 1,
+  "substitution_boots": 1,
+  "extent_matrix_boots": 0,
+  "normally_verified_witness_reruns": 0,
+  "production_changes": 0,
+  "new_exception_handling": 0,
+  "protected_original_sha256": {
+    "linux/spatial/array-authority.patch": "ac74717a7dbd2c61760115c1b8b719e52d27d60d02957a2b73c3ff155206c4ac",
+    "linux/spatial/native-observation.patch": "2f7889c53d0b4de2e47a94b8acb0d6c1ab73bca6effaccee5b4733984f449b07",
+    "tools/check_spatial_selectivity.py": "1ee14daac0e0c2b96214391b17e259636f99c210eb26b9e349cc14a97f202d07",
+    "linux/spatial/selectivity-guest.c": "07fb1f6618cb09b5ffd8194e11d1685aacfafe28fdb7d611ac2a737742862762"
+  },
+  "unchanged_fixture_parts": {
+    "exception_handler_overlay": {
+      "bytes": 988,
+      "sha256": "8add67717a1d094068d8e304cb0d295b8a99c9af9654f5ad8e3b13d580b34538"
+    },
+    "fault_recorder_and_native_access_helper": {
+      "bytes": 2838,
+      "sha256": "c0ae213b2b4656d6cc95679982959fd44468223f788a3bfef24a3ff7fcf157e5"
+    },
+    "strict_extent_case": {
+      "bytes": 4554,
+      "sha256": "13990711a7947c2f96850b631339859b1b084c7ec5986034e02c211b04126af0"
+    }
+  },
+  "original_boot": {
+    "bytes": 37107,
+    "sha256": "95681262d03a1b3518192229d365135c80ab7b90cf6e4ad64d4d3802886154dc"
+  },
+  "original_result": {
+    "bytes": 16588,
+    "sha256": "24b7a39ad07b2d23cf55f333f754eb4652f277775a0d40f38c5c9f5efa1bbb2e"
+  },
+  "result": "PASS: three permitted loads, one expected intended/actual binding mismatch",
+  "scope": "Fixed trusted native counterexample, separate from verified BPF. No semantic authentication, complete mediation or reachable-exploit claim.",
+  "publication_policy": "Private originals remain local. Host paths are role-redacted; embedded original hashes remain unchanged. results.json is rechecked over publication bytes; original-results.json preserves the earlier output."
+}

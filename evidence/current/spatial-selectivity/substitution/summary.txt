@@ -1,0 +1,1 @@
+CBPF_SPATIAL_SELECTIVITY_RUN result=PASS mode=substitution qemu_exit=0 results=${SUBSTITUTION_RUN}/results.json

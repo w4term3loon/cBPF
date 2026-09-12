@@ -10,11 +10,10 @@ footer{position:absolute;bottom:2.9%;left:4%;right:4%;z-index:7;display:flex;jus
 #hero-label{position:absolute;z-index:5;left:73%;top:38%;font-size:1.4cqw;line-height:1.5;pointer-events:none;opacity:0}#hero-label small{display:block;font-size:1cqw;color:#475b62}#stage[data-slide=system] #subtitle{max-width:50%}
 /* All detail layers are retained in one SVG; only camera, masks and opacity change. */
 #diagram text{font-family:Arial,Helvetica,sans-serif;fill:var(--paper);font-weight:400}#diagram .label{font-size:24px}#diagram .small{font-size:20px;fill:#53666d}#diagram .tiny{font-size:17px;fill:#53666d}#diagram .title{font-size:28px;fill:var(--mint)}#diagram .muted{fill:var(--muted)}#diagram .mint{fill:var(--mint)}#diagram .copper-text{fill:var(--copper)}#diagram .outline{fill:none;stroke:var(--line);stroke-width:1.7}#diagram .block{fill:#fff;stroke:#99acb3;stroke-width:1.5}#diagram .cap{fill:#f2f8f5;stroke:var(--teal);stroke-width:1.7}#diagram .address{fill:#fbf6ee;stroke:#b68b55;stroke-width:1.6}#diagram .soft{fill:#fcfdfd;stroke:#bcc9cd;stroke-width:1.5}#diagram .wire{fill:none;stroke:#73858a;stroke-width:2}#diagram .cap-wire{fill:none;stroke:var(--teal);stroke-width:2.1}#diagram .dash{stroke-dasharray:7 6}#diagram .accent{fill:#f7faf8;stroke:var(--teal);stroke-width:2}#diagram .tag{fill:#d4ebdf}#diagram .tag-text{fill:#17503e;font-size:22px;font-weight:bold}#diagram .paper-line{stroke:#a8babf;stroke-width:1.5}#diagram .detail-ground{fill:#fff;stroke:none}
-/* Wide recorded-evidence panels retain the existing slide frame and branding. */
+/* Recorded diagrams use the same wide canvas and retain the slide frame. */
 #stage[data-layout=wide] #content{grid-template-columns:1fr;gap:0}
 #stage[data-layout=wide] #explanation-column{display:none}
 #diagram .snippet{font-family:Consolas,'Liberation Mono',monospace;font-size:26px}
-#diagram .snippet-note{font-size:27px;fill:#53666d}
 /* Local syntax colors keep the fixed excerpts editable and preserve spacing. */
 .syntax-op,.syntax-type{color:#67447e;fill:#67447e;font-weight:600}
 .syntax-function{color:#234f83;fill:#234f83;font-weight:600}
@@ -23,7 +22,22 @@ footer{position:absolute;bottom:2.9%;left:4%;right:4%;z-index:7;display:flex;jus
 .syntax-comment{color:#59686e;fill:#59686e;font-style:italic}
 .syntax-reject{color:#9b3724;fill:#9b3724}
 #diagram .snippet-focus{fill:#e2efe8;stroke:none}
-#diagram .snippet.emphasized{font-weight:600}
+/* Flat evidence layouts: actual code, branches, bytes and state transitions. */
+#diagram .research-code,#diagram .research-code-small,#diagram .research-byte,#diagram .research-symbol,#diagram .research-native,#diagram .research-hex,#diagram .research-result{font-family:var(--mono);letter-spacing:0}
+#diagram .research-label{font-size:24px;letter-spacing:1.1px;fill:var(--mint);font-weight:600}
+#diagram .research-body{font-size:32px}
+#diagram .research-detail{font-size:26px;fill:var(--muted)}
+#diagram .research-title{font-size:39px;font-weight:500}
+#diagram .research-code{font-size:34px}
+#diagram .research-code-small{font-size:29px}
+#diagram .research-byte{font-size:34px}
+#diagram .research-emphasis{font-size:46px;font-weight:500}
+#diagram .research-symbol{font-size:104px;fill:var(--mint)}
+#diagram .research-native{font-size:56px}
+#diagram .research-hex{font-size:64px}
+#diagram .research-result{font-size:178px;fill:var(--mint)}
+#diagram .research-stat{font-size:104px;font-weight:500}
+#diagram .research-reject{fill:#9b3724}
 #stage[data-slide=question] #subtitle{font-size:1.45cqw;max-width:94%;text-wrap:balance}
 #stage[data-slide=question] #content{top:32%;height:51%}
 #stage[data-slide=ownership-evidence] #takeaway strong{font-weight:600;font-size:1.35cqw}

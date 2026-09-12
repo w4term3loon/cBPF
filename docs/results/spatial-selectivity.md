@@ -1,6 +1,6 @@
 # Selective spatial enforcement
 
-The selective spatial matrix passes strengthened receipt checks for both the
+Both retained spatial matrix runs pass strengthened receipt checks: the
 original 10 September 2026 run and a later admission-extension run. Each made 30 native
 load/store observations over two disposable seven-byte array values stored at
 an eight-byte stride. Twenty-two accesses completed and eight produced the
@@ -23,6 +23,14 @@ an eight-byte stride capability and a sixteen-byte capability covering both
 value slots. They used the same backing bytes, scalar permissions and access
 instructions. No returned exact capability was widened.
 
+Offset eight distinguishes **per-value authority** from authority over the
+**whole value-storage region**. The sixteen-byte root covers A, B and the two
+padding bytes; it does not cover allocation metadata. Exact-seven and
+stride-eight roots based at A reject the first byte of B, whereas the
+both-slot root permits it. All three are capability controls. This comparison
+is not a genuine non-capability baseline, and relabelling its extent requires
+no new metadata experiment or matrix execution.
+
 | Offset, width | Meaning | Exact 7 | Stride 8 | Both slots 16 |
 |---|---|---|---|---|
 | 6, 1 | Last logical byte | Permit | Permit | Permit |
@@ -42,10 +50,85 @@ supplying another case's expected result. The width-two case at offset six
 also shows that enforcement covers the complete memory operation, not merely
 its starting address.
 
+## Selection binding and the actual operand
+
+Exact bounds protect the region named by the capability actually supplied to
+the instruction. Correct assignment must also connect that region to the
+intended map and key. Two different mistakes must be distinguished:
+
+- An inconsistent retained allocation root is rejected if it fails the
+  production provider's tag, sealing, allocation base/cursor, recorded extent,
+  permissions or layout-size checks. This is **source inspection**, not a new
+  corruption experiment; it does not cover every possible wrong root.
+- A valid exact B capability, independently obtained through key one and then
+  substituted for intended A, still authorizes accesses inside B. For a byte
+  load at relative offset six, B's `0x87` is expected rather than A's `0x29`,
+  with no hardware fault and a binding mismatch. This analytically expected
+  counterexample was **observed** in the fixed trusted control below; it is
+  not correct assignment.
+
+The fixed substitution mode uses the existing access helper for correct A,
+legitimate B and intended-A/actual-B cases, resetting all sixteen bytes before
+each. Intended map/key are recorded separately from the provider key and
+captured operand. Its [separate checker](../../tools/check_spatial_substitution.py)
+requires the mismatching binding for the third case to pass. The original
+selectivity checker remains unchanged and still rejects any comparator base
+that differs from its single selected A address.
+
+**Observed on 12 September 2026, under Morello QEMU.** One new kernel build,
+its two-case calibration and one three-load substitution boot passed. No
+extent matrix or normally verified witness was rerun. The provider,
+observation overlay, native access helper, exception handling and verifier
+were unchanged. The [receipt](../../evidence/current/spatial-selectivity/substitution/refinement-receipt.json)
+records revision `51a61c6b1da2cda047eac28092c918b97b47a8a4`, matching `presi`,
+the pre-existing presentation edits, and exact executed source identities.
+
+| Trusted case | Intended key | Actual provider key | Returned byte | Binding |
+|---|---:|---:|---|---|
+| Correct A | 0 | 0 | `0x29` | Match |
+| Legitimate B | 1 | 1 | `0x87` | Match |
+| Substituted B | 0 | 1 | `0x87` | **Mismatch, as required** |
+
+All three loads completed without a fault and left the entire reset fixture
+`11223344556629a781828384858687bf` unchanged. Each captured operand was tagged,
+unsealed, length seven, with permissions `0x30001` (`LOAD|STORE|GLOBAL`). A's
+base/cursor at the load were `0xffff000000c60f10` / `0xffff000000c60f16`;
+B's were `0xffff000000c60f18` / `0xffff000000c60f1e`. The intended map/key and
+actual provider key are separate fields in the [console](../../evidence/current/spatial-selectivity/substitution/boot.log)
+and [checked result](../../evidence/current/spatial-selectivity/substitution/results.json).
+The fixture records its actual map address; its `map_id=0` is not a registered
+userspace map ID.
+
+The [complete linked helper](../../evidence/current/spatial-selectivity/substitution/linked/complete-linked-disassembly.txt)
+contains the same captured-operand byte load at the same PC in all three cases:
+
+```text
+ffff8000801c4b04: c2c1d041  mov   c1, c2
+ffff8000801c4b08: e2000448  ldurb w8, [c2, #0x0]
+```
+
+These are actual extracted instructions. The relative offset six is already
+in the capability cursor; the instruction displacement is zero. The original
+console SHA-256 is `95681262d03a1b3518192229d365135c80ab7b90cf6e4ad64d4d3802886154dc`.
+The [unchanged guest](../../linux/spatial/selectivity-guest.c) also performed ten
+admission-only controls: four accepted, six rejected, zero BPF executions.
+
+To reproduce only this control, use the build and calibration steps below,
+then replace the final matrix command with:
+
+```sh
+bash tools/run_spatial_selectivity.sh "$CBPF_SPATIAL_SELECTIVITY_BUILD" --substitution
+```
+
+The [conditional argument](../../theory/spatial.md#retained-root-consistency-and-wrong-value-substitution)
+explains why this violates an assignment/operand-use premise, while containment
+through B remains valid. The trusted substitution does not execute invalid BPF
+and does not establish a reachable exploit or automatic semantic authentication.
+
 ## Execution boundary
 
 The original run submitted five load programs to the unchanged normal verifier.
-The new guest adds the five store variants: ten admission-only submissions,
+The admission-extension guest added the five store variants: ten admission-only submissions,
 four accepted and six rejected, with zero executions. Both operations admit
 the offset-6 byte and offset-4 halfword controls and reject the three forbidden
 access shapes. The guest rejects `BPF_PROG_TEST_RUN` without a syscall. Unexpected
@@ -68,7 +151,7 @@ fresh run directory.
 
 ## Validation identity
 
-The new run reused the exact retained kernel `Image`, `vmlinux`, configuration
+The ten-control admission-extension run reused the exact retained kernel `Image`, `vmlinux`, configuration
 and provider/test overlays; no kernel was rebuilt. Its console SHA-256 is
 `30313660bc4e14c8749e6e45040115ad442dbc3bba0b391f411634ce0d6c32e8`.
 The [batch receipt](../../evidence/current/spatial-selectivity/revalidation/receipt.json)

@@ -1,0 +1,8 @@
+{
+  "source_git": "${SOURCE_DEPENDENCIES}/linux-source.git",
+  "verified_tree": "e6c69574c16bc2b9bce06329f9ac3f4b3269e79a",
+  "verified_blobs": 82487,
+  "historically_recorded_commit": "4e4604875fbf4144f9ce456bc6d60f3ef55da4d0",
+  "pin_kind": "tree; historical commit is not required or claimed verified",
+  "source_manifest_sha256": "bcce56e1333570eae303425cf4d88257c9cb6ef47d163d993de84ea47eaca61e"
+}

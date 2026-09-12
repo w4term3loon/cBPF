@@ -2,10 +2,18 @@
 
 [Open the cBPF presentation](index.html#title).
 
-The existing 27-slide deck explains Morello hardware, the recorded spatial
-code-to-native path, acquisition validity and terminal cleanup. Its layout,
-animations, credits and evidence scope are preserved. The manuscript and
-speaker script remain separate local materials; this public copy needs neither.
+The 27-slide deck introduces two CVE motivations, explains Morello hardware,
+and follows spatial authority and acquisition validity to their native effects.
+Recorded code, byte comparisons and ownership state transitions carry the
+explanation. The manuscript and speaker script remain separate local materials;
+this public presentation needs neither to run.
+
+The existing spatial comparison slide joins extent, intended-value binding and
+actual operand use in one panel. Offset eight distinguishes one value from
+both value slots; the offset-six width pair retains full-access checking.
+The separate trusted substitution control has an explicit evidence-status
+label and does not change the normally verified key-one walkthrough. Broad
+capability controls remain distinct from the unbuilt non-capability baseline.
 
 ## Browse locally
 
@@ -36,6 +44,14 @@ trusted native ownership trace and historical CVE records retain separate
 identities. Playing the slides adds no experimental result. The two runtime
 profiles remain separate implementations. The [claim map](../research/claim-evidence.md)
 distinguishes observations, source/native inspection and conditional arguments.
+
+The spatial introduction explains **CVE-2021-3490** and distinguishes the
+archived metadata-read contrast from the current seven-byte controls. The
+ownership introduction explains **CVE-2022-50650** and the projected
+repeated-release effect. The later release-policy comparison explains why
+consume-once validity does not implement the complete callback repair.
+The [causal mapping](../results/causal-review.md#the-two-cve-mappings-side-by-side)
+is the canonical account of both relationships.
 
 Recorded excerpts link to the [spatial walkthrough](../results/logical-extent.md#recorded-code-to-native-walkthrough),
 [selective result](../results/spatial-selectivity.md),
@@ -68,6 +84,8 @@ source or public research record.
 | Kernel functions | [Linux 6.7 kfunc documentation](https://www.kernel.org/doc/html/v6.7/bpf/kfuncs.html) | BTF, registration, acquire/release contracts and interface stability |
 | Existing runtime enforcement | [AEE, USENIX Security 2025, §§7.3–8](https://www.usenix.org/system/files/usenixsecurity25-sun-hao.pdf) | Object-level approximation enforcement with trusted static safety checks; no cBPF security or cost ranking |
 | Morello eBPF predecessor | [Leaf's RFC, 3 May 2024, Current State & Future Work](https://op-lists.linaro.org/archives/list/linux-morello@op-lists.linaro.org/message/LBV3YQWCTQRERLGNRU5ML7VA3JVQSDNQ/) | Native compartment foundation and helper/kfunc interface challenges |
+| Spatial CVE motivation | [CVE-2021-3490 disclosure](https://www.openwall.com/lists/oss-security/2021/05/11/11), [upstream repair 049c4e1](https://github.com/torvalds/linux/commit/049c4e13714ecbca567b4d5f6d563f05d431c80e) | Incorrect ALU32 bitwise bounds tracking and the distinction between repairing analysis and bounding a selected native effect |
+| Ownership CVE motivation | [Linux CVE-2022-50650 announcement](https://lists.openwall.net/linux-cve-announce/2025/12/09/30), [upstream repair 9d9d00a](https://github.com/torvalds/linux/commit/9d9d00ac29d0ef7ce426964de46fa6b380357d0a) | Repeated synchronous callbacks, caller-owned release restrictions and callback-local reference obligations |
 | cBPF bindings | [Spatial argument](../../theory/spatial.md), [ownership argument](../../theory/ownership.md), [native correspondence](../../theory/kernel-ownership.md) | Exact grant, acquisition identity, capability transport and retained trust |
 
 The Morello die photograph is reproduced from **Watson et al., “CHERI:

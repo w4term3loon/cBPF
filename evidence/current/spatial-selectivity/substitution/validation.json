@@ -1,0 +1,6 @@
+{
+  "schema": "cbpf-spatial-substitution-inputs-v1",
+  "mode": "substitution",
+  "admission_profile": "loads-stores-v2",
+  "origin": "new-run"
+}

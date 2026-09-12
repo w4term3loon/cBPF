@@ -1,6 +1,6 @@
 {
   "schema": "cbpf-publication-evidence-v1",
-  "date": "2026-09-10",
+  "date": "2026-09-12",
   "scope": "Privacy-redacted publication copies of retained evidence, including separately identified native dependency replay and native-extension publications; this inventory checks identity, not semantics.",
   "identity_rule": "Original hashes are historical metadata. Publication hashes identify the shareable files. Exact originals and withheld archives were preserved privately outside the repository.",
   "files": [
@@ -10957,12 +10957,13 @@
       "file": "evidence/current/spatial-selectivity/README.md",
       "availability": "publication_copy",
       "publication": {
-        "bytes": 4903,
-        "sha256": "e1fe49d4f69642eace7fe66ba700714e168ff8a868366e971bbdfab1400b1ea8"
+        "bytes": 6340,
+        "sha256": "7abe5c0435acdd1660bbadad3a7e2170f0a33bedcf2e940a537807975b4c70b3"
       },
       "changes": [
         "New editorial package index; not an original execution record.",
-        "Updated Batch 2 status: strengthened spatial revalidation and new admission run; ownership native inspection remains pending."
+        "Updated Batch 2 status: strengthened spatial revalidation and new admission run; ownership native inspection remains pending.",
+        "Editorial index: final extent/binding clarification and separate substitution receipt; original experiment identities unchanged."
       ]
     },
     {
@@ -13560,6 +13561,1379 @@
       },
       "changes": [
         "Exact finalization recipe for the uncommitted post-run inspection package."
+      ]
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/substitution/boot.log",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/substitution/boot.log",
+        "bytes": 37107,
+        "sha256": "95681262d03a1b3518192229d365135c80ab7b90cf6e4ad64d4d3802886154dc"
+      },
+      "original_identity_scope": "Preserved local source artifact; post-run exports and validations are identified by refinement-receipt.json.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 37107,
+        "sha256": "95681262d03a1b3518192229d365135c80ab7b90cf6e4ad64d4d3802886154dc"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/substitution/build-directory.txt",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/substitution/build-directory.txt",
+        "bytes": 68,
+        "sha256": "ef551999262cc5dc4f603b78f43310facc9f9a12dfea39da6657c2f944b99e63"
+      },
+      "original_identity_scope": "Preserved local source artifact; post-run exports and validations are identified by refinement-receipt.json.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 17,
+        "sha256": "cd0815974267a8e3d537d70bedf2892afb0a4257e4de309274987b35a3b11201"
+      },
+      "changes": [
+        "Path-only redaction; embedded original identities unchanged."
+      ]
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/substitution/build-receipt/array-authority.patch",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/substitution/build-receipt/array-authority.patch",
+        "bytes": 12851,
+        "sha256": "ac74717a7dbd2c61760115c1b8b719e52d27d60d02957a2b73c3ff155206c4ac"
+      },
+      "original_identity_scope": "Preserved local source artifact; post-run exports and validations are identified by refinement-receipt.json.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 12851,
+        "sha256": "ac74717a7dbd2c61760115c1b8b719e52d27d60d02957a2b73c3ff155206c4ac"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/substitution/build-receipt/inputs.sha256",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/substitution/build-receipt/inputs.sha256",
+        "bytes": 999,
+        "sha256": "048d606cac4d7e7862de91285ce5382bab47700999153aa4b35c229f9b316f03"
+      },
+      "original_identity_scope": "Preserved local source artifact; post-run exports and validations are identified by refinement-receipt.json.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 693,
+        "sha256": "a8bf1dd0a53c52e8b93928fa13bd7a5d29fda3a7ad8e31ec90a53d4a8413bcf3"
+      },
+      "changes": [
+        "Path-only redaction; embedded original identities unchanged."
+      ]
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/substitution/build-receipt/kernel.config",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/substitution/build-receipt/kernel.config",
+        "bytes": 132906,
+        "sha256": "35c872e866663db2cad8874e311275e2ce16a4c0c3ba95fceac732cb9c910686"
+      },
+      "original_identity_scope": "Preserved local source artifact; post-run exports and validations are identified by refinement-receipt.json.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 132906,
+        "sha256": "35c872e866663db2cad8874e311275e2ce16a4c0c3ba95fceac732cb9c910686"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/substitution/build-receipt/native-observation.patch",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/substitution/build-receipt/native-observation.patch",
+        "bytes": 1473,
+        "sha256": "2f7889c53d0b4de2e47a94b8acb0d6c1ab73bca6effaccee5b4733984f449b07"
+      },
+      "original_identity_scope": "Preserved local source artifact; post-run exports and validations are identified by refinement-receipt.json.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 1473,
+        "sha256": "2f7889c53d0b4de2e47a94b8acb0d6c1ab73bca6effaccee5b4733984f449b07"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/substitution/build-receipt/outputs.sha256",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/substitution/build-receipt/outputs.sha256",
+        "bytes": 1291,
+        "sha256": "9a9f2ba2d33eaf165b7b2b42fcf50b08a382a81db247b4af6e5703d9e3720a8f"
+      },
+      "original_identity_scope": "Preserved local source artifact; post-run exports and validations are identified by refinement-receipt.json.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 883,
+        "sha256": "d2733caf029844d012660706a94a70a6b8bf2f7e940649d06b04232af1cf4b31"
+      },
+      "changes": [
+        "Path-only redaction; embedded original identities unchanged."
+      ]
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/substitution/build-receipt/patched-sources.sha256",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/substitution/build-receipt/patched-sources.sha256",
+        "bytes": 1145,
+        "sha256": "a1e605679e6833f4c1897a914737908018c7872d363af1753996c13230f184e6"
+      },
+      "original_identity_scope": "Preserved local source artifact; post-run exports and validations are identified by refinement-receipt.json.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 788,
+        "sha256": "90dc4e88ca16573c92b57eab1e26dc77ddddf05716131fb5ba2c1c0ec541304f"
+      },
+      "changes": [
+        "Path-only redaction; embedded original identities unchanged."
+      ]
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/substitution/build-receipt/selectivity-test.patch",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/substitution/build-receipt/selectivity-test.patch",
+        "bytes": 20450,
+        "sha256": "ee88fe45658b07f400015a72f3c210846e73868bb4989625747f1ca39ff9819c"
+      },
+      "original_identity_scope": "Preserved local source artifact; post-run exports and validations are identified by refinement-receipt.json.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 20450,
+        "sha256": "ee88fe45658b07f400015a72f3c210846e73868bb4989625747f1ca39ff9819c"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/substitution/build-receipt/source-pins.json",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/substitution/build-receipt/source-pins.json",
+        "bytes": 434,
+        "sha256": "724aa27472822cc40b5d74cb85e80f403107edb5a532a617f510235bc64e23de"
+      },
+      "original_identity_scope": "Preserved local source artifact; post-run exports and validations are identified by refinement-receipt.json.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 403,
+        "sha256": "053db808416dfba95f040ff59e3b1a23c7b9eed4a33cbf3667a5427af79bff73"
+      },
+      "changes": [
+        "Path-only redaction; embedded original identities unchanged."
+      ]
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/substitution/build-receipt/verifier-before.sha256",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/substitution/build-receipt/verifier-before.sha256",
+        "bytes": 65,
+        "sha256": "0e4753294afdd01eedf2ff7f523011a0940f2839ba8c4d0378d499f5b4f7c858"
+      },
+      "original_identity_scope": "Preserved local source artifact; post-run exports and validations are identified by refinement-receipt.json.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 65,
+        "sha256": "0e4753294afdd01eedf2ff7f523011a0940f2839ba8c4d0378d499f5b4f7c858"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/substitution/calibration/boot.log",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/substitution/calibration/boot.log",
+        "bytes": 36288,
+        "sha256": "3a8f34643b25ce31fe37e1d670625c4f53db8d896067146d1ea0f3bb4ea46c27"
+      },
+      "original_identity_scope": "Preserved local source artifact; post-run exports and validations are identified by refinement-receipt.json.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 36288,
+        "sha256": "3a8f34643b25ce31fe37e1d670625c4f53db8d896067146d1ea0f3bb4ea46c27"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/substitution/calibration/build-directory.txt",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/substitution/calibration/build-directory.txt",
+        "bytes": 68,
+        "sha256": "ef551999262cc5dc4f603b78f43310facc9f9a12dfea39da6657c2f944b99e63"
+      },
+      "original_identity_scope": "Preserved local source artifact; post-run exports and validations are identified by refinement-receipt.json.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 17,
+        "sha256": "cd0815974267a8e3d537d70bedf2892afb0a4257e4de309274987b35a3b11201"
+      },
+      "changes": [
+        "Path-only redaction; embedded original identities unchanged."
+      ]
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/substitution/calibration/build-receipt/array-authority.patch",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/substitution/calibration/build-receipt/array-authority.patch",
+        "bytes": 12851,
+        "sha256": "ac74717a7dbd2c61760115c1b8b719e52d27d60d02957a2b73c3ff155206c4ac"
+      },
+      "original_identity_scope": "Preserved local source artifact; post-run exports and validations are identified by refinement-receipt.json.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 12851,
+        "sha256": "ac74717a7dbd2c61760115c1b8b719e52d27d60d02957a2b73c3ff155206c4ac"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/substitution/calibration/build-receipt/inputs.sha256",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/substitution/calibration/build-receipt/inputs.sha256",
+        "bytes": 999,
+        "sha256": "048d606cac4d7e7862de91285ce5382bab47700999153aa4b35c229f9b316f03"
+      },
+      "original_identity_scope": "Preserved local source artifact; post-run exports and validations are identified by refinement-receipt.json.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 693,
+        "sha256": "a8bf1dd0a53c52e8b93928fa13bd7a5d29fda3a7ad8e31ec90a53d4a8413bcf3"
+      },
+      "changes": [
+        "Path-only redaction; embedded original identities unchanged."
+      ]
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/substitution/calibration/build-receipt/kernel.config",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/substitution/calibration/build-receipt/kernel.config",
+        "bytes": 132906,
+        "sha256": "35c872e866663db2cad8874e311275e2ce16a4c0c3ba95fceac732cb9c910686"
+      },
+      "original_identity_scope": "Preserved local source artifact; post-run exports and validations are identified by refinement-receipt.json.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 132906,
+        "sha256": "35c872e866663db2cad8874e311275e2ce16a4c0c3ba95fceac732cb9c910686"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/substitution/calibration/build-receipt/native-observation.patch",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/substitution/calibration/build-receipt/native-observation.patch",
+        "bytes": 1473,
+        "sha256": "2f7889c53d0b4de2e47a94b8acb0d6c1ab73bca6effaccee5b4733984f449b07"
+      },
+      "original_identity_scope": "Preserved local source artifact; post-run exports and validations are identified by refinement-receipt.json.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 1473,
+        "sha256": "2f7889c53d0b4de2e47a94b8acb0d6c1ab73bca6effaccee5b4733984f449b07"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/substitution/calibration/build-receipt/outputs.sha256",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/substitution/calibration/build-receipt/outputs.sha256",
+        "bytes": 1291,
+        "sha256": "9a9f2ba2d33eaf165b7b2b42fcf50b08a382a81db247b4af6e5703d9e3720a8f"
+      },
+      "original_identity_scope": "Preserved local source artifact; post-run exports and validations are identified by refinement-receipt.json.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 883,
+        "sha256": "d2733caf029844d012660706a94a70a6b8bf2f7e940649d06b04232af1cf4b31"
+      },
+      "changes": [
+        "Path-only redaction; embedded original identities unchanged."
+      ]
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/substitution/calibration/build-receipt/patched-sources.sha256",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/substitution/calibration/build-receipt/patched-sources.sha256",
+        "bytes": 1145,
+        "sha256": "a1e605679e6833f4c1897a914737908018c7872d363af1753996c13230f184e6"
+      },
+      "original_identity_scope": "Preserved local source artifact; post-run exports and validations are identified by refinement-receipt.json.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 788,
+        "sha256": "90dc4e88ca16573c92b57eab1e26dc77ddddf05716131fb5ba2c1c0ec541304f"
+      },
+      "changes": [
+        "Path-only redaction; embedded original identities unchanged."
+      ]
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/substitution/calibration/build-receipt/selectivity-test.patch",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/substitution/calibration/build-receipt/selectivity-test.patch",
+        "bytes": 20450,
+        "sha256": "ee88fe45658b07f400015a72f3c210846e73868bb4989625747f1ca39ff9819c"
+      },
+      "original_identity_scope": "Preserved local source artifact; post-run exports and validations are identified by refinement-receipt.json.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 20450,
+        "sha256": "ee88fe45658b07f400015a72f3c210846e73868bb4989625747f1ca39ff9819c"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/substitution/calibration/build-receipt/source-pins.json",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/substitution/calibration/build-receipt/source-pins.json",
+        "bytes": 434,
+        "sha256": "724aa27472822cc40b5d74cb85e80f403107edb5a532a617f510235bc64e23de"
+      },
+      "original_identity_scope": "Preserved local source artifact; post-run exports and validations are identified by refinement-receipt.json.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 403,
+        "sha256": "053db808416dfba95f040ff59e3b1a23c7b9eed4a33cbf3667a5427af79bff73"
+      },
+      "changes": [
+        "Path-only redaction; embedded original identities unchanged."
+      ]
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/substitution/calibration/build-receipt/verifier-before.sha256",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/substitution/calibration/build-receipt/verifier-before.sha256",
+        "bytes": 65,
+        "sha256": "0e4753294afdd01eedf2ff7f523011a0940f2839ba8c4d0378d499f5b4f7c858"
+      },
+      "original_identity_scope": "Preserved local source artifact; post-run exports and validations are identified by refinement-receipt.json.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 65,
+        "sha256": "0e4753294afdd01eedf2ff7f523011a0940f2839ba8c4d0378d499f5b4f7c858"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/substitution/calibration/check_spatial_selectivity.executed.py",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/substitution/calibration/check_spatial_selectivity.executed.py",
+        "bytes": 26367,
+        "sha256": "1ee14daac0e0c2b96214391b17e259636f99c210eb26b9e349cc14a97f202d07"
+      },
+      "original_identity_scope": "Preserved local source artifact; post-run exports and validations are identified by refinement-receipt.json.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 26367,
+        "sha256": "1ee14daac0e0c2b96214391b17e259636f99c210eb26b9e349cc14a97f202d07"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/substitution/calibration/compile.h",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/substitution/calibration/compile.h",
+        "bytes": 271,
+        "sha256": "6c695f13ae8761132f0eac338ffb0100575d6e0f4a1f713fddeea54ded3e5e4f"
+      },
+      "original_identity_scope": "Preserved local source artifact; post-run exports and validations are identified by refinement-receipt.json.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 271,
+        "sha256": "6c695f13ae8761132f0eac338ffb0100575d6e0f4a1f713fddeea54ded3e5e4f"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/substitution/calibration/compile.log",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/substitution/calibration/compile.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "original_identity_scope": "Preserved local source artifact; post-run exports and validations are identified by refinement-receipt.json.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/substitution/calibration/guest.c",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/substitution/calibration/guest.c",
+        "bytes": 6758,
+        "sha256": "07fb1f6618cb09b5ffd8194e11d1685aacfafe28fdb7d611ac2a737742862762"
+      },
+      "original_identity_scope": "Preserved local source artifact; post-run exports and validations are identified by refinement-receipt.json.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 6758,
+        "sha256": "07fb1f6618cb09b5ffd8194e11d1685aacfafe28fdb7d611ac2a737742862762"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/substitution/calibration/init",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/substitution/calibration/init",
+        "bytes": 50976,
+        "sha256": "a66d016a9a0b9b86556da3875aeb5c999635f14186617ec5bfc14d7992ab52d9"
+      },
+      "original_identity_scope": "Preserved local source artifact; post-run exports and validations are identified by refinement-receipt.json.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 50976,
+        "sha256": "a66d016a9a0b9b86556da3875aeb5c999635f14186617ec5bfc14d7992ab52d9"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/substitution/calibration/initramfs.cpio.gz",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/substitution/calibration/initramfs.cpio.gz",
+        "bytes": 24230,
+        "sha256": "2460a049411bc1c18315f2cf032b01d481811e39720c627e132088cb6605319a"
+      },
+      "original_identity_scope": "Preserved local source artifact; post-run exports and validations are identified by refinement-receipt.json.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 24230,
+        "sha256": "2460a049411bc1c18315f2cf032b01d481811e39720c627e132088cb6605319a"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/substitution/calibration/inputs-verified.txt",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/substitution/calibration/inputs-verified.txt",
+        "bytes": 2482,
+        "sha256": "a937fc21c82d2b5fc802e76629e23c5f84a3ca0f323b0a1a9bf3520a1bd878ce"
+      },
+      "original_identity_scope": "Preserved local source artifact; post-run exports and validations are identified by refinement-receipt.json.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 1364,
+        "sha256": "c0772d6bf6487065ab65da05857757932be6071dca1d2cf91d04607049eba8b7"
+      },
+      "changes": [
+        "Path-only redaction; embedded original identities unchanged."
+      ]
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/substitution/calibration/inputs.sha256",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/substitution/calibration/inputs.sha256",
+        "bytes": 4156,
+        "sha256": "362023ed6b2c5356c54050a27eb49c7a8b0dd972aeb28047397751cc75f62cd4"
+      },
+      "original_identity_scope": "Preserved local source artifact; post-run exports and validations are identified by refinement-receipt.json.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 3038,
+        "sha256": "08ed4884ce383aecf760e90c2aa3f10f8347f50702788b0ff2d63858637cffb4"
+      },
+      "changes": [
+        "Path-only redaction; embedded original identities unchanged."
+      ]
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/substitution/calibration/kernel-release.txt",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/substitution/calibration/kernel-release.txt",
+        "bytes": 31,
+        "sha256": "b7d0c5b992bb8d559d339e4b2072e98f3ee712867e7ee1448dd417bbf9b1a3ec"
+      },
+      "original_identity_scope": "Preserved local source artifact; post-run exports and validations are identified by refinement-receipt.json.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 31,
+        "sha256": "b7d0c5b992bb8d559d339e4b2072e98f3ee712867e7ee1448dd417bbf9b1a3ec"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/substitution/calibration/kernel.config",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/substitution/calibration/kernel.config",
+        "bytes": 132906,
+        "sha256": "35c872e866663db2cad8874e311275e2ce16a4c0c3ba95fceac732cb9c910686"
+      },
+      "original_identity_scope": "Preserved local source artifact; post-run exports and validations are identified by refinement-receipt.json.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 132906,
+        "sha256": "35c872e866663db2cad8874e311275e2ce16a4c0c3ba95fceac732cb9c910686"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/substitution/calibration/linked/cbpf_selectivity_native_access.bin",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/substitution/calibration/linked/cbpf_selectivity_native_access.bin",
+        "bytes": 144,
+        "sha256": "b20089acd25480bcda36cba10225db4d6b8ca8a3702b100bd2e0131107f6de1f"
+      },
+      "original_identity_scope": "Preserved local source artifact; post-run exports and validations are identified by refinement-receipt.json.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 144,
+        "sha256": "b20089acd25480bcda36cba10225db4d6b8ca8a3702b100bd2e0131107f6de1f"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/substitution/calibration/linked/commands.json",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/substitution/calibration/linked/commands.json",
+        "bytes": 876,
+        "sha256": "b9fa8110819175d7165b548a59624170ddab397fc216dd90a90decaef9e3ef90"
+      },
+      "original_identity_scope": "Preserved local source artifact; post-run exports and validations are identified by refinement-receipt.json.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 774,
+        "sha256": "0a7ad6b6d827b0bf569380143488342dc3698c94a5ce8490c73d1764fce19d78"
+      },
+      "changes": [
+        "Path-only redaction; embedded original identities unchanged."
+      ]
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/substitution/calibration/linked/complete-linked-disassembly.txt",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/substitution/calibration/linked/complete-linked-disassembly.txt",
+        "bytes": 2484,
+        "sha256": "5c86e0f8e7d86f0a185be2ae75547a6a71fe6a475aec87d2331dba1b0e15230b"
+      },
+      "original_identity_scope": "Preserved local source artifact; post-run exports and validations are identified by refinement-receipt.json.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 2484,
+        "sha256": "5c86e0f8e7d86f0a185be2ae75547a6a71fe6a475aec87d2331dba1b0e15230b"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/substitution/calibration/linked/linked-ranges.json",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/substitution/calibration/linked/linked-ranges.json",
+        "bytes": 850,
+        "sha256": "9a1b72132e025bed101e7c2772fe6a08572ded581026f7d631d54aaeb96bcc10"
+      },
+      "original_identity_scope": "Preserved local source artifact; post-run exports and validations are identified by refinement-receipt.json.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 850,
+        "sha256": "9a1b72132e025bed101e7c2772fe6a08572ded581026f7d631d54aaeb96bcc10"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/substitution/calibration/mode.txt",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/substitution/calibration/mode.txt",
+        "bytes": 12,
+        "sha256": "2b2f4f88cbfe5f92f780fbb0037dd2293c4aaee4d510da9d959894c5aabeb379"
+      },
+      "original_identity_scope": "Preserved local source artifact; post-run exports and validations are identified by refinement-receipt.json.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 12,
+        "sha256": "2b2f4f88cbfe5f92f780fbb0037dd2293c4aaee4d510da9d959894c5aabeb379"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/substitution/calibration/native_receipt_common.py",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/substitution/calibration/native_receipt_common.py",
+        "bytes": 1361,
+        "sha256": "60fd3c4912b0ec83e96a6cc8b7a2fa9316cd7486bae2b64feb6a2d735cc77e8c"
+      },
+      "original_identity_scope": "Preserved local source artifact; post-run exports and validations are identified by refinement-receipt.json.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 1361,
+        "sha256": "60fd3c4912b0ec83e96a6cc8b7a2fa9316cd7486bae2b64feb6a2d735cc77e8c"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/substitution/calibration/package_native_extension.executed.py",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/substitution/calibration/package_native_extension.executed.py",
+        "bytes": 17058,
+        "sha256": "53da42ed4c9586985eb4ceae6ed36155b54260275bed9fbc712a13dd9fdf8311"
+      },
+      "original_identity_scope": "Preserved local source artifact; post-run exports and validations are identified by refinement-receipt.json.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 17058,
+        "sha256": "53da42ed4c9586985eb4ceae6ed36155b54260275bed9fbc712a13dd9fdf8311"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/substitution/calibration/prepare_spatial_selectivity.executed.py",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/substitution/calibration/prepare_spatial_selectivity.executed.py",
+        "bytes": 3774,
+        "sha256": "083e514454debf569329c9b72da3ec8df1749eecd95308fa24965e21cf59025a"
+      },
+      "original_identity_scope": "Preserved local source artifact; post-run exports and validations are identified by refinement-receipt.json.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 3774,
+        "sha256": "083e514454debf569329c9b72da3ec8df1749eecd95308fa24965e21cf59025a"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/substitution/calibration/qemu-command.sh",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/substitution/calibration/qemu-command.sh",
+        "bytes": 628,
+        "sha256": "2b0fd80438061bf4417a00a88b08c05484854e93111646119cdf43c41676a06e"
+      },
+      "original_identity_scope": "Preserved local source artifact; post-run exports and validations are identified by refinement-receipt.json.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 490,
+        "sha256": "bc312b87b236daa82cbc390a6a95ef88ab5eb614af2ea905a758eaf9c79f85ae"
+      },
+      "changes": [
+        "Path-only redaction; embedded original identities unchanged."
+      ]
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/substitution/calibration/qemu-exit.txt",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/substitution/calibration/qemu-exit.txt",
+        "bytes": 2,
+        "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+      },
+      "original_identity_scope": "Preserved local source artifact; post-run exports and validations are identified by refinement-receipt.json.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 2,
+        "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/substitution/calibration/original-results.json",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/substitution/calibration/results.json",
+        "bytes": 7081,
+        "sha256": "9ef2cdd160a70071ca7da923b9d97407ea5001002b017ff53596279309b8130b"
+      },
+      "original_identity_scope": "Preserved local source artifact; post-run exports and validations are identified by refinement-receipt.json.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 7081,
+        "sha256": "9ef2cdd160a70071ca7da923b9d97407ea5001002b017ff53596279309b8130b"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/substitution/calibration/run-script.executed.sh",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/substitution/calibration/run-script.executed.sh",
+        "bytes": 9291,
+        "sha256": "ede5a7fdbd7f5020df57e26204fbbf84dbb8b24a3c3ec61f3a1e5d0236fd5157"
+      },
+      "original_identity_scope": "Preserved local source artifact; post-run exports and validations are identified by refinement-receipt.json.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 9291,
+        "sha256": "ede5a7fdbd7f5020df57e26204fbbf84dbb8b24a3c3ec61f3a1e5d0236fd5157"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/substitution/calibration/selectivity-symbols.txt",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/substitution/calibration/selectivity-symbols.txt",
+        "bytes": 1058,
+        "sha256": "b7d23c223207e87b121875a3b48c1eb30128023074ec50712ae9a56a8e3fa0f1"
+      },
+      "original_identity_scope": "Preserved local source artifact; post-run exports and validations are identified by refinement-receipt.json.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 1058,
+        "sha256": "b7d23c223207e87b121875a3b48c1eb30128023074ec50712ae9a56a8e3fa0f1"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/substitution/calibration/summary.txt",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/substitution/calibration/summary.txt",
+        "bytes": 165,
+        "sha256": "dffb20f7ef4abbd600099deb64b06259a927e0d9e4eb7570ac8e4083ee88c189"
+      },
+      "original_identity_scope": "Preserved local source artifact; post-run exports and validations are identified by refinement-receipt.json.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 110,
+        "sha256": "62d47a844b6c378e7602ea689693d6e43b31fb379c53ebc91725695e794f6ea6"
+      },
+      "changes": [
+        "Path-only redaction; embedded original identities unchanged."
+      ]
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/substitution/calibration/toolchain.txt",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/substitution/calibration/toolchain.txt",
+        "bytes": 395,
+        "sha256": "0f68a9839ccf5fedf5b96aa2928960fb2ad361f875a9ddcc44ba56cec118720a"
+      },
+      "original_identity_scope": "Preserved local source artifact; post-run exports and validations are identified by refinement-receipt.json.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 379,
+        "sha256": "6a62f9f5c76b3f5fc1aea19da3e5b1df2d75b0beea4a44fb01a94ad202e0307c"
+      },
+      "changes": [
+        "Path-only redaction; embedded original identities unchanged."
+      ]
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/substitution/calibration/validation.json",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/substitution/calibration/validation.json",
+        "bytes": 142,
+        "sha256": "02d46e083eea47cd3280d3394fcc8086f5528da56848884f897884f6e7066bd1"
+      },
+      "original_identity_scope": "Preserved local source artifact; post-run exports and validations are identified by refinement-receipt.json.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 142,
+        "sha256": "02d46e083eea47cd3280d3394fcc8086f5528da56848884f897884f6e7066bd1"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/substitution/check_spatial_selectivity.executed.py",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/substitution/check_spatial_selectivity.executed.py",
+        "bytes": 26367,
+        "sha256": "1ee14daac0e0c2b96214391b17e259636f99c210eb26b9e349cc14a97f202d07"
+      },
+      "original_identity_scope": "Preserved local source artifact; post-run exports and validations are identified by refinement-receipt.json.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 26367,
+        "sha256": "1ee14daac0e0c2b96214391b17e259636f99c210eb26b9e349cc14a97f202d07"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/substitution/check_spatial_selectivity.py",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/substitution/check_spatial_selectivity.py",
+        "bytes": 26367,
+        "sha256": "1ee14daac0e0c2b96214391b17e259636f99c210eb26b9e349cc14a97f202d07"
+      },
+      "original_identity_scope": "Preserved local source artifact; post-run exports and validations are identified by refinement-receipt.json.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 26367,
+        "sha256": "1ee14daac0e0c2b96214391b17e259636f99c210eb26b9e349cc14a97f202d07"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/substitution/check_spatial_substitution.executed.py",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/substitution/check_spatial_substitution.executed.py",
+        "bytes": 12607,
+        "sha256": "d01abd1b2313d5f0c1f877a06f9a1b2d3da24bdc39c79729f1c5f17741b339d6"
+      },
+      "original_identity_scope": "Preserved local source artifact; post-run exports and validations are identified by refinement-receipt.json.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 12607,
+        "sha256": "d01abd1b2313d5f0c1f877a06f9a1b2d3da24bdc39c79729f1c5f17741b339d6"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/substitution/compile.h",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/substitution/compile.h",
+        "bytes": 271,
+        "sha256": "6c695f13ae8761132f0eac338ffb0100575d6e0f4a1f713fddeea54ded3e5e4f"
+      },
+      "original_identity_scope": "Preserved local source artifact; post-run exports and validations are identified by refinement-receipt.json.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 271,
+        "sha256": "6c695f13ae8761132f0eac338ffb0100575d6e0f4a1f713fddeea54ded3e5e4f"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/substitution/compile.log",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/substitution/compile.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "original_identity_scope": "Preserved local source artifact; post-run exports and validations are identified by refinement-receipt.json.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/substitution/guest.c",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/substitution/guest.c",
+        "bytes": 6758,
+        "sha256": "07fb1f6618cb09b5ffd8194e11d1685aacfafe28fdb7d611ac2a737742862762"
+      },
+      "original_identity_scope": "Preserved local source artifact; post-run exports and validations are identified by refinement-receipt.json.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 6758,
+        "sha256": "07fb1f6618cb09b5ffd8194e11d1685aacfafe28fdb7d611ac2a737742862762"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/substitution/init",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/substitution/init",
+        "bytes": 50976,
+        "sha256": "a66d016a9a0b9b86556da3875aeb5c999635f14186617ec5bfc14d7992ab52d9"
+      },
+      "original_identity_scope": "Preserved local source artifact; post-run exports and validations are identified by refinement-receipt.json.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 50976,
+        "sha256": "a66d016a9a0b9b86556da3875aeb5c999635f14186617ec5bfc14d7992ab52d9"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/substitution/initramfs.cpio.gz",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/substitution/initramfs.cpio.gz",
+        "bytes": 24230,
+        "sha256": "2460a049411bc1c18315f2cf032b01d481811e39720c627e132088cb6605319a"
+      },
+      "original_identity_scope": "Preserved local source artifact; post-run exports and validations are identified by refinement-receipt.json.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 24230,
+        "sha256": "2460a049411bc1c18315f2cf032b01d481811e39720c627e132088cb6605319a"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/substitution/inputs-verified.txt",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/substitution/inputs-verified.txt",
+        "bytes": 2722,
+        "sha256": "237dbafd3a710c29a7f44785b16753eb42da05528cb84367479202cd7d3836ab"
+      },
+      "original_identity_scope": "Preserved local source artifact; post-run exports and validations are identified by refinement-receipt.json.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 1494,
+        "sha256": "46fd49971f8238bd61eb4743deeac3e279caaabce6055fa18397adcb260796e9"
+      },
+      "changes": [
+        "Path-only redaction; embedded original identities unchanged."
+      ]
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/substitution/inputs.sha256",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/substitution/inputs.sha256",
+        "bytes": 4520,
+        "sha256": "9c70850741d817141cc4a50e4883dc260c263ac38f68a8f418bc53041b0384ba"
+      },
+      "original_identity_scope": "Preserved local source artifact; post-run exports and validations are identified by refinement-receipt.json.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 3292,
+        "sha256": "3217d7b53025e737adb43b26f6228ded1363fcb88f74bc459529dff2bf5ac450"
+      },
+      "changes": [
+        "Path-only redaction; embedded original identities unchanged."
+      ]
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/substitution/kernel-release.txt",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/substitution/kernel-release.txt",
+        "bytes": 31,
+        "sha256": "b7d0c5b992bb8d559d339e4b2072e98f3ee712867e7ee1448dd417bbf9b1a3ec"
+      },
+      "original_identity_scope": "Preserved local source artifact; post-run exports and validations are identified by refinement-receipt.json.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 31,
+        "sha256": "b7d0c5b992bb8d559d339e4b2072e98f3ee712867e7ee1448dd417bbf9b1a3ec"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/substitution/kernel.config",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/substitution/kernel.config",
+        "bytes": 132906,
+        "sha256": "35c872e866663db2cad8874e311275e2ce16a4c0c3ba95fceac732cb9c910686"
+      },
+      "original_identity_scope": "Preserved local source artifact; post-run exports and validations are identified by refinement-receipt.json.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 132906,
+        "sha256": "35c872e866663db2cad8874e311275e2ce16a4c0c3ba95fceac732cb9c910686"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/substitution/linked/cbpf_selectivity_native_access.bin",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/substitution/linked/cbpf_selectivity_native_access.bin",
+        "bytes": 144,
+        "sha256": "b20089acd25480bcda36cba10225db4d6b8ca8a3702b100bd2e0131107f6de1f"
+      },
+      "original_identity_scope": "Preserved local source artifact; post-run exports and validations are identified by refinement-receipt.json.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 144,
+        "sha256": "b20089acd25480bcda36cba10225db4d6b8ca8a3702b100bd2e0131107f6de1f"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/substitution/linked/commands.json",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/substitution/linked/commands.json",
+        "bytes": 876,
+        "sha256": "b9fa8110819175d7165b548a59624170ddab397fc216dd90a90decaef9e3ef90"
+      },
+      "original_identity_scope": "Preserved local source artifact; post-run exports and validations are identified by refinement-receipt.json.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 774,
+        "sha256": "0a7ad6b6d827b0bf569380143488342dc3698c94a5ce8490c73d1764fce19d78"
+      },
+      "changes": [
+        "Path-only redaction; embedded original identities unchanged."
+      ]
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/substitution/linked/complete-linked-disassembly.txt",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/substitution/linked/complete-linked-disassembly.txt",
+        "bytes": 2484,
+        "sha256": "5c86e0f8e7d86f0a185be2ae75547a6a71fe6a475aec87d2331dba1b0e15230b"
+      },
+      "original_identity_scope": "Preserved local source artifact; post-run exports and validations are identified by refinement-receipt.json.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 2484,
+        "sha256": "5c86e0f8e7d86f0a185be2ae75547a6a71fe6a475aec87d2331dba1b0e15230b"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/substitution/linked/linked-ranges.json",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/substitution/linked/linked-ranges.json",
+        "bytes": 850,
+        "sha256": "9a1b72132e025bed101e7c2772fe6a08572ded581026f7d631d54aaeb96bcc10"
+      },
+      "original_identity_scope": "Preserved local source artifact; post-run exports and validations are identified by refinement-receipt.json.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 850,
+        "sha256": "9a1b72132e025bed101e7c2772fe6a08572ded581026f7d631d54aaeb96bcc10"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/substitution/mode.txt",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/substitution/mode.txt",
+        "bytes": 13,
+        "sha256": "c3a6726d0c3b46f651088a91282d2745635e271ed05876c1c06d767b5f18c815"
+      },
+      "original_identity_scope": "Preserved local source artifact; post-run exports and validations are identified by refinement-receipt.json.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 13,
+        "sha256": "c3a6726d0c3b46f651088a91282d2745635e271ed05876c1c06d767b5f18c815"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/substitution/native_receipt_common.py",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/substitution/native_receipt_common.py",
+        "bytes": 1361,
+        "sha256": "60fd3c4912b0ec83e96a6cc8b7a2fa9316cd7486bae2b64feb6a2d735cc77e8c"
+      },
+      "original_identity_scope": "Preserved local source artifact; post-run exports and validations are identified by refinement-receipt.json.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 1361,
+        "sha256": "60fd3c4912b0ec83e96a6cc8b7a2fa9316cd7486bae2b64feb6a2d735cc77e8c"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/substitution/package_native_extension.executed.py",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/substitution/package_native_extension.executed.py",
+        "bytes": 17058,
+        "sha256": "53da42ed4c9586985eb4ceae6ed36155b54260275bed9fbc712a13dd9fdf8311"
+      },
+      "original_identity_scope": "Preserved local source artifact; post-run exports and validations are identified by refinement-receipt.json.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 17058,
+        "sha256": "53da42ed4c9586985eb4ceae6ed36155b54260275bed9fbc712a13dd9fdf8311"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/substitution/prepare_spatial_selectivity.executed.py",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/substitution/prepare_spatial_selectivity.executed.py",
+        "bytes": 3774,
+        "sha256": "083e514454debf569329c9b72da3ec8df1749eecd95308fa24965e21cf59025a"
+      },
+      "original_identity_scope": "Preserved local source artifact; post-run exports and validations are identified by refinement-receipt.json.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 3774,
+        "sha256": "083e514454debf569329c9b72da3ec8df1749eecd95308fa24965e21cf59025a"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/substitution/qemu-command.sh",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/substitution/qemu-command.sh",
+        "bytes": 630,
+        "sha256": "bfde76381cbf3894dcd579a82fe4994997b27cb4097be797ef14efbc04ec12bc"
+      },
+      "original_identity_scope": "Preserved local source artifact; post-run exports and validations are identified by refinement-receipt.json.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 492,
+        "sha256": "21e924e4ab09de0e961420f2a3c9e7c51c882123c03d8bc79a55052f61b71995"
+      },
+      "changes": [
+        "Path-only redaction; embedded original identities unchanged."
+      ]
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/substitution/qemu-exit.txt",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/substitution/qemu-exit.txt",
+        "bytes": 2,
+        "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+      },
+      "original_identity_scope": "Preserved local source artifact; post-run exports and validations are identified by refinement-receipt.json.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 2,
+        "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/substitution/original-results.json",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/substitution/results.json",
+        "bytes": 16588,
+        "sha256": "24b7a39ad07b2d23cf55f333f754eb4652f277775a0d40f38c5c9f5efa1bbb2e"
+      },
+      "original_identity_scope": "Preserved local source artifact; post-run exports and validations are identified by refinement-receipt.json.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 16588,
+        "sha256": "24b7a39ad07b2d23cf55f333f754eb4652f277775a0d40f38c5c9f5efa1bbb2e"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/substitution/run-script.executed.sh",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/substitution/run-script.executed.sh",
+        "bytes": 9291,
+        "sha256": "ede5a7fdbd7f5020df57e26204fbbf84dbb8b24a3c3ec61f3a1e5d0236fd5157"
+      },
+      "original_identity_scope": "Preserved local source artifact; post-run exports and validations are identified by refinement-receipt.json.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 9291,
+        "sha256": "ede5a7fdbd7f5020df57e26204fbbf84dbb8b24a3c3ec61f3a1e5d0236fd5157"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/substitution/selectivity-symbols.txt",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/substitution/selectivity-symbols.txt",
+        "bytes": 1058,
+        "sha256": "b7d23c223207e87b121875a3b48c1eb30128023074ec50712ae9a56a8e3fa0f1"
+      },
+      "original_identity_scope": "Preserved local source artifact; post-run exports and validations are identified by refinement-receipt.json.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 1058,
+        "sha256": "b7d23c223207e87b121875a3b48c1eb30128023074ec50712ae9a56a8e3fa0f1"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/substitution/summary.txt",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/substitution/summary.txt",
+        "bytes": 167,
+        "sha256": "4460035be9e4dc0b83d4fa4bf42a969499c64808d842b02bfdd71d1e53c7cab4"
+      },
+      "original_identity_scope": "Preserved local source artifact; post-run exports and validations are identified by refinement-receipt.json.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 112,
+        "sha256": "0a137f0a112223ac43b71e092e87f0df3b470e1bc9259dc7ad73031d80bc0d1f"
+      },
+      "changes": [
+        "Path-only redaction; embedded original identities unchanged."
+      ]
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/substitution/toolchain.txt",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/substitution/toolchain.txt",
+        "bytes": 395,
+        "sha256": "0f68a9839ccf5fedf5b96aa2928960fb2ad361f875a9ddcc44ba56cec118720a"
+      },
+      "original_identity_scope": "Preserved local source artifact; post-run exports and validations are identified by refinement-receipt.json.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 379,
+        "sha256": "6a62f9f5c76b3f5fc1aea19da3e5b1df2d75b0beea4a44fb01a94ad202e0307c"
+      },
+      "changes": [
+        "Path-only redaction; embedded original identities unchanged."
+      ]
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/substitution/validation.json",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/substitution/validation.json",
+        "bytes": 145,
+        "sha256": "44b11d6955607b10e4940bd63b5f6d203e4a946d644544afa9cd3da458e0ea4e"
+      },
+      "original_identity_scope": "Preserved local source artifact; post-run exports and validations are identified by refinement-receipt.json.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 145,
+        "sha256": "44b11d6955607b10e4940bd63b5f6d203e4a946d644544afa9cd3da458e0ea4e"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/substitution/build-receipt/build_spatial_selectivity.executed.sh",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/build/build_spatial_selectivity.executed.sh",
+        "bytes": 11744,
+        "sha256": "a95830846b7ba8f45296d6d8b5a4cdccf122e781aa1c4190ca8cb13ad633899a"
+      },
+      "original_identity_scope": "Preserved local source artifact; post-run exports and validations are identified by refinement-receipt.json.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 11744,
+        "sha256": "a95830846b7ba8f45296d6d8b5a4cdccf122e781aa1c4190ca8cb13ad633899a"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/substitution/build-receipt/builder-image.txt",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/build/builder-image.txt",
+        "bytes": 75,
+        "sha256": "96cceff529da91c1cad30eff5cff067640fbe836a2314465237755f5d08c0dad"
+      },
+      "original_identity_scope": "Preserved local source artifact; post-run exports and validations are identified by refinement-receipt.json.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 75,
+        "sha256": "96cceff529da91c1cad30eff5cff067640fbe836a2314465237755f5d08c0dad"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/substitution/build-receipt/compile.log",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/build/compile.log",
+        "bytes": 166485,
+        "sha256": "11b2856768b9ab2b305a3db1cc6d7b1392cadd4ff95b69f2bbddaa61eade7e70"
+      },
+      "original_identity_scope": "Preserved local source artifact; post-run exports and validations are identified by refinement-receipt.json.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 166485,
+        "sha256": "11b2856768b9ab2b305a3db1cc6d7b1392cadd4ff95b69f2bbddaa61eade7e70"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/substitution/build-receipt/compiler.sha256",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/build/compiler.sha256",
+        "bytes": 213,
+        "sha256": "33cec68829bfd8ba37c4baafc8b4bb52d136d64a4ea4f2330f241e9d7c97ec2e"
+      },
+      "original_identity_scope": "Preserved local source artifact; post-run exports and validations are identified by refinement-receipt.json.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 213,
+        "sha256": "33cec68829bfd8ba37c4baafc8b4bb52d136d64a4ea4f2330f241e9d7c97ec2e"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/substitution/build-receipt/compiler.txt",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/build/compiler.txt",
+        "bytes": 222,
+        "sha256": "fa637d12c4f5cecdca7898e378a80db8be25e70585400728f3539c6741f68ff3"
+      },
+      "original_identity_scope": "Preserved local source artifact; post-run exports and validations are identified by refinement-receipt.json.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 222,
+        "sha256": "fa637d12c4f5cecdca7898e378a80db8be25e70585400728f3539c6741f68ff3"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/substitution/build-receipt/patch-numstat.txt",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/build/patch-numstat.txt",
+        "bytes": 136,
+        "sha256": "692b8e9fd2c9434dbddb06d7a9538dce93d4dab179890a6703b71ada34fed087"
+      },
+      "original_identity_scope": "Preserved local source artifact; post-run exports and validations are identified by refinement-receipt.json.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 136,
+        "sha256": "692b8e9fd2c9434dbddb06d7a9538dce93d4dab179890a6703b71ada34fed087"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/substitution/build-receipt/selectivity-test.numstat",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/build/selectivity-test.numstat",
+        "bytes": 80,
+        "sha256": "322472d74b53950d3cc23bade24740964142bb0789d5bb30bfe12dbdcc6f47c2"
+      },
+      "original_identity_scope": "Preserved local source artifact; post-run exports and validations are identified by refinement-receipt.json.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 80,
+        "sha256": "322472d74b53950d3cc23bade24740964142bb0789d5bb30bfe12dbdcc6f47c2"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/substitution/build-receipt/source-tree.manifest.gz",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/build/source-tree.manifest",
+        "bytes": 7588913,
+        "sha256": "bcce56e1333570eae303425cf4d88257c9cb6ef47d163d993de84ea47eaca61e"
+      },
+      "original_identity_scope": "Preserved local source artifact; post-run exports and validations are identified by refinement-receipt.json.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 2621992,
+        "sha256": "08119f4711178caf8d2b74680ee71a5882e588210f7b068d445d6444fb92216b"
+      },
+      "changes": [
+        "Lossless gzip compression; original manifest identity retained."
+      ]
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/substitution/build-receipt/summary.txt",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/build/summary.txt",
+        "bytes": 251,
+        "sha256": "803c38568bbfd3dca09377d4209137bc3c167757cad6d41246f3d327576cbc5e"
+      },
+      "original_identity_scope": "Preserved local source artifact; post-run exports and validations are identified by refinement-receipt.json.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 251,
+        "sha256": "803c38568bbfd3dca09377d4209137bc3c167757cad6d41246f3d327576cbc5e"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/substitution/refinement-receipt.json",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/refinement-receipt.json",
+        "bytes": 2661,
+        "sha256": "f59850899cdf33b49e4c4c5bd836d7eea57697b986f944068a6b58015f80c4f8"
+      },
+      "original_identity_scope": "Preserved local source artifact; post-run exports and validations are identified by refinement-receipt.json.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 2661,
+        "sha256": "f59850899cdf33b49e4c4c5bd836d7eea57697b986f944068a6b58015f80c4f8"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/substitution/publication.executed.py",
+      "original": {
+        "file": "${PRIVATE_ORIGINALS}/publication.executed.py",
+        "bytes": 8571,
+        "sha256": "eb9d74337d3a3ac215954d2bd39c156c43e4f79f80f851ea7526bd3716707587"
+      },
+      "original_identity_scope": "Preserved local source artifact; post-run exports and validations are identified by refinement-receipt.json.",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 8571,
+        "sha256": "eb9d74337d3a3ac215954d2bd39c156c43e4f79f80f851ea7526bd3716707587"
+      },
+      "changes": []
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/substitution/calibration/results.json",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 7081,
+        "sha256": "c672d6e39ae4ff6931463ea958784f54f51e4c4d50850f0346889641ee18b4b3"
+      },
+      "changes": [
+        "New post-run validation over publication bytes; no additional native execution."
+      ]
+    },
+    {
+      "file": "evidence/current/spatial-selectivity/substitution/results.json",
+      "availability": "publication_copy",
+      "publication": {
+        "bytes": 16588,
+        "sha256": "930023c4c54cc2cb624dd62363fcfc0eb4a0d2dfd310780a17a80d748f6a6ed6"
+      },
+      "changes": [
+        "New post-run validation over publication bytes; no additional native execution."
       ]
     }
   ]

@@ -1,0 +1,521 @@
+[2J[01;01H[=3h[2J[01;01HEFI stub: Booting Linux Kernel...
+EFI stub: KASLR disabled on kernel command line
+EFI stub: Loaded initrd from LINUX_EFI_INITRD_MEDIA_GUID device path
+EFI stub: Generating empty DTB
+EFI stub: Exiting boot services...
+[    0.000000] Booting Linux on physical CPU 0x0000000000 [0x410fd083]
+[    0.000000] Linux version 6.7.0-cbpf-spatial-selectivity (cbpf@spatial-selectivity) (clang version 17.0.0 (https://git.morello-project.org/morello/llvm-project.git 7956a8d20652883f845a41094645174eb92d1960), LLD 17.0.0) #1 SMP PREEMPT 2026-09-06 00:00:00 UTC
+[    0.000000] Userspace ABI: pure-capability (PCuABI)
+[    0.000000] KASLR disabled on command line
+[    0.000000] efi: EFI v2.7 by EDK II
+[    0.000000] efi: SMBIOS 3.0=0xbf700000 MEMATTR=0xbd43a018 ACPI 2.0=0xbbf70018 INITRD=0xbc373f18 MEMRESERVE=0xbc373f98 
+[    0.000000] ACPI: Early table checksum verification disabled
+[    0.000000] ACPI: RSDP 0x00000000BBF70018 000024 (v02 BOCHS )
+[    0.000000] ACPI: XSDT 0x00000000BBF7FE98 000064 (v01 BOCHS  BXPC     00000001      01000013)
+[    0.000000] ACPI: FACP 0x00000000BBF7FA98 00010C (v05 BOCHS  BXPC     00000001 BXPC 00000001)
+[    0.000000] ACPI: DSDT 0x00000000BBF77518 00144C (v02 BOCHS  BXPC     00000001 BXPC 00000001)
+[    0.000000] ACPI: APIC 0x00000000BBF7FC18 0000B4 (v03 BOCHS  BXPC     00000001 BXPC 00000001)
+[    0.000000] ACPI: PPTT 0x00000000BBF7FD18 000060 (v02 BOCHS  BXPC     00000001 BXPC 00000001)
+[    0.000000] ACPI: GTDT 0x00000000BBF7D898 000060 (v02 BOCHS  BXPC     00000001 BXPC 00000001)
+[    0.000000] ACPI: MCFG 0x00000000BBF7FE18 00003C (v01 BOCHS  BXPC     00000001 BXPC 00000001)
+[    0.000000] ACPI: SPCR 0x00000000BBF7FF98 000050 (v02 BOCHS  BXPC     00000001 BXPC 00000001)
+[    0.000000] ACPI: DBG2 0x00000000BBF7E818 000057 (v00 BOCHS  BXPC     00000001 BXPC 00000001)
+[    0.000000] ACPI: IORT 0x00000000BBF7E898 000080 (v03 BOCHS  BXPC     00000001 BXPC 00000001)
+[    0.000000] ACPI: SPCR: console: pl011,mmio,0x9000000,9600
+[    0.000000] NUMA: Failed to initialise from firmware
+[    0.000000] NUMA: Faking a node at [mem 0x0000000040000000-0x00000000bfffffff]
+[    0.000000] NUMA: NODE_DATA [mem 0xbfbf5ac0-0xbfbf7fff]
+[    0.000000] Zone ranges:
+[    0.000000]   DMA      [mem 0x0000000040000000-0x00000000bfffffff]
+[    0.000000]   DMA32    empty
+[    0.000000]   Normal   empty
+[    0.000000] Movable zone start for each node
+[    0.000000] Early memory node ranges
+[    0.000000]   node   0: [mem 0x0000000040000000-0x00000000bbf7ffff]
+[    0.000000]   node   0: [mem 0x00000000bbf80000-0x00000000bbffffff]
+[    0.000000]   node   0: [mem 0x00000000bc000000-0x00000000bc01ffff]
+[    0.000000]   node   0: [mem 0x00000000bc020000-0x00000000bc36ffff]
+[    0.000000]   node   0: [mem 0x00000000bc370000-0x00000000bf64ffff]
+[    0.000000]   node   0: [mem 0x00000000bf650000-0x00000000bf6dffff]
+[    0.000000]   node   0: [mem 0x00000000bf6e0000-0x00000000bf6effff]
+[    0.000000]   node   0: [mem 0x00000000bf6f0000-0x00000000bf80ffff]
+[    0.000000]   node   0: [mem 0x00000000bf810000-0x00000000bfffffff]
+[    0.000000] Initmem setup node 0 [mem 0x0000000040000000-0x00000000bfffffff]
+[    0.000000] psci: probing for conduit method from ACPI.
+[    0.000000] psci: PSCIv1.1 detected in firmware.
+[    0.000000] psci: Using standard PSCI v0.2 function IDs
+[    0.000000] psci: Trusted OS migration not required
+[    0.000000] psci: SMC Calling Convention v1.0
+[    0.000000] percpu: Embedded 34 pages/cpu s98984 r8192 d32088 u139264
+[    0.000000] Detected PIPT I-cache on CPU0
+[    0.000000] CPU features: detected: GIC system register CPU interface
+[    0.000000] CPU features: detected: Morello Capability Architecture
+[    0.000000] CPU features: detected: Spectre-v2
+[    0.000000] CPU features: detected: Spectre-v3a
+[    0.000000] CPU features: detected: Spectre-v4
+[    0.000000] CPU features: detected: Spectre-BHB
+[    0.000000] CPU features: kernel page table isolation disabled by kernel configuration
+[    0.000000] CPU features: detected: ARM erratum 1742098
+[    0.000000] CPU features: detected: ARM errata 1165522, 1319367, or 1530923
+[    0.000000] alternatives: applying boot alternatives
+[    0.000000] Kernel command line: console=ttyAMA0 loglevel=7 rdinit=/init panic=-1 sysctl.net.core.bpf_jit_enable=1 nokaslr cbpf.selectivity_substitution=1 initrd=initrd
+[    0.000000] Dentry cache hash table entries: 262144 (order: 9, 2097152 bytes, linear)
+[    0.000000] Inode-cache hash table entries: 131072 (order: 8, 1048576 bytes, linear)
+[    0.000000] Fallback order for Node 0: 0 
+[    0.000000] Built 1 zonelists, mobility grouping on.  Total pages: 516096
+[    0.000000] Policy zone: DMA
+[    0.000000] mem auto-init: stack:all(zero), heap alloc:off, heap free:off
+[    0.000000] software IO TLB: SWIOTLB bounce buffer size adjusted to 2MB
+[    0.000000] software IO TLB: area num 1.
+[    0.000000] software IO TLB: mapped [mem 0x00000000bd23a000-0x00000000bd43a000] (2MB)
+[    0.000000] Memory: 2030296K/2097152K available (11392K kernel code, 1894K rwdata, 3996K rodata, 960K init, 553K bss, 66856K reserved, 0K cma-reserved)
+[    0.000000] SLUB: HWalign=64, Order=0-3, MinObjects=0, CPUs=1, Nodes=1
+[    0.000000] trace event string verifier disabled
+[    0.000000] rcu: Preemptible hierarchical RCU implementation.
+[    0.000000] rcu: 	RCU event tracing is enabled.
+[    0.000000] rcu: 	RCU restricting CPUs from NR_CPUS=256 to nr_cpu_ids=1.
+[    0.000000] 	Trampoline variant of Tasks RCU enabled.
+[    0.000000] 	Tracing variant of Tasks RCU enabled.
+[    0.000000] rcu: RCU calculated value of scheduler-enlistment delay is 25 jiffies.
+[    0.000000] rcu: Adjusting geometry for rcu_fanout_leaf=16, nr_cpu_ids=1
+[    0.000000] NR_IRQS: 64, nr_irqs: 64, preallocated irqs: 0
+[    0.000000] GICv3: 224 SPIs implemented
+[    0.000000] GICv3: 0 Extended SPIs implemented
+[    0.000000] Root IRQ handler: gic_handle_irq
+[    0.000000] GICv3: GICv3 features: 16 PPIs
+[    0.000000] GICv3: CPU0: found redistributor 0 region 0:0x00000000080a0000
+[    0.000000] ITS [mem 0x08080000-0x0809ffff]
+[    0.000000] ITS@0x0000000008080000: allocated 8192 Devices @40100000 (indirect, esz 8, psz 64K, shr 1)
+[    0.000000] ITS@0x0000000008080000: allocated 8192 Interrupt Collections @40110000 (flat, esz 8, psz 64K, shr 1)
+[    0.000000] GICv3: using LPI property table @0x0000000040120000
+[    0.000000] GICv3: CPU0: using allocated LPI pending table @0x0000000040130000
+[    0.000000] rcu: srcu_init: Setting srcu_struct sizes based on contention.
+[    0.000000] arch_timer: cp15 timer(s) running at 62.50MHz (virt).
+[    0.000000] clocksource: arch_sys_counter: mask: 0x1ffffffffffffff max_cycles: 0x1cd42e208c, max_idle_ns: 881590405314 ns
+[    0.000133] sched_clock: 57 bits at 63MHz, resolution 16ns, wraps every 4398046511096ns
+[    0.019004] Console: colour dummy device 80x25
+[    0.021715] ACPI: Core revision 20230628
+[    0.029235] Calibrating delay loop (skipped), value calculated using timer frequency.. 125.00 BogoMIPS (lpj=250000)
+[    0.029806] pid_max: default: 32768 minimum: 301
+[    0.032538] LSM: initializing lsm=capability,selinux,integrity
+[    0.033356] SELinux:  Initializing.
+[    0.037720] Mount-cache hash table entries: 4096 (order: 3, 32768 bytes, linear)
+[    0.037843] Mountpoint-cache hash table entries: 4096 (order: 3, 32768 bytes, linear)
+[    0.144374] RCU Tasks: Setting shift to 0 and lim to 1 rcu_task_cb_adjust=1.
+[    0.148028] RCU Tasks Trace: Setting shift to 0 and lim to 1 rcu_task_cb_adjust=1.
+[    0.153639] rcu: Hierarchical SRCU implementation.
+[    0.153826] rcu: 	Max phase no-delay instances is 1000.
+[    0.166620] Platform MSI: ITS@0x8080000 domain created
+[    0.167487] PCI/MSI: ITS@0x8080000 domain created
+[    0.169898] Remapping and enabling EFI services.
+[    0.178088] smp: Bringing up secondary CPUs ...
+[    0.180101] smp: Brought up 1 node, 1 CPU
+[    0.180210] SMP: Total of 1 processors activated.
+[    0.180507] CPU features: detected: Common not Private translations
+[    0.180533] CPU features: detected: CRC32 instructions
+[    0.180687] CPU features: detected: RCpc load-acquire (LDAPR)
+[    0.180708] CPU features: detected: LSE atomic instructions
+[    0.180739] CPU features: detected: Privileged Access Never
+[    0.215665] CPU: All CPU(s) started at EL1
+[    0.220375] alternatives: applying system-wide alternatives
+[    0.322548] devtmpfs: initialized
+[    0.358132] clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 7645041785100000 ns
+[    0.359226] futex hash table entries: 256 (order: 2, 16384 bytes, linear)
+[    0.393088] SMBIOS 3.0.0 present.
+[    0.393882] DMI: QEMU QEMU Virtual Machine, BIOS 0.0.0 02/06/2015
+[    0.413585] NET: Registered PF_NETLINK/PF_ROUTE protocol family
+[    0.425777] DMA: preallocated 256 KiB GFP_KERNEL pool for atomic allocations
+[    0.426801] DMA: preallocated 256 KiB GFP_KERNEL|GFP_DMA pool for atomic allocations
+[    0.426991] DMA: preallocated 256 KiB GFP_KERNEL|GFP_DMA32 pool for atomic allocations
+[    0.428032] audit: initializing netlink subsys (disabled)
+[    0.439364] audit: type=2000 audit(0.360:1): state=initialized audit_enabled=0 res=1
+[    0.445395] thermal_sys: Registered thermal governor 'step_wise'
+[    0.449215] cpuidle: using governor menu
+[    0.452342] hw-breakpoint: found 8 breakpoint and 8 watchpoint registers.
+[    0.453517] ASID allocator initialised with 65536 entries
+[    0.455548] Serial: AMBA PL011 UART driver
+[    0.461719] Modules: 28032 pages in range for non-PLT usage
+[    0.461840] Modules: 519552 pages in range for PLT usage
+[    0.488471] HugeTLB: registered 1.00 GiB page size, pre-allocated 0 pages
+[    0.488620] HugeTLB: 0 KiB vmemmap can be freed for a 1.00 GiB page
+[    0.488722] HugeTLB: registered 32.0 MiB page size, pre-allocated 0 pages
+[    0.488744] HugeTLB: 0 KiB vmemmap can be freed for a 32.0 MiB page
+[    0.488773] HugeTLB: registered 2.00 MiB page size, pre-allocated 0 pages
+[    0.488806] HugeTLB: 0 KiB vmemmap can be freed for a 2.00 MiB page
+[    0.488837] HugeTLB: registered 64.0 KiB page size, pre-allocated 0 pages
+[    0.488857] HugeTLB: 0 KiB vmemmap can be freed for a 64.0 KiB page
+[    0.533669] ACPI: Added _OSI(Module Device)
+[    0.533797] ACPI: Added _OSI(Processor Device)
+[    0.533825] ACPI: Added _OSI(3.0 _SCP Extensions)
+[    0.533883] ACPI: Added _OSI(Processor Aggregator Device)
+[    0.609555] ACPI: 1 ACPI AML tables successfully acquired and loaded
+[    0.658237] ACPI: Interpreter enabled
+[    0.658439] ACPI: Using GIC for interrupt routing
+[    0.659666] ACPI: MCFG table detected, 1 entries
+[    0.971835] ARMH0011:00: ttyAMA0 at MMIO 0x9000000 (irq = 12, base_baud = 0) is a SBSA
+[    0.980034] printk: legacy console [ttyAMA0] enabled
+[    1.129459] ACPI: PCI Root Bridge [PCI0] (domain 0000 [bus 00-ff])
+[    1.136063] acpi PNP0A08:00: _OSC: OS supports [ExtendedConfig ASPM ClockPM Segments MSI HPX-Type3]
+[    1.136953] acpi PNP0A08:00: PCIe port services disabled; not requesting _OSC control
+[    1.164226] acpi PNP0A08:00: ECAM area [mem 0x4010000000-0x401fffffff] reserved by PNP0C02:00
+[    1.166417] acpi PNP0A08:00: ECAM at [mem 0x4010000000-0x401fffffff] for [bus 00-ff]
+[    1.169230] ACPI: Remapped I/O 0x000000003eff0000 to [io  0x0000-0xffff window]
+[    1.179355] PCI host bridge to bus 0000:00
+[    1.180155] pci_bus 0000:00: root bus resource [mem 0x10000000-0x3efeffff window]
+[    1.180445] pci_bus 0000:00: root bus resource [io  0x0000-0xffff window]
+[    1.180672] pci_bus 0000:00: root bus resource [mem 0x8000000000-0xffffffffff window]
+[    1.181196] pci_bus 0000:00: root bus resource [bus 00-ff]
+[    1.186859] pci 0000:00:00.0: [1b36:0008] type 00 class 0x060000
+[    1.200911] pci_bus 0000:00: resource 4 [mem 0x10000000-0x3efeffff window]
+[    1.201373] pci_bus 0000:00: resource 5 [io  0x0000-0xffff window]
+[    1.201595] pci_bus 0000:00: resource 6 [mem 0x8000000000-0xffffffffff window]
+[    1.205905] ACPI: PCI: Interrupt link GSI0 configured for IRQ 35
+[    1.206712] ACPI: PCI: Interrupt link GSI1 configured for IRQ 36
+[    1.207215] ACPI: PCI: Interrupt link GSI2 configured for IRQ 37
+[    1.207723] ACPI: PCI: Interrupt link GSI3 configured for IRQ 38
+[    1.219537] iommu: Default domain type: Translated
+[    1.220022] iommu: DMA domain TLB invalidation policy: strict mode
+[    1.225554] SCSI subsystem initialized
+[    1.232644] ACPI: bus type USB registered
+[    1.234034] usbcore: registered new interface driver usbfs
+[    1.234843] usbcore: registered new interface driver hub
+[    1.236012] usbcore: registered new device driver usb
+[    1.238229] pps_core: LinuxPPS API ver. 1 registered
+[    1.238463] pps_core: Software ver. 5.3.6 - Copyright 2005-2007 Rodolfo Giometti <giometti@linux.it>
+[    1.238976] PTP clock support registered
+[    1.242781] scmi_core: SCMI protocol bus registered
+[    1.251107] efivars: Registered efivars operations
+[    1.290146] vgaarb: loaded
+[    1.297316] clocksource: Switched to clocksource arch_sys_counter
+[    1.314130] VFS: Disk quotas dquot_6.6.0
+[    1.314860] VFS: Dquot-cache hash table entries: 512 (order 0, 4096 bytes)
+[    1.331227] pnp: PnP ACPI init
+[    1.353000] system 00:00: [mem 0x4010000000-0x401fffffff window] could not be reserved
+[    1.354680] pnp: PnP ACPI: found 1 devices
+[    1.471448] NET: Registered PF_INET protocol family
+[    1.477621] IP idents hash table entries: 32768 (order: 6, 262144 bytes, linear)
+[    1.498436] tcp_listen_portaddr_hash hash table entries: 1024 (order: 2, 16384 bytes, linear)
+[    1.499106] Table-perturb hash table entries: 65536 (order: 6, 262144 bytes, linear)
+[    1.499521] TCP established hash table entries: 16384 (order: 5, 131072 bytes, linear)
+[    1.500991] TCP bind hash table entries: 16384 (order: 7, 524288 bytes, linear)
+[    1.503681] TCP: Hash tables configured (established 16384 bind 16384)
+[    1.509307] UDP hash table entries: 1024 (order: 3, 32768 bytes, linear)
+[    1.510464] UDP-Lite hash table entries: 1024 (order: 3, 32768 bytes, linear)
+[    1.514664] NET: Registered PF_UNIX/PF_LOCAL protocol family
+[    1.527203] RPC: Registered named UNIX socket transport module.
+[    1.527753] RPC: Registered udp transport module.
+[    1.528364] RPC: Registered tcp transport module.
+[    1.528526] RPC: Registered tcp-with-tls transport module.
+[    1.528677] RPC: Registered tcp NFSv4.1 backchannel transport module.
+[    1.529320] PCI: CLS 0 bytes, default 64
+[    1.566209] Unpacking initramfs...
+[    1.569765] workingset: timestamp_bits=42 max_order=19 bucket_order=0
+[    1.607161] 9p: Installing v9fs 9p2000 file system support
+[    1.646343] Block layer SCSI generic (bsg) driver version 0.4 loaded (major 249)
+[    1.647023] io scheduler mq-deadline registered
+[    1.647309] io scheduler kyber registered
+[    1.652869] io scheduler bfq registered
+[    1.665607] Freeing initrd memory: 20K
+[    1.690994] input: Power Button as /devices/LNXSYSTM:00/LNXSYBUS:00/PNP0C0C:00/input/input0
+[    1.694400] ACPI: button: Power Button [PWRB]
+[    1.703021] EINJ: EINJ table not found.
+[    1.898340] ACPI: bus type drm_connector registered
+[    1.977651] loop: module loaded
+[    1.992153] tun: Universal TUN/TAP device driver, 1.6
+[    1.999589] usbcore: registered new interface driver usb-storage
+[    2.004773] mousedev: PS/2 mouse device common for all mice
+[    2.026619] rtc-efi rtc-efi.0: registered as rtc0
+[    2.029436] rtc-efi rtc-efi.0: setting system clock to 2026-09-12T20:53:04 UTC (1789246384)
+[    2.035107] device-mapper: ioctl: 4.48.0-ioctl (2023-03-01) initialised: dm-devel@redhat.com
+[    2.044602] pstore: Using crash dump compression: deflate
+[    2.045416] pstore: Registered efi_pstore as persistent store backend
+[    2.056718] usbcore: registered new interface driver usbhid
+[    2.057179] usbhid: USB HID core driver
+[    2.070660] hw perfevents: enabled with armv8_pmuv3_0 PMU driver, 5 counters available
+[    2.081698]  cs_system_cfg: CoreSight Configuration manager initialised
+[    2.103558] IPVS: Registered protocols ()
+[    2.104942] IPVS: Connection hash table configured (size=4096, memory=32Kbytes)
+[    2.110549] IPVS: ipvs loaded.
+[    2.117271] NET: Registered PF_INET6 protocol family
+[    2.143547] Segment Routing with IPv6
+[    2.146102] In-situ OAM (IOAM) with IPv6
+[    2.149134] sit: IPv6, IPv4 and MPLS over IPv4 tunneling driver
+[    2.161819] NET: Registered PF_PACKET protocol family
+[    2.163888] Bridge firewalling registered
+[    2.168410] 9pnet: Installing 9P2000 support
+[    2.171246] bpf_jit: CAPEBPF_JIT_POLICY certificate_report=0 certificate_transcript=0 certificate_mutation=0 exploit_evidence=0
+[    2.245715] registered taskstats version 1
+[    2.251049] CBPF_SPATIAL_SUBSTITUTION_BEGIN map=0xffff000000c60e00 map_id=0 key_size=4 value_size=7 stride=8 max_entries=2 fixture=11223344556629a781828384858687bf
+[    2.252373] CBPF_SPATIAL_NATIVE_VALUE branch=reduced map_id=0 index=0 value_size=7 stride=8 values=0xffff000000c60f10 selected=0xffff000000c60f10 tag=1 sealed=0 base=0xffff000000c60f10 cursor=0xffff000000c60f10 length=7 perms=0x30001
+[    2.253087] CBPF_SPATIAL_NATIVE_VALUE branch=reduced map_id=0 index=1 value_size=7 stride=8 values=0xffff000000c60f10 selected=0xffff000000c60f18 tag=1 sealed=0 base=0xffff000000c60f18 cursor=0xffff000000c60f18 length=7 perms=0x30001
+[    2.254593] CBPF_SPATIAL_SUBSTITUTION_CASE case=0 name=correct_a intended_map=0xffff000000c60e00 intended_key=0 intended_base=0xffff000000c60f10 actual_map=0xffff000000c60e00 actual_provider_key=0 offset=6 width=1 op=load pc=0xffff8000801c4b08 insn=0xe2000448 root_reg=2 operand_match=1 cap_tag=1 cap_sealed=0 cap_base=0xffff000000c60f10 cap_address=0xffff000000c60f16 cap_length=7 cap_perms=0x30001 err=0 fault_count=0 fault_overflow=0 value=0x0000000000000029 binding_match=1 before=11223344556629a781828384858687bf after=11223344556629a781828384858687bf result=PASS
+[    2.256235] CBPF_SPATIAL_SUBSTITUTION_CASE case=1 name=legitimate_b intended_map=0xffff000000c60e00 intended_key=1 intended_base=0xffff000000c60f18 actual_map=0xffff000000c60e00 actual_provider_key=1 offset=6 width=1 op=load pc=0xffff8000801c4b08 insn=0xe2000448 root_reg=2 operand_match=1 cap_tag=1 cap_sealed=0 cap_base=0xffff000000c60f18 cap_address=0xffff000000c60f1e cap_length=7 cap_perms=0x30001 err=0 fault_count=0 fault_overflow=0 value=0x0000000000000087 binding_match=1 before=11223344556629a781828384858687bf after=11223344556629a781828384858687bf result=PASS
+[    2.257488] CBPF_SPATIAL_SUBSTITUTION_CASE case=2 name=substituted_b intended_map=0xffff000000c60e00 intended_key=0 intended_base=0xffff000000c60f10 actual_map=0xffff000000c60e00 actual_provider_key=1 offset=6 width=1 op=load pc=0xffff8000801c4b08 insn=0xe2000448 root_reg=2 operand_match=1 cap_tag=1 cap_sealed=0 cap_base=0xffff000000c60f18 cap_address=0xffff000000c60f1e cap_length=7 cap_perms=0x30001 err=0 fault_count=0 fault_overflow=0 value=0x0000000000000087 binding_match=0 before=11223344556629a781828384858687bf after=11223344556629a781828384858687bf result=PASS
+[    2.258900] CBPF_SPATIAL_SUBSTITUTION_SUMMARY result=PASS cases=3 permits=3 failures=0 provider=production substitution=trusted verifier_execution=0
+[    2.356957] clk: Disabling unused clocks
+[    2.482380] Freeing unused kernel memory: 960K
+[    2.509157] Run /init as init process
+CBPF_SPATIAL_ADMISSION kernel=6.7.0-cbpf-spatial-selectivity pid=1 normal_verifier=1 execution=0
+CBPF_SPATIAL_ADMISSION kernel_version=#1 SMP PREEMPT 2026-09-06 00:00:00 UTC
+CBPF_SPATIAL_ADMISSION_BEGIN profile=loads-stores-v2 cases=10 key=0 key_size=4 value_size=7 max_entries=2 execution=0
+CBPF_SPATIAL_ADMISSION_BPF case=0 pc=0 code=62 dst=10 src=0 off=-4 imm=0
+CBPF_SPATIAL_ADMISSION_BPF case=0 pc=1 code=bf dst=2 src=10 off=0 imm=0
+CBPF_SPATIAL_ADMISSION_BPF case=0 pc=2 code=07 dst=2 src=0 off=0 imm=-4
+CBPF_SPATIAL_ADMISSION_BPF case=0 pc=3 code=18 dst=1 src=1 off=0 imm=3
+CBPF_SPATIAL_ADMISSION_BPF case=0 pc=4 code=00 dst=0 src=0 off=0 imm=0
+CBPF_SPATIAL_ADMISSION_BPF case=0 pc=5 code=85 dst=0 src=0 off=0 imm=1
+CBPF_SPATIAL_ADMISSION_BPF case=0 pc=6 code=15 dst=0 src=0 off=2 imm=0
+CBPF_SPATIAL_ADMISSION_BPF case=0 pc=7 code=71 dst=1 src=0 off=6 imm=0
+CBPF_SPATIAL_ADMISSION_BPF case=0 pc=8 code=bf dst=0 src=1 off=0 imm=0
+CBPF_SPATIAL_ADMISSION_BPF case=0 pc=9 code=95 dst=0 src=0 off=0 imm=0
+CBPF_SPATIAL_ADMISSION_VERIFIER_BEGIN case=0
+func#0 @0
+0: R1=ctx(off=0,imm=0) R10=fp0
+0: (62) *(u32 *)(r10 -4) = 0          ; R10=fp0 fp-8=0000????
+1: (bf) r2 = r10                      ; R2_w=fp0 R10=fp0
+2: (07) r2 += -4                      ; R2_w=fp-4
+3: (18) r1 = 0xffff000000df8200       ; R1_w=map_ptr(off=0,ks=4,vs=7,imm=0)
+5: (85) call bpf_map_lookup_elem#1    ; R0_w=map_value_or_null(id=1,off=0,ks=4,vs=7,imm=0)
+6: (15) if r0 == 0x0 goto pc+2        ; R0_w=map_value(off=0,ks=4,vs=7,imm=0)
+7: (71) r1 = *(u8 *)(r0 +6)           ; R0_w=map_value(off=0,ks=4,vs=7,imm=0) R1_w=scalar(smin=smin32=0,smax=umax=smax32=umax32=255,var_off=(0x0; 0xff))
+8: (bf) r0 = r1                       ; R0=scalar(id=2,smin=smin32=0,smax=umax=smax32=umax32=255,var_off=(0x0; 0xff)) R1=scalar(id=2,smin=smin32=0,smax=umax=smax32=umax32=255,var_off=(0x0; 0xff))
+9: (95) exit
+
+from 6 to 9: safe
+processed 10 insns (limit 1000000) max_states_per_insn 0 total_states 1 peak_states 1 mark_read 1
+CBPF_SPATIAL_ADMISSION_VERIFIER_END case=0
+CBPF_SPATIAL_ADMISSION_CASE case=0 op=load offset=6 width=1 expected=admit observed=admit errno=0 executed=0 result=PASS
+CBPF_SPATIAL_ADMISSION_BPF case=1 pc=0 code=62 dst=10 src=0 off=-4 imm=0
+CBPF_SPATIAL_ADMISSION_BPF case=1 pc=1 code=bf dst=2 src=10 off=0 imm=0
+CBPF_SPATIAL_ADMISSION_BPF case=1 pc=2 code=07 dst=2 src=0 off=0 imm=-4
+CBPF_SPATIAL_ADMISSION_BPF case=1 pc=3 code=18 dst=1 src=1 off=0 imm=3
+CBPF_SPATIAL_ADMISSION_BPF case=1 pc=4 code=00 dst=0 src=0 off=0 imm=0
+CBPF_SPATIAL_ADMISSION_BPF case=1 pc=5 code=85 dst=0 src=0 off=0 imm=1
+CBPF_SPATIAL_ADMISSION_BPF case=1 pc=6 code=15 dst=0 src=0 off=2 imm=0
+CBPF_SPATIAL_ADMISSION_BPF case=1 pc=7 code=71 dst=1 src=0 off=7 imm=0
+CBPF_SPATIAL_ADMISSION_BPF case=1 pc=8 code=bf dst=0 src=1 off=0 imm=0
+CBPF_SPATIAL_ADMISSION_BPF case=1 pc=9 code=95 dst=0 src=0 off=0 imm=0
+CBPF_SPATIAL_ADMISSION_VERIFIER_BEGIN case=1
+func#0 @0
+0: R1=ctx(off=0,imm=0) R10=fp0
+0: (62) *(u32 *)(r10 -4) = 0          ; R10=fp0 fp-8=0000????
+1: (bf) r2 = r10                      ; R2_w=fp0 R10=fp0
+2: (07) r2 += -4                      ; R2_w=fp-4
+3: (18) r1 = 0xffff000000df8200       ; R1_w=map_ptr(off=0,ks=4,vs=7,imm=0)
+5: (85) call bpf_map_lookup_elem#1    ; R0_w=map_value_or_null(id=1,off=0,ks=4,vs=7,imm=0)
+6: (15) if r0 == 0x0 goto pc+2        ; R0_w=map_value(off=0,ks=4,vs=7,imm=0)
+7: (71) r1 = *(u8 *)(r0 +7)
+invalid access to map value, value_size=7 off=7 size=1
+R0 min value is outside of the allowed memory range
+processed 7 insns (limit 1000000) max_states_per_insn 0 total_states 0 peak_states 0 mark_read 0
+CBPF_SPATIAL_ADMISSION_VERIFIER_END case=1
+CBPF_SPATIAL_ADMISSION_CASE case=1 op=load offset=7 width=1 expected=reject observed=reject errno=13 executed=0 result=PASS
+CBPF_SPATIAL_ADMISSION_BPF case=2 pc=0 code=62 dst=10 src=0 off=-4 imm=0
+CBPF_SPATIAL_ADMISSION_BPF case=2 pc=1 code=bf dst=2 src=10 off=0 imm=0
+CBPF_SPATIAL_ADMISSION_BPF case=2 pc=2 code=07 dst=2 src=0 off=0 imm=-4
+CBPF_SPATIAL_ADMISSION_BPF case=2 pc=3 code=18 dst=1 src=1 off=0 imm=3
+CBPF_SPATIAL_ADMISSION_BPF case=2 pc=4 code=00 dst=0 src=0 off=0 imm=0
+CBPF_SPATIAL_ADMISSION_BPF case=2 pc=5 code=85 dst=0 src=0 off=0 imm=1
+CBPF_SPATIAL_ADMISSION_BPF case=2 pc=6 code=15 dst=0 src=0 off=2 imm=0
+CBPF_SPATIAL_ADMISSION_BPF case=2 pc=7 code=71 dst=1 src=0 off=8 imm=0
+CBPF_SPATIAL_ADMISSION_BPF case=2 pc=8 code=bf dst=0 src=1 off=0 imm=0
+CBPF_SPATIAL_ADMISSION_BPF case=2 pc=9 code=95 dst=0 src=0 off=0 imm=0
+CBPF_SPATIAL_ADMISSION_VERIFIER_BEGIN case=2
+func#0 @0
+0: R1=ctx(off=0,imm=0) R10=fp0
+0: (62) *(u32 *)(r10 -4) = 0          ; R10=fp0 fp-8=0000????
+1: (bf) r2 = r10                      ; R2_w=fp0 R10=fp0
+2: (07) r2 += -4                      ; R2_w=fp-4
+3: (18) r1 = 0xffff000000df8200       ; R1_w=map_ptr(off=0,ks=4,vs=7,imm=0)
+5: (85) call bpf_map_lookup_elem#1    ; R0_w=map_value_or_null(id=1,off=0,ks=4,vs=7,imm=0)
+6: (15) if r0 == 0x0 goto pc+2        ; R0_w=map_value(off=0,ks=4,vs=7,imm=0)
+7: (71) r1 = *(u8 *)(r0 +8)
+invalid access to map value, value_size=7 off=8 size=1
+R0 min value is outside of the allowed memory range
+processed 7 insns (limit 1000000) max_states_per_insn 0 total_states 0 peak_states 0 mark_read 0
+CBPF_SPATIAL_ADMISSION_VERIFIER_END case=2
+CBPF_SPATIAL_ADMISSION_CASE case=2 op=load offset=8 width=1 expected=reject observed=reject errno=13 executed=0 result=PASS
+CBPF_SPATIAL_ADMISSION_BPF case=3 pc=0 code=62 dst=10 src=0 off=-4 imm=0
+CBPF_SPATIAL_ADMISSION_BPF case=3 pc=1 code=bf dst=2 src=10 off=0 imm=0
+CBPF_SPATIAL_ADMISSION_BPF case=3 pc=2 code=07 dst=2 src=0 off=0 imm=-4
+CBPF_SPATIAL_ADMISSION_BPF case=3 pc=3 code=18 dst=1 src=1 off=0 imm=3
+CBPF_SPATIAL_ADMISSION_BPF case=3 pc=4 code=00 dst=0 src=0 off=0 imm=0
+CBPF_SPATIAL_ADMISSION_BPF case=3 pc=5 code=85 dst=0 src=0 off=0 imm=1
+CBPF_SPATIAL_ADMISSION_BPF case=3 pc=6 code=15 dst=0 src=0 off=2 imm=0
+CBPF_SPATIAL_ADMISSION_BPF case=3 pc=7 code=69 dst=1 src=0 off=4 imm=0
+CBPF_SPATIAL_ADMISSION_BPF case=3 pc=8 code=bf dst=0 src=1 off=0 imm=0
+CBPF_SPATIAL_ADMISSION_BPF case=3 pc=9 code=95 dst=0 src=0 off=0 imm=0
+CBPF_SPATIAL_ADMISSION_VERIFIER_BEGIN case=3
+func#0 @0
+0: R1=ctx(off=0,imm=0) R10=fp0
+0: (62) *(u32 *)(r10 -4) = 0          ; R10=fp0 fp-8=0000????
+1: (bf) r2 = r10                      ; R2_w=fp0 R10=fp0
+2: (07) r2 += -4                      ; R2_w=fp-4
+3: (18) r1 = 0xffff000000df8200       ; R1_w=map_ptr(off=0,ks=4,vs=7,imm=0)
+5: (85) call bpf_map_lookup_elem#1    ; R0_w=map_value_or_null(id=1,off=0,ks=4,vs=7,imm=0)
+6: (15) if r0 == 0x0 goto pc+2        ; R0_w=map_value(off=0,ks=4,vs=7,imm=0)
+7: (69) r1 = *(u16 *)(r0 +4)          ; R0_w=map_value(off=0,ks=4,vs=7,imm=0) R1_w=scalar(smin=smin32=0,smax=umax=smax32=umax32=65535,var_off=(0x0; 0xffff))
+8: (bf) r0 = r1                       ; R0=scalar(id=2,smin=smin32=0,smax=umax=smax32=umax32=65535,var_off=(0x0; 0xffff)) R1=scalar(id=2,smin=smin32=0,smax=umax=smax32=umax32=65535,var_off=(0x0; 0xffff))
+9: (95) exit
+
+from 6 to 9: safe
+processed 10 insns (limit 1000000) max_states_per_insn 0 total_states 1 peak_states 1 mark_read 1
+CBPF_SPATIAL_ADMISSION_VERIFIER_END case=3
+CBPF_SPATIAL_ADMISSION_CASE case=3 op=load offset=4 width=2 expected=admit observed=admit errno=0 executed=0 result=PASS
+CBPF_SPATIAL_ADMISSION_BPF case=4 pc=0 code=62 dst=10 src=0 off=-4 imm=0
+CBPF_SPATIAL_ADMISSION_BPF case=4 pc=1 code=bf dst=2 src=10 off=0 imm=0
+CBPF_SPATIAL_ADMISSION_BPF case=4 pc=2 code=07 dst=2 src=0 off=0 imm=-4
+CBPF_SPATIAL_ADMISSION_BPF case=4 pc=3 code=18 dst=1 src=1 off=0 imm=3
+CBPF_SPATIAL_ADMISSION_BPF case=4 pc=4 code=00 dst=0 src=0 off=0 imm=0
+CBPF_SPATIAL_ADMISSION_BPF case=4 pc=5 code=85 dst=0 src=0 off=0 imm=1
+CBPF_SPATIAL_ADMISSION_BPF case=4 pc=6 code=15 dst=0 src=0 off=2 imm=0
+CBPF_SPATIAL_ADMISSION_BPF case=4 pc=7 code=69 dst=1 src=0 off=6 imm=0
+CBPF_SPATIAL_ADMISSION_BPF case=4 pc=8 code=bf dst=0 src=1 off=0 imm=0
+CBPF_SPATIAL_ADMISSION_BPF case=4 pc=9 code=95 dst=0 src=0 off=0 imm=0
+CBPF_SPATIAL_ADMISSION_VERIFIER_BEGIN case=4
+func#0 @0
+0: R1=ctx(off=0,imm=0) R10=fp0
+0: (62) *(u32 *)(r10 -4) = 0          ; R10=fp0 fp-8=0000????
+1: (bf) r2 = r10                      ; R2_w=fp0 R10=fp0
+2: (07) r2 += -4                      ; R2_w=fp-4
+3: (18) r1 = 0xffff000000df8200       ; R1_w=map_ptr(off=0,ks=4,vs=7,imm=0)
+5: (85) call bpf_map_lookup_elem#1    ; R0_w=map_value_or_null(id=1,off=0,ks=4,vs=7,imm=0)
+6: (15) if r0 == 0x0 goto pc+2        ; R0_w=map_value(off=0,ks=4,vs=7,imm=0)
+7: (69) r1 = *(u16 *)(r0 +6)
+invalid access to map value, value_size=7 off=6 size=2
+R0 min value is outside of the allowed memory range
+processed 7 insns (limit 1000000) max_states_per_insn 0 total_states 0 peak_states 0 mark_read 0
+CBPF_SPATIAL_ADMISSION_VERIFIER_END case=4
+CBPF_SPATIAL_ADMISSION_CASE case=4 op=load offset=6 width=2 expected=reject observed=reject errno=13 executed=0 result=PASS
+CBPF_SPATIAL_ADMISSION_BPF case=5 pc=0 code=62 dst=10 src=0 off=-4 imm=0
+CBPF_SPATIAL_ADMISSION_BPF case=5 pc=1 code=bf dst=2 src=10 off=0 imm=0
+CBPF_SPATIAL_ADMISSION_BPF case=5 pc=2 code=07 dst=2 src=0 off=0 imm=-4
+CBPF_SPATIAL_ADMISSION_BPF case=5 pc=3 code=18 dst=1 src=1 off=0 imm=3
+CBPF_SPATIAL_ADMISSION_BPF case=5 pc=4 code=00 dst=0 src=0 off=0 imm=0
+CBPF_SPATIAL_ADMISSION_BPF case=5 pc=5 code=85 dst=0 src=0 off=0 imm=1
+CBPF_SPATIAL_ADMISSION_BPF case=5 pc=6 code=15 dst=0 src=0 off=2 imm=0
+CBPF_SPATIAL_ADMISSION_BPF case=5 pc=7 code=72 dst=0 src=0 off=6 imm=209
+CBPF_SPATIAL_ADMISSION_BPF case=5 pc=8 code=b7 dst=0 src=0 off=0 imm=0
+CBPF_SPATIAL_ADMISSION_BPF case=5 pc=9 code=95 dst=0 src=0 off=0 imm=0
+CBPF_SPATIAL_ADMISSION_VERIFIER_BEGIN case=5
+func#0 @0
+0: R1=ctx(off=0,imm=0) R10=fp0
+0: (62) *(u32 *)(r10 -4) = 0          ; R10=fp0 fp-8=0000????
+1: (bf) r2 = r10                      ; R2_w=fp0 R10=fp0
+2: (07) r2 += -4                      ; R2_w=fp-4
+3: (18) r1 = 0xffff000000df8200       ; R1_w=map_ptr(off=0,ks=4,vs=7,imm=0)
+5: (85) call bpf_map_lookup_elem#1    ; R0_w=map_value_or_null(id=1,off=0,ks=4,vs=7,imm=0)
+6: (15) if r0 == 0x0 goto pc+2        ; R0_w=map_value(off=0,ks=4,vs=7,imm=0)
+7: (72) *(u8 *)(r0 +6) = 209          ; R0_w=map_value(off=0,ks=4,vs=7,imm=0)
+8: (b7) r0 = 0                        ; R0=0
+9: (95) exit
+
+from 6 to 9: safe
+processed 10 insns (limit 1000000) max_states_per_insn 0 total_states 1 peak_states 1 mark_read 1
+CBPF_SPATIAL_ADMISSION_VERIFIER_END case=5
+CBPF_SPATIAL_ADMISSION_CASE case=5 op=store offset=6 width=1 expected=admit observed=admit errno=0 executed=0 result=PASS
+CBPF_SPATIAL_ADMISSION_BPF case=6 pc=0 code=62 dst=10 src=0 off=-4 imm=0
+CBPF_SPATIAL_ADMISSION_BPF case=6 pc=1 code=bf dst=2 src=10 off=0 imm=0
+CBPF_SPATIAL_ADMISSION_BPF case=6 pc=2 code=07 dst=2 src=0 off=0 imm=-4
+CBPF_SPATIAL_ADMISSION_BPF case=6 pc=3 code=18 dst=1 src=1 off=0 imm=3
+CBPF_SPATIAL_ADMISSION_BPF case=6 pc=4 code=00 dst=0 src=0 off=0 imm=0
+CBPF_SPATIAL_ADMISSION_BPF case=6 pc=5 code=85 dst=0 src=0 off=0 imm=1
+CBPF_SPATIAL_ADMISSION_BPF case=6 pc=6 code=15 dst=0 src=0 off=2 imm=0
+CBPF_SPATIAL_ADMISSION_BPF case=6 pc=7 code=72 dst=0 src=0 off=7 imm=209
+CBPF_SPATIAL_ADMISSION_BPF case=6 pc=8 code=b7 dst=0 src=0 off=0 imm=0
+CBPF_SPATIAL_ADMISSION_BPF case=6 pc=9 code=95 dst=0 src=0 off=0 imm=0
+CBPF_SPATIAL_ADMISSION_VERIFIER_BEGIN case=6
+func#0 @0
+0: R1=ctx(off=0,imm=0) R10=fp0
+0: (62) *(u32 *)(r10 -4) = 0          ; R10=fp0 fp-8=0000????
+1: (bf) r2 = r10                      ; R2_w=fp0 R10=fp0
+2: (07) r2 += -4                      ; R2_w=fp-4
+3: (18) r1 = 0xffff000000df8200       ; R1_w=map_ptr(off=0,ks=4,vs=7,imm=0)
+5: (85) call bpf_map_lookup_elem#1    ; R0_w=map_value_or_null(id=1,off=0,ks=4,vs=7,imm=0)
+6: (15) if r0 == 0x0 goto pc+2        ; R0_w=map_value(off=0,ks=4,vs=7,imm=0)
+7: (72) *(u8 *)(r0 +7) = 209
+invalid access to map value, value_size=7 off=7 size=1
+R0 min value is outside of the allowed memory range
+processed 7 insns (limit 1000000) max_states_per_insn 0 total_states 0 peak_states 0 mark_read 0
+CBPF_SPATIAL_ADMISSION_VERIFIER_END case=6
+CBPF_SPATIAL_ADMISSION_CASE case=6 op=store offset=7 width=1 expected=reject observed=reject errno=13 executed=0 result=PASS
+CBPF_SPATIAL_ADMISSION_BPF case=7 pc=0 code=62 dst=10 src=0 off=-4 imm=0
+CBPF_SPATIAL_ADMISSION_BPF case=7 pc=1 code=bf dst=2 src=10 off=0 imm=0
+CBPF_SPATIAL_ADMISSION_BPF case=7 pc=2 code=07 dst=2 src=0 off=0 imm=-4
+CBPF_SPATIAL_ADMISSION_BPF case=7 pc=3 code=18 dst=1 src=1 off=0 imm=3
+CBPF_SPATIAL_ADMISSION_BPF case=7 pc=4 code=00 dst=0 src=0 off=0 imm=0
+CBPF_SPATIAL_ADMISSION_BPF case=7 pc=5 code=85 dst=0 src=0 off=0 imm=1
+CBPF_SPATIAL_ADMISSION_BPF case=7 pc=6 code=15 dst=0 src=0 off=2 imm=0
+CBPF_SPATIAL_ADMISSION_BPF case=7 pc=7 code=72 dst=0 src=0 off=8 imm=209
+CBPF_SPATIAL_ADMISSION_BPF case=7 pc=8 code=b7 dst=0 src=0 off=0 imm=0
+CBPF_SPATIAL_ADMISSION_BPF case=7 pc=9 code=95 dst=0 src=0 off=0 imm=0
+CBPF_SPATIAL_ADMISSION_VERIFIER_BEGIN case=7
+func#0 @0
+0: R1=ctx(off=0,imm=0) R10=fp0
+0: (62) *(u32 *)(r10 -4) = 0          ; R10=fp0 fp-8=0000????
+1: (bf) r2 = r10                      ; R2_w=fp0 R10=fp0
+2: (07) r2 += -4                      ; R2_w=fp-4
+3: (18) r1 = 0xffff000000df8200       ; R1_w=map_ptr(off=0,ks=4,vs=7,imm=0)
+5: (85) call bpf_map_lookup_elem#1    ; R0_w=map_value_or_null(id=1,off=0,ks=4,vs=7,imm=0)
+6: (15) if r0 == 0x0 goto pc+2        ; R0_w=map_value(off=0,ks=4,vs=7,imm=0)
+7: (72) *(u8 *)(r0 +8) = 209
+invalid access to map value, value_size=7 off=8 size=1
+R0 min value is outside of the allowed memory range
+processed 7 insns (limit 1000000) max_states_per_insn 0 total_states 0 peak_states 0 mark_read 0
+CBPF_SPATIAL_ADMISSION_VERIFIER_END case=7
+CBPF_SPATIAL_ADMISSION_CASE case=7 op=store offset=8 width=1 expected=reject observed=reject errno=13 executed=0 result=PASS
+CBPF_SPATIAL_ADMISSION_BPF case=8 pc=0 code=62 dst=10 src=0 off=-4 imm=0
+CBPF_SPATIAL_ADMISSION_BPF case=8 pc=1 code=bf dst=2 src=10 off=0 imm=0
+CBPF_SPATIAL_ADMISSION_BPF case=8 pc=2 code=07 dst=2 src=0 off=0 imm=-4
+CBPF_SPATIAL_ADMISSION_BPF case=8 pc=3 code=18 dst=1 src=1 off=0 imm=3
+CBPF_SPATIAL_ADMISSION_BPF case=8 pc=4 code=00 dst=0 src=0 off=0 imm=0
+CBPF_SPATIAL_ADMISSION_BPF case=8 pc=5 code=85 dst=0 src=0 off=0 imm=1
+CBPF_SPATIAL_ADMISSION_BPF case=8 pc=6 code=15 dst=0 src=0 off=2 imm=0
+CBPF_SPATIAL_ADMISSION_BPF case=8 pc=7 code=6a dst=0 src=0 off=4 imm=53969
+CBPF_SPATIAL_ADMISSION_BPF case=8 pc=8 code=b7 dst=0 src=0 off=0 imm=0
+CBPF_SPATIAL_ADMISSION_BPF case=8 pc=9 code=95 dst=0 src=0 off=0 imm=0
+CBPF_SPATIAL_ADMISSION_VERIFIER_BEGIN case=8
+func#0 @0
+0: R1=ctx(off=0,imm=0) R10=fp0
+0: (62) *(u32 *)(r10 -4) = 0          ; R10=fp0 fp-8=0000????
+1: (bf) r2 = r10                      ; R2_w=fp0 R10=fp0
+2: (07) r2 += -4                      ; R2_w=fp-4
+3: (18) r1 = 0xffff000000df8200       ; R1_w=map_ptr(off=0,ks=4,vs=7,imm=0)
+5: (85) call bpf_map_lookup_elem#1    ; R0_w=map_value_or_null(id=1,off=0,ks=4,vs=7,imm=0)
+6: (15) if r0 == 0x0 goto pc+2        ; R0_w=map_value(off=0,ks=4,vs=7,imm=0)
+7: (6a) *(u16 *)(r0 +4) = 53969       ; R0_w=map_value(off=0,ks=4,vs=7,imm=0)
+8: (b7) r0 = 0                        ; R0=0
+9: (95) exit
+
+from 6 to 9: safe
+processed 10 insns (limit 1000000) max_states_per_insn 0 total_states 1 peak_states 1 mark_read 1
+CBPF_SPATIAL_ADMISSION_VERIFIER_END case=8
+CBPF_SPATIAL_ADMISSION_CASE case=8 op=store offset=4 width=2 expected=admit observed=admit errno=0 executed=0 result=PASS
+CBPF_SPATIAL_ADMISSION_BPF case=9 pc=0 code=62 dst=10 src=0 off=-4 imm=0
+CBPF_SPATIAL_ADMISSION_BPF case=9 pc=1 code=bf dst=2 src=10 off=0 imm=0
+CBPF_SPATIAL_ADMISSION_BPF case=9 pc=2 code=07 dst=2 src=0 off=0 imm=-4
+CBPF_SPATIAL_ADMISSION_BPF case=9 pc=3 code=18 dst=1 src=1 off=0 imm=3
+CBPF_SPATIAL_ADMISSION_BPF case=9 pc=4 code=00 dst=0 src=0 off=0 imm=0
+CBPF_SPATIAL_ADMISSION_BPF case=9 pc=5 code=85 dst=0 src=0 off=0 imm=1
+CBPF_SPATIAL_ADMISSION_BPF case=9 pc=6 code=15 dst=0 src=0 off=2 imm=0
+CBPF_SPATIAL_ADMISSION_BPF case=9 pc=7 code=6a dst=0 src=0 off=6 imm=53969
+CBPF_SPATIAL_ADMISSION_BPF case=9 pc=8 code=b7 dst=0 src=0 off=0 imm=0
+CBPF_SPATIAL_ADMISSION_BPF case=9 pc=9 code=95 dst=0 src=0 off=0 imm=0
+CBPF_SPATIAL_ADMISSION_VERIFIER_BEGIN case=9
+func#0 @0
+0: R1=ctx(off=0,imm=0) R10=fp0
+0: (62) *(u32 *)(r10 -4) = 0          ; R10=fp0 fp-8=0000????
+1: (bf) r2 = r10                      ; R2_w=fp0 R10=fp0
+2: (07) r2 += -4                      ; R2_w=fp-4
+3: (18) r1 = 0xffff000000df8200       ; R1_w=map_ptr(off=0,ks=4,vs=7,imm=0)
+5: (85) call bpf_map_lookup_elem#1    ; R0_w=map_value_or_null(id=1,off=0,ks=4,vs=7,imm=0)
+6: (15) if r0 == 0x0 goto pc+2        ; R0_w=map_value(off=0,ks=4,vs=7,imm=0)
+7: (6a) *(u16 *)(r0 +6) = 53969
+invalid access to map value, value_size=7 off=6 size=2
+R0 min value is outside of the allowed memory range
+processed 7 insns (limit 1000000) max_states_per_insn 0 total_states 0 peak_states 0 mark_read 0
+CBPF_SPATIAL_ADMISSION_VERIFIER_END case=9
+CBPF_SPATIAL_ADMISSION_CASE case=9 op=store offset=6 width=2 expected=reject observed=reject errno=13 executed=0 result=PASS
+CBPF_SPATIAL_ADMISSION_SUMMARY result=PASS cases=10 admitted=4 rejected=6 map_create_count=1 prog_load_count=10 executions=0 failures=0
+CBPF_SPATIAL_ADMISSION poweroff=begin result=PASS
+[    2.857642] reboot: Power down
